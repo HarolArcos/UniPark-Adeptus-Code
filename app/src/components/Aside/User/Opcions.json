@@ -1,0 +1,24 @@
+{
+    "opcionesuser":[
+        {
+            "link":"/login",
+            "titulo":"login"
+
+            
+        },
+        {
+            "link":"/main",
+            "titulo":"menu"
+
+        }
+
+
+
+
+
+    ]
+
+
+
+
+}
