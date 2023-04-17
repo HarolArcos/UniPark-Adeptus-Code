@@ -1,6 +1,7 @@
 import React from 'react'
+import Opcions from "./User/Opciones.jsx"
 let user=require("./User/User.json").usuarios[0]
-let opcions=require("./User/Opcions.json").opcionesuser
+
 
 
 
@@ -9,8 +10,8 @@ export default function Aside() {
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
       <a to="index3.html" className="brand-link">
-        <img src="dist/img/uni-park.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
-        <span className="brand-text font-weight-light">Parqueo Umss</span>
+        <img src="dist/img/uni-park.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8',marginLeft:"-1px",marginTop:"-15px",maxHeight:"55px",border:"10px" }} />
+        <span className="brand-text font-weight-light">UNI-PARK</span>
       </a>
       {/* Sidebar */}
       <div className="sidebar">
@@ -47,38 +48,12 @@ export default function Aside() {
                 </p>
               </a>
               <ul className="nav nav-treeview">
-                {
-                  opcions.map((value)=>{
-                    return (<li className="nav-item">
-                            <a href={value.link} className="nav-link">
-                            <i className="far fa-circle nav-icon" />
-                            <p>{value.titulo}</p>
-
-
-                            </a>
-
-
-
-                    </li>
+                <Opcions/>
 
 
 
 
-
-                    )
-                  }
-                  
-                  
-                  
-                  
-                  )
-
-                  }
-
-
-
-
-                }
+                
                </ul>
 
             </li>
