@@ -1,13 +1,13 @@
 import {
     BrowserRouter as Router,
-    Navigate,
+    // Navigate,
     Route,
     Routes
 } from "react-router-dom";
 import React from 'react'
 import Login from "../Login/Login";
 import { Main } from "../Main/Main";
-import { Contact } from "../Contact/Contact";
+//import { Contact } from "../Contact/Contact";
 
 
 export const AppRouter = () => {
@@ -15,8 +15,9 @@ export const AppRouter = () => {
     return (
         <Router>
                 <Routes>
-                    <Route exact={true} path='/login' element={<Login></Login>} ></Route>
-                    <Route exact={true} path='/main' element={<Main></Main>} ></Route>
+                    <Route exact path="/login" element={ <Login/> }/>
+                    {/* <Route exact={true} path='/login' element={<Login></Login>} ></Route> */}
+                    <Route exact path='/main' element={<Main/>} ></Route>
                 </Routes>
         </Router>
     )
