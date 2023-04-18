@@ -54,8 +54,8 @@ export default function Aside() {
             data-widget="treeview"
             role="menu"
             data-accordion="false"
-          >            
-            <Opcions/>
+          >
+            <Opcions />
           </ul>
         </nav>
         {/* /.sidebar-menu */}

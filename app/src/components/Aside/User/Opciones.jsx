@@ -1,5 +1,4 @@
-
-import StringToReact from 'string-to-react'
+import StringToReact from "string-to-react";
 let opcions = require("./Opcions.json").opcionesuser;
 let pa = opcions.filter((padres) => padres.padre === "");
 let hi = opcions.filter((hijo) => hijo.padre !== "");
@@ -34,40 +33,22 @@ hi.sort(function (a, b) {
   }
   // a must be equal to b
   return 0;
-})
-
-
-
-
-
-
-
-
-
-
+});
 
 export default function Opcions() {
-  return(
-  pa.map((padre) => {
-      let hijitos = "<ul className='nav nav-treeview'>";
-      hi.map((hijo) => {
-        if (padre.orden === hijo.padre) {
-          hijitos = hijitos + hijo.componente;
-        }
-      });
-      
-      hijitos=padre.componente.replace("<ul className='nav nav-treeview'>", hijitos);
-   
-      return  StringToReact(hijitos)
-      
+  return pa.map((padre) => {
+    let hijitos = "<ul className='nav nav-treeview'>";
+    hi.map((hijo) => {
+      if (padre.orden === hijo.padre) {
+        hijitos = hijitos + hijo.componente;
+      }
+    });
 
-      
-  })
+    hijitos = padre.componente.replace(
+      "<ul className='nav nav-treeview'>",
+      hijitos
+    );
 
-  )
+    return StringToReact(hijitos);
+  });
 }
-
-
-
-
-  
