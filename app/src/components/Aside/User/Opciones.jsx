@@ -1,4 +1,4 @@
-import StringToReact from "string-to-react";
+//import StringToReact from "string-to-react";
 let opcions = require("./Opcions.json").opcionesuser;
 let pa = opcions.filter((padres) => padres.padre === "");
 let hi = opcions.filter((hijo) => hijo.padre !== "");
@@ -48,7 +48,7 @@ export default function Opcions() {
       "<ul className='nav nav-treeview'>",
       hijitos
     );
-
-    return StringToReact(hijitos);
+      return <div dangerouslySetInnerHTML={{__html: hijitos}}/>//trasfoma string a html
+    //return StringToReact(hijitos); trasforma string a jsx
   });
 }
