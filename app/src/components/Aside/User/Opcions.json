@@ -4,7 +4,7 @@
         "id": 1,
         "padre": "",
          "orden" :2,
-         "componente":"<li className='nav-item menu-open'><a to='#' className='nav-link active'><i className='nav-icon fas fa-tachometer-alt' /><p>Opciones1<i className='right fas fa-angle-left' /></p></a><ul className='nav nav-treeview'></ul></li>"
+         "componente":"<li class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones1<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
       
       
     },
@@ -12,7 +12,7 @@
         "id": 2,
         "padre": 1,
          "orden" :2,
-         "componente":"<li className='nav-item'><a to='hola' className='nav-link'><i className='far fa-circle nav-icon' /><p>pero1</p></a></li>"
+         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero1</p></a></li>"
       
       
     }
@@ -21,7 +21,7 @@
         "id": 3,
         "padre": "",
          "orden" :1,
-         "componente":"<li className='nav-item menu-open'><a to='#' className='nav-link active'><i className='nav-icon fas fa-tachometer-alt' /><p>Opciones2<i className='right fas fa-angle-left' /></p></a><ul className='nav nav-treeview'></ul></li>"
+         "componente":"<li class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones2<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
       
       
     }
@@ -30,7 +30,7 @@
         "id": 4,
         "padre": "",
          "orden" :3,
-         "componente":"<li className='nav-item menu-open'><a to='#' className='nav-link active'><i className='nav-icon fas fa-tachometer-alt' /><p>Opciones3<i className='right fas fa-angle-left' /></p></a><ul className='nav nav-treeview'></ul></li>"
+         "componente":"<li class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones3<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
       
       
     }
@@ -39,7 +39,7 @@
         "id": 5,
         "padre": 2,
          "orden" :1,
-         "componente":"<li className='nav-item'><a to='hola' className='nav-link'><i className='far fa-circle nav-icon' /><p>pero2</p></a></li>"
+         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero2</p></a></li>"
       
       
     }
@@ -48,7 +48,7 @@
         "id": 6,
         "padre": 3,
          "orden" :1,
-         "componente":"<li className='nav-item'><a to='hola' className='nav-link'><i className='far fa-circle nav-icon' /><p>pero3</p></a></li>"
+         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero3</p></a></li>"
       
       
     }
@@ -57,7 +57,7 @@
         "id": 7,
         "padre": 1,
          "orden" :1,
-         "componente":"<li className='nav-item'><a to='hola' className='nav-link'><i className='far fa-circle nav-icon' /><p>pero4</p></a></li>"
+         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero4</p></a></li>"
       
       
     }

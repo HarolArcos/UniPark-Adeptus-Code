@@ -37,7 +37,7 @@ hi.sort(function (a, b) {
 
 export default function Opcions() {
   return pa.map((padre) => {
-    let hijitos = "<ul className='nav nav-treeview'>";
+    let hijitos = "";
     hi.map((hijo) => {
       if (padre.orden === hijo.padre) {
         hijitos = hijitos + hijo.componente;
@@ -45,10 +45,10 @@ export default function Opcions() {
     });
 
     hijitos = padre.componente.replace(
-      "<ul className='nav nav-treeview'>",
-      hijitos
+      "</ul>",
+      hijitos+"</ul>"
     );
-      return <div dangerouslySetInnerHTML={{__html: hijitos}}/>//trasfoma string a html
+      return <li dangerouslySetInnerHTML={{__html: hijitos}}/>//trasfoma string a html
     //return StringToReact(hijitos); trasforma string a jsx
   });
 }
