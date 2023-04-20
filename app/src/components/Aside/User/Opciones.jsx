@@ -1,34 +1,34 @@
 //import StringToReact from "string-to-react";
-let opcions = require("./Opcions.json").opcionesuser;
-let pa = opcions.filter((padres) => padres.padre === "");
-let hi = opcions.filter((hijo) => hijo.padre !== "");
+let bdopcion = require("./Opcions.json").opcionesuser;
+let primarylist = bdopcion.filter((padres) => padres.padre === "");
+let secontlist = bdopcion.filter((hijo) => hijo.padre !== "");
 
-pa.sort(function (a, b) {
-  if (a.orden > b.orden) {
+primarylist.sort(function (registera, registerb) {
+  if (registera.orden > registerb.orden) {
     return 1;
   }
-  if (a.orden < b.orden) {
+  if (registera.orden < registerb.orden) {
     return -1;
   }
   // a must be equal to b
   return 0;
 });
-hi.sort(function (a, b) {
-  if (a.padre > b.padre) {
+secontlist.sort(function (registera, registerb) {
+  if (registera.padre > registerb.padre) {
     return 1;
   }
-  if (a.padre < b.padre) {
+  if (registera.padre < registerb.padre) {
     return -1;
   }
   // a must be equal to b
   return 0;
 });
 
-hi.sort(function (a, b) {
-  if (a.orden > b.orden && a.padre === b.padre) {
+secontlist.sort(function (registera, registerb) {
+  if (registera.orden > registerb.orden && registera.padre === registerb.padre) {
     return 1;
   }
-  if (a.orden < b.orden && a.padre === b.padre) {
+  if (registera.orden < registerb.orden && registera.padre === registerb.padre) {
     return -1;
   }
   // a must be equal to b
@@ -36,19 +36,19 @@ hi.sort(function (a, b) {
 });
 
 export default function Opcions() {
-  return pa.map((padre) => {
-    let hijitos = "";
-    hi.map((hijo) => {
-      if (padre.orden === hijo.padre) {
-        hijitos = hijitos + hijo.componente;
+  return primarylist.map((registera) => {
+    let string = "";
+    secontlist.map((register) => {
+      if (registera.orden === register.padre) {
+        string = string + register.componente;
       }
     });
 
-    hijitos = padre.componente.replace(
+    string = registera.componente.replace(
       "</ul>",
-      hijitos+"</ul>"
+      string+"</ul>"
     );
-      return <li dangerouslySetInnerHTML={{__html: hijitos}}/>//trasfoma string a html
+      return <li dangerouslySetInnerHTML={{__html: string}}/>//trasfoma string a html
     //return StringToReact(hijitos); trasforma string a jsx
   });
 }
