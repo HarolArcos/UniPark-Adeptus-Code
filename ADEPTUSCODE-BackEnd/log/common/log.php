@@ -18,7 +18,7 @@ class log {
         // Maximal LogFile Size in MB
         'maxSize'        => 10,
         // e.g. 'txt' = Text with TAB OR 'csv' = Comma-Separated Values with (,) OR 'htm' = HTML
-        'format'         => 'htm',
+        'format'         => 'txt',
         // e.g. 'terminal' = terminalcss.xyz OR 'barecss' = barecss.com OR plain = simple HTML
         'template'       => 'barecss',
         // e.g. 'UTC' see: http://php.net/manual/en/timezones.php

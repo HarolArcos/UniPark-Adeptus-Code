@@ -1,4 +1,5 @@
 <?php
+require("../../../../log/common/log.php");  
 
 //Clase Creada 18/05/2022
 //by: Kevin Santillan
@@ -6,6 +7,7 @@
 
 class person {
 
+    private $optionsLog;
     private $_db,$_log;
     private $idPerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson;
@@ -15,7 +17,7 @@ class person {
         $this->_db=$_db;
         $this->_log=$_log;
         if ($idPerson!=0) {
-            $this->setUser($idPerson);
+            $this->setPerson($idPerson);
         }
     }
 
@@ -33,15 +35,67 @@ class person {
         unset($this->passwordPerson);
     }
 
+    private function createLog($fileName, $logMessage, $tipeError){
+        $this->optionsLog = array(
+            'path'           => '../../../../log/logApi',           
+            'filename'       => $fileName,         
+            'syslog'         => false,         // true = use system function (works only in txt format)
+            'filePermission' => 0644,          // or 0777
+            'maxSize'        => 0.001,         // in MB
+            'format'         => 'txt',         // use txt, csv or htm
+            'template'       => 'barecss',     // for htm format only: plain, terminal or barecss
+            'timeZone'       => 'America/La_Paz',         
+            'dateFormat'     => 'Y-m-d H:i:s', 
+            'backtrace'      => true,          // true = slower but with line number of call
+          );
+          $log = new log($this->optionsLog);
+          
+          switch ($tipeError) {
+            case "info":
+                $log->info($logMessage);
+              break;
+            case "notice":
+                $log->notice($logMessage);
+              break;
+            case "warning":
+                $log->warning($logMessage);
+              break;
+            case "error":
+                $log->error($logMessage);
+              break;
+            case "critical":
+                $log->critical($logMessage);
+              break;
+            case "alert":
+                $log->alert($logMessage);
+              break;
+            case "emergency":
+                $log->emergency($logMessage);
+              break;
+            case "gau":
+                $log->gau($logMessage);
+              break;
+            case "debug":
+                $log->debug($logMessage);
+                break;
+            default:
+                $log->info($logMessage);
+                break;
+          }
+    }
+    
+
+
     private function setPerson($idPerson){
         $response = FALSE;
-        $dataPerson = $this->findUserDb($idPerson);
+        $dataPerson = $this->findPersonDb($idPerson);
         if($dataPerson){
             $this->mapPerson($dataPerson);
             $response = TRUE;
         }
-        //$arrLog = array("input"=>$idPerson,"output"=>$response);
+        $arrLog = array("input"=>$idPerson,"output"=>$response);
         //$this->_log->warning(__FUNCTION__,$arrLog);
+        $this->createLog('apiLog', $arrLog, "warning");
         return $response;
     }
     
@@ -52,13 +106,15 @@ class person {
                 
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-           // $arrLog = array("input"=>$idPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
-           // $this->_log->error(__FUNCTION__,$arrLog);   
+            $arrLog = array("input"=>$idPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           // $this->_log->error(__FUNCTION__,$arrLog);
+           $this->createLog('dbLog', $arrLog, "error");   
         } else {
             
             $response = $rs[0];
-          //  $arrLog = array("input"=>$idPerson,"output"=>$response,"sql"=>$sql);
+            $arrLog = array("input"=>$idPerson,"output"=>$response,"sql"=>$sql);
           //  $this->_log->debug(__FUNCTION__,$arrLog);
+            $this->createLog('dbLog', $arrLog, "debug");
         }
         return $response;
     }
@@ -85,7 +141,8 @@ class person {
 
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
-            $this->_log->error(__FUNCTION__,$arrLog);  
+            //$this->_log->error(__FUNCTION__,$arrLog);
+            $this->createLog('dbLog', $arrLog, "error");  
         } else {
             $response = $rs;
             $arrLog = array("input"=>array( "idPerson"=> $idPerson,
@@ -100,7 +157,8 @@ class person {
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
-            $this->_log->debug(__FUNCTION__,$arrLog);
+            //$this->_log->debug(__FUNCTION__,$arrLog);
+            $this->createLog('dbLog', $arrLog, "debug");
         }
         return $response;
     }
