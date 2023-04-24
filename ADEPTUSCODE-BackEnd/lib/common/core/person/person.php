@@ -1,7 +1,7 @@
 <?php
 
-//Clase Creada 18/05/2022
-//by: Kevin Santillan
+//Clase Creada 24/04/2023
+//by: Harol Arcos
 //Clase mapeada de la tabla usuarios
 
 class person {
