@@ -1,0 +1,30 @@
+<?php
+require("logversion2.php");  
+
+$options = array(
+    'path'           => '.',           // path to the logfile
+    'filename'       => 'logLargo',         // main name, _ and date will be added
+    'syslog'         => false,         // true = use system function (works only in txt format)
+    'filePermission' => 0644,          // or 0777
+    'maxSize'        => 0.001,         // in MB
+    'format'         => 'txt',         // use txt, csv or htm
+    'template'       => 'barecss',     // for htm format only: plain, terminal or barecss
+    'timeZone'       => 'America/La_Paz',         // UTC or what you like
+    'dateFormat'     => 'Y-m-d H:i:s', // see http://php.net/manual/en/function.date.php
+    'backtrace'      => true,          // true = slower but with line number of call
+  );
+  $log = new log($options);
+
+  $logMessage = 'Mensajito pal log :v';
+
+
+$log->info($logMessage);
+$log->notice($logMessage);
+$log->warning($logMessage);
+$log->error($logMessage);
+$log->critical($logMessage);
+$log->alert($logMessage);
+$log->emergency($logMessage);
+
+
+?>
