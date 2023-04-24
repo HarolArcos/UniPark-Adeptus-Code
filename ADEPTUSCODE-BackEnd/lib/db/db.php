@@ -1,7 +1,7 @@
 <?php
-    //by: Kevin Santillan
+    //by: Harol Arcos
     //Esta clase es para la conexion de la base de datos
-    //Creacion: 12/04/2022
+    //Creacion: 23/04/2023
     class db{
 
         private $user,$dbName,$host,$password,$port;
