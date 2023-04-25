@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 export default function Aside() {
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
-      <a to="index3.html" className="brand-link">
+      <a href='/' className="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
         <span className="brand-text font-weight-light">Eggeling Armored</span>
       </a>
@@ -14,10 +15,10 @@ export default function Aside() {
         {/* Sidebar user panel (optional) */}
         <div className="user-panel mt-3 pb-3 mb-3 d-flex">
           <div className="image">
-            <img src="dist/img/user9-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" className="img-circle elevation-2" alt="User Img" />
           </div>
           <div className="info">
-            <a to="#" className="d-block">Cristopher Eggeling</a>
+            <a href='/' to="#" className="d-block">Cristopher Eggeling</a>
           </div>
         </div>
         {/* SidebarSearch Form */}
@@ -37,7 +38,7 @@ export default function Aside() {
             {/* Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library */}
             <li className="nav-item menu-open">
-              <a to="#" className="nav-link active">
+              <a href='/' to="#" className="nav-link active">
                 <i className="nav-icon fas fa-tachometer-alt" />
                 <p>
                   Dashboard
@@ -46,10 +47,18 @@ export default function Aside() {
               </a>
               <ul className="nav nav-treeview">
                 <li className="nav-item">
-                  <a to="./index.html" className="nav-link">
+                  <Link to='/main' className='nav-link'  >
                     <i className="far fa-circle nav-icon" />
                     <p>Resumen</p>
-                  </a>
+                  </Link>
+                  <Link to='/main/sitiosOcupados' className="nav-link" >
+                    <i className="far fa-circle nav-icon" />
+                    <p>Sitios Ocupados</p>
+                  </Link>
+                  <Link to='/main/sitiosDisponibles' className="nav-link" >
+                    <i className="far fa-circle nav-icon" />
+                    <p>Sitios Disponibles</p>
+                  </Link>
                 </li>
               </ul>
             </li>

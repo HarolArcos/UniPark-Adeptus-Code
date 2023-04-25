@@ -1,14 +1,14 @@
 import {
     BrowserRouter as Router,
-    // Navigate,
     Route,
     Routes
 } from "react-router-dom";
 import React from 'react'
 import Login from "../Login/Login";
 import { Main } from "../Main/Main";
-//import { Contact } from "../Contact/Contact";
-
+import Content from "../Content/Content";
+import ContentUnavalible from "../ContentUnavaliableSites/ContentUnavaliableSites";
+import ContentSitesAvalible from "../ContentAvaliableSites/ContentSitesAvaliable";
 
 export const AppRouter = () => {
 
@@ -16,8 +16,11 @@ export const AppRouter = () => {
         <Router>
                 <Routes>
                     <Route exact path="/login" element={ <Login/> }/>
-                    {/* <Route exact={true} path='/login' element={<Login></Login>} ></Route> */}
-                    <Route exact path='/main' element={<Main/>} ></Route>
+                    <Route exact path="/main" element={ <Main/> } >
+                        <Route index path="" element={ <Content/> } />
+                        <Route path="sitiosOcupados" element={ <ContentUnavalible/> } />
+                        <Route path="sitiosDisponibles" element={ <ContentSitesAvalible/> } />
+                    </Route>
                 </Routes>
         </Router>
     )

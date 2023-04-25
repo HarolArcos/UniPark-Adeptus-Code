@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Login.css'
 //import { Alert } from 'react-bootstrap'
 import { Button, Modal, ModalBody } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 export default function Login() {
 
@@ -50,12 +51,14 @@ export default function Login() {
                                     </div> */}
                                     {/* /.col */}
                                     <div className="col-12 iniciar-button">
-                                        <button
-                                            type='submit'
-                                            className="btn btn-primary btn-block "
-                                        >
-                                            Iniciar
-                                        </button>
+                                        <Link to={'/main'} >
+                                            <button
+                                                type='submit'
+                                                className="btn btn-primary btn-block "
+                                            >
+                                                Iniciar
+                                            </button>
+                                        </Link>
                                     </div>
                                     {/* /.col */}
                                 </div>
