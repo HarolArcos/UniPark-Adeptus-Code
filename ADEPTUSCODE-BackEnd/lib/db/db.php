@@ -10,7 +10,6 @@
         private $numRows,$numCols,$affectedRows,$lastError,$lastOid,$colsNames;
 
         function __construct($connectionName){
-            
             $this->connectionName = $connectionName;
             if (isset($connectionName)) {
                 $this->setParameters($connectionName);
@@ -29,7 +28,6 @@
             unset($this->connection);
             unset($this->pathLog);
             $this->close();
-
         }
 
         private function setParameters($connectionName){
@@ -62,7 +60,6 @@
                 return true;
             }
             return false;
-
         }
 
         private function close(){
