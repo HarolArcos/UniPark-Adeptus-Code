@@ -48,38 +48,38 @@ class person {
             'dateFormat'     => 'Y-m-d H:i:s', 
             'backtrace'      => true,          // true = slower but with line number of call
           );
-          $log = new log($this->optionsLog);
+          $_log = new log($this->optionsLog);
           
           switch ($tipeError) {
             case "info":
-                $log->info($logMessage);
+                $_log->info($logMessage);
               break;
             case "notice":
-                $log->notice($logMessage);
+                $_log->notice($logMessage);
               break;
             case "warning":
-                $log->warning($logMessage);
+                $_log->warning($logMessage);
               break;
             case "error":
-                $log->error($logMessage);
+                $_log->error($logMessage);
               break;
             case "critical":
-                $log->critical($logMessage);
+                $_log->critical($logMessage);
               break;
             case "alert":
-                $log->alert($logMessage);
+                $_log->alert($logMessage);
               break;
             case "emergency":
-                $log->emergency($logMessage);
+                $_log->emergency($logMessage);
               break;
             case "gau":
-                $log->gau($logMessage);
+                $_log->gau($logMessage);
               break;
             case "debug":
-                $log->debug($logMessage);
+                $_log->debug($logMessage);
                 break;
             default:
-                $log->info($logMessage);
+                $_log->info($logMessage);
                 break;
           }
     }
@@ -96,6 +96,7 @@ class person {
         $arrLog = array("input"=>$idPerson,"output"=>$response);
         //$this->_log->warning(__FUNCTION__,$arrLog);
         $this->createLog('apiLog', $arrLog, "warning");
+        //$this->createLog('apiLog', $arrLog." Function error: ".__FUNCTION__, "warning");
         return $response;
     }
     
