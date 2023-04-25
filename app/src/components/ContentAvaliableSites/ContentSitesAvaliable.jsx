@@ -5,15 +5,15 @@ import "./ContentSites.css";
 export default function ContentSitesAvalible(){
 
     const datos = [
-        { sitio: 'SITD13' },
-        { sitio: 'SITD16' },
-        { sitio: 'SITD16' },
-        { sitio: 'SITD15' },
-        { sitio: 'SITD16' },
-        { sitio: 'SITD16' },
-        { sitio: 'SITD15' },
-        { sitio: 'SITD16' },
-        { sitio: 'SITD16' }
+        { id:'1', sitio: 'SITD13' },
+        { id:'2', sitio: 'SITD16' },
+        { id:'3', sitio: 'SITD16' },
+        { id:'4', sitio: 'SITD15' },
+        { id:'5', sitio: 'SITD16' },
+        { id:'6', sitio: 'SITD16' },
+        { id:'7', sitio: 'SITD15' },
+        { id:'8', sitio: 'SITD16' },
+        { id:'9', sitio: 'SITD16' }
     ];
 
     return(
@@ -33,7 +33,7 @@ export default function ContentSitesAvalible(){
                     <td>@mdo</td>
                     </tr> */}
                         {datos.map((dato) => (
-                            <tr key={'sitesA'}>
+                            <tr key={dato.id}>
                                 <td>{dato.sitio}</td>
                                 <td>Libre</td>
                             </tr>
