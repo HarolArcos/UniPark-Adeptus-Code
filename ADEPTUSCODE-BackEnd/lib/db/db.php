@@ -111,7 +111,7 @@
 
             $this->connection = new PDO("pgsql:host={$this->host};port={$this->port};dbname={$this->dbName}", $this->user, $this->password);
             if ($this->connection) {
-                $this->connectionStatus = $this->connection->get_connection_stats();//no hay metodo en pg, buscar otro
+                //$this->connectionStatus = $this->connection->get_connection_stats();//no hay metodo en pg, buscar otro
                 return true;
             }
             return false;
@@ -120,10 +120,12 @@
 
         private function close(){
             if (is_resource($this->connection)) {
-                $this->connection->close();//revisar error
+                //$this->connection->close();//revisar error
+                $this->connection = null;
                 unset($this->connection);
             }
         }
+
 
         private function setQueryParameters($sql)
         {
