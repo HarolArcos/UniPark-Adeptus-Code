@@ -1,4 +1,7 @@
 <?php
+    //by: Gonza Zeballos
+    //Esta clase es para el seguimiento y control de errores en el sistema
+    //Creacion: 22/04/2023
 class log {
     private $params;
     private $file;
