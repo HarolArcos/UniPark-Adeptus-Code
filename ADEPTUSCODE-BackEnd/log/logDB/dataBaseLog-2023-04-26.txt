@@ -1,0 +1,1 @@
+2023-04-25 23:29:41	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\log\common\log.php (69)	Conexion: 1 - Function error: connect	200 INFO

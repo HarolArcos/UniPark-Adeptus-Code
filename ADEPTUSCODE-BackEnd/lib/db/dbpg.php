@@ -40,7 +40,7 @@ class dataBasePG{
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => '../../../../log/logDB',           
+            'path'           => '../../log/logDB',           
             'filename'       => $fileName,         
             'syslog'         => false,         // true = use system function (works only in txt format)
             'filePermission' => 0644,          // or 0777
@@ -171,7 +171,7 @@ class dataBasePG{
    //FUNCION CORREGIDA
     public function setParametrosBD($dataConnect)
     {
-        $fileData = __DIR__ . "/ADEPTUSCODE-BackEnd/lib/db/config/config.ini";
+        $fileData = __DIR__."/config/config.ini";
         $data = parse_ini_file($fileData, true);
         if(array_key_exists($dataConnect, $data)) {
             $this->dbuser = $data[$dataConnect]['user'];
@@ -198,7 +198,7 @@ class dataBasePG{
     private function connect()
     {
         
-        $conn_string = "host=" . $this->dbhost . "port=" . $this->dbport . "dbname=" . $this->dbname . " user=" . $this->dbuser . " password=" . $this->dbpasswd;
+        $conn_string = "host=" . $this->dbhost . " port=" . $this->dbport . " dbname=" . $this->dbname . " user=" . $this->dbuser . " password=" . $this->dbpasswd;
         $this->_dblink = pg_connect($conn_string);
         if ($this->_dblink) {
             $this->connectionStatus = pg_connection_status($this->_dblink);
