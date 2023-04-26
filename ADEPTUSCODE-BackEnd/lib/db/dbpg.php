@@ -5,7 +5,7 @@ class dataBasePG{
     private $dbname, $dbhost, $dbuser, $dbpasswd, $dbport;//corregido
     private $_dblink;//bien
     private $numRows, $numCols, $affectedRows, $lastError, $lastOid, $nameCols;
-    private $_pathpass;
+    //private $_pathpass;
     private $optionsLog;
     //private $_pathlog;
 
@@ -87,23 +87,8 @@ class dataBasePG{
           }
     }
 
-    
+
     /*
-    * Obtener la conexion a la BD
-    * @access public
-    * return enlace conexion BD
-    */
-
-    public function getStatus(){
-        $response = (pg_connection_status($this->getConexion()) === PGSQL_CONNECTION_OK) ? TRUE : FALSE;
-        return $response;
-    }
-    public function getConexion()
-    {
-        return $this->_dblink;
-    }
-
-    /**
     * Ejecuta una sentencia SQL
     * @access private
     * @param string $tSql Cadena SQL a ser ejecutada
@@ -183,27 +168,28 @@ class dataBasePG{
     }
 
 
-   
+   //FUNCION CORREGIDA
     public function setParametrosBD($dataConnect)
     {
         $fileData = __DIR__ . "/ADEPTUSCODE-BackEnd/lib/db/config/config.ini";
         $data = parse_ini_file($fileData, true);
         if(array_key_exists($dataConnect, $data)) {
             $this->dbuser = $data[$dataConnect]['user'];
-            $this->dbpasswd = $data[$dataConnect]['password'];
-            $this->dbname = $data[$dataConnect]['base'];
+            $this->dbname = $data[$dataConnect]['dbName'];
             $this->dbhost = $data[$dataConnect]['host'];
+            $this->dbpasswd = $data[$dataConnect]['password'];
+            $this->dbport=$data[$dataConnect]["port"];
+            $this->connect();
         } else {
             //$this->printLog("Conexion invalida [$dataConnect]");
             $mensaje ="Conexion invalida [$dataConnect]";
             $this->createLog('dataBaseLog', $mensaje." Function error: ".__FUNCTION__, "warning");
 
         }
-        
-        return $this->connect();
+        //return $this->connect();//lo llevamos dentro del if
     }
 
-    /**
+    /*
     * Funcion que retorna un boolean dependiendo si pudo o no conectarse a la BD
     * en base a las configuraciones que fueron seteadas en el metodo setParametrosBD
     * @access private
@@ -212,12 +198,17 @@ class dataBasePG{
     private function connect()
     {
         
-        $conn_string = "host=" . $this->dbhost . " port=5432 dbname=" . $this->dbname . " user=" . $this->dbuser . " password=" . $this->dbpasswd;
+        $conn_string = "host=" . $this->dbhost . "port=" . $this->dbport . "dbname=" . $this->dbname . " user=" . $this->dbuser . " password=" . $this->dbpasswd;
         $this->_dblink = pg_connect($conn_string);
         if ($this->_dblink) {
             $this->connectionStatus = pg_connection_status($this->_dblink);
+            //usando la funcion creada por kevin, en teoria hace lo mismo que arriba pero queda pendiente a revision
+            $mensaje = $this->getStatus();
+            $this->createLog('dataBaseLog', "Conexion: ".$mensaje." - Function error: ".__FUNCTION__, "info");
             return true;
         }
+        $mensaje = $this->getStatus();
+        $this->createLog('dataBaseLog', "Conexion: ".$mensaje." - Function error: ".__FUNCTION__, "warning");
         return false;
 
     }
@@ -272,7 +263,7 @@ class dataBasePG{
         return $this->nameCols;
     }
 
-     /**
+     /*
     * Metodo que setea los datos de conexion a la BD
     * @access public
     * @param string $dbhost Nombre o IP del host de la BD
@@ -282,4 +273,19 @@ class dataBasePG{
     * @return boolean {true|false}
     */
     
+
+        /*
+    * Obtener la conexion a la BD
+    * @access public
+    * return enlace conexion BD
+    */
+
+    public function getStatus(){
+        $response = (pg_connection_status($this->getConexion()) === PGSQL_CONNECTION_OK) ? TRUE : FALSE;
+        return $response;
+    }
+    public function getConexion()
+    {
+        return $this->_dblink;
+    }
 }
