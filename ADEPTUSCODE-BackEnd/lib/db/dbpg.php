@@ -1,10 +1,13 @@
 <?php
+    //by: Gonza Zeballos
+    //Esta clase es para la conexion a la base de datos
+    //Creacion: 26/04/2023
 require("../../log/common/log.php");
 class dataBasePG{
 
     private $dbname, $dbhost, $dbuser, $dbpasswd, $dbport;//corregido
     private $_dblink;//bien
-    private $numRows, $numCols, $affectedRows, $lastError, $lastOid, $nameCols;
+    private $numRows, $numCols, $affectedRows, $lastError, $lastOid, $nameCols;//bien
     //private $_pathpass;
     private $optionsLog;
     //private $_pathlog;
@@ -33,7 +36,7 @@ class dataBasePG{
         unset($this->dbport);//
         unset($this->connectionName);//
         unset($this->connectionStatus);//
-        unset($this->_dblink);//adaptado
+        //unset($this->_dblink);
         $this->close();
     }
 
@@ -44,7 +47,7 @@ class dataBasePG{
             'filename'       => $fileName,         
             'syslog'         => false,         // true = use system function (works only in txt format)
             'filePermission' => 0644,          // or 0777
-            'maxSize'        => 0.001,         // in MB
+            'maxSize'        => 0.5,         // in MB
             'format'         => 'txt',         // use txt, csv or htm
             'template'       => 'barecss',     // for htm format only: plain, terminal or barecss
             'timeZone'       => 'America/La_Paz',         
@@ -94,7 +97,7 @@ class dataBasePG{
     * @param string $tSql Cadena SQL a ser ejecutada
     * @return resource $res
     */
-    private function _query($tSql)
+    private function setQueryParameters($tSql)//antes llamada _query
     {
         $result = false;
         if (is_resource($this->_dblink) && ( $this->connectionStatus === PGSQL_CONNECTION_OK )) {
@@ -104,7 +107,8 @@ class dataBasePG{
                 $this->numCols = pg_num_fields($result);
                 $this->affectedRows = pg_affected_rows($result);
                 $this->lastOid = pg_last_oid($result);
-                $this->lastError = null;                
+                $this->lastError = null;
+                $this->createLog('dataBaseLog', "Consulta ejecutada con exito - Function: ".__FUNCTION__, "info");                
             } else {
                 $this->lastError = pg_last_error($this->_dblink);
                 $this->numRows = null;
@@ -113,19 +117,19 @@ class dataBasePG{
                 $this->lastOid = null;                    
                 //$this->printLog();
                 $mensaje = "[$tSql] [" . $this->lastError ."]";
-                $this->createLog('dataBaseLog', $mensaje." Function error: ".__FUNCTION__, "warning");
+                $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
             }
         } else {
             $mensaje = "[$tSql] [Error en conexion]";
-            $this->createLog('dataBaseLog', $mensaje." Function error: ".__FUNCTION__, "error");
+            $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
         }
         return $result;
     }
 
-    private function fetch_assoc($result)
+    /*private function fetch_assoc($result)//Innecesaria
     {
         return pg_fetch_assoc($result);
-    }
+    }*/
 
     private function field_name($result)
     {
@@ -136,10 +140,22 @@ class dataBasePG{
         return $arr;
     }
 
-    public function query($sql)
+    public function query($sql)//modificada
     {
-        $result = $this->_query($sql);
-        return $result;
+        $result = false;
+        $res = $this->setQueryParameters($sql);
+            
+            if (!is_bool($res)) {
+                $result = array();
+                while ($row = pg_fetch_assoc($res)) {//cambiar a pg
+                    $result[] = $row;
+                }
+                //$res->free();//no existe en pg
+                pg_free_result($res);//ayuda a liberar pero queda por verificar si funciona igual que el free() en mysqli 
+            } else {
+                $result=$res;
+            }
+            return $result;
     }
 
     /*
@@ -148,10 +164,10 @@ class dataBasePG{
     * @param string $tSql Cadena SQL a ser ejecutada
     * @return array asociativo si el SQL tuvo exito, boolean si hubo algun problema $result
     */
-    public function select($tSql)
+    public function select($tSql)//Parece innecesario pero queda revisar su utilidad
     {
         $result = false;
-        $res = $this->_query($tSql);
+        $res = $this->setQueryParameters($tSql);
 
         if (!is_bool($res)) {
             $result = array();
@@ -162,14 +178,14 @@ class dataBasePG{
             pg_free_result($res);
 	    } else {
             $mensaje ="[$tSql] [" . $this->getLastError() ."]";
-            $this->createLog('dataBaseLog', $mensaje." Function error: ".__FUNCTION__, "error");
+            $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
         }
         return $result;
     }
 
 
    //FUNCION CORREGIDA
-    public function setParametrosBD($dataConnect)
+    private function setParametrosBD($dataConnect)
     {
         $fileData = __DIR__."/config/config.ini";
         $data = parse_ini_file($fileData, true);
@@ -179,11 +195,13 @@ class dataBasePG{
             $this->dbhost = $data[$dataConnect]['host'];
             $this->dbpasswd = $data[$dataConnect]['password'];
             $this->dbport=$data[$dataConnect]["port"];
+            $mensaje ="Datos asignados: user=[$this->dbuser], dbname=[$this->dbname],host=[$this->dbhost],password=[$this->dbpasswd],port=[$this->dbport]";
+            $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "info");
             $this->connect();
         } else {
             //$this->printLog("Conexion invalida [$dataConnect]");
             $mensaje ="Conexion invalida [$dataConnect]";
-            $this->createLog('dataBaseLog', $mensaje." Function error: ".__FUNCTION__, "warning");
+            $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "warning");
 
         }
         //return $this->connect();//lo llevamos dentro del if
@@ -204,11 +222,11 @@ class dataBasePG{
             $this->connectionStatus = pg_connection_status($this->_dblink);
             //usando la funcion creada por kevin, en teoria hace lo mismo que arriba pero queda pendiente a revision
             $mensaje = $this->getStatus();
-            $this->createLog('dataBaseLog', "Conexion: ".$mensaje." - Function error: ".__FUNCTION__, "info");
+            $this->createLog('dataBaseLog', "Conexion buena: ".$mensaje." - Function: ".__FUNCTION__, "info");
             return true;
         }
         $mensaje = $this->getStatus();
-        $this->createLog('dataBaseLog', "Conexion: ".$mensaje." - Function error: ".__FUNCTION__, "warning");
+        $this->createLog('dataBaseLog', "No hay conexion: ".$mensaje." - Function: ".__FUNCTION__, "warning");
         return false;
 
     }
