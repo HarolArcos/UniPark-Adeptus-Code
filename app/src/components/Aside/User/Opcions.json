@@ -4,7 +4,7 @@
         "id": 1,
         "padre": "",
          "orden" :2,
-         "componente":"<li class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones1<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+         "componente":"<li key=1 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones1<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
       
       
     },
@@ -12,7 +12,7 @@
         "id": 2,
         "padre": 1,
          "orden" :2,
-         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero1</p></a></li>"
+         "componente":"<li key=2 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero1</p></a></li>"
       
       
     }
@@ -21,7 +21,7 @@
         "id": 3,
         "padre": "",
          "orden" :1,
-         "componente":"<li class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones2<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+         "componente":"<li key=3 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones2<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
       
       
     }
@@ -30,7 +30,7 @@
         "id": 4,
         "padre": "",
          "orden" :3,
-         "componente":"<li class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones3<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+         "componente":"<li  key=4 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones3<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
       
       
     }
@@ -39,7 +39,7 @@
         "id": 5,
         "padre": 2,
          "orden" :1,
-         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero2</p></a></li>"
+         "componente":"<li key=5 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero2</p></a></li>"
       
       
     }
@@ -48,7 +48,7 @@
         "id": 6,
         "padre": 3,
          "orden" :1,
-         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero3</p></a></li>"
+         "componente":"<li  key=6 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero3</p></a></li>"
       
       
     }
@@ -57,7 +57,7 @@
         "id": 7,
         "padre": 1,
          "orden" :1,
-         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero4</p></a></li>"
+         "componente":"<li  key=7 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero4</p></a></li>"
       
       
     }
@@ -66,7 +66,7 @@
         "id": 8,
         "padre": 1,
          "orden" :3,
-         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero5</p></a></li>"
+         "componente":"<li  key=8 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero5</p></a></li>"
       
       
     }
@@ -75,7 +75,7 @@
         "id": 9,
         "padre": "",
          "orden" :4,
-         "componente":"<li class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones6<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+         "componente":"<li  key=9 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones6<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
       
       
     }
@@ -84,7 +84,7 @@
         "id": 4,
         "padre": "",
          "orden" :5,
-         "componente":"<li class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones7<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+         "componente":"<li  key=10 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones7<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
       
       
     }
@@ -93,7 +93,7 @@
         "id": 5,
         "padre": 2,
          "orden" :2,
-         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero6</p></a></li>"
+         "componente":"<li key=11 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero6</p></a></li>"
       
       
     }
@@ -102,7 +102,7 @@
         "id": 6,
         "padre": 3,
          "orden" :2,
-         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero7</p></a></li>"
+         "componente":"<li  key=12 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero7</p></a></li>"
       
       
     }
@@ -111,7 +111,7 @@
         "id": 7,
         "padre": 1,
          "orden" :4,
-         "componente":"<li class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero8</p></a></li>"
+         "componente":"<li  key=13 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>pero8</p></a></li>"
       
       
     }

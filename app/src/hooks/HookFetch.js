@@ -1,31 +1,3 @@
-/*import {   useState } from 'react';
-
-  export const optenerDatos  = (url) => {
-    const [dato, setDato] = useState([])
-  
-    
-      setTimeout(() => {
-
-          fetch(url)
-          .then(perca => perca.json())
-          .then(osa => {
-            setDato(osa)
-          })
-        
-      }, 2000);
-
-
-
-
-
-
-
-
-  return dato
-  
-}*/
-
-
 import { useState, useEffect } from 'react';
 
 export function useFetch(url) {
@@ -39,14 +11,17 @@ export function useFetch(url) {
         const response = await fetch(url);
         const data = await response.json();
         setData(data);
-        setLoading(false);
+        setLoading(false);       
+        
       } catch (error) {
         setError(error);
         setLoading(false);
       }
     }
     fetchData();
+    
   }, [url]);
+ 
 
   return { data, loading, error };
 }
