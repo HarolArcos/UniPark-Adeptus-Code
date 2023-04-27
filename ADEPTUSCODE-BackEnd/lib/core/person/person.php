@@ -1,5 +1,5 @@
 <?php
-require("../../../../log/common/log.php");  
+require("../../../lib/common/log");  
 
 //Clase Creada 24/04/2023
 //by: Harol Arcos
@@ -8,14 +8,14 @@ require("../../../../log/common/log.php");
 class person {
 
     private $optionsLog;
-    private $_db,$_log;
+    private $_db;//$_log;
     private $idPerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson;
 
-    function __construct($_db,$_log,$idPerson=0){
+    function __construct($_db,$idPerson=0){
         
         $this->_db=$_db;
-        $this->_log=$_log;
+        //$this->_log=$_log;
         if ($idPerson!=0) {
             $this->setPerson($idPerson);
         }
@@ -23,7 +23,7 @@ class person {
 
     function __destruct(){
         unset($this->_db);
-        unset($this->_log);
+        //unset($this->_log);
         unset($this->idPerson);
         unset($this->namePerson);
         unset($this->lastNamePerson);
