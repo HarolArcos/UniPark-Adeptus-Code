@@ -1,8 +1,8 @@
 <?php
     define("LOGLEVEL","300");
-    define("LOGPATH","../../../log/core/person");//cambiar
+    define("LOGPATH","../../../log/nucleo/person");//cambiar
     define("CONNECTION","CONPG");
-    define("FILENAME","api");
+    define("FILENAME",'apiPerson');
 
 
 ?>

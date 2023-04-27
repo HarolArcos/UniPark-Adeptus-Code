@@ -1,5 +1,5 @@
 <?php
-require("../../../lib/common/log");  
+require("../../common/log.php");  
 
 //Clase Creada 24/04/2023
 //by: Harol Arcos
@@ -37,7 +37,7 @@ class person {
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => '../../../log/core/person',           
+            'path'           => '../../../log/coreo/person',           
             'filename'       => $fileName,         
             'syslog'         => false,         // true = use system function (works only in txt format)
             'filePermission' => 0644,          // or 0777

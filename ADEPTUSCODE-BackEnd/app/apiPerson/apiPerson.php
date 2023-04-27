@@ -4,12 +4,12 @@
     $HTTP_RAW_POST_DATA = (json_decode($HTTP_RAW_POST_DATA)) ? $HTTP_RAW_POST_DATA : '';
     $HTTP_RAW_POST_DATA = (empty($HTTP_RAW_POST_DATA)) ? json_encode(array_merge($_REQUEST, $_FILES)) : $HTTP_RAW_POST_DATA;
     $server = new apiJson($HTTP_RAW_POST_DATA);
-    $server->Register("insertUser");
+    //$server->Register("insertUser");
     $server->Register("test");
-    $server->Register("test2");
+    //$server->Register("test2");
     $server->start();
 
-    function insertUser($arg){
+    function insertPerson($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);

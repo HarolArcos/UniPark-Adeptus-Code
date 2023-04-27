@@ -2,7 +2,7 @@
     //by: Gonza Zeballos
     //Esta clase es para la conexion a la base de datos
     //Creacion: 26/04/2023
-require("../../lib/common/log");
+require("../../lib/common/log.php");
 class dataBasePG{
 
     private $dbname, $dbhost, $dbuser, $dbpasswd, $dbport;//corregido
