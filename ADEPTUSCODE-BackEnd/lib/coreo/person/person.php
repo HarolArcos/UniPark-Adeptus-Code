@@ -1,5 +1,5 @@
 <?php
-require("../../../../log/common/log.php");  
+require("../../common/log.php");  
 
 //Clase Creada 24/04/2023
 //by: Harol Arcos
@@ -8,14 +8,14 @@ require("../../../../log/common/log.php");
 class person {
 
     private $optionsLog;
-    private $_db,$_log;
+    private $_db;//$_log;
     private $idPerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson;
 
-    function __construct($_db,$_log,$idPerson=0){
+    function __construct($_db,$idPerson=0){
         
         $this->_db=$_db;
-        $this->_log=$_log;
+        //$this->_log=$_log;
         if ($idPerson!=0) {
             $this->setPerson($idPerson);
         }
@@ -23,7 +23,7 @@ class person {
 
     function __destruct(){
         unset($this->_db);
-        unset($this->_log);
+        //unset($this->_log);
         unset($this->idPerson);
         unset($this->namePerson);
         unset($this->lastNamePerson);
@@ -37,11 +37,11 @@ class person {
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => '../../../../log/logApi',           
+            'path'           => '../../../log/coreo/person',           
             'filename'       => $fileName,         
             'syslog'         => false,         // true = use system function (works only in txt format)
             'filePermission' => 0644,          // or 0777
-            'maxSize'        => 0.001,         // in MB
+            'maxSize'        => 0.5,         // in MB
             'format'         => 'txt',         // use txt, csv or htm
             'template'       => 'barecss',     // for htm format only: plain, terminal or barecss
             'timeZone'       => 'America/La_Paz',         
@@ -95,8 +95,8 @@ class person {
         }
         $arrLog = array("input"=>$idPerson,"output"=>$response);
         //$this->_log->warning(__FUNCTION__,$arrLog);
-        $this->createLog('apiLog', $arrLog, "warning");
-        //$this->createLog('apiLog', $arrLog." Function error: ".__FUNCTION__, "warning");
+        //$this->createLog('apiLog', $arrLog, "warning");
+        $this->createLog('apiLog', print_r($arrLog)." Function error: ".__FUNCTION__, "warning");
         return $response;
     }
     
@@ -109,13 +109,15 @@ class person {
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>$idPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
            // $this->_log->error(__FUNCTION__,$arrLog);
-           $this->createLog('dbLog', $arrLog, "error");   
+           //$this->createLog('dbLog', $arrLog, "error");
+           $this->createLog('apiLog', print_r($arrLog)." Function error: ".__FUNCTION__, "error");   
         } else {
             
             $response = $rs[0];
             $arrLog = array("input"=>$idPerson,"output"=>$response,"sql"=>$sql);
           //  $this->_log->debug(__FUNCTION__,$arrLog);
-            $this->createLog('dbLog', $arrLog, "debug");
+            //$this->createLog('dbLog', $arrLog, "debug");
+            $this->createLog('apiLog', print_r($arrLog)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }
@@ -143,7 +145,7 @@ class person {
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             //$this->_log->error(__FUNCTION__,$arrLog);
-            $this->createLog('dbLog', $arrLog, "error");  
+            $this->createLog('dbLog', print_r($arrLog), "error");  
         } else {
             $response = $rs;
             $arrLog = array("input"=>array( "idPerson"=> $idPerson,
@@ -159,7 +161,8 @@ class person {
                             "output"=>$response,
                             "sql"=>$sql);
             //$this->_log->debug(__FUNCTION__,$arrLog);
-            $this->createLog('dbLog', $arrLog, "debug");
+            //$this->createLog('dbLog', $arrLog, "debug");
+            $this->createLog('apiLog', print_r($arrLog)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }
