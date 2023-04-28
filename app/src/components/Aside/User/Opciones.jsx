@@ -10,21 +10,13 @@ export default function Opcions() {
   let { data, loading, error } = useFetch(
     "http://localhost:3000/Opcions.json"
   );
-    /*  const { data, loading, error } = useFetch(
-      "https://jsonplaceholder.typicode.com/posts"
-    ); */
+    
  
   if (!loading) {
-    
-  
-    
-    data=data.opcionesuser
-    
+    data=data.opcionesuser    
     let primarylist = data.filter((padres) => padres.padre === "");
     return primarylist.map((register) => {
       let string = "";
-      
-  
       let secontlist1 = data.filter(
         (secontlist) => secontlist.padre === register.orden
       );
