@@ -14,9 +14,9 @@ export const Client = () => {
     
     
     const [clientes,setClientes] =  useState([
-        {id:2,nombre:'Robert',apellido: 'Soliz' , email:'robert@gmail.com' },
-        {id:1,nombre:'Maria',apellido: 'Ramirez' , email:'mari@gmail.com'},
-        {id:3,nombre:'Alex',apellido: 'Pardo' , email:'alex@gmail.com'}
+        {id:2,nombre:'Robert',apellido: 'Soliz' ,ci:547842,telefono:71462654,telegram:6761221,nickName: 'rob@', email:'robert@gmail.com' ,listCar:[{id:1,placa:'1844KGG',modelo:'2000',color:'turqueza'},{id:2,placa:'0564PPO',modelo:1999,color:'azul'}]},
+        {id:1,nombre:'Maria',apellido: 'Ramirez' ,ci:540042, email:'mari@gmail.com',listCar:[{id:8,placa:'2016KÑO',modelo:'2008',color:'negro'}]},
+        {id:3,nombre:'Alex',apellido: 'Pardo' ,ci:700842, email:'alex@gmail.com',listCar:[{id:3,placa:'0132KÑO',modelo:'1995',color:'rojo'}]}
     ]);
     
    
@@ -109,7 +109,8 @@ export const Client = () => {
                     <thead>
                         <tr>
                         <th>Nombre</th>
-                        <th>Datos</th>
+                        <th>Datos Personales</th>
+                        <th>Datos Automovil(les)</th>
                         <th>Acciones</th>
                         </tr>
                     </thead>
@@ -123,6 +124,15 @@ export const Client = () => {
                                 <li>{item.apellido}</li>
                                 <li>{item.email}</li>
                             </ul>
+                        </td>
+                        <td>
+                            {item.listCar.map(i =>(
+                            <ul >
+                              <li>{i.placa}</li>
+                              <li>{i.modelo}</li>
+                              <li>{i.color}</li>
+                            </ul>  
+                            ))}
                         </td>
                         <td>
                         <button className='btn btn-primary btn-md mr-1'  >
@@ -157,7 +167,7 @@ export const Client = () => {
             
             <Modal
             mostrarModal={showEdit}
-            title = 'Editar cliente neida'
+            title = 'Editar Cliente '
             contend = {
             <Formulario
             asunto ='Guardar Cambios'
