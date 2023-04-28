@@ -6,7 +6,7 @@ export default function Header() {
       {/* Left navbar links */}
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link" data-widget="pushmenu" to="/#" role="button"><i className="fas fa-bars" /></a>
+          <a className="nav-link" data-widget="pushmenu" to="/#" role="button" href="Nada"><i className="fas fa-bars" /></a>
         </li>
         <li className="nav-item d-none d-sm-inline-block">
           <a href="/#" className="nav-link">Home</a>

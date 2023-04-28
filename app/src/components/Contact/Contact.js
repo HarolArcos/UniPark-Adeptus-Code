@@ -7,7 +7,7 @@ export const Contact = () => {
             <div className="card">
                 <div className="card-body row">
                     <div className="col-5 text-center d-flex align-items-center justify-content-center">
-                        <div className="col-7">
+                        <div>
                             <h2>Admin<strong>LTE</strong></h2>
                             <p className="lead mb-5">123 Testing Ave, Testtown, 9876 NA<br />
                                 Phone: +1 234 56789012
