@@ -1,36 +1,55 @@
 import { useFetch } from "../../../hooks/HookFetch";
+
 const parse = require("html-react-parser");
 
-let bdopcion = require("./Opcions.json").opcionesuser;
 
-let primarylist = bdopcion.filter((padres) => padres.padre === "");
+
+
 
 export default function Opcions() {
-  const { data, loading, error } = useFetch(
-    "https://jsonplaceholder.typicode.com/posts"
+  let { data, loading, error } = useFetch(
+    "http://localhost:3000/Opcions.json"
   );
-
-  if (loading) {
-    console.log("cargando");
+    /*  const { data, loading, error } = useFetch(
+      "https://jsonplaceholder.typicode.com/posts"
+    ); */
+ 
+  if (!loading) {
+    
+  
+    
+    data=data.opcionesuser
+    
+    let primarylist = data.filter((padres) => padres.padre === "");
+    return primarylist.map((register) => {
+      let string = "";
+      
+  
+      let secontlist1 = data.filter(
+        (secontlist) => secontlist.padre === register.orden
+      );
+      secontlist1.map((secont) => (string = string + secont.componente));
+  
+      string = register.componente.replace("</ul>", string + "</ul>");
+  
+      return parse(string); //trasfoma string a html
+    });
+  
   }
+    
+
+
+  
+  
   
 
-  if (error) {
+  if (error!==null) {
     console.log(error);
   }
+  
+  
 
-  return primarylist.map((register) => {
-    let string = "";
-
-    let secontlist1 = bdopcion.filter(
-      (secontlist) => secontlist.padre === register.orden
-    );
-    secontlist1.map((secont) => (string = string + secont.componente));
-
-    string = register.componente.replace("</ul>", string + "</ul>");
-
-    return parse(string); //trasfoma string a html
-  });
+  
 }
 
 //let secontlist = bdopcion.filter((hijo) => hijo.padre !== "");
