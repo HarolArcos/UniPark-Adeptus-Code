@@ -3,12 +3,7 @@
     //Esta clase es para la conexion a la base de datos
     //Creacion: 26/04/2023
 //require("../../lib/common/log.php");
-<<<<<<< Updated upstream
-require_once(__DIR__.'/../common/log.php');
-
-=======
 include_once($_SERVER['DOCUMENT_ROOT']."/ADEPTUS CODE 2023/ADEPTUSCODE-BackEnd/lib/common/log.php");
->>>>>>> Stashed changes
 class dataBasePG{
 
     private $dbname, $dbhost, $dbuser, $dbpasswd, $dbport;//corregido
