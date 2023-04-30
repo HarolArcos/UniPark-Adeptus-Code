@@ -4,9 +4,9 @@
     $HTTP_RAW_POST_DATA = (json_decode($HTTP_RAW_POST_DATA)) ? $HTTP_RAW_POST_DATA : '';
     $HTTP_RAW_POST_DATA = (empty($HTTP_RAW_POST_DATA)) ? json_encode(array_merge($_REQUEST, $_FILES)) : $HTTP_RAW_POST_DATA;
     $server = new apiJson($HTTP_RAW_POST_DATA);
-    //$server->Register("insertUser");
+    $server->Register("insertPerson");
     $server->Register("test");
-    //$server->Register("test2");
+    $server->Register("test2");
     $server->start();
 
     function insertPerson($arg){
@@ -106,9 +106,9 @@
         $passwordPerson = $arg->passwordPerson;
 
         //$_user = new user($_db,$_log);
-        $_user = new person($_db,$idPerson);
-        //$responseInsert = $_user->insertPersonDb($idUser,$nameUser,$userNameUser,$emailUser,$positionUser);
-        $responseInsert = $_user->insertPersonDb($idPerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
+        $_person = new person($_db);
+        //$responseInsert = $_person->insertPersonDb($idUser,$nameUser,$userNameUser,$emailUser,$positionUser);
+        $responseInsert = $_person->insertPersonDb($namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));

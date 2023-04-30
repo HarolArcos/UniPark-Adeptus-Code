@@ -1,0 +1,13 @@
+2023-04-30 16:25:15	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-30 16:25:15	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-04-30 16:25:15	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[SELECT * FROM persona where persona_id = ] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-04-30 16:41:05	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-30 16:41:05	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-04-30 16:41:05	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('' , '' , '' , '' , '' , 
+                 , '' , '')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-04-30 16:47:27	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-30 16:47:27	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-04-30 16:47:27	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR

@@ -1,6 +1,7 @@
 <?php
-require("../../common/log.php");  
 
+//$logphppath = $_SERVER['DOCUMENT_ROOT']."ADEPTUS CODE 2023/ADEPTUSCODE-BackEnd/lib/common/log.php"
+include_once($_SERVER['DOCUMENT_ROOT']."/ADEPTUS CODE 2023/ADEPTUSCODE-BackEnd/lib/common/log.php");  
 //Clase Creada 24/04/2023
 //by: Harol Arcos
 //Clase mapeada de la tabla usuarios
@@ -122,18 +123,17 @@ class person {
         return $response;
     }
 
-    public function insertPersonDb($idPerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
+    public function insertPersonDb($namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson){
         $response = false;
-        $sql =  "INSERT INTO persona(persona_id, persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        $sql =  "INSERT INTO persona(persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
         persona_estado, persona_nickname, persona_contraseña) ".
-                "VALUES ($idPerson , '$namePerson' , '$lastNamePerson' , '$ciPerson' , '$phonePerson' , '$telegramPerson' , 
+                "VALUES ('$namePerson' , '$lastNamePerson' , '$ciPerson' , '$phonePerson' , '$telegramPerson' , 
                 $statusPerson , '$nicknamePerson' , '$passwordPerson')";
                 
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>array( "idPerson"=> $idPerson,
-                                            "namePerson"=> $namePerson,//saber que onda con la flecha
+            $arrLog = array("input"=>array("namePerson"=> $namePerson,//saber que onda con la flecha
                                             "lastNamePerson"=> $lastNamePerson, 
                                             "ciPerson"=> $ciPerson,
                                             "phonePerson"=> $phonePerson,
@@ -148,8 +148,7 @@ class person {
             $this->createLog('dbLog', print_r($arrLog), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idPerson"=> $idPerson,
-                                            "namePerson"=> $namePerson,
+            $arrLog = array("input"=>array("namePerson"=> $namePerson,
                                             "lastNamePerson"=> $lastNamePerson, 
                                             "ciPerson"=> $ciPerson,
                                             "phonePerson"=> $phonePerson,
