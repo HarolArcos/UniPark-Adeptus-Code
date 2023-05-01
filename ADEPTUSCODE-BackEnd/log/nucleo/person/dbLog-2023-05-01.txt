@@ -81,3 +81,15 @@ LINE 1: ...do, persona_nickname, persona_contraseña) VALUES ('cliente',...
 )
 	500 ERROR
 2023-05-01 16:07:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se encuentra a la persona con el id: 1	500 ERROR
+2023-05-01 19:12:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 1
+        )
+
+    [sql] => UPDATE persona SET persona_estado = 0 WHERE persona_id = 1
+    [error] => ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_estado_fkey»
+DETAIL:  La llave (persona_estado)=(0) no está presente en la tabla «referencia».
+)
+	500 ERROR

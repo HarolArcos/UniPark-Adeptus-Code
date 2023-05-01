@@ -1,0 +1,3 @@
+2023-05-01 18:11:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 19:12:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 19:14:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO

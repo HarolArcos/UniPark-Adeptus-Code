@@ -225,6 +225,25 @@ class person {
         return $response;
     }
 
+    public function deletePersonDb($idPerson){
+        $response = false;
+        $sql =  "UPDATE persona SET persona_estado = 2 WHERE persona_id = $idPerson";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array("input"=>array( "idPerson" => $idPerson),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "idPerson" => $idPerson),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
 
     public function listPersonActiveDb(){
         $response = false;

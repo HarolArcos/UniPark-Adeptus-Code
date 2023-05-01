@@ -8,6 +8,7 @@
     $server->Register("test");
     $server->Register("test2");
     $server->Register("editPerson");
+    $server->Register("deletePerson");
     $server->start();
 
     function insertPerson($arg){
@@ -263,6 +264,48 @@
         return $response;
     }
 
+    function deletePerson($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $idPerson =  "";
+
+        if(isset($arg->idPerson)){
+            $idPerson =  $arg->idPerson;
+        }else{
+            array_push($errorlist,"Error: falta parametro idPerson");
+        }
+
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));//ver tipos de errores 
+        }
+
+        $idPerson =  $arg->idPerson;
+        $_person = new person($_db);
+        $responseDelete = $_person->deletePersonDb($idPerson);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Eliminacion exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Eliminacion fallida"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
 
     function listPerson(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);

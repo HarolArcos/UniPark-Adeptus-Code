@@ -590,3 +590,51 @@
 
 )
  Funcion: editPerson	300 NOTICE
+2023-05-01 22:11:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.032382011413574
+    [input] => {"typePerson":3,"namePerson":"Kevin","lastNamePerson":"Santillan","ciPerson":"1311751265","phonePerson":"593096543743","telegramPerson":"","statusPerson":1,"nicknamePerson":"ksantillan","passwordPerson":"ksantillan"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 23:12:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.13768696784973
+    [input] => {"idPerson":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Eliminacion fallida
+                )
+
+        )
+
+)
+ Funcion: deletePerson	300 NOTICE
+2023-05-01 23:14:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.028607130050659
+    [input] => {"idPerson":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Eliminacion exitosa
+                )
+
+        )
+
+)
+ Funcion: deletePerson	300 NOTICE
