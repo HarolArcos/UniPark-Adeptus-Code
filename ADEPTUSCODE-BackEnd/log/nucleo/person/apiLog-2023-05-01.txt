@@ -591,3 +591,160 @@
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
+2023-05-01 16:02:43	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => 1
+    [output] => 
+    [sql] => SELECT * FROM persona where persona_id = 1
+)
+ Function error: findPersonDb	100 DEBUG
+2023-05-01 16:02:43	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 1
+            [typePerson] => cliente
+            [namePerson] => Gonza
+            [lastNamePerson] => Zeballos
+            [ciPerson] => 1234567
+            [phonePerson] => 67123456
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => gonzazm
+            [passwordPerson] => 123456
+        )
+
+    [output] => 
+    [sql] => UPDATE persona SET 
+        persona_tipo = 'cliente',
+        persona_nombre = 'Gonza',
+        persona_apellido = 'Zeballos',
+        persona_ci = '1234567',
+        persona_telefono = '67123456',
+        persona_telegram = '',
+        persona_estado = 1,
+        persona_nickname = 'gonzazm',
+        persona_contraseña = '123456'
+      WHERE persona_id = 1
+      
+)
+ Function error: editPersonDb	100 DEBUG
+2023-05-01 16:06:20	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 3
+            [namePerson] => Gonza
+            [lastNamePerson] => Zeballos
+            [ciPerson] => 1234567
+            [phonePerson] => 67123456
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => gonzazm
+            [passwordPerson] => 123456
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 1 , 'gonzazm' , '123456')
+)
+ Function error: insertPersonDb	100 DEBUG
+2023-05-01 16:07:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => 1
+    [output] => 
+    [sql] => SELECT * FROM persona where persona_id = 1
+)
+ Function error: findPersonDb	100 DEBUG
+2023-05-01 16:07:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 1
+            [typePerson] => 3
+            [namePerson] => Gonza
+            [lastNamePerson] => Zeballos Montaño
+            [ciPerson] => 1234567
+            [phonePerson] => 67123456
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => gonzazm
+            [passwordPerson] => 123456
+        )
+
+    [output] => 
+    [sql] => UPDATE persona SET 
+        persona_tipo = '3',
+        persona_nombre = 'Gonza',
+        persona_apellido = 'Zeballos Montaño',
+        persona_ci = '1234567',
+        persona_telefono = '67123456',
+        persona_telegram = '',
+        persona_estado = 1,
+        persona_nickname = 'gonzazm',
+        persona_contraseña = '123456'
+      WHERE persona_id = 1
+      
+)
+ Function error: editPersonDb	100 DEBUG
+2023-05-01 16:10:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 1
+            [typePerson] => 3
+            [namePerson] => Gonza
+            [lastNamePerson] => Zeballos Montaño
+            [ciPerson] => 1234567
+            [phonePerson] => 67123456
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => gonzazm
+            [passwordPerson] => 123456
+        )
+
+    [output] => 1
+    [sql] => UPDATE persona SET 
+        persona_tipo = '3',
+        persona_nombre = 'Gonza',
+        persona_apellido = 'Zeballos Montaño',
+        persona_ci = '1234567',
+        persona_telefono = '67123456',
+        persona_telegram = '',
+        persona_estado = 1,
+        persona_nickname = 'gonzazm',
+        persona_contraseña = '123456'
+      WHERE persona_id = 1
+      
+)
+ Function error: editPersonDb	100 DEBUG
+2023-05-01 16:12:10	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 1
+            [typePerson] => 3
+            [namePerson] => Gonzalo
+            [lastNamePerson] => Zeballos Montaño
+            [ciPerson] => 7654321
+            [phonePerson] => 67123456
+            [telegramPerson] => tu minita
+            [statusPerson] => 1
+            [nicknamePerson] => gonzazm
+            [passwordPerson] => 123456
+        )
+
+    [output] => 1
+    [sql] => UPDATE persona SET 
+        persona_tipo = '3',
+        persona_nombre = 'Gonzalo',
+        persona_apellido = 'Zeballos Montaño',
+        persona_ci = '7654321',
+        persona_telefono = '67123456',
+        persona_telegram = 'tu minita',
+        persona_estado = 1,
+        persona_nickname = 'gonzazm',
+        persona_contraseña = '123456'
+      WHERE persona_id = 1
+      
+)
+ Function error: editPersonDb	100 DEBUG

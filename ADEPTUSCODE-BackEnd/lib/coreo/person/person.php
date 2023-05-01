@@ -165,6 +165,112 @@ class person {
         }
         return $response;
     }
+
+    public function editPersonDb($idPerson,$typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
+    $statusPerson,$nicknamePerson,$passwordPerson){
+        $response = false;
+        $sql =  "UPDATE persona SET 
+        persona_tipo = '$typePerson',
+        persona_nombre = '$namePerson',
+        persona_apellido = '$lastNamePerson',
+        persona_ci = '$ciPerson',
+        persona_telefono = '$phonePerson',
+        persona_telegram = '$telegramPerson',
+        persona_estado = $statusPerson,
+        persona_nickname = '$nicknamePerson',
+        persona_contraseña = '$passwordPerson'
+      WHERE persona_id = $idPerson
+      ";
+        /*if($this->findPersonDb($idPerson)){
+            $rs = $this->_db->query($sql);
+        }else{
+            $this->createLog('dbLog', "No se encuentra a la persona con el id: ".$idPerson, "error");
+        }*/$rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array("input"=>array( "idPerson" => $idPerson,
+                                            "typePerson"=> $typePerson,
+                                            "namePerson"=> $namePerson,
+                                            "lastNamePerson"=> $lastNamePerson, 
+                                            "ciPerson"=> $ciPerson,
+                                            "phonePerson"=> $phonePerson,
+                                            "telegramPerson"=> $telegramPerson ,
+                                            "statusPerson"=> $statusPerson,
+                                            "nicknamePerson"=> $nicknamePerson,
+                                            "passwordPerson"=> $passwordPerson),
+
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            //$this->_log->error(__FUNCTION__,$arrLog);
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "idPerson" => $idPerson,
+                                            "typePerson"=> $typePerson,
+                                            "namePerson"=> $namePerson,
+                                            "lastNamePerson"=> $lastNamePerson, 
+                                            "ciPerson"=> $ciPerson,
+                                            "phonePerson"=> $phonePerson,
+                                            "telegramPerson"=> $telegramPerson ,
+                                            "statusPerson"=> $statusPerson,
+                                            "nicknamePerson"=> $nicknamePerson,
+                                            "passwordPerson"=> $passwordPerson
+                                        ),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            //$this->_log->debug(__FUNCTION__,$arrLog);
+            //$this->createLog('dbLog', $arrLog, "debug");
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+
+    public function listPersonActiveDb(){
+        $response = false;
+        $sql =  "SELECT * FROM persona WHERE persona_estado = 1";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            //$this->_log->error(__FUNCTION__,$arrLog);
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            //$this->_log->debug(__FUNCTION__,$arrLog);
+            //$this->createLog('dbLog', $arrLog, "debug");
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listPersonInactiveDb(){
+        $response = false;
+        $sql =  "SELECT * FROM persona WHERE persona_estado = 0";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            //$this->_log->error(__FUNCTION__,$arrLog);
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            //$this->_log->debug(__FUNCTION__,$arrLog);
+            //$this->createLog('dbLog', $arrLog, "debug");
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
 	
     private function mapPerson($rs){
         $this->idPerson = $rs['persona_id'];

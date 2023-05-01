@@ -58,3 +58,26 @@ DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia�
 DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».
 )
 	500 ERROR
+2023-05-01 16:02:43	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se encuentra a la persona con el id: 1	500 ERROR
+2023-05-01 16:05:47	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => cliente
+            [namePerson] => Gonza
+            [lastNamePerson] => Zeballos
+            [ciPerson] => 1234567
+            [phonePerson] => 67123456
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => gonzazm
+            [passwordPerson] => 123456
+        )
+
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('cliente','Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 1 , 'gonzazm' , '123456')
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «cliente»
+LINE 1: ...do, persona_nickname, persona_contraseña) VALUES ('cliente',...
+                                                             ^
+)
+	500 ERROR
+2023-05-01 16:07:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se encuentra a la persona con el id: 1	500 ERROR

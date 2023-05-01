@@ -494,3 +494,99 @@
 
 )
  Funcion: insertPerson	300 NOTICE
+2023-05-01 20:02:43	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.32711791992188
+    [input] => {"idPerson":1,"typePerson":"cliente","namePerson":"Gonza","lastNamePerson":"Zeballos","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":1,"nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: editPerson	300 NOTICE
+2023-05-01 20:05:47	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.3028769493103
+    [input] => {"typePerson":"cliente","namePerson":"Gonza","lastNamePerson":"Zeballos","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":1,"nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 20:06:20	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.35604310035706
+    [input] => {"typePerson":3,"namePerson":"Gonza","lastNamePerson":"Zeballos","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":1,"nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 20:07:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.17756295204163
+    [input] => {"idPerson":1,"typePerson":3,"namePerson":"Gonza","lastNamePerson":"Zeballos Monta\u00f1o","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":1,"nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: editPerson	300 NOTICE
+2023-05-01 20:10:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.51712489128113
+    [input] => {"idPerson":1,"typePerson":3,"namePerson":"Gonza","lastNamePerson":"Zeballos Monta\u00f1o","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":1,"nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: editPerson	300 NOTICE
+2023-05-01 20:12:10	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.13957500457764
+    [input] => {"idPerson":1,"typePerson":3,"namePerson":"Gonzalo","lastNamePerson":"Zeballos Monta\u00f1o","ciPerson":"7654321","phonePerson":"67123456","telegramPerson":"tu minita","statusPerson":1,"nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: editPerson	300 NOTICE
