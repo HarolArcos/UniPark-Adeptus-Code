@@ -1,7 +1,7 @@
 <?php
 
 //$logphppath = $_SERVER['DOCUMENT_ROOT']."ADEPTUS CODE 2023/ADEPTUSCODE-BackEnd/lib/common/log.php"
-include_once($_SERVER['DOCUMENT_ROOT']."/ADEPTUS CODE 2023/ADEPTUSCODE-BackEnd/lib/common/log.php");  
+include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");  
 //Clase Creada 24/04/2023
 //by: Harol Arcos
 //Clase mapeada de la tabla usuarios
@@ -38,7 +38,7 @@ class person {
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => '../../../log/coreo/person',           
+            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/person",           
             'filename'       => $fileName,         
             'syslog'         => false,         // true = use system function (works only in txt format)
             'filePermission' => 0644,          // or 0777
@@ -97,7 +97,7 @@ class person {
         $arrLog = array("input"=>$idPerson,"output"=>$response);
         //$this->_log->warning(__FUNCTION__,$arrLog);
         //$this->createLog('apiLog', $arrLog, "warning");
-        $this->createLog('apiLog', print_r($arrLog)." Function error: ".__FUNCTION__, "warning");
+        $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "warning");
         return $response;
     }
     
@@ -111,14 +111,14 @@ class person {
             $arrLog = array("input"=>$idPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
            // $this->_log->error(__FUNCTION__,$arrLog);
            //$this->createLog('dbLog', $arrLog, "error");
-           $this->createLog('apiLog', print_r($arrLog)." Function error: ".__FUNCTION__, "error");   
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
         } else {
             
             $response = $rs[0];
             $arrLog = array("input"=>$idPerson,"output"=>$response,"sql"=>$sql);
           //  $this->_log->debug(__FUNCTION__,$arrLog);
             //$this->createLog('dbLog', $arrLog, "debug");
-            $this->createLog('apiLog', print_r($arrLog)." Function error: ".__FUNCTION__, "debug");
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }
@@ -145,7 +145,7 @@ class person {
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             //$this->_log->error(__FUNCTION__,$arrLog);
-            $this->createLog('dbLog', print_r($arrLog), "error");  
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
             $arrLog = array("input"=>array("namePerson"=> $namePerson,
@@ -161,7 +161,7 @@ class person {
                             "sql"=>$sql);
             //$this->_log->debug(__FUNCTION__,$arrLog);
             //$this->createLog('dbLog', $arrLog, "debug");
-            $this->createLog('apiLog', print_r($arrLog)." Function error: ".__FUNCTION__, "debug");
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }

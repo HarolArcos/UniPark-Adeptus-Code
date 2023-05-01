@@ -1,0 +1,25 @@
+2023-04-30 22:59:59	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	1	500 ERROR
+2023-04-30 23:02:03	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	1que huevadaa	500 ERROR
+2023-04-30 23:02:38	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	1 	500 ERROR
+2023-04-30 23:04:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [namePerson] => Gonza
+            [lastNamePerson] => Zeballos
+            [ciPerson] => 1234567
+            [phonePerson] => 67123456
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => gonzazm
+            [passwordPerson] => 123456
+        )
+
+    [sql] => INSERT INTO persona(persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 
+                1 , 'gonzazm' , '123456')
+    [error] => ERROR:  no existe la columna «persona_nombre» en la relación «persona»
+LINE 1: INSERT INTO persona(persona_nombre, persona_apellido, person...
+                            ^
+)
+	500 ERROR

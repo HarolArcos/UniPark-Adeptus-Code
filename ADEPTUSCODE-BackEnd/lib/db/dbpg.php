@@ -3,7 +3,7 @@
     //Esta clase es para la conexion a la base de datos
     //Creacion: 26/04/2023
 //require("../../lib/common/log.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/ADEPTUS CODE 2023/ADEPTUSCODE-BackEnd/lib/common/log.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");
 class dataBasePG{
 
     private $dbname, $dbhost, $dbuser, $dbpasswd, $dbport;//corregido
@@ -44,7 +44,7 @@ class dataBasePG{
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => '../../log/logDB',           
+            'path'           => $_SERVER['DOCUMENT_ROOT'].'/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd//log/logDB',           
             'filename'       => $fileName,         
             'syslog'         => false,         // true = use system function (works only in txt format)
             'filePermission' => 0644,          // or 0777
@@ -121,7 +121,7 @@ class dataBasePG{
                 $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
             }
         } else {
-            $mensaje = "[$tSql] [Error en conexion]";
+            $mensaje = "[$tSql] [Error en conexion]".is_resource($this->_dblink);
             $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
         }
         return $result;
