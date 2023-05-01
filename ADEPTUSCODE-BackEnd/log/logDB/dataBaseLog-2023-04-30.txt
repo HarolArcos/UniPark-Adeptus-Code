@@ -101,3 +101,20 @@ LINE 1: INSERT INTO persona(persona_nombre, persona_apellido, person...
                 1 , 'gonzazm' , '123456')] [ERROR:  no existe la columna «persona_nombre» en la relación «persona»
 LINE 1: INSERT INTO persona(persona_nombre, persona_apellido, person...
                             ^] Function: setQueryParameters	500 ERROR
+2023-04-30 23:31:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-04-30 23:49:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-04-30 23:49:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-04-30 23:49:30	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-04-30 23:49:30	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-04-30 23:49:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-04-30 23:49:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-04-30 23:51:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-04-30 23:51:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR

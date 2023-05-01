@@ -101,7 +101,8 @@ class dataBasePG{
     private function setQueryParameters($tSql)//antes llamada _query
     {
         $result = false;
-        if (is_resource($this->_dblink) && ( $this->connectionStatus === PGSQL_CONNECTION_OK )) {
+        //is_resource($this->_dblink)
+        if (  $this->getStatus() == false ) {
            $result = pg_query($this->_dblink, $tSql);
            if ($result == true) {
                 $this->numRows = pg_num_rows($result);
@@ -141,23 +142,51 @@ class dataBasePG{
         return $arr;
     }
 
-    public function query($sql)//modificada
+    /*public function query($sql)//modificada
     {
         $result = false;
         $res = $this->setQueryParameters($sql);
-            
             if (!is_bool($res)) {
                 $result = array();
+                var_dump($res[7]);
+
                 while ($row = pg_fetch_assoc($res)) {//cambiar a pg
-                    $result[] = $row;
+                    $result = pg_result_error($res);
+                    var_dump($result);
                 }
                 //$res->free();//no existe en pg
                 pg_free_result($res);//ayuda a liberar pero queda por verificar si funciona igual que el free() en mysqli 
+            
             } else {
                 $result=$res;
+                var_dump($res);
             }
             return $result;
+            
+    }*/
+    public function query($sql)
+{
+    $result = false;
+    $res = $this->setQueryParameters($sql);
+    if (!is_bool($res)) {
+        $result = array();
+        while ($row = pg_fetch_assoc($res)) {
+            $result[] = $row; // Agrega cada fila a $result
+        }
+        $error = pg_result_error($res); // Obtiene cualquier mensaje de error de la consulta
+        if (!empty($error)) {
+            // Si hubo un error, devuelve el mensaje de error
+            $result = $error;
+        }else{
+            $result = true;
+        }
+        pg_free_result($res); // Libera los recursos de la consulta
+    } else {
+        $result = $res; // Si $res es un booleano (indicando un error), simplemente lo devuelve
     }
+    #var_dump($result);
+    return $result;
+}
 
     /*
     * Permite ejecutar sentencias SQL SELECT y obtiene los registros en un array asociativo
@@ -214,7 +243,7 @@ class dataBasePG{
     * @access private
     * @return boolean
     */
-    private function connect()
+    public function connect()
     {
         
         $conn_string = "host=" . $this->dbhost . " port=" . $this->dbport . " dbname=" . $this->dbname . " user=" . $this->dbuser . " password=" . $this->dbpasswd;
@@ -223,13 +252,13 @@ class dataBasePG{
             $this->connectionStatus = pg_connection_status($this->_dblink);
             //usando la funcion creada por kevin, en teoria hace lo mismo que arriba pero queda pendiente a revision
             $mensaje = $this->getStatus();
+           
             $this->createLog('dataBaseLog', "Conexion buena: ".$mensaje." - Function: ".__FUNCTION__, "info");
             return true;
         }
         $mensaje = $this->getStatus();
         $this->createLog('dataBaseLog', "No hay conexion: ".$mensaje." - Function: ".__FUNCTION__, "warning");
         return false;
-
     }
 
 
@@ -300,7 +329,7 @@ class dataBasePG{
     */
 
     public function getStatus(){
-        $response = (pg_connection_status($this->getConexion()) === PGSQL_CONNECTION_OK) ? TRUE : FALSE;
+        $response = (pg_connection_status($this->getConexion()) === PGSQL_CONNECTION_OK) ? FALSE : TRUE;
         return $response;
     }
     public function getConexion()

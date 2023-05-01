@@ -1,0 +1,60 @@
+2023-05-01 02:08:10	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 6
+            [namePerson] => Kevin
+            [lastNamePerson] => Santillan
+            [ciPerson] => 1311751265
+            [phonePerson] => 593096543743
+            [telegramPerson] => 
+            [statusPerson] => 5
+            [nicknamePerson] => ksantillan
+            [passwordPerson] => ksantillan
+        )
+
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [error] => ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
+DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».
+)
+	500 ERROR
+2023-05-01 02:10:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 6
+            [namePerson] => Kevin
+            [lastNamePerson] => Santillan
+            [ciPerson] => 1311751265
+            [phonePerson] => 593096543743
+            [telegramPerson] => 
+            [statusPerson] => 5
+            [nicknamePerson] => ksantillan
+            [passwordPerson] => ksantillan
+        )
+
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [error] => ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
+DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».
+)
+	500 ERROR
+2023-05-01 02:13:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 6
+            [namePerson] => Kevin
+            [lastNamePerson] => Santillan
+            [ciPerson] => 1311751265
+            [phonePerson] => 593096543743
+            [telegramPerson] => 
+            [statusPerson] => 5
+            [nicknamePerson] => ksantillan
+            [passwordPerson] => ksantillan
+        )
+
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [error] => ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
+DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».
+)
+	500 ERROR

@@ -24,7 +24,8 @@
         }
 
         $errorlist=array();
-        $idPerson =  "";
+        #$idPerson =  "";
+        $typePerson = "";
         $namePerson =  "";
         $lastNamePerson =  "";
         $ciPerson =  "";
@@ -42,7 +43,12 @@
         }*/
 
 
-
+        if(isset($arg->typePerson)){
+            $typePerson =  $arg->typePerson;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro typePerson");
+        }
         if(isset($arg->namePerson)){
             $namePerson =  $arg->namePerson;
         }
@@ -61,18 +67,22 @@
         else{
             array_push($errorlist,"Error: falta parametro ciPerson");
         }
+        /*
         if(isset($arg->phonePerson)){
             $phonePerson =  $arg->phonePerson;
         }
         else{
             array_push($errorlist,"Error: falta parametro phonePerson");
         }
+        */
+        /*
         if(isset($arg->telegramPerson)){
             $telegramPerson =  $arg->telegramPerson;
         }
         else{
             array_push($errorlist,"Error: falta parametro telegramPerson");
         }
+        */
         if(isset($arg->statusPerson)){
             $statusPerson =  $arg->statusPerson;
         }
@@ -95,7 +105,8 @@
             return array("codError" => 200, "data" => array("desError"=>$errorlist));//ver tipos de errores 
         }
 
-        $idPerson =  $arg->idPerson;
+        #$idPerson =  $arg->idPerson;
+        $typePerson = $arg->typePerson;
         $namePerson =  $arg->namePerson;
         $lastNamePerson =  $arg->lastNamePerson;
         $ciPerson =  $arg->ciPerson;
@@ -108,7 +119,7 @@
         //$_user = new user($_db,$_log);
         $_person = new person($_db);
         //$responseInsert = $_person->insertPersonDb($idUser,$nameUser,$userNameUser,$emailUser,$positionUser);
-        $responseInsert = $_person->insertPersonDb($namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
+        $responseInsert = $_person->insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));

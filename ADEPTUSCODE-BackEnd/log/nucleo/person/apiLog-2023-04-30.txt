@@ -1,0 +1,84 @@
+2023-04-30 23:49:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 3
+            [namePerson] => Kevin
+            [lastNamePerson] => Santillan
+            [ciPerson] => 1311751265
+            [phonePerson] => 593096543743
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => ksantillan
+            [passwordPerson] => ksantillan
+        )
+
+    [output] => 
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')
+)
+ Function error: insertPersonDb	100 DEBUG
+2023-04-30 23:49:30	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 3
+            [namePerson] => Kevin
+            [lastNamePerson] => Santillan
+            [ciPerson] => 1311751265
+            [phonePerson] => 593096543743
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => ksantillan
+            [passwordPerson] => ksantillan
+        )
+
+    [output] => 
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')
+)
+ Function error: insertPersonDb	100 DEBUG
+2023-04-30 23:49:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 3
+            [namePerson] => Kevin
+            [lastNamePerson] => Santillan
+            [ciPerson] => 1311751265
+            [phonePerson] => 593096543743
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => ksantillan
+            [passwordPerson] => ksantillan
+        )
+
+    [output] => 
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')
+)
+ Function error: insertPersonDb	100 DEBUG
+2023-04-30 23:51:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 3
+            [namePerson] => Kevin
+            [lastNamePerson] => Santillan
+            [ciPerson] => 1311751265
+            [phonePerson] => 593096543743
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => ksantillan
+            [passwordPerson] => ksantillan
+        )
+
+    [output] => 
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')
+)
+ Function error: insertPersonDb	100 DEBUG

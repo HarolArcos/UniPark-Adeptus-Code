@@ -10,7 +10,7 @@ class person {
 
     private $optionsLog;
     private $_db;//$_log;
-    private $idPerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
+    private $idPerson,$typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson;
 
     function __construct($_db,$idPerson=0){
@@ -26,6 +26,7 @@ class person {
         unset($this->_db);
         //unset($this->_log);
         unset($this->idPerson);
+        unset($this->typePerson);
         unset($this->namePerson);
         unset($this->lastNamePerson);
         unset($this->ciPerson);
@@ -123,17 +124,15 @@ class person {
         return $response;
     }
 
-    public function insertPersonDb($namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
+    public function insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson){
         $response = false;
-        $sql =  "INSERT INTO persona(persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) ".
-                "VALUES ('$namePerson' , '$lastNamePerson' , '$ciPerson' , '$phonePerson' , '$telegramPerson' , 
-                $statusPerson , '$nicknamePerson' , '$passwordPerson')";
-                
+        $sql =  "INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('$typePerson','$namePerson' , '$lastNamePerson' , '$ciPerson' , '$phonePerson' , '$telegramPerson' , $statusPerson , '$nicknamePerson' , '$passwordPerson')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>array("namePerson"=> $namePerson,//saber que onda con la flecha
+            
+            $arrLog = array("input"=>array( "typePerson"=> $typePerson,
+                                            "namePerson"=> $namePerson,
                                             "lastNamePerson"=> $lastNamePerson, 
                                             "ciPerson"=> $ciPerson,
                                             "phonePerson"=> $phonePerson,
@@ -148,7 +147,8 @@ class person {
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array("namePerson"=> $namePerson,
+            $arrLog = array("input"=>array( "typePerson"=> $typePerson,
+                                            "namePerson"=> $namePerson,
                                             "lastNamePerson"=> $lastNamePerson, 
                                             "ciPerson"=> $ciPerson,
                                             "phonePerson"=> $phonePerson,
@@ -169,6 +169,7 @@ class person {
     private function mapPerson($rs){
         $this->idPerson = $rs['persona_id'];
         // $this->_status = new status($this->_db, $this->_log, $rs['status_id']);
+        $this->typePerson = $rs['persona_tipo'];
         $this->namePerson = $rs['persona_nombre'];
         $this->lastNamePerson = $rs['persona_apellido'];
         $this->ciPerson = $rs['persona_ci'];
@@ -182,6 +183,10 @@ class person {
 
     public function getPersonaId(){
         return $this->idPerson;
+    }
+
+    public function getPersonaTipo(){
+        return $this->typePerson;
     }
     
     public function getPersonaNombre(){
