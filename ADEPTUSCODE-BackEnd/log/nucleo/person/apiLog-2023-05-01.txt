@@ -778,3 +778,83 @@
     [sql] => UPDATE persona SET persona_estado = 2 WHERE persona_id = 1
 )
  Function error: deletePersonDb	100 DEBUG
+2023-05-01 20:29:27	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => 1
+    [sql] => SELECT * FROM persona WHERE persona_estado = 1
+)
+ Function error: listPersonActiveDb	100 DEBUG
+2023-05-01 20:32:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [typePerson] => 3
+            [namePerson] => Harol
+            [lastNamePerson] => Arcos
+            [ciPerson] => 5295189
+            [phonePerson] => 59167418809
+            [telegramPerson] => 
+            [statusPerson] => 1
+            [nicknamePerson] => Harex
+            [passwordPerson] => abc123
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Harol' , 'Arcos' , '5295189' , '59167418809' , '' , 1 , 'Harex' , 'abc123')
+)
+ Function error: insertPersonDb	100 DEBUG
+2023-05-01 20:35:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 2
+            [typePerson] => 3
+            [namePerson] => Nelson
+            [lastNamePerson] => Terrazas
+            [ciPerson] => 5295189123
+            [phonePerson] => 5916741880999
+            [telegramPerson] => 757575
+            [statusPerson] => 1
+            [nicknamePerson] => Harexx
+            [passwordPerson] => abc1234
+        )
+
+    [output] => 1
+    [sql] => UPDATE persona SET 
+        persona_tipo = '3',
+        persona_nombre = 'Nelson',
+        persona_apellido = 'Terrazas',
+        persona_ci = '5295189123',
+        persona_telefono = '5916741880999',
+        persona_telegram = '757575',
+        persona_estado = 1,
+        persona_nickname = 'Harexx',
+        persona_contraseña = 'abc1234'
+      WHERE persona_id = 2
+      
+)
+ Function error: editPersonDb	100 DEBUG
+2023-05-01 21:04:41	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 2
+            [persona_estado] => 2
+        )
+
+    [output] => 1
+    [sql] => UPDATE persona SET persona_estado = 2 WHERE persona_id = 2
+)
+ Function error: changeStatePersonDb	100 DEBUG
+2023-05-01 21:08:54	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 2
+            [persona_estado] => 1
+        )
+
+    [output] => 1
+    [sql] => UPDATE persona SET persona_estado = 1 WHERE persona_id = 2
+)
+ Function error: changeStatePersonDb	100 DEBUG

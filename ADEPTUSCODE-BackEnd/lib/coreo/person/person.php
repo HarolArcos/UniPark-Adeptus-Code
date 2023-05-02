@@ -143,7 +143,6 @@ class person {
 
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
-            //$this->_log->error(__FUNCTION__,$arrLog);
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
@@ -159,8 +158,7 @@ class person {
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
-            //$this->_log->debug(__FUNCTION__,$arrLog);
-            //$this->createLog('dbLog', $arrLog, "debug");
+
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
@@ -179,13 +177,8 @@ class person {
         persona_estado = $statusPerson,
         persona_nickname = '$nicknamePerson',
         persona_contraseña = '$passwordPerson'
-      WHERE persona_id = $idPerson
-      ";
-        /*if($this->findPersonDb($idPerson)){
-            $rs = $this->_db->query($sql);
-        }else{
-            $this->createLog('dbLog', "No se encuentra a la persona con el id: ".$idPerson, "error");
-        }*/$rs = $this->_db->query($sql);
+      WHERE persona_id = $idPerson";
+        $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "idPerson" => $idPerson,
@@ -218,26 +211,22 @@ class person {
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
-            //$this->_log->debug(__FUNCTION__,$arrLog);
-            //$this->createLog('dbLog', $arrLog, "debug");
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }
-
-    public function deletePersonDb($idPerson){
+    public function changeStatePersonDb($idPerson, $statusPerson){
         $response = false;
-        $sql =  "UPDATE persona SET persona_estado = 2 WHERE persona_id = $idPerson";
+        $sql =  "UPDATE persona SET persona_estado = $statusPerson WHERE persona_id = $idPerson";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            
-            $arrLog = array("input"=>array( "idPerson" => $idPerson),
+            $arrLog = array("input"=>array( "idPerson" => $idPerson,"persona_estado" => $statusPerson),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idPerson" => $idPerson),
+            $arrLog = array("input"=>array( "idPerson" => $idPerson,"persona_estado" => $statusPerson),
                             "output"=>$response,
                             "sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
@@ -254,15 +243,12 @@ class person {
             $arrLog = array(
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
-            //$this->_log->error(__FUNCTION__,$arrLog);
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
             $arrLog = array(
                             "output"=>$response,
                             "sql"=>$sql);
-            //$this->_log->debug(__FUNCTION__,$arrLog);
-            //$this->createLog('dbLog', $arrLog, "debug");
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
@@ -277,15 +263,12 @@ class person {
             $arrLog = array(
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
-            //$this->_log->error(__FUNCTION__,$arrLog);
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
             $arrLog = array(
                             "output"=>$response,
                             "sql"=>$sql);
-            //$this->_log->debug(__FUNCTION__,$arrLog);
-            //$this->createLog('dbLog', $arrLog, "debug");
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
@@ -293,7 +276,6 @@ class person {
 	
     private function mapPerson($rs){
         $this->idPerson = $rs['persona_id'];
-        // $this->_status = new status($this->_db, $this->_log, $rs['status_id']);
         $this->typePerson = $rs['persona_tipo'];
         $this->namePerson = $rs['persona_nombre'];
         $this->lastNamePerson = $rs['persona_apellido'];

@@ -5,10 +5,11 @@
     $HTTP_RAW_POST_DATA = (empty($HTTP_RAW_POST_DATA)) ? json_encode(array_merge($_REQUEST, $_FILES)) : $HTTP_RAW_POST_DATA;
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertPerson");
+    $server->Register("listPerson");
     $server->Register("test");
     $server->Register("test2");
     $server->Register("editPerson");
-    $server->Register("deletePerson");
+    $server->Register("changeStatePerson");
     $server->start();
 
     function insertPerson($arg){
@@ -19,14 +20,12 @@
         $respValidate = validateArg($arg);  
         if($respValidate){
             $arrLog = array("input"=>$arg,"output"=>$arg);
-            //$_log->notice(__FUNCTION__,$arrLog);
             $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
             $_log->notice($mensaje);
             return $respValidate;
         }
 
         $errorlist=array();
-        #$idPerson =  "";
         $typePerson = "";
         $namePerson =  "";
         $lastNamePerson =  "";
@@ -36,13 +35,6 @@
         $statusPerson = "";
         $nicknamePerson = "";
         $passwordPerson = "";
-
-        /*if(isset($arg->idUser)){
-            $idUser =  $arg->idUser;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro idUser");
-        }*/
 
 
         if(isset($arg->typePerson)){
@@ -69,22 +61,6 @@
         else{
             array_push($errorlist,"Error: falta parametro ciPerson");
         }
-        /*
-        if(isset($arg->phonePerson)){
-            $phonePerson =  $arg->phonePerson;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro phonePerson");
-        }
-        */
-        /*
-        if(isset($arg->telegramPerson)){
-            $telegramPerson =  $arg->telegramPerson;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro telegramPerson");
-        }
-        */
         if(isset($arg->statusPerson)){
             $statusPerson =  $arg->statusPerson;
         }
@@ -118,9 +94,7 @@
         $nicknamePerson = $arg->nicknamePerson;
         $passwordPerson = $arg->passwordPerson;
 
-        //$_user = new user($_db,$_log);
         $_person = new person($_db);
-        //$responseInsert = $_person->insertPersonDb($idUser,$nameUser,$userNameUser,$emailUser,$positionUser);
         $responseInsert = $_person->insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
 
         if ( $responseInsert) {
@@ -131,7 +105,6 @@
 
         $timeProcess = microtime(true)-$startTime;
         $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
-        //$_log->notice(__FUNCTION__,$arrLog);
         $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
         $_log->notice($mensaje);
         return $response;
@@ -146,7 +119,6 @@
         $respValidate = validateArg($arg);  
         if($respValidate){
             $arrLog = array("input"=>$arg,"output"=>$arg);
-            //$_log->notice(__FUNCTION__,$arrLog);
             $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
             $_log->notice($mensaje);
             return $respValidate;
@@ -196,22 +168,6 @@
         else{
             array_push($errorlist,"Error: falta parametro ciPerson");
         }
-        /*
-        if(isset($arg->phonePerson)){
-            $phonePerson =  $arg->phonePerson;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro phonePerson");
-        }
-        */
-        /*
-        if(isset($arg->telegramPerson)){
-            $telegramPerson =  $arg->telegramPerson;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro telegramPerson");
-        }
-        */
         if(isset($arg->statusPerson)){
             $statusPerson =  $arg->statusPerson;
         }
@@ -245,9 +201,7 @@
         $nicknamePerson = $arg->nicknamePerson;
         $passwordPerson = $arg->passwordPerson;
 
-        //$_user = new user($_db,$_log);
         $_person = new person($_db);
-        //$responseInsert = $_person->insertPersonDb($idUser,$nameUser,$userNameUser,$emailUser,$positionUser);
         $responseEdit = $_person->editPersonDb($idPerson,$typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
 
         if ( $responseEdit) {
@@ -258,13 +212,12 @@
 
         $timeProcess = microtime(true)-$startTime;
         $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
-        //$_log->notice(__FUNCTION__,$arrLog);
         $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
         $_log->notice($mensaje);
         return $response;
     }
 
-    function deletePerson($arg){
+    function changeStatePerson($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
@@ -279,25 +232,33 @@
 
         $errorlist=array();
         $idPerson =  "";
+        $statusPerson = "";
 
         if(isset($arg->idPerson)){
             $idPerson =  $arg->idPerson;
         }else{
             array_push($errorlist,"Error: falta parametro idPerson");
         }
-
+        if(isset($arg->statusPerson)){
+            $statusPerson =  $arg->statusPerson;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro statusPerson");
+        }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist));//ver tipos de errores 
         }
 
         $idPerson =  $arg->idPerson;
+        $statusPerson = $arg->statusPerson;
+
         $_person = new person($_db);
-        $responseDelete = $_person->deletePersonDb($idPerson);
+        $responseDelete = $_person->changeStatePersonDb($idPerson, $statusPerson);
 
         if ( $responseDelete){
-            $response = array("codError" => 200, "data" => array("desError"=>"Eliminacion exitosa"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado exitosa"));
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Eliminacion fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado fallida"));
         }
 
         $timeProcess = microtime(true)-$startTime;
@@ -320,7 +281,6 @@
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
         }
-        //$arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
         $mensaje = "No se pudo listara a las personas - Funcion: ".__FUNCTION__;
         $_log->notice($mensaje);
         return $response;
