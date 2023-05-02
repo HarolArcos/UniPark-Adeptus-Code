@@ -1,5 +1,4 @@
 <?php
-
 include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");  
 //Clase Creada 24/04/2023
 //by: Harol Arcos
@@ -38,14 +37,14 @@ class person {
         $this->optionsLog = array(
             'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/person",           
             'filename'       => $fileName,         
-            'syslog'         => false,         // true = use system function (works only in txt format)
-            'filePermission' => 0644,          // or 0777
-            'maxSize'        => 0.5,         // in MB
-            'format'         => 'txt',         // use txt, csv or htm
-            'template'       => 'barecss',     // for htm format only: plain, terminal or barecss
+            'syslog'         => false,        
+            'filePermission' => 0644,          
+            'maxSize'        => 0.5,         
+            'format'         => 'txt',         
+            'template'       => 'barecss',     
             'timeZone'       => 'America/La_Paz',         
             'dateFormat'     => 'Y-m-d H:i:s', 
-            'backtrace'      => true,          // true = slower but with line number of call
+            'backtrace'      => true,          
           );
           $_log = new log($this->optionsLog);
           
@@ -225,7 +224,6 @@ class person {
     public function listPersonActiveDb(){
         $response = false;
         $sql =  "SELECT * FROM persona";
-        //$rs = $this->_db->query($sql);
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
@@ -243,25 +241,6 @@ class person {
         return $response;
     }
 
-    public function listPersonInactiveDb(){
-        $response = false;
-        $sql =  "SELECT * FROM persona WHERE persona_estado = 2";
-        $rs = $this->_db->query($sql);
-        if($this->_db->getLastError()) {
-            
-            $arrLog = array(
-                            "sql"=>$sql,
-                            "error"=>$this->_db->getLastError());
-            $this->createLog('dbLog', print_r($arrLog, true), "error");  
-        } else {
-            $response = $rs;
-            $arrLog = array(
-                            "output"=>$response,
-                            "sql"=>$sql);
-            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
-        }
-        return $response;
-    }
 	
     private function mapPerson($rs){
         $this->idPerson = $rs['persona_id'];

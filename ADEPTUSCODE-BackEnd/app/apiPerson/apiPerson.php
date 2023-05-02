@@ -80,7 +80,7 @@
             array_push($errorlist,"Error: falta parametro passwordPerson");
         }
         if(count($errorlist)!==0){
-            return array("codError" => 200, "data" => array("desError"=>$errorlist));//ver tipos de errores 
+            return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
 
         #$idPerson =  $arg->idPerson;
@@ -187,7 +187,7 @@
             array_push($errorlist,"Error: falta parametro passwordPerson");
         }
         if(count($errorlist)!==0){
-            return array("codError" => 200, "data" => array("desError"=>$errorlist));//ver tipos de errores 
+            return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
 
         $idPerson =  $arg->idPerson;
@@ -246,7 +246,7 @@
             array_push($errorlist,"Error: falta parametro statusPerson");
         }
         if(count($errorlist)!==0){
-            return array("codError" => 200, "data" => array("desError"=>$errorlist));//ver tipos de errores 
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
         }
 
         $idPerson =  $arg->idPerson;

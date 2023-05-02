@@ -5,13 +5,13 @@
 include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");
 class dataBasePG{
 
-    private $dbname, $dbhost, $dbuser, $dbpasswd, $dbport;//corregido
-    private $_dblink;//bien
-    private $numRows, $numCols, $affectedRows, $lastError, $lastOid, $nameCols;//bien
+    private $dbname, $dbhost, $dbuser, $dbpasswd, $dbport;
+    private $_dblink;
+    private $numRows, $numCols, $affectedRows, $lastError, $lastOid, $nameCols;
     private $optionsLog;
 
 
-    private $connectionName, $connectionStatus;//
+    private $connectionName, $connectionStatus;
 
 
     function __construct($connectionName)
@@ -26,14 +26,13 @@ class dataBasePG{
 
     function __destruct()
     {
-        unset($this->dbuser);//
-        unset($this->dbname);//
-        unset($this->dbhost);//
-        unset($this->dbpasswd);//
-        unset($this->dbport);//
-        unset($this->connectionName);//
-        unset($this->connectionStatus);//
-        //unset($this->_dblink);
+        unset($this->dbuser);
+        unset($this->dbname);
+        unset($this->dbhost);
+        unset($this->dbpasswd);
+        unset($this->dbport);
+        unset($this->connectionName);
+        unset($this->connectionStatus);
         $this->close();
     }
 
@@ -42,14 +41,14 @@ class dataBasePG{
         $this->optionsLog = array(
             'path'           => $_SERVER['DOCUMENT_ROOT'].'/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd//log/logDB',           
             'filename'       => $fileName,         
-            'syslog'         => false,         // true = use system function (works only in txt format)
-            'filePermission' => 0644,          // or 0777
-            'maxSize'        => 0.5,         // in MB
-            'format'         => 'txt',         // use txt, csv or htm
-            'template'       => 'barecss',     // for htm format only: plain, terminal or barecss
+            'syslog'         => false,         
+            'filePermission' => 0644,         
+            'maxSize'        => 0.5,         
+            'format'         => 'txt',         
+            'template'       => 'barecss',     
             'timeZone'       => 'America/La_Paz',         
             'dateFormat'     => 'Y-m-d H:i:s', 
-            'backtrace'      => true,          // true = slower but with line number of call
+            'backtrace'      => true,          
           );
           $_log = new log($this->optionsLog);
           
@@ -94,7 +93,7 @@ class dataBasePG{
     * @param string $tSql Cadena SQL a ser ejecutada
     * @return resource $res
     */
-    private function setQueryParameters($tSql)//antes llamada _query
+    private function setQueryParameters($tSql)
     {
         $result = false;
         if (  $this->getStatus() == false ) {
@@ -161,29 +160,7 @@ class dataBasePG{
     * @param string $tSql Cadena SQL a ser ejecutada
     * @return array asociativo si el SQL tuvo exito, boolean si hubo algun problema $result
     */
-    /*public function select($tSql)//Parece innecesario pero queda revisar su utilidad
-    {
-        $result = false;
-        $res = $this->setQueryParameters($tSql);
-
-        if (!is_bool($res)) {
-            $result = array();
-            while ($row = pg_fetch_assoc($res)) {
-                $result[] = $row;
-            }
-            $this->nameCols = $this->field_name($res);
-            pg_free_result($res);
-	    } else {
-            $mensaje ="[$tSql] [" . $this->getLastError() ."]";
-            $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
-        }
-        var_dump($result);
-        //$data = pg_fetch_all($result);
-        $result['data'] = $result;
-        echo json_encode($result['data']);
-        //echo json_encode($result);
-        return $result;
-    }*/
+    
     public function select($tSql){
         $res = $this->setQueryParameters($tSql);
         if (!is_bool($res)) {
@@ -199,9 +176,6 @@ class dataBasePG{
         }
     }
 
-
-
-   //FUNCION CORREGIDA
     private function setParametrosBD($dataConnect)
     {
         $fileData = __DIR__."/config/config.ini";
@@ -216,12 +190,10 @@ class dataBasePG{
             $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "info");
             $this->connect();
         } else {
-            //$this->printLog("Conexion invalida [$dataConnect]");
             $mensaje ="Conexion invalida [$dataConnect]";
             $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "warning");
 
         }
-        //return $this->connect();//lo llevamos dentro del if
     }
 
     /*
@@ -237,7 +209,6 @@ class dataBasePG{
         $this->_dblink = pg_connect($conn_string);
         if ($this->_dblink) {
             $this->connectionStatus = pg_connection_status($this->_dblink);
-            //usando la funcion creada por kevin, en teoria hace lo mismo que arriba pero queda pendiente a revision
             $mensaje = $this->getStatus();
            
             $this->createLog('dataBaseLog', "Conexion buena: ".$mensaje." - Function: ".__FUNCTION__, "info");
@@ -249,9 +220,7 @@ class dataBasePG{
     }
 
 
-    /**
-    * Cierra la conexion a la BD
-    */
+ 
     private function close()
     {
         if (is_resource($this->_dblink)) {
@@ -288,24 +257,6 @@ class dataBasePG{
     {
         return $this->nameCols;
     }
-
-     /*
-    * Metodo que setea los datos de conexion a la BD
-    * @access public
-    * @param string $dbhost Nombre o IP del host de la BD
-    * @param string $dbname Nombre BD
-    * @param string $dbuser Usuario de BD
-    * @param string $dbpasswd Clave usuario BD
-    * @return boolean {true|false}
-    */
-    
-
-        /*
-    * Obtener la conexion a la BD
-    * @access public
-    * return enlace conexion BD
-    */
-
     public function getStatus(){
         $response = (pg_connection_status($this->getConexion()) === PGSQL_CONNECTION_OK) ? FALSE : TRUE;
         return $response;
