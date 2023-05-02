@@ -1,6 +1,5 @@
 <?php
 
-//$logphppath = $_SERVER['DOCUMENT_ROOT']."ADEPTUS CODE 2023/ADEPTUSCODE-BackEnd/lib/common/log.php"
 include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");  
 //Clase Creada 24/04/2023
 //by: Harol Arcos
@@ -9,14 +8,13 @@ include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEn
 class person {
 
     private $optionsLog;
-    private $_db;//$_log;
+    private $_db;
     private $idPerson,$typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson;
 
     function __construct($_db,$idPerson=0){
         
         $this->_db=$_db;
-        //$this->_log=$_log;
         if ($idPerson!=0) {
             $this->setPerson($idPerson);
         }
@@ -24,7 +22,6 @@ class person {
 
     function __destruct(){
         unset($this->_db);
-        //unset($this->_log);
         unset($this->idPerson);
         unset($this->typePerson);
         unset($this->namePerson);
@@ -86,8 +83,6 @@ class person {
           }
     }
     
-
-
     private function setPerson($idPerson){
         $response = FALSE;
         $dataPerson = $this->findPersonDb($idPerson);
@@ -96,8 +91,6 @@ class person {
             $response = TRUE;
         }
         $arrLog = array("input"=>$idPerson,"output"=>$response);
-        //$this->_log->warning(__FUNCTION__,$arrLog);
-        //$this->createLog('apiLog', $arrLog, "warning");
         $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "warning");
         return $response;
     }
@@ -110,15 +103,11 @@ class person {
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>$idPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
-           // $this->_log->error(__FUNCTION__,$arrLog);
-           //$this->createLog('dbLog', $arrLog, "error");
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
         } else {
             
             $response = $rs[0];
             $arrLog = array("input"=>$idPerson,"output"=>$response,"sql"=>$sql);
-          //  $this->_log->debug(__FUNCTION__,$arrLog);
-            //$this->createLog('dbLog', $arrLog, "debug");
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
@@ -194,7 +183,6 @@ class person {
 
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
-            //$this->_log->error(__FUNCTION__,$arrLog);
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;

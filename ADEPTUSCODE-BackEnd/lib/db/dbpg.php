@@ -2,16 +2,13 @@
     //by: Gonza Zeballos
     //Esta clase es para la conexion a la base de datos
     //Creacion: 26/04/2023
-//require("../../lib/common/log.php");
 include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");
 class dataBasePG{
 
     private $dbname, $dbhost, $dbuser, $dbpasswd, $dbport;//corregido
     private $_dblink;//bien
     private $numRows, $numCols, $affectedRows, $lastError, $lastOid, $nameCols;//bien
-    //private $_pathpass;
     private $optionsLog;
-    //private $_pathlog;
 
 
     private $connectionName, $connectionStatus;//
@@ -19,7 +16,6 @@ class dataBasePG{
 
     function __construct($connectionName)
     {
-        //$this->_pathlog = "/var/log/process/errorDB.log";
         $this->connectionName = $connectionName;
         if (isset($connectionName)) {
             $this->setParametrosBD($connectionName);
@@ -101,7 +97,6 @@ class dataBasePG{
     private function setQueryParameters($tSql)//antes llamada _query
     {
         $result = false;
-        //is_resource($this->_dblink)
         if (  $this->getStatus() == false ) {
            $result = pg_query($this->_dblink, $tSql);
            if ($result == true) {
@@ -117,7 +112,6 @@ class dataBasePG{
                 $this->numCols = null;
                 $this->affectedRows = null;
                 $this->lastOid = null;                    
-                //$this->printLog();
                 $mensaje = "[$tSql] [" . $this->lastError ."]";
                 $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
             }
@@ -128,11 +122,6 @@ class dataBasePG{
         return $result;
     }
 
-    /*private function fetch_assoc($result)//Innecesaria
-    {
-        return pg_fetch_assoc($result);
-    }*/
-
     private function field_name($result)
     {
         $arr = array();
@@ -142,28 +131,6 @@ class dataBasePG{
         return $arr;
     }
 
-    /*public function query($sql)//modificada
-    {
-        $result = false;
-        $res = $this->setQueryParameters($sql);
-            if (!is_bool($res)) {
-                $result = array();
-                var_dump($res[7]);
-
-                while ($row = pg_fetch_assoc($res)) {//cambiar a pg
-                    $result = pg_result_error($res);
-                    var_dump($result);
-                }
-                //$res->free();//no existe en pg
-                pg_free_result($res);//ayuda a liberar pero queda por verificar si funciona igual que el free() en mysqli 
-            
-            } else {
-                $result=$res;
-                var_dump($res);
-            }
-            return $result;
-            
-    }*/
     public function query($sql)
 {
     $result = false;
@@ -272,15 +239,6 @@ class dataBasePG{
             unset($this->_dblink);
         }
     }
-
-    /*NO SRIVE
-     private function printLog($message){
-        $message = date("Y-m-d H:i:s")." ".$message; 
-        $php = $_SERVER["PHP_SELF"];
-        error_log("[$php] ".$message."\n", 3, $this->_pathlog);
-        return true;    
-    }*/
-
     public function getNumRows()
     {
         return $this->numRows;
