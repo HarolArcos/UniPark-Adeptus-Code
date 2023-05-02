@@ -36,16 +36,7 @@ class person {
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
             'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/person",           
-            'filename'       => $fileName,         
-            'syslog'         => false,        
-            'filePermission' => 0644,          
-            'maxSize'        => 0.5,         
-            'format'         => 'txt',         
-            'template'       => 'barecss',     
-            'timeZone'       => 'America/La_Paz',         
-            'dateFormat'     => 'Y-m-d H:i:s', 
-            'backtrace'      => true,          
-          );
+            'filename'       => $fileName,);
           $_log = new log($this->optionsLog);
           
           switch ($tipeError) {

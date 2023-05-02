@@ -1,0 +1,158 @@
+2023-05-02 00:05:35	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [persona_id] => 1
+                    [persona_tipo] => 3
+                    [persona_nombre] => Kenneth
+                    [persona_apellido] => Rodriguez
+                    [persona_ci] => 420241859
+                    [persona_telefono] => 5912054965886
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Yesquir
+                    [persona_contraseña] => wah6Eaba3i
+                )
+
+            [1] => Array
+                (
+                    [persona_id] => 2
+                    [persona_tipo] => 3
+                    [persona_nombre] => Joe
+                    [persona_apellido] => Williams
+                    [persona_ci] => 464241685
+                    [persona_telefono] => 5917136602271
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Whislove
+                    [persona_contraseña] => baghah2iK
+                )
+
+            [2] => Array
+                (
+                    [persona_id] => 3
+                    [persona_tipo] => 3
+                    [persona_nombre] => Arlene
+                    [persona_apellido] => Winston
+                    [persona_ci] => 330884531
+                    [persona_telefono] => 5918472235728
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Mamed1970
+                    [persona_contraseña] => ii8ba8Kai
+                )
+
+            [3] => Array
+                (
+                    [persona_id] => 4
+                    [persona_tipo] => 3
+                    [persona_nombre] => Juanita
+                    [persona_apellido] => Medina
+                    [persona_ci] => 595227315
+                    [persona_telefono] => 5915612989922
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Hatumer
+                    [persona_contraseña] => xazi7xiGumah
+                )
+
+            [4] => Array
+                (
+                    [persona_id] => 5
+                    [persona_tipo] => 3
+                    [persona_nombre] => Donald
+                    [persona_apellido] => Malachow
+                    [persona_ci] => 129145983
+                    [persona_telefono] => 5919176266610
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Pheine
+                    [persona_contraseña] => OhijiePha5
+                )
+
+        )
+
+    [sql] => SELECT * FROM persona
+)
+ Function error: listPersonActiveDb	100 DEBUG
+2023-05-02 00:13:42	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [persona_id] => 1
+                    [persona_tipo] => 3
+                    [persona_nombre] => Kenneth
+                    [persona_apellido] => Rodriguez
+                    [persona_ci] => 420241859
+                    [persona_telefono] => 5912054965886
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Yesquir
+                    [persona_contraseña] => wah6Eaba3i
+                )
+
+            [1] => Array
+                (
+                    [persona_id] => 2
+                    [persona_tipo] => 3
+                    [persona_nombre] => Joe
+                    [persona_apellido] => Williams
+                    [persona_ci] => 464241685
+                    [persona_telefono] => 5917136602271
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Whislove
+                    [persona_contraseña] => baghah2iK
+                )
+
+            [2] => Array
+                (
+                    [persona_id] => 3
+                    [persona_tipo] => 3
+                    [persona_nombre] => Arlene
+                    [persona_apellido] => Winston
+                    [persona_ci] => 330884531
+                    [persona_telefono] => 5918472235728
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Mamed1970
+                    [persona_contraseña] => ii8ba8Kai
+                )
+
+            [3] => Array
+                (
+                    [persona_id] => 4
+                    [persona_tipo] => 3
+                    [persona_nombre] => Juanita
+                    [persona_apellido] => Medina
+                    [persona_ci] => 595227315
+                    [persona_telefono] => 5915612989922
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Hatumer
+                    [persona_contraseña] => xazi7xiGumah
+                )
+
+            [4] => Array
+                (
+                    [persona_id] => 5
+                    [persona_tipo] => 3
+                    [persona_nombre] => Donald
+                    [persona_apellido] => Malachow
+                    [persona_ci] => 129145983
+                    [persona_telefono] => 5919176266610
+                    [persona_telegram] => ?
+                    [persona_estado] => 1
+                    [persona_nickname] => Pheine
+                    [persona_contraseña] => OhijiePha5
+                )
+
+        )
+
+    [sql] => SELECT * FROM persona
+)
+ Function error: listPersonActiveDb	100 DEBUG

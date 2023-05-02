@@ -19,13 +19,13 @@ class log {
         // e.g. 0644 OR 0777 see: http://php.net/manual/en/function.chmod.php
         'filePermission' => 0644,
         // Maximal LogFile Size in MB
-        'maxSize'        => 10,
+        'maxSize'        => 1,
         // e.g. 'txt' = Text with TAB OR 'csv' = Comma-Separated Values with (,) OR 'htm' = HTML
         'format'         => 'txt',
         // e.g. 'terminal' = terminalcss.xyz OR 'barecss' = barecss.com OR plain = simple HTML
         'template'       => 'barecss',
         // e.g. 'UTC' see: http://php.net/manual/en/timezones.php
-        'timeZone'       => 'UTC',
+        'timeZone'       => 'America/La_Paz',
         // e.g. 'Y-m-d H:i:s' see: http://php.net/manual/en/function.date.php
         'dateFormat'     => 'Y-m-d H:i:s',
         // e.g. true = Calling Prog. AND Linenumber OR false = Only calling Prog.
