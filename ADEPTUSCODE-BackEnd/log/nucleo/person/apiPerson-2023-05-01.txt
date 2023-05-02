@@ -703,3 +703,6 @@
 
 )
  Funcion: changeStatePerson	300 NOTICE
+2023-05-02 03:10:37	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	No se pudo listara a las personas - Funcion: listPerson	200 INFO
+2023-05-02 03:11:58	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Se listo correctamente a las personas - Funcion: listPerson	200 INFO
+2023-05-02 03:13:15	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Se listo correctamente a las personas - Funcion: listPerson	200 INFO

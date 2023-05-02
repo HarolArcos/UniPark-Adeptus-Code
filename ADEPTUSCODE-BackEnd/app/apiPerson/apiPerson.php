@@ -278,11 +278,14 @@
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+            $mensaje = "Se listo correctamente a las personas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
+            $mensaje = "No se pudo listara a las personas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
         }
-        $mensaje = "No se pudo listara a las personas - Funcion: ".__FUNCTION__;
-        $_log->notice($mensaje);
+        
         return $response;
     }
     

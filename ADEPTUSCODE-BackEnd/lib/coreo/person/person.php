@@ -224,8 +224,9 @@ class person {
 
     public function listPersonActiveDb(){
         $response = false;
-        $sql =  "SELECT * FROM persona WHERE persona_estado = 1";
-        $rs = $this->_db->query($sql);
+        $sql =  "SELECT * FROM persona";
+        //$rs = $this->_db->query($sql);
+        $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array(
@@ -244,7 +245,7 @@ class person {
 
     public function listPersonInactiveDb(){
         $response = false;
-        $sql =  "SELECT * FROM persona WHERE persona_estado = 0";
+        $sql =  "SELECT * FROM persona WHERE persona_estado = 2";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             

@@ -161,7 +161,7 @@ class dataBasePG{
     * @param string $tSql Cadena SQL a ser ejecutada
     * @return array asociativo si el SQL tuvo exito, boolean si hubo algun problema $result
     */
-    public function select($tSql)//Parece innecesario pero queda revisar su utilidad
+    /*public function select($tSql)//Parece innecesario pero queda revisar su utilidad
     {
         $result = false;
         $res = $this->setQueryParameters($tSql);
@@ -177,8 +177,28 @@ class dataBasePG{
             $mensaje ="[$tSql] [" . $this->getLastError() ."]";
             $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
         }
+        var_dump($result);
+        //$data = pg_fetch_all($result);
+        $result['data'] = $result;
+        echo json_encode($result['data']);
+        //echo json_encode($result);
         return $result;
+    }*/
+    public function select($tSql){
+        $res = $this->setQueryParameters($tSql);
+        if (!is_bool($res)) {
+            $this->nameCols = $this->field_name($res);
+            $result = pg_fetch_all($res); 
+            pg_free_result($res);
+            echo json_encode($result);
+            return $result;
+        } else {
+            $mensaje ="[$tSql] [" . $this->getLastError() ."]";
+            $this->createLog('dataBaseLog', $mensaje." Function: ".__FUNCTION__, "error");
+            return $res;
+        }
     }
+
 
 
    //FUNCION CORREGIDA
