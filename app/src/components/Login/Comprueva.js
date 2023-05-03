@@ -1,9 +1,6 @@
 //import CryptoJS from 'crypto-js';
 
-import { useContext } from "react"
-import {  DataUser } from "../context/UserContext"
 
-//import { useFetch } from '../../hooks/HookFetch';
 
 
 export default function Comprueva (usuario,contraseña,data,setUserglobal) {

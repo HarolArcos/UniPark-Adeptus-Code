@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useContext } from "react"
+
 import Opcions from "./User/Opciones.jsx";
-let user = require("./User/User.json").usuarios[0];
+import { DataUser } from '../context/UserContext.jsx';
+
 
 export default function Aside() {
+  const {userglobal} = useContext(DataUser)
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
@@ -29,7 +33,7 @@ export default function Aside() {
         <div className="user-panel mt-3 pb-3 mb-3 d-flex">
           <div className="info">
             <a to="#" className="d-block">
-              {user["nombre"]} {user["apellido"]}
+              {userglobal.persona_nombre} {userglobal.persona_apellido}
             </a>
           </div>
         </div>

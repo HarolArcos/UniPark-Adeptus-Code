@@ -1,5 +1,6 @@
 import { useFetch } from "../../../hooks/HookFetch";
-
+import { useContext } from "react"
+import { DataUser } from "../../context/UserContext";
 const parse = require("html-react-parser");
 
 
@@ -7,6 +8,8 @@ const parse = require("html-react-parser");
 
 
 export default function Opcions() {
+  const {userglobal} = useContext(DataUser)
+  
   let { data, loading, error } = useFetch(
     "http://localhost:3000/Opcions.json"
   );
@@ -23,8 +26,17 @@ export default function Opcions() {
       secontlist1.map((secont) => (string = string + secont.componente));
   
       string = register.componente.replace("</ul>", string + "</ul>");
+      
+      if (userglobal.persona_tipo===register.orden+"") {
+        
+        return parse(string); //trasfoma string a html
+      } else {
+        console.log(userglobal.persona_tipo)
+      console.log(register.orden)
+        return 
+      }
   
-      return parse(string); //trasfoma string a html
+     
     });
   
   }
