@@ -32,7 +32,7 @@ export default function Login() {
                 //history.navigate('/main');
             }  
           }
-          console.log(userglobal)
+          
 
 
     const handleClose = () => setShow(false);
