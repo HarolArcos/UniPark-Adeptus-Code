@@ -1,7 +1,8 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage, FieldArray } from 'formik';
+import "./Client.css";
 
 const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,soloLectura = false}) => {
 
@@ -36,7 +37,7 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
         errors.apellido ='El campo es requerido';
       }
       else if(!/^[A-Za-z]+$/i.test(values.apellido)){
-        errors.apellido ='datos invalidos'
+        errors.apellido ='Datos invalidos'
       }
 
       
@@ -44,33 +45,35 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
       if(!values.ci){
         errors.ci ='El campo es requerido';
       }
-      else if(!/^[A-Za-z]+$/i.test(values.ci)){
-        errors.ci ='datos invalidos'
+      else if(!/^[0-9]+$/i.test(values.ci)){
+        errors.ci ='Datos invalidos'
       }
 
       if(!values.telefono){
         errors.telefono ='El campo es requerido';
+      }else if(!/^[0-9]+$/i.test(values.telefono)){
+        errors.telefono ='Datos invalidos'
       }
 
       if(!values.telegram){
         errors.telegram ='El campo es requerido';
       }
-      else if(!/^[A-Za-z]+$/i.test(values.telegram)){
-        errors.telegram ='datos invalidos'
+      else if(!/^[0-9]+$/i.test(values.telegram)){
+        errors.telegram ='Datos invalidos'
       }
 
       if(!values.nickName){
         errors.nickName ='El campo es requerido';
       }
-      else if(!/^[A-Za-z]+$/i.test(values.nickName)){
-        errors.nickName ='datos invalidos'
+      else if(!/^[a-zA-Z0-9@#&_-]+$/i.test(values.nickName)){
+        errors.nickName ='Datos invalidos, solo admite: A-Z, 0-9,@,#,&,_,-'
       }
 
       if(!values.email){
         errors.email ='El campo es requerido';
       }
-      else if(!/^[A-Za-z]+$/i.test(values.email)){
-        errors.email ='datos invalidos'
+      else if(!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(values.email)){
+        errors.email ='Datos invalidos'
       }
 
 
@@ -78,8 +81,8 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
       values.listCar.forEach((car, index) => {
         if (!car.placa) {
           errors[`listCar[${index}].placa`] = "La placa es requerida";
-        } else if (!/^[A-Za-z]{3}-\d{3}$/.test(car.placa)) {
-          errors[`listCar[${index}].placa`] = "La placa debe tener formato AAA-111";
+        } else if (!/^\d{4}-[A-Za-z]{3}$/.test(car.placa)) {
+          errors[`listCar[${index}].placa`] = "La placa debe tener formato 111-AAA";
         }
     
         if (!car.modelo) {
@@ -113,8 +116,8 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
       <div className="row ">
         <div className="col-md-4">
 
-          <Form.Group controlId="nombre">
-            <Form.Label className="text-left">Nombre</Form.Label>
+          <Form.Group controlId="nombre" className="text-left">
+            <Form.Label className="label">Nombre</Form.Label>
             <Form.Control 
             type="text" 
             name="nombre"
@@ -124,10 +127,10 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="nombre" component={()=>(<div className="error">{errors.nombre}</div>)}></ErrorMessage>
+          <ErrorMessage name="nombre" component={()=>(<div className="text-danger">{errors.nombre}</div>)}></ErrorMessage>
           
-          <Form.Group controlId="apellido">
-            <Form.Label>Apellido</Form.Label>
+          <Form.Group controlId="apellido" className="text-left">
+            <Form.Label className="label">Apellido</Form.Label>
             <Form.Control type="text" 
             name="apellido"
             onChange={handleChange}
@@ -137,10 +140,10 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
 
             />
           </Form.Group>
-          <ErrorMessage name="apellido" component={()=>(<div className="error">{errors.apellido}</div>)}></ErrorMessage>
+          <ErrorMessage name="apellido" component={()=>(<div className="text-danger">{errors.apellido}</div>)}></ErrorMessage>
           
-          <Form.Group controlId="nickName">
-            <Form.Label>NickName</Form.Label>
+          <Form.Group controlId="nickName" className="text-left">
+            <Form.Label className="label text-align-left">NickName</Form.Label>
             <Form.Control type="nickName"
             name="nickName"
             onChange={handleChange}
@@ -149,9 +152,9 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="nickName" component={()=>(<div className="error">{errors.nickName}</div>)}></ErrorMessage>
+          <ErrorMessage name="nickName" component={()=>(<div className="text-danger">{errors.nickName}</div>)}></ErrorMessage>
           
-          <Form.Group controlId="ci">
+          <Form.Group controlId="ci" className="text-left">
             <Form.Label>C.I.</Form.Label>
             <Form.Control type="ci"
             name="ci"
@@ -161,9 +164,9 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="ci" component={()=>(<div className="error">{errors.ci}</div>)}></ErrorMessage>
+          <ErrorMessage name="ci" component={()=>(<div className="text-danger">{errors.ci}</div>)}></ErrorMessage>
 
-          <Form.Group controlId="telefono">
+          <Form.Group controlId="telefono" className="text-left">
             <Form.Label>Telefono</Form.Label>
             <Form.Control type="telefono"
             name="telefono"
@@ -173,9 +176,9 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="telefono" component={()=>(<div className="error">{errors.telefono}</div>)}></ErrorMessage>
+          <ErrorMessage name="telefono" component={()=>(<div className="text-danger">{errors.telefono}</div>)}></ErrorMessage>
 
-          <Form.Group controlId="telegram">
+          <Form.Group controlId="telegram" className="text-left">
             <Form.Label>Telegram</Form.Label>
             <Form.Control type="telegram"
             name="telegram"
@@ -185,10 +188,10 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="telegram" component={()=>(<div className="error">{errors.telegram}</div>)}></ErrorMessage>
+          <ErrorMessage name="telegram" component={()=>(<div className="text-danger">{errors.telegram}</div>)}></ErrorMessage>
 
 
-          <Form.Group controlId="email">
+          <Form.Group controlId="email" className="text-left">
             <Form.Label>Email</Form.Label>
             <Form.Control type="email"
             name="email"
@@ -198,7 +201,7 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="email" component={()=>(<div className="error">{errors.email}</div>)}></ErrorMessage>
+          <ErrorMessage name="email" component={()=>(<div className="text-danger">{errors.email}</div>)}></ErrorMessage>
         </div>
 
         <div className="col-md-6">
@@ -209,48 +212,48 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
               <>
                 {values.listCar.map((car, index) => (
                   <div key={index}>
-                    <Form.Group>
+                    <Form.Group className="text-left">
                       <Form.Label>Placa</Form.Label>
                       <Form.Control
                         name={`listCar[${index}].placa`}
                         value={car.placa}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        isInvalid={Boolean(errors[`listCar[${index}].placa`])}
+                        // isInvalid={Boolean(errors[`listCar[${index}].placa`])}
                         readOnly = {soloLectura}
                       />
                       <ErrorMessage  component={()=>(
-                      <div>{errors[`listCar[${index}].placa`]}</div>
+                      <div className="text-danger">{errors[`listCar[${index}].placa`]}</div>
                       )}/>
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group className="text-left">
                       <Form.Label>Modelo</Form.Label>
                       <Form.Control
                         name={`listCar[${index}].modelo`}
                         value={car.modelo}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        isInvalid={Boolean(errors[`listCar[${index}].modelo`])}
+                        // isInvalid={Boolean(errors[`listCar[${index}].modelo`])}
                         readOnly = {soloLectura}
                       />
                       <ErrorMessage  component={()=>(
-                      <div>{errors[`listCar[${index}].modelo`]}</div>
+                      <div className="text-danger">{errors[`listCar[${index}].modelo`]}</div>
                       )}/>
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group className="text-left">
                       <Form.Label>Color</Form.Label>
                       <Form.Control
                         name={`listCar[${index}].color`}
                         value={car.color}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        isInvalid={Boolean(errors[`listCar[${index}].color`])}
+                        // isInvalid={Boolean(errors[`listCar[${index}].color`])}
                         readOnly = {soloLectura}
                       />
                       <ErrorMessage  component={()=>(
-                      <div>{errors[`listCar[${index}].color`]}</div>
+                      <div className="text-danger">{errors[`listCar[${index}].color`]}</div>
                       )}/>
                     </Form.Group>
 
