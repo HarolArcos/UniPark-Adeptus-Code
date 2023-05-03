@@ -1,0 +1,13 @@
+.selectForm{
+    display: flex;
+    flex-direction: column;
+    padding: 24px 200px;
+}
+
+.selectItem{
+    margin-bottom: 12px;
+}
+
+.submitButton{
+    align-self: flex-end;
+}

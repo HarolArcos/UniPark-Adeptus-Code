@@ -3,13 +3,8 @@ import { useContext } from "react"
 import { DataUser } from "../../context/UserContext";
 const parse = require("html-react-parser");
 
-
-
-
-
 export default function Opcions() {
-  const {userglobal} = useContext(DataUser)
-  
+  const {userglobal} = useContext(DataUser)  
   let { data, loading, error } = useFetch(
     "http://localhost:3000/Opcions.json"
   );

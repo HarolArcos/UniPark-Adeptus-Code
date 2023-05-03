@@ -11,7 +11,7 @@ export default function Aside() {
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
 
-      <a to="index3.html" className="brand-link">
+      <Link to="/main" className="brand-link">
         <img
           src="dist/img/uni-park.png"
           alt="AdminLTE Logo"
@@ -25,7 +25,7 @@ export default function Aside() {
           }}
         />
         <span className="brand-text font-weight-light">UNI-PARK</span>
-      </a>
+      </Link>
       {/* Sidebar */}
       <div className="sidebar">
         {/* Sidebar user panel (optional) */}

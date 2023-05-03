@@ -1,4 +1,4 @@
-import React ,{useEffect,useState}from 'react';
+import React ,{useState}from 'react';
 import Modal from '../Modal/Modal';
 import Formulario from './AddFormClient';
 import {Table} from 'react-bootstrap';
@@ -23,12 +23,12 @@ export const Client = () => {
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
-    const handleShowEdit = () =>setShowEdit(true);
-    const handleCloseEdit = () =>setShowEdit(false);
+    // const handleShowEdit = () =>setShowEdit(true);
+    // const handleCloseEdit = () =>setShowEdit(false);
      
     const [showCreate, setShowCreate] = useState(false);
-    const handleShowCreate = () =>setShowCreate(true);
-    const handleCloseCreate = () =>setShowCreate(false);
+    // const handleShowCreate = () =>setShowCreate(true);
+    // const handleCloseCreate = () =>setShowCreate(false);
      
     
     //----------------------Cliente para:-------------------------------

@@ -1,6 +1,9 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import "./ContentSites.css";
+import Header from "../Header/Header";
+import Aside from "../Aside/Aside";
+import Footer from "../Footer/Footer";
 
 export default function ContentSitesAvalible(){
 
@@ -17,7 +20,10 @@ export default function ContentSitesAvalible(){
     ];
 
     return(
-        <div className="content-wrapper contenteSites-body" >
+        <>
+            <Header></Header>
+            <Aside></Aside>
+            <div className="content-wrapper contenteSites-body" >
             <Table striped bordered hover className="table">
                 <thead>
                     <tr>
@@ -41,5 +47,7 @@ export default function ContentSitesAvalible(){
                 </tbody>
             </Table>
         </div>
+        <Footer></Footer>
+        </>
     )
 }

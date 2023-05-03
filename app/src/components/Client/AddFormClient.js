@@ -7,14 +7,14 @@ const Formulario = ({asunto,cancelar, cliente, manejarEnvio,actualizarCliente,nu
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
-  const [telefono, setTelefono] = useState("");
+  // const [telefono, setTelefono] = useState("");
 
   useEffect(() => {
     if (cliente) {
       setNombre(cliente.nombre);
       setApellido(cliente.apellido);
       setEmail(cliente.email);
-      setTelefono(cliente.telefono);
+      // setTelefono(cliente.telefono);
     }
   }, [cliente]);
 

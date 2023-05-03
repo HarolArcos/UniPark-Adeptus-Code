@@ -3,6 +3,9 @@ import { Button, Table } from "react-bootstrap";
 import { CSVLink } from "react-csv";
 
 import "../ContentAvaliableSites/ContentSites.css";
+import Aside from "../Aside/Aside";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 export default function ContentUnavalible(){
 
@@ -19,6 +22,9 @@ export default function ContentUnavalible(){
     ];
 
     return(
+        <>
+            <Header></Header>
+        <Aside></Aside>
         <div className="content-wrapper contenteSites-body" >
             <div className="buttonsGroup">
                 <Button variant="success" className="button"> +</Button>
@@ -54,5 +60,7 @@ export default function ContentUnavalible(){
                 </tbody>
             </Table>
         </div>
+        <Footer></Footer>
+        </>
     )
 }
