@@ -1,36 +1,59 @@
 import { useFetch } from "../../../hooks/HookFetch";
+import { useContext } from "react"
+import { DataUser } from "../../context/UserContext";
 const parse = require("html-react-parser");
 
-let bdopcion = require("./Opcions.json").opcionesuser;
 
-let primarylist = bdopcion.filter((padres) => padres.padre === "");
+
+
 
 export default function Opcions() {
-  const { data, loading, error } = useFetch(
-    "https://jsonplaceholder.typicode.com/posts"
+  const {userglobal} = useContext(DataUser)
+  
+  let { data, loading, error } = useFetch(
+    "http://localhost:3000/Opcions.json"
   );
-
-  if (loading) {
-    console.log("cargando");
+    
+ 
+  if (!loading) {
+    data=data.opcionesuser    
+    let primarylist = data.filter((padres) => padres.padre === "");
+    return primarylist.map((register) => {
+      let string = "";
+      let secontlist1 = data.filter(
+        (secontlist) => secontlist.padre === register.orden
+      );
+      secontlist1.map((secont) => (string = string + secont.componente));
+  
+      string = register.componente.replace("</ul>", string + "</ul>");
+      
+      if (userglobal.persona_tipo===register.orden+"") {
+        
+        return parse(string); //trasfoma string a html
+      } else {
+        console.log(userglobal.persona_tipo)
+      console.log(register.orden)
+        return 
+      }
+  
+     
+    });
+  
   }
+    
+
+
+  
+  
   
 
-  if (error) {
+  if (error!==null) {
     console.log(error);
   }
+  
+  
 
-  return primarylist.map((register) => {
-    let string = "";
-
-    let secontlist1 = bdopcion.filter(
-      (secontlist) => secontlist.padre === register.orden
-    );
-    secontlist1.map((secont) => (string = string + secont.componente));
-
-    string = register.componente.replace("</ul>", string + "</ul>");
-
-    return parse(string); //trasfoma string a html
-  });
+  
 }
 
 //let secontlist = bdopcion.filter((hijo) => hijo.padre !== "");
