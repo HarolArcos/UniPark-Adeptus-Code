@@ -34,15 +34,14 @@ export default function Login() {
             }  
           }
           
-
-
+          
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [show, setShow] = useState(false);
+    
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    
 
     return (
         <div className="login" >

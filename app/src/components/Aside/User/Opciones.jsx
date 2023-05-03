@@ -22,12 +22,11 @@ export default function Opcions() {
   
       string = register.componente.replace("</ul>", string + "</ul>");
       
-      if (userglobal.persona_tipo===register.orden+"") {
+      if ("3"===register.orden+"") {
         
         return parse(string); //trasfoma string a html
       } else {
-        console.log(userglobal.persona_tipo)
-      console.log(register.orden)
+        
         return 
       }
   

@@ -32,7 +32,7 @@ export default function Aside() {
         <div className="user-panel mt-3 pb-3 mb-3 d-flex">
           <div className="info">
             <a to="#" className="d-block">
-              {userglobal.persona_nombre} {userglobal.persona_apellido}
+                 Harol Arcos {/* {userglobal.persona_nombre} {userglobal.persona_apellido} */}
             </a>
           </div>
         </div>
