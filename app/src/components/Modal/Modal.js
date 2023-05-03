@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Modal as BootstrapModal,Button } from "react-bootstrap";
+//import React, { useState, useEffect } from "react";
+import { Modal as BootstrapModal } from "react-bootstrap"; // importacion Button quitada
 
 const Modal = ({ mostrarModal ,hide,title,contend,asunto}) => {
 
