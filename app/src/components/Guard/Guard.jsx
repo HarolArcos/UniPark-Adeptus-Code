@@ -1,13 +1,11 @@
-import React ,{useEffect,useState}from 'react';
+import React ,{useState}from 'react';
 import Modal from '../Modal/Modal';
-import Formulario from './FormClient';
+import Formulario from './FormGuard';
 import {Table} from 'react-bootstrap';
-import "./Client.css"
-// import  "../../datos.json" ;
 
-export const Client = () => {
-    // console.log(datos);
-    const [clientes,setClientes] =  useState([
+export const Guard = () => {
+
+    const [guardias,setGuardias] =  useState([
         {id:2,nombre:'Robert',apellido: 'Soliz' ,ci:547842,telefono:71462654,telegram:6761221,nickName: 'rob@', email:'robert@gmail.com' ,listCar:[{id:1,placa:'1844KGG',modelo:'2000',color:'turqueza'},{id:2,placa:'0564PPO',modelo:1999,color:'azul'}]},
         {id:1,nombre:'Maria',apellido: 'Ramirez' ,ci:540042, email:'mari@gmail.com',listCar:[{id:8,placa:'2016KÑO',modelo:'2008',color:'negro'}]},
         {id:3,nombre:'Alex',apellido: 'Pardo' ,ci:700842, email:'alex@gmail.com',listCar:[{id:3,placa:'0132KÑO',modelo:'1995',color:'rojo'}]}
@@ -24,18 +22,18 @@ export const Client = () => {
     
     //----------------------Cliente para:-------------------------------
     //------Editar :
-    const [clienteSeleccionado, setClienteSeleccionado] = useState(null);
+    const [guardiaSeleccionado, setGuardiaSeleccionado] = useState(null);
     //------Crear :
-    const [clienteNuevo, setClienteNuevo] = useState();
+    const [guardiaNuevo, setGuardiaNuevo] = useState();
 
 
     
     
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
-    const handleEditar = (cliente) => {
+    const handleEditar = (guardia) => {
         setShowEdit(true);
-        setClienteSeleccionado(cliente);
+        setGuardiaSeleccionado(guardia);
     };
     
     //-----Create Modal
@@ -44,9 +42,9 @@ export const Client = () => {
     };
 
     //-----View Modal
-    const handleView = (cliente) => {
+    const handleView = (guardia) => {
         setShowView(true);
-        setClienteSeleccionado(cliente);
+        setGuardiaSeleccionado(guardia);
     };
     
     //---Desactive Any Modal
@@ -54,49 +52,48 @@ export const Client = () => {
         setShowEdit(false);
         setShowCreate(false);
         setShowView(false);
-        setClienteSeleccionado(null);
-        setClienteNuevo(null);
+        setGuardiaSeleccionado(null);
+        setGuardiaNuevo(null);
     };
     
     //-----------------------Crud-------------------------------------------
     //------Edit
-    const handleGuardarEditado = (clienteEditado) => {
-        const nuevosClientes = clientes.map((cliente) =>
-        cliente.id === clienteEditado.id ? clienteEditado : cliente
+    const handleGuardarEditado = (guardiaEditado) => {
+        const nuevosGuardias = guardias.map((guardia) =>
+        guardia.id === guardiaEditado.id ? guardiaEditado : guardia
         );
-        setClientes(nuevosClientes);
+        setGuardias(nuevosGuardias);
         setShowCreate(false);
-        setClienteSeleccionado(null);
+        setGuardiaSeleccionado(null);
     };
 
     //-------Delete
     const handleEliminar = (id) => {
-      const nuevosClientes = clientes.filter((cliente) => cliente.id !== id);
-      setClientes(nuevosClientes);
+      const nuevosGuardias = guardias.filter((guardia) => guardia.id !== id);
+      setGuardias(nuevosGuardias);
     };
 
     //-------Crear
-    const handleGuardarNuevo = (clienteNuevo) => {
-        clienteNuevo.id = clientes.lengthb;
-         clientes.push(clienteNuevo);
-         const nuevosClientes = clientes;
-        setClientes(nuevosClientes);
+    const handleGuardarNuevo = (guardiaNuevo) => {
+        guardiaNuevo.id = guardias.lengthb;
+         guardias.push(guardiaNuevo);
+         const nuevosGuardias = guardias;
+        setGuardias(nuevosGuardias);
       };
     
 
 
-    console.log(clientes);
+    console.log(guardias);
 
     return (
         <div className="content-wrapper content-body">
-            <div className='align-items-left'>
-                <button className='col btn btn-primary btn-lg'   onClick={() => {handleCreate()}}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-                    </svg>
-                </button>
-           
+            <div className='row'>
+            <button className='col btn btn-primary btn-lg'   onClick={() => {handleCreate()}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+            </button>
             </div>
                 
                 <Table striped bordered hover className='table'>
@@ -104,12 +101,11 @@ export const Client = () => {
                         <tr>
                         <th>Nombre</th>
                         <th>Datos Personales</th>
-                        <th>Datos Automovil(les)</th>
                         <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {clientes.map(item =>(
+                        {guardias.map(item =>(
                         <tr key ={item.id}>
                         <td>{item.nombre}</td>
                         <td>
@@ -119,15 +115,7 @@ export const Client = () => {
                                 <li>{item.email}</li>
                             </ul>
                         </td>
-                        <td>
-                            {item.listCar?.map(i =>(
-                            <ul >
-                              <li>{i.placa}</li>
-                              <li>{i.modelo}</li>
-                              <li>{i.color}</li>
-                            </ul>  
-                            ))}
-                        </td>
+                        
                         <td>
                         <button className='btn btn-primary btn-md mr-1' onClick={() => handleView(item)} >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -161,11 +149,11 @@ export const Client = () => {
             
             <Modal
             mostrarModal={showView}
-            title = 'Detalle Cliente '
+            title = 'Detalle Guardia '
             contend = {
             <Formulario
             asunto ='Guardar Cambios'
-            cliente= {clienteSeleccionado}
+            guardia= {guardiaSeleccionado}
             cancelar={handleCancelar}
             soloLectura = {true}
             ></Formulario>}
@@ -175,13 +163,13 @@ export const Client = () => {
 
             <Modal
             mostrarModal={showEdit}
-            title = 'Editar Cliente '
+            title = 'Editar Guardia '
             contend = {
             <Formulario
             asunto ='Guardar Cambios'
-            cliente= {clienteSeleccionado}
+            guardia= {guardiaSeleccionado}
             cancelar={handleCancelar}
-            actualizarCliente = {handleGuardarEditado}
+            actualizarGuardia = {handleGuardarEditado}
             ></Formulario>}
             hide = {handleCancelar}
             >
@@ -190,10 +178,10 @@ export const Client = () => {
 
             <Modal
             mostrarModal={showCreate}
-            title = 'Crear Nuevo Cliente'
+            title = 'Crear Nuevo Guardia'
             contend = {
             <Formulario
-            asunto = "Guardar Cliente"
+            asunto = "Guardar Guardia"
             cancelar={handleCancelar}
             añadirNuevo = {handleGuardarNuevo}
             ></Formulario>}

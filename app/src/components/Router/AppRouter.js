@@ -11,6 +11,7 @@ import ContentUnavalible from "../ContentUnavaliableSites/ContentUnavaliableSite
 import ContentSitesAvalible from "../ContentAvaliableSites/ContentSitesAvaliable";
 //import { Contact } from "../Contact/Contact";
 import { Client } from "../Client/Client";
+import { Guard } from "../Guard/Guard";
 
 export const AppRouter = () => {
 
@@ -24,6 +25,7 @@ export const AppRouter = () => {
                         <Route path="sitiosDisponibles" element={ <ContentSitesAvalible/> } />
                     </Route>
                     <Route exact={true} path='/client' element={<Client></Client>} ></Route>
+                    <Route exact={true} path='/guard' element={<Guard></Guard>} ></Route>
                 </Routes>
         </Router>
     )
