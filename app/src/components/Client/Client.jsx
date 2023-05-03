@@ -1,8 +1,11 @@
-import React ,{useEffect,useState}from 'react';
+import React ,{useState}from 'react';
 import Modal from '../Modal/Modal';
 import Formulario from './FormClient';
 import {Table} from 'react-bootstrap';
 import "./Client.css"
+import Header from '../Header/Header';
+import Aside from '../Aside/Aside';
+import Footer from '../Footer/Footer';
 // import  "../../datos.json" ;
 
 export const Client = () => {
@@ -88,6 +91,9 @@ export const Client = () => {
     console.log(clientes);
 
     return (
+        <>
+        <Header></Header>
+        <Aside></Aside>
         <div className="content-wrapper content-body">
             <div className='align-items-left'>
                 <button className='col btn btn-primary btn-lg'   onClick={() => {handleCreate()}}>
@@ -201,6 +207,9 @@ export const Client = () => {
             >
             </Modal>
         </div>
+
+        <Footer></Footer>
+        </>
 
 
     )

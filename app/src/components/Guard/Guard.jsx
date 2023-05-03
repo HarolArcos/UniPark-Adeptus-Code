@@ -2,6 +2,9 @@ import React ,{useState}from 'react';
 import Modal from '../Modal/Modal';
 import Formulario from './FormGuard';
 import {Table} from 'react-bootstrap';
+import Header from '../Header/Header';
+import Aside from '../Aside/Aside';
+import Footer from '../Footer/Footer';
 
 export const Guard = () => {
 
@@ -86,6 +89,9 @@ export const Guard = () => {
     console.log(guardias);
 
     return (
+        <>
+        <Header></Header>
+        <Aside></Aside>
         <div className="content-wrapper content-body">
             <div className='row'>
             <button className='col btn btn-primary btn-lg'   onClick={() => {handleCreate()}}>
@@ -189,6 +195,8 @@ export const Guard = () => {
             >
             </Modal>
         </div>
+        <Footer></Footer>
+        </>
 
 
     )

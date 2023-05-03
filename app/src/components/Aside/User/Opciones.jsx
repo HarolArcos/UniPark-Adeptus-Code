@@ -6,7 +6,7 @@ let bdopcion = require("./Opcions.json").opcionesuser;
 let primarylist = bdopcion.filter((padres) => padres.padre === "");
 
 export default function Opcions() {
-  const { data, loading, error } = useFetch(
+  const { loading, error } = useFetch(  //data removed inside {data,}
     "https://jsonplaceholder.typicode.com/posts"
   );
 
