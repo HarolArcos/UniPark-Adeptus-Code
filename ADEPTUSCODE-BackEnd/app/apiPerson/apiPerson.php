@@ -205,9 +205,9 @@
         $responseEdit = $_person->editPersonDb($idPerson,$typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
 
         if ( $responseEdit) {
-            $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambios fallidos"));
         }
 
         $timeProcess = microtime(true)-$startTime;
@@ -274,19 +274,19 @@
         $_log = new log($options);
        
         $_person = new person($_db);
-        $responseInsert = $_person->listPersonActiveDb();
+        $responseList = $_person->listPersonActiveDb();
 
-        if ( $responseInsert) {
-            $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+        if ( $responseList) {
             $mensaje = "Se listo correctamente a las personas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan personas"));
             $mensaje = "No se pudo listara a las personas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
+            return $response;
         }
         
-        return $response;
+        return $responseList;
     }
     
     function validateArg($arg){

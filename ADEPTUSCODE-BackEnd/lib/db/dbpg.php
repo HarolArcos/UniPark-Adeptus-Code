@@ -158,7 +158,7 @@ class dataBasePG{
             $this->nameCols = $this->field_name($res);
             $result = pg_fetch_all($res); 
             pg_free_result($res);
-            echo json_encode($result);
+            //echo json_encode($result);
             return $result;
         } else {
             $mensaje ="[$tSql] [" . $this->getLastError() ."]";
