@@ -100,7 +100,7 @@ class vehicle {
 
     public function insertVehicleDb($idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle){
         $response = false;
-        $sql =  "INSERT INTO persona(persona_id, tabla_estado, vehiculo_placa, vehiculo_modelo, vehiculo_color) VALUES ('$idPerson','$statusVehicle' , '$plateVehicle' , '$modelVehicle' , '$colorVehicle')";
+        $sql =  "INSERT INTO vehiculo(persona_id, tabla_estado, vehiculo_placa, vehiculo_modelo, vehiculo_color) VALUES ('$idPerson','$statusVehicle' , '$plateVehicle' , '$modelVehicle' , '$colorVehicle')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -172,13 +172,13 @@ class vehicle {
         $sql =  "UPDATE vehiculo SET tabla_estado = $statusVehicle WHERE vehiculo_id = $idVehicle";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>array( "idPerson" => $idVehicle,"persona_estado" => $statusVehicle),
+            $arrLog = array("input"=>array( "idPerson" => $idVehicle,"tabla_estado" => $statusVehicle),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idPerson" => $idVehicle,"persona_estado" => $statusVehicle),
+            $arrLog = array("input"=>array( "idPerson" => $idVehicle,"tabla_estado" => $statusVehicle),
                             "output"=>$response,
                             "sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
@@ -188,7 +188,7 @@ class vehicle {
 
     public function listVehicleActiveDb(){
         $response = false;
-        $sql =  "SELECT * FROM vehicle";
+        $sql =  "SELECT * FROM vehiculo";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
@@ -210,7 +210,7 @@ class vehicle {
     private function mapVehicle($rs){
         $this->idVehicle = $rs['vehiculo_id'];
         $this->idPerson = $rs['persona_id'];
-        $this->statusVehicle = $rs['vehiculo_estado'];
+        $this->statusVehicle = $rs['tabla_estado'];
         $this->plateVehicle = $rs['vehiculo_placa'];
         $this->modelVehicle = $rs['vehiculo_modelo'];
         $this->colorVehicle = $rs['vehiculo_color'];

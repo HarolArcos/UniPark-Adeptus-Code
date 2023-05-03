@@ -225,7 +225,7 @@
         return $response;
     }
 
-    function listPerson(){
+    function listVehicle(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);
         $_log = new log($options);

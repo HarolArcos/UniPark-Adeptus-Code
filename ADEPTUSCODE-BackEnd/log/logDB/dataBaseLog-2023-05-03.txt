@@ -1,0 +1,14 @@
+2023-05-03 17:25:49	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-03 17:25:49	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-03 17:25:49	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-03 17:29:35	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-03 17:29:35	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-03 17:30:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-03 17:30:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-03 17:30:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-03 17:32:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-03 17:32:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-03 17:32:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-03 17:34:57	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-03 17:34:57	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-03 17:34:57	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
