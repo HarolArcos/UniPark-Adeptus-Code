@@ -3,12 +3,18 @@
     {
         "id": 2,
         "padre": 1,
+<<<<<<< HEAD
         "orden" :2,
         "componente":"<li key=2 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
       
       
     }
     ,
+=======
+         "orden" :2,
+         "componente":"<li key=2 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
+    },
+>>>>>>> Front-End
     {
         "id": 3,
         "padre": "",
@@ -33,25 +39,32 @@
     {
         "id": 6,
         "padre": 1,
-        "orden" :4,
-        "componente":"<li  key=13 class='nav-item'><a href='/reasignarSitio' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Reasignar Sitio</p></a></li>"
+         "orden" :4,
+         "componente":"<li  key=13 class='nav-item'><a href='/reasignarSitio' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Reasignar Sitio</p></a></li>"
+     },
+    {
+      "id": 2,
+      "padre": 3,
+      "orden": 2,
+      "componente": "<li key=2 class='nav-item'><Link to='/main' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Menu</p></Link></li>"
     },
     {
       "id": 3,
       "padre": "",
-      "orden" :2,
-      "componente":"<li key=3 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Clientes<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>" 
-  },
-  {
-    "id": 10,
-    "padre": 2,
-    "orden" :1,
-    "componente":"<li  key=13 class='nav-item'><a href='/clientes' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Lista Clientes</p></a></li>"
-  },{
-    "id": 11,
-    "padre": 2,
-    "orden" :2,
-    "componente":"<li  key=13 class='nav-item'><a href='/guard' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Lista Guardias</p></a></li>"
-  }
+      "orden": 1,
+      "componente": "<li key=3 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+    },
+    {
+      "id": 4,
+      "padre": "",
+      "orden": 3,
+      "componente": "<li  key=4 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones Cliente<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+    },
+    {
+      "id": 7,
+      "padre": 3,
+      "orden": 1,
+      "componente": "<li  key=7 class='nav-item'><a to='hola' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Datos</p></a></li>"
+    }
   ]
 }
