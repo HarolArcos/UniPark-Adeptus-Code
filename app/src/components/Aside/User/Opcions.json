@@ -3,9 +3,18 @@
     {
         "id": 2,
         "padre": 1,
+<<<<<<< HEAD
+        "orden" :2,
+        "componente":"<li key=2 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
+      
+      
+    }
+    ,
+=======
          "orden" :2,
          "componente":"<li key=2 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
     },
+>>>>>>> Front-End
     {
         "id": 3,
         "padre": "",
@@ -28,7 +37,7 @@
     }
     ,
     {
-        "id": 7,
+        "id": 6,
         "padre": 1,
          "orden" :4,
          "componente":"<li  key=13 class='nav-item'><a href='/reasignarSitio' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Reasignar Sitio</p></a></li>"

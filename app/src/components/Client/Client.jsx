@@ -1,41 +1,35 @@
 import React ,{useState}from 'react';
 import Modal from '../Modal/Modal';
-import Formulario from './AddFormClient';
+import Formulario from './FormClient';
 import {Table} from 'react-bootstrap';
-
+import "./Client.css"
+import Header from '../Header/Header';
+import Aside from '../Aside/Aside';
+import Footer from '../Footer/Footer';
+// import  "../../datos.json" ;
 
 export const Client = () => {
-
-    
-    
-    console.log('paso por aca');
-    //Abrir o mostrar Modal
-    
-    
-    
+    // console.log(datos);
     const [clientes,setClientes] =  useState([
-        {id:2,nombre:'Robert',apellido: 'Soliz' , email:'robert@gmail.com' },
-        {id:1,nombre:'Maria',apellido: 'Ramirez' , email:'mari@gmail.com'},
-        {id:3,nombre:'Alex',apellido: 'Pardo' , email:'alex@gmail.com'}
+        {id:2,nombre:'Robert',apellido: 'Soliz' ,ci:547842,telefono:71462654,telegram:6761221,nickName: 'rob@', email:'robert@gmail.com' ,listCar:[{id:1,placa:'1844KGG',modelo:'2000',color:'turqueza'},{id:2,placa:'0564PPO',modelo:1999,color:'azul'}]},
+        {id:1,nombre:'Maria',apellido: 'Ramirez' ,ci:540042, email:'mari@gmail.com',listCar:[{id:8,placa:'2016KÑO',modelo:'2008',color:'negro'}]},
+        {id:3,nombre:'Alex',apellido: 'Pardo' ,ci:700842, email:'alex@gmail.com',listCar:[{id:3,placa:'0132KÑO',modelo:'1995',color:'rojo'}]}
     ]);
     
    
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
-    // const handleShowEdit = () =>setShowEdit(true);
-    // const handleCloseEdit = () =>setShowEdit(false);
      
     const [showCreate, setShowCreate] = useState(false);
-    // const handleShowCreate = () =>setShowCreate(true);
-    // const handleCloseCreate = () =>setShowCreate(false);
      
+    const [showView, setShowView] = useState(false);
     
     //----------------------Cliente para:-------------------------------
     //------Editar :
     const [clienteSeleccionado, setClienteSeleccionado] = useState(null);
     //------Crear :
-    const [clienteNuevo, setClienteNuevo] = useState(null);
+    const [clienteNuevo, setClienteNuevo] = useState();
 
 
     
@@ -50,13 +44,19 @@ export const Client = () => {
     //-----Create Modal
     const handleCreate = () => {
         setShowCreate(true);
-        
+    };
+
+    //-----View Modal
+    const handleView = (cliente) => {
+        setShowView(true);
+        setClienteSeleccionado(cliente);
     };
     
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
         setShowCreate(false);
+        setShowView(false);
         setClienteSeleccionado(null);
         setClienteNuevo(null);
     };
@@ -91,25 +91,26 @@ export const Client = () => {
     console.log(clientes);
 
     return (
-        <div className="content-wrapper ">
-            <button className='btn btn-primary btn-lg mr-1'   onClick={() => {handleCreate()}}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-                </svg>
-            </button>
-            <button className='btn btn-primary btn-lg mr-1'  >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-                </svg>
-            </button>
+        <>
+        <Header></Header>
+        <Aside></Aside>
+        <div className="content-wrapper content-body">
+            <div className='align-items-left'>
+                <button className='col btn btn-primary btn-lg'   onClick={() => {handleCreate()}}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                </button>
+           
+            </div>
                 
-                <Table striped bordered hover>
+                <Table striped bordered hover className='table'>
                     <thead>
                         <tr>
                         <th>Nombre</th>
-                        <th>Datos</th>
+                        <th>Datos Personales</th>
+                        <th>Datos Automovil(les)</th>
                         <th>Acciones</th>
                         </tr>
                     </thead>
@@ -125,7 +126,16 @@ export const Client = () => {
                             </ul>
                         </td>
                         <td>
-                        <button className='btn btn-primary btn-md mr-1'  >
+                            {item.listCar?.map(i =>(
+                            <ul >
+                              <li>{i.placa}</li>
+                              <li>{i.modelo}</li>
+                              <li>{i.color}</li>
+                            </ul>  
+                            ))}
+                        </td>
+                        <td>
+                        <button className='btn btn-primary btn-md mr-1' onClick={() => handleView(item)} >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                             <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
                             <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
@@ -156,8 +166,22 @@ export const Client = () => {
                 </Table>
             
             <Modal
+            mostrarModal={showView}
+            title = 'Detalle Cliente '
+            contend = {
+            <Formulario
+            asunto ='Guardar Cambios'
+            cliente= {clienteSeleccionado}
+            cancelar={handleCancelar}
+            soloLectura = {true}
+            ></Formulario>}
+            hide = {handleCancelar}
+            >
+            </Modal>
+
+            <Modal
             mostrarModal={showEdit}
-            title = 'Editar cliente neida'
+            title = 'Editar Cliente '
             contend = {
             <Formulario
             asunto ='Guardar Cambios'
@@ -175,7 +199,6 @@ export const Client = () => {
             title = 'Crear Nuevo Cliente'
             contend = {
             <Formulario
-            nuevoCliente= {clienteNuevo}
             asunto = "Guardar Cliente"
             cancelar={handleCancelar}
             añadirNuevo = {handleGuardarNuevo}
@@ -184,6 +207,9 @@ export const Client = () => {
             >
             </Modal>
         </div>
+
+        <Footer></Footer>
+        </>
 
 
     )
