@@ -1,0 +1,23 @@
+.content-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px;
+}
+
+.table{
+    max-width: 60vw;
+    margin: 1px;
+}
+
+.btn-lg{
+    margin: 5px;
+}
+
+.label{
+    text-align: left;
+}
+
+.error{
+    text-decoration: red;
+}

@@ -2,7 +2,7 @@ import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import { useState } from "react";
-import { Modal, ModalBody,Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import "./AssignSite.css";
 
 
@@ -15,11 +15,6 @@ export default function AssignSite() {
         { id:'04', sitio: 'SITD15', nombre: 'Luciana',   apellido:'Gutierrez Cortez',      tiempo: '02/03/23' },
         { id:'05', sitio: 'SITD16', nombre: 'Roberto',   apellido:'Lazarte Rosas',         tiempo: '24/06/23' }
     ];
-
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return(
         <>
@@ -49,18 +44,10 @@ export default function AssignSite() {
                     <option> 6 meses </option>
                     <option> 1 año </option>
                 </Form.Select>
-                <Button className="submitButton" variant="primary" type="submit" onClick={handleShow}>
+                <Button className="submitButton" variant="primary" type="submit">
                     Asignar
                 </Button>
             </Form>
-            <Modal show={show} onHide={handleClose} centered >
-                    <ModalBody className='modal-body' >
-                        <h1 className='forgot-password-modal'> El sitio a sido asginado con exito</h1>
-                        <Button className='modal-button' onClick={handleClose} >
-                            Aceptar
-                        </Button>
-                    </ModalBody>
-                </Modal>
         </div>
         <Footer></Footer>
         </>
