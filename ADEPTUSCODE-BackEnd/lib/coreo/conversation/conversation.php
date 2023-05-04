@@ -1,36 +1,34 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");  
-//Clase Creada 03/05/2023
+//Clase Creada 04/05/2023
 //by: Gonza Zeballos M.
-//Clase mapeada de la tabla vehiculo
+//Clase mapeada de la tabla conversacion
 
-class vehicle {
+class conversation {
 
     private $optionsLog;
     private $_db;
-    private $idVehicle,$idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle;
+    private $idConversation,$idPerson,$statusConversation,$issueConversation;
 
-    function __construct($_db,$idVehicle=0){
+    function __construct($_db,$idConversation=0){
         
         $this->_db=$_db;
-        if ($idVehicle!=0) {
-            $this->setVehicle($idVehicle);
+        if ($idConversation!=0) {
+            $this->setConversation($idConversation);
         }
     }
 
     function __destruct(){
         unset($this->_db);
-        unset($this->idVehicle);
+        unset($this->idConversation);
         unset($this->idPerson);
-        unset($this->statusVehicle);
-        unset($this->plateVehicle);
-        unset($this->modelVehicle);
-        unset($this->colorVehicle);
+        unset($this->statusConversation);
+        unset($this->issueConversation);
     }
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/vehicle",           
+            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/conversation",           
             'filename'       => $fileName,);
           $_log = new log($this->optionsLog);
           
@@ -68,68 +66,63 @@ class vehicle {
           }
     }
     
-    private function setVehicle($idVehicle){
+    private function setConversation($idConversation){
         $response = FALSE;
-        $dataVehicle = $this->findVehicleDb($idVehicle);
-        if($dataVehicle){
-            $this->mapVehicle($dataVehicle);
+        $dataConversation = $this->findConversationDb($idConversation);
+        if($dataConversation){
+            $this->mapConversation($dataConversation);
             $response = TRUE;
         }
-        $arrLog = array("input"=>$idVehicle,"output"=>$response);
+        $arrLog = array("input"=>$idConversation,"output"=>$response);
         $this->createLog('apiLog', print_r($arrLog, true)." Function: ".__FUNCTION__, "warning");
         return $response;
     }
     
-    private function findVehicleDb($idVehicle){
+    private function findConversationDb($idConversation){
         $response = false;
-        $sql =  "SELECT * FROM vehiculo ".
-                "where vehiculo_id = $idVehicle";
+        $sql =  "SELECT * FROM conversacion WHERE conversacion_id = $idConversation";//REV
                 
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>$idVehicle,"sql"=>$sql,"error"=>$this->_db->getLastError());
+            $arrLog = array("input"=>$idConversation,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
         } else {
             
             $response = $rs[0];
-            $arrLog = array("input"=>$idVehicle,"output"=>$response,"sql"=>$sql);
+            $arrLog = array("input"=>$idConversation,"output"=>$response,"sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }
 
-    public function insertVehicleDb($idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle){
+    public function insertConversationDb($idPerson,$statusConversation,$issueConversation){
         $response = false;
-        $sql =  "INSERT INTO vehiculo(persona_id, tabla_estado, vehiculo_placa, vehiculo_modelo, vehiculo_color) VALUES ('$idPerson','$statusVehicle' , '$plateVehicle' , '$modelVehicle' , '$colorVehicle')";
+        $sql =  "INSERT INTO conversacion(persona_id, conversacion_estado, conversacion_asunto) VALUES ('$idPerson','$statusConversation','$issueConversation')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "idPerson"=> $idPerson,
-                                            "statusVehicle"=> $statusVehicle,
-                                            "plateVehicle"=> $plateVehicle, 
-                                            "modelVehicle"=> $modelVehicle,
-                                            "colorVehicle"=> $colorVehicle
+                                            "statusConversation"=> $statusConversation,
+                                            "issueConversation"=> $issueConversation
                                         ),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
-            $this->createLog('dbLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");  
+            $this->createLog('dbLog', print_r($arrLog, true)." Function: ".__FUNCTION__, "error");  
         } else {
             $response = $rs;
             $arrLog = array("input"=>array( "idPerson"=> $idPerson,
-                                            "statusVehicle"=> $statusVehicle,
-                                            "plateVehicle"=> $plateVehicle, 
-                                            "modelVehicle"=> $modelVehicle,
-                                            "colorVehicle"=> $colorVehicle
+                                            "statusConversation"=> $statusConversation,
+                                            "issueConversation"=> $issueConversation
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
 
-            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+            $this->createLog('apiLog', print_r($arrLog, true)." Function: ".__FUNCTION__, "debug");
         }
         return $response;
     }
 
-    public function editVehicleDb($idVehicle, $idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle){
+    /*public function editVehicleDb($idVehicle, $idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle){
         $response = false;
         $sql =  "UPDATE vehiculo SET
         persona_id = '$idPerson',
@@ -166,19 +159,19 @@ class vehicle {
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
-    }
-    public function changeStateVehicleDb($idVehicle, $statusVehicle){
+    }*/
+    public function changeStateConversationDb($idConversation, $statusConversation){
         $response = false;
-        $sql =  "UPDATE vehiculo SET tabla_estado = $statusVehicle WHERE vehiculo_id = $idVehicle";
+        $sql =  "UPDATE conversacion SET conversacion_estado = $statusConversation WHERE vehiculo_id = $idConversation";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>array( "idPerson" => $idVehicle,"tabla_estado" => $statusVehicle),
+            $arrLog = array("input"=>array( "idConversacion" => $idConversation,"conversacion_estado" => $statusConversation),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idPerson" => $idVehicle,"tabla_estado" => $statusVehicle),
+            $arrLog = array("input"=>array( "idConversacion" => $idConversation,"conversacion_estado" => $statusConversation),
                             "output"=>$response,
                             "sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
@@ -186,59 +179,49 @@ class vehicle {
         return $response;
     }
 
-    public function listVehicleActiveDb(){
+    public function listConversation(){
         $response = false;
-        $sql =  "SELECT * FROM vehiculo";
+        $sql =  "SELECT * FROM conversacion";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array(
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
-            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+            $this->createLog('dbLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");  
         } else {
             $response = $rs;
             $arrLog = array(
                             "output"=>$response,
                             "sql"=>$sql);
-            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+            $this->createLog('apiLog', print_r($arrLog, true)." Function: ".__FUNCTION__, "debug");
         }
         return $response;
     }
 
 	
-    private function mapVehicle($rs){
-        $this->idVehicle = $rs['vehiculo_id'];
+    private function mapConversation($rs){
+        $this->idConversation = $rs['conversacion_id'];
         $this->idPerson = $rs['persona_id'];
-        $this->statusVehicle = $rs['tabla_estado'];
-        $this->plateVehicle = $rs['vehiculo_placa'];
-        $this->modelVehicle = $rs['vehiculo_modelo'];
-        $this->colorVehicle = $rs['vehiculo_color'];
+        $this->statusConversation = $rs['conversacion_estado'];
+        $this->issueConversation = $rs['conversacion_asunto'];
     }
 
 
-    public function getVehicleId(){
-        return $this->idVehicle;
+    public function getConversationId(){
+        return $this->idConversation;
     }
 
     public function getPersonId(){
         return $this->idPerson;
     }
 
-    public function getStatusVehicle(){
-        return $this->statusVehicle;
+    public function getStatusConversation(){
+        return $this->statusConversation;
     }
     
-    public function getPlateVehicle(){
-        return $this->plateVehicle;
-    }
-    
-    public function getModelVehicle(){
-        return $this->modelVehicle;
-    } 
-    
-    public function getColorVehicle(){
-        return $this->colorVehicle;
+    public function getIssueConversation(){
+        return $this->issueConversation;
     }
 
 }
