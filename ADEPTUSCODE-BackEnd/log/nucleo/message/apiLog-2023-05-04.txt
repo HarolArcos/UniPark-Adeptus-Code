@@ -1,0 +1,78 @@
+2023-05-04 23:01:47	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idConversation] => 1
+            [authorMessage] => Cómo sabemos quién vrgs es el autor
+            [textMessage] => weonnnn hay partido el sabado
+            [dateMessage] => 2023-05-04 21:32:05
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO mensaje(conversacion_id, mensaje_autor, mensaje_texto, mensaje_fecha) VALUES ('1','Cómo sabemos quién vrgs es el autor','weonnnn hay partido el sabado','2023-05-04 21:32:05')
+)
+ Function error: insertMessageDb	100 DEBUG
+2023-05-04 23:04:29	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idConversation] => 1
+            [authorMessage] => Cómo sabemos quién vrgs es el autor
+            [textMessage] => dónde?!
+            [dateMessage] => 2023-05-04 21:52:05
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO mensaje(conversacion_id, mensaje_autor, mensaje_texto, mensaje_fecha) VALUES ('1','Cómo sabemos quién vrgs es el autor','dónde?!','2023-05-04 21:52:05')
+)
+ Function error: insertMessageDb	100 DEBUG
+2023-05-04 23:05:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idConversation] => 1
+            [authorMessage] => Cómo sabemos quién vrgs es el autor
+            [textMessage] => en el stadium
+            [dateMessage] => 2023-05-04 21:52:05
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO mensaje(conversacion_id, mensaje_autor, mensaje_texto, mensaje_fecha) VALUES ('1','Cómo sabemos quién vrgs es el autor','en el stadium','2023-05-04 21:52:05')
+)
+ Function error: insertMessageDb	100 DEBUG
+2023-05-04 23:07:20	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [mensaje_id] => 1
+                    [conversacion_id] => 1
+                    [mensaje_autor] => Cómo sabemos quién vrgs es el autor
+                    [mensaje_texto] => weonnnn hay partido el sabado
+                    [mensaje_fecha] => 2023-05-04 21:32:05
+                )
+
+            [1] => Array
+                (
+                    [mensaje_id] => 2
+                    [conversacion_id] => 1
+                    [mensaje_autor] => Cómo sabemos quién vrgs es el autor
+                    [mensaje_texto] => dónde?!
+                    [mensaje_fecha] => 2023-05-04 21:52:05
+                )
+
+            [2] => Array
+                (
+                    [mensaje_id] => 3
+                    [conversacion_id] => 1
+                    [mensaje_autor] => Cómo sabemos quién vrgs es el autor
+                    [mensaje_texto] => en el stadium
+                    [mensaje_fecha] => 2023-05-04 21:52:05
+                )
+
+        )
+
+    [sql] => SELECT * FROM mensaje
+)
+ Function error: listMessageDb	100 DEBUG
