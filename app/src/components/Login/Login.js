@@ -20,12 +20,8 @@ export default function Login() {
     let { data, loading,  } = useFetch(
         "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
       )
-      
-
-
       if(!loading) 
       {
-        //localStorage.removeItem("use");
         
         function ClikComprovar() {
             seterrorlog(comprovar(nickname,contraseña,data,setUserglobal))
@@ -35,10 +31,14 @@ export default function Login() {
             }  
           }
           
-
-
+          
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    
+
+    
 
     return (
         <div className="login" >

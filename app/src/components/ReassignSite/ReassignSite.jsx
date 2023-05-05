@@ -2,10 +2,17 @@ import React from "react";
 import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
-import {Button, Form,  Table } from "react-bootstrap";
+import { Modal, ModalBody , Button, Form,  Table } from "react-bootstrap";
 import "./ReassignSite.css";
+import { useState } from "react";
 
 export default function ReassignSite() {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     const datos = [
         { id:'01', sitio: 'SITD13', nombre: 'Carlos',    apellido:'Campos Gutierrez',      tiempo: '02/06/23' },
@@ -38,13 +45,20 @@ export default function ReassignSite() {
                                         <option> {dato.sitio} </option>
                                     ))}
                                     </Form.Select>
-                                    <Button className="submitBtn" >Reasignar</Button>
+                                    <Button className="submitBtn" onClick={handleShow} >Reasignar</Button>
                                 </td>
                             </tr>
                         ) )}
                 </tbody>
             </Table>
-        
+            <Modal show={show} onHide={handleClose} centered >
+                    <ModalBody className='modal-body' >
+                        <h1 className='forgot-password-modal'> El sitio a sido reasignado exitosamente </h1>
+                        <Button className='modal-button' onClick={handleClose} >
+                            Aceptar
+                        </Button>
+                    </ModalBody>
+                </Modal>
         </div>
         <Footer></Footer>
         </>
