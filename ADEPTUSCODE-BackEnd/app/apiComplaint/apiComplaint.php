@@ -23,25 +23,25 @@
         }
 
         $errorlist=array();
-        $idPerson = "";
         $complaintStatus = "";
+        $idPerson = "";
         $complaintIssue =  "";
         $complaintText =  "";
         $complaintDate =  "";
         $complaintSolution = "";
 
 
-        if(isset($arg->idPerson)){
-            $idPerson =  $arg->idPerson;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro idPerson");
-        }
         if(isset($arg->complaintStatus)){
             $complaintStatus =  $arg->complaintStatus;
         }
         else{
             array_push($errorlist,"Error: falta parametro complaintStatus");
+        }
+        if(isset($arg->idPerson)){
+            $idPerson =  $arg->idPerson;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro idPerson");
         }
         if(isset($arg->complaintIssue)){
                 $complaintIssue =  $arg->complaintIssue;
@@ -55,26 +55,26 @@
         else{
             array_push($errorlist,"Error: falta parametro complaintText");
         }
-        if(isset($arg->complaintDate)){
+        /*if(isset($arg->complaintDate)){
             $complaintDate =  $arg->complaintDate;
         }
         else{
             array_push($errorlist,"Error: falta parametro complaintDate");
-        }
+        }*/
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
 
         
-        $idPerson = $arg->idPerson;
         $complaintStatus = $arg->complaintStatus;
+        $idPerson = $arg->idPerson;
         $complaintIssue =  $arg->complaintIssue;
         $complaintText =  $arg->complaintText;
         $complaintDate =  $arg->complaintDate;
         $complaintSolution = $arg->complaintSolution;
 
         $_complaint = new complaint($_db);
-        $responseInsert = $_complaint->insertComplaintDb($idPerson,$complaintStatus,$complaintIssue,$complaintText,$complaintDate, $complaintSolution);
+        $responseInsert = $_complaint->insertComplaintDb($complaintStatus, $idPerson,$complaintIssue,$complaintText,$complaintDate, $complaintSolution);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));

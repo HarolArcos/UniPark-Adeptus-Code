@@ -162,7 +162,7 @@ class conversation {
     }*/
     public function changeStateConversationDb($idConversation, $statusConversation){
         $response = false;
-        $sql =  "UPDATE conversacion SET conversacion_estado = $statusConversation WHERE vehiculo_id = $idConversation";
+        $sql =  "UPDATE conversacion SET conversacion_estado = $statusConversation WHERE conservacion_id = $idConversation";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idConversacion" => $idConversation,"conversacion_estado" => $statusConversation),

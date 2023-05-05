@@ -99,9 +99,9 @@ class complaint {
         return $response;
     }
 
-    public function insertComplaintDb($idPerson,$complaintStatus,$complaintIssue,$complaintText,$complaintDate, $complaintSolution){
+    public function insertComplaintDb($complaintStatus,$idPerson,$complaintIssue,$complaintText,$complaintDate, $complaintSolution){
         $response = false;
-        $sql =  "INSERT INTO reclamo(persona_id, reclamo_estado, reclamo_asunto, reclamo_texto, reclamo_fecha, reclamo_solucion) VALUES ('$idPerson','$complaintStatus','$complaintIssue','$complaintText','$complaintDate', '$complaintSolution')";
+        $sql =  "INSERT INTO reclamo(reclamo_estado, persona_id, reclamo_asunto, reclamo_texto, reclamo_fecha, reclamo_solucion) VALUES ('$complaintStatus','$idPerson','$complaintIssue','$complaintText','$complaintDate', '$complaintSolution')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -175,13 +175,13 @@ class complaint {
         $sql =  "UPDATE reclamo SET reclamo_estado = $complaintStatus WHERE reclamo_id = $idComplaint";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>array( "idComplaint" => $idComplaint,"tabla_estado" => $complaintStatus),
+            $arrLog = array("input"=>array( "idComplaint" => $idComplaint,"reclamo_estado" => $complaintStatus),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idComplaint" => $idComplaint,"tabla_estado" => $complaintStatus),
+            $arrLog = array("input"=>array( "idComplaint" => $idComplaint,"reclamo_estado" => $complaintStatus),
                             "output"=>$response,
                             "sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");

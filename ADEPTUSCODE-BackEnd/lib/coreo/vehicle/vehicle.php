@@ -100,7 +100,7 @@ class vehicle {
 
     public function insertVehicleDb($idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle){
         $response = false;
-        $sql =  "INSERT INTO vehiculo(persona_id, tabla_estado, vehiculo_placa, vehiculo_modelo, vehiculo_color) VALUES ('$idPerson','$statusVehicle' , '$plateVehicle' , '$modelVehicle' , '$colorVehicle')";
+        $sql =  "INSERT INTO vehiculo(persona_id, vehiculo_estado, vehiculo_placa, vehiculo_modelo, vehiculo_color) VALUES ('$idPerson','$statusVehicle' , '$plateVehicle' , '$modelVehicle' , '$colorVehicle')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -133,7 +133,7 @@ class vehicle {
         $response = false;
         $sql =  "UPDATE vehiculo SET
         persona_id = '$idPerson',
-        tabla_estado ='$statusVehicle',
+        vehiculo_estado ='$statusVehicle',
         vehiculo_placa = '$plateVehicle', 
         vehiculo_modelo = '$modelVehicle', 
         vehiculo_color = '$colorVehicle'
@@ -169,7 +169,7 @@ class vehicle {
     }
     public function changeStateVehicleDb($idVehicle, $statusVehicle){
         $response = false;
-        $sql =  "UPDATE vehiculo SET tabla_estado = $statusVehicle WHERE vehiculo_id = $idVehicle";
+        $sql =  "UPDATE vehiculo SET vehiculo_estado = $statusVehicle WHERE vehiculo_id = $idVehicle";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idPerson" => $idVehicle,"tabla_estado" => $statusVehicle),
@@ -210,7 +210,7 @@ class vehicle {
     private function mapVehicle($rs){
         $this->idVehicle = $rs['vehiculo_id'];
         $this->idPerson = $rs['persona_id'];
-        $this->statusVehicle = $rs['tabla_estado'];
+        $this->statusVehicle = $rs['vehiculo_estado'];
         $this->plateVehicle = $rs['vehiculo_placa'];
         $this->modelVehicle = $rs['vehiculo_modelo'];
         $this->colorVehicle = $rs['vehiculo_color'];

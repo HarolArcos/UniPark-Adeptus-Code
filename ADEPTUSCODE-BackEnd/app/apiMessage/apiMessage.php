@@ -7,7 +7,7 @@
     $server->Register("insertMessage");
     $server->Register("listMessage");
     //$server->Register("editVehicle");
-    $server->Register("changeStateMessage");
+    //$server->Register("changeStateMessage");
     $server->start();
 
     function insertMessage($arg){
@@ -25,7 +25,6 @@
 
         $errorlist=array();
         $idConversation = "";
-        $statusMessage = "";
         $authorMessage =  "";
         $textMessage =  "";
         $dateMessage =  "";
@@ -36,12 +35,6 @@
         }
         else{
             array_push($errorlist,"Error: falta parametro idConversation");
-        }
-        if(isset($arg->statusMessage)){
-            $statusMessage =  $arg->statusMessage;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro statusMessage");
         }
         if(isset($arg->authorMessage)){
                 $authorMessage =  $arg->authorMessage;
@@ -66,13 +59,12 @@
         }
 
         $idConversation = $arg->idConversation;
-        $statusMessage = $arg->statusMessage;
         $authorMessage =  $arg->authorMessage;
         $textMessage =  $arg->textMessage;
         $dateMessage =  $arg->dateMessage;
 
         $_message = new message($_db);
-        $responseInsert = $_message->insertMessageDb($idConversation,$statusMessage,$authorMessage,$textMessage,$dateMessage);
+        $responseInsert = $_message->insertMessageDb($idConversation,$authorMessage,$textMessage,$dateMessage);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
@@ -172,7 +164,7 @@
         return $response;
     }*/
 
-    function changeStateMessage($arg){
+    /*function changeStateMessage($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
@@ -221,7 +213,7 @@
         $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
         $_log->notice($mensaje);
         return $response;
-    }
+    }*/
 
     function listMessage(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);

@@ -8,7 +8,7 @@ class message {
 
     private $optionsLog;
     private $_db;
-    private $idMessage,$idConversation,$statusMessage,$authorMessage,$textMessage,$dateMessage;
+    private $idMessage,$idConversation,$authorMessage,$textMessage,$dateMessage;
 
     function __construct($_db,$idMessage=0){
         
@@ -22,7 +22,6 @@ class message {
         unset($this->_db);
         unset($this->idMessage);
         unset($this->idConversation);
-        unset($this->statusMessage);
         unset($this->authorMessage);
         unset($this->textMessage);
         unset($this->dateMessage);
@@ -98,14 +97,13 @@ class message {
         return $response;
     }
 
-    public function insertMessageDb($idConversation,$statusMessage,$authorMessage,$textMessage,$dateMessage){
+    public function insertMessageDb($idConversation,$authorMessage,$textMessage,$dateMessage){
         $response = false;
-        $sql =  "INSERT INTO mensaje(conversacion_id, mensaje_estado, mensaje_autor, mensaje_texto, mensaje_fecha) VALUES ('$idConversation','$statusMessage','$authorMessage','$textMessage','$dateMessage')";
+        $sql =  "INSERT INTO mensaje(conversacion_id, mensaje_autor, mensaje_texto, mensaje_fecha) VALUES ('$idConversation','$authorMessage','$textMessage','$dateMessage')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "idConversation"=> $idConversation,
-                                            "statusMessage"=> $statusMessage,
                                             "authorMessage"=> $authorMessage, 
                                             "textMessage"=> $textMessage,
                                             "dateMessage"=> $dateMessage
@@ -116,7 +114,6 @@ class message {
         } else {
             $response = $rs;
             $arrLog = array("input"=>array( "idConversation"=> $idConversation,
-                                            "statusMessage"=> $statusMessage,
                                             "authorMessage"=> $authorMessage, 
                                             "textMessage"=> $textMessage,
                                             "dateMessage"=> $dateMessage
@@ -167,7 +164,7 @@ class message {
         }
         return $response;
     }*/
-    public function changeStateMessageDb($idMessage, $statusMessage){
+    /*public function changeStateMessageDb($idMessage, $statusMessage){
         $response = false;
         $sql =  "UPDATE mensaje SET mensaje_estado = $statusMessage WHERE mensaje_id = $idMessage";
         $rs = $this->_db->query($sql);
@@ -184,7 +181,7 @@ class message {
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
-    }
+    }*/
 
     public function listMessageDb(){
         $response = false;
@@ -210,7 +207,6 @@ class message {
     private function mapMessage($rs){
         $this->idMessage = $rs['mensaje_id'];
         $this->idConversation = $rs['conversacion_id'];
-        $this->statusMessage = $rs['mensaje_estado'];
         $this->authorMessage = $rs['mensaje_autor'];
         $this->textMessage = $rs['mensaje_texto'];
         $this->dateMessage = $rs['mensaje_fecha'];
@@ -223,10 +219,6 @@ class message {
 
     public function getConversationId(){
         return $this->idConversation;
-    }
-
-    public function getStatusMessage(){
-        return $this->statusMessage;
     }
     
     public function getAuthorMessage(){
