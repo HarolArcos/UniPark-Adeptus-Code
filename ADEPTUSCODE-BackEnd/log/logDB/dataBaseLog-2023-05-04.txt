@@ -1,0 +1,43 @@
+2023-05-04 17:50:06	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-04 17:50:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-04 17:50:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 17:50:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO referencia(referencia_nombre_tabla,referencia_nombre_campo,referencia_descripcion,referencia_valor,referencia_estado)
+         VALUES ('vehiculo', 'tipo_de_vehiculo', 'Tipo de Vehiculo', 'Auto', '1')] [ERROR:  no existe la columna «referencia_estado» en la relación «referencia»
+LINE 1: ...bre_campo,referencia_descripcion,referencia_valor,referencia...
+                                                             ^] Function: setQueryParameters	500 ERROR
+2023-05-04 17:51:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-04 17:51:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 17:51:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO referencia(referencia_nombre_tabla,referencia_nombre_campo,referencia_descripcion,referencia_valor,referencia_estado)
+         VALUES ('vehiculo', 'tipo_de_vehiculo', 'Tipo de Vehiculo', 'Auto', '1')] [ERROR:  no existe la columna «referencia_estado» en la relación «referencia»
+LINE 1: ...bre_campo,referencia_descripcion,referencia_valor,referencia...
+                                                             ^] Function: setQueryParameters	500 ERROR
+2023-05-04 17:52:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-04 17:52:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 17:52:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO referencia(referencia_nombre_tabla,referencia_nombre_campo,referencia_descripcion,referencia_valor,referencia_estado)
+         VALUES ('vehiculo', 'tipo_de_vehiculo', 'Tipo de Vehiculo', 'Auto', '1')] [ERROR:  no existe la columna «referencia_estado» en la relación «referencia»
+LINE 1: ...bre_campo,referencia_descripcion,referencia_valor,referencia...
+                                                             ^] Function: setQueryParameters	500 ERROR
+2023-05-04 18:42:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 18:42:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-04 18:54:25	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 18:54:56	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 18:54:56	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-04 20:04:14	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:05:16	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:09:26	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:11:53	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:21:08	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:21:08	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-04 20:22:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:22:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-04 20:25:04	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:25:04	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-04 20:28:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:28:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-04 20:29:41	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:29:41	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-04 20:36:14	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:37:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:37:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-04 20:38:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-04 20:38:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO

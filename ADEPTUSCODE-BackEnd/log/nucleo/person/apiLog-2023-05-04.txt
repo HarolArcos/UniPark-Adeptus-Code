@@ -1,0 +1,161 @@
+2023-05-04 18:42:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [tableNameReference] => vehiculo
+            [nameSpaceReference] => tipo_de_vehiculo
+            [descriptionReference] => Tipo de Vehiculo
+            [valueReference] => Auto
+            [statusReference] => 1
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO referencia(referencia_nombre_tabla,referencia_nombre_campo,referencia_descripcion,referencia_valor,referencia_estado)
+         VALUES ('vehiculo', 'tipo_de_vehiculo', 'Tipo de Vehiculo', 'Auto', '1')
+)
+ Function error: insertReferenceDb	100 DEBUG
+2023-05-04 18:54:56	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idReference] => 1
+            [tableNameReference] => vehiculo
+            [nameSpaceReference] => tipo_de_vehiculo
+            [descriptionReference] => Tipo de Vehiculo
+            [valueReference] => Motocicleta
+            [statusReference] => 1
+        )
+
+    [output] => 1
+    [sql] => UPDATE referencia SET 
+        referencia_nombre_tabla = 'vehiculo',
+        referencia_nombre_campo = 'tipo_de_vehiculo',
+        referencia_descripcion = 'Tipo de Vehiculo',
+        referencia_valor = 'Motocicleta',
+        referencia_estado = '1'
+      WHERE referencia_id = 1
+)
+ Function error: editReferenceDb	100 DEBUG
+2023-05-04 20:21:08	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM referencia WHERE referencia_nombre_tabla = '' AND referencia_nombre_campo = ''
+)
+ Function error: listReferencesDb	100 DEBUG
+2023-05-04 20:22:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM referencia WHERE referencia_nombre_tabla = '' AND referencia_nombre_campo = ''
+)
+ Function error: listReferencesDb	100 DEBUG
+2023-05-04 20:25:04	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM referencia WHERE referencia_nombre_tabla = '' AND referencia_nombre_campo = ''
+)
+ Function error: listReferencesDb	100 DEBUG
+2023-05-04 20:28:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [referencia_id] => 1
+                    [referencia_nombre_tabla] => persona
+                    [referencia_nombre_campo] => persona_estado
+                    [referencia_descripcion] => persona_activa
+                    [referencia_valor] => 1
+                    [referencia_estado] => t
+                )
+
+            [1] => Array
+                (
+                    [referencia_id] => 2
+                    [referencia_nombre_tabla] => persona
+                    [referencia_nombre_campo] => persona_estado
+                    [referencia_descripcion] => persona_inactiva
+                    [referencia_valor] => 2
+                    [referencia_estado] => t
+                )
+
+        )
+
+    [sql] => SELECT * FROM referencia WHERE referencia_nombre_tabla = 'persona' AND referencia_nombre_campo = 'persona_estado'
+)
+ Function error: listReferencesDb	100 DEBUG
+2023-05-04 20:29:41	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [referencia_id] => 1
+                    [referencia_nombre_tabla] => persona
+                    [referencia_nombre_campo] => persona_estado
+                    [referencia_descripcion] => persona_activa
+                    [referencia_valor] => 1
+                    [referencia_estado] => t
+                )
+
+            [1] => Array
+                (
+                    [referencia_id] => 2
+                    [referencia_nombre_tabla] => persona
+                    [referencia_nombre_campo] => persona_estado
+                    [referencia_descripcion] => persona_inactiva
+                    [referencia_valor] => 2
+                    [referencia_estado] => t
+                )
+
+        )
+
+    [sql] => SELECT * FROM referencia WHERE referencia_nombre_tabla = 'persona' AND referencia_nombre_campo = 'persona_estado'
+)
+ Function error: listReferencesDb	100 DEBUG
+2023-05-04 20:37:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM referencia WHERE referencia_nombre_tabla = '' AND referencia_nombre_campo = ''
+)
+ Function error: listReferencesDb	100 DEBUG
+2023-05-04 20:38:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [referencia_id] => 1
+                    [referencia_nombre_tabla] => persona
+                    [referencia_nombre_campo] => persona_estado
+                    [referencia_descripcion] => persona_activa
+                    [referencia_valor] => 1
+                    [referencia_estado] => t
+                )
+
+            [1] => Array
+                (
+                    [referencia_id] => 2
+                    [referencia_nombre_tabla] => persona
+                    [referencia_nombre_campo] => persona_estado
+                    [referencia_descripcion] => persona_inactiva
+                    [referencia_valor] => 2
+                    [referencia_estado] => t
+                )
+
+        )
+
+    [sql] => SELECT * FROM referencia WHERE referencia_nombre_tabla = 'persona' AND referencia_nombre_campo = 'persona_estado'
+)
+ Function error: listReferencesDb	100 DEBUG
