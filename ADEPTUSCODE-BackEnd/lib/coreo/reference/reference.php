@@ -164,7 +164,7 @@ class reference {
 
     public function changeStateReferenceDb($idReference, $statusReference){
         $response = false;
-        $sql =  "UPDATE referencia SET referencia_estado = $statusReference WHERE referencia_id = $idReferencia";
+        $sql =  "UPDATE referencia SET referencia_estado = $statusReference WHERE referencia_id = $idReference";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idReference" => $idReference,"referencia_estado" => $statusReference),

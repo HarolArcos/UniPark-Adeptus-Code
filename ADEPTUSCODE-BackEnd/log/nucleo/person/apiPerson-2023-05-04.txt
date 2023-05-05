@@ -115,3 +115,51 @@
  Funcion: listReference	300 NOTICE
 2023-05-04 20:37:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a las personas - Funcion: listReferences	500 ERROR
 2023-05-04 20:38:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Se listo correctamente a las personas - Funcion: listReferences	200 INFO
+2023-05-04 21:00:55	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024547815322876
+    [input] => {"idReference":"","statusReference":""}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambio de estado fallida
+                )
+
+        )
+
+)
+ Funcion: changeStateReference	300 NOTICE
+2023-05-04 21:02:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024073123931885
+    [input] => {"idReference":"1","statusReference":"false"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambio de estado fallida
+                )
+
+        )
+
+)
+ Funcion: changeStateReference	300 NOTICE
+2023-05-04 21:03:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.026799917221069
+    [input] => {"statusReference":"false","idReference":"1"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambio de estado exitosa
+                )
+
+        )
+
+)
+ Funcion: changeStateReference	300 NOTICE

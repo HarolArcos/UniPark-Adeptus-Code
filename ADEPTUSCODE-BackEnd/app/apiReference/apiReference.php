@@ -5,11 +5,11 @@
     $HTTP_RAW_POST_DATA = (empty($HTTP_RAW_POST_DATA)) ? json_encode(array_merge($_REQUEST, $_FILES)) : $HTTP_RAW_POST_DATA;
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertReference");
+    $server->Register("editReference");
+    $server->Register("changeStateReference");
     $server->Register("listReferences");
     $server->Register("test");
     $server->Register("test2");
-    $server->Register("editReference");
-    //$server->Register("changeStatePerson");
     $server->start();
 
     function insertReference($arg){
