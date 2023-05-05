@@ -33,3 +33,37 @@ export default function Opcions() {
   });
 }
 
+//let secontlist = bdopcion.filter((hijo) => hijo.padre !== "");
+/*
+primarylist.sort(function (registera, registerb) {
+  if (registera.orden > registerb.orden) {
+    return 1;
+  }
+  if (registera.orden < registerb.orden) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;
+});
+secontlist.sort(function (registera, registerb) {
+  if (registera.padre > registerb.padre) {
+    return 1;
+  }
+  if (registera.padre < registerb.padre) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;
+});
+
+secontlist.sort(function (registera, registerb) {
+  if (registera.orden > registerb.orden && registera.padre === registerb.padre) {
+    return 1;
+  }
+  if (registera.orden < registerb.orden && registera.padre === registerb.padre) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;
+});
+*/
