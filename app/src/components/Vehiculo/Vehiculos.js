@@ -19,11 +19,9 @@ export default function Vehiculos(){
         
 
     
-      const handleSelectChange = (selectedOption) => {
-        console.log(`Option selected:`, selectedOption);
-      }
+      
 
-      return      <Select options={autosUser.map((auto)=> ({value: "hola" , label: auto.vehiculo_placa +" "+  auto.vehiculo_modelo}))} onChange={handleSelectChange} />
+      return      <Select placeholder="Seleccione automovil" options={autosUser.map((auto)=> ({value: auto.vehiculo_id , label: auto.vehiculo_placa +" "+  auto.vehiculo_modelo}))}  ></Select>
 
     }
 
