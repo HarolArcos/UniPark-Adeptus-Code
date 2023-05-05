@@ -1,0 +1,28 @@
+2023-05-04 21:00:55	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idReference] => 
+            [referencia_estado] => 
+        )
+
+    [sql] => UPDATE referencia SET referencia_estado =  WHERE referencia_id = 
+    [error] => ERROR:  error de sintaxis en o cerca de «WHERE»
+LINE 1: UPDATE referencia SET referencia_estado =  WHERE referencia_...
+                                                   ^
+)
+	500 ERROR
+2023-05-04 21:02:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idReference] => 1
+            [referencia_estado] => false
+        )
+
+    [sql] => UPDATE referencia SET referencia_estado = false WHERE referencia_id = 
+    [error] => ERROR:  error de sintaxis al final de la entrada
+LINE 1: ...erencia SET referencia_estado = false WHERE referencia_id = 
+                                                                       ^
+)
+	500 ERROR

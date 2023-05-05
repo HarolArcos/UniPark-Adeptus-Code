@@ -1,0 +1,165 @@
+2023-05-04 17:50:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.047646999359131
+    [input] => {"tableNameReference":"vehiculo","nameSpaceReference":"tipo_de_vehiculo","descriptionReference":"Tipo de Vehiculo","valueReference":"Auto","statusReference":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertReference	300 NOTICE
+2023-05-04 17:51:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024930000305176
+    [input] => {"tableNameReference":"vehiculo","nameSpaceReference":"tipo_de_vehiculo","descriptionReference":"Tipo de Vehiculo","valueReference":"Auto","statusReference":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertReference	300 NOTICE
+2023-05-04 17:52:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.023518800735474
+    [input] => {"tableNameReference":"vehiculo","nameSpaceReference":"tipo_de_vehiculo","descriptionReference":"Tipo de Vehiculo","valueReference":"Auto","statusReference":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertReference	300 NOTICE
+2023-05-04 18:42:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.028659105300903
+    [input] => {"tableNameReference":"vehiculo","nameSpaceReference":"tipo_de_vehiculo","descriptionReference":"Tipo de Vehiculo","valueReference":"Auto","statusReference":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertReference	300 NOTICE
+2023-05-04 18:54:56	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.025104999542236
+    [input] => {"idReference":"1","tableNameReference":"vehiculo","nameSpaceReference":"tipo_de_vehiculo","descriptionReference":"Tipo de Vehiculo","valueReference":"Motocicleta","statusReference":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios realizados con exito
+                )
+
+        )
+
+)
+ Funcion: editReference	300 NOTICE
+2023-05-04 20:21:08	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listar a las referencias - Funcion: listReference	500 ERROR
+2023-05-04 20:22:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listar a las referencias - Funcion: listReference	500 ERROR
+2023-05-04 20:25:04	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listar a las referencias - Funcion: listReference	500 ERROR
+2023-05-04 20:28:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.026624917984009
+    [input] => {"tableNameReference":"persona","nameSpaceReference":"persona_estado"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Listado exitoso
+                )
+
+        )
+
+)
+ Funcion: listReference	300 NOTICE
+2023-05-04 20:29:41	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.023918151855469
+    [input] => {"tableNameReference":"persona","nameSpaceReference":"persona_estado"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Listado exitoso
+                )
+
+        )
+
+)
+ Funcion: listReference	300 NOTICE
+2023-05-04 20:37:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a las personas - Funcion: listReferences	500 ERROR
+2023-05-04 20:38:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Se listo correctamente a las personas - Funcion: listReferences	200 INFO
+2023-05-04 21:00:55	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024547815322876
+    [input] => {"idReference":"","statusReference":""}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambio de estado fallida
+                )
+
+        )
+
+)
+ Funcion: changeStateReference	300 NOTICE
+2023-05-04 21:02:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024073123931885
+    [input] => {"idReference":"1","statusReference":"false"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambio de estado fallida
+                )
+
+        )
+
+)
+ Funcion: changeStateReference	300 NOTICE
+2023-05-04 21:03:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.026799917221069
+    [input] => {"statusReference":"false","idReference":"1"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambio de estado exitosa
+                )
+
+        )
+
+)
+ Funcion: changeStateReference	300 NOTICE

@@ -1,0 +1,54 @@
+2023-05-04 17:50:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [tableNameReference] => vehiculo
+            [nameSpaceReference] => tipo_de_vehiculo
+            [descriptionReference] => Tipo de Vehiculo
+            [valueReference] => Auto
+            [statusReference] => 1
+        )
+
+    [sql] => INSERT INTO referencia(referencia_nombre_tabla,referencia_nombre_campo,referencia_descripcion,referencia_valor,referencia_estado)
+         VALUES ('vehiculo', 'tipo_de_vehiculo', 'Tipo de Vehiculo', 'Auto', '1')
+    [error] => ERROR:  no existe la columna «referencia_estado» en la relación «referencia»
+LINE 1: ...bre_campo,referencia_descripcion,referencia_valor,referencia...
+                                                             ^
+)
+	500 ERROR
+2023-05-04 17:51:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [tableNameReference] => vehiculo
+            [nameSpaceReference] => tipo_de_vehiculo
+            [descriptionReference] => Tipo de Vehiculo
+            [valueReference] => Auto
+            [statusReference] => 1
+        )
+
+    [sql] => INSERT INTO referencia(referencia_nombre_tabla,referencia_nombre_campo,referencia_descripcion,referencia_valor,referencia_estado)
+         VALUES ('vehiculo', 'tipo_de_vehiculo', 'Tipo de Vehiculo', 'Auto', '1')
+    [error] => ERROR:  no existe la columna «referencia_estado» en la relación «referencia»
+LINE 1: ...bre_campo,referencia_descripcion,referencia_valor,referencia...
+                                                             ^
+)
+	500 ERROR
+2023-05-04 17:52:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [tableNameReference] => vehiculo
+            [nameSpaceReference] => tipo_de_vehiculo
+            [descriptionReference] => Tipo de Vehiculo
+            [valueReference] => Auto
+            [statusReference] => 1
+        )
+
+    [sql] => INSERT INTO referencia(referencia_nombre_tabla,referencia_nombre_campo,referencia_descripcion,referencia_valor,referencia_estado)
+         VALUES ('vehiculo', 'tipo_de_vehiculo', 'Tipo de Vehiculo', 'Auto', '1')
+    [error] => ERROR:  no existe la columna «referencia_estado» en la relación «referencia»
+LINE 1: ...bre_campo,referencia_descripcion,referencia_valor,referencia...
+                                                             ^
+)
+	500 ERROR
