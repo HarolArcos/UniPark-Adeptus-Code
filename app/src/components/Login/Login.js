@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import comprovar from './Comprueva'
-import { useFetch } from '../../hooks/HookFetch';
+import { useFetch } from '../../hooks/HookFetchListData';
 import './Login.css'
 //import { useHistory } from 'react-router-dom';
 import { useContext } from "react"
@@ -18,7 +18,7 @@ export default function Login() {
     const [errorlog, seterrorlog] = useState("")
     //const [direccion, setdireccion] = useState("")
     let { data, loading,  } = useFetch(
-        "http://localhost:3000/ususario.json"
+        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
       )
       
 
@@ -82,15 +82,8 @@ export default function Login() {
                                     </div>
                                 </div>
                                 <div className="rowx">
-                                    {/* <div className="col-4">
-                                        <div className="icheck-primary">
-                                            <input type="checkbox" id="remember" />
-                                            <label htmlFor="remember">
-                                                Recordarme
-                                            </label>
-                                        </div>
-                                    </div> */}
-                                    {/* /.col */}
+                                    
+                                   
                                     <div style={{ color: "red" }}>
                                     {errorlog!=="" ? <span>{errorlog}</span> : <span></span> }
                                     </div>
@@ -105,7 +98,7 @@ export default function Login() {
                                             </button>
                                         {/* </Link> */}
                                     </div>
-                                    {/* /.col */}
+                                    
                                 </div>
                            {/*  </form> */}
                             <p className="mb-1 forgot-password" onClick={handleShow} >
@@ -120,13 +113,13 @@ export default function Login() {
                         :
                         <div>
                             
-                            <div>
+                            <div className="card-header text-center h1">
                         
                             Bien Benido
     
     
                         </div>
-                        <div>
+                        <div className="card-header text-center h1">
                         
                         {userglobal.persona_nombre}
     
