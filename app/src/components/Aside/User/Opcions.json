@@ -3,18 +3,12 @@
     {
         "id": 2,
         "padre": 1,
-<<<<<<< HEAD
         "orden" :2,
         "componente":"<li key=2 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
       
       
     }
     ,
-=======
-         "orden" :2,
-         "componente":"<li key=2 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
-    },
->>>>>>> Front-End
     {
         "id": 3,
         "padre": "",
@@ -26,7 +20,7 @@
         "id": 7,
         "padre": 1,
         "orden" :1,
-        "componente":"<li  key=7 class='nav-item'><a href='/sitiosOcupados' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Ocupados</p></a></li>"
+        "componente":"<li  key=5 class='nav-item'><a href='/sitiosOcupados' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Ocupados</p></a></li>"
     }
     ,
     {
@@ -52,14 +46,9 @@
       "id": 3,
       "padre": "",
       "orden": 1,
-      "componente": "<li key=3 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+      "componente": "<li key=9 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
     },
-    {
-      "id": 4,
-      "padre": "",
-      "orden": 3,
-      "componente": "<li  key=4 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='nav-icon fas fa-tachometer-alt' ></i><p>Opciones Cliente<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
-    },
+    
     {
       "id": 7,
       "padre": 3,

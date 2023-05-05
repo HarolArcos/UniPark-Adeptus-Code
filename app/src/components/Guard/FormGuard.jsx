@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage } from 'formik';
 
@@ -34,7 +34,7 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
         errors.apellido ='El campo es requerido';
       }
       else if(!/^[A-Za-z]+$/i.test(values.apellido)){
-        errors.apellido ='Datos invalidos'
+        errors.apellido ='datos invalidos'
       }
 
       
@@ -42,37 +42,34 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
       if(!values.ci){
         errors.ci ='El campo es requerido';
       }
-      else if(!/^[0-9]+$/i.test(values.ci)){
-        errors.ci ='Datos invalidos'
+      else if(!/^[A-Za-z]+$/i.test(values.ci)){
+        errors.ci ='datos invalidos'
       }
 
       if(!values.telefono){
         errors.telefono ='El campo es requerido';
-      }else if(!/^[0-9]+$/i.test(values.telefono)){
-        errors.telefono ='Datos invalidos'
       }
 
       if(!values.telegram){
         errors.telegram ='El campo es requerido';
       }
-      else if(!/^[0-9]+$/i.test(values.telegram)){
-        errors.telegram ='Datos invalidos'
+      else if(!/^[A-Za-z]+$/i.test(values.telegram)){
+        errors.telegram ='datos invalidos'
       }
 
       if(!values.nickName){
         errors.nickName ='El campo es requerido';
       }
-      else if(!/^[a-zA-Z0-9@#&_-]+$/i.test(values.nickName)){
-        errors.nickName ='Datos invalidos, solo admite: A-Z, 0-9,@,#,&,_,-'
+      else if(!/^[A-Za-z]+$/i.test(values.nickName)){
+        errors.nickName ='datos invalidos'
       }
 
       if(!values.email){
         errors.email ='El campo es requerido';
       }
-      else if(!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(values.email)){
-        errors.email ='Datos invalidos'
+      else if(!/^[A-Za-z]+$/i.test(values.email)){
+        errors.email ='datos invalidos'
       }
-
 
       console.log(errors);
       return errors;
@@ -94,7 +91,7 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
       {({values,errors,handleBlur,handleChange,handleSubmit})=>(
         <Form  className="container">
       <div className="row ">
-        <div className="col-md-6 col-md-4 text-left">
+        <div className="col-md-4">
 
           <Form.Group controlId="nombre">
             <Form.Label className="text-left">Nombre</Form.Label>
@@ -107,7 +104,7 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="nombre" component={()=>(<div className="text-danger">{errors.nombre}</div>)}></ErrorMessage>
+          <ErrorMessage name="nombre" component={()=>(<div className="error">{errors.nombre}</div>)}></ErrorMessage>
           
           <Form.Group controlId="apellido">
             <Form.Label>Apellido</Form.Label>
@@ -117,9 +114,10 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
             onBlur={handleBlur}
             value={values.apellido}
             readOnly = {soloLectura}
+
             />
           </Form.Group>
-          <ErrorMessage name="apellido" component={()=>(<div className="text-danger">{errors.apellido}</div>)}></ErrorMessage>
+          <ErrorMessage name="apellido" component={()=>(<div className="error">{errors.apellido}</div>)}></ErrorMessage>
           
           <Form.Group controlId="nickName">
             <Form.Label>NickName</Form.Label>
@@ -131,7 +129,7 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="nickName" component={()=>(<div className="text-danger">{errors.nickName}</div>)}></ErrorMessage>
+          <ErrorMessage name="nickName" component={()=>(<div className="error">{errors.nickName}</div>)}></ErrorMessage>
           
           <Form.Group controlId="ci">
             <Form.Label>C.I.</Form.Label>
@@ -143,10 +141,7 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="ci" component={()=>(<div className="text-danger">{errors.ci}</div>)}></ErrorMessage>
-        </div>
-
-        <div className="col-md-6 col-md-4 text-left">
+          <ErrorMessage name="ci" component={()=>(<div className="error">{errors.ci}</div>)}></ErrorMessage>
 
           <Form.Group controlId="telefono">
             <Form.Label>Telefono</Form.Label>
@@ -158,7 +153,7 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="telefono" component={()=>(<div className="text-danger">{errors.telefono}</div>)}></ErrorMessage>
+          <ErrorMessage name="telefono" component={()=>(<div className="error">{errors.telefono}</div>)}></ErrorMessage>
 
           <Form.Group controlId="telegram">
             <Form.Label>Telegram</Form.Label>
@@ -170,7 +165,7 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="telegram" component={()=>(<div className="text-danger">{errors.telegram}</div>)}></ErrorMessage>
+          <ErrorMessage name="telegram" component={()=>(<div className="error">{errors.telegram}</div>)}></ErrorMessage>
 
 
           <Form.Group controlId="email">
@@ -183,7 +178,10 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
             readOnly = {soloLectura}
             />
           </Form.Group>
-          <ErrorMessage name="email" component={()=>(<div className="text-danger">{errors.email}</div>)}></ErrorMessage>
+          <ErrorMessage name="email" component={()=>(<div className="error">{errors.email}</div>)}></ErrorMessage>
+        </div>
+
+        <div className="col-md-6">
 
 
         </div>

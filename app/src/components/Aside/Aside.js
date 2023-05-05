@@ -5,8 +5,11 @@ import Opcions from "./User/Opciones.jsx";
 import { DataUser } from '../context/UserContext.jsx';
 
 
+
+
 export default function Aside() {
   const {userglobal} = useContext(DataUser)
+  
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
@@ -31,9 +34,9 @@ export default function Aside() {
         {/* Sidebar user panel (optional) */}
         <div className="user-panel mt-3 pb-3 mb-3 d-flex">
           <div className="info">
-            <a to="#" className="d-block">
-                 Harol Arcos {/* {userglobal.persona_nombre} {userglobal.persona_apellido} */}
-            </a>
+            <Link to="#" className="d-block">
+              {userglobal.persona_nombre} {userglobal.persona_apellido}
+            </Link>
           </div>
         </div>
         {/* SidebarSearch Form */}
