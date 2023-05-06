@@ -102,10 +102,8 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
              actualizarCliente(values);
            } else {
             
-               const myData = {typePerson : 2, namePerson : "Pepa", lastNamePerson : "Arcos", ciPerson : "5295189", phonePerson: "59167418809", telegramPerson : "", statusPerson : 1, nicknamePerson : "lolii", passwordPerson : "abc123"}; // datos a enviar en la primera llamada
+               const myData = {typePerson : 2, namePerson : "Dory", lastNamePerson : "Arcos", ciPerson : "5295189", phonePerson: "59167418809", telegramPerson : "", statusPerson : 1, nicknamePerson : "lolii", passwordPerson : "abc123"}; // datos a enviar en la primera llamada
               fetchData(myData);
-              console.log(await data);
-
               console.log(data);
           }
       console.log(values);

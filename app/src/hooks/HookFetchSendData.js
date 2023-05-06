@@ -16,7 +16,7 @@ export function useFetchSendData(url) {
           const datos = await response.json();
           
           setData(datos);
-          
+          console.log(data);
         }
        } catch (error) {
         setError(error);
