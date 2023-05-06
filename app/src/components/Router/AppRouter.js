@@ -17,6 +17,7 @@ import { Client } from "../Client/Client";
 import { Guard } from "../Guard/Guard";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 import Persons from "../Persons/Persons";
+import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 
 export const AppRouter = () => {
 
@@ -33,6 +34,7 @@ export const AppRouter = () => {
                     <Route path="/personas"             element={ <Persons/> } />
                     <Route path="/referencias"          element={ <ComboboxReferences/> }/>
                     <Route path='/guard'                element={ <Guard/>} />
+                    <Route path="/comboboxPerson"  element={ <ComboboxPerson/> } />
                 </Routes>
         </Router>
     )
