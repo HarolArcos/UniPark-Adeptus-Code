@@ -188,7 +188,17 @@ class vehicle {
 
     public function listVehicleActiveDb(){
         $response = false;
-        $sql =  "SELECT * FROM vehiculo";
+        //$sql =  "SELECT * FROM vehiculo";
+        /*$sql = "SELECT vehiculo.*, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS propietario
+        FROM vehiculo
+        JOIN persona ON vehiculo.persona_id = persona.persona_id";*/
+        $sql = "SELECT v.vehiculo_id,
+        CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS propietario,
+        r.referencia_valor AS vehiculo_estado, v.vehiculo_placa, v.vehiculo_modelo, v.vehiculo_color
+        FROM vehiculo v
+        JOIN persona p ON v.persona_id = p.persona_id
+        JOIN referencia r ON v.vehiculo_estado = r.referencia_id
+        ";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
