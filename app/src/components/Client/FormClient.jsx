@@ -2,11 +2,12 @@
 //import React, { useState, useEffect } from "react";
 import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage, FieldArray } from 'formik';
+import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
 const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,soloLectura = false}) => {
 
-  console.log(cliente,asunto,);
-
+  const {data,fetchData,error} = useFetchSendData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson');
+  
   return (
     <Formik
     initialValues={{
@@ -91,19 +92,24 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
         }
       });
       
-      console.log(errors);
+      // console.log(errors);
       return errors;
     }}
     
 
-    onSubmit={(values)=>{
+    onSubmit={async (values)=>{
            if (cliente) {
              actualizarCliente(values);
            } else {
-             añadirNuevo(values);
-           }
+            
+               const myData = {typePerson : 2, namePerson : "Pepa", lastNamePerson : "Arcos", ciPerson : "5295189", phonePerson: "59167418809", telegramPerson : "", statusPerson : 1, nicknamePerson : "lolii", passwordPerson : "abc123"}; // datos a enviar en la primera llamada
+              fetchData(myData);
+              console.log(await data);
+
+              console.log(data);
+          }
       console.log(values);
-           cancelar();
+          //  cancelar();
       }}
 
     >
