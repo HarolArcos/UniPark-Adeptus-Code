@@ -14,7 +14,7 @@ class reference {
         
         $this->_db=$_db;
         if ($idReference!=0) {
-            $this->setPerson($idReference);
+            $this->setReference($idReference);
         }
     }
 
@@ -200,7 +200,7 @@ class reference {
         return $response;
     }
 
-    private function mapReferencia($rs){
+    private function mapReference($rs){
         $this->idReference = $rs['referencia_id'];
         $this->tableNameReference = $rs['referencia_nombre_tabla'];
         $this->nameSpaceReference = $rs['referencia_nombre_campo'];
