@@ -1,0 +1,58 @@
+{
+  "opcionesuser": [
+    {
+        "id": 1,
+        "padre": "",
+        "orden": 1,
+        "componente": "<li key=1 class='nav-item menu-open'><a to='#' class='nav-link active'><p>Sitios<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+      },
+
+    {
+        "id": 2,
+        "padre": 1,
+        "orden" :2,
+        "componente":"<li key=2 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
+      
+      
+    }
+    ,
+    {
+        "id": 3,
+        "padre": 1,
+        "orden" :2,
+        "componente":"<li  key=5 class='nav-item'><a href='/sitiosOcupados' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Ocupados</p></a></li>"
+    }
+    ,
+    {
+        "id": 4,
+        "padre": 1,
+        "orden" :2,
+        "componente":"<li  key=4 class='nav-item'><a href='/asignarSitio' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Asignar Sitio</p></a></li>"
+    }
+    ,
+    {
+        "id": 5,
+        "padre": 1,
+        "orden" :2,
+        "componente":"<li  key=5 class='nav-item'><a href='/reasignarSitio' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Reasignar Sitio</p></a></li>"
+    },
+    {
+        "id": 6,
+        "padre": "",
+        "orden": 2,
+        "componente": "<li key=6 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='bi bi-person'></i><p>Adm Personas<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+    },
+    {
+      "id": 7,
+      "padre": 2,
+      "orden": 8,
+      "componente": "<li  key=7 class='nav-item'><a href='/personas' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Personas</p></a></li>"
+    },
+    {
+      "id": 8,
+      "padre": 2,
+      "orden": 9,
+      "componente": "<li  key=7 class='nav-item'><a href='/tipoPersonas' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Tipos de personas</p></a></li>"
+    }
+  ]
+}

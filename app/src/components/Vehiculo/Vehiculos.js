@@ -4,8 +4,6 @@ import { DataUser } from '../context/UserContext';
 import { useFetch } from '../../hooks/HookFetchListData';
 import { useContext } from "react"
 
-
-
 export default function Vehiculos(){
     const {userglobal} = useContext(DataUser)
     let { data, loading,  } = useFetch(

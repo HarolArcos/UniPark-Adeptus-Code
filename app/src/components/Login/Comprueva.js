@@ -8,7 +8,7 @@
 export default function Comprueva (usuario,contraseña,data,setUserglobal) {
     
     
-    
+    console.log(usuario,contraseña,data)
     
    
     let [user] = data.filter((us)=>us.persona_nickname===usuario)
