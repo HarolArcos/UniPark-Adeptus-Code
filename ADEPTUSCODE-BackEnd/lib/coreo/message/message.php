@@ -185,7 +185,12 @@ class message {
 
     public function listMessageDb(){
         $response = false;
-        $sql =  "SELECT * FROM mensaje";
+        //$sql =  "SELECT * FROM mensaje";
+        $sql = "SELECT m.*, c.conversacion_asunto, 
+        CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS autor_mensaje
+        FROM mensaje m 
+        JOIN persona p ON m.mensaje_autor = p.persona_id 
+        JOIN conversacion c ON m.conversacion_id = c.conversacion_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             

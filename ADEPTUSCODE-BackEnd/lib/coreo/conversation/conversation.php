@@ -181,7 +181,12 @@ class conversation {
 
     public function listConversation(){
         $response = false;
-        $sql =  "SELECT * FROM conversacion";
+        //$sql =  "SELECT * FROM conversacion";
+        $sql = "SELECT c.*, r.referencia_valor as estadoConversacion, 
+        CONCAT(p.persona_nombre, ' ', p.persona_apellido) as conversacion_persona
+        FROM conversacion c
+        JOIN persona p ON p.persona_id = c.persona_id
+        JOIN referencia r ON r.referencia_id = c.conversacion_estado";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             

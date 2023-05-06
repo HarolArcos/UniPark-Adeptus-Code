@@ -214,7 +214,14 @@ class person {
 
     public function listPersonActiveDb(){
         $response = false;
-        $sql =  "SELECT * FROM persona";
+        //$sql =  "SELECT * FROM persona";
+        $sql = "SELECT 
+        persona.*, 
+        referencia_personaTipo.referencia_valor AS personaTipo, 
+        referencia_personaEstado.referencia_valor AS personaEstado 
+        FROM persona 
+        INNER JOIN referencia AS referencia_personaTipo ON persona.persona_tipo = referencia_personaTipo.referencia_id 
+        INNER JOIN referencia AS referencia_personaEstado ON persona.persona_estado = referencia_personaEstado.referencia_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             

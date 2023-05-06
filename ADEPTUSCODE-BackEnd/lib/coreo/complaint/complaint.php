@@ -191,7 +191,11 @@ class complaint {
 
     public function listComplaintDb(){
         $response = false;
-        $sql =  "SELECT * FROM reclamo";
+        //$sql =  "SELECT * FROM reclamo";
+        $sql = "SELECT reclamo.*, referencia.referencia_valor AS reclamoEstado, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS reclamo_persona
+        FROM reclamo
+        JOIN persona ON reclamo.persona_id = persona.persona_id
+        JOIN referencia ON reclamo.reclamo_estado = referencia.referencia_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
