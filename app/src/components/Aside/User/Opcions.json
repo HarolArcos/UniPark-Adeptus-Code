@@ -4,7 +4,7 @@
         "id": 2,
         "padre": 1,
         "orden" :2,
-        "componente":"<li key=2 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
+        "componente":"<li key=22 class='nav-item'><a href='/sitiosDisponibles' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Sitios Disponibles</p></a></li>"
       
       
     }
