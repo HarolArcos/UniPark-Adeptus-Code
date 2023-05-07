@@ -5,7 +5,7 @@
         "padre": "",
         "orden": 1,
         "componente": "<li key=1 class='nav-item menu-open'><a to='#' class='nav-link active'><p>Sitios<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
-      },
+    },
 
     {
         "id": 2,
@@ -47,12 +47,25 @@
       "padre": 2,
       "orden": 8,
       "componente": "<li  key=7 class='nav-item'><a href='/personas' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Personas</p></a></li>"
-    },
+    }
+    ,
     {
       "id": 8,
       "padre": 2,
       "orden": 9,
-      "componente": "<li  key=7 class='nav-item'><a href='/tipoPersonas' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Tipos de personas</p></a></li>"
+      "componente": "<li  key=8 class='nav-item'><a href='/tipoPersonas' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Tipos de personas</p></a></li>"
+    },
+    {
+      "id": 9,
+      "padre": "",
+      "orden": 3,
+      "componente": "<li key=9 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='bi bi-person'></i><p>Vehículos<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
+    },
+    {
+      "id": 10,
+      "padre": 3,
+      "orden": 10,
+      "componente": "<li  key=10 class='nav-item'><a href='/vehiculo' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Vehículos</p></a></li>"
     }
   ]
 }
