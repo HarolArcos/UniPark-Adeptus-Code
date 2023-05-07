@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 export default function Comprueva (usuario,contraseña,data,setUserglobal) {
     
     

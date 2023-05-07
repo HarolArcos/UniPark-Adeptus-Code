@@ -2,14 +2,11 @@ import React, { useState } from 'react'
 import comprovar from './Comprueva'
 import { useFetch } from '../../hooks/HookFetchListData';
 import './Login.css'
-//import { useHistory } from 'react-router-dom';
 import { useContext } from "react"
 import { Button, Modal, ModalBody } from 'react-bootstrap'
 import { DataUser } from '../context/UserContext';
 import { Link } from 'react-router-dom';
-
-export default function Login() {
-    
+export default function Login() {    
     const {userglobal,setUserglobal} = useContext(DataUser)
     //const history = useHistory();
     const [show, setShow] = useState(false);
@@ -21,14 +18,11 @@ export default function Login() {
         "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
       )
       if(!loading) 
-      {
-        
+      {        
         function ClikComprovar() {
             seterrorlog(comprovar(nickname,contraseña,data,setUserglobal))
-
-              if(errorlog==="/main"){
-                //history.navigate('/main');
-            }  
+            console.log(errorlog)
+              
           }
           
           
