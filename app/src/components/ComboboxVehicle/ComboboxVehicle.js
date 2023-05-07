@@ -11,13 +11,8 @@ export default function Vehiculos(){
               )
       if(!loading) 
       {
-        
-        
-        let autosUser = data.filter((auto)=> auto.persona_id===userglobal.persona_id)
-        
 
-    
-      
+        let autosUser = data.filter((auto)=> auto.persona_id===userglobal.persona_id)
 
       return      <Select placeholder="Seleccione automovil" options={autosUser.map((auto)=> ({value: auto.vehiculo_id , label: auto.vehiculo_placa +" "+  auto.vehiculo_modelo}))}  ></Select>
 
