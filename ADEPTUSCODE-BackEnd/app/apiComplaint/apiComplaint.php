@@ -55,12 +55,19 @@
         else{
             array_push($errorlist,"Error: falta parametro complaintText");
         }
-        /*if(isset($arg->complaintDate)){
-            $complaintDate =  $arg->complaintDate;
+        if(isset($arg->complaintDate)){
+            $formato = 'Y-m-d H:i:s';
+            $fecha_valida = DateTime::createFromFormat($formato, $arg->complaintDate);
+
+            if ($fecha_valida !== false) {
+                $complaintDate =  $arg->complaintDate;
+            } else {
+                array_push($errorlist,"Error: complaintDate debe estar en el formato  Y-m-d H:i:s");
+            }
         }
         else{
             array_push($errorlist,"Error: falta parametro complaintDate");
-        }*/
+        }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }

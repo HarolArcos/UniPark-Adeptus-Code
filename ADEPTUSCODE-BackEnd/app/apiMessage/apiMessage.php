@@ -49,7 +49,14 @@
             array_push($errorlist,"Error: falta parametro textMessage");
         }
         if(isset($arg->dateMessage)){
-            $dateMessage =  $arg->dateMessage;
+            $formato = 'Y-m-d H:i:s';
+            $fecha_valida = DateTime::createFromFormat($formato, $arg->dateMessage);
+
+            if ($fecha_valida !== false) {
+                $dateMessage =  $arg->dateMessage;
+            } else {
+                array_push($errorlist,"Error: dateMessage debe estar en el formato  Y-m-d H:i:s");
+            }
         }
         else{
             array_push($errorlist,"Error: falta parametro dateMessage");
