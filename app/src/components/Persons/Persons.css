@@ -1,0 +1,24 @@
+/* .contenteSites-body{
+    display: flex;
+    align-items: center;
+    padding-top: 32px;
+} */
+
+.columnTittle>th{
+    text-align: center;
+}
+
+.bodyItems{
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 60vw;
+}
+
+.buttonSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 50vw;
+}
+
+
