@@ -7,6 +7,7 @@
     $server->Register("insertComplaint");
     $server->Register("listComplaint");
     $server->Register("changeStateComplaint");
+    $server->Register("changeSolutionComplaint");
     $server->start();
 
     function insertComplaint($arg){
@@ -232,6 +233,56 @@
         return $response;
     }
 
+    function changeSolutionComplaint($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $idComplaint =  "";
+        $complaintSolution = "";
+
+        if(isset($arg->idComplaint)){
+            $idComplaint =  $arg->idComplaint;
+        }else{
+            array_push($errorlist,"Error: falta parametro idComplaint");
+        }
+        if(isset($arg->complaintSolution)){
+            $complaintSolution =  $arg->complaintSolution;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro complaintSolution");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $idComplaint =  $arg->idComplaint;
+        $complaintSolution = $arg->complaintSolution;
+
+        $_complaint = new complaint($_db);
+        $responseDelete = $_complaint->changeSolutionDb($idComplaint, $complaintSolution);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de solucion exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de solucion fallida"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
     function listComplaint(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);

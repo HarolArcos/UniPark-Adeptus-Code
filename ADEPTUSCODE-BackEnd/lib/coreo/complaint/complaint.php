@@ -189,6 +189,25 @@ class complaint {
         return $response;
     }
 
+    public function changeSolutionDb($idComplaint, $complaintSolution){
+        $response = false;
+        $sql =  "UPDATE reclamo SET reclamo_solucion = '$complaintSolution' WHERE reclamo_id = $idComplaint";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( "idComplaint" => $idComplaint,"reclamo_estado" => $complaintSolution),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "idComplaint" => $idComplaint,"reclamo_estado" => $complaintSolution),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     public function listComplaintDb(){
         $response = false;
         //$sql =  "SELECT * FROM reclamo";
