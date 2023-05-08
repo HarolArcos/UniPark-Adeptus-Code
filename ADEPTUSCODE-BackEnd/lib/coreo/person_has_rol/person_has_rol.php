@@ -172,7 +172,13 @@ class person_has_rol {
 
     public function listPersonHasRolDb(){
         $response = false;
-        $sql =  "SELECT * FROM persona_has_rol";
+        //$sql =  "SELECT * FROM persona_has_rol";
+        $sql = "SELECT phr.*, 
+        CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS persona, 
+        r.rol_nombre AS rol 
+        FROM persona_has_rol phr 
+        INNER JOIN persona p ON phr.persona_id = p.persona_id 
+        INNER JOIN rol r ON phr.rol_id = r.rol_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             

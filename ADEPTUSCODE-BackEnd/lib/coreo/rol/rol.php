@@ -175,7 +175,11 @@ class rol {
 
     public function listRolDb(){
         $response = false;
-        $sql =  "SELECT * FROM rol";
+        //$sql =  "SELECT * FROM rol";
+        $sql = "SELECT r.*, ref.referencia_valor as estadoRol
+        FROM rol r
+        JOIN referencia ref
+        ON r.rol_estado = ref.referencia_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             

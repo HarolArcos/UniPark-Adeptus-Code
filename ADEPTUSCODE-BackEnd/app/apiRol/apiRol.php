@@ -163,7 +163,7 @@
             array_push($errorlist,"Error: falta parametro idRol");
         }
         if(isset($arg->statusRol)){
-            $statusRol =  $arg->$statusRol;
+            $statusRol =  $arg->statusRol;
         }
         else{
             array_push($errorlist,"Error: falta parametro statusRol");
