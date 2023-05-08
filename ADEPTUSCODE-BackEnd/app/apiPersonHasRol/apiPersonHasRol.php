@@ -124,7 +124,7 @@
         return $response;
     }
 
-    function deletePersonaHasRol($arg){
+    function deletePersonHasRol($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
@@ -155,9 +155,9 @@
         $responseDelete = $_personHasRol->deletePersonHasRolDb($idPersonHasRol);
 
         if ( $responseDelete){
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado exitosa"));
+            $response = array("codError" => 200, "data" => array("desError"=>"eliminacion exitosa"));
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"eliminacion fallida"));
         }
 
         $timeProcess = microtime(true)-$startTime;

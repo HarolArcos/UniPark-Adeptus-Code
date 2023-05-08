@@ -153,7 +153,7 @@ class person_has_rol {
 
     public function deletePersonHasRolDb($idPersonaHasRol){
         $response = false;
-        $sql = "DELETE FROM persona_has_rol WHERE id = $idPersonaHasRol";
+        $sql = "DELETE FROM persona_has_rol WHERE persona_has_rol_id = $idPersonaHasRol";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idPerson" => $idPersonaHasRol),
