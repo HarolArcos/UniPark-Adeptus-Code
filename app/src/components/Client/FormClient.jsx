@@ -1,13 +1,17 @@
 
-//import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage, FieldArray } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
 const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,soloLectura = false}) => {
 
-  const {data,fetchData,error} = useFetchSendData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson');
+  const {data,fetchData,error,setLoading} = useFetchSendData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson');
   
+  useEffect(() => {
+    console.log('Data actualizada:', data);
+  }, [data]);
+
   return (
     <Formik
     initialValues={{
@@ -97,18 +101,28 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
     }}
     
 
-    onSubmit={async (values)=>{
-           if (cliente) {
-             actualizarCliente(values);
-           } else {
-            
-               const myData = {typePerson : 2, namePerson : "Dory", lastNamePerson : "Arcos", ciPerson : "5295189", phonePerson: "59167418809", telegramPerson : "", statusPerson : 1, nicknamePerson : "lolii", passwordPerson : "abc123"}; // datos a enviar en la primera llamada
-              fetchData(myData);
-              console.log(data);
-          }
-      console.log(values);
-          //  cancelar();
-      }}
+    onSubmit={async (values) => {
+      if (cliente) {
+        actualizarCliente(values);
+      } else {
+        const myData = {
+          typePerson: 2,
+          namePerson: "Euclides",
+          lastNamePerson: "Arcos",
+          ciPerson: "5295189",
+          phonePerson: "59167418809",
+          telegramPerson: "",
+          statusPerson: 1,
+          nicknamePerson: "lolii",
+          passwordPerson: "abc123"
+        };
+  
+        await fetchData(myData);
+      }
+  
+    }
+    
+  }
 
     >
 
