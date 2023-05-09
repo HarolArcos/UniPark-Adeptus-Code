@@ -18,6 +18,8 @@ import { Guard } from "../Guard/Guard";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 import Persons from "../Persons/Persons";
 import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclamo";
+import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
+import { Vehicle } from "../Vehicle/Vehicle";
 
 export const AppRouter = () => {
 
@@ -35,8 +37,15 @@ export const AppRouter = () => {
                     <Route path="/referencias"          element={ <ComboboxReferences/> }/>
                     <Route path='/guard'                element={ <Guard/>} />
                     <Route path='/ReclamosResp'                element={ <SolucionAccionReclamo/>} />
+                    <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
+                    <Route path="/vehiculo"             element={ <Vehicle/> } />
                 </Routes>
         </Router>
     )
 }
 
+/* <Route path="/main/" element={ <Main/> } >
+                        <Route index path="" element={ <Content/> } />
+                        <Route path="sitiosOcupados" element={ <ContentUnavalible/> } />
+                        <Route path="sitiosDisponibles" element={ <ContentSitesAvalible/> } />
+                    </Route> */

@@ -1,33 +1,32 @@
 import { useState, useEffect } from 'react';
 
-export function useFetchSendData(url) {
-  const [data, setData] = useState(null);
+export function useFetchSendData() {
+  const [data, setData] = useState({});
   const [error, setError] = useState(null);
- 
-    async function fetchData(info) {
-      console.log('entro al fetchData');
-      try {
-        if (info!= null) {
-          const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify(info)
-          };
-          const response = await fetch(url,requestOptions);
-          const datos = await response.json();
-          
-          setData(datos);
-          console.log(data);
-        }
-       } catch (error) {
-        setError(error);
-        console.log(error)
-      } 
+  const [loading, setLoading] = useState(true);
+
+  async function fetchData(url,info) {
+    try {
+      if (info != null && url != null && typeof info === 'object') {
+        const requestOptions = {
+          method: 'POST',
+          body: JSON.stringify(info)
+        };
+        const response = await fetch(url, requestOptions);
+        const datos = await response.json();
+        
+        typeof datos === 'object' && setData(datos);
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
     }
+  }
 
-    useEffect(() => {
-      fetchData(null);
-    }, []);
-
-
-  return { data, fetchData,error };
+  useEffect(() => {
+    fetchData(null,null);
+  }, []);
+  
+  return { data, fetchData, error, setLoading };
 }
