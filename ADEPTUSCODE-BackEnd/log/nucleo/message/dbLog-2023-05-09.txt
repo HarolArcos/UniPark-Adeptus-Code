@@ -1,0 +1,34 @@
+2023-05-09 13:59:47	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => 1
+            [statusOption] => componente_1
+        )
+
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','1','componente_1')
+    [error] => ERROR:  no existe la columna «opcion_estado» en la relación «opcion»
+LINE 1: ...on(opcion_padre, opcion_orden, opcion_componente, opcion_est...
+                                                             ^
+)
+ Function error: insertOptionDb	500 ERROR
+2023-05-09 14:03:20	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => 1
+            [statusOption] => componente_1
+        )
+
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','1','componente_1')
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «componente_1»
+LINE 2:          VALUES ('1','1','1','componente_1')
+                                     ^
+)
+ Function error: insertOptionDb	500 ERROR

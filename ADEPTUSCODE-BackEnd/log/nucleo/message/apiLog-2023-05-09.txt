@@ -1,0 +1,13 @@
+2023-05-09 13:44:27	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => componente_1
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente) VALUES ('1','1','componente_1')
+)
+ Function error: insertOptionDb	100 DEBUG
