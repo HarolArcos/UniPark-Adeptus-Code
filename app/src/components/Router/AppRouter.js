@@ -17,6 +17,7 @@ import { Client } from "../Client/Client";
 import { Guard } from "../Guard/Guard";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 import Persons from "../Persons/Persons";
+import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclamo";
 
 export const AppRouter = () => {
 
@@ -33,13 +34,9 @@ export const AppRouter = () => {
                     <Route path="/personas"             element={ <Persons/> } />
                     <Route path="/referencias"          element={ <ComboboxReferences/> }/>
                     <Route path='/guard'                element={ <Guard/>} />
+                    <Route path='/ReclamosResp'                element={ <SolucionAccionReclamo/>} />
                 </Routes>
         </Router>
     )
 }
 
-/* <Route path="/main/" element={ <Main/> } >
-                        <Route index path="" element={ <Content/> } />
-                        <Route path="sitiosOcupados" element={ <ContentUnavalible/> } />
-                        <Route path="sitiosDisponibles" element={ <ContentSitesAvalible/> } />
-                    </Route> */
