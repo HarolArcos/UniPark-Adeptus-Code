@@ -1,8 +1,8 @@
 
-import Select from 'react-select';
-import { DataUser } from '../context/UserContext';
+import Select from 'react-select'; 
+
 import { useFetch } from '../../hooks/HookFetchListData';
-import { useContext } from "react"
+
 
 export default function ComboboxPerson(){
     let { data, loading,  } = useFetch(

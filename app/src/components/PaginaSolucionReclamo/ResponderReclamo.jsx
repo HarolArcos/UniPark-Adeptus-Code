@@ -8,7 +8,7 @@ export default function ResRec() {
     'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeSolutionComplaint');
   const [solucion, setsolucion] = useState(null);
   const [show, setShow] = useState(false);
-  const { data:datosr, loading:loadingr, error:errorR } = useFetch(
+  const { data:datosr, loading:loadingr,  } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/listComplaint"
   );
   const handleClose = () => setShow(false);
@@ -17,13 +17,13 @@ export default function ResRec() {
     const myData = { "idComplaint" : reclamoset,
     "complaintSolution" : solucion}; // datos a enviar en la primera llamada
     fetchData(myData);
-    console.log(data);
+    
     setShow(false);
     
   }
     
   function ClikComprovar(dato){
-    console.log(dato);
+    
     setreclamoset(dato)
     setShow(true);
     
@@ -34,6 +34,9 @@ export default function ResRec() {
   if (!loadingr ) {
     return(
       <div className="content-wrapper contenteSites-body" >
+        <div style={{ color: "red" }}>
+                                    {error!=="" ? <span>{error}</span> : <span></span> }
+                                    </div>
             <Table striped bordered hover className="table">
                 <thead>
                     <tr>
