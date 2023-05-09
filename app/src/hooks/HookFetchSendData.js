@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-export function useFetchSendData(url) {
+export function useFetchSendData() {
   const [data, setData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  async function fetchData(info) {
+  async function fetchData(url,info) {
     try {
-      if (info != null  && typeof info === 'object') {
+      if (info != null && url != null && typeof info === 'object') {
         const requestOptions = {
           method: 'POST',
           body: JSON.stringify(info)
@@ -25,7 +25,7 @@ export function useFetchSendData(url) {
   }
 
   useEffect(() => {
-    fetchData(null);
+    fetchData(null,null);
   }, []);
   
   return { data, fetchData, error, setLoading };
