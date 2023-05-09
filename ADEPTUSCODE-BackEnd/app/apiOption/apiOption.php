@@ -58,7 +58,7 @@
         $statusOption = $arg->statusOption;
 
         $_option = new option($_db);
-        $responseInsert = $_option->insertOptionDb($fatherOption,$statusOption,$orderOption,$componentOption);
+        $responseInsert = $_option->insertOptionDb($fatherOption,$orderOption,$componentOption,$statusOption);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));

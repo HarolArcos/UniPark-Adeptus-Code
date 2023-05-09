@@ -170,3 +170,35 @@
 
 )
  Funcion: editOption	300 NOTICE
+2023-05-09 17:39:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.023108959197998
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-09 17:39:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.027178049087524
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE

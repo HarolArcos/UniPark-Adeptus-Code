@@ -83,3 +83,14 @@ LINE 4:         opcion_estado = 'prueba'
 2023-05-09 17:30:29	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
 2023-05-09 17:30:29	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
 2023-05-09 17:30:29	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-09 17:39:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-09 17:39:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-09 17:39:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','1','componente_1')] [ERROR:  la sintaxis de entrada no es válida para tipo integer: «componente_1»
+LINE 2:          VALUES ('1','1','1','componente_1')
+                                     ^] Function: setQueryParameters	500 ERROR
+2023-05-09 17:39:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-09 17:39:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-09 17:39:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','componente_1','1')] [ERROR:  inserción o actualización en la tabla «opcion» viola la llave foránea «opcion_opcion_estado_fkey»
+DETAIL:  La llave (opcion_estado)=(1) no está presente en la tabla «referencia».] Function: setQueryParameters	500 ERROR
