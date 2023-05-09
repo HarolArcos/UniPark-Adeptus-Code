@@ -6,9 +6,10 @@ import { useContext } from "react"
 import { Button, Modal, ModalBody } from 'react-bootstrap'
 import { DataUser } from '../context/UserContext';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {    
     const {userglobal,setUserglobal} = useContext(DataUser)
-    //const history = useHistory();
+    const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const [nickname, setcorreo] = useState("")
     const [contraseña, setcontraseña] = useState("")
@@ -20,8 +21,14 @@ export default function Login() {
       if(!loading) 
       {        
         function ClikComprovar() {
-            seterrorlog(comprovar(nickname,contraseña,data,setUserglobal))
+            seterrorlog(comprovar(nickname,contraseña,data,setUserglobal,navigate))
             console.log(errorlog)
+            if (errorlog==="/main") {
+                console.log(errorlog);
+                return <redirect to={errorlog}></redirect>
+                
+                
+            }
               
           }
           
@@ -31,9 +38,9 @@ export default function Login() {
     const handleShow = () => setShow(true);
 
     
-
     
-
+    
+    
     return (
         <div className="login" >
             <div className="d-flex justify-content-center align-items-center"  >
@@ -131,7 +138,7 @@ export default function Login() {
                                         </Link>
                             
                          </div>
-        
+                                      
         
                         </div>
                         
