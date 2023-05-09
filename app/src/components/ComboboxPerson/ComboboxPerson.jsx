@@ -5,7 +5,6 @@ import { useFetch } from '../../hooks/HookFetchListData';
 import { useContext } from "react"
 
 export default function ComboboxPerson(){
-    const {userglobal} = useContext(DataUser)
     let { data, loading,  } = useFetch(
         "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
               )
