@@ -27,7 +27,6 @@ export const Guard = () => {
     //------Editar :
     const [guardiaSeleccionado, setGuardiaSeleccionado] = useState(null);
     //------Crear :
-    const [guardiaNuevo, setGuardiaNuevo] = useState();
 
 
     
@@ -56,7 +55,6 @@ export const Guard = () => {
         setShowCreate(false);
         setShowView(false);
         setGuardiaSeleccionado(null);
-        setGuardiaNuevo(null);
     };
     
     //-----------------------Crud-------------------------------------------

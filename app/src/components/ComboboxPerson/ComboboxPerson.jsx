@@ -5,7 +5,6 @@ import { useFetch } from '../../hooks/HookFetchListData';
 
 
 export default function ComboboxPerson(){
-    
     let { data, loading,  } = useFetch(
         "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
               )
