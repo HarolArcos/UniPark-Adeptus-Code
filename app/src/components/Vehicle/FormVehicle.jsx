@@ -1,12 +1,12 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
 const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}) => {
 
-  const {data,fetchData,error, setLoading} = useFetchSendData();
+  const {data,fetchData} = useFetchSendData();
   
   useEffect(() => {
     console.log('Data actualizada o creada :', data);
@@ -17,7 +17,7 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}
     initialValues={
       vehiculo? {
       idVehicle: vehiculo.vehiculo_id   ,
-      idPerson: 1,
+      idPerson: vehiculo.vehiculo_id,
       statusVehicle: vehiculo.tabla_estado ,
       plateVehicle: vehiculo.vehiculo_placa ,
       modelVehicle: vehiculo.vehiculo_modelo ,

@@ -12,7 +12,7 @@ import { useFetch } from '../../hooks/HookFetchListData';
 export const Vehicle = () => {
     
     const [vehiculos,setVehiculos] =  useState([]);
-    const{data,loading,error,fetchData} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
     
     //----------------------ShowModal-------------------------------
     
