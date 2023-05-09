@@ -69,7 +69,7 @@ class option{
         $response = FALSE;
         $dataOption = $this->findOptionDb($idOption);
         if($dataOption){
-            $this->mapOption($dataMessage);
+            $this->mapOption($dataOption);
             $response = TRUE;
         }
         $arrLog = array("input"=>$idOption,"output"=>$response);
@@ -109,7 +109,7 @@ class option{
 
     public function editOptionDb($idOption,$fatherOption,$orderOption,$componentOption,$statusOption){
         $response = false;
-        $sql =  "UPDATE opcion SET
+        $sql =  "UPDATE opcion SET 
         opcion_padre ='$fatherOption',
         opcion_orden = '$orderOption', 
         opcion_componente = '$componentOption',
@@ -146,8 +146,8 @@ class option{
 /*
     public function listRolDb(){
         $response = false;
-        //$sql =  "SELECT * FROM rol";
-        $sql = "SELECT r.*, ref.referencia_valor as estadoRol
+        $sql =  "SELECT * FROM opcion";
+        //$sql = "SELECT r.*, ref.referencia_valor as estadoRol
         FROM rol r
         JOIN referencia ref
         ON r.rol_estado = ref.referencia_id";

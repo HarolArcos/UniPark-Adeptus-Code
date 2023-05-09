@@ -5,7 +5,7 @@
     $HTTP_RAW_POST_DATA = (empty($HTTP_RAW_POST_DATA)) ? json_encode(array_merge($_REQUEST, $_FILES)) : $HTTP_RAW_POST_DATA;
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertOption");
-    $server->Register("editRol");
+    $server->Register("editOption");
     $server->start();
 
     function insertOption($arg){
@@ -135,7 +135,7 @@
         $statusOption = $arg->statusOption;
 
         $_option = new option($_db);
-        $responseEdit = $_option->editOptionDb($idOption,$statusOption,$fatherOption,$orderOption,$componentOption);
+        $responseEdit = $_option->editOptionDb($idOption,$fatherOption,$orderOption,$componentOption,$statusOption);
 
         if ( $responseEdit) {
             $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));
