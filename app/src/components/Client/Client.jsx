@@ -7,8 +7,6 @@ import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
 // import  "../../datos.json" ;
-import { useFetch } from '../../hooks/HookFetchListData';
-import { useFetchSendData } from '../../hooks/HookFetchSendData';
 
 export const Client = () => {
     //----------------------ShowModal-------------------------------
@@ -29,19 +27,6 @@ export const Client = () => {
         {id:1,nombre:'Maria',apellido: 'Ramirez' ,ci:540042, email:'mari@gmail.com',listCar:[{id:8,placa:'2016KÑO',modelo:'2008',color:'negro'}]},
         {id:3,nombre:'Alex',apellido: 'Pardo' ,ci:700842, email:'alex@gmail.com',listCar:[{id:3,placa:'0132KÑO',modelo:'1995',color:'rojo'}]}
     ]);
-    
-
-        // function Insertar() {
-        //     const { data,error } =  useFetchSendData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson', {typePerson : 2, namePerson : "Pedro", lastNamePerson : "Arcos", ciPerson : "5295189", phonePerson: "59167418809", telegramPerson : "", statusPerson : 1, nicknamePerson : "lolii", passwordPerson : "abc123"});
-
-
-        // console.log(data);
-
-        // }
-    // const{data,loading,error} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson');
-    // console.log(data);
-
-   
 
 
     
