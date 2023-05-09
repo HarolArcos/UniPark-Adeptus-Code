@@ -1,11 +1,5 @@
 
-
-
-
-
-
-
-export default function Comprueva (usuario,contraseña,data,setUserglobal) {
+export default function Comprueva (usuario,contraseña,data,setUserglobal,navigate) {
     
     
     console.log(usuario,contraseña,data)
@@ -23,7 +17,8 @@ export default function Comprueva (usuario,contraseña,data,setUserglobal) {
                 localStorage.setItem("use",JSON.stringify(user))
               
                 
-                return "/main"}
+                navigate("/main")
+            return "/main"}
             
         }  
         

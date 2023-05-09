@@ -63,7 +63,7 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}
         console.log(values);
         // actualizarVehiculo(values);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
-        // cancelar();
+        cancelar();
       } else {
         console.log(values);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
@@ -76,46 +76,46 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}
 
       {({values,errors,handleBlur,handleChange,handleSubmit})=>(
         <Form  className="container">
-      <div className="row ">
-        <div className="col-md-4">
+          {/* <div className="row ">
+            <div className="col-md-4"> */}
 
-          <Form.Group controlId="plateVehicle">
-            <Form.Label className="text-left">Placa</Form.Label>
-            <Form.Control 
-            type="text" 
-            name="plateVehicle"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.plateVehicle}
-            />
-          </Form.Group>
-          <ErrorMessage name="plateVehicle" component={()=>(<div className="text-danger">{errors.plateVehicle}</div>)}></ErrorMessage>
-          
-          <Form.Group controlId="modelVehicle">
-            <Form.Label>modelo</Form.Label>
-            <Form.Control type="modelVehicle"
-            name="modelVehicle"
-            onChange={handleChange}
-            onBlur={handleBlur} 
-            value={values.modelVehicle} 
-            />
-          </Form.Group>
-          <ErrorMessage name="modelVehicle" component={()=>(<div className="text-danger">{errors.modelVehicle}</div>)}></ErrorMessage>
-          
-          <Form.Group controlId="colorVehicle">
-            <Form.Label>Color</Form.Label>
-            <Form.Control type="text" 
-            name="colorVehicle"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.colorVehicle}
-            />
-          </Form.Group>
-          <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
-          
-        </div>
+              <Form.Group controlId="plateVehicle text-left">
+                <Form.Label className="text-left">Placa</Form.Label>
+                <Form.Control 
+                type="text" 
+                name="plateVehicle"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.plateVehicle}
+                />
+              </Form.Group>
+              <ErrorMessage name="plateVehicle" component={()=>(<div className="text-danger">{errors.plateVehicle}</div>)}></ErrorMessage>
+              
+              <Form.Group controlId="modelVehicle">
+                <Form.Label className="text-left">modelo</Form.Label>
+                <Form.Control type="modelVehicle"
+                name="modelVehicle"
+                onChange={handleChange}
+                onBlur={handleBlur} 
+                value={values.modelVehicle} 
+                />
+              </Form.Group>
+              <ErrorMessage name="modelVehicle" component={()=>(<div className="text-danger">{errors.modelVehicle}</div>)}></ErrorMessage>
+              
+              <Form.Group controlId="colorVehicle">
+                <Form.Label className="text-left">Color</Form.Label>
+                <Form.Control type="text" 
+                name="colorVehicle"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.colorVehicle}
+                />
+              </Form.Group>
+              <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
+              
+            {/* </div>
 
-      </div>
+          </div> */}
       <br/>
         <Modal.Footer >
           <Button variant="secondary" onClick={cancelar}>

@@ -11,30 +11,26 @@ import { useFetch } from '../../hooks/HookFetchListData';
 
 export const Vehicle = () => {
     
-    const{data,loading,error} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+    const [vehiculos,setVehiculos] =  useState([]);
+    const{data,loading,error,fetchData} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
     
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
      
     const [showCreate, setShowCreate] = useState(false);
-     
+    
     //----------------------Cliente para:-------------------------------
     //------Editar :
     const [vehiculoSeleccionado, setVehiculoSeleccionado] = useState(null);
 
-    const [vehiculos,setVehiculos] =  useState([]);
     
-     
+    
     useEffect(() => {
-        console.log('Data :', data);
         setVehiculos(data);
-        console.log(vehiculos);
-    }, [data,vehiculos]);
+        console.log(data);
+    }, []);
 
-     console.log(data,vehiculos);
-
-    
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
     const handleEditar = (vehiculo) => {
@@ -51,6 +47,7 @@ export const Vehicle = () => {
     const handleCancelar = () => {
         setShowEdit(false);
         setShowCreate(false);
+        console.log(data);
     };
     
     //-----------------------Crud-------------------------------------------
@@ -81,8 +78,7 @@ export const Vehicle = () => {
 
     return (
         <>
-        <Header></Header>
-        <Aside></Aside>
+        
         <div className="content-wrapper content-body">
             <div className="buttonsGroup text-align-left">
                 <Button className="button btn btn-primary btn-md mr-1" onClick={()=>handleCreate()}> +</Button>
@@ -151,7 +147,6 @@ export const Vehicle = () => {
             </Modal>
         </div>
 
-        <Footer></Footer>
         </>
 
     )
