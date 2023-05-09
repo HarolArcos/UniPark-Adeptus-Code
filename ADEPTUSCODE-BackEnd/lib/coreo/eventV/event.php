@@ -101,7 +101,7 @@ class event {
 
     public function insertEventDb($idPerson, $idVehicle,$typeEvent,$dateEvent,$alarmEvent,$descriptionEvent, $registerUser){
         $response = false;
-        $sql =  "INSERT INTO evento(vehiculo_persona_id, vehiculo_id, evento_tipo, evento_fecha, evento_alarma, evento_descripcion, registro_usuario) VALUES ('$idPerson', '$idVehicle','$typeEvent','$dateEvent','$alarmEvent','$descriptionEvent', '$registerUser')";
+        $sql =  "INSERT INTO evento(vehiculo_persona_id, vehiculo_id, evento_tipo, evento_fecha, evento_alarma, evento_descripcion, registro_usuario) VALUES ('$idPerson', '$idVehicle','$typeEvent','$dateEvent',$alarmEvent,'$descriptionEvent', '$registerUser')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -136,15 +136,15 @@ class event {
 
     public function editEventDb($idEvent, $idPerson, $idVehicle,$typeEvent,$dateEvent,$alarmEvent,$descriptionEvent, $registerUser){
         $response = false;
-        $sql =  "UPDATE vehiculo SET
+        $sql =  "UPDATE evento SET
         vehiculo_persona_id = '$idPerson',
         vehiculo_id ='$idVehicle',
         evento_tipo = '$typeEvent', 
         evento_fecha = '$dateEvent', 
-        evento_alarma = '$alarmEvent',
+        evento_alarma = $alarmEvent,
         evento_descripcion = '$descriptionEvent',
         registro_usuario = '$registerUser'
-        WHERE evento_id = $idEvent";
+        WHERE evento_id = '$idEvent'";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -203,11 +203,15 @@ class event {
         /*$sql = "SELECT vehiculo.*, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS propietario
         FROM vehiculo
         JOIN persona ON vehiculo.persona_id = persona.persona_id";*/
-        $sql = "SELECT e.*, v.persona_id, v.vehiculo_placa, r.referencia_valor
+        /*$sql = "SELECT e.*, v.persona_id, v.vehiculo_placa, r.referencia_valor
         FROM evento e
         INNER JOIN vehiculo v ON e.vehiculo_id = v.vehiculo_id AND e.vehiculo_persona_id = v.persona_id
-        INNER JOIN referencia r ON e.evento_tipo = r.referencia_id;
-        ";
+        INNER JOIN referencia r ON e.evento_tipo = r.referencia_id";*/
+        $sql = "SELECT evento.*, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS propietario, vehiculo.vehiculo_placa, referencia.referencia_valor 
+        FROM evento 
+        INNER JOIN vehiculo ON evento.vehiculo_id = vehiculo.vehiculo_id AND evento.vehiculo_persona_id = vehiculo.persona_id 
+        INNER JOIN persona ON vehiculo.persona_id = persona.persona_id 
+        INNER JOIN referencia ON evento.evento_tipo = referencia.referencia_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
