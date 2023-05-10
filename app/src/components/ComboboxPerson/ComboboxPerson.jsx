@@ -1,39 +1,9 @@
-// import Select from 'react-select';
-// import { DataUser } from '../context/UserContext';
-// import { useFetch } from '../../hooks/HookFetchListData';
-// import { useContext } from "react"
-
-// export default function ComboboxPerson({id}){ // cambia la firma para recibir el objeto props
-
-//   const {userglobal} = useContext(DataUser)
-//   const { data, loading } = useFetch(
-//     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
-//   )
-
-//   if(!loading) {
-//     const defaultValue = data.find(person => person.persona_id === id); // encuentra la persona con el id proporcionado
-//     const options = data.map((person)=> ({value: person.persona_id, label: `${person.persona_ci}-${person.persona_nombre} ${person.persona_apellido}`}));
-
-//     return (
-//       <Select
-//         placeholder="Seleccione persona"
-//         options={options}
-//         defaultValue={defaultValue && { value: defaultValue.persona_id, label: `${defaultValue.persona_ci}-${defaultValue.persona_nombre} ${defaultValue.persona_apellido}` }}
-//       />
-//     );
-//   }
-//   return null; // o algún otro indicador de carga
-// }
-
-
-import Select from 'react-select';
-import { DataUser } from '../context/UserContext';
+import Select from 'react-select'; 
 import { useFetch } from '../../hooks/HookFetchListData';
-import { useContext, useState } from "react"
+import { useState } from 'react';
 
 export default function ComboboxPerson({ id, onPersonaIdChange }) { // actualiza la firma para recibir el id y la función onPersonaIdChange
 
-  const { userglobal } = useContext(DataUser)
   const { data, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   )
