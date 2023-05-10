@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
+import { useFetch } from "../../hooks/HookFetchListData";
+import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 
 const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}) => {
 
@@ -17,8 +19,8 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}
     initialValues={
       vehiculo? {
       idVehicle: vehiculo.vehiculo_id   ,
-      idPerson: vehiculo.vehiculo_id,
-      statusVehicle: vehiculo.tabla_estado ,
+      idPerson: vehiculo.persona_id,
+      statusVehicle: vehiculo.vehiculo_estado ,
       plateVehicle: vehiculo.vehiculo_placa ,
       modelVehicle: vehiculo.vehiculo_modelo ,
       colorVehicle: vehiculo.vehiculo_color ,
@@ -113,9 +115,8 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}
               </Form.Group>
               <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
               
-            {/* </div>
-
-          </div> */}
+      <br/>
+            <ComboboxPerson id = { vehiculo? values.idPerson:null }/>
       <br/>
         <Modal.Footer >
           <Button variant="secondary" onClick={cancelar}>
