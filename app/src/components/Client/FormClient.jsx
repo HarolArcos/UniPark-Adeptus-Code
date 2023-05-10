@@ -6,7 +6,7 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
 const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,soloLectura = false}) => {
 
-  const {data,fetchData,error,setLoading} = useFetchSendData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson');
+  const {data,fetchData} = useFetchSendData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson');
   
   useEffect(() => {
     console.log('Data actualizada:', data);
