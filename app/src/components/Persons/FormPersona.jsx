@@ -199,7 +199,7 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
             <ErrorMessage name="statusPerson" component={()=>(<div className="text-danger">{errors.statusPerson}</div>)}></ErrorMessage> */}
 
             <Form.Group controlId="referencias">
-              <Form.Label className="label">Referencia</Form.Label>
+              <Form.Label className="label">Referencias</Form.Label>
               <ComboboxReferences></ComboboxReferences>
             </Form.Group>
 
