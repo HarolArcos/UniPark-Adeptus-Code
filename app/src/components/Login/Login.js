@@ -53,7 +53,7 @@ export default function Login() {
                     {/* /.login-logo */}
                     <div className="card card-outline card-primary">
                         <div className="card-header text-center">
-                            <a href="/main" className="h1"><b>Inicio de Sesion </b><br/>UniPark</a>
+                            <a href="/" className="h1"><b>Inicio de Sesion </b><br/>UniPark</a>
                             
                         </div>
                         {errorlog!=="/main"?
@@ -61,13 +61,15 @@ export default function Login() {
                             <p className="login-box-msg">Ingrese sus credenciales para iniciar sesion</p>
                             {/* <form action="/main"> */}
                                 <div className="input-group mb-3">
-                                    <input type="text" className="form-control" placeholder="nickname" 
+                                    <input type="text" className="form-control" placeholder="Usuario" 
                                     onChange={(e) => {
                                         setcorreo(e.target.value);
                                       }}/>
                                     <div className="input-group-append">
                                         <div className="input-group-text">
-                                        {/* <span className="fas fa-envelope" /> */}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                                            </svg>
                                         </div>
                                     </div>
                                 </div>
@@ -83,8 +85,10 @@ export default function Login() {
                                     </div>
                                 </div>
                                 <div className="rowx">
-                                    
-                                   
+                                    <p className="mb-1 forgot-password" onClick={handleShow} >
+                                        {/* <a href='/login' onClick={handleShow} >Olvide mi contraseña</a> */}
+                                        Olvide mi contraseña
+                                    </p>
                                     <div style={{ color: "red" }}>
                                     {errorlog!=="" ? <span>{errorlog}</span> : <span></span> }
                                     </div>
@@ -102,30 +106,24 @@ export default function Login() {
                                     
                                 </div>
                            {/*  </form> */}
-                            <p className="mb-1 forgot-password" onClick={handleShow} >
-                                {/* <a href='/login' onClick={handleShow} >Olvide mi contraseña</a> */}
-                                Olvide mi contraseña
-                            </p>
-                            <p className="mb-0">
-                                {/* <a href="register.html" className="text-center">Registrate</a> */}
-                            </p>
+                            
+                            {/* <p className="mb-0">
+                                <a href="register.html" className="text-center">Registrate</a>
+                            </p> */}
                         </div>
                         
                         :
                         <div>
                             
-                            <div className="card-header text-center h1">
-                        
-                            Bien Benido
-    
-    
-                        </div>
+                            <div className="card-header text-center h1">             
+                            Bienvenido
+                            </div>
                         <div className="card-header text-center h1">
                         
                         {userglobal.persona_nombre}
     
     
-                         </div>
+                        </div>
                          <div className="col-12 iniciar-button">
                                         <Link to={"/main"} >
                                             <button

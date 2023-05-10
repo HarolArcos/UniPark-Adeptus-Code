@@ -6,6 +6,17 @@ import "./ComboboxReferences.css";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
 export default function ComboboxReferences(){ 
+
+    const ref = [
+        { value: 'Persona Tipo', label: 'Persona Tipo' }
+      ];
+
+    const type = [
+        { value: 'Administrador', label: 'Administrador' },
+        { value: 'Cliente', label: 'Cliente' },
+        { value: 'Guardia', label: 'Guardia' }
+    ]
+
     const [selectedOption, setSelectedOption] = useState(null);
     const [options, setOptions] = useState([]);
 
@@ -40,15 +51,18 @@ export default function ComboboxReferences(){
         //         options={ options }
         //     ></Select>
         // </div>
-        <div>
+        <div className="comboBoxGroup">
             <Select
-                options={options}
+                className="selectRef"
+                placeholder="Referencia"
+                options={ref}
                 value={selectedOption}
                 onChange={handleOptionChange}
             />
-            {options.length > 0 && (
+            {ref.length > 0 && (
                 <Select
-                options={options}
+                className="selectRef"
+                options={type}
                 />
             )} 
         </div>    

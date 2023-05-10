@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    padding: 142px 0px;   
+    padding: 138px 0px;   
     
 }
 
@@ -22,6 +22,7 @@
 
 .forgot-password{
     color: #007BFF;
+    margin: 8px 0px;
 }
 
 .forgot-password:hover{
