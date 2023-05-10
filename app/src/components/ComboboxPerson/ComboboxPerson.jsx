@@ -2,7 +2,7 @@ import Select from 'react-select';
 import { useFetch } from '../../hooks/HookFetchListData';
 import { useState } from 'react';
 
-export default function ComboboxPerson({ id, onPersonaIdChange }) { // actualiza la firma para recibir el id y la función onPersonaIdChange
+export default function ComboboxPerson({ id ,idperson}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
 
   const { data, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
@@ -11,7 +11,9 @@ export default function ComboboxPerson({ id, onPersonaIdChange }) { // actualiza
 
   const handleOnChange = (option) => { 
     setSelectedPersonaId(option ? option.value : null);     
-    onPersonaIdChange(option ? option.value : null); 
+    // onPersonaIdChange(option ? option.value : null); 
+    console.log(option.value);
+    idperson = option.value;
   };
 
   if (!loading) {
