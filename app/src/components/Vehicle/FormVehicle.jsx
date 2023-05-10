@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
+import { useFetch } from "../../hooks/HookFetchListData";
+import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 
 const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}) => {
 
@@ -17,14 +19,14 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}
     initialValues={
       vehiculo? {
       idVehicle: vehiculo.vehiculo_id   ,
-      idPerson: vehiculo.vehiculo_id,
-      statusVehicle: vehiculo.tabla_estado ,
+      idPerson: vehiculo.persona_id,
+      statusVehicle: vehiculo.vehiculo_estado ,
       plateVehicle: vehiculo.vehiculo_placa ,
       modelVehicle: vehiculo.vehiculo_modelo ,
       colorVehicle: vehiculo.vehiculo_color ,
       }:{
-      idPerson: '1',
-      statusVehicle: '2',
+      idPerson: '',
+      statusVehicle: '',
       plateVehicle: '',
       modelVehicle: '',
       colorVehicle: '',
@@ -62,8 +64,8 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}
       if (vehiculo) {
         console.log(values);
         // actualizarVehiculo(values);
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
-        cancelar();
+        // fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
+        // cancelar();
       } else {
         console.log(values);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
@@ -113,9 +115,18 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo, añadirNuevo}
               </Form.Group>
               <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
               
-            {/* </div>
-
-          </div> */}
+      <br/>
+            <Form.Group>
+            <Form.Label className="text-left">Propietario</Form.Label>
+            <ComboboxPerson 
+            id={vehiculo ? values.idPerson : null}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            // value={vehiculo ? values.idPerson : null}
+            name="idPerson"/>
+            </Form.Group>
+              <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
+            
       <br/>
         <Modal.Footer >
           <Button variant="secondary" onClick={cancelar}>

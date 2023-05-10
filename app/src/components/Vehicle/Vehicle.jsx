@@ -87,6 +87,7 @@ export const Vehicle = () => {
                 <Table striped bordered hover className='table'>
                     <thead>
                         <tr>
+                        <th>Propietario</th>
                         <th>Placa</th>
                         <th>Modelo</th>
                         <th>Color</th>
@@ -96,6 +97,7 @@ export const Vehicle = () => {
                     <tbody>
                         {vehiculos.map((item) =>(
                         <tr key ={item.vehiculo_id}>
+                        <td>{item.propietario}</td>
                         <td>{item.vehiculo_placa}</td>
                         <td>{item.vehiculo_modelo}</td>
                         <td>{item.vehiculo_color}</td>
