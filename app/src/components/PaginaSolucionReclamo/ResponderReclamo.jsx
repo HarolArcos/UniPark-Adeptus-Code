@@ -1,9 +1,9 @@
-import { Button, Table,Modal, ModalBody } from "react-bootstrap";
+import { Button, Table,Modal, ModalBody,Form } from "react-bootstrap";
 import { useFetch } from "../../hooks/HookFetchListData";
 import React, { useState } from "react";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 export default function ResRec() {
-  const [reclamoset, setreclamoset] = useState(null);
+  const [reclamoset, setreclamoset] = useState([]);
   const {data,fetchData,error} = useFetchSendData(
     'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeSolutionComplaint');
   const [solucion, setsolucion] = useState(null);
@@ -14,7 +14,7 @@ export default function ResRec() {
   const handleClose = () => setShow(false);
   
   function Cambiosol() {
-    const myData = { "idComplaint" : reclamoset,
+    const myData = { "idComplaint" : reclamoset.reclamo_id,
     "complaintSolution" : solucion}; // datos a enviar en la primera llamada
     fetchData(myData);
     
@@ -56,13 +56,14 @@ export default function ResRec() {
                             <td>{reclamoPersona.reclamo_fecha}</td>
                             <td>{reclamoPersona.reclamo_texto}</td>
                             <td>{reclamoPersona.reclamo_solucion}</td>
-                            <td><button
-                                                onClick={()=>ClikComprovar(reclamoPersona.reclamo_id)}
+                            <td><Button
+                                                variant="success"
+                                                onClick={()=>ClikComprovar(reclamoPersona)}
                                                 type='submit'
                                                 className="btn btn-primary btn-block "
                                             >
                                                 Editar Solucion
-                                            </button></td>
+                                            </Button></td>
                         </tr>
                     ) )}   
                 </tbody>
@@ -73,10 +74,28 @@ export default function ResRec() {
 
             <Modal show={show} onHide={handleClose} centered >
                     <ModalBody className='modal-body' >
-                        <h1 className='forgot-password-modal'> Escriba la accion que se debera tomar</h1>
-                        <textarea placeholder="Escriba aqui" onChange={(e)=>setsolucion(e.target.value)}></textarea>
+                        <h1 className='forgot-password-modal'> Editar Accion</h1>
+                        <Form  className="container" >
                         
-                        <div><Button className='modal-button' onClick={Cambiosol} >
+                        <Form.Label className="text-left"style={{ display: 'flex', justifyContent: 'flex-start' }}>Nombre: {reclamoset.reclamo_persona }</Form.Label>
+                        <Form.Label className="text-left"style={{ display: 'flex', justifyContent: 'flex-start' }}>Asunto: {reclamoset.reclamo_asunto }</Form.Label>
+                        <Form.Label className="text-left"style={{ display: 'flex', justifyContent: 'flex-start' }}>Fecha: {reclamoset.reclamo_fecha }</Form.Label>
+                        <Form.Label className="text-left"style={{ display: 'flex', justifyContent: 'flex-start' }}>Reclamo: {reclamoset.reclamo_texto }</Form.Label>
+                        <div></div>
+                        <Form.Label className="text-left"style={{ display: 'flex', justifyContent: 'flex-start' }}>Accion Tomada: </Form.Label>
+                        <div></div>
+                        <textarea placeholder={reclamoset.reclamo_solucion} onChange={(e)=>setsolucion(e.target.value)}></textarea>
+
+
+                        
+
+
+
+
+                        </Form>
+                        
+                        
+                        <div><Button variant="success" className='modal-button' onClick={Cambiosol} >
                             Aceptar
                         </Button>
                         </div>

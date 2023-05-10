@@ -11,7 +11,7 @@ export default function Aside() {
   const {userglobal} = useContext(DataUser)
   
   return (
-    <aside className="main-sidebar sidebar-dark-primary elevation-4">
+    <aside className="main-sidebar sidebar-dark-primary elevation-4 " >
       {/* Brand Logo */}
 
       <Link to="/main" className="brand-link">
