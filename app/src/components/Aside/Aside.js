@@ -14,7 +14,7 @@ export default function Aside() {
     <aside className="main-sidebar sidebar-dark-primary elevation-4 " >
       {/* Brand Logo */}
 
-      <Link to="/main" className="brand-link">
+      <Link to="#" className="brand-link">
         <img
           src="dist/img/uni-park.png"
           alt="AdminLTE Logo"
@@ -34,7 +34,7 @@ export default function Aside() {
         {/* Sidebar user panel (optional) */}
         <div className="user-panel mt-3 pb-3 mb-3 d-flex">
           <div className="info">
-            <Link to="#" className="d-block">
+            <Link to="/main" className="d-block">
               {userglobal.persona_nombre} {userglobal.persona_apellido}
             </Link>
           </div>
