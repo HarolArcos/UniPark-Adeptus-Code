@@ -65,34 +65,5 @@
       "orden": 8,
       "componente": "<li  key=7 class='nav-item'><a href='/personas' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Personas</p></a></li>"
     }
-    ,
-    {
-      "tipo":1,
-      "id": 9,
-      "padre": "",
-      "orden": 3,
-      "componente": "<li key=9 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='bi bi-person'></i><p>Vehículos<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
-    },
-    {
-      "tipo":1,
-      "id": 10,
-      "padre": 3,
-      "orden": 10,
-      "componente": "<li  key=10 class='nav-item'><a href='/vehiculo' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Vehículos</p></a></li>"
-    },
-    {
-      "tipo":1,
-      "id": 11,
-      "padre": "",
-      "orden": 4,
-      "componente": "<li key=11 class='nav-item menu-open'><a to='#' class='nav-link active'><i class='bi bi-person'></i><p>Reclamos<i class='right fas fa-angle-left' ></i></p></a><ul class='nav nav-treeview' style='display: block;'></ul></li>"
-      },
-      {
-        "tipo":1,
-        "id": 12,
-        "padre": 4,
-        "orden": 1,
-        "componente": "<li  key=7 class='nav-item'><a href='/ReclamosResp' class='nav-link'><i class='far fa-circle nav-icon' ></i><p>Editar Accion a Reclamo</p></a></li>"
-      }
   ]
 }

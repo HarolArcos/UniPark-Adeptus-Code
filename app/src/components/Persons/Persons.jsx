@@ -2,18 +2,17 @@ import React, {useEffect, useState} from "react";
 import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
-import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
-import { CSVLink } from "react-csv";
+import { Button, ButtonGroup, Table } from "react-bootstrap";
 import { useFetch } from "../../hooks/HookFetchListData";
 import Modal from "../Modal/Modal";
 import FormularioPersona from './FormPersona';
 import "./Persons.css";
 
 export default function Persons(){   
-    const [searchTerm, setSearchTerm] = useState('');
+    //const [searchTerm, setSearchTerm] = useState('');
 
     const [personas,setPersonas] =  useState([]);
-    const {data, loading} = useFetch(
+    const {data,fetchData, loading} = useFetch(
         'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
     )
 
@@ -28,6 +27,7 @@ export default function Persons(){
     const [personaSeleccionado, setPersonaSeleccionado] = useState(null);
         
     useEffect(() => {
+        fetchData();
         setPersonas(data);
         console.log(data);
     }, [data]);
@@ -76,9 +76,9 @@ export default function Persons(){
         setPersonas(nuevasPersonas);
     };
 
-    const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
-    };
+    // const handleSearch = (event) => {
+    //     setSearchTerm(event.target.value);
+    // };
 
     // const filteredData = data.filter( (person) => {
     //     return person.name.toLowerCase().includes( searchTerm.toLowerCase());
@@ -94,18 +94,8 @@ export default function Persons(){
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
                         <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                        <Button variant="success" className="button"> 
-                            <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
-                        </Button>
-                        <Button variant="success" className="button"> PDF </Button>
                     </ButtonGroup>
-                    <Form.Control 
-                        className="searchBar"
-                        type="text"
-                        placeholder="Buscar..."
-                        value={searchTerm}
-                        onChange={handleSearch}
-                    />
+                
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export function useFetch(url) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
  
-  useEffect(() => {
+  //useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(url);
@@ -23,13 +23,13 @@ export function useFetch(url) {
         console.log(error)
       } 
     }
-    fetchData();
+    //fetchData();
     
-  }, [url]);
+  //}, [url]);
 
   
   
 
-  return { data, loading, error };
+  return { data,fetchData, loading, error };
 }
 

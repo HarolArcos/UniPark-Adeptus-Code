@@ -4,7 +4,7 @@ import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import "./FormPersona.css";
-import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
+//import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 
 const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadirNuevo}) => {
 
@@ -186,7 +186,7 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
             </Form.Group>
             <ErrorMessage name="telegramPerson" component={()=>(<div className="text-danger">{errors.telegramPerson}</div>)}></ErrorMessage>
 
-            {/* <Form.Group className="inputGroup" controlId="statusPerson">
+            <Form.Group className="inputGroup" controlId="statusPerson">
               <Form.Label className="label" >Estado Persona</Form.Label>
               <Form.Control 
               type="text" 
@@ -196,12 +196,12 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
               value={values.statusPerson}
               />
             </Form.Group>
-            <ErrorMessage name="statusPerson" component={()=>(<div className="text-danger">{errors.statusPerson}</div>)}></ErrorMessage> */}
+            <ErrorMessage name="statusPerson" component={()=>(<div className="text-danger">{errors.statusPerson}</div>)}></ErrorMessage>
 
-            <Form.Group controlId="referencias">
+            {/* <Form.Group controlId="referencias">
               <Form.Label className="label">Referencias</Form.Label>
               <ComboboxReferences></ComboboxReferences>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group className="inputGroup" controlId="nicknamePerson">
               <Form.Label className="label" >Nickname</Form.Label>
