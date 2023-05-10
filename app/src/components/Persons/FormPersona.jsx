@@ -4,6 +4,7 @@ import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import "./FormPersona.css";
+import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 
 const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadirNuevo}) => {
 
@@ -17,50 +18,50 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
     <Formik
     initialValues={
         persona? {
-        idPerson: persona.persona_id,
-        idVehiculo: 1,
-        fnamePerson: persona.persona_nombre,
-        lnamePerson: persona.persona_apellido,
-        cIPerson: persona.persona_ci,
-        phonePerson: persona.persona_telefono,
+        idPerson:       persona.persona_id,
+        typePerson:     persona.persona_tipo,
+        namePerson:     persona.persona_nombre,
+        lastNamePerson: persona.persona_apellido,
+        ciPerson:       persona.persona_ci,
+        phonePerson:    persona.persona_telefono,
         telegramPerson: persona.persona_telegram,
-        statePerson: persona.persona_estado,
-        nickPerson: persona.persona_nickname,
-        pwPersona: persona.persona_contraseña
+        statusPerson:   persona.persona_estado,
+        nicknamePerson: persona.persona_nickname,
+        passwordPerson: persona.persona_contraseña
       }:{
-        idVehiculo: '1',
-        fnamePerson: '',
-        lnamePerson: '',
-        cIPerson: '',
+        typePerson: '3',
+        namePerson: '',
+        lastNamePerson: '',
+        ciPerson: '',
         phonePerson: '',
         telegramPerson: '',
-        statePerson: '',
-        nickPerson: '',
-        pwPersona: ''
+        statusPerson: '',
+        nicknamePerson: '',
+        passwordPerson: ''
       }}
     
     validate={values => {
       const errors = {};
 
-      if(!values.fnamePerson){
-        errors.fnamePerson ='El campo es requerido';
+      if(!values.namePerson){
+        errors.namePerson ='El campo es requerido';
       }
-      else if(!/^[A-Za-z]+$/i.test(values.fnamePerson)){
-        errors.fnamePerson ='caracteres invalidos'
-      }
-
-      if(!values.lnamePerson){
-        errors.lnamePerson ='El campo es requerido';
-      }
-      else if(!/^[A-Za-z]+$/i.test(values.lnamePerson)){
-        errors.lnamePerson ='datos invalidos'
+      else if(!/^[A-Za-z]+$/i.test(values.namePerson)){
+        errors.namePerson ='caracteres invalidos'
       }
 
-      if(!values.cIPerson){
-        errors.cIPerson ='El campo es requerido';
+      if(!values.lastNamePerson){
+        errors.lastNamePerson ='El campo es requerido';
       }
-      else if(!/^[0-9]+$/i.test(values.cIPerson)){
-        errors.colorVehicle ='datos invalidos'
+      else if(!/^[A-Za-z]+$/i.test(values.lastNamePerson)){
+        errors.lastNamePerson ='datos invalidos'
+      }
+
+      if(!values.ciPerson){
+        errors.ciPerson ='El campo es requerido';
+      }
+      else if(!/^[0-9]+$/i.test(values.ciPerson)){
+        errors.ciPerson ='datos invalidos'
       }
 
       if(!values.phonePerson){
@@ -77,25 +78,25 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
         errors.telegramPerson ='datos invalidos'
       }
 
-      if(!values.statePerson){
-        errors.statePerson ='El campo es requerido';
+      if(!values.statusPerson){
+        errors.statusPerson ='El campo es requerido';
       }
-      else if(!/^[0-9]+$/i.test(values.statePerson)){
-        errors.statePerson ='datos invalidos'
+      else if(!/^[0-9]+$/i.test(values.statusPerson)){
+        errors.statusPerson ='datos invalidos'
       }
       
-      if(!values.nickPerson){
-        errors.nickPerson ='El campo es requerido';
+      if(!values.nicknamePerson){
+        errors.nicknamePerson ='El campo es requerido';
       }
-      else if(!/^[A-Za-z-0-9]+$/i.test(values.nickPerson)){
-        errors.nickPerson ='datos invalidos'
+      else if(!/^[A-Za-z-0-9]+$/i.test(values.nicknamePerson)){
+        errors.nicknamePerson ='datos invalidos'
       }
 
-      if(!values.pwPersona){
-        errors.pwPersona ='El campo es requerido';
+      if(!values.passwordPerson){
+        errors.passwordPerson ='El campo es requerido';
       }
-      else if(!/^[A-Za-z-0-9]+$/i.test(values.pwPersona)){
-        errors.pwPersona ='datos invalidos'
+      else if(!/^[A-Za-z-0-9]+$/i.test(values.passwordPerson)){
+        errors.passwordPerson ='datos invalidos'
       }
       return errors;
     }}
@@ -103,10 +104,10 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
 
     onSubmit={async (values) => {
       if (persona) {
-        console.log(values);
+        console.log(values, "editar personas");
         // actualizarVehiculo(values);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson',values);
-        // cancelar();
+        cancelar();
       } else {
         console.log(values);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson',values);
@@ -123,43 +124,43 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
         <div className="col-md-12 contentModalPerson">
 
           <div className="column">
-            <Form.Group controlId="fnamePerson">
+            <Form.Group className="inputGroup" controlId="namePerson">
               <Form.Label className="label text-left">Nombre</Form.Label>
               <Form.Control 
               type="text" 
-              name="fnamePerson"
+              name="namePerson"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.fnamePerson}
+              value={values.namePerson}
               />
             </Form.Group>
-            <ErrorMessage name="fnamePerson" component={()=>(<div className="text-danger">{errors.fnamePerson}</div>)}></ErrorMessage>
+            <ErrorMessage name="namePerson" component={()=>(<div className="text-danger">{errors.namePerson}</div>)}></ErrorMessage>
             
-            <Form.Group controlId="lnamePerson">
+            <Form.Group className="inputGroup" controlId="lastNamePerson">
               <Form.Label className="label" >Apellido</Form.Label>
               <Form.Control 
               type="text"
-              name="lnamePerson"
+              name="lastNamePerson"
               onChange={handleChange}
               onBlur={handleBlur} 
-              value={values.lnamePerson} 
+              value={values.lastNamePerson} 
               />
             </Form.Group>
-            <ErrorMessage name="lnamePerson" component={()=>(<div className="text-danger">{errors.lnamePerson}</div>)}></ErrorMessage>
+            <ErrorMessage name="lastNamePerson" component={()=>(<div className="text-danger">{errors.lastNamePerson}</div>)}></ErrorMessage>
             
-            <Form.Group controlId="cIPerson">
+            <Form.Group className="inputGroup" controlId="ciPerson">
               <Form.Label className="label" >CI</Form.Label>
               <Form.Control 
               type="text" 
-              name="cIPerson"
+              name="ciPerson"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.cIPerson}
+              value={values.ciPerson}
               />
             </Form.Group>
-            <ErrorMessage name="cIPerson" component={()=>(<div className="text-danger">{errors.cIPerson}</div>)}></ErrorMessage>
+            <ErrorMessage name="ciPerson" component={()=>(<div className="text-danger">{errors.ciPerson}</div>)}></ErrorMessage>
             
-            <Form.Group controlId="phonePerson">
+            <Form.Group className="inputGroup" controlId="phonePerson">
               <Form.Label className="label" >Telefono</Form.Label>
               <Form.Control 
               type="text" 
@@ -173,7 +174,7 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
           </div>
 
           <div className="column">
-            <Form.Group controlId="telegramPerson">
+            <Form.Group className="inputGroup" controlId="telegramPerson">
               <Form.Label className="label">Telegram</Form.Label>
               <Form.Control 
               type="text" 
@@ -185,41 +186,46 @@ const FormularioPersona = ({asunto,cancelar, persona,actualizarVehiculo, añadir
             </Form.Group>
             <ErrorMessage name="telegramPerson" component={()=>(<div className="text-danger">{errors.telegramPerson}</div>)}></ErrorMessage>
 
-            <Form.Group controlId="statePerson">
+            {/* <Form.Group className="inputGroup" controlId="statusPerson">
               <Form.Label className="label" >Estado Persona</Form.Label>
               <Form.Control 
               type="text" 
-              name="statePerson"
+              name="statusPerson"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.statePerson}
+              value={values.statusPerson}
               />
             </Form.Group>
-            <ErrorMessage name="statePerson" component={()=>(<div className="text-danger">{errors.statePerson}</div>)}></ErrorMessage>
+            <ErrorMessage name="statusPerson" component={()=>(<div className="text-danger">{errors.statusPerson}</div>)}></ErrorMessage> */}
 
-            <Form.Group controlId="nickPerson">
+            <Form.Group controlId="referencias">
+              <Form.Label className="label">Referencia</Form.Label>
+              <ComboboxReferences></ComboboxReferences>
+            </Form.Group>
+
+            <Form.Group className="inputGroup" controlId="nicknamePerson">
               <Form.Label className="label" >Nickname</Form.Label>
               <Form.Control 
               type="text" 
-              name="nickPerson"
+              name="nicknamePerson"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.nickPerson}
+              value={values.nicknamePerson}
               />
             </Form.Group>
-            <ErrorMessage name="nickPerson" component={()=>(<div className="text-danger">{errors.nickPerson}</div>)}></ErrorMessage>
+            <ErrorMessage name="nicknamePerson" component={()=>(<div className="text-danger">{errors.nicknamePerson}</div>)}></ErrorMessage>
 
-            <Form.Group controlId="pwPersona">
+            <Form.Group className="inputGroup" controlId="passwordPerson">
               <Form.Label className="label">Contraseña</Form.Label>
               <Form.Control 
               type="text" 
-              name="pwPersona"
+              name="passwordPerson"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.pwPersona}
+              value={values.passwordPerson}
               />
             </Form.Group>
-            <ErrorMessage name="pwPersona" component={()=>(<div className="text-danger">{errors.pwPersona}</div>)}></ErrorMessage>
+            <ErrorMessage name="passwordPerson" component={()=>(<div className="text-danger">{errors.passwordPerson}</div>)}></ErrorMessage>
           </div>
         </div>
 
