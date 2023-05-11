@@ -1,13 +1,13 @@
 //import React, { useState, useEffect } from "react";
 import { Modal as BootstrapModal } from "react-bootstrap"; // importacion Button quitada
 
-const Modal = ({ mostrarModal ,hide,title,contend,asunto}) => {
+const Modal = ({ mostrarModal ,hide,title,contend,tamaño}) => {
 
   return (
     <BootstrapModal 
     show = {mostrarModal}  
     onHide={hide}
-    size="xl"
+    size={tamaño}
     aria-labelledby="contained-modal-title-vcenter" 
     fullscreen =' md-down'
     >
@@ -17,14 +17,6 @@ const Modal = ({ mostrarModal ,hide,title,contend,asunto}) => {
       <BootstrapModal.Body>
         {contend}
       </BootstrapModal.Body>
-      {/* <BootstrapModal.Footer>
-      <Button variant="secondary" onClick={hide}>
-            Cancelar
-          </Button>
-          <Button variant="primary" >
-            {asunto}
-          </Button>
-      </BootstrapModal.Footer> */}
     </BootstrapModal>
   );
 };
