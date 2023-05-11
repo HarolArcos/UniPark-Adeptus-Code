@@ -143,17 +143,12 @@ class option{
         return $response;
     }
 
-/*
-    public function listRolDb(){
+
+    public function listOptionDb(){
         $response = false;
         $sql =  "SELECT * FROM opcion";
-        //$sql = "SELECT r.*, ref.referencia_valor as estadoRol
-        FROM rol r
-        JOIN referencia ref
-        ON r.rol_estado = ref.referencia_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
-            
             $arrLog = array(
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
@@ -167,8 +162,7 @@ class option{
         }
         return $response;
     }
-*/
-
+    
     private function mapOption($rs){
         $this->idOption = $rs['opcion_id'];
         $this->fatherOption = $rs['opcion_padre'];

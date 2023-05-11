@@ -1,0 +1,9 @@
+2023-05-11 17:57:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM opcion
+)
+ Function error: listOptionDb	100 DEBUG

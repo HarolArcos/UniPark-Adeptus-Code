@@ -6,6 +6,7 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertOption");
     $server->Register("editOption");
+    $server->Register("listOption");
     $server->start();
 
     function insertOption($arg){
@@ -150,7 +151,26 @@
         return $response;
     }
 
- 
+    function listOption(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_Option = new Option($_db);
+        $responseList = $_Option->listOptionDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente a las opciones - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan opciones"));
+            $mensaje = "No se pudo listara a las opciones - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        return $responseList;
+    }
+
     function validateArg($arg){
         $resp = false;
         if (!is_object($arg)) {

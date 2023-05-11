@@ -1,0 +1,1 @@
+2023-05-11 17:57:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a las opciones - Funcion: listOption	500 ERROR
