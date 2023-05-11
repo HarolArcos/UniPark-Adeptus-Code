@@ -94,7 +94,7 @@ class rol_has_option {
 
     public function insertRolHasOptionDb($idRol,$idOption){
         $response = false;
-        $sql =  "INSERT INTO persona_has_rol(persona_id, rol_id) VALUES ('$idRol','$idOption')";
+        $sql =  "INSERT INTO rol_has_opcion(rol_id, opcion_id) VALUES ('$idRol','$idOption')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -116,7 +116,7 @@ class rol_has_option {
         return $response;
     }
 
-    public function editPersonHasRolDb($idRolHasOption, $idRol, $idOption){
+    public function editRolHasPersonDb($idRolHasOption, $idRol, $idOption){
         $response = false;
         $sql =  "UPDATE rol_has_opcion SET
         rol_id ='$idRol',

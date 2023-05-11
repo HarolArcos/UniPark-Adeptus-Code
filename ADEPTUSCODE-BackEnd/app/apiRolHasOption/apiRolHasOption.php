@@ -102,8 +102,8 @@
         $idOption = $arg->idOption;
         $idRol = $arg->idRol;
 
-        $_RolHasOption = new person_has_rol($_db);
-        $responseEdit = $_RolHasOption->editRolHasOptionDb($idRolHasOption, $idOption,$idRol);
+        $_RolHasOption = new rol_has_option($_db);
+        $responseEdit = $_RolHasOption->editRolHasPersonDb($idRolHasOption, $idOption,$idRol);
         if ( $responseEdit) {
             $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));
         }else{

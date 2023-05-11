@@ -1,0 +1,82 @@
+2023-05-11 18:03:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a persona_has_rol - Funcion: listRolHasOption	500 ERROR
+2023-05-11 18:03:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a persona_has_rol - Funcion: listRolHasOption	500 ERROR
+2023-05-11 18:11:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.050496101379395
+    [input] => {"idRol":1,"idOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertRolHasOption	300 NOTICE
+2023-05-11 18:13:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024579048156738
+    [input] => {"idRol":1,"idOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertRolHasOption	300 NOTICE
+2023-05-11 18:14:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.033203125
+    [input] => {"idRol":1,"idOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertRolHasOption	300 NOTICE
+2023-05-11 18:26:25	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.028028011322021
+    [input] => {"idRolHasOption":2,"idRol":3,"idOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios realizados con exito
+                )
+
+        )
+
+)
+ Funcion: editRolHasOption	300 NOTICE
+2023-05-11 18:30:09	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.028650999069214
+    [input] => {"idRolHasOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => eliminacion exitosa
+                )
+
+        )
+
+)
+ Funcion: deleteRolHasOption	300 NOTICE
