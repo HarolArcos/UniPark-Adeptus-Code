@@ -100,7 +100,7 @@ class subscription {
 
     public function insertSubscriptionDb($idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription){
         $response = false;
-        $sql =  "INSERT INTO subscription(tarifa_id, suscripcion_estado, persona_id, suscripcion_activacion, suscripcion_expiracion, suscripcion_numero_parqueo) VALUES ($idTarifa,$statusSubscription, $idPerson,'$activationSubscription','$expirationSubscription', '$numParkSubscription')";
+        $sql =  "INSERT INTO suscripcion(tarifa_id, suscripcion_estado, persona_id, suscripcion_activacion, suscripcion_expiracion, suscripcion_numero_parqueo) VALUES ($idTarifa,$statusSubscription, $idPerson,'$activationSubscription','$expirationSubscription', '$numParkSubscription')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -133,7 +133,7 @@ class subscription {
 
     public function editSubscriptionDb($idSubscription,$idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription){
         $response = false;
-        $sql =  "UPDATE subscription SET
+        $sql =  "UPDATE suscripcion SET
         tarifa_id = '$idTarifa',
         suscripcion_estado ='$statusSubscription',
         persona_id = '$idPerson', 
