@@ -36,7 +36,7 @@ export const AppRouter = () => {
                     <Route path="/personas"             element={ <Persons/> } />
                     <Route path="/referencias"          element={ <ComboboxReferences/> }/>
                     <Route path='/guard'                element={ <Guard/>} />
-                    <Route path='/ReclamosResp'                element={ <SolucionAccionReclamo/>} />
+                    <Route path='/ReclamosResp'         element={ <SolucionAccionReclamo/>} />
                     <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
                     <Route path="/vehiculo"             element={ <Vehicle/> } />
                 </Routes>

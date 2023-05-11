@@ -112,9 +112,9 @@ export default function Persons(){
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Apellido</th>
                             <th>Telefono</th>
                             <th> CI </th>
+                            <th>Tipo Persona</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -128,11 +128,11 @@ export default function Persons(){
                             data.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
-                                        <td>{persona.persona_nombre}</td>
-                                        <td>{persona.persona_apellido}</td>
+                                        <td>{persona.persona_nombre} {persona.persona_apellido}</td>
                                         <td>{persona.persona_telefono}</td>
                                         <td>{persona.persona_ci}</td>
-                                        <td>{persona.persona_estado}</td>
+                                        <td>{persona.personatipo}</td>
+                                        <td>{persona.personaestado}</td>
                                         <td className="actionsButtons">
                                             <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(persona)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
