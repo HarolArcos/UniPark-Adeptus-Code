@@ -6,11 +6,9 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import { useFetch } from "../../hooks/HookFetchListData";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import "./Vehicle.css"
-import { useNavigate } from "react-router-dom";
-const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo}) => {
+const Formulario = ({asunto,cancelar, vehiculo}) => {
 
   const {data,fetchData} = useFetchSendData();
-  const navigate = useNavigate();
   useEffect(() => {
     console.log('Data actualizada o creada :', data);
   }, [data]);
@@ -39,7 +37,7 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo}) => {
       colorVehicle: vehiculo.vehiculo_color ,
       }:{
       idPerson: '',
-      statusVehicle: '3',
+      statusVehicle: '',
       plateVehicle: '',
       modelVehicle: '',
       colorVehicle: '',
@@ -81,16 +79,13 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo}) => {
       if (vehiculo) {
         values.idPerson = selectedPersonaId;
         console.log(values,selectedPersonaId);
-        actualizarVehiculo(values);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
-        
-        navigate("/vehiculo");
         cancelar();
+        
       } else {
         values.idPerson = selectedPersonaId;
         console.log(values,selectedPersonaId);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
-        navigate("/vehiculo");
         cancelar();
       }
 
@@ -136,16 +131,32 @@ const Formulario = ({asunto,cancelar, vehiculo,actualizarVehiculo}) => {
               </Form.Group>
               <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
               
-      <br/>
-            <Form.Group className="inputGroup" controlId="idPerson">
-            <Form.Label className="text-left">Propietario</Form.Label>
-            <ComboboxPerson 
-            id={vehiculo? vehiculo.persona_id:null}
-            onPersonaIdChange={handlePersonaIdChange}
-            />
-            </Form.Group>
-            <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
-            
+              <br/>
+              <Form.Group className="inputGroup" controlId="colorVehicle">
+                <Form.Label className="text-left">Estado</Form.Label>
+                <Form.Select 
+                name="statusVehicle" 
+                aria-label="Default select example"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                defaultValue={vehiculo?values.statusVehicle:5}
+                >
+                  <option value="5">Activo</option>
+                  <option value="6">Inactivo</option>
+                </Form.Select>
+              </Form.Group>
+              <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
+                    
+              <br/>
+              <Form.Group className="inputGroup" controlId="idPerson">
+              <Form.Label className="text-left">Propietario</Form.Label>
+              <ComboboxPerson 
+              id={vehiculo? vehiculo.persona_id:null}
+              onPersonaIdChange={handlePersonaIdChange}
+              />
+              </Form.Group>
+              <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
+              
       <br/>
         <Modal.Footer >
           <Button variant="secondary" onClick={cancelar}>
