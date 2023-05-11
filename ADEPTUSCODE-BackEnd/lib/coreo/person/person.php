@@ -241,22 +241,37 @@ class person {
 
     public function validatePersonDb($nicknamePerson, $passwordPerson){
         $response = false;
-        //$sql =  "SELECT * FROM persona";
-        $sql = "SELECT persona_id, persona_nickname
+        $sql2 =  "SELECT opcion.*
         FROM persona
-        JOIN referencia ON persona.persona_estado = referencia.referencia_id
-        WHERE persona_nickname = '$nicknamePerson'
-          AND persona_contraseña = '$passwordPerson'
-          AND referencia_valor = 'activo'";
+        INNER JOIN persona_has_rol ON persona.persona_id = persona_has_rol.persona_id
+        INNER JOIN rol_has_opcion ON persona_has_rol.rol_id = rol_has_opcion.rol_id
+        INNER JOIN opcion ON rol_has_opcion.opcion_id = opcion.opcion_id
+        INNER JOIN referencia ON opcion.opcion_estado = referencia.referencia_id
+        WHERE persona.persona_nickname = '$nicknamePerson'
+        AND persona.persona_contraseña = '$passwordPerson'
+        AND referencia.referencia_valor = 'activo'";
+        
+
+        $sql = "SELECT persona.*, tipoPersona.referencia_valor, rol.rol_nombre
+        FROM persona
+        JOIN referencia AS tipoPersona ON persona.persona_tipo = tipoPersona.referencia_id
+        JOIN referencia AS estadoPersona ON persona.persona_estado = estadoPersona.referencia_id
+        JOIN persona_has_rol ON persona.persona_id = persona_has_rol.persona_id
+        JOIN rol ON persona_has_rol.rol_id = rol.rol_id
+        WHERE persona.persona_nickname = '$nicknamePerson' 
+          AND persona.persona_contraseña = '$passwordPerson' 
+          AND estadoPersona.referencia_valor = 'activo'";
         $rs = $this->_db->select($sql);
-        if($this->_db->getLastError()) {
+        $rs2 = $this->_db->select($sql2);
+        if($this->_db->getLastError() == false && $rs==false && $rs2==false) {
             
             $arrLog = array(
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
-            $response = $rs;
+            //$response = $rs;
+            $response = array('persona'=>$rs, 'opciones'=>$rs2);
             $arrLog = array(
                             "output"=>$response,
                             "sql"=>$sql);
