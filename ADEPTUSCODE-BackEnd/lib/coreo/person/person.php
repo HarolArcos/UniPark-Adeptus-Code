@@ -239,6 +239,32 @@ class person {
         return $response;
     }
 
+    public function validatePersonDb($nicknamePerson, $passwordPerson){
+        $response = false;
+        //$sql =  "SELECT * FROM persona";
+        $sql = "SELECT persona_id, persona_nickname
+        FROM persona
+        JOIN referencia ON persona.persona_estado = referencia.referencia_id
+        WHERE persona_nickname = '$nicknamePerson'
+          AND persona_contraseña = '$passwordPerson'
+          AND referencia_valor = 'activo'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
 	
     private function mapPerson($rs){
         $this->idPerson = $rs['persona_id'];

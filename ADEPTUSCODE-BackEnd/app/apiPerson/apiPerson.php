@@ -10,6 +10,7 @@
     $server->Register("test2");
     $server->Register("editPerson");
     $server->Register("changeStatePerson");
+    $server->Register("validatePerson");
     $server->start();
 
     function insertPerson($arg){
@@ -287,6 +288,58 @@
         }
         
         return $responseList;
+    }
+
+    function validatePerson($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $nicknamePerson =  "";
+        $passwordPerson = "";
+
+        if(isset($arg->nicknamePerson)){
+            $nicknamePerson =  $arg->nicknamePerson;
+        }else{
+            array_push($errorlist,"Error: falta parametro nicknamePerson");
+        }
+        if(isset($arg->passwordPerson)){
+            $passwordPerson =  $arg->passwordPerson;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro passwordPerson");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $nicknamePerson =  $arg->nicknamePerson;
+        $passwordPerson = $arg->passwordPerson;
+
+        $_person = new person($_db);
+        $responseValidate = $_person->validatePersonDb($nicknamePerson, $passwordPerson);
+
+        if ( $responseValidate){
+            $response = array("codError" => 200, "data" => array("desError"=>"true"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"no se encontro a la persona en la db o su estado es inactivo"));
+            return $response;
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $responseValidate;
     }
     
     function validateArg($arg){
