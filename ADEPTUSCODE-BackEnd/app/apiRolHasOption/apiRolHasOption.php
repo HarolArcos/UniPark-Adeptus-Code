@@ -24,29 +24,32 @@
         }
 
         $errorlist=array();
-        $idOption = "";
         $idRol = "";
+        $idOption = "";
+        
 
 
-        if(isset($arg->idOption)){
-            $idOption =  $arg->idOption;
-        }else{
-            array_push($errorlist,"Error: falta parametro idPerson");
-        }
+
         if(isset($arg->idRol)){
             $idRol =  $arg->idRol;
         }else{
             array_push($errorlist,"Error: falta parametro idRol");
         }
+        if(isset($arg->idOption)){
+            $idOption =  $arg->idOption;
+        }else{
+            array_push($errorlist,"Error: falta parametro idPerson");
+        }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
 
-        $idOption = $arg->idOption;
         $idRol = $arg->idRol;
+        $idOption = $arg->idOption;
+        
 
         $_RolHasOption = new rol_has_option($_db);
-        $responseInsert = $_RolHasOption->insertRolHasOptionDb($idOption,$idRol);
+        $responseInsert = $_RolHasOption->insertRolHasOptionDb($idRol,$idOption);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));

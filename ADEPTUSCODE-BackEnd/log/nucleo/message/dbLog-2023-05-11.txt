@@ -1,0 +1,17 @@
+2023-05-11 20:19:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 
+            [orderOption] => 1
+            [componentOption] => componente_1dadsafsafasfahdasuduisaduiasdsaf
+            [statusOption] => 1
+        )
+
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('','1','componente_1dadsafsafasfahdasuduisaduiasdsaf','1')
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «»
+LINE 2:          VALUES ('','1','componente_1dadsafsafasfahdasuduisa...
+                         ^
+)
+ Function error: insertOptionDb	500 ERROR
