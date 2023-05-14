@@ -29,11 +29,6 @@
         $statusOption = "";
 
 
-        if(isset($arg->fatherOption)){
-            $fatherOption =  $arg->fatherOption;
-        }else{
-            array_push($errorlist,"Error: falta parametro fatherOption");
-        }
         if(isset($arg->orderOption)){
                 $orderOption =  $arg->orderOption;
         }else{
@@ -100,12 +95,6 @@
         }
         else{
             array_push($errorlist,"Error: falta parametro idOption");
-        }
-        if(isset($arg->fatherOption)){
-            $fatherOption =  $arg->fatherOption;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro fatherOption");
         }
         if(isset($arg->orderOption)){
                 $orderOption =  $arg->orderOption;
