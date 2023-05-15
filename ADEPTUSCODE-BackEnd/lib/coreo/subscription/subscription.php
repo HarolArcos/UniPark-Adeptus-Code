@@ -1,31 +1,37 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");  
-//Clase Creada 0/05/2023
-//by: Harol Arcos
-//Clase mapeada de la tabla rol_has_opcion
+//Clase Creada 03/05/2023
+//by: Gonza Zeballos M.
+//Clase mapeada de la tabla subscripcion
 
-class rol_has_option {
+class subscription {
+
     private $optionsLog;
     private $_db;
-    private $idRolHasOption, $idRol,$idOption;
+    private $idSubscription,$idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription;
 
-    function __construct($_db,$idRolHasOption=0){
+    function __construct($_db,$idSubscription=0){
+        
         $this->_db=$_db;
-        if ($idRolHasOption!=0) {
-            $this->setRolHasOption($idRolHasOption);
+        if ($idSubscription!=0) {
+            $this->setSubscription($idSubscription);
         }
     }
 
     function __destruct(){
         unset($this->_db);
-        unset($this->idRolHasOption);
-        unset($this->idRol);
-        unset($this->idOption);
+        unset($this->idSubscription);
+        unset($this->idTarifa);
+        unset($this->statusSubscription);
+        unset($this->idPerson);
+        unset($this->activationSubscription);
+        unset($this->expirationSubscription);
+        unset($this->numParkSubscription);
     }
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/person_has_rol",           
+            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/subscription",           
             'filename'       => $fileName,);
           $_log = new log($this->optionsLog);
           
@@ -63,79 +69,102 @@ class rol_has_option {
           }
     }
     
-    private function setRolHasOption($idRolHasOption){
+    private function setSubscription($idSubscription){
         $response = FALSE;
-        $dataRolHasOption = $this->findRolHasOption($idRolHasOption);
-        if($dataRolHasOption){
-            $this->mapPersonHasRol($dataRolHasOption);
+        $dataSubscription = $this->findSubscriptionDb($idSubscription);
+        if($dataSubscription){
+            $this->mapSubscription($dataSubscription);
             $response = TRUE;
         }
-        $arrLog = array("input"=>$idRolHasOption,"output"=>$response);
+        $arrLog = array("input"=>$idSubscription,"output"=>$response);
         $this->createLog('apiLog', print_r($arrLog, true)." Function: ".__FUNCTION__, "warning");
         return $response;
     }
     
-    private function findRolHasOptionDb($idRolHasOption){
+    private function findSubscriptionDb($idSubscription){
         $response = false;
-        $sql =  "SELECT * FROM rol_has_opcion ".
-                "where rol_has_opcion_id = $idRolHasOption";
+        $sql =  "SELECT * FROM subscription WHERE subscription_id = $idSubscription";
                 
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>$idRolHasOption,"sql"=>$sql,"error"=>$this->_db->getLastError());
+            $arrLog = array("input"=>$idSubscription,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
         } else {
+            
             $response = $rs[0];
-            $arrLog = array("input"=>$idRolHasOption,"output"=>$response,"sql"=>$sql);
+            $arrLog = array("input"=>$idSubscription,"output"=>$response,"sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }
 
-    public function insertRolHasOptionDb($idRol,$idOption){
+    public function insertSubscriptionDb($idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription){
         $response = false;
-        $sql =  "INSERT INTO rol_has_opcion(rol_id, opcion_id) VALUES ('$idRol','$idOption')";
+        $sql =  "INSERT INTO suscripcion(tarifa_id, suscripcion_estado, persona_id, suscripcion_activacion, suscripcion_expiracion, suscripcion_numero_parqueo) VALUES ($idTarifa,$statusSubscription, $idPerson,'$activationSubscription','$expirationSubscription', '$numParkSubscription')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
-            $arrLog = array("input"=>array( "idRol"=> $idRol,
-                                            "idOption"=> $idOption
+            $arrLog = array("input"=>array( "idTarifa"=> $idTarifa,
+                                            "statusSubscription"=> $statusSubscription,
+                                            "idPerson"=> $idPerson,
+                                            "activationSubscription"=> $activationSubscription,
+                                            "expirationSubscription"=> $expirationSubscription, 
+                                            "numParkSubscription"=> $numParkSubscription
                                         ),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idRol"=> $idRol,
-                                            "idOption"=> $idOption
+            $arrLog = array("input"=>array( "idTarifa"=> $idTarifa,
+                                            "statusSubscription"=> $statusSubscription,
+                                            "idPerson"=> $idPerson,
+                                            "activationSubscription"=> $activationSubscription,
+                                            "expirationSubscription"=> $expirationSubscription, 
+                                            "numParkSubscription"=> $numParkSubscription
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
+
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }
 
-    public function editRolHasPersonDb($idRolHasOption, $idRol, $idOption){
+    public function editSubscriptionDb($idSubscription,$idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription){
         $response = false;
-        $sql =  "UPDATE rol_has_opcion SET
-        rol_id ='$idRol',
-        opcion_id = '$idOption'
-        WHERE rol_has_opcion_id = $idRolHasOption";
+        $sql =  "UPDATE suscripcion SET
+        tarifa_id = '$idTarifa',
+        suscripcion_estado ='$statusSubscription',
+        persona_id = '$idPerson', 
+        suscripcion_activacion = '$activationSubscription', 
+        suscripcion_expiracion = '$expirationSubscription',
+        suscripcion_numero_parqueo = '$numParkSubscription'
+        WHERE suscripcion_id = $idSubscription";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>array( "idRolHasOption" => $idRolHasOption,
-                                            "idRol"=> $idRol,
-                                            "idOption"=> $idOption
+            
+            $arrLog = array("input"=>array( "idSubscription" => $idSubscription,
+                                            "idTarifa"=> $idTarifa,
+                                            "statusSubscription"=> $statusSubscription,
+                                            "idPerson"=> $idPerson,
+                                            "activationSubscription"=> $activationSubscription,
+                                            "expirationSubscription"=> $expirationSubscription, 
+                                            "numParkSubscription"=> $numParkSubscription
                                         ),
+
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idRolHasOption" => $idRolHasOption,
-                                            "idRol"=> $idRol,
-                                            "idOption"=> $idOption
+            $arrLog = array("input"=>array( "idSubscription" => $idSubscription,
+                                            "idTarifa"=> $idTarifa,
+                                            "statusSubscription"=> $statusSubscription,
+                                            "idPerson"=> $idPerson,
+                                            "activationSubscription"=> $activationSubscription,
+                                            "expirationSubscription"=> $expirationSubscription, 
+                                            "numParkSubscription"=> $numParkSubscription
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
@@ -143,19 +172,18 @@ class rol_has_option {
         }
         return $response;
     }
-
-    public function deleteRolHasOptionDb($idRolHasOption){
+    public function changeStateSubscriptionDb($idSubscription, $statusSubscription){
         $response = false;
-        $sql = "DELETE FROM rol_has_opcion WHERE rol_has_opcion_id = $idRolHasOption";
+        $sql =  "UPDATE suscripcion SET suscripcion_estado = $statusSubscription WHERE suscripcion_id = $idSubscription";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>array( "idRolHasOption" => $idRolHasOption),
+            $arrLog = array("input"=>array( "idSubscription" => $idSubscription,"statusSuscription" => $statusSubscription),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idRolHasOption" => $idRolHasOption),
+            $arrLog = array("input"=>array( "idSubscription" => $idSubscription,"statusSuscription" => $statusSubscription),
                             "output"=>$response,
                             "sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
@@ -163,11 +191,18 @@ class rol_has_option {
         return $response;
     }
 
-    public function listRolHasOptionDb(){
+    public function listSubscriptionDb(){
         $response = false;
-        $sql =  "SELECT * FROM rol_has_opcion";
+        $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        r.referencia_valor,
+        t.tarifa_nombre
+        FROM suscripcion s
+        INNER JOIN persona p ON s.persona_id = p.persona_id
+        INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
+            
             $arrLog = array(
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
@@ -182,22 +217,44 @@ class rol_has_option {
         return $response;
     }
 
-    private function mapRolHasOption($rs){
-        $this->idRolHasOption = $rs['rol_has_option-id'];
+	
+    private function mapSubscription($rs){
+        $this->idSubscription = $rs['suscripcion_id'];
         $this->idPerson = $rs['persona_id'];
-        $this->idRol = $rs['rol_id'];
+        $this->statusSubscription = $rs['suscripcion_estado'];
+        $this->idTarifa = $rs['tarifa_id'];
+        $this->activationSubscription = $rs['suscripcion_activacion'];
+        $this->expirationSubscription = $rs['suscripcion_expiracion'];
+        $this->numParkSubscription = $rs['suscripcion_numero_parqueo'];
     }
 
-    public function getRolHasOptionId(){
-        return $this->idRolHasOption;
+
+    public function getSubscriptionId(){
+        return $this->idSubscription;
     }
 
-    public function getoptionId(){
-        return $this->idOption;
+    public function getPersonId(){
+        return $this->idPerson;
     }
 
-    public function getIdRol(){
-        return $this->idRol;
+    public function getStatusSubscription(){
+        return $this->statusSubscription;
+    }
+    
+    public function getTarifaId(){
+        return $this->idTarifa;
+    }
+    
+    public function getActivationSubscription(){
+        return $this->activationSubscription;
+    } 
+    
+    public function getExpirationSubscription(){
+        return $this->expirationSubscription;
+    }
+
+    public function getNumParkSubscription(){
+        return $this->numParkSubscription;
     }
 
 }
