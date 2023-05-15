@@ -5,7 +5,7 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 export default function ResRec() {
   const [reclamoset, setreclamoset] = useState([]);
   const {data,fetchData,error} = useFetchSendData(
-    'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeSolutionComplaint');
+    );
   const [solucion, setsolucion] = useState(null);
   const [show, setShow] = useState(false);
   const { data:datosr, loading:loadingr,  } = useFetch(
@@ -14,9 +14,10 @@ export default function ResRec() {
   const handleClose = () => setShow(false);
   
   function Cambiosol() {
+    
     const myData = { "idComplaint" : reclamoset.reclamo_id,
     "complaintSolution" : solucion}; // datos a enviar en la primera llamada
-    fetchData(myData);
+    fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeSolutionComplaint',myData);
     
     setShow(false);
     

@@ -1,26 +1,40 @@
 
-export default function Comprueva (usuario,contraseña,data,setUserglobal,navigate) {
+export default function Comprueva (navigate,datos,setUserglobal) {
+    
+        
     
     
-    console.log(usuario,contraseña,data)
     
    
-    let [user] = data.filter((us)=>us.persona_nickname===usuario)
     
-        if (!user) {
-           return "El correo o contraseña es incorrecto"
-        } else {
+    if (datos.desError) {
+        return datos.desError
+    } else {
+        console.log(datos);
+        
+        console.log(datos.opciones);
+        //setUserglobal(datos.persona[0])
+        localStorage.setItem("use",JSON.stringify(datos.persona[0]))
+        localStorage.setItem("options",JSON.stringify(datos.opciones))
+        navigate("/main")
+    }
+    
+    
+    /* if (error) {
+        return "El correo o contraseña es incorrecto"
+    } else {
+        setUserglobal(user);
+        localStorage.setItem("use",JSON.stringify(user))
+        navigate("/main")
+        return "/main"
+        
+    } */
+          
+       
             
-            if(user.persona_contraseña!==contraseña)
-             {return "El correo o contraseña es incorrecto"}
-             else{setUserglobal(user)
-                localStorage.setItem("use",JSON.stringify(user))
-              
-                
-                navigate("/main")
-            return "/main"}
             
-        }  
+            
+        } 
         
         
     
@@ -39,4 +53,3 @@ export default function Comprueva (usuario,contraseña,data,setUserglobal,naviga
 
 
 
-}
