@@ -1,11 +1,5 @@
 
-export default function Comprueva (navigate,datos,setUserglobal) {
-    
-        
-    
-    
-    
-   
+export default function Comprueba (navigate, datos, setUserglobal) {
     
     if (datos.desError) {
         return datos.desError
@@ -19,7 +13,6 @@ export default function Comprueva (navigate,datos,setUserglobal) {
         navigate("/main")
     }
     
-    
     /* if (error) {
         return "El correo o contraseña es incorrecto"
     } else {
@@ -29,27 +22,8 @@ export default function Comprueva (navigate,datos,setUserglobal) {
         return "/main"
         
     } */
-          
-       
-            
-            
-            
-        } 
-        
-        
-    
 
-
-
-    
-
-
-
-
-    
-
-
-
+} 
 
 
 
