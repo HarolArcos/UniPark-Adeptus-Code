@@ -32,7 +32,6 @@ export const Vehicle = () => {
         }else{
             setVehiculos(data);
         }
-        console.log(data);
     }, [data]);
 
     //-----------------------Activate-------------------------------------------
@@ -51,7 +50,6 @@ export const Vehicle = () => {
     const handleCancelar = () => {
         setShowEdit(false);
         setShowCreate(false);
-        console.log(data);
     };
  
     return (
