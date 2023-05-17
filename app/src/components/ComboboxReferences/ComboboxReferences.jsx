@@ -1,70 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import Select from "react-select";
-//import { useEffect } from "react";
-import { useState } from "react";
 import "./ComboboxReferences.css";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
-export default function ComboboxReferences(){ 
-
-    const ref = [
-        { value: 'Persona Tipo', label: 'Persona Tipo' }
-      ];
-
-    const type = [
-        { value: 'Administrador', label: 'Administrador' },
-        { value: 'Cliente', label: 'Cliente' },
-        { value: 'Guardia', label: 'Guardia' }
-    ]
-
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [options, setOptions] = useState([]);
-
+export default function ComboboxReferences({onReferenciaIdChange,defaultValor,referenciaObjeto}){ 
     const {data, fetchData} = useFetchSendData();
-
-    const handleOptionChange = async (option) => {
-        setSelectedOption(option);
-        
-        const apiUrl = 'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences';
-        const requestData = {
-            tableNameReference: 'persona',
-            nameSpaceReference: 'persona_estado'
-        };
-
-        try {
-        const response = await fetchData(apiUrl, requestData);
-        setOptions(response);
-        } catch (error) {
-        console.error('Error fetching data:', error);
-        }
-    };
+    const [ref,setRef]=useState([]);
     useEffect(() => {
-        setOptions(data);
-        console.log(data);
-    }, [data]);
-    console.log(data, 'valores');
+        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",referenciaObjeto);
+    }, []);
+    
+    useEffect(()=>{
+        setRef(data);
+        if (data && Array.isArray(data)) { 
+            setRef(data.map((dato) => ({ value: dato.referencia_id, label: `${dato.referencia_valor} ` })));
+        }
+    },[data]);
+    
+    const handleReferenciaChange = (selectedOption) => {
+        setSelectedReferenciaId(selectedOption.value);
+        onReferenciaIdChange(selectedOption.value);
+    };
+    
+    const [selectedReferenciaId, setSelectedReferenciaId] = useState(null); 
 
     return(
-        // <div className="combobox">
-        //     <Select
-        //         placeholder="Seleccione Referencia"
-        //         options={ options }
-        //     ></Select>
-        // </div>
-        <div className="comboBoxGroup">
             <Select
-                className="selectRef"
                 placeholder="Referencia"
                 options={ref}
-                value={selectedOption}
-                onChange={handleOptionChange}
+                defaultValue={defaultValor}
+                value={ref && Array.isArray(ref)?ref.find(option => option.value === selectedReferenciaId):''}
+                onChange={handleReferenciaChange}
             />
-            {ref.length > 0 && (
-                <Select
-                className="selectRef"
-                options={type}
-                />
-            )} 
-        </div>    
+            
+          
     )
 }
