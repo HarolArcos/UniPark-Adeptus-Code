@@ -31,27 +31,23 @@
 
 
         if(isset($arg->statusRate)){
-            $statusRate =  $arg->$statusRate;
-        }
-        else{
+            $statusRate =  $arg->statusRate;
+        }else{
             array_push($errorlist,"Error: falta parametro statusRate");
         }
-        if(isset($arg->$nameRate)){
+        if(isset($arg->nameRate)){
                 $nameRate =  $arg->nameRate;
-        }
-        else{
+        }else{
             array_push($errorlist,"Error: falta parametro nameRate");
         }
         if(isset($arg->valueRate)){
             $valueRate =  $arg->valueRate;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro descriptionRol");
+        }else{
+            array_push($errorlist,"Error: falta parametro valueRate");
         }
         if(isset($arg->routeRate)){
-            $routeRate =  $arg->$routeRate;
-        }
-        else{
+            $routeRate =  $arg->routeRate;
+        }else{
             array_push($errorlist,"Error: falta parametro routeRate");
         }
         if(count($errorlist)!==0){
@@ -63,8 +59,8 @@
         $valueRate =  $arg->valueRate;
         $routeRate =  $arg->routeRate;
 
-        $_rol = new rate($_db);
-        $responseInsert = $_rol->insertRateDb($statusRate,$nameRate,$valueRate, $routeRate);
+        $_rate = new rate($_db);
+        $responseInsert = $_rate->insertRateDb($statusRate,$nameRate,$valueRate, $routeRate);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
@@ -102,46 +98,41 @@
 
         if(isset($arg->idRate)){
             $idRate =  $arg->idRate;
-        }
-        else{
+        }else{
             array_push($errorlist,"Error: falta parametro idRate");
         }
         if(isset($arg->statusRate)){
             $statusRate =  $arg->statusRate;
-        }
-        else{
+        }else{
             array_push($errorlist,"Error: falta parametro statusRate");
         }
         if(isset($arg->nameRate)){
                 $nameRate =  $arg->nameRate;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro nameRol");
+        }else{
+            array_push($errorlist,"Error: falta parametro nameRate");
         }
         if(isset($arg->valueRate)){
             $valueRate =  $arg->valueRate;
-        }
-        else{
+        }else{
             array_push($errorlist,"Error: falta parametro valueRate");
         }
         if(isset($arg->routeRate)){
             $routeRate =  $arg->routeRate;
-        }
-        else{
+        }else{
             array_push($errorlist,"Error: falta parametro valueRate");
         }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
 
-        $idRate = $arg->$idRate;
+        $idRate = $arg->idRate;
         $statusRate = $arg->statusRate;
         $nameRate =  $arg->nameRate;
         $valueRate =  $arg->valueRate;
         $routeRate = $arg->routeRate;
 
-        $_rol = new rate($_db);
-        $responseEdit = $_rol->editRateDb($idRate,$statusRate,$nameRate,$valueRate, $routeRate);
+        $_rate = new rate($_db);
+        $responseEdit = $_rate->editRateDb($idRate,$statusRate,$nameRate,$valueRate, $routeRate);
 
         if ( $responseEdit) {
             $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));
@@ -157,7 +148,7 @@
     }
     //QUEDE ACÁ
 
-    function changeStateRol($arg){
+    function changeStateRateDb($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
@@ -171,29 +162,29 @@
         }
 
         $errorlist=array();
-        $idRol =  "";
-        $statusRol = "";
+        $idRate =  "";
+        $statusRate = "";
 
-        if(isset($arg->idRol)){
-            $idRol =  $arg->idRol;
+        if(isset($arg->idRate)){
+            $idRate =  $arg->idRate;
         }else{
-            array_push($errorlist,"Error: falta parametro idRol");
+            array_push($errorlist,"Error: falta parametro idRate");
         }
-        if(isset($arg->statusRol)){
-            $statusRol =  $arg->statusRol;
+        if(isset($arg->statusRate)){
+            $statusRate =  $arg->statusRate;
         }
         else{
-            array_push($errorlist,"Error: falta parametro statusRol");
+            array_push($errorlist,"Error: falta parametro statusRate");
         }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist));
         }
 
-        $idRol =  $arg->idRol;
-        $statusRol = $arg->statusRol;
+        $idRate =  $arg->idRate;
+        $statusRate = $arg->statusRate;
 
-        $_rol = new rol($_db);
-        $responseDelete = $_rol->changeStateRolDb($idRol, $statusRol);
+        $_rate = new rate($_db);
+        $responseDelete = $_rate->changeStateRateDb($idRate, $statusRate);
 
         if ( $responseDelete){
             $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado exitosa"));
@@ -208,20 +199,20 @@
         return $response;
     }
 
-    function listRol(){
+    function listRate(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);
         $_log = new log($options);
        
-        $_rol = new rol($_db);
-        $responseList = $_rol->listRolDb();
+        $_rate = new rate($_db);
+        $responseList = $_rate->listRateDb();
 
         if ( $responseList) {
-            $mensaje = "Se listo correctamente los roles - Funcion: ".__FUNCTION__;
+            $mensaje = "Se listo correctamente las tarifas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan roles"));
-            $mensaje = "No se pudo listara a los vehiculos - Funcion: ".__FUNCTION__;
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan tarifas"));
+            $mensaje = "No se pudo listara a las tarifas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }

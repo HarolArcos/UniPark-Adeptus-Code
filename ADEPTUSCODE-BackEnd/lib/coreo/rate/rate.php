@@ -98,7 +98,8 @@ class rate {
 
     public function insertRateDb($statusRate,$nameRate,$valueRate, $routeRate){
         $response = false;
-        $sql =  "INSERT INTO tarifa(tarifa_estado, tarifa_nombre, tarifa_valor, tarifa_ruta) VALUES ('$statusRate','$nameRate','$valueRate', '$routeRate')";
+        $sql =  "INSERT INTO tarifa(tarifa_estado, tarifa_nombre, tarifa_valor, tarifa_ruta)
+         VALUES ($statusRate,'$nameRate',$valueRate, '$routeRate')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -128,15 +129,15 @@ class rate {
     public function editRateDb($idRate,$statusRate,$nameRate,$valueRate, $routeRate){
         $response = false;
         $sql =  "UPDATE tarifa SET
-        tarifa_estado ='$statusRate',
+        tarifa_estado =$statusRate,
         tarifa_nombre = '$nameRate', 
-        tarifa_valor = '$valueRate'
-        tarifa_ruta = '$routeRate',
+        tarifa_valor = $valueRate,
+        tarifa_ruta = '$routeRate'
         WHERE tarifa_id = $idRate";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
-            $arrLog = array("input"=>array( "idRol" => $idRate,
+            $arrLog = array("input"=>array( "idRate" => $idRate,
                                             "statusRate"=> $statusRate,
                                             "nameRate"=> $nameRate,
                                             "valueRate"=> $valueRate,
@@ -148,7 +149,7 @@ class rate {
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idRol" => $idRate,
+            $arrLog = array("input"=>array( "idRate" => $idRate,
                                             "statusRate"=> $statusRate,
                                             "nameRate"=> $nameRate,
                                             "valueRate"=> $valueRate,
@@ -162,7 +163,7 @@ class rate {
     }
     public function changeStateRateDb($idRate, $statusRate){
         $response = false;
-        $sql =  "UPDATE tarifa SET tarifa_estado = $statusRate WHERE rol_id = $idRate";
+        $sql =  "UPDATE tarifa SET tarifa_estado = $statusRate WHERE tarifa_id = $idRate";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idRate" => $idRate,"tarifa_estado" => $statusRate),
