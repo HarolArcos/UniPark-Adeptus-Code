@@ -146,7 +146,6 @@
         $_log->notice($mensaje);
         return $response;
     }
-    //QUEDE ACÁ
 
     function changeStateRateDb($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
