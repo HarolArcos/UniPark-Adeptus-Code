@@ -5,7 +5,7 @@
 </head>
 <body>
 	<?php
-		// Definimos una variable con la URL que queremos enlazar
+		
         $celular = "67418809";
         $message2 = "Vamos a pistear x3!!!";
 		$url = "https://api.whatsapp.com/send?phone=+591 $celular&text=$message2";
