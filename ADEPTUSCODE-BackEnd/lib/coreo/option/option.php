@@ -162,7 +162,24 @@ class option{
         }
         return $response;
     }
-    
+
+    private function findOptionDb($idOption){
+        $response = false;
+        $sql =  "SELECT * FROM opcion WHERE opcion_id = $idOption";
+        $rs = $this->_db->query($sql);
+
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>$idOption,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
+        } else {
+            
+            $response = $rs[0];
+            $arrLog = array("input"=>$idOption,"output"=>$response,"sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     private function mapOption($rs){
         $this->idOption = $rs['opcion_id'];
         $this->fatherOption = $rs['opcion_padre'];
@@ -191,6 +208,5 @@ class option{
     public function getStatusOption(){
         return $this->statusOption;
     }
-
 
 }

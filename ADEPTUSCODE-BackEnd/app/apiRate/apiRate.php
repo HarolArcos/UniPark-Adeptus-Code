@@ -146,7 +146,7 @@
         $_log->notice($mensaje);
         return $response;
     }
-
+    
     function changeStateRateDb($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
