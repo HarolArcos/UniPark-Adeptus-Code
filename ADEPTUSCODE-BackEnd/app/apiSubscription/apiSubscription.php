@@ -8,6 +8,8 @@
     $server->Register("listSubscription");
     $server->Register("editSubscription");
     $server->Register("changeStateSubscription");
+    $server->Register("listDisponibles");
+    $server->Register("listOcupados");
     $server->start();
 
     function insertSubscription($arg){
@@ -253,6 +255,48 @@
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones"));
             $mensaje = "No se pudo listara a los vehiculos - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listDisponibles(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listDisponiblesDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente los sitios disponibles - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones"));
+            $mensaje = "No se pudo listar los sitios disponibles - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listOcupados(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listOcupadosDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente los sitios ocupados - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones"));
+            $mensaje = "No se pudo listar los sitios ocupados - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }
