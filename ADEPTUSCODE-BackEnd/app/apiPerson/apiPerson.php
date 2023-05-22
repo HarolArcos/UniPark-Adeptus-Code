@@ -6,6 +6,9 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertPerson");
     $server->Register("listPerson");
+    $server->Register("listPersonClient");
+    $server->Register("listPersonAdmin");
+    $server->Register("listPersonEmployee");
     $server->Register("test");
     $server->Register("test2");
     $server->Register("editPerson");
@@ -329,6 +332,69 @@
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan personas"));
             $mensaje = "No se pudo listara a las personas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listPersonClient(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_person = new person($_db);
+        $responseList = $_person->listPersonClientDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente a los clientes - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan clientes"));
+            $mensaje = "No se pudo listara a los clientes - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listPersonAdmin(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_person = new person($_db);
+        $responseList = $_person->listPersonAdminDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente a los administradores - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan administradores"));
+            $mensaje = "No se pudo listara a los administradores - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listPersonEmployee(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_person = new person($_db);
+        $responseList = $_person->listPersonEmployeeDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente a los empleados - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan empleados"));
+            $mensaje = "No se pudo listara a los empleados - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }
