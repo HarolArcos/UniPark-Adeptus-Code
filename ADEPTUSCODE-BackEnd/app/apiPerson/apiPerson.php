@@ -96,13 +96,42 @@
         $passwordPerson = $arg->passwordPerson;
 
         $_person = new person($_db);
-        $responseInsert = $_person->insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
+        
+        $responseVerifyCI = $_person->findPersonCIDb($ciPerson);
+        $responseVerifyNickname = $_person->findPersonNicknameDb($nicknamePerson);
+        $responseVerifyPhone = $_person->findPersonPhoneDb($phonePerson);
+        
+        if($responseVerifyCI){
+            if($responseVerifyNickname){
+                if($responseVerifyPhone){
+                    $responseInsert = $_person->insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
 
-        if ( $responseInsert) {
-            $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+                    if ( $responseInsert) {
+                        $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+                    }else{
+                        $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
+                    }
+                }else{
+                    $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, ya existe el phone ingresado"));
+                }
+            }else{
+                $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, ya existe el nickname ingresado"));
+            }
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, ya existe el ci ingresado"));
         }
+        
+        /*if($responseVerifyCI == true && $responseVerifyNickname == true && $responseVerifyPhone == true){
+            $responseInsert = $_person->insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
+
+            if ( $responseInsert) {
+                $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+            }else{
+                $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
+            }
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, pueden existir datos duplicados"));
+        }*/
 
         $timeProcess = microtime(true)-$startTime;
         $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
@@ -203,12 +232,29 @@
         $passwordPerson = $arg->passwordPerson;
 
         $_person = new person($_db);
-        $responseEdit = $_person->editPersonDb($idPerson,$typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
+        
+        $responseVerifyCI = $_person->findPersonCIDb($ciPerson);
+        $responseVerifyNickname = $_person->findPersonNicknameDb($nicknamePerson);
+        $responseVerifyPhone = $_person->findPersonPhoneDb($phonePerson);
+        
+        if($responseVerifyCI){
+            if($responseVerifyNickname){
+                if($responseVerifyPhone){
+                    $responseEdit = $_person->editPersonDb($idPerson,$typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
 
-        if ( $responseEdit) {
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));
+                    if ( $responseEdit) {
+                        $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));
+                    }else{
+                        $response = array("codError" => 200, "data" => array("desError"=>"Cambios fallidos"));
+                    }
+                }else{
+                    $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, ya existe el phone ingresado"));
+                }
+            }else{
+                $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, ya existe el nickname ingresado"));
+            }
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambios fallidos"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, ya existe el ci ingresado"));
         }
 
         $timeProcess = microtime(true)-$startTime;

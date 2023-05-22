@@ -98,6 +98,25 @@ class vehicle {
         return $response;
     }
 
+    public function findPlateVehicleDb($plateVehicle){
+        $response = false;
+        $sql =  "SELECT * FROM vehiculo WHERE vehiculo_placa = '$plateVehicle'";
+                
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>$plateVehicle,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
+        } else if($this->_db->getNumRows() > 0){
+            $arrLog = array("input"=>$plateVehicle,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");           
+        }else{
+            $response = true;
+            $arrLog = array("input"=>$plateVehicle,"output"=>$response,"sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     public function insertVehicleDb($idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle){
         $response = false;
         $sql =  "INSERT INTO vehiculo(persona_id, vehiculo_estado, vehiculo_placa, vehiculo_modelo, vehiculo_color) VALUES ('$idPerson','$statusVehicle' , '$plateVehicle' , '$modelVehicle' , '$colorVehicle')";

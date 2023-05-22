@@ -46,7 +46,7 @@
             array_push($errorlist,"Error: falta parametro statusVehicle");
         }
         if(isset($arg->plateVehicle)){
-                $plateVehicle =  $arg->plateVehicle;
+            $plateVehicle =  $arg->plateVehicle;
         }
         else{
             array_push($errorlist,"Error: falta parametro plateVehicle");
@@ -73,14 +73,23 @@
         $modelVehicle =  $arg->modelVehicle;
         $colorVehicle =  $arg->colorVehicle;
 
-        $_vehicle = new vehicle($_db);
-        $responseInsert = $_vehicle->insertVehicleDb($idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle);
+        $_plateVehicle = new vehicle($_db);
+        $responseFind = $_plateVehicle->findPlateVehicleDb($plateVehicle);
 
-        if ( $responseInsert) {
-            $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+        if($responseFind){
+            $_vehicle = new vehicle($_db);
+            $responseInsert = $_vehicle->insertVehicleDb($idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle);
+
+            if ( $responseInsert) {
+                $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+            }else{
+                $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
+            }
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, ya existe la placa"));
         }
+
+        
 
         $timeProcess = microtime(true)-$startTime;
         $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
@@ -158,13 +167,20 @@
         $modelVehicle =  $arg->modelVehicle;
         $colorVehicle =  $arg->colorVehicle;
 
-        $_person = new vehicle($_db);
-        $responseEdit = $_person->editVehicleDb($idVehicle, $idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle);
 
-        if ( $responseEdit) {
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));
+        $_plateVehicle = new vehicle($_db);
+        $responseFind = $_plateVehicle->findPlateVehicleDb($plateVehicle);
+
+        if($responseFind){
+            $responseEdit = $_plateVehicle->editVehicleDb($idVehicle, $idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle);
+
+            if ( $responseEdit) {
+                $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));
+            }else{
+                $response = array("codError" => 200, "data" => array("desError"=>"Cambios fallidos"));
+            }
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambios fallidos"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida, ya existe la placa"));
         }
 
         $timeProcess = microtime(true)-$startTime;

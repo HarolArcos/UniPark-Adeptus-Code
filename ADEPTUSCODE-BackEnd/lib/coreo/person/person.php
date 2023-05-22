@@ -103,6 +103,69 @@ class person {
         return $response;
     }
 
+    public function findPersonCIDb($ciPerson){
+        $response = false;
+        $sql =  "SELECT * FROM persona ".
+                "where persona_ci = '$ciPerson'";
+                
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>$ciPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
+        } else if($this->_db->getNumRows() > 0){
+            $arrLog = array("input"=>$ciPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");           
+        }else{
+            
+            $response = true;
+            $arrLog = array("input"=>$ciPerson,"output"=>$response,"sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function findPersonNicknameDb($nicknamePerson){
+        $response = false;
+        $sql =  "SELECT * FROM persona ".
+                "where persona_nickname = '$nicknamePerson'";
+                
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>$nicknamePerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
+        } else if($this->_db->getNumRows() > 0){
+            $arrLog = array("input"=>$nicknamePerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");           
+        }else{
+            
+            $response = true;
+            $arrLog = array("input"=>$nicknamePerson,"output"=>$response,"sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function findPersonPhoneDb($phonePerson){
+        $response = false;
+        $sql =  "SELECT * FROM persona ".
+                "where persona_telefono = '$phonePerson'";
+                
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>$phonePerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
+        } else if($this->_db->getNumRows() > 0){
+            $arrLog = array("input"=>$phonePerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
+           $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");           
+        }else{
+            
+            $response = true;
+            $arrLog = array("input"=>$phonePerson,"output"=>$response,"sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     public function insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson){
         $response = false;
