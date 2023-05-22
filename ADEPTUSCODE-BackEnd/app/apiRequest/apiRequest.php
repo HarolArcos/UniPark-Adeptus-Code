@@ -6,6 +6,7 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertRequest");
     $server->Register("listRequest");
+    $server->Register("listRequestInProgress");
     $server->Register("changeStateRequest");
     $server->start();
 

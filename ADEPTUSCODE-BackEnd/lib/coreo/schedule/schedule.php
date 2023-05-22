@@ -165,7 +165,7 @@ class schedule {
     }*/
     public function changeScheduleDb($idSchedule, $entrySchedule, $departureSchedule){
         $response = false;
-        $sql =  "UPDATE horario SET horario_entrada = $entrySchedule, horario_salida = $departureSchedule WHERE horario_id = $idSchedule";
+        $sql =  "UPDATE horario SET horario_entrada = '$entrySchedule', horario_salida = '$departureSchedule' WHERE horario_id = $idSchedule";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idSchedule" => $idSchedule,"horario_entrada" => $entrySchedule,"horario_salida" => $departureSchedule),
@@ -186,9 +186,9 @@ class schedule {
     public function listScheduleDb(){
         $response = false;
         //$sql =  "SELECT * FROM reclamo";
-        $sql = "SELECT horario.*, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS reclamo_persona
+        $sql = "SELECT horario.*, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS horario_empleado
         FROM horario
-        JOIN persona ON reclamo.persona_id = persona.persona_id";
+        JOIN persona ON horario.persona_id = persona.persona_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
