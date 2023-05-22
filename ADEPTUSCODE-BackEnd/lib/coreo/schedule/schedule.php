@@ -1,36 +1,35 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/lib/common/log.php");  
-//Clase Creada 19/05/2023
+//Clase Creada 03/05/2023
 //by: Gonza Zeballos M.
-//Clase mapeada de la tabla solicitud
+//Clase mapeada de la tabla horario
 
-class request {
+class schedule {
 
     private $optionsLog;
     private $_db;
-    private $idRequest,$idPerson,$statusRequest,$issueRequest,$textRequest,$dateRequest;
+    private $idSchedule,$idPerson,$daySchedule, $entrySchedule,$departureSchedule;
 
-    function __construct($_db,$idRequest=0){
+    function __construct($_db,$idSchedule=0){
         
         $this->_db=$_db;
-        if ($idRequest!=0) {
-            $this->setRequest($idRequest);
+        if ($idSchedule!=0) {
+            $this->setSchedule($idSchedule);
         }
     }
 
     function __destruct(){
         unset($this->_db);
-        unset($this->idRequest);
+        unset($this->idSchedule);
         unset($this->idPerson);
-        unset($this->statusRequest);
-        unset($this->issueRequest);
-        unset($this->textRequest);
-        unset($this->dateRequest);
+        unset($this->daySchedule);
+        unset($this->entrySchedule);
+        unset($this->departureSchedule);
     }
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/request",           
+            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/schedule",           
             'filename'       => $fileName,);
           $_log = new log($this->optionsLog);
           
@@ -68,46 +67,45 @@ class request {
           }
     }
     
-    private function setRequest($idRequest){
+    private function setSchedule($idSchedule){
         $response = FALSE;
-        $dataRequest = $this->findRequestDb($idRequest);
-        if($dataRequest){
-            $this->mapRequest($dataRequest);
+        $dataSchedule = $this->findScheduleDb($idSchedule);
+        if($dataSchedule){
+            $this->mapSchedule($dataSchedule);
             $response = TRUE;
         }
-        $arrLog = array("input"=>$idRequest,"output"=>$response);
+        $arrLog = array("input"=>$idSchedule,"output"=>$response);
         $this->createLog('apiLog', print_r($arrLog, true)." Function: ".__FUNCTION__, "warning");
         return $response;
     }
     
-    private function findRequestDb($idRequest){
+    private function findScheduleDb($idSchedule){
         $response = false;
-        $sql =  "SELECT * FROM solicitud WHERE solicitud_id = $idRequest";
+        $sql =  "SELECT * FROM horario WHERE horario_id = $idSchedule";
                 
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>$idRequest,"sql"=>$sql,"error"=>$this->_db->getLastError());
+            $arrLog = array("input"=>$idSchedule,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
         } else {
             
             $response = $rs[0];
-            $arrLog = array("input"=>$idRequest,"output"=>$response,"sql"=>$sql);
+            $arrLog = array("input"=>$idSchedule,"output"=>$response,"sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
     }
 
-    public function insertRequestDb($statusRequest,$idPerson,$issueRequest,$textRequest,$dateRequest){
+    public function insertScheduleDb($idPerson,$daySchedule,$entrySchedule,$departureSchedule){
         $response = false;
-        $sql =  "INSERT INTO solicitud(solicitud_estado, persona_id, solicitud_asunto, solicitud_texto, solicitud_fecha) VALUES ($statusRequest,$idPerson,'$issueRequest','$textRequest','$dateRequest')";
+        $sql =  "INSERT INTO horario(persona_id, horario_dia, horario_entrada, horario_salida) VALUES ($idPerson,'$daySchedule','$entrySchedule','$departureSchedule')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "idPerson"=> $idPerson,
-                                            "complaintStatus"=> $statusRequest,
-                                            "complaintIssue"=> $issueRequest, 
-                                            "complaintText"=> $textRequest,
-                                            "complaintDate"=> $dateRequest
+                                            "complaintStatus"=> $daySchedule,
+                                            "complaintIssue"=> $entrySchedule, 
+                                            "complaintText"=> $departureSchedule
                                         ),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
@@ -115,10 +113,9 @@ class request {
         } else {
             $response = $rs;
             $arrLog = array("input"=>array( "idPerson"=> $idPerson,
-                            "complaintStatus"=> $statusRequest,
-                            "complaintIssue"=> $issueRequest, 
-                            "complaintText"=> $textRequest,
-                            "complaintDate"=> $dateRequest
+                                            "complaintStatus"=> $daySchedule,
+                                            "complaintIssue"=> $entrySchedule, 
+                                            "complaintText"=> $departureSchedule
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
@@ -166,18 +163,18 @@ class request {
         }
         return $response;
     }*/
-    public function changeStateRequestDb($idRequest, $statusRequest){
+    public function changeScheduleDb($idSchedule, $entrySchedule, $departureSchedule){
         $response = false;
-        $sql =  "UPDATE solicitud SET solicitud_estado = $statusRequest WHERE solicitud_id = $idRequest";
+        $sql =  "UPDATE horario SET horario_entrada = $entrySchedule, horario_salida = $departureSchedule WHERE horario_id = $idSchedule";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
-            $arrLog = array("input"=>array( "idRequest" => $idRequest,"solucion_estado" => $statusRequest),
+            $arrLog = array("input"=>array( "idSchedule" => $idSchedule,"horario_entrada" => $entrySchedule,"horario_salida" => $departureSchedule),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
-            $arrLog = array("input"=>array( "idRequest" => $idRequest,"solicitud_estado" => $statusRequest),
+            $arrLog = array("input"=>array( "idSchedule" => $idSchedule,"horario_entrada" => $entrySchedule,"horario_salida" => $departureSchedule),
                             "output"=>$response,
                             "sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
@@ -186,38 +183,12 @@ class request {
     }
 
 
-    public function listRequestDb(){
+    public function listScheduleDb(){
         $response = false;
         //$sql =  "SELECT * FROM reclamo";
-        $sql = "SELECT solicitud.*, referencia.referencia_valor AS solicitudEstado, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS solicitud_persona
-        FROM solicitud
-        JOIN persona ON solicitud.persona_id = persona.persona_id
-        JOIN referencia ON solicitud.solicitud_estado = referencia.referencia_id";
-        $rs = $this->_db->select($sql);
-        if($this->_db->getLastError()) {
-            
-            $arrLog = array(
-                            "sql"=>$sql,
-                            "error"=>$this->_db->getLastError());
-            $this->createLog('dbLog', print_r($arrLog, true), "error");  
-        } else {
-            $response = $rs;
-            $arrLog = array(
-                            "output"=>$response,
-                            "sql"=>$sql);
-            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
-        }
-        return $response;
-    }
-
-    public function listRequestInProgressDb(){
-        $response = false;
-        //$sql =  "SELECT * FROM reclamo";
-        $sql = "SELECT solicitud.*, referencia.referencia_valor AS solicitudEstado, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS solicitud_persona
-        FROM solicitud
-        JOIN persona ON solicitud.persona_id = persona.persona_id
-        JOIN referencia ON solicitud.solicitud_estado = referencia.referencia_id
-        WHERE referencia.referencia_valor = 'en proceso' ";
+        $sql = "SELECT horario.*, CONCAT(persona.persona_nombre, ' ', persona.persona_apellido) AS reclamo_persona
+        FROM horario
+        JOIN persona ON reclamo.persona_id = persona.persona_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
@@ -236,38 +207,33 @@ class request {
     }
 
 	
-    private function mapRequest($rs){
-        $this->idRequest = $rs['solicitud_id'];
+    private function mapSchedule($rs){
+        $this->idSchedule = $rs['horario_id'];
         $this->idPerson = $rs['persona_id'];
-        $this->statusRequest = $rs['solicitud_estado'];
-        $this->issueRequest = $rs['solicitud_asunto'];
-        $this->textRequest = $rs['solicitud_texto'];
-        $this->dateRequest = $rs['solicitud_fecha'];
+        $this->daySchedule = $rs['horario_dia'];
+        $this->entrySchedule = $rs['horario_entrada'];
+        $this->departureSchedule = $rs['horario_salida'];
     }
 
 
-    public function getRequestId(){
-        return $this->idRequest;
+    public function getScheduleId(){
+        return $this->idSchedule;
     }
 
     public function getPersonId(){
         return $this->idPerson;
     }
 
-    public function getStatusRequest(){
-        return $this->statusRequest;
+    public function getDaySchedule(){
+        return $this->daySchedule;
     }
     
-    public function getRequestIssue(){
-        return $this->issueRequest;
+    public function getEntrySchedule(){
+        return $this->entrySchedule;
     }
     
-    public function getRequestText(){
-        return $this->textRequest;
+    public function getDepartureSchedule(){
+        return $this->departureSchedule;
     } 
-    
-    public function getRequestDate(){
-        return $this->dateRequest;
-    }
 
 }

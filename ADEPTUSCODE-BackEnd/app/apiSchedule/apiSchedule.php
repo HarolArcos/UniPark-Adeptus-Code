@@ -4,12 +4,12 @@
     $HTTP_RAW_POST_DATA = (json_decode($HTTP_RAW_POST_DATA)) ? $HTTP_RAW_POST_DATA : '';
     $HTTP_RAW_POST_DATA = (empty($HTTP_RAW_POST_DATA)) ? json_encode(array_merge($_REQUEST, $_FILES)) : $HTTP_RAW_POST_DATA;
     $server = new apiJson($HTTP_RAW_POST_DATA);
-    $server->Register("insertRequest");
-    $server->Register("listRequest");
-    $server->Register("changeStateRequest");
+    $server->Register("insertSchedule");
+    $server->Register("listSchedule");
+    $server->Register("changeSchedule");
     $server->start();
 
-    function insertRequest($arg){
+    function insertSchedule($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
@@ -23,63 +23,62 @@
         }
 
         $errorlist=array();
-        $statusRequest = "";
         $idPerson = "";
-        $issueRequest =  "";
-        $textRequest =  "";
-        $dateRequest =  "";
+        $daySchedule =  "";
+        $entrySchedule =  "";
+        $departureSchedule =  "";
 
 
-        if(isset($arg->statusRequest)){
-            $statusRequest =  $arg->statusRequest;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro statusRequest");
-        }
         if(isset($arg->idPerson)){
             $idPerson =  $arg->idPerson;
         }
         else{
             array_push($errorlist,"Error: falta parametro idPerson");
         }
-        if(isset($arg->issueRequest)){
-                $issueRequest =  $arg->issueRequest;
+        if(isset($arg->daySchedule)){
+                $daySchedule =  $arg->daySchedule;
         }
         else{
-            array_push($errorlist,"Error: falta parametro issueRequest");
+            array_push($errorlist,"Error: falta parametro daySchedule");
         }
-        if(isset($arg->textRequest)){
-            $textRequest =  $arg->textRequest;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro textRequest");
-        }
-        if(isset($arg->dateRequest)){
-            $formato = 'Y-m-d H:i:s';
-            $fecha_valida = DateTime::createFromFormat($formato, $arg->dateRequest);
+        if(isset($arg->departureSchedule)){
+            $formato = 'H:i:s';
+            $fecha_valida = DateTime::createFromFormat($formato, $arg->departureSchedule);
 
             if ($fecha_valida !== false) {
-                $dateRequest =  $arg->dateRequest;
+                $departureSchedule =  $arg->departureSchedule;
             } else {
-                array_push($errorlist,"Error: dateRequest debe estar en el formato  Y-m-d H:i:s");
+                array_push($errorlist,"Error: departureSchedule debe estar en el formato  H:i:s");
             }
         }
         else{
-            array_push($errorlist,"Error: falta parametro dateRequest");
+            array_push($errorlist,"Error: falta parametro departureSchedule");
+        }
+        if(isset($arg->entrySchedule)){
+            $formato = 'H:i:s';
+            $fecha_valida = DateTime::createFromFormat($formato, $arg->entrySchedule);
+
+            if ($fecha_valida !== false) {
+                $entrySchedule =  $arg->entrySchedule;
+            } else {
+                array_push($errorlist,"Error: entrySchedule debe estar en el formato  H:i:s");
+            }
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro entrySchedule");
         }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
 
         
-        $statusRequest = $arg->statusRequest;
         $idPerson = $arg->idPerson;
-        $issueRequest =  $arg->issueRequest;
-        $textRequest =  $arg->textRequest;
-        $dateRequest =  $arg->dateRequest;
+        $daySchedule =  $arg->daySchedule;
+        $entrySchedule =  $arg->entrySchedule;
+        $departureSchedule =  $arg->departureSchedule;
 
-        $_request = new request($_db);
-        $responseInsert = $_request->insertRequestDb($statusRequest, $idPerson,$issueRequest,$textRequest,$dateRequest);
+        $_schedule = new schedule($_db);
+        $responseInsert = $_schedule->insertScheduleDb($idPerson,$daySchedule,$entrySchedule,$departureSchedule);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
@@ -179,7 +178,7 @@
         return $response;
     }*/
 
-    function changeStateRequest($arg){
+    function changeSchedule($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
@@ -193,34 +192,42 @@
         }
 
         $errorlist=array();
-        $idRequest =  "";
-        $statusRequest = "";
+        $idSchedule =  "";
+        $entrySchedule = "";
+        $departureSchedule = "";
 
-        if(isset($arg->idRequest)){
-            $idRequest =  $arg->idRequest;
+        if(isset($arg->idSchedule)){
+            $idSchedule =  $arg->idSchedule;
         }else{
-            array_push($errorlist,"Error: falta parametro idRequest");
+            array_push($errorlist,"Error: falta parametro idSchedule");
         }
-        if(isset($arg->statusRequest)){
-            $statusRequest =  $arg->statusRequest;
+        if(isset($arg->entrySchedule)){
+            $entrySchedule =  $arg->entrySchedule;
         }
         else{
-            array_push($errorlist,"Error: falta parametro statusRequest");
+            array_push($errorlist,"Error: falta parametro entrySchedule");
+        }
+        if(isset($arg->departureSchedule)){
+            $departureSchedule =  $arg->departureSchedule;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro departureSchedule");
         }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist));
         }
 
-        $idRequest =  $arg->idRequest;
-        $statusRequest = $arg->statusRequest;
+        $idSchedule =  $arg->idSchedule;
+        $entrySchedule = $arg->entrySchedule;
+        $departureSchedule = $arg->departureSchedule;
 
-        $_request = new request($_db);
-        $responseDelete = $_request->changeStateRequestDb($idRequest, $statusRequest);
+        $_schedule = new schedule($_db);
+        $responseChange = $_schedule->changeScheduleDb($idSchedule, $entrySchedule, $departureSchedule);
 
-        if ( $responseDelete){
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado exitosa"));
+        if ( $responseChange){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de horario exitosa"));
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de horario fallida"));
         }
 
         $timeProcess = microtime(true)-$startTime;
@@ -230,42 +237,20 @@
         return $response;
     }
 
-    
-    function listRequest(){
+    function listSchedule(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);
         $_log = new log($options);
        
-        $_request = new request($_db);
-        $responseList = $_request->listRequestDb();
+        $_schedule = new schedule($_db);
+        $responseList = $_schedule->listScheduleDb();
 
         if ( $responseList) {
-            $mensaje = "Se listo correctamente las solicitudes - Funcion: ".__FUNCTION__;
+            $mensaje = "Se listo correctamente los horarios - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan solicitudes"));
-            $mensaje = "No se pudo listar las solicitudes - Funcion: ".__FUNCTION__;
-            $_log->error($mensaje);
-            return $response;
-        }
-        
-        return $responseList;
-    }
-
-    function listRequestInProgress(){
-        $options = array('path' => LOGPATH,'filename' => FILENAME);
-        $_db=new dataBasePG(CONNECTION);
-        $_log = new log($options);
-       
-        $_request = new request($_db);
-        $responseList = $_request->listRequestInProgressDb();
-
-        if ( $responseList) {
-            $mensaje = "Se listo correctamente las solicitudes en proceso - Funcion: ".__FUNCTION__;
-            $_log->info($mensaje);
-        }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan solicitudes en proceso"));
-            $mensaje = "No se pudo listar las solicitudes en proceso - Funcion: ".__FUNCTION__;
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan horarios"));
+            $mensaje = "No se pudo listar los horarios - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }
