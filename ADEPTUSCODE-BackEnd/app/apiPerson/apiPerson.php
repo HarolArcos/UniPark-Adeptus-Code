@@ -236,9 +236,9 @@
 
         $_person = new person($_db);
         
-        $responseVerifyCI = $_person->findPersonCIDb($ciPerson);
-        $responseVerifyNickname = $_person->findPersonNicknameDb($nicknamePerson);
-        $responseVerifyPhone = $_person->findPersonPhoneDb($phonePerson);
+        $responseVerifyCI = $_person->findPersonCIDEb($ciPerson);
+        $responseVerifyNickname = $_person->findPersonNicknameEDb($nicknamePerson);
+        $responseVerifyPhone = $_person->findPersonPhoneEDb($phonePerson);
         
         if($responseVerifyCI){
             if($responseVerifyNickname){
