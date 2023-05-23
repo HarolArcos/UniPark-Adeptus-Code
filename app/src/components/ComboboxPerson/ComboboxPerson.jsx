@@ -21,9 +21,8 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
 
     return (
       <Select
-        placeholder="Seleccione persona"
+        placeholder="Seleccione un usuario"
         options={options}
-        // value={selectedPersonaId ? { value: selectedPersonaId, label: selectedPersonaId } : null}
         defaultValue={defaultValue && { value: defaultValue.persona_id, label: `${defaultValue.persona_ci}-${defaultValue.persona_nombre} ${defaultValue.persona_apellido}` }}
         value={options.find(option => option.value === selectedPersonaId)}         
         onChange={handlePersonaChange}

@@ -26,7 +26,7 @@ export default function ComboboxReferences({onReferenciaIdChange,defaultValor,re
 
     return(
             <Select
-                placeholder="Referencia"
+                placeholder="Seleccione un estado"
                 options={ref}
                 defaultValue={defaultValor}
                 value={ref && Array.isArray(ref)?ref.find(option => option.value === selectedReferenciaId):''}
