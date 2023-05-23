@@ -166,17 +166,16 @@ class person {
         return $response;
     }
 
-    public function findPersonCIDEb($ciPerson){
+    public function findPersonCIDEb($ciPerson, $idPerson){
         $response = false;
-        $sql =  "SELECT * FROM persona ".
-                "where persona_ci = '$ciPerson'";
+        $sql =  "SELECT * FROM persona WHERE persona_ci = '$ciPerson' AND persona_id <> $idPerson";
                 
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>$ciPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
-        } else if($this->_db->getNumRows() > 1){
-            echo ($this->_db->getNumRows());
+        } else if($this->_db->getNumRows() > 0){
+            //echo ($this->_db->getNumRows());
             $arrLog = array("input"=>$ciPerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");           
         }else{
@@ -188,16 +187,16 @@ class person {
         return $response;
     }
 
-    public function findPersonNicknameEDb($nicknamePerson){
+    public function findPersonNicknameEDb($nicknamePerson, $idPerson){
         $response = false;
         $sql =  "SELECT * FROM persona ".
-                "where persona_nickname = '$nicknamePerson'";
+                "where persona_nickname = '$nicknamePerson' AND persona_id <> $idPerson";
                 
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>$nicknamePerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
-        } else if($this->_db->getNumRows() > 1){
+        } else if($this->_db->getNumRows() > 0){
             $arrLog = array("input"=>$nicknamePerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");           
         }else{
@@ -209,16 +208,16 @@ class person {
         return $response;
     }
 
-    public function findPersonPhoneEDb($phonePerson){
+    public function findPersonPhoneEDb($phonePerson, $idPerson){
         $response = false;
         $sql =  "SELECT * FROM persona ".
-                "where persona_telefono = '$phonePerson'";
+                "where persona_telefono = '$phonePerson' AND persona_id <> $idPerson";
                 
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>$phonePerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");   
-        } else if($this->_db->getNumRows() > 1){
+        } else if($this->_db->getNumRows() > 0){
             $arrLog = array("input"=>$phonePerson,"sql"=>$sql,"error"=>$this->_db->getLastError());
            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");           
         }else{
