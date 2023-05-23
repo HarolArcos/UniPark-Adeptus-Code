@@ -1,18 +1,21 @@
 import React ,{useState, useEffect}from 'react';
 import Modal from '../Modal/Modal';
-import Formulario from './FormVehicle';
+import Formulario from './FormTarifa';
 import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
 import { useFetch } from '../../hooks/HookFetchListData';
-import "./Vehicle.css"
+import "./Tarifa.css"
 
-export const Vehicle = () => {
+export const Tarifa = () => {
     
-    const [vehiculos,setVehiculos] =  useState([]);
+  const [tarifas,setTarifas] = useState([
+    {tarifa_id:1,tarifa_estado:2,tarifa_nombre:2,tarifa_valor:'',tarifa_ruta:'Andrea'}
+  ]);
+
     const [error,setError] =  useState(null);
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
     
     //----------------------ShowModal-------------------------------
     
@@ -22,26 +25,24 @@ export const Vehicle = () => {
     
     //----------------------Cliente para:-------------------------------
     //------Editar :
-    const [vehiculoSeleccionado, setVehiculoSeleccionado] = useState(null);
+    const [tarifaSeleccionado, setTarifaSeleccionado] = useState(null);
 
     
     
     useEffect(() => {
         if (data.desError) {
-            setError(data.desError);
+            setError("No existe ningúna tarifa registrada");
+        }else{
+            setTarifas(data);
         }
-        else{
-            setVehiculos(data);
-            console.log(data);
-        
-        }
+        console.log(data);
     }, [data]);
 
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
-    const handleEditar = (vehiculo) => {
+    const handleEditar = (tarifa) => {
         setShowEdit(true);
-        setVehiculoSeleccionado(vehiculo);
+        setTarifaSeleccionado(tarifa);
     };
     
     //-----Create Modal
@@ -53,6 +54,7 @@ export const Vehicle = () => {
     const handleCancelar = () => {
         setShowEdit(false);
         setShowCreate(false);
+        console.log(data);
     };
  
     return (
@@ -70,37 +72,34 @@ export const Vehicle = () => {
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
-                        
                     />
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
-                            <th>Placa</th>
-                            <th>Propietario</th>
-                            <th> Modelo</th>
-                            <th>Color</th>
-                            {/* <th>Estado</th> */}
+                            <th>Plazo</th>
+                            <th>Bs</th>
+                            <th>QR</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"6"} >{error}</td>
+                                <td colSpan={"4"} >No existe Tarifas</td>
                             </tr>
                         ): (
-                            vehiculos.map((vehiculo) => (
-                                    <tr className="columnContent" key={vehiculo.vehiculo_id}>
-                                        <td>{vehiculo.vehiculo_id}</td>
-                                        <td>{vehiculo.vehiculo_placa}</td>
-                                        <td>{vehiculo.propietario}</td>
-		                                <td>{vehiculo.vehiculo_modelo}</td>
-                                        <td>{vehiculo.vehiculo_color}</td>
-                                        {/* <td>{vehiculo.vehiculoestado}</td> */}
+                            tarifas.map((tarifa) => (
+                                    <tr className="columnContent" key={tarifa.tarifa_id}>
+                                        <td>{tarifa.tarifa_id}</td>
+                                        <td>{tarifa.tarifa_nombre}</td>
+                                        <td>{tarifa.tarifa_valor}</td>
+                                        <td>{tarifa.tarifa_ruta}</td>
+                                        <td>{tarifa.tarifa_estado}</td>
                                         <td className="actionsButtons">
-                                            <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(vehiculo)}>
+                                            <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(tarifa)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                 <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -116,11 +115,11 @@ export const Vehicle = () => {
                 <Modal
 	            tamaño ="md"
                 mostrarModal={showEdit}
-                title = 'Editar Vehiculo'
+                title = 'Editar Tarifa'
                 contend = {
                 <Formulario
                 asunto ='Guardar Cambios'
-                vehiculo= {vehiculoSeleccionado}
+                tarifa= {tarifaSeleccionado}
                 cancelar={handleCancelar}
                 ></Formulario>}
                 hide = {handleCancelar}
@@ -131,10 +130,10 @@ export const Vehicle = () => {
                 <Modal
 	            tamaño ="md"
                 mostrarModal={showCreate}
-                title = 'Crear Nuevo Vehiculo'
+                title = 'Crear Nueva Tarifa'
                 contend = {
                 <Formulario
-                asunto = "Guardar Vehiculo"
+                asunto = "Guardar Tarifa"
                 cancelar={handleCancelar}
                 ></Formulario>}
                 hide = {handleCancelar}

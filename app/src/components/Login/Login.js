@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import comprovar from "./Comprueva";
 import "./Login.css";
 
 import { Button, Modal, ModalBody } from "react-bootstrap";
@@ -7,6 +6,7 @@ import { Button, Modal, ModalBody } from "react-bootstrap";
 
 import { useNavigate } from "react-router-dom";
 import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
+import Comprueba from "./Comprueba";
 
 export default function Login() {
   
@@ -17,7 +17,7 @@ export default function Login() {
   const [contraseña, setcontraseña] = useState("");
   const [errorlog, seterrorlog] = useState("");
 
-  function ClikComprovar() {
+  function ClickComprobar() {
     const validatePerson = {
       nicknamePerson: nickname,
       passwordPerson: contraseña,
@@ -27,7 +27,7 @@ export default function Login() {
       validatePerson
     ).then((responseData) => {
       // Trabaja con la respuesta JSON recibida
-      seterrorlog(comprovar(navigate, responseData));
+      seterrorlog(Comprueba(navigate, responseData));
     });
   }
 
@@ -104,7 +104,7 @@ export default function Login() {
                 <div className="col-12 iniciar-button">
                   {/* <Link to={direccion} > */}
                   <button
-                    onClick={() => ClikComprovar()}
+                    onClick={() => ClickComprobar()}
                     type="submit"
                     className="btn btn-primary btn-block "
                   >

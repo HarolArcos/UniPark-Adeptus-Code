@@ -21,6 +21,8 @@ import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclam
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import { Vehicle } from "../Vehicle/Vehicle";
 import ListCli from "../ListasDeUsuario/ListaCliente";
+import EditPerson from "../Persons/EditPerson";
+import DeletePerson from "../Persons/DeletePerson";
 
 export const AppRouter = () => {
 
@@ -41,6 +43,8 @@ export const AppRouter = () => {
                     <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
                     <Route path="/vehiculo"             element={ <Vehicle/> } />
                     <Route path="/listCliente"             element={ <ListCli/> } />
+                    <Route path="/editPersonas"         element={ <EditPerson/> }/>
+                    <Route path="/deletePersonas"       element={ <DeletePerson/> } />
                 </Routes>
         </Router>
     )

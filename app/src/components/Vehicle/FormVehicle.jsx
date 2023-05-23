@@ -6,6 +6,7 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import { useFetch } from "../../hooks/HookFetchListData";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import "./Vehicle.css"
+import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 const Formulario = ({asunto,cancelar, vehiculo}) => {
 
   const {data,fetchData} = useFetchSendData();
@@ -19,8 +20,16 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
     vehiculo ? vehiculo.persona_id : null
   );
 
+  const [selectedReferenciaId, setSelectedReferenciaId] = useState(
+    vehiculo ? vehiculo.vehiculo_estado : null
+  );
+
   const handlePersonaIdChange = (personaId) => {
     setSelectedPersonaId(personaId);
+  };
+
+  const handleReferenciaIdChange = (referenciaId) => {
+    setSelectedReferenciaId(referenciaId);
   };
   //------------
 
@@ -57,6 +66,10 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
         errors.idPerson ='Seleccione un elemento porfavor';
       }
 
+      if(!selectedReferenciaId){
+        errors.statusVehicle ='Seleccione un estado porfavor';
+      }
+
       if(!values.modelVehicle){
         errors.modelVehicle ='El campo es requerido';
       }
@@ -78,13 +91,13 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
     onSubmit={async (values) => {
       if (vehiculo) {
         values.idPerson = selectedPersonaId;
-        console.log(values,selectedPersonaId);
+        values.statusVehicle = selectedReferenciaId;
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         cancelar();
         
       } else {
         values.idPerson = selectedPersonaId;
-        console.log(values,selectedPersonaId);
+        values.statusVehicle = selectedReferenciaId;
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
         cancelar();
       }
@@ -110,7 +123,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
               <ErrorMessage name="plateVehicle" component={()=>(<div className="text-danger">{errors.plateVehicle}</div>)}></ErrorMessage>
               
               <Form.Group className="inputGroup" controlId="modelVehicle">
-                <Form.Label className="text-left">modelo</Form.Label>
+                <Form.Label className="text-left">Modelo</Form.Label>
                 <Form.Control type="modelVehicle"
                 name="modelVehicle"
                 onChange={handleChange}
@@ -131,29 +144,22 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
               </Form.Group>
               <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
               
-              <br/>
-              <Form.Group className="inputGroup" controlId="colorVehicle">
-                <Form.Label className="text-left">Estado</Form.Label>
-                <Form.Select 
-                name="statusVehicle" 
-                aria-label="Default select example"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                defaultValue={vehiculo?values.statusVehicle:5}
-                >
-                  <option value="5">Activo</option>
-                  <option value="6">Inactivo</option>
-                </Form.Select>
-              </Form.Group>
-              <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
-                    
-              <br/>
               <Form.Group className="inputGroup" controlId="idPerson">
-              <Form.Label className="text-left">Propietario</Form.Label>
-              <ComboboxPerson 
-              id={vehiculo? vehiculo.persona_id:null}
-              onPersonaIdChange={handlePersonaIdChange}
-              />
+                <Form.Label className="text-left">Propietario</Form.Label>
+                <ComboboxPerson 
+                id={vehiculo? vehiculo.persona_id:null}
+                onPersonaIdChange={handlePersonaIdChange}
+                />
+              </Form.Group>
+              <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
+              
+              <Form.Group className="inputGroup" controlId="idPerson">
+                <Form.Label className="text-left">Estado</Form.Label>
+                <ComboboxReferences 
+                referenciaObjeto = {{tableNameReference:"vehiculo",nameSpaceReference:"vehiculo_estado"}}
+                defaultValor={vehiculo? {value:vehiculo.vehiculo_estado,label:vehiculo.vehiculoestado}:null}
+                onReferenciaIdChange={handleReferenciaIdChange}
+                />
               </Form.Group>
               <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
               

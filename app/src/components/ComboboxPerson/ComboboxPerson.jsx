@@ -7,7 +7,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
   const { data, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   )
-  const [selectedPersonaId, setSelectedPersonaId] = useState(null); // inicializa el estado para el id seleccionado
+  const [selectedPersonaId, setSelectedPersonaId] = useState(null); 
     
   const handlePersonaChange = (selectedOption) => {
     setSelectedPersonaId(selectedOption.value);
@@ -21,9 +21,8 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
 
     return (
       <Select
-        placeholder="Seleccione persona"
+        placeholder="Seleccione un usuario"
         options={options}
-        // value={selectedPersonaId ? { value: selectedPersonaId, label: selectedPersonaId } : null}
         defaultValue={defaultValue && { value: defaultValue.persona_id, label: `${defaultValue.persona_ci}-${defaultValue.persona_nombre} ${defaultValue.persona_apellido}` }}
         value={options.find(option => option.value === selectedPersonaId)}         
         onChange={handlePersonaChange}

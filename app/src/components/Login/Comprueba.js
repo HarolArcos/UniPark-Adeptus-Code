@@ -1,11 +1,5 @@
 
-export default function Comprueva (navigate,datos) {
-    
-        
-    
-    
-    
-   
+export default function Comprueba (navigate, datos) {
     
     if (datos.desError) {
         return datos.desError
@@ -19,4 +13,3 @@ export default function Comprueva (navigate,datos) {
     
     
 }
-
