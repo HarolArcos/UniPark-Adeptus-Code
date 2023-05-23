@@ -9,22 +9,10 @@ import Footer from "../Footer/Footer";
 
 export default function ContentUnavalible(){
 
-    // const datos = [
-    //     { id:'01', sitio: 'SITD13', nombre: 'Carlos',    apellido:'Campos Gutierrez',      tiempo: '02/06/23' },
-    //     { id:'02', sitio: 'SITD16', nombre: 'Ivan',      apellido:'Orellana Sandoval',     tiempo: '15/06/23' },
-    //     { id:'03', sitio: 'SITD16', nombre: 'Juan',      apellido:'Ramirez Rojas',         tiempo: '26/03/23' },
-    //     { id:'04', sitio: 'SITD15', nombre: 'Luciana',   apellido:'Gutierrez Cortez',      tiempo: '02/03/23' },
-    //     { id:'05', sitio: 'SITD16', nombre: 'Roberto',   apellido:'Lazarte Rosas',         tiempo: '24/06/23' },
-    //     { id:'06', sitio: 'SITD16', nombre: 'Anna',      apellido:'Quisbert Gonzales',     tiempo: '13/03/23' },
-    //     { id:'07', sitio: 'SITD15', nombre: 'Carmen',    apellido:'Zeballos Mendez',       tiempo: '01/06/23' },
-    //     { id:'08', sitio: 'SITD16', nombre: 'Susana',    apellido:'Lozano Lautaro',        tiempo: '02/01/23' },
-    //     { id:'09', sitio: 'SITD16', nombre: 'Alejandra', apellido:'Campos Fernandez',      tiempo: '31/06/23' }
-    // ];
-
     const [datos, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
+        fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription')
             .then(response => response.json())
             .then(data => setData(data))
             .catch(error => console.error(error));
@@ -46,20 +34,25 @@ export default function ContentUnavalible(){
             <Table striped bordered hover className="table">
                 <thead>
                     <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Telefono</th>
-                    <th> CI </th>
+                        <th>Id</th>
+                        <th>Nombre Completo</th>
+                        <th>Tarifa</th>
+                        <th>Costo</th>
+                        <th>Fecha Activación</th>
+                        <th>Fecha Expiracion</th>
+                        <th>Sitio</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {datos.map((persona) => (
-                        <tr key={persona.persona_id}>
-                            <td>{persona.persona_nombre}</td>
-                            <td>{persona.persona_apellido}</td>
-                            <td>{persona.persona_telefono}</td>
-                            <td>{persona.persona_ci}</td>
-                            <td></td>
+                    {datos.map((sub) => (
+                        <tr key={sub.suscripcion_id}>
+                            <td>{sub.persona_id}</td>
+                            <td>{sub.cliente}</td>
+                            <td>{sub.tarifa_nombre}</td>
+                            <td>{sub.tarifa_valor}</td>
+                            <td>{sub.suscripcion_activacion}</td>
+                            <td>{sub.suscripcion_expiracion}</td>
+                            <td>{sub.suscripcion_numero_parqueo}</td>
                         </tr>
                     ) )}   
                 </tbody>
