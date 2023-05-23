@@ -24,10 +24,11 @@ export const ListVehicle = () => {
 
     useEffect(() => {
         if (data.desError) {
-            setError("No existe ningún vehiculo registrado");
+            setError(data.desError);
         }else{
             setVehiculos(data);
         }
+        
     }, [data]);
 
     //-----------------------Activate-------------------------------------------
@@ -78,7 +79,7 @@ export const ListVehicle = () => {
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"6"} >No existe vehiculos creados</td>
+                                <td colSpan={"5"} >{error}</td>
                             </tr>
                         ): (
                             vehiculos.map((vehiculo) => (

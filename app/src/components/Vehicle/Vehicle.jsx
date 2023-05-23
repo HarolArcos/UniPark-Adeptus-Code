@@ -28,9 +28,12 @@ export const Vehicle = () => {
     
     useEffect(() => {
         if (data.desError) {
-            setError("No existe ningún vehiculo registrado");
-        }else{
+            setError(data.desError);
+        }
+        else{
             setVehiculos(data);
+            console.log(data);
+        
         }
     }, [data]);
 
@@ -85,7 +88,7 @@ export const Vehicle = () => {
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"6"} >No existe vehiculos creados</td>
+                                <td colSpan={"6"} >{error}</td>
                             </tr>
                         ): (
                             vehiculos.map((vehiculo) => (
