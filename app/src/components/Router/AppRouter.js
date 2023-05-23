@@ -20,6 +20,7 @@ import Persons from "../Persons/Persons";
 import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclamo";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import { Vehicle } from "../Vehicle/Vehicle";
+import ListCli from "../ListasDeUsuario/ListaCliente";
 
 export const AppRouter = () => {
 
@@ -39,6 +40,7 @@ export const AppRouter = () => {
                     <Route path='/ReclamosResp'         element={ <SolucionAccionReclamo/>} />
                     <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
                     <Route path="/vehiculo"             element={ <Vehicle/> } />
+                    <Route path="/listCliente"             element={ <ListCli/> } />
                 </Routes>
         </Router>
     )
