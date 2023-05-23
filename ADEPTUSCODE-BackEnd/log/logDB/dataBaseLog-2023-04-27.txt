@@ -1,0 +1,2 @@
+2023-04-27 17:29:54	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-27 17:29:54	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO

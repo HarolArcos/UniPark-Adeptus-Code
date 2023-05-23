@@ -1,0 +1,8 @@
+2023-05-09 16:55:05	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [sql] => SELECT * FROM rol_has_option
+    [error] => ERROR:  no existe la relación «rol_has_option»
+LINE 1: SELECT * FROM rol_has_option
+                      ^
+)
+	500 ERROR

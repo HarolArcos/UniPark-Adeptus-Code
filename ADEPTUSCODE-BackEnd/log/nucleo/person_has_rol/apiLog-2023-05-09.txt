@@ -1,0 +1,9 @@
+2023-05-09 16:55:34	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM rol_has_opcion
+)
+ Function error: listRolHasOptionDb	100 DEBUG

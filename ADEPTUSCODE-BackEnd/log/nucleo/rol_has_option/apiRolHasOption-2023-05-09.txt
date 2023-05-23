@@ -1,0 +1,2 @@
+2023-05-09 16:55:05	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a persona_has_rol - Funcion: listRolHasOption	500 ERROR
+2023-05-09 16:55:34	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a persona_has_rol - Funcion: listRolHasOption	500 ERROR

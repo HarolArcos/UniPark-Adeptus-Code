@@ -29,7 +29,7 @@ export default function Persons(){
         
     useEffect(() => {
         setPersonas(data);
-        console.log(data);
+        
     }, [data]);
     
     //-----------------------Activate-------------------------------------------

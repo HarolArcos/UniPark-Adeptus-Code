@@ -1,0 +1,78 @@
+2023-05-03 17:25:49	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [vehiculo_id] => 1
+                    [persona_id] => 1
+                    [tabla_estado] => 4
+                    [vehiculo_placa] => j1h32
+                    [vehiculo_modelo] => peta
+                    [vehiculo_color] => azul
+                )
+
+            [1] => Array
+                (
+                    [vehiculo_id] => 2
+                    [persona_id] => 3
+                    [tabla_estado] => 5
+                    [vehiculo_placa] => pg72f3
+                    [vehiculo_modelo] => peugeot
+                    [vehiculo_color] => negro
+                )
+
+        )
+
+    [sql] => SELECT * FROM vehiculo
+)
+ Function error: listVehicleActiveDb	100 DEBUG
+2023-05-03 17:30:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 2
+            [statusVehicle] => 4
+            [plateVehicle] => ahsd32
+            [modelVehicle] => toyota
+            [colorVehicle] => verde
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO vehiculo(persona_id, tabla_estado, vehiculo_placa, vehiculo_modelo, vehiculo_color) VALUES ('2','4' , 'ahsd32' , 'toyota' , 'verde')
+)
+ Function error: insertVehicleDb	100 DEBUG
+2023-05-03 17:32:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idVehicle] => 3
+            [idPerson] => 2
+            [statusVehicle] => 4
+            [plateVehicle] => ahsd32
+            [modelVehicle] => toyota
+            [colorVehicle] => rojo
+        )
+
+    [output] => 1
+    [sql] => UPDATE vehiculo SET
+        persona_id = '2',
+        tabla_estado ='4',
+        vehiculo_placa = 'ahsd32', 
+        vehiculo_modelo = 'toyota', 
+        vehiculo_color = 'rojo'
+        WHERE vehiculo_id = 3
+)
+ Function error: editVehicleDb	100 DEBUG
+2023-05-03 17:34:57	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idPerson] => 3
+            [tabla_estado] => 5
+        )
+
+    [output] => 1
+    [sql] => UPDATE vehiculo SET tabla_estado = 5 WHERE vehiculo_id = 3
+)
+ Function error: changeStateVehicleDb	100 DEBUG

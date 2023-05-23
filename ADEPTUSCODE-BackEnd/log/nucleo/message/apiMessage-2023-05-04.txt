@@ -1,0 +1,49 @@
+2023-05-04 23:01:47	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.060191869735718
+    [input] => {"idConversation":1,"authorMessage":"C\u00f3mo sabemos qui\u00e9n vrgs es el autor","textMessage":"weonnnn hay partido el sabado","dateMessage":"2023-05-04 21:32:05"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertMessage	300 NOTICE
+2023-05-04 23:04:29	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.06948709487915
+    [input] => {"idConversation":1,"authorMessage":"C\u00f3mo sabemos qui\u00e9n vrgs es el autor","textMessage":"d\u00f3nde?!","dateMessage":"2023-05-04 21:52:05"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertMessage	300 NOTICE
+2023-05-04 23:05:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.080519914627075
+    [input] => {"idConversation":1,"authorMessage":"C\u00f3mo sabemos qui\u00e9n vrgs es el autor","textMessage":"en el stadium","dateMessage":"2023-05-04 21:52:05"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertMessage	300 NOTICE
+2023-05-04 23:07:20	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Se listo correctamente los mensajes - Funcion: listMessage	200 INFO

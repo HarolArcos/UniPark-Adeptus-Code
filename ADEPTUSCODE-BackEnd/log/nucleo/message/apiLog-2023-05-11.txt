@@ -1,0 +1,63 @@
+2023-05-11 17:57:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM opcion
+)
+ Function error: listOptionDb	100 DEBUG
+2023-05-11 19:36:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM opcion
+)
+ Function error: listOptionDb	100 DEBUG
+2023-05-11 19:37:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => componente_1
+            [statusOption] => 1
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','componente_1','1')
+)
+ Function error: insertOptionDb	100 DEBUG
+2023-05-11 19:49:47	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => componente_1dadsadsaf
+            [statusOption] => 1
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','componente_1dadsadsaf','1')
+)
+ Function error: insertOptionDb	100 DEBUG
+2023-05-11 20:18:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => componente_1dadsafsafasfahdasuduisaduiasdsaf
+            [statusOption] => 1
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','componente_1dadsafsafasfahdasuduisaduiasdsaf','1')
+)
+ Function error: insertOptionDb	100 DEBUG
