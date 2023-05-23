@@ -10,7 +10,7 @@ export default function ComboboxReferences(){
 
     
 
-    const {data:tipo,loading,error} = useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol")
+    const {data:tipo,loading} = useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol")
     
     const ref = tipo.map((opcion)=> ({value: opcion.rol_id , label: opcion.rol_nombre}))
 
