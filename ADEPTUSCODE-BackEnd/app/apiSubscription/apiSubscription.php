@@ -6,6 +6,8 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertSubscription");
     $server->Register("listSubscription");
+    $server->Register("listSubscriptionInProgress");
+    $server->Register("listSubscriptionAcepDeni");
     $server->Register("editSubscription");
     $server->Register("changeStateSubscription");
     $server->Register("listDisponibles");
@@ -255,6 +257,48 @@
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones"));
             $mensaje = "No se pudo listara a los vehiculos - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listSubscriptionAcepDeni(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listSubscriptionAcepDeniDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las suscripciones aceptadas y denegadas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones aceptadas y denegadas"));
+            $mensaje = "No se pudo listar las suscripciones aceptadas y denegadas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listSubscriptionInProgress(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listSubscriptionInProgressDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las suscripciones aceptadas y denegadas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones aceptadas y denegadas"));
+            $mensaje = "No se pudo listar las suscripciones aceptadas y denegadas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }
