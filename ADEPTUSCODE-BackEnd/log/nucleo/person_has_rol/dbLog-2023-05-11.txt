@@ -1,0 +1,40 @@
+2023-05-11 18:11:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idRol] => 1
+            [idOption] => 1
+        )
+
+    [sql] => INSERT INTO persona_has_rol(persona_id, rol_id) VALUES ('1','1')
+    [error] => ERROR:  inserción o actualización en la tabla «persona_has_rol» viola la llave foránea «persona_has_rol_persona_id_fkey»
+DETAIL:  La llave (persona_id)=(1) no está presente en la tabla «persona».
+)
+ Function error: insertRolHasOptionDb	500 ERROR
+2023-05-11 18:13:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idRol] => 1
+            [idOption] => 1
+        )
+
+    [sql] => INSERT INTO rol_has_opcion(persona_id, rol_id) VALUES ('1','1')
+    [error] => ERROR:  no existe la columna «persona_id» en la relación «rol_has_opcion»
+LINE 1: INSERT INTO rol_has_opcion(persona_id, rol_id) VALUES ('1','...
+                                   ^
+)
+ Function error: insertRolHasOptionDb	500 ERROR
+2023-05-11 18:14:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idRol] => 1
+            [idOption] => 1
+        )
+
+    [sql] => INSERT INTO rol_has_opcion(rol_id, opcion_id) VALUES ('1','1')
+    [error] => ERROR:  inserción o actualización en la tabla «rol_has_opcion» viola la llave foránea «rol_has_opcion_rol_id_fkey»
+DETAIL:  La llave (rol_id)=(1) no está presente en la tabla «rol».
+)
+ Function error: insertRolHasOptionDb	500 ERROR

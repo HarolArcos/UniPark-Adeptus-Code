@@ -1,0 +1,53 @@
+2023-05-09 13:44:27	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => componente_1
+        )
+
+    [output] => 1
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente) VALUES ('1','1','componente_1')
+)
+ Function error: insertOptionDb	100 DEBUG
+2023-05-09 17:10:08	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idOption] => 2
+            [fatherOption] => 1
+            [orderOption] => 3
+            [componentOption] => 1
+            [statusOption] => 1
+        )
+
+    [output] => 1
+    [sql] => UPDATE opcion SET
+        opcion_padre ='1',
+        opcion_orden = '3', 
+        opcion_componente = '1',
+        opcion_estado = '1'
+        WHERE opcion_id = 2
+)
+ Function error: editOptionDb	100 DEBUG
+2023-05-09 17:30:29	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idOption] => 2
+            [fatherOption] => 3
+            [orderOption] => 1
+            [componentOption] => prueba
+            [statusOption] => 1
+        )
+
+    [output] => 1
+    [sql] => UPDATE opcion SET 
+        opcion_padre ='3',
+        opcion_orden = '1', 
+        opcion_componente = 'prueba',
+        opcion_estado = '1'
+        WHERE opcion_id = 2
+)
+ Function error: editOptionDb	100 DEBUG

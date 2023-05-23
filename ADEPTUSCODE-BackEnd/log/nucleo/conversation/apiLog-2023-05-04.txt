@@ -1,0 +1,25 @@
+2023-05-04 23:08:18	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [conversacion_id] => 1
+                    [conversacion_estado] => 9
+                    [persona_id] => 3
+                    [conversacion_asunto] => Tu minita
+                )
+
+            [1] => Array
+                (
+                    [conversacion_id] => 2
+                    [conversacion_estado] => 8
+                    [persona_id] => 1
+                    [conversacion_asunto] => La universidad
+                )
+
+        )
+
+    [sql] => SELECT * FROM conversacion
+)
+ Function: listConversation	100 DEBUG

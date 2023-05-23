@@ -1,0 +1,4 @@
+2023-04-28 13:44:45	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-28 13:45:41	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-28 13:46:01	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-28 13:46:01	C:\xampp\htdocs\ADEPTUS CODE 2023\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO

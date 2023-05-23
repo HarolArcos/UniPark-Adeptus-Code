@@ -1,0 +1,180 @@
+2023-05-01 00:46:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [input] => Array
+        (
+        )
+
+    [output] => Array
+        (
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 00:48:09	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [input] => Array
+        (
+        )
+
+    [output] => Array
+        (
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 02:57:29	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.06730318069458
+    [input] => {"tipeperson":"admin","namePerson":"Gonza","lastNamePerson":"Zeballos","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":"1","nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 02:59:59	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.10622787475586
+    [input] => {"tipeperson":"admin","namePerson":"Gonza","lastNamePerson":"Zeballos","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":"1","nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 03:02:03	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.082771778106689
+    [input] => {"tipeperson":"admin","namePerson":"Gonza","lastNamePerson":"Zeballos","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":"1","nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 03:02:38	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.080390930175781
+    [input] => {"tipeperson":"admin","namePerson":"Gonza","lastNamePerson":"Zeballos","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":"1","nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 03:04:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.81951999664307
+    [input] => {"tipeperson":"admin","namePerson":"Gonza","lastNamePerson":"Zeballos","ciPerson":"1234567","phonePerson":"67123456","telegramPerson":"","statusPerson":"1","nicknamePerson":"gonzazm","passwordPerson":"123456"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 03:31:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [input] => Array
+        (
+        )
+
+    [output] => Array
+        (
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 03:49:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.027925968170166
+    [input] => {"typePerson":"3","namePerson":"Kevin","lastNamePerson":"Santillan","ciPerson":"1311751265","phonePerson":"593096543743","telegramPerson":"","statusPerson":"1","nicknamePerson":"ksantillan","passwordPerson":"ksantillan"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 03:49:30	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.026275873184204
+    [input] => {"typePerson":3,"namePerson":"Kevin","lastNamePerson":"Santillan","ciPerson":"1311751265","phonePerson":"593096543743","telegramPerson":"","statusPerson":"1","nicknamePerson":"ksantillan","passwordPerson":"ksantillan"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 03:49:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.025579929351807
+    [input] => {"typePerson":3,"namePerson":"Kevin","lastNamePerson":"Santillan","ciPerson":"1311751265","phonePerson":"593096543743","telegramPerson":"","statusPerson":1,"nicknamePerson":"ksantillan","passwordPerson":"ksantillan"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE
+2023-05-01 03:51:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.025427103042603
+    [input] => {"typePerson":3,"namePerson":"Kevin","lastNamePerson":"Santillan","ciPerson":"1311751265","phonePerson":"593096543743","telegramPerson":"","statusPerson":1,"nicknamePerson":"ksantillan","passwordPerson":"ksantillan"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertPerson	300 NOTICE

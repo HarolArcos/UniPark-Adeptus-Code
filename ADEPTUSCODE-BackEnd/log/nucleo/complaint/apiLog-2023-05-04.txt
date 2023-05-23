@@ -1,0 +1,53 @@
+2023-05-04 23:08:39	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [reclamo_id] => 1
+                    [reclamo_estado] => 6
+                    [persona_id] => 3
+                    [reclamo_asunto] => Manchas en mi auto
+                    [reclamo_texto] => Se cagaron en mi autooo hjptas!!
+                    [reclamo_fecha] => 
+                    [reclamo_solucion] => lavalo wacho
+                )
+
+            [1] => Array
+                (
+                    [reclamo_id] => 2
+                    [reclamo_estado] => 6
+                    [persona_id] => 3
+                    [reclamo_asunto] => Manchas en mi auto2
+                    [reclamo_texto] => Se cagaron en mi autooo hjptas!!
+                    [reclamo_fecha] => 2023-05-04 21:32:05.971968
+                    [reclamo_solucion] => lavalo wachoo
+                )
+
+            [2] => Array
+                (
+                    [reclamo_id] => 4
+                    [reclamo_estado] => 6
+                    [persona_id] => 3
+                    [reclamo_asunto] => Manchas en mi auto3
+                    [reclamo_texto] => Se cagaron en mi autooo hjptas!!
+                    [reclamo_fecha] => 2023-05-04 21:32:05
+                    [reclamo_solucion] => lavalo wacho3
+                )
+
+            [3] => Array
+                (
+                    [reclamo_id] => 3
+                    [reclamo_estado] => 7
+                    [persona_id] => 3
+                    [reclamo_asunto] => Manchas en mi auto
+                    [reclamo_texto] => Se cagaron en mi autooo hjptas!!
+                    [reclamo_fecha] => 2023-05-04 21:32:05.971968
+                    [reclamo_solucion] => lavalo wacho
+                )
+
+        )
+
+    [sql] => SELECT * FROM reclamo
+)
+ Function error: listComplaintDb	100 DEBUG

@@ -1,0 +1,204 @@
+2023-05-09 13:44:27	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.031184911727905
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-09 13:59:47	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024807929992676
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-09 14:03:20	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.02507495880127
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-09 17:08:05	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.028089046478271
+    [input] => {"idOption":2,"fatherOption":3,"orderOption":1,"componentOption":"Opcion1","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios fallidos
+                )
+
+        )
+
+)
+ Funcion: editOption	300 NOTICE
+2023-05-09 17:08:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.023441076278687
+    [input] => {"idOption":2,"fatherOption":3,"orderOption":1,"componentOption":"algo","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios fallidos
+                )
+
+        )
+
+)
+ Funcion: editOption	300 NOTICE
+2023-05-09 17:10:08	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.027305841445923
+    [input] => {"idOption":2,"fatherOption":3,"orderOption":1,"componentOption":1,"statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios realizados con exito
+                )
+
+        )
+
+)
+ Funcion: editOption	300 NOTICE
+2023-05-09 17:11:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024263858795166
+    [input] => {"idOption":2,"fatherOption":3,"orderOption":1,"componentOption":"Prueba","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios fallidos
+                )
+
+        )
+
+)
+ Funcion: editOption	300 NOTICE
+2023-05-09 17:14:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.022542953491211
+    [input] => {"idOption":2,"fatherOption":3,"orderOption":1,"componentOption":"Prueba","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios fallidos
+                )
+
+        )
+
+)
+ Funcion: editOption	300 NOTICE
+2023-05-09 17:20:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [input] => Array
+        (
+        )
+
+    [output] => Array
+        (
+        )
+
+)
+ Funcion: editOption	300 NOTICE
+2023-05-09 17:21:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.022787809371948
+    [input] => {"idOption":2,"fatherOption":3,"orderOption":1,"componentOption":"prueba","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios fallidos
+                )
+
+        )
+
+)
+ Funcion: editOption	300 NOTICE
+2023-05-09 17:30:29	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.02217698097229
+    [input] => {"idOption":2,"fatherOption":3,"orderOption":1,"componentOption":"prueba","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios realizados con exito
+                )
+
+        )
+
+)
+ Funcion: editOption	300 NOTICE
+2023-05-09 17:39:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.023108959197998
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-09 17:39:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.027178049087524
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE

@@ -1,0 +1,49 @@
+2023-05-03 17:25:49	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Se listo correctamente a las personas - Funcion: listVehicle	200 INFO
+2023-05-03 17:30:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.076193809509277
+    [input] => {"idPerson":2,"statusVehicle":4,"plateVehicle":"ahsd32","modelVehicle":"toyota","colorVehicle":"verde"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertVehicle	300 NOTICE
+2023-05-03 17:32:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.28540015220642
+    [input] => {"idVehicle":3,"idPerson":2,"statusVehicle":4,"plateVehicle":"ahsd32","modelVehicle":"toyota","colorVehicle":"rojo"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambios realizados con exito
+                )
+
+        )
+
+)
+ Funcion: editVehicle	300 NOTICE
+2023-05-03 17:34:57	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.063397884368896
+    [input] => {"idVehicle":3,"statusVehicle":5}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Cambio de estado exitosa
+                )
+
+        )
+
+)
+ Funcion: changeStateVehicle	300 NOTICE

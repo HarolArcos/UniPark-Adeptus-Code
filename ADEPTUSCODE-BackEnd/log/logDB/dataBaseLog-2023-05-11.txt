@@ -1,0 +1,40 @@
+2023-05-11 17:57:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[adeptus-code-db],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-11 17:57:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 17:57:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 18:03:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:03:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 18:03:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:03:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 18:11:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:11:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona_has_rol(persona_id, rol_id) VALUES ('1','1')] [ERROR:  inserción o actualización en la tabla «persona_has_rol» viola la llave foránea «persona_has_rol_persona_id_fkey»
+DETAIL:  La llave (persona_id)=(1) no está presente en la tabla «persona».] Function: setQueryParameters	500 ERROR
+2023-05-11 18:13:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:13:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO rol_has_opcion(persona_id, rol_id) VALUES ('1','1')] [ERROR:  no existe la columna «persona_id» en la relación «rol_has_opcion»
+LINE 1: INSERT INTO rol_has_opcion(persona_id, rol_id) VALUES ('1','...
+                                   ^] Function: setQueryParameters	500 ERROR
+2023-05-11 18:14:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:14:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO rol_has_opcion(rol_id, opcion_id) VALUES ('1','1')] [ERROR:  inserción o actualización en la tabla «rol_has_opcion» viola la llave foránea «rol_has_opcion_rol_id_fkey»
+DETAIL:  La llave (rol_id)=(1) no está presente en la tabla «rol».] Function: setQueryParameters	500 ERROR
+2023-05-11 18:21:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:21:44	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:22:30	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:25:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:26:25	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:26:25	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 18:30:09	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 18:30:09	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 19:36:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 19:36:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 19:37:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 19:37:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 19:49:47	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 19:49:47	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 20:18:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 20:18:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-11 20:19:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 20:19:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-11 20:19:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('','1','componente_1dadsafsafasfahdasuduisaduiasdsaf','1')] [ERROR:  la sintaxis de entrada no es válida para tipo integer: «»
+LINE 2:          VALUES ('','1','componente_1dadsafsafasfahdasuduisa...
+                         ^] Function: setQueryParameters	500 ERROR
+2023-05-11 20:20:15	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO

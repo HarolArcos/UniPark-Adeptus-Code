@@ -1,0 +1,255 @@
+2023-04-30 20:40:27	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-30 20:42:21	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 20:44:46	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 20:46:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 20:48:09	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:36:24	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:44:50	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:47:40	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:51:11	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:53:03	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:53:27	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:56:02	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:56:31	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:57:29	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:57:59	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:59:12	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 22:59:59	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 23:02:03	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 23:02:38	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 23:04:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 23:30:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[conexion],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-30 23:31:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-30 23:49:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-30 23:49:30	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-30 23:49:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-04-30 23:51:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:07:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:07:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:07:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-05-01 00:20:02	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:20:02	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:20:02	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:24:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:34	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:24:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:24:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:39	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:24:39	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:39	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:24:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:25:22	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:25:22	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:25:22	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:27:48	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:27:48	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:27:48	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:28:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:28:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:28:37	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:28:58	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:28:58	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:28:58	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:31:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:31:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:31:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena: 1 - Function: connect	200 INFO
+2023-05-01 00:36:16	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:36:16	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:36:16	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:36:22	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:36:22	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:36:22	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:37:26	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:37:26	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:37:26	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:37:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:37:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:37:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:37:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:37:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:37:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:39:05	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:39:05	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:39:05	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-05-01 00:43:16	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:43:16	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:43:16	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-05-01 00:46:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:46:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:46:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-05-01 00:48:09	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:48:09	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:48:09	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+                1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-05-01 00:52:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:52:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:52:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-05-01 00:54:13	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:54:13	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:54:13	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')] [Error en conexion] Function: setQueryParameters	500 ERROR
+2023-05-01 00:55:56	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:55:56	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:55:56	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 00:58:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 00:58:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 00:58:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:00:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:00:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:00:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:00:55	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:00:55	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:00:55	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:11:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:11:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:13:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:13:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:13:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:16:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:16:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:16:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:16:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:16:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:16:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:28:31	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:28:31	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:28:31	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:29:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:29:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:29:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:30:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:30:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:30:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:35:13	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:35:13	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:35:13	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:35:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:35:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:35:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:41:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:41:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:41:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:45:10	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:45:10	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:53:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:53:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:53:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:54:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:54:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:54:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:55:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:55:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:55:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:57:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:57:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:57:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 01:59:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 01:59:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 01:59:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 02:02:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 02:02:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 02:02:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 02:03:14	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 02:03:14	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 02:03:14	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 02:05:54	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 02:05:54	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 02:05:54	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 02:06:39	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 02:06:39	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 02:06:39	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 02:08:10	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 02:08:10	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 02:08:10	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')] [ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
+DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».] Function: setQueryParameters	500 ERROR
+2023-05-01 02:10:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 02:10:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 02:10:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')] [ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
+DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».] Function: setQueryParameters	500 ERROR
+2023-05-01 02:13:31	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 02:13:31	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 02:13:31	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 02:13:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[postgres],host=[localhost],password=[abc123],port=[5432] Function: setParametrosBD	200 INFO
+2023-05-01 02:13:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 02:13:50	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')] [ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
+DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».] Function: setQueryParameters	500 ERROR
+2023-05-01 15:55:41	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 15:55:41	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:02:02	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 16:02:02	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:02:42	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 16:02:43	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:02:43	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 16:04:59	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 16:04:59	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:05:47	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 16:05:47	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:05:47	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('cliente','Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 1 , 'gonzazm' , '123456')] [ERROR:  la sintaxis de entrada no es válida para tipo integer: «cliente»
+LINE 1: ...do, persona_nickname, persona_contraseña) VALUES ('cliente',...
+                                                             ^] Function: setQueryParameters	500 ERROR
+2023-05-01 16:06:20	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 16:06:20	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:06:20	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 16:07:05	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 16:07:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:07:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 16:10:16	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 16:10:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:10:17	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 16:12:10	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Datos asignados: user=[postgres], dbname=[unipark],host=[localhost],password=[fcbolivar],port=[5434] Function: setParametrosBD	200 INFO
+2023-05-01 16:12:10	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 16:12:10	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 18:11:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 18:11:38	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 19:12:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 19:12:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	[UPDATE persona SET persona_estado = 0 WHERE persona_id = 1] [ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_estado_fkey»
+DETAIL:  La llave (persona_estado)=(0) no está presente en la tabla «referencia».] Function: setQueryParameters	500 ERROR
+2023-05-01 19:14:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 19:14:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 20:29:27	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 20:29:27	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 20:32:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 20:32:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 20:35:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 20:35:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 20:45:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 20:48:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 20:51:30	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 20:58:47	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 20:59:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 21:04:41	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 21:04:41	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 21:08:54	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 21:08:54	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 23:09:23	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 23:09:23	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 23:10:37	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 23:10:37	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 23:11:58	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 23:11:58	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-05-01 23:13:15	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-05-01 23:13:15	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO

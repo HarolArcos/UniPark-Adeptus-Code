@@ -1,0 +1,4 @@
+2023-04-26 17:22:56	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\log\common\log.php (69)	Datos asignados: [postgres],[nombre_de_tu_bd],[localhost],[tu_password],[5434] Function: setParametrosBD	200 INFO
+2023-04-26 17:22:56	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\log\common\log.php (75)	No hay conexion:  - Function: connect	400 WARNING
+2023-04-26 17:25:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\log\common\log.php (69)	Datos asignados: user=[postgres], dbname=[nombre_de_tu_bd],host=[localhost],password=[tu_password],port=[5434] Function: setParametrosBD	200 INFO
+2023-04-26 17:25:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\log\common\log.php (75)	No hay conexion:  - Function: connect	400 WARNING

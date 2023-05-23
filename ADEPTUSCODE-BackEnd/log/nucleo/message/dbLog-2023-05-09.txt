@@ -1,0 +1,173 @@
+2023-05-09 13:59:47	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => 1
+            [statusOption] => componente_1
+        )
+
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','1','componente_1')
+    [error] => ERROR:  no existe la columna «opcion_estado» en la relación «opcion»
+LINE 1: ...on(opcion_padre, opcion_orden, opcion_componente, opcion_est...
+                                                             ^
+)
+ Function error: insertOptionDb	500 ERROR
+2023-05-09 14:03:20	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => 1
+            [statusOption] => componente_1
+        )
+
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','1','componente_1')
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «componente_1»
+LINE 2:          VALUES ('1','1','1','componente_1')
+                                     ^
+)
+ Function error: insertOptionDb	500 ERROR
+2023-05-09 17:08:05	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idOption] => 2
+            [fatherOption] => 1
+            [orderOption] => 3
+            [componentOption] => 1
+            [statusOption] => Opcion1
+        )
+
+    [sql] => UPDATE opcion SET
+        opcion_padre ='1',
+        opcion_orden = '3', 
+        opcion_componente = '1',
+        opcion_estado = 'Opcion1'
+        WHERE opcion_id = 2
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «Opcion1»
+LINE 5:         opcion_estado = 'Opcion1'
+                                ^
+)
+	500 ERROR
+2023-05-09 17:08:28	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idOption] => 2
+            [fatherOption] => 1
+            [orderOption] => 3
+            [componentOption] => 1
+            [statusOption] => algo
+        )
+
+    [sql] => UPDATE opcion SET
+        opcion_padre ='1',
+        opcion_orden = '3', 
+        opcion_componente = '1',
+        opcion_estado = 'algo'
+        WHERE opcion_id = 2
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «algo»
+LINE 5:         opcion_estado = 'algo'
+                                ^
+)
+	500 ERROR
+2023-05-09 17:11:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idOption] => 2
+            [fatherOption] => 1
+            [orderOption] => 3
+            [componentOption] => 1
+            [statusOption] => Prueba
+        )
+
+    [sql] => UPDATE opcion SET
+        opcion_padre ='1',
+        opcion_orden = '3', 
+        opcion_componente = '1',
+        opcion_estado = 'Prueba'
+        WHERE opcion_id = 2
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «Prueba»
+LINE 5:         opcion_estado = 'Prueba'
+                                ^
+)
+	500 ERROR
+2023-05-09 17:14:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idOption] => 2
+            [fatherOption] => 1
+            [orderOption] => 3
+            [componentOption] => 1
+            [statusOption] => Prueba
+        )
+
+    [sql] => UPDATE opcion SET opcion_padre ='1', opcion_orden = '3', 
+                    opcion_componente = '1', opcion_estado = 'Prueba'
+        WHERE opcion_id = 2
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «Prueba»
+LINE 2: ...           opcion_componente = '1', opcion_estado = 'Prueba'
+                                                               ^
+)
+	500 ERROR
+2023-05-09 17:21:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [idOption] => 2
+            [fatherOption] => 1
+            [orderOption] => 3
+            [componentOption] => 1
+            [statusOption] => prueba
+        )
+
+    [sql] => UPDATE opcion SET opcion_padre ='1',
+        opcion_orden = '3', 
+        opcion_componente = '1',
+        opcion_estado = 'prueba'
+        WHERE opcion_id = 2
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «prueba»
+LINE 4:         opcion_estado = 'prueba'
+                                ^
+)
+	500 ERROR
+2023-05-09 17:39:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => 1
+            [statusOption] => componente_1
+        )
+
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','1','componente_1')
+    [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «componente_1»
+LINE 2:          VALUES ('1','1','1','componente_1')
+                                     ^
+)
+ Function error: insertOptionDb	500 ERROR
+2023-05-09 17:39:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	Array
+(
+    [input] => Array
+        (
+            [fatherOption] => 1
+            [orderOption] => 1
+            [componentOption] => componente_1
+            [statusOption] => 1
+        )
+
+    [sql] => INSERT INTO opcion(opcion_padre, opcion_orden, opcion_componente, opcion_estado)
+         VALUES ('1','1','componente_1','1')
+    [error] => ERROR:  inserción o actualización en la tabla «opcion» viola la llave foránea «opcion_opcion_estado_fkey»
+DETAIL:  La llave (opcion_estado)=(1) no está presente en la tabla «referencia».
+)
+ Function error: insertOptionDb	500 ERROR

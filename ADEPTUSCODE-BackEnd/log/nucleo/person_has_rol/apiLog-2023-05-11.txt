@@ -1,0 +1,45 @@
+2023-05-11 18:03:21	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM rol_has_opcion
+)
+ Function error: listRolHasOptionDb	100 DEBUG
+2023-05-11 18:03:43	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+        )
+
+    [sql] => SELECT * FROM rol_has_opcion
+)
+ Function error: listRolHasOptionDb	100 DEBUG
+2023-05-11 18:26:25	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idRolHasOption] => 2
+            [idRol] => 1
+            [idOption] => 3
+        )
+
+    [output] => 1
+    [sql] => UPDATE rol_has_opcion SET
+        rol_id ='1',
+        opcion_id = '3'
+        WHERE rol_has_opcion_id = 2
+)
+ Function error: editRolHasPersonDb	100 DEBUG
+2023-05-11 18:30:09	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [input] => Array
+        (
+            [idRolHasOption] => 1
+        )
+
+    [output] => 1
+    [sql] => DELETE FROM rol_has_opcion WHERE rol_has_opcion_id = 1
+)
+ Function error: deleteRolHasOptionDb	100 DEBUG

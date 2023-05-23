@@ -1,0 +1,78 @@
+2023-05-11 17:57:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a las opciones - Funcion: listOption	500 ERROR
+2023-05-11 19:36:33	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (78)	No se pudo listara a las opciones - Funcion: listOption	500 ERROR
+2023-05-11 19:37:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024743795394897
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-11 19:49:47	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.025805950164795
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1dadsadsaf","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-11 20:18:00	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.024275064468384
+    [input] => {"fatherOption":1,"orderOption":1,"componentOption":"componente_1dadsafsafasfahdasuduisaduiasdsaf","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción exitosa
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-11 20:19:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [input] => Array
+        (
+        )
+
+    [output] => Array
+        (
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
+2023-05-11 20:19:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.025004863739014
+    [input] => {"fatherOption":"","orderOption":1,"componentOption":"componente_1dadsafsafasfahdasuduisaduiasdsaf","statusOption":1}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => Inserción fallida
+                )
+
+        )
+
+)
+ Funcion: insertOption	300 NOTICE
