@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import comprovar from "./Comprueva";
 import "./Login.css";
-import { useContext } from "react";
+
 import { Button, Modal, ModalBody } from "react-bootstrap";
-import { DataUser } from "../context/UserContext";
+
 
 import { useNavigate } from "react-router-dom";
 import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
+import Comprueba from "./Comprueba";
 
 export default function Login() {
-  const { setUserglobal } = useContext(DataUser);
+  
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
@@ -17,7 +17,7 @@ export default function Login() {
   const [contraseña, setcontraseña] = useState("");
   const [errorlog, seterrorlog] = useState("");
 
-  function ClikComprovar() {
+  function ClickComprobar() {
     const validatePerson = {
       nicknamePerson: nickname,
       passwordPerson: contraseña,
@@ -27,7 +27,7 @@ export default function Login() {
       validatePerson
     ).then((responseData) => {
       // Trabaja con la respuesta JSON recibida
-      seterrorlog(comprovar(navigate, responseData, setUserglobal));
+      seterrorlog(Comprueba(navigate, responseData));
     });
   }
 
@@ -104,7 +104,7 @@ export default function Login() {
                 <div className="col-12 iniciar-button">
                   {/* <Link to={direccion} > */}
                   <button
-                    onClick={() => ClikComprovar()}
+                    onClick={() => ClickComprobar()}
                     type="submit"
                     className="btn btn-primary btn-block "
                   >
