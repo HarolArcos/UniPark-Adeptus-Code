@@ -5,28 +5,22 @@ import Aside from "../Aside/Aside";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import React, { useState } from "react";
-
 import SearchBar from "../SearchBar/SearchBar";
 let dat ;
 export default function ListCli() {
-    const { data, loading, error } = useFetch(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
-      );
-      if (!loading) {
   return (
     <div>
       <Header></Header>
       <Aside></Aside>
 
-      <ListaC data={data} error={error} />
+      <ListaC></ListaC>
       <Outlet />
       <Footer></Footer>
     </div>
   );
-      }
 }
 
-function ListaC(data,error) {
+function ListaC() {
   const [datitos, setdatitos] = useState([]);
   const [show, setShow] = useState(false);
   const [usuario, setusuario] = useState([]);
@@ -34,7 +28,9 @@ function ListaC(data,error) {
 
   const handleClose = () => setShow(false);
 
-  
+  const { data, loading, error } = useFetch(
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+  );
 
   function Whats(cliente) {
     setusuario(cliente);
@@ -50,7 +46,7 @@ function ListaC(data,error) {
     window.location.href = link;
   };
 
-  
+  if (!loading) {
     if (datitos.length === 0) {
       setdatitos(data);
     }
@@ -187,4 +183,4 @@ function ListaC(data,error) {
       </div>
     );
   }
-
+}
