@@ -177,7 +177,7 @@ class subscription {
         $sql =  "UPDATE suscripcion SET suscripcion_estado = $statusSubscription WHERE suscripcion_id = $idSubscription";
         $sql2= "UPDATE suscripcion
                 SET suscripcion_estado = $statusSubscription,
-                suscripcion_numero_parqueo = CASE WHEN $statusSubscription = 25 THEN 0 ELSE suscripcion_numero_parqueo END
+                suscripcion_numero_parqueo = CASE WHEN $statusSubscription = 11 THEN 0 ELSE suscripcion_numero_parqueo END
                 WHERE suscripcion_id = $idSubscription";
         $rs = $this->_db->query($sql2);
         if($this->_db->getLastError()) {
