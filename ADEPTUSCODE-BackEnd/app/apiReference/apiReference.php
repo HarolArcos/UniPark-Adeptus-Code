@@ -8,6 +8,8 @@
     $server->Register("editReference");
     $server->Register("changeStateReference");
     $server->Register("listReferences");
+    $server->Register("listReferencesSubscription");
+    $server->Register("listReferencesRequest");
     $server->Register("test");
     $server->Register("test2");
     $server->start();
@@ -214,6 +216,54 @@
 
         $_reference = new reference($_db);
         $responseList = $_reference->listReferencesDb($tableNameReference, $nameSpaceReference);
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente a las personas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan personas"));
+            $mensaje = "No se pudo listara a las personas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listReferencesSubscription($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $tableNameReference = $arg->tableNameReference ;
+        $nameSpaceReference = $arg->nameSpaceReference;
+
+        $_reference = new reference($_db);
+        $responseList = $_reference->listReferencesSuscripcionDb($tableNameReference, $nameSpaceReference);
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente a las personas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan personas"));
+            $mensaje = "No se pudo listara a las personas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listReferencesRequest($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $tableNameReference = $arg->tableNameReference ;
+        $nameSpaceReference = $arg->nameSpaceReference;
+
+        $_reference = new reference($_db);
+        $responseList = $_reference->listReferencesSolicitudDb($tableNameReference, $nameSpaceReference);
 
         if ( $responseList) {
             $mensaje = "Se listo correctamente a las personas - Funcion: ".__FUNCTION__;

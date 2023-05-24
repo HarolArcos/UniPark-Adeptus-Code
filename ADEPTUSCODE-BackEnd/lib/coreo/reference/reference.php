@@ -200,6 +200,44 @@ class reference {
         return $response;
     }
 
+    public function listReferencesSolicitudDb($tableNameReference, $nameSpaceReference){
+        $response = false;
+        $sql =  "SELECT * FROM referencia WHERE referencia_nombre_tabla = '$tableNameReference' AND referencia_nombre_campo = '$nameSpaceReference' AND referencia_valor <> 'inhabilitada'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listReferencesSuscripcionDb($tableNameReference, $nameSpaceReference){
+        $response = false;
+        $sql =  "SELECT * FROM referencia WHERE referencia_nombre_tabla = '$tableNameReference' AND referencia_nombre_campo = '$nameSpaceReference' AND referencia_valor <> 'en proceso' AND referencia_valor <> 'rechazada'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     private function mapReference($rs){
         $this->idReference = $rs['referencia_id'];
         $this->tableNameReference = $rs['referencia_nombre_tabla'];
