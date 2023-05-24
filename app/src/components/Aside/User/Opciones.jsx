@@ -1,5 +1,8 @@
 const parse = require("html-react-parser");
 
+
+
+
 export default function Opcions() {
 
   const options =(JSON.parse(localStorage.getItem("options")))

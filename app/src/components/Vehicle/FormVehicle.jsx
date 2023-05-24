@@ -3,18 +3,17 @@ import React, { useEffect ,useState} from "react";
 import { Form, Button,Modal } from "react-bootstrap";
 import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
-import { useFetch } from "../../hooks/HookFetchListData";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import "./Vehicle.css"
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
+
 const Formulario = ({asunto,cancelar, vehiculo}) => {
 
   const {data,fetchData} = useFetchSendData();
-  useEffect(() => {
-    console.log('Data actualizada o creada :', data);
-  }, [data]);
-
+  
   //añadidas new
+
+  const [errorDuply, seterrorDuply] = useState(null);
 
   const [selectedPersonaId, setSelectedPersonaId] = useState(
     vehiculo ? vehiculo.persona_id : null
@@ -32,7 +31,16 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
     setSelectedReferenciaId(referenciaId);
   };
   //------------
-
+  
+  useEffect(() => {
+    console.log(data);
+    if (data.desError === "Inserción fallida, ya existe la placa") {
+      console.log(data.desError);
+      seterrorDuply(data.desError);
+    }else if (data.desError === "Cambios realizados con exito" || data.desError === "Inserción exitosa"){
+      cancelar();
+    }
+  }, [data]);
 
   return (
     <Formik
@@ -58,9 +66,10 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
       if(!values.plateVehicle){
         errors.plateVehicle ='El campo es requerido';
       }
-      else if(!/^[A-Za-z-0-9]+$/i.test(values.plateVehicle)){
-        errors.plateVehicle ='caracteres invalidos'
+      else if(!/^(?! )(\d{3,4}-[A-Z]{3})$/i.test(values.plateVehicle)){
+        errors.plateVehicle ='El formato debe ser XXX-AAA ejemplo: 123-GHJ'
       }
+
 
       if(!selectedPersonaId){
         errors.idPerson ='Seleccione un elemento porfavor';
@@ -73,17 +82,17 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
       if(!values.modelVehicle){
         errors.modelVehicle ='El campo es requerido';
       }
-      else if(!/^[A-Za-z]+$/i.test(values.modelVehicle)){
-        errors.modelVehicle ='datos invalidos'
+      else if(!/^(?! )[A-Za-z]+( [A-Za-z]+)?$/i.test(values.modelVehicle)){
+        errors.modelVehicle ='Solo se admite un espacio entre dos palabras'
       }
 
       if(!values.colorVehicle){
         errors.colorVehicle ='El campo es requerido';
       }
-      else if(!/^[A-Za-z]+$/i.test(values.colorVehicle)){
-        errors.colorVehicle ='datos invalidos'
+      else if(!/^(?! )[A-Za-z]+( [A-Za-z]+)?$/i.test(values.colorVehicle)){
+        errors.colorVehicle ='Solo se admite un espacio entre dos palabras'
       }
-      console.log(errors);
+
       return errors;
     }}
     
@@ -92,14 +101,17 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
       if (vehiculo) {
         values.idPerson = selectedPersonaId;
         values.statusVehicle = selectedReferenciaId;
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
-        cancelar();
-        
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
+        console.log(data);
       } else {
         values.idPerson = selectedPersonaId;
         values.statusVehicle = selectedReferenciaId;
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
-        cancelar();
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
+        console.log(errorDuply);
       }
 
     }
@@ -147,8 +159,10 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
               <Form.Group className="inputGroup" controlId="idPerson">
                 <Form.Label className="text-left">Propietario</Form.Label>
                 <ComboboxPerson 
+                name="idPerson"
                 id={vehiculo? vehiculo.persona_id:null}
                 onPersonaIdChange={handlePersonaIdChange}
+                onBlur={handleBlur}
                 />
               </Form.Group>
               <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
@@ -164,6 +178,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
               <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
               
       <br/>
+      <div className="text-danger">{errorDuply? errorDuply :''}</div>
         <Modal.Footer >
           <Button variant="secondary" onClick={cancelar}>
             Cancelar

@@ -6,32 +6,20 @@ import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
 import { useFetch } from '../../hooks/HookFetchListData';
+import { useSend } from '../../hooks/HookList';
 import "./Solicitude.css"
 import { useContext } from "react"
 import { DataUser } from '../context/UserContext.jsx';
 
 export const Solicitude = () => {
-    // localStorage.setItem("use",JSON.stringify({
-    //     persona_id: 3,
-    //     persona_tipo: 2,
-    //     persona_nombre: "Sara",
-    //     persona_apellido: "Soliz",
-    //     persona_ci: 5295189,
-    //     persona_telefono: 59167418809,
-    //     persona_telegram: "",
-    //     persona_estado: 1,
-    //     persona_nickname: "saraliz",
-    //     persona_contraseña: "abc123",
-    //     personatipo: "Auto",
-    //     personaestado: "Auto"
-    // }))
+   
     const {userglobal} = useContext(DataUser);
     
     const [suscripcion,setSuscripcion] = useState(null);
     const [error,setError] =  useState(null);
     
     //solictar api : listSubscriptionUser FetchSendData()con el id del solicitante
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+    const{data,fetchData} = useSend();
     
     //----------------------ShowModal-------------------------------
     
@@ -42,8 +30,13 @@ export const Solicitude = () => {
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
     
     useEffect(() => {
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        console.log(data);
+    }, []);
+
+    useEffect(() => {
         if (data.desError) {
-            setError("No existe ningún vehiculo registrado");
+            setError("No existe una solicitud");
         }else{
              let mysus = data.filter(suscripcion => suscripcion.persona_id == userglobal.persona_id);
             ;
@@ -61,8 +54,12 @@ export const Solicitude = () => {
     
     
     //---Desactive Any Modal
-    const handleCancelar = () => {
+    const handleCancelar = async () => {
         setShowMod(false);
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
     };
 
 
