@@ -46,7 +46,7 @@ export const AppRouter = () => {
                     <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
                     <Route path="/editPersonas"         element={ <EditPerson/> }/>
                     <Route path="/deletePersonas"       element={ <DeletePerson/> } />
-                    
+                    <Route path="/listCliente"             element={ <ListCli/> } />
                     <Route path="/listvehiculo"         element={ <ListVehicle/> } />
                     <Route path="/listDeletevehiculo"   element={ <Vehicle/> } />
                     <Route path="/solicitud"            element={ <Solicitude/> } />

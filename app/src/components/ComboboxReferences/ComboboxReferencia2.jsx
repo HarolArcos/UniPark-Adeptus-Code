@@ -3,16 +3,26 @@ import Select from "react-select";
 import { useState } from "react";
 import "./ComboboxReferences.css";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
-import { useFetch } from "../../hooks/HookFetchListData";
+
+import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 
 export default function ComboboxReferences({ onChange }) {
-  const { data: tipo, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol"
-  );
+  
+  const [tar, settar] = useState([])
+  const [loading, setloading] = useState(true)
+  if (loading) {sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",
+  {
+    "tableNameReference" : "persona",
+    "nameSpaceReference" :  "persona_tipo"
+}).then((responseData) => {
+  
+  settar(responseData)
+  setloading(false)
+});}
 
-  const ref = tipo.map((opcion) => ({
-    value: opcion.rol_id,
-    label: opcion.rol_nombre,
+  const ref = tar.map((opcion) => ({
+    value: opcion.referencia_id,
+    label: opcion.referencia_valor,
   }));
 
   const [selectedOption, setSelectedOption] = useState(null);

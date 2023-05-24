@@ -10,17 +10,23 @@ import FormularioPersona from './FormPersona';
 import "./Persons.css";
 
 export default function Persons(){   
-
+   
     const [searchTerm, setSearchTerm] = useState('');
-    if (localStorage.getItem("Error")){
-    const Error = localStorage.getItem("Error")
-    localStorage.removeItem("Error")}
+    
+    
+    
+    
+
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
         'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
     )
-
+    
+        setTimeout(() => {
+            localStorage.removeItem("Error")
+           }, 3000)
+       
     //----------------------ShowModal-------------------------------
     
     const [showCreate, setShowCreate] = useState(false);
@@ -64,6 +70,11 @@ export default function Persons(){
         <Aside></Aside>
 
         <div className="content-wrapper contenteSites-body">
+        
+                {localStorage.getItem("Error") ?
+                <div className="text-danger">{localStorage.getItem("Error")}</div>
+                
+                :<span></span>}
             <div className="bodyItems">
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
@@ -80,7 +91,7 @@ export default function Persons(){
                         onChange={handleSearch}
                     />
                 </div>
-                {Error ? <span>{Error}</span>:<span></span>}
+                
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">

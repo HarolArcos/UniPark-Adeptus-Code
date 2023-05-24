@@ -6,31 +6,30 @@ import "./FormPersona.css";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferencia2";
 import { useFetch } from "../../hooks/HookFetchListData";
 
-
-const FormularioPersona = ({ 
-  
+const FormularioPersona = ({
   asunto,
   cancelar,
   persona,
   actualizarVehiculo,
   añadirNuevo,
 }) => {
-  
-    const [selectedValue, setSelectedValue] = useState(null);
-    //setSelectedReferenciaId(referenciaId);
-    const handleValueChange = (option) => {
-      
-      console.log(option);
-      setSelectedValue(option);
-    };
+  const [selectedValue, setSelectedValue] = useState(null);
+  //setSelectedReferenciaId(referenciaId);
+  const handleValueChange = (option) => {
+    console.log(option);
+    setSelectedValue(option);
+  };
   const { data, fetchData } = useFetchSendData();
-  
-   const {data:lista,loading} =  useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson")
+
+  const { data: lista, loading } = useFetch(
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+  );
   useEffect(() => {
     console.log(data);
-    console.log(data.desError);
-    localStorage.setItem("Error",data.desError)
+    if (data.desError) {
+
+      localStorage.setItem("Error", data.desError);
+    }
   }, [data]);
 
   return (
@@ -56,7 +55,7 @@ const FormularioPersona = ({
               ciPerson: "",
               phonePerson: "",
               telegramPerson: "",
-              statusPerson: "",
+              statusPerson: "2",
               nicknamePerson: "",
               passwordPerson: "",
             }
@@ -79,19 +78,18 @@ const FormularioPersona = ({
                   values.namePerson
                 )
               ) {
-                errors.namePerson =
-                  "Se ingreso un caracter invalido";
+                errors.namePerson = "Se ingreso un caracter invalido";
               }
             }
           }
         }
-        
-        
+
         if (!values.lastNamePerson) {
           errors.lastNamePerson = "Campo Obligatorio";
         } else {
           if (values.lastNamePerson.startsWith(" ")) {
-            errors.lastNamePerson = "Este campo no puede empezar con espacio “ ”";
+            errors.lastNamePerson =
+              "Este campo no puede empezar con espacio “ ”";
           } else {
             if (/\s\s+/i.test(values.lastNamePerson)) {
               errors.lastNamePerson =
@@ -102,93 +100,96 @@ const FormularioPersona = ({
                   values.lastNamePerson
                 )
               ) {
-                errors.lastNamePerson =
-                  "Se ingreso un caracter invalido";
+                errors.lastNamePerson = "Se ingreso un caracter invalido";
               }
             }
           }
         }
-        
+
         if (!values.ciPerson) {
           errors.ciPerson = "Campo Obligatorio";
         } else {
           if (/[^0-9]/i.test(values.ciPerson)) {
             errors.ciPerson = "Se ingreso un caracter invalido ";
-          }
-          else{
+          } else {
             if (!loading) {
-              if(lista.filter((CI)=>CI.persona_ci===values.ciPerson).length>0){
+              if (
+                lista.filter((CI) => CI.persona_ci === values.ciPerson).length >
+                0
+              ) {
                 errors.ciPerson = "CI ya registrado a otro usuario";
-                }
+              }
             }
           }
         }
-        
-        
 
         if (!values.phonePerson) {
           errors.phonePerson = "Campo Obligatorio";
-        } else if (!values.phonePerson.startsWith("6")&& !values.phonePerson.startsWith("7")) {
+        } else if (
+          !values.phonePerson.startsWith("6") &&
+          !values.phonePerson.startsWith("7")
+        ) {
           errors.phonePerson = "Un número de teléfono debe iniciar con 6 o 7";
         } else {
-          
-          if (values.phonePerson.length!==8) {
+          if (values.phonePerson.length !== 8) {
             errors.phonePerson = "Un número de teléfono debe tener 8 digitos";
-    
           } else {
             if (/[^0-9]/i.test(values.phonePerson)) {
               errors.phonePerson = "datos invalidos";
-            }
-            else{
-              if (!loading) { 
-                if(lista.filter((CI)=>CI.persona_telefono===values.phonePerson).length>0){
+            } else {
+              if (!loading) {
+                if (
+                  lista.filter(
+                    (CI) => CI.persona_telefono === values.phonePerson
+                  ).length > 0
+                ) {
                   errors.phonePerson = "Teléfono ya registrado a otro usuario";
-                    }  
+                }
               }
             }
           }
-        } 
-        
-        
-        
-        if (selectedValue!==null) {
-          values.statusPerson=selectedValue.value
-        }
-        
-        if (!values.statusPerson) {
-          errors.statusPerson = "Debe escoger darle un rol";
         }
 
-        
+        if (selectedValue !== null) {
+          values.typePerson = selectedValue.value;
+        }
 
+        if (!values.typePerson) {
+          errors.typePerson = "Debe escoger darle un rol";
+        }
 
         if (!values.nicknamePerson) {
-          errors.nicknamePerson = "Campo Obligatorio n";
+          errors.nicknamePerson = "Campo Obligatorio ";
         } else {
-          
-          
-            
-              if (!loading) { 
-                 if(lista.filter((CI)=>CI.persona_nickname.toLowerCase()===values.nicknamePerson.toLowerCase()).length>0){
-                  errors.nicknamePerson = "Nickname ya registrado a otro usuario";
-                    }  
-              }
-            
-          
-        } 
+          if (!loading) {
+            if (
+              lista.filter(
+                (CI) =>
+                  CI.persona_nickname.toLowerCase() ===
+                  values.nicknamePerson.toLowerCase()
+              ).length > 0
+            ) {
+              errors.nicknamePerson = "Nickname ya registrado a otro usuario";
+            }
+          }
+        }
 
         if (!values.passwordPerson) {
           errors.passwordPerson = "El campo es requerido";
-        } else if (/[^A-Za-z-0-9\u00f1\u00d1\u00E0\u00FC\u00DC]/i.test(values.passwordPerson)) {
+        } else if (
+          /[^A-Za-z-0-9\u00f1\u00d1\u00E0\u00FC\u00DC]/i.test(
+            values.passwordPerson
+          )
+        ) {
           errors.passwordPerson = "datos invalidos";
         }
-        console.log(values)
-        console.log(errors)
+        console.log(values);
+        console.log(errors);
         return errors;
       }}
       onSubmit={async (values) => {
         console.log(values);
-        values.telegramPerson=values.phonePerson
+        values.telegramPerson = values.phonePerson;
         console.log("sadw");
         if (persona) {
           console.log(values, "editar personas");
@@ -206,16 +207,15 @@ const FormularioPersona = ({
             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
             values
           );
-          
+
           console.log(data);
-          window.location.reload()
+          window.location.reload();
           //cancelar();
         }
       }}
     >
       {({ values, errors, handleBlur, handleChange, handleSubmit }) => (
         <Form className="container ">
-          
           {/* {data ? <span>{data}</span> : <span></span>} */}
           <div className="row ">
             <div className="col-md-2" style={{ width: "220.60000000000002px" }}>
@@ -296,8 +296,8 @@ const FormularioPersona = ({
                 ></ErrorMessage>
               </Form.Group>
             </div>
-           
-              {/* <Form.Group className="inputGroup" controlId="telegramPerson">
+
+            {/* <Form.Group className="inputGroup" controlId="telegramPerson">
                 <Form.Label className="label">Telegram</Form.Label>
                 <Form.Control
                   type="text"
@@ -313,7 +313,7 @@ const FormularioPersona = ({
                   )}
                 ></ErrorMessage>
               </Form.Group> */}
-            
+
             <div
               className="col-md-2 "
               style={{ width: "220.60000000000002px" }}
@@ -363,14 +363,14 @@ const FormularioPersona = ({
               <Form.Group controlId="referencias">
                 <Form.Label className="label">Referencias</Form.Label>
 
-                <ComboboxReferences 
-                
-                onChange={handleValueChange} />
-                <p>Selected Value: {selectedValue ? selectedValue.label : ""}</p>
+                <ComboboxReferences onChange={handleValueChange} />
+                <p>
+                  Selected Value: {selectedValue ? selectedValue.label : ""}
+                </p>
                 <ErrorMessage
-                  name="statusPerson"
+                  name="typePerson"
                   component={() => (
-                    <div className="text-danger">{errors.statusPerson}</div>
+                    <div className="text-danger">{errors.typePerson}</div>
                   )}
                 ></ErrorMessage>
               </Form.Group>
