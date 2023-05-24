@@ -10,9 +10,11 @@ import FormularioPersona from './FormPersona';
 import "./Persons.css";
 
 export default function Persons(){   
+
     const [searchTerm, setSearchTerm] = useState('');
+    if (localStorage.getItem("Error")){
     const Error = localStorage.getItem("Error")
-    localStorage.removeItem("Error")
+    localStorage.removeItem("Error")}
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
@@ -21,25 +23,16 @@ export default function Persons(){
 
     //----------------------ShowModal-------------------------------
     
-    const [showEdit, setShowEdit] = useState(false);
-     
     const [showCreate, setShowCreate] = useState(false);
-     
+    
     //----------------------Cliente para:-------------------------------
     //------Editar :
-    const [personaSeleccionado, setPersonaSeleccionado] = useState(null);
-        
     useEffect(() => {
         setPersonas(data);
         
     }, [data]);
     
     //-----------------------Activate-------------------------------------------
-    //------Edit Modal
-    // const handleEditar = (persona) => {
-    //     setShowEdit(true);
-    //     setPersonaSeleccionado(persona);
-    // };
     
     //-----Create Modal
     const handleCreate = () => {
@@ -48,28 +41,11 @@ export default function Persons(){
     
     //---Desactive Any Modal
     const handleCancelar = () => {
-        setShowEdit(false);
         setShowCreate(false);
         console.log(data);
     };
     
     //-----------------------Crud-------------------------------------------
-    //------Edit
-    const handleGuardarEditado = (personaEditado) => {
-        const nuevasPersonas = personas.map((persona) =>
-        persona.id === personaEditado.id ? personaEditado : persona
-        );
-        setPersonas(nuevasPersonas);
-        setShowCreate(false);
-        setPersonaSeleccionado(null);
-    };
-
-    //-------Delete
-    // const handleEliminar = (id) => {
-    //   const nuevasPersonas = personas.filter((persona) => persona.id !== id);
-    //   setPersonas(nuevasPersonas);
-    // };
-
     //-------Crear
     const handleGuardarNuevo = (personaNueva) => {
         personaNueva.id = personas.lengthb;
@@ -82,10 +58,6 @@ export default function Persons(){
         setSearchTerm(event.target.value);
     };
 
-    // const filteredData = data.filter( (person) => {
-    //     return person.name.toLowerCase().includes( searchTerm.toLowerCase());
-    // });
-    console.log(data);
     return(
         <>
         <Header></Header>
@@ -99,7 +71,6 @@ export default function Persons(){
                         <Button variant="success" className="button"> 
                             <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
                         </Button>
-                        <Button variant="success" className="button"> PDF </Button>
                     </ButtonGroup>
                     <Form.Control 
                         className="searchBar"
@@ -135,40 +106,11 @@ export default function Persons(){
                                         <td>{persona.persona_ci}</td>
                                         <td>{persona.personatipo}</td>
                                         <td>{persona.personaestado}</td>
-                                        {/* <td className="actionsButtons">
-                                            <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(persona)}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                </svg>
-                                            </button>
-
-                                            <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEliminar(persona.persona_id)}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-dash-fill" viewBox="0 0 16 16">
-                                                <path fillRule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
-                                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                            </svg>
-                                            </button>
-                                        </td> */}
                                     </tr>
                             ))
                         )}
                     </tbody>
                 </Table>
-
-                <Modal
-                mostrarModal={showEdit}
-                title = 'Editar Persona'
-                contend = {
-                <FormularioPersona
-                asunto ='Guardar Cambios'
-                persona= {personaSeleccionado}
-                cancelar={handleCancelar}
-                actualizarPersona = {handleGuardarEditado}
-                ></FormularioPersona>}
-                hide = {handleCancelar}
-                >
-                </Modal>
                 
 
                 <Modal

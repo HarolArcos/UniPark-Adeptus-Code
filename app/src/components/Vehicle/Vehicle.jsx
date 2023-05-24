@@ -5,15 +5,21 @@ import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-import { useFetch } from '../../hooks/HookFetchListData';
+// import { useFetch } from '../../hooks/HookFetchListData';
+import { useSend } from '../../hooks/HookList';
+
 import "./Vehicle.css"
 
 export const Vehicle = () => {
     
     const [vehiculos,setVehiculos] =  useState([]);
     const [error,setError] =  useState(null);
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+    const{data,fetchData} = useSend();
     
+    
+    // useEffect(() => {
+        //     console.log(data);
+        // }, [data]);
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
@@ -25,6 +31,10 @@ export const Vehicle = () => {
     const [vehiculoSeleccionado, setVehiculoSeleccionado] = useState(null);
 
     
+    useEffect(() => {
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        console.log(data);
+    }, []);
     
     useEffect(() => {
         if (data.desError) {
@@ -50,10 +60,18 @@ export const Vehicle = () => {
     };
     
     //---Desactive Any Modal
-    const handleCancelar = () => {
+    const handleCancelar = async () => {
         setShowEdit(false);
         setShowCreate(false);
+        console.log(data);
+             
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        
     };
+
  
     return (
         <>

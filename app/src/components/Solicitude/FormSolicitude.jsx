@@ -85,7 +85,7 @@ const Formulario = ({cancelar}) => {
             values.idTarifa =selectedTarifa.tarifa_id;
             values.numParkSubscription = selectedSiteId;
             console.log(values);
-            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
+            //fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
             //cancelar();
         }}
         >
@@ -98,11 +98,10 @@ const Formulario = ({cancelar}) => {
             <Form.Label className="text-left col-sm-4">Fecha de Activación</Form.Label>
                 <div className="col-sm-8">
                 <Form.Control 
-                    type="datetime-local" 
+                    type="date" 
                     name="activationSubscription"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    // value={values.activationSubscription}
                 />
                 </div>
             </div>
@@ -114,12 +113,10 @@ const Formulario = ({cancelar}) => {
             <Form.Label className="text-left col-sm-4">Fecha de Expiración</Form.Label>
                 <div className="col-sm-8">
                 <Form.Control 
-                    type="datetime-local"
+                    type="date"
                     name="expirationSubscription"
                     onChange={handleChange}
                     onBlur={handleBlur} 
-                    value={values.expirationSubscription } 
-                    //value={"2023-05-04 21:30:05"} 
                 />
                 </div>
             </div>
@@ -151,7 +148,6 @@ const Formulario = ({cancelar}) => {
             </div>
             </Form.Group>
             <ErrorMessage name="idTarifa" component={()=>(<div className="text-danger">{errors.idTarifa}</div>)}></ErrorMessage>
-            <br />
                 <div>
                 {selectedTarifa == null ?(<br/>):(
                     <>
@@ -162,7 +158,6 @@ const Formulario = ({cancelar}) => {
                 )}
                 </div>
           
-          <br/>
             <Modal.Footer >
                 <Button variant="secondary" onClick={cancelar}>
                 Cancelar

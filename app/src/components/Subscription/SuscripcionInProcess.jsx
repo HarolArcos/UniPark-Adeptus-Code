@@ -71,7 +71,7 @@ export const SubscriptionInProcess = () => {
         <Aside></Aside>
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
-                <div className="buttonSection">
+                {/* <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
                         <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
                         <Button variant="success" className="button"> PDF </Button>
@@ -81,7 +81,7 @@ export const SubscriptionInProcess = () => {
                         type="text"
                         placeholder="Buscar..."
                     />
-                </div>
+                </div> */}
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
@@ -128,32 +128,7 @@ export const SubscriptionInProcess = () => {
                         )}
                     </tbody>
                 </Table>
-                <Modal
-	            tamaño ="md"
-                mostrarModal={showEdit}
-                title = 'Editar Suscripción'
-                contend = {
-                <Formulario
-                asunto ='Guardar Cambios'
-                suscripcion= {suscripcionSeleccionado}
-                cancelar={handleCancelar}
-                ></Formulario>}
-                hide = {handleCancelar}
-                >
-                </Modal>
-
-                <Modal
-	            tamaño ="md"
-                mostrarModal={showCreate}
-                title = 'Crear Nueva Suscripción'
-                contend = {
-                <Formulario
-                asunto = "Guardar Suscripción"
-                cancelar={handleCancelar}
-                ></Formulario>}
-                hide = {handleCancelar}
-                >
-                </Modal>
+                
             </div>
         </div>
         <Footer></Footer>
