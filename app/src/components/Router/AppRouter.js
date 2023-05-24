@@ -22,6 +22,9 @@ import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import { Vehicle } from "../Vehicle/Vehicle";
 import EditPerson from "../Persons/EditPerson";
 import DeletePerson from "../Persons/DeletePerson";
+import { ListVehicle } from "../Vehicle/ListVehicle";
+import { Solicitude } from "../Solicitude/Solicitude";
+import { SubscriptionInProcess } from "../Subscription/SuscripcionInProcess";
 
 export const AppRouter = () => {
 
@@ -40,9 +43,14 @@ export const AppRouter = () => {
                     <Route path='/guard'                element={ <Guard/>} />
                     <Route path='/ReclamosResp'         element={ <SolucionAccionReclamo/>} />
                     <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
-                    <Route path="/vehiculo"             element={ <Vehicle/> } />
                     <Route path="/editPersonas"         element={ <EditPerson/> }/>
                     <Route path="/deletePersonas"       element={ <DeletePerson/> } />
+                    
+                    <Route path="/listvehiculo"         element={ <ListVehicle/> } />
+                    <Route path="/listDeletevehiculo"   element={ <Vehicle/> } />
+                    <Route path="/solicitud"            element={ <Solicitude/> } />
+                    <Route path="/solicitudesEnProceso"       element={ <SubscriptionInProcess/> } />
+
                 </Routes>
         </Router>
     )
