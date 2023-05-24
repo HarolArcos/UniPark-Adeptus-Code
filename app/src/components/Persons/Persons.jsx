@@ -10,6 +10,22 @@ import FormularioPersona from './FormPersona';
 import "./Persons.css";
 
 export default function Persons(){   
+    
+    // localStorage.setItem('use', JSON.stringify({
+    //     persona_id: 1,
+    //     persona_tipo: 4,
+    //     persona_nombre: "Rodrigo",
+    //     persona_apellido: "Cespedes",
+    //     persona_ci: "8832939",
+    //     persona_telefono: "78324631",
+    //     persona_telegram: "010101",
+    //     persona_estado: 2,
+    //     persona_nickname: "Rodri00",
+    //     persona_contraseña: "abc123",
+    //     personatipo: "admin",
+    //     personaestado: "inactivo"
+    // }));
+
     const [searchTerm, setSearchTerm] = useState('');
 
     const [personas,setPersonas] =  useState([]);
