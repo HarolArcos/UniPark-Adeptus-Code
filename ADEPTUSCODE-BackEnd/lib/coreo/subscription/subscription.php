@@ -248,6 +248,33 @@ class subscription {
         return $response;
     }
 
+    public function listSubscriptionDeniedDb(){
+        $response = false;
+        $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        r.referencia_valor,
+        t.tarifa_nombre, t.tarifa_valor
+        FROM suscripcion s
+        INNER JOIN persona p ON s.persona_id = p.persona_id
+        INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id
+		WHERE r.referencia_valor = 'rechazada'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     public function listSubscriptionAcepDeniDb(){
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
@@ -257,7 +284,7 @@ class subscription {
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
         INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id
-		WHERE r.referencia_valor <> 'en proceso'";
+		WHERE r.referencia_valor <> 'en proceso' AND r.referencia_valor <> 'rechazada'";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
