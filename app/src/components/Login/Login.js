@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 
 import { Button, Modal, ModalBody } from "react-bootstrap";
@@ -7,9 +7,11 @@ import { Button, Modal, ModalBody } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 import Comprueba from "./Comprueba";
+import { DataUser } from "../context/UserContext";
+
 
 export default function Login() {
-  
+  const {setUserglobal} = useContext(DataUser)
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
@@ -27,13 +29,13 @@ export default function Login() {
       validatePerson
     ).then((responseData) => {
       // Trabaja con la respuesta JSON recibida
-      seterrorlog(Comprueba(navigate, responseData));
+      seterrorlog(Comprueba(navigate, responseData,setUserglobal));
     });
   }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  localStorage.clear();
   return (
     <div className="login">
       <div className="d-flex justify-content-center align-items-center">

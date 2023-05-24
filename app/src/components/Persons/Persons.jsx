@@ -10,14 +10,23 @@ import FormularioPersona from './FormPersona';
 import "./Persons.css";
 
 export default function Persons(){   
-
+   
     const [searchTerm, setSearchTerm] = useState('');
+    
+    
+    
+    
+
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
         'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
     )
-
+    
+        setTimeout(() => {
+            localStorage.removeItem("Error")
+           }, 3000)
+       
     //----------------------ShowModal-------------------------------
     
     const [showCreate, setShowCreate] = useState(false);
@@ -61,6 +70,11 @@ export default function Persons(){
         <Aside></Aside>
 
         <div className="content-wrapper contenteSites-body">
+        
+                {localStorage.getItem("Error") ?
+                <div className="text-danger">{localStorage.getItem("Error")}</div>
+                
+                :<span></span>}
             <div className="bodyItems">
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
@@ -77,6 +91,7 @@ export default function Persons(){
                         onChange={handleSearch}
                     />
                 </div>
+                
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
@@ -95,7 +110,7 @@ export default function Persons(){
                             </tr>
                         ): (
                             data.map((persona) => (
-                                    <tr className="columnContent" key={persona.persona_id}>
+                                    <tr key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
                                         <td>{persona.persona_telefono}</td>

@@ -92,6 +92,7 @@ function ListaC() {
         <Table striped bordered hover className="table">
           <thead>
             <tr>
+            <th>ID </th>
               <th>Nombre </th>
               <th>Apellido</th>
               <th>Télefono</th>
@@ -102,6 +103,7 @@ function ListaC() {
           <tbody>
             {datitos.map((cliente) => (
               <tr key={cliente.persona_id}>
+                <td>{cliente.persona_id}</td>
                 <td>{cliente.persona_nombre}</td>
                 <td>{cliente.persona_apellido}</td>
                 <td>{cliente.persona_telefono}</td>
