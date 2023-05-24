@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useContext } from "react"
-// import Opcions from "./User/Opciones.jsx";
+import Opcions from "./User/Opciones.jsx";
 import { DataUser } from '../context/UserContext.jsx';
 
 
@@ -63,7 +63,7 @@ export default function Aside() {
             role="menu"
             data-accordion="false"
           >
-            {/* <Opcions /> */}
+            <Opcions />
           </ul>
         </nav>
         {/* /.sidebar-menu */}
