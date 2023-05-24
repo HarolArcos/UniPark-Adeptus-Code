@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
@@ -6,7 +6,8 @@ import "./FormPersona.css";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferencia2";
 import { useFetch } from "../../hooks/HookFetchListData";
 
-const FormularioPersona = ({
+
+const FormularioPersona = ({ 
   
   asunto,
   cancelar,
@@ -14,11 +15,22 @@ const FormularioPersona = ({
   actualizarVehiculo,
   añadirNuevo,
 }) => {
+  
+    const [selectedValue, setSelectedValue] = useState(null);
+    //setSelectedReferenciaId(referenciaId);
+    const handleValueChange = (option) => {
+      
+      console.log(option);
+      setSelectedValue(option);
+    };
   const { data, fetchData } = useFetchSendData();
+  
    const {data:lista,loading} =  useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson")
   useEffect(() => {
-    
+    console.log(data);
+    console.log(data.desError);
+    localStorage.setItem("Error",data.desError)
   }, [data]);
 
   return (
@@ -38,7 +50,7 @@ const FormularioPersona = ({
               passwordPerson: persona.persona_contraseña,
             }
           : {
-              typePerson: "3",
+              typePerson: "1",
               namePerson: "",
               lastNamePerson: "",
               ciPerson: "",
@@ -73,7 +85,7 @@ const FormularioPersona = ({
             }
           }
         }
-
+        
         
         if (!values.lastNamePerson) {
           errors.lastNamePerson = "Campo Obligatorio";
@@ -139,30 +151,26 @@ const FormularioPersona = ({
         
         
         
-        if (!values.telegramPerson) {
-          errors.telegramPerson = "El campo es requerido";
-        } else if (!/^[A-Za-z-0-9]+$/i.test(values.telegramPerson)) {
-          errors.telegramPerson = "datos invalidos";
+        if (selectedValue!==null) {
+          values.statusPerson=selectedValue.value
         }
-
+        
         if (!values.statusPerson) {
-          errors.statusPerson = "El campo es requerido";
-        } else if (!/^[0-9]+$/i.test(values.statusPerson)) {
-          errors.statusPerson = "datos invalidos";
+          errors.statusPerson = "Debe escoger darle un rol";
         }
 
         
 
 
         if (!values.nicknamePerson) {
-          errors.nicknamePerson = "Campo Obligatorio";
+          errors.nicknamePerson = "Campo Obligatorio n";
         } else {
           
           
             
               if (!loading) { 
-                if(lista.filter((CI)=>CI.persona_telefono===values.nicknamePerson).length>0){
-                  errors.nicknamePerson = "Teléfono ya registrado a otro usuario";
+                 if(lista.filter((CI)=>CI.persona_nickname.toLowerCase()===values.nicknamePerson.toLowerCase()).length>0){
+                  errors.nicknamePerson = "Nickname ya registrado a otro usuario";
                     }  
               }
             
@@ -174,11 +182,17 @@ const FormularioPersona = ({
         } else if (/[^A-Za-z-0-9\u00f1\u00d1\u00E0\u00FC\u00DC]/i.test(values.passwordPerson)) {
           errors.passwordPerson = "datos invalidos";
         }
+        console.log(values)
+        console.log(errors)
         return errors;
       }}
       onSubmit={async (values) => {
+        console.log(values);
+        values.telegramPerson=values.phonePerson
+        console.log("sadw");
         if (persona) {
           console.log(values, "editar personas");
+
           // actualizarVehiculo(values);
           fetchData(
             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
@@ -187,16 +201,22 @@ const FormularioPersona = ({
           cancelar();
         } else {
           console.log(values);
+          console.log("pereza");
           fetchData(
             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
             values
           );
-          cancelar();
+          
+          console.log(data);
+          window.location.reload()
+          //cancelar();
         }
       }}
     >
       {({ values, errors, handleBlur, handleChange, handleSubmit }) => (
         <Form className="container ">
+          
+          {/* {data ? <span>{data}</span> : <span></span>} */}
           <div className="row ">
             <div className="col-md-2" style={{ width: "220.60000000000002px" }}>
               <Form.Group className="inputGroup " controlId="namePerson">
@@ -276,11 +296,8 @@ const FormularioPersona = ({
                 ></ErrorMessage>
               </Form.Group>
             </div>
-            <div
-              className="col-md-2 "
-              style={{ width: "220.60000000000002px" }}
-            >
-              <Form.Group className="inputGroup" controlId="telegramPerson">
+           
+              {/* <Form.Group className="inputGroup" controlId="telegramPerson">
                 <Form.Label className="label">Telegram</Form.Label>
                 <Form.Control
                   type="text"
@@ -295,8 +312,8 @@ const FormularioPersona = ({
                     <div className="text-danger">{errors.telegramPerson}</div>
                   )}
                 ></ErrorMessage>
-              </Form.Group>
-            </div>
+              </Form.Group> */}
+            
             <div
               className="col-md-2 "
               style={{ width: "220.60000000000002px" }}
@@ -346,9 +363,16 @@ const FormularioPersona = ({
               <Form.Group controlId="referencias">
                 <Form.Label className="label">Referencias</Form.Label>
 
-                <ComboboxReferences>
-                  <br />
-                </ComboboxReferences>
+                <ComboboxReferences 
+                
+                onChange={handleValueChange} />
+                <p>Selected Value: {selectedValue ? selectedValue.label : ""}</p>
+                <ErrorMessage
+                  name="statusPerson"
+                  component={() => (
+                    <div className="text-danger">{errors.statusPerson}</div>
+                  )}
+                ></ErrorMessage>
               </Form.Group>
             </div>
           </div>
@@ -358,7 +382,7 @@ const FormularioPersona = ({
             <Button variant="secondary" onClick={cancelar}>
               Cancelar
             </Button>
-            <Button variant="primary" onClick={handleSubmit}>
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
               {asunto}
             </Button>
           </Modal.Footer>

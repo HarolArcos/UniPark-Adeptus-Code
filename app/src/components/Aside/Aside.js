@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useContext } from "react"
-// import Opcions from "./User/Opciones.jsx";
+ import Opcions from "./User/Opciones.jsx";
 import { DataUser } from '../context/UserContext.jsx';
 
 
@@ -9,6 +9,9 @@ import { DataUser } from '../context/UserContext.jsx';
 
 export default function Aside() {
   const {userglobal} = useContext(DataUser)
+  
+  if (userglobal!==null) {
+    
   
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4 " >
@@ -63,7 +66,7 @@ export default function Aside() {
             role="menu"
             data-accordion="false"
           >
-            {/* <Opcions /> */}
+            <Opcions />
           </ul>
         </nav>
         {/* /.sidebar-menu */}
@@ -71,4 +74,5 @@ export default function Aside() {
       {/* /.sidebar */}
     </aside>
   );
+}
 }

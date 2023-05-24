@@ -11,6 +11,8 @@ import "./Persons.css";
 
 export default function Persons(){   
     const [searchTerm, setSearchTerm] = useState('');
+    const Error = localStorage.getItem("Error")
+    localStorage.removeItem("Error")
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
@@ -83,7 +85,7 @@ export default function Persons(){
     // const filteredData = data.filter( (person) => {
     //     return person.name.toLowerCase().includes( searchTerm.toLowerCase());
     // });
-
+    console.log(data);
     return(
         <>
         <Header></Header>
@@ -107,6 +109,7 @@ export default function Persons(){
                         onChange={handleSearch}
                     />
                 </div>
+                {Error ? <span>{Error}</span>:<span></span>}
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
@@ -125,7 +128,7 @@ export default function Persons(){
                             </tr>
                         ): (
                             data.map((persona) => (
-                                    <tr className="columnContent" key={persona.persona_id}>
+                                    <tr key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
                                         <td>{persona.persona_telefono}</td>
