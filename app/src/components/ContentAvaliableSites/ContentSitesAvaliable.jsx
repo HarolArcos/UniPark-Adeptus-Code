@@ -4,20 +4,19 @@ import "./ContentSites.css";
 import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
+import { useEffect, useState } from "react";
 
 export default function ContentSitesAvalible(){
 
-    const datos = [
-        { id:'1', sitio: 'SITD13' },
-        { id:'2', sitio: 'SITD16' },
-        { id:'3', sitio: 'SITD16' },
-        { id:'4', sitio: 'SITD15' },
-        { id:'5', sitio: 'SITD16' },
-        { id:'6', sitio: 'SITD16' },
-        { id:'7', sitio: 'SITD15' },
-        { id:'8', sitio: 'SITD16' },
-        { id:'9', sitio: 'SITD16' }
-    ];
+    const [datos, setData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listDisponibles')
+            .then(response => response.json())
+            .then(data => setData(data))
+            .catch(error => console.error(error));
+    }, []);
+    
 
     return(
         <>
@@ -32,15 +31,9 @@ export default function ContentSitesAvalible(){
                     </tr>
                 </thead>
                 <tbody>
-                    {/* <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr> */}
                         {datos.map((dato) => (
-                            <tr key={dato.id}>
-                                <td>{dato.sitio}</td>
+                            <tr>
+                                <td>{dato.numeros}</td>
                                 <td>Libre</td>
                             </tr>
                         ) )}

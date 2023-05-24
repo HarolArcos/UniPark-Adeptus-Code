@@ -22,7 +22,7 @@ import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import { Vehicle } from "../Vehicle/Vehicle";
 import ListCli from "../ListasDeUsuario/ListaCliente";
 import EditPerson from "../Persons/EditPerson";
-import DeletePerson from "../Persons/DeletePerson";
+import DeletePerson from "../Persons/ChangeState/ChangeStatePerson";
 
 export const AppRouter = () => {
 

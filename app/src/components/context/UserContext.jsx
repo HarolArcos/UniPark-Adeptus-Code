@@ -6,7 +6,6 @@ export const DataProvider = ({ children }) => {
   const [userglobal, setUserglobal] = useState(
     JSON.parse(localStorage.getItem("use"))   
   );
-  console.log(userglobal);
 
   return (
     <DataUser.Provider
