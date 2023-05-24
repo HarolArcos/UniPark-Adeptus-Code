@@ -20,6 +20,7 @@ import Persons from "../Persons/Persons";
 import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclamo";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import { Vehicle } from "../Vehicle/Vehicle";
+import ListCli from "../ListasDeUsuario/ListaCliente";
 import EditPerson from "../Persons/EditPerson";
 import DeletePerson from "../Persons/DeletePerson";
 import { ListVehicle } from "../Vehicle/ListVehicle";
