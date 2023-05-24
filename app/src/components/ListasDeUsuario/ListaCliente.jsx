@@ -43,7 +43,8 @@ function ListaC() {
     console.log(men);
     let link = "https://wa.me/591" + usuario.persona_telefono + "?text=" + men;
     console.log(link);
-    window.location.href = link;
+    window.open(link, '_blank')
+    handleClose()
   };
 
   if (!loading) {

@@ -49,13 +49,13 @@ const FormularioPersona = ({
               passwordPerson: persona.persona_contraseña,
             }
           : {
-              typePerson: "1",
+              typePerson: "",
               namePerson: "",
               lastNamePerson: "",
               ciPerson: "",
               phonePerson: "",
               telegramPerson: "",
-              statusPerson: "2",
+              statusPerson: "1",
               nicknamePerson: "",
               passwordPerson: "",
             }
