@@ -175,7 +175,11 @@ class subscription {
     public function changeStateSubscriptionDb($idSubscription, $statusSubscription){
         $response = false;
         $sql =  "UPDATE suscripcion SET suscripcion_estado = $statusSubscription WHERE suscripcion_id = $idSubscription";
-        $rs = $this->_db->query($sql);
+        $sql2= "UPDATE suscripcion
+                SET suscripcion_estado = $statusSubscription,
+                suscripcion_numero_parqueo = CASE WHEN $statusSubscription = 25 THEN 0 ELSE suscripcion_numero_parqueo END
+                WHERE suscripcion_id = $idSubscription";
+        $rs = $this->_db->query($sql2);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idSubscription" => $idSubscription,"statusSuscription" => $statusSubscription),
                             "sql"=>$sql,

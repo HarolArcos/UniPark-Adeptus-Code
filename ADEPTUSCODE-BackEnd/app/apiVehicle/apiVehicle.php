@@ -169,7 +169,7 @@
 
 
         $_plateVehicle = new vehicle($_db);
-        $responseFind = $_plateVehicle->findPlateVehicleDb($plateVehicle);
+        $responseFind = $_plateVehicle->findPlateVehicleEDb($idVehicle, $plateVehicle);
 
         if($responseFind){
             $responseEdit = $_plateVehicle->editVehicleDb($idVehicle, $idPerson,$statusVehicle,$plateVehicle,$modelVehicle,$colorVehicle);
