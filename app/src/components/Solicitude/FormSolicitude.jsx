@@ -51,7 +51,7 @@ const Formulario = ({cancelar}) => {
         initialValues={{
         idTarifa: '',
         idPerson: userglobal.persona_id,
-        statusSubscription: '15',
+        statusSubscription: '10',
         activationSubscription: '',
         expirationSubscription:'',
         numParkSubscription:''
@@ -85,8 +85,8 @@ const Formulario = ({cancelar}) => {
             values.idTarifa =selectedTarifa.tarifa_id;
             values.numParkSubscription = selectedSiteId;
             console.log(values);
-            //fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
-            //cancelar();
+            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
+            cancelar();
         }}
         >
 

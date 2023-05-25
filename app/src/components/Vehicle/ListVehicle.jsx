@@ -1,17 +1,21 @@
 import React ,{useState, useEffect}from 'react';
+import Modal from '../Modal/Modal';
+import Formulario from './FormVehicle';
 import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-import { useFetch } from '../../hooks/HookFetchListData';
+import { useSend } from '../../hooks/HookList';
+
 import "./Vehicle.css"
 
 export const ListVehicle = () => {
     
     const [vehiculos,setVehiculos] =  useState([]);
     const [error,setError] =  useState(null);
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+    const{data,fetchData} = useSend();
     
+
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
@@ -22,13 +26,21 @@ export const ListVehicle = () => {
     //------Editar :
     const [vehiculoSeleccionado, setVehiculoSeleccionado] = useState(null);
 
+    
+    useEffect(() => {
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        console.log(data);
+    }, []);
+    
     useEffect(() => {
         if (data.desError) {
             setError(data.desError);
-        }else{
-            setVehiculos(data);
         }
+        else{
+            setVehiculos(data);
+            console.log(data);
         
+        }
     }, [data]);
 
     //-----------------------Activate-------------------------------------------
@@ -44,10 +56,18 @@ export const ListVehicle = () => {
     };
     
     //---Desactive Any Modal
-    const handleCancelar = () => {
+    const handleCancelar = async () => {
         setShowEdit(false);
         setShowCreate(false);
+        console.log(data);
+             
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        
     };
+
  
     return (
         <>
@@ -58,13 +78,8 @@ export const ListVehicle = () => {
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
                         <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                        <Button variant="success" className="button"> PDF </Button>
                     </ButtonGroup>
-                    <Form.Control 
-                        className="searchBar"
-                        type="text"
-                        placeholder="Buscar..."
-                    />
+                    
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>
@@ -79,7 +94,7 @@ export const ListVehicle = () => {
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"5"} >{error}</td>
+                                <td colSpan={"6"} >{error}</td>
                             </tr>
                         ): (
                             vehiculos.map((vehiculo) => (
@@ -89,13 +104,31 @@ export const ListVehicle = () => {
                                         <td>{vehiculo.propietario}</td>
 		                                <td>{vehiculo.vehiculo_modelo}</td>
                                         <td>{vehiculo.vehiculo_color}</td>
+                                        
                                     </tr>
                             ))
                         )}
                     </tbody>
                 </Table>
+
+                
+                
+
+                <Modal
+	            tamaño ="md"
+                mostrarModal={showCreate}
+                title = 'Crear Nuevo Vehiculo'
+                contend = {
+                <Formulario
+                asunto = "Guardar Vehiculo"
+                cancelar={handleCancelar}
+                ></Formulario>}
+                hide = {handleCancelar}
+                >
+                </Modal>
             </div>
         </div>
+
         <Footer></Footer>
         </>
 

@@ -54,7 +54,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
       colorVehicle: vehiculo.vehiculo_color ,
       }:{
       idPerson: '',
-      statusVehicle: '',
+      statusVehicle: 6,
       plateVehicle: '',
       modelVehicle: '',
       colorVehicle: '',
@@ -167,7 +167,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
               </Form.Group>
               <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
               
-              <Form.Group className="inputGroup" controlId="idPerson">
+              {/* <Form.Group className="inputGroup" controlId="idPerson">
                 <Form.Label className="text-left">Estado</Form.Label>
                 <ComboboxReferences 
                 referenciaObjeto = {{tableNameReference:"vehiculo",nameSpaceReference:"vehiculo_estado"}}
@@ -176,7 +176,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
                 />
               </Form.Group>
               <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
-              
+               */}
       <br/>
       <div className="text-danger">{errorDuply? errorDuply :''}</div>
         <Modal.Footer >

@@ -89,7 +89,7 @@ export const Solicitude = () => {
                                 
                                 <tr key="2">
                                 <th>Estado: </th>
-                                <th>{suscripcion.referencia_valor ==="en proceso"? "Su solicitud se esta procesando":suscripcion.referencia_valor ==="activo"? "Se encuentra vigente":"Se encuentra desactivada, consulte con el Administrador"}</th>
+                                <th>{suscripcion.referencia_valor ==="en proceso"? "Su solicitud se esta procesando":suscripcion.referencia_valor ==="habilitada"? "Se encuentra Habilitada":suscripcion.referencia_valor ==="inhabilitada"?"Se encuentra Inhabilitada, consulte con el Administrador":"Su Solicitud fue rechazada, consulte con el Administrador"}</th>
                                     
                                 </tr>
                             </tbody>

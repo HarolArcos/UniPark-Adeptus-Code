@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
 
   const { data, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
   )
   const [selectedPersonaId, setSelectedPersonaId] = useState(null); 
     
