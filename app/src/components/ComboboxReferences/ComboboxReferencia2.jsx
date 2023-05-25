@@ -59,7 +59,7 @@ export default function ComboboxReferences({ onChange }) {
       <div className="comboBoxGroup">
         <Select
           className="selectRef"
-          placeholder="Referencia"
+          placeholder="Seleccionar tipo persona" 
           options={ref}
           value={selectedOption}
           onChange={handleOptionChange}
