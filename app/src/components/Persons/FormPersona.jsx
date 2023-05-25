@@ -125,17 +125,18 @@ const FormularioPersona = ({
 
         if (!values.phonePerson) {
           errors.phonePerson = "Campo Obligatorio";
-        } else if (
-          !values.phonePerson.startsWith("6") &&
-          !values.phonePerson.startsWith("7")
-        ) {
-          errors.phonePerson = "Un número de teléfono debe iniciar con 6 o 7";
-        } else {
+        } else if (/[^0-9]/i.test(values.phonePerson))
+         {errors.phonePerson = "Se ingreso un caracter invalido";
+          } else {
           if (values.phonePerson.length !== 8) {
             errors.phonePerson = "Un número de teléfono debe tener 8 digitos";
           } else {
-            if (/[^0-9]/i.test(values.phonePerson)) {
-              errors.phonePerson = "datos invalidos";
+            if (
+              !values.phonePerson.startsWith("6") &&
+              !values.phonePerson.startsWith("7")
+            ) {
+              errors.phonePerson = "Un número de teléfono debe iniciar con 6 o 7";
+        
             } else {
               if (!loading) {
                 if (
@@ -161,6 +162,10 @@ const FormularioPersona = ({
         if (!values.nicknamePerson) {
           errors.nicknamePerson = "Campo Obligatorio ";
         } else {
+          if(/[^A-Za-z-0-9\u00f1\u00d1\u00E0\u00FC\u00DC]/i.test(
+            values.nicknamePerson
+          )){errors.nicknamePerson = "Se ingreso un caracter invalido" }
+          else{
           if (!loading) {
             if (
               lista.filter(
@@ -171,7 +176,7 @@ const FormularioPersona = ({
             ) {
               errors.nicknamePerson = "Nickname ya registrado a otro usuario";
             }
-          }
+          }}
         }
 
         if (!values.passwordPerson) {
@@ -361,12 +366,10 @@ const FormularioPersona = ({
               style={{ width: "220.60000000000002px" }}
             >
               <Form.Group controlId="referencias">
-                <Form.Label className="label">Referencias</Form.Label>
+                <Form.Label className="label">Tipo de Persona</Form.Label>
 
                 <ComboboxReferences onChange={handleValueChange} />
-                <p>
-                  Selected Value: {selectedValue ? selectedValue.label : ""}
-                </p>
+                
                 <ErrorMessage
                   name="typePerson"
                   component={() => (
