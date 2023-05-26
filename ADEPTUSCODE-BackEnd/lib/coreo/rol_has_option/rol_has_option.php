@@ -25,7 +25,7 @@ class rol_has_option {
 
     private function createLog($fileName, $logMessage, $tipeError){
         $this->optionsLog = array(
-            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/person_has_rol",           
+            'path'           => $_SERVER['DOCUMENT_ROOT']."/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/log/nucleo/rol_has_option",           
             'filename'       => $fileName,);
           $_log = new log($this->optionsLog);
           
@@ -65,9 +65,9 @@ class rol_has_option {
     
     private function setRolHasOption($idRolHasOption){
         $response = FALSE;
-        $dataRolHasOption = $this->findRolHasOption($idRolHasOption);
+        $dataRolHasOption = $this->findRolHasOptionDb($idRolHasOption);
         if($dataRolHasOption){
-            $this->mapPersonHasRol($dataRolHasOption);
+            $this->mapRolHasOption($dataRolHasOption);
             $response = TRUE;
         }
         $arrLog = array("input"=>$idRolHasOption,"output"=>$response);
@@ -184,8 +184,8 @@ class rol_has_option {
 
     private function mapRolHasOption($rs){
         $this->idRolHasOption = $rs['rol_has_option-id'];
-        $this->idPerson = $rs['persona_id'];
         $this->idRol = $rs['rol_id'];
+        $this->idOption = $rs['opcion_id'];
     }
 
 
