@@ -174,7 +174,7 @@ class subscription {
     }
     public function changeStateSubscriptionDb($idSubscription, $statusSubscription){
         $response = false;
-        $sql =  "UPDATE suscripcion SET suscripcion_estado = $statusSubscription WHERE suscripcion_id = $idSubscription";
+        //$sql =  "UPDATE suscripcion SET suscripcion_estado = $statusSubscription WHERE suscripcion_id = $idSubscription";
         $sql2= "UPDATE suscripcion
                 SET suscripcion_estado = $statusSubscription,
                 suscripcion_numero_parqueo = CASE WHEN $statusSubscription = 11 THEN 0 ELSE suscripcion_numero_parqueo END
@@ -182,14 +182,14 @@ class subscription {
         $rs = $this->_db->query($sql2);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idSubscription" => $idSubscription,"statusSuscription" => $statusSubscription),
-                            "sql"=>$sql,
+                            "sql"=>$sql2,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
             $arrLog = array("input"=>array( "idSubscription" => $idSubscription,"statusSuscription" => $statusSubscription),
                             "output"=>$response,
-                            "sql"=>$sql);
+                            "sql"=>$sql2);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
