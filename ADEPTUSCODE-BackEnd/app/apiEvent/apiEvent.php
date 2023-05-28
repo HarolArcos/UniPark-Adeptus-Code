@@ -27,7 +27,7 @@
         $idPerson = "";
         $idVehicle = "";
         $typeEvent = "";
-        $dateEvent =  "";
+        //$dateEvent =  "";
         $alarmEvent =  "";
         $descriptionEvent =  "";
         $registerUser = "";
@@ -51,12 +51,6 @@
         else{
             array_push($errorlist,"Error: falta parametro typeEvent");
         }
-        if(isset($arg->dateEvent)){
-            $dateEvent =  $arg->dateEvent;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro typeEvent");
-        }
         if(isset($arg->alarmEvent)){
             $alarmEvent =  $arg->alarmEvent;
         }
@@ -76,13 +70,13 @@
         $idPerson = $arg->idPerson;
         $idVehicle = $arg->idVehicle;
         $typeEvent = $arg->typeEvent;
-        $dateEvent =  $arg->dateEvent;
+        //$dateEvent =  $arg->dateEvent;
         $alarmEvent =  $arg->alarmEvent;
         $descriptionEvent =  $arg->descriptionEvent;
         $registerUser = $arg->registerUser;
 
         $_event = new event($_db);
-        $responseInsert = $_event->insertEventDb($idPerson, $idVehicle, $typeEvent,$dateEvent,$alarmEvent,$descriptionEvent, $registerUser);
+        $responseInsert = $_event->insertEventDb($idPerson, $idVehicle, $typeEvent,$alarmEvent,$descriptionEvent, $registerUser);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
@@ -116,7 +110,7 @@
         $idPerson = "";
         $idVehicle = "";
         $typeEvent = "";
-        $dateEvent =  "";
+        //$dateEvent =  "";
         $alarmEvent =  "";
         $descriptionEvent =  "";
         $registerUser = "";
@@ -146,12 +140,6 @@
         else{
             array_push($errorlist,"Error: falta parametro typeEvent");
         }
-        if(isset($arg->dateEvent)){
-                $dateEvent =  $arg->dateEvent;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro dateEvent");
-        }
         if(isset($arg->alarmEvent)){
             $alarmEvent =  $arg->alarmEvent;
         }
@@ -172,13 +160,13 @@
         $idPerson = $arg->idPerson;
         $idVehicle = $arg->idVehicle;
         $typeEvent = $arg->typeEvent;
-        $dateEvent =  $arg->dateEvent;
+        //$dateEvent =  $arg->dateEvent;
         $alarmEvent =  $arg->alarmEvent;
         $descriptionEvent =  $arg->descriptionEvent;
         $registerUser = $arg->registerUser;
 
         $_event = new event($_db);
-        $responseEdit = $_event->editEventDb($idEvent, $idPerson, $idVehicle,$typeEvent,$dateEvent,$alarmEvent,$descriptionEvent, $registerUser);
+        $responseEdit = $_event->editEventDb($idEvent, $idPerson, $idVehicle,$typeEvent,$alarmEvent,$descriptionEvent, $registerUser);
 
         if ( $responseEdit) {
             $response = array("codError" => 200, "data" => array("desError"=>"Cambios realizados con exito"));

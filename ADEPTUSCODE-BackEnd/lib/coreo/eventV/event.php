@@ -99,16 +99,15 @@ class event {
         return $response;
     }
 
-    public function insertEventDb($idPerson, $idVehicle,$typeEvent,$dateEvent,$alarmEvent,$descriptionEvent, $registerUser){
+    public function insertEventDb($idPerson, $idVehicle,$typeEvent,$alarmEvent,$descriptionEvent, $registerUser){
         $response = false;
-        $sql =  "INSERT INTO evento(vehiculo_persona_id, vehiculo_id, evento_tipo, evento_fecha, evento_alarma, evento_descripcion, registro_usuario) VALUES ('$idPerson', '$idVehicle','$typeEvent','$dateEvent',$alarmEvent,'$descriptionEvent', '$registerUser')";
+        $sql =  "INSERT INTO evento(vehiculo_persona_id, vehiculo_id, evento_tipo, evento_fecha, evento_alarma, evento_descripcion, registro_usuario) VALUES ('$idPerson', '$idVehicle','$typeEvent',timezone('America/La_Paz', now()),$alarmEvent,'$descriptionEvent', '$registerUser')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "idPerson"=> $idPerson,
                                             "idVehicle"=> $idVehicle,
-                                            "typeEvent"=> $typeEvent, 
-                                            "dateEvent"=> $dateEvent,
+                                            "typeEvent"=> $typeEvent,
                                             "alarmEvent"=> $alarmEvent,
                                             "descriptionEvent"=> $descriptionEvent,
                                             "registerUser"=> $registerUser
@@ -121,7 +120,6 @@ class event {
             $arrLog = array("input"=>array( "idPerson"=> $idPerson,
                                             "idVehicle"=> $idVehicle,
                                             "typeEvent"=> $typeEvent, 
-                                            "dateEvent"=> $dateEvent,
                                             "alarmEvent"=> $alarmEvent,
                                             "descriptionEvent"=> $descriptionEvent,
                                             "registerUser"=> $registerUser
@@ -134,13 +132,12 @@ class event {
         return $response;
     }
 
-    public function editEventDb($idEvent, $idPerson, $idVehicle,$typeEvent,$dateEvent,$alarmEvent,$descriptionEvent, $registerUser){
+    public function editEventDb($idEvent, $idPerson, $idVehicle,$typeEvent,$alarmEvent,$descriptionEvent, $registerUser){
         $response = false;
         $sql =  "UPDATE evento SET
         vehiculo_persona_id = '$idPerson',
         vehiculo_id ='$idVehicle',
         evento_tipo = '$typeEvent', 
-        evento_fecha = '$dateEvent', 
         evento_alarma = $alarmEvent,
         evento_descripcion = '$descriptionEvent',
         registro_usuario = '$registerUser'
@@ -151,8 +148,7 @@ class event {
             $arrLog = array("input"=>array( "idEvent"=> $idEvent,
                                             "idPerson"=> $idPerson,
                                             "idVehicle"=> $idVehicle,
-                                            "typeEvent"=> $typeEvent, 
-                                            "dateEvent"=> $dateEvent,
+                                            "typeEvent"=> $typeEvent,
                                             "alarmEvent"=> $alarmEvent,
                                             "descriptionEvent"=> $descriptionEvent,
                                             "registerUser"=> $registerUser
@@ -166,8 +162,7 @@ class event {
             $arrLog = array("input"=>array( "idEvent"=> $idEvent,
                                             "idPerson"=> $idPerson,
                                             "idVehicle"=> $idVehicle,
-                                            "typeEvent"=> $typeEvent, 
-                                            "dateEvent"=> $dateEvent,
+                                            "typeEvent"=> $typeEvent,
                                             "alarmEvent"=> $alarmEvent,
                                             "descriptionEvent"=> $descriptionEvent,
                                             "registerUser"=> $registerUser
