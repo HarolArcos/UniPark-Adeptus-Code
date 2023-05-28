@@ -8,7 +8,8 @@
     $server->Register("listSubscription");
     $server->Register("listSubscriptionDenied");
     $server->Register("listSubscriptionInProgress");
-    $server->Register("listSubscriptionAcepDeni");
+    $server->Register("listSubscriptionActive");
+    $server->Register("listSubscriptionInactive");
     $server->Register("editSubscription");
     $server->Register("changeStateSubscription");
     $server->Register("listDisponibles");
@@ -265,20 +266,41 @@
         return $responseList;
     }
 
-    function listSubscriptionAcepDeni(){
+    function listSubscriptionActive(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);
         $_log = new log($options);
        
         $_subscription = new subscription($_db);
-        $responseList = $_subscription->listSubscriptionAcepDeniDb();
+        $responseList = $_subscription->listSubscriptionActiveDb();
 
         if ( $responseList) {
-            $mensaje = "Se listo correctamente las suscripciones aceptadas y denegadas - Funcion: ".__FUNCTION__;
+            $mensaje = "Se listo correctamente las suscripciones habilitadas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones aceptadas y denegadas"));
-            $mensaje = "No se pudo listar las suscripciones aceptadas y denegadas - Funcion: ".__FUNCTION__;
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones habilitadas"));
+            $mensaje = "No se pudo listar las suscripciones habilitadas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listSubscriptionInactive(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listSubscriptionInactiveDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las suscripciones inabilitadas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones inhabilitadas"));
+            $mensaje = "No se pudo listar las suscripciones inhabilitadas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }
