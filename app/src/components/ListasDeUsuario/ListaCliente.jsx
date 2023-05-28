@@ -41,7 +41,7 @@ function ListaC() {
   const mensaje = () => {
     let men = mensa.replace(/ /g, "%20");
     console.log(men);
-    let link = "https://wa.me/591" + usuario.persona_telefono + "?text=" + men;
+    let link = "https://api.whatsapp.com/send?phone=591" + usuario.persona_telefono + "&text=" + men;
     console.log(link);
     window.open(link, '_blank')
     handleClose()
