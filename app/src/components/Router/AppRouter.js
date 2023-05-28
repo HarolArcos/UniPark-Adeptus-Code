@@ -26,6 +26,8 @@ import DeletePerson from "../Persons/ChangeState/ChangeStatePerson";
 import { ListVehicle } from "../Vehicle/ListVehicle";
 import { Solicitude } from "../Solicitude/Solicitude";
 import { SubscriptionInProcess } from "../Subscription/SuscripcionInProcess";
+import Mensaje from "../MensajesGlobales/GroupTelegram";
+import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
 
 export const AppRouter = () => {
 
@@ -46,11 +48,13 @@ export const AppRouter = () => {
                     <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
                     <Route path="/editPersonas"         element={ <EditPerson/> }/>
                     <Route path="/deletePersonas"       element={ <DeletePerson/> } />
-                    <Route path="/listCliente"             element={ <ListCli/> } />
+                    <Route path="/listMensaje"             element={ <ListCli/> } />
                     <Route path="/listvehiculo"         element={ <ListVehicle/> } />
                     <Route path="/listDeletevehiculo"   element={ <Vehicle/> } />
                     <Route path="/solicitud"            element={ <Solicitude/> } />
                     <Route path="/solicitudesEnProceso"       element={ <SubscriptionInProcess/> } />
+                    <Route path="/MensajeGlobal"       element={ <Mensaje/> } />
+                    <Route path="/Reclamos"       element={ <ReclamoConsulta/> } />
 
                 </Routes>
         </Router>
