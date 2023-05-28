@@ -182,7 +182,9 @@ class rate {
 
     public function listRateDb(){
         $response = false;
-        $sql =  "SELECT * FROM tarifa";
+        $sql =  "SELECT t.*, r.referencia_valor AS estadotarifa
+        FROM tarifa t
+        JOIN referencia r ON t.tarifa_estado = r.referencia_id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
