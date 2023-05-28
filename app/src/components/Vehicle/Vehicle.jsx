@@ -80,16 +80,8 @@ export const Vehicle = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
-                    <ButtonGroup className="buttonGroup">
-                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                        <Button variant="success" className="button"> PDF </Button>
-                    </ButtonGroup>
-                    <Form.Control 
-                        className="searchBar"
-                        type="text"
-                        placeholder="Buscar..."
-                        
-                    />
+                  
+                    
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>
