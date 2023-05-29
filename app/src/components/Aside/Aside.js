@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from "react"
  import Opcions from "./User/Opciones.jsx";
 import { DataUser } from '../context/UserContext.jsx';
+import "../Aside/Aside.css"
 
 
 
@@ -14,7 +15,7 @@ export default function Aside() {
     
   
   return (
-    <aside className="main-sidebar sidebar-dark-primary elevation-4 " >
+    <aside className="main-sidebar sidebar-dark-primary elevation-4 content " style={{ position: "fixed"}} >
       {/* Brand Logo */}
 
       <Link to="#" className="brand-link">
@@ -67,6 +68,7 @@ export default function Aside() {
             data-accordion="false"
           >
             <Opcions />
+            <br/><br/><br/>
           </ul>
         </nav>
         {/* /.sidebar-menu */}
