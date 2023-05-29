@@ -1,8 +1,27 @@
+
+// import Select from 'react-select';
+
+// import { useFetch } from '../../hooks/HookFetchListData';
+
+// let url = "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle"
+
+
+// export default function Vehiculos(){
+//     let { data, loading,  } = useFetch(
+//         url
+//               )
+//       if(!loading) 
+//       {
+//         const opciones = data.map((auto)=> ({value: auto.vehiculo_id , label: auto.vehiculo_placa +" - "+  auto.vehiculo_modelo}))
+//       return      <Select placeholder="Seleccione automovil" options={opciones}  ></Select>
+//     }
+// }
+
 import Select from 'react-select'; 
 import { useFetch } from '../../hooks/HookFetchListData';
 import { useState } from 'react';
 
-export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
+export default function ComboboxVehicle({ onPersonaIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
 
   const { data, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
