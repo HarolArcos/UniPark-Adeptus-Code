@@ -5,33 +5,17 @@ import Footer from "../Footer/Footer";
 import Modal from "../Modal/Modal";
 import { Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import FormularioPersona from "./FormPersona";
+import FormularioEmpleado from "./FormEmployee";
 import { useFetch } from "../../hooks/HookFetchListData";
 
-export default function EditPerson(){
-    const [busqueda, setBusqueda] = useState("");
-    const [clientes, setClientes] = useState([]);
-    const [tablaClientes, setTablaClientes] = useState([])
+export default function EditEmpleado(){
+    const [searchTerm, setSearchTerm] = useState('');
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
         'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
     )
-    const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
-            .then(response => response.json())
-            .then( response => {
-                setClientes(response);
-                setTablaClientes(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
 
-    useEffect(() => {
-        getClients();
-    }, []);
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
@@ -76,27 +60,17 @@ export default function EditPerson(){
         //setShowCreate(false);
         setPersonaSeleccionado(null);
     };
-    /*--------------------- Barra Busqueda------------------------- */
-    const handleChangeSerch = e => {
-        setBusqueda(e.target.value);
-        filtrar(e.target.value);
-    }
 
-    const filtrar = (termBusqueda) => {
-        var resultadosBusqueda = tablaClientes.filter((elemento) => {
-            if(
-                    elemento.persona_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_apellido.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_ci.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-            ){
-                return elemento;
-            }else{
-                return null;
-            }
-        });
-        setClientes(resultadosBusqueda);
-    }
+    //-------Delete
+    // const handleEliminar = (id) => {
+    //   const nuevasPersonas = personas.filter((persona) => persona.id !== id);
+    //   setPersonas(nuevasPersonas);
+    // };
+
+    const handleSearch = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
 
     return(
         <>
@@ -110,8 +84,8 @@ export default function EditPerson(){
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
-                        value={busqueda}
-                        onChange={handleChangeSerch}
+                        value={searchTerm}
+                        onChange={handleSearch}
                     />
                 </div>
                 <Table striped bordered hover className="table">
@@ -131,7 +105,7 @@ export default function EditPerson(){
                                 <td colSpan={"3"} >Cargando...</td>
                             </tr>
                         ): (
-                            clientes.map((persona) => (
+                            data.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
@@ -157,12 +131,12 @@ export default function EditPerson(){
                 mostrarModal={showEdit}
                 title = 'Editar Persona'
                 contend = {
-                <FormularioPersona
+                <FormularioEmpleado
                 asunto ='Guardar Cambios'
                 persona= {personaSeleccionado}
                 cancelar={handleCancelar}
                 actualizarPersona = {handleGuardarEditado}
-                ></FormularioPersona>}
+                ></FormularioEmpleado>}
                 hide = {handleCancelar}
                 >
                 </Modal>
