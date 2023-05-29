@@ -138,6 +138,7 @@ export default function Persons(){
                 </Modal>
             </div>
         </div>
+        <br></br>
         
         <Footer></Footer>
         </>

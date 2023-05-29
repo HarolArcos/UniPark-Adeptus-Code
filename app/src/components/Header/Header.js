@@ -14,7 +14,19 @@ export default function Header() {
         <li className="nav-item d-none d-sm-inline-block">
           <a href="/contact" className="nav-link">Contact</a>
         </li>
+        {localStorage.getItem("mora") ? (
+  <li className="nav-item d-none d-sm-inline-block">
+    <a className="nav-link" style={{ color: 'red' }}>{localStorage.getItem("mora")}</a>
+  </li>
+) : (
+  localStorage.getItem("sus") ? (
+    <li className="nav-item d-none d-sm-inline-block">
+      <a className="nav-link" style={{ color: 'green' }}>{localStorage.getItem("sus")}</a>
+    </li>
+  ) : null
+)}
       </ul>
+      
       {/* Right navbar links */}
       <ul className="navbar-nav ml-auto">
         {/* Navbar Search */}
