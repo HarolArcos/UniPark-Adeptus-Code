@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from "react"
  import Opcions from "./User/Opciones.jsx";
 import { DataUser } from '../context/UserContext.jsx';
-import "../Aside/Aside.css"
+
 
 
 
@@ -24,6 +24,7 @@ export default function Aside() {
           alt="AdminLTE Logo"
           className="brand-image img-circle elevation-3"
           style={{
+           
             opacity: ".8",
             marginLeft: "-1px",
             marginTop: "-15px",
