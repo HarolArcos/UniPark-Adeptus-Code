@@ -66,7 +66,7 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
 
       if(!values.nameRate){
         errors.nameRate ='El campo es requerido';
-      }else if(!/^[A-Za-z]+$/i.test(values.plateVehicle)){
+      }else if(!/^[A-Za-z]+$/i.test(values.tarifa_nombre)){
         errors.nameRate ='solo se admite una palabra';
       }
 

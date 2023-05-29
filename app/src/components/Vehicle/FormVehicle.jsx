@@ -5,7 +5,7 @@ import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import "./Vehicle.css"
-import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
+//import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 
 const Formulario = ({asunto,cancelar, vehiculo}) => {
 
@@ -19,17 +19,17 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
     vehiculo ? vehiculo.persona_id : null
   );
 
-  const [selectedReferenciaId, setSelectedReferenciaId] = useState(
-    vehiculo ? vehiculo.vehiculo_estado : null
-  );
+  // const [selectedReferenciaId, setSelectedReferenciaId] = useState(
+  //   vehiculo ? vehiculo.vehiculo_estado : null
+  // );
 
   const handlePersonaIdChange = (personaId) => {
     setSelectedPersonaId(personaId);
   };
 
-  const handleReferenciaIdChange = (referenciaId) => {
-    setSelectedReferenciaId(referenciaId);
-  };
+  // const handleReferenciaIdChange = (referenciaId) => {
+  //   setSelectedReferenciaId(referenciaId);
+  // };
   //------------
   
   useEffect(() => {
@@ -40,7 +40,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
     }else if (data.desError === "Cambios realizados con exito" || data.desError === "Inserción exitosa"){
       cancelar();
     }
-  }, [data]);
+  }, [data, cancelar]);
 
   return (
     <Formik
@@ -75,9 +75,9 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
         errors.idPerson ='Seleccione un elemento porfavor';
       }
 
-      if(!selectedReferenciaId){
-        errors.statusVehicle ='Seleccione un estado porfavor';
-      }
+      // if(!selectedReferenciaId){
+      //   errors.statusVehicle ='Seleccione un estado porfavor';
+      // }
 
       if(!values.modelVehicle){
         errors.modelVehicle ='El campo es requerido';
@@ -100,7 +100,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
     onSubmit={async (values) => {
       if (vehiculo) {
         values.idPerson = selectedPersonaId;
-        values.statusVehicle = selectedReferenciaId;
+        // values.statusVehicle = selectedReferenciaId;
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
@@ -108,7 +108,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
         console.log(data);
       } else {
         values.idPerson = selectedPersonaId;
-        values.statusVehicle = selectedReferenciaId;
+        // values.statusVehicle = selectedReferenciaId;
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
         console.log(errorDuply);

@@ -6,36 +6,18 @@ import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
 import { CSVLink } from "react-csv";
 import { useFetch } from "../../hooks/HookFetchListData";
 import Modal from "../Modal/Modal";
-import FormularioPersona from './FormPersona';
-import "./Persons.css";
-//import axios from "axios";
+import FormularioEmpleado from "./FormEmployee";
+//import FormularioEmpleado from "./FormEmployee";
+//import "./Persons.css";
 
-export default function Persons(){   
+export default function Employee(){   
    
-    const [busqueda, setBusqueda] = useState("");
-    const [clientes, setClientes] = useState([]);
-    const [tablaClientes, setTablaClientes] = useState([])
-    
+    //const [searchTerm, setSearchTerm] = useState('');
+
     const [personas,setPersonas] =  useState([]);
-    const {data} = useFetch(
+    const {data, loading} = useFetch(
         'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
     )
-
-    const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
-            .then(response => response.json())
-            .then( response => {
-                setClientes(response);
-                setTablaClientes(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
-
-    useEffect(() => {
-        getClients();
-    }, []);
     
         setTimeout(() => {
             localStorage.removeItem("Error")
@@ -49,6 +31,7 @@ export default function Persons(){
     //------Editar :
     useEffect(() => {
         setPersonas(data);
+        
     }, [data]);
     
     //-----------------------Activate-------------------------------------------
@@ -73,27 +56,9 @@ export default function Persons(){
         setPersonas(nuevasPersonas);
     };
 
-    /*--------------------- Barra Busqueda------------------------- */
-    const handleChangeSerch = e => {
-        setBusqueda(e.target.value);
-        filtrar(e.target.value);
-    }
-
-    const filtrar = (termBusqueda) => {
-        var resultadosBusqueda = tablaClientes.filter((elemento) => {
-            if(
-                    elemento.persona_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_apellido.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_ci.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-            ){
-                return elemento;
-            }else{
-                return null;
-            }
-        });
-        setClientes(resultadosBusqueda);
-    }
+    // const handleSearch = (event) => {
+    //     setSearchTerm(event.target.value);
+    // };
 
     return(
         <>
@@ -118,8 +83,8 @@ export default function Persons(){
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
-                        value={busqueda}
-                        onChange={handleChangeSerch}
+                        // value={searchTerm}
+                        // onChange={handleSearch}
                     />
                 </div>
                 
@@ -135,13 +100,12 @@ export default function Persons(){
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {loading ? (
+                        {loading ? (
                             <tr>
                                 <td colSpan={"3"} >Cargando...</td>
                             </tr>
-                        ): ( */}
-                            {
-                                clientes.map((persona) => (
+                        ): (
+                            data.map((persona) => (
                                     <tr key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
@@ -150,28 +114,26 @@ export default function Persons(){
                                         <td>{persona.personatipo}</td>
                                         <td>{persona.personaestado}</td>
                                     </tr>
-                                ))
-                            }
-                        {/* )} */}
+                            ))
+                        )}
                     </tbody>
                 </Table>
                 
 
                 <Modal
                 mostrarModal={showCreate}
-                title = 'Crear Nueva Persona'
+                title = 'Crear Nuevo Empleado'
                 contend = {
-                <FormularioPersona
-                asunto = "Guardar Persona"
+                <FormularioEmpleado
+                asunto = "Guardar Empleado"
                 cancelar={handleCancelar}
                 añadirNuevo = {handleGuardarNuevo}
-                ></FormularioPersona>}
+                ></FormularioEmpleado>}
                 hide = {handleCancelar}
                 >
                 </Modal>
             </div>
         </div>
-        <br></br>
         
         <Footer></Footer>
         </>
