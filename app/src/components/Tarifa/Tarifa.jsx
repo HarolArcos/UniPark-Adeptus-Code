@@ -103,12 +103,12 @@ export const Tarifa = () => {
                                         <td>{tarifa.tarifa_id}</td>
                                         <td>
                                             <ul>
-                                                <li><strong>Plazo :</strong>{tarifa.tarifa_nombre}</li>
-                                                <li><strong>Bs    :</strong>{tarifa.tarifa_valor}</li>
+                                                <li><strong>Plazo:</strong>{tarifa.tarifa_nombre}</li>
+                                                <li><strong>Bs:</strong>{tarifa.tarifa_valor}</li>
                                                 <li><strong>Estado:</strong>{tarifa.tarifa_estado}</li>
                                             </ul>
                                             </td>
-                                        <td><Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid ></Image></td>
+                                        <td><Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image></td>
                                         <td className="actionsButtons">
                                             <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(tarifa)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">

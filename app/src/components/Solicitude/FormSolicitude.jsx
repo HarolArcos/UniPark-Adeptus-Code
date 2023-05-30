@@ -151,6 +151,7 @@ const Formulario = ({cancelar}) => {
                 <div>
                 {selectedTarifa == null ?(<br/>):(
                     <>
+                    <br />
                     <h2 className="align-text-left">{selectedTarifa.tarifa_nombre}</h2>
                     <h2 className="align-text-left">{selectedTarifa.tarifa_valor}</h2>
                     <Image src={selectedTarifa.tarifa_ruta} alt="imagen qr" fluid />

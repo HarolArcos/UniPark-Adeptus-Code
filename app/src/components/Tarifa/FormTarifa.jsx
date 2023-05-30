@@ -190,8 +190,9 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
             onChange={handleCargarImage}
             onBlur={handleBlur}
             />
+            <br />
             <div className="text-center">
-            {image && <Image src={image} alt="imagen qr" fluid /> || tarifa && <Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid /> }
+            {image && <Image src={image} alt="imagen qr" fluid className="custom-image"/> || tarifa && <Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image"/> }
             </div>
           <ErrorMessage name="routeRate" component={()=>(<div className="text-danger">{errors.routeRate}</div>)}></ErrorMessage>
           </Form.Group>

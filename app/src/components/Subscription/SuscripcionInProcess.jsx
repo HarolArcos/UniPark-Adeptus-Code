@@ -64,6 +64,10 @@ export const SubscriptionInProcess = () => {
         console.log(fecha);
         return fecha;
       }
+    
+    const  startUppercase = (stringFechaHora) =>{
+        return stringFechaHora.capitalize();
+      }
 
     return (
         <>
@@ -86,7 +90,7 @@ export const SubscriptionInProcess = () => {
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
-                            <th>Número de Parqueo</th>
+                            <th>Nro de Parqueo</th>
                             <th>Cliente</th>
                             <th>Fecha Activación</th>
                             <th>Fecha Expiración</th>
@@ -106,13 +110,13 @@ export const SubscriptionInProcess = () => {
                                         <td>{suscripcion.suscripcion_id}</td>
                                         <td>{suscripcion.suscripcion_numero_parqueo}</td>
                                         <td>{suscripcion.cliente}</td>
-                                        <td>{}</td>
-                                        <td>{suscripcion.suscripcion_expiracion}</td>
-                                        <td>{suscripcion.referencia_valor}</td>
+                                        <td>{obtenerFecha(suscripcion.suscripcion_activacion)}</td>
+                                        <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
+                                        <td>{suscripcion.referencia_valor.charAt(0).toUpperCase()+suscripcion.referencia_valor.slice(1)}</td>
                                         <td>
                                             <ul>
-                                                <li>Tiempo: {suscripcion.tarifa_nombre}</li>
-                                                <li>Bs :    {suscripcion.tarifa_valor}</li>
+                                                <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
+                                                <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>
                                         {/* <td className="actionsButtons">

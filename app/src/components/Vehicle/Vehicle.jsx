@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer';
 import { useSend } from '../../hooks/HookList';
 
 import "./Vehicle.css"
+import SearchBar from '../SearchBar/SearchBar';
 
 export const Vehicle = () => {
     
@@ -72,6 +73,29 @@ export const Vehicle = () => {
         
     };
 
+    // const handleSearch = (searchTerm) => {
+   
+    //     if (searchTerm.length===0) {
+    //       setVehiculos(data);
+    //     } else {
+          
+             
+    //         setVehiculos(data.filter(
+    //               (filtro) => 
+    //               filtro.vehiculo_placa.toLowerCase().indexOf(searchTerm.toLowerCase()) 
+    //             ||filtro.propietario.toLowerCase().indexOf(searchTerm.toLowerCase())  )
+    //          );
+
+    //         //  const resultadosFiltrados = datosVehiculos.filter((vehiculo) => {
+    //         //     return (
+    //         //       vehiculo.placa.toLowerCase().includes(busqueda.toLowerCase()) ||
+    //         //       vehiculo.propietario.toLowerCase().includes(busqueda.toLowerCase())
+    //         //     );
+    //         //   });
+          
+    //     }
+       
+    //   };
  
     return (
         <>
@@ -80,7 +104,9 @@ export const Vehicle = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
-                  
+                <div>
+                  {/* <SearchBar  /> */}
+                </div>
                     
                 </div>
                 <Table striped bordered hover className="table">
