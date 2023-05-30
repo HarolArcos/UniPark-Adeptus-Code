@@ -40,6 +40,7 @@ export default function Login() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
   localStorage.clear();
   return (
     <div className="login">
