@@ -32,7 +32,7 @@ export default function ContentSitesAvalible(){
                 </thead>
                 <tbody>
                         {datos.map((dato) => (
-                            <tr>
+                            <tr key={dato.numeros}>
                                 <td>{dato.numeros}</td>
                                 <td>Libre</td>
                             </tr>

@@ -1,0 +1,32 @@
+import Select from 'react-select'; 
+import { useFetch } from '../../hooks/HookFetchListData';
+import { useState } from 'react';
+
+export default function ComboboxPlacas({ onVehicleIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
+
+  const { data, loading } = useFetch(
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle"
+  )
+    const [selectedVehicleId, setSelectedVehicleId] = useState(null);
+
+    const handleVehicleChange = (vehSelectedOption) => {
+        setSelectedVehicleId(vehSelectedOption.value);
+        onVehicleIdChange(vehSelectedOption.value);
+        console.log(vehSelectedOption);
+    };
+
+  if (!loading) {
+    const defaultValue = data.find(veh => veh.vehiculo_id === id);
+    const optionsVehicle = data.map((veh) => ({value: veh.vehiculo_id, label: veh.vehiculo_placa }));
+    return (
+      <div className="propietario">
+        <Select 
+            options={optionsVehicle}
+            value={optionsVehicle.find(option => option.value === selectedVehicleId)}  
+            defaultValue={defaultValue && { value: defaultValue.vehiculo_id, label: defaultValue.vehiculo_placa }}
+            onChange={handleVehicleChange}
+        />
+      </div>
+    );
+  }
+}

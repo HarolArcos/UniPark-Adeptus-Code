@@ -5,7 +5,7 @@ import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import "./Vehicle.css"
-import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
+//import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 
 const Formulario = ({asunto,cancelar, vehiculo}) => {
 
@@ -18,7 +18,6 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
   const [selectedPersonaId, setSelectedPersonaId] = useState(
     vehiculo ? vehiculo.persona_id : null
   );
-
 
 
   const handlePersonaIdChange = (personaId) => {
@@ -36,7 +35,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
     }else if (data.desError === "Cambios realizados con exito" || data.desError === "Inserción exitosa"){
       cancelar();
     }
-  }, [data]);
+  }, [data, cancelar]);
 
   return (
     <Formik
@@ -105,9 +104,8 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
 
       } else {
         values.idPerson = selectedPersonaId;
-
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
-        // await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
         console.log(errorDuply);
 
       }

@@ -1,7 +1,7 @@
 import React ,{useState, useEffect}from 'react';
 import Modal from '../Modal/Modal';
 import Formulario from './FormVehicle';
-import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';// aqui se estaba importando esto: Button,ButtonGroup,Form
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
@@ -56,9 +56,9 @@ export const Vehicle = () => {
     };
     
     //-----Create Modal
-    const handleCreate = () => {
-        setShowCreate(true);
-    };
+    // const handleCreate = () => {
+    //     setShowCreate(true);
+    // };
     
     //---Desactive Any Modal
     const handleCancelar = async () => {
