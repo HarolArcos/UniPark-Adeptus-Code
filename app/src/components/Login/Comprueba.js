@@ -8,8 +8,11 @@ export default function Comprueba (navigate, datos,setUserglobal) {
         
         
         fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
+        
         .then((response) => response.json())
         .then((per)=>{let [p] = per.filter((p)=>p.persona_id===datos.persona[0].persona_id)
+            if (p) {
+                localStorage.setItem("per",JSON.stringify(p))
         const fsub= new Date(p.suscripcion_expiracion)
         const factu=new Date()
         if (fsub>=factu&&p) {
@@ -18,12 +21,16 @@ export default function Comprueba (navigate, datos,setUserglobal) {
         } else {
             localStorage.setItem("mora","Usted esta en Mora, su subscripcion termino en "+p.suscripcion_expiracion.slice(0, 10))
         }
-        setUserglobal(datos.persona[0])
-        localStorage.setItem("user",JSON.stringify(datos.persona[0]))
-        localStorage.setItem("options",JSON.stringify(datos.opciones))
-        navigate("/main")
+                
+            }
+            
+        
             })
 
+        .finally(setUserglobal(datos.persona[0]),
+            localStorage.setItem("user",JSON.stringify(datos.persona[0])),
+            localStorage.setItem("options",JSON.stringify(datos.opciones)),
+            navigate("/main"))
             
     }
     
