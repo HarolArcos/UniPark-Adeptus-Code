@@ -1,11 +1,12 @@
 import React ,{useState, useEffect}from 'react';
 import Modal from '../Modal/Modal';
 import Formulario from './FormTarifa';
-import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
+import {Table, Button,ButtonGroup,Form, Image} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-import { useFetch } from '../../hooks/HookFetchListData';
+import { useSend } from '../../hooks/HookList';
+
 import "./Tarifa.css"
 
 export const Tarifa = () => {
@@ -15,7 +16,7 @@ export const Tarifa = () => {
   ]);
 
     const [error,setError] =  useState(null);
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+    const{data,fetchData} = useSend();
     
     //----------------------ShowModal-------------------------------
     
@@ -27,7 +28,10 @@ export const Tarifa = () => {
     //------Editar :
     const [tarifaSeleccionado, setTarifaSeleccionado] = useState(null);
 
-    
+    useEffect(() => {
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        console.log(data);
+    }, []);
     
     useEffect(() => {
         if (data.desError) {
@@ -51,10 +55,15 @@ export const Tarifa = () => {
     };
     
     //---Desactive Any Modal
-    const handleCancelar = () => {
+    const handleCancelar = async () => {
         setShowEdit(false);
         setShowCreate(false);
         console.log(data);
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        
     };
  
     return (
@@ -78,10 +87,8 @@ export const Tarifa = () => {
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
-                            <th>Plazo</th>
-                            <th>Bs</th>
+                            <th>Detalle</th>
                             <th>QR</th>
-                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -94,10 +101,14 @@ export const Tarifa = () => {
                             tarifas.map((tarifa) => (
                                     <tr className="columnContent" key={tarifa.tarifa_id}>
                                         <td>{tarifa.tarifa_id}</td>
-                                        <td>{tarifa.tarifa_nombre}</td>
-                                        <td>{tarifa.tarifa_valor}</td>
-                                        <td>{tarifa.tarifa_ruta}</td>
-                                        <td>{tarifa.tarifa_estado}</td>
+                                        <td>
+                                            <ul>
+                                                <li><strong>Plazo:</strong>{tarifa.tarifa_nombre}</li>
+                                                <li><strong>Bs:</strong>{tarifa.tarifa_valor}</li>
+                                                <li><strong>Estado:</strong>{tarifa.tarifa_estado}</li>
+                                            </ul>
+                                            </td>
+                                        <td><Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image></td>
                                         <td className="actionsButtons">
                                             <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(tarifa)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">

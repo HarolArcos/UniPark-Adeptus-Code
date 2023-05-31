@@ -7,6 +7,7 @@ import { DataUser } from '../context/UserContext.jsx';
 
 
 
+
 export default function Aside() {
   const {userglobal} = useContext(DataUser)
   
@@ -14,7 +15,7 @@ export default function Aside() {
     
   
   return (
-    <aside className="main-sidebar sidebar-dark-primary elevation-4 " >
+    <aside className="main-sidebar sidebar-dark-primary elevation-4 content " style={{ position: "fixed"}} >
       {/* Brand Logo */}
 
       <Link to="#" className="brand-link">
@@ -23,6 +24,7 @@ export default function Aside() {
           alt="AdminLTE Logo"
           className="brand-image img-circle elevation-3"
           style={{
+           
             opacity: ".8",
             marginLeft: "-1px",
             marginTop: "-15px",
@@ -67,6 +69,7 @@ export default function Aside() {
             data-accordion="false"
           >
             <Opcions />
+            <br/><br/><br/>
           </ul>
         </nav>
         {/* /.sidebar-menu */}

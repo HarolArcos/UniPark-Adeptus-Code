@@ -52,8 +52,8 @@ const Formulario = ({cancelar}) => {
         idTarifa: '',
         idPerson: userglobal.persona_id,
         statusSubscription: '10',
-        activationSubscription: '',
-        expirationSubscription:'',
+        activationSubscription:'2023-05-04 21:32:05',
+        expirationSubscription:'2023-05-04 21:32:05',
         numParkSubscription:''
         }}
         
@@ -62,15 +62,6 @@ const Formulario = ({cancelar}) => {
 
         if(!selectedTarifa){
             errors.idTarifa ='El campo es requerido';
-        }
-
-        if(!values.activationSubscription){
-            errors.activationSubscription ='El campo es requerido';
-        }
-
-
-        if(!values.expirationSubscription){
-            errors.expirationSubscription ='El campo es requerido';
         }
 
         if(!selectedSiteId){
@@ -93,35 +84,6 @@ const Formulario = ({cancelar}) => {
         {({values,errors,handleBlur,handleChange,handleSubmit})=>(
             <Form  className="container">
 
-            <Form.Group className="inputGroup" controlId="activationSubscription text-left">
-            <div className="row align-items-center">
-            <Form.Label className="text-left col-sm-4">Fecha de Activación</Form.Label>
-                <div className="col-sm-8">
-                <Form.Control 
-                    type="date" 
-                    name="activationSubscription"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                />
-                </div>
-            </div>
-            </Form.Group>
-            <ErrorMessage name="activationSubscription" component={()=>(<div className="text-danger">{errors.activationSubscription}</div>)}></ErrorMessage>
-            
-            <Form.Group className="inputGroup" controlId="expirationSubscription">
-            <div className="row align-items-center">
-            <Form.Label className="text-left col-sm-4">Fecha de Expiración</Form.Label>
-                <div className="col-sm-8">
-                <Form.Control 
-                    type="date"
-                    name="expirationSubscription"
-                    onChange={handleChange}
-                    onBlur={handleBlur} 
-                />
-                </div>
-            </div>
-            </Form.Group>
-            <ErrorMessage name="expirationSubscription" component={()=>(<div className="text-danger">{errors.expirationSubscription}</div>)}></ErrorMessage>
             
             <Form.Group className="inputGroup" controlId="numParkSubscription">
             <div className="row align-items-center">
@@ -151,8 +113,9 @@ const Formulario = ({cancelar}) => {
                 <div>
                 {selectedTarifa == null ?(<br/>):(
                     <>
-                    <h2 className="align-text-left">{selectedTarifa.tarifa_nombre}</h2>
-                    <h2 className="align-text-left">{selectedTarifa.tarifa_valor}</h2>
+                    <br />
+                    <h3 className="align-text-left"><strong>Plazo:</strong>{selectedTarifa.tarifa_nombre}</h3>
+                    <h3 className="align-text-left"><strong>Bs:</strong>{selectedTarifa.tarifa_valor}</h3>
                     <Image src={selectedTarifa.tarifa_ruta} alt="imagen qr" fluid />
                     </>
                 )}

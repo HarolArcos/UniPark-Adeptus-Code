@@ -24,17 +24,23 @@ export default function Login() {
       nicknamePerson: nickname,
       passwordPerson: contraseña,
     };
-    sendAndReceiveJson(
-      "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/validatePerson",
-      validatePerson
-    ).then((responseData) => {
-      // Trabaja con la respuesta JSON recibida
-      seterrorlog(Comprueba(navigate, responseData,setUserglobal));
-    });
+    if (nickname===""||contraseña==="") {
+      seterrorlog("Los campos Usuario y Contraseña deben ser llenados")
+    } else {
+      sendAndReceiveJson(
+        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/validatePerson",
+        validatePerson
+      ).then((responseData) => {
+        // Trabaja con la respuesta JSON recibida
+        seterrorlog(Comprueba(navigate, responseData,setUserglobal));
+      });
+    }
+    
   }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
   localStorage.clear();
   return (
     <div className="login">

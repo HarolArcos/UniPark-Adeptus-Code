@@ -1,7 +1,7 @@
 import React ,{useState, useEffect}from 'react';
 import Modal from '../Modal/Modal';
 import Formulario from './FormVehicle';
-import {Table} from 'react-bootstrap';// aqui se estaba importando esto: Button,ButtonGroup,Form
+import {Table,Form} from 'react-bootstrap';// aqui se estaba importando esto: Button,ButtonGroup,Form
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
@@ -9,10 +9,13 @@ import Footer from '../Footer/Footer';
 import { useSend } from '../../hooks/HookList';
 
 import "./Vehicle.css"
+import SearchBar from '../SearchBar/SearchBar';
 
 export const Vehicle = () => {
     
+    const [busqueda, setBusqueda] = useState("");
     const [vehiculos,setVehiculos] =  useState([]);
+    const [tablaVehiculos, setTablaVehiculos] = useState([]);
     const [error,setError] =  useState(null);
     const{data,fetchData} = useSend();
     
@@ -42,6 +45,7 @@ export const Vehicle = () => {
         }
         else{
             setVehiculos(data);
+            setTablaVehiculos(data);
             console.log(data);
         
         }
@@ -54,10 +58,7 @@ export const Vehicle = () => {
         setVehiculoSeleccionado(vehiculo);
     };
     
-    //-----Create Modal
-    // const handleCreate = () => {
-    //     setShowCreate(true);
-    // };
+
     
     //---Desactive Any Modal
     const handleCancelar = async () => {
@@ -72,6 +73,27 @@ export const Vehicle = () => {
         
     };
 
+    /*--------------------- Barra Busqueda------------------------- */
+    const handleChangeSerch = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+
+    }
+
+    const filtrar = (termBusqueda) => {
+        var resultadosBusqueda = tablaVehiculos.filter((elemento) => {
+            if(
+                    elemento.vehiculo_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.vehiculo_placa.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.propietario.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+            ){
+                return elemento;
+            }else{
+                return null;
+            }
+        });
+        setVehiculos(resultadosBusqueda);
+    }
  
     return (
         <>
@@ -80,8 +102,13 @@ export const Vehicle = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
-                  
-                    
+                <Form.Control 
+                        className="searchBar"
+                        type="text"
+                        placeholder="Buscar..."
+                        value={busqueda}
+                        onChange={handleChangeSerch}
+                    />  
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>

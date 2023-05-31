@@ -1,7 +1,7 @@
 import React ,{useState, useEffect}from 'react';
 import Modal from '../Modal/Modal';
 import Formulario from './FormSolicitude';
-import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
+import {Table, Button,ButtonGroup,Image} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
@@ -94,7 +94,7 @@ export const Solicitude = () => {
                                 </tr>
                             </tbody>
                             <tbody>
-                            <tr key="3">
+                            {/* <tr key="3">
                                 <th>Fecha de Activación: </th>
                                 <th>{obtenerFecha(suscripcion.suscripcion_activacion)}</th>
                                     
@@ -105,7 +105,7 @@ export const Solicitude = () => {
                                 <th>Fecha de Expiración: </th>
                                 <th>{obtenerFecha(suscripcion.suscripcion_expiracion)}</th>
                                     
-                                </tr>
+                                </tr> */}
                             </tbody>
                             <tbody>
                             <tr key="5">
@@ -128,12 +128,19 @@ export const Solicitude = () => {
                                     
                                 </tr>
                             </tbody>
+                            <tbody>
+                            <tr key="8">
+                                <th>QR: </th>
+                                <th><Image src={suscripcion.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image></th>
+                                    
+                                </tr>
+                            </tbody>
                         </Table>
                     </div>
                 ):(
                     <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
-                        <Button variant="success" className="button" onClick={() => handleMod()} >Envia una solicitud de parqueo</Button>
+                        <Button variant="success" className="button" onClick={() => handleMod()} >Enviar una solicitud de parqueo</Button>
                     </ButtonGroup>
                     
                     </div>

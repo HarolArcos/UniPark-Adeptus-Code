@@ -12,7 +12,7 @@ import ContentSitesAvalible from "../ContentAvaliableSites/ContentSitesAvaliable
 //import ReassignSite from "../ReassignSite/ReassignSite";
 //import { Client } from "../Client/Client";
 import { Guard } from "../Guard/Guard";
-import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
+//import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 import Persons from "../Persons/Persons";
 import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclamo";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
@@ -28,6 +28,10 @@ import EditEmpleado from "../Employee/EditEmpleado";
 import Event from "../Event/Event";
 import ViewEmployee from "../Employee/ViewEmployee";
 import ViewPerson from "../Persons/ViewPerson";
+import { Tarifa } from "../Tarifa/Tarifa";
+import Mensaje from "../MensajesGlobales/GroupTelegram";
+import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
+
 
 export const AppRouter = () => {
 
@@ -54,18 +58,17 @@ export const AppRouter = () => {
 
                     <Route path='/ReclamosResp'         element={ <SolucionAccionReclamo/>} />
                     <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
-                    
-                    
+                    <Route path="/evento"               element={ <Event/> }/>
+                    <Route path="/editPersonas"         element={ <EditPerson/> }/>
+                    <Route path="/deletePersonas"       element={ <DeletePerson/> } />
+                    <Route path="/listMensaje"          element={ <ListCli/> } />
                     <Route path="/listvehiculo"         element={ <ListVehicle/> } />
-                    <Route path="/listDeletevehiculo"   element={ <Vehicle/> } />
+                    <Route path="/listEditarVehiculo"   element={ <Vehicle/> } />
                     <Route path="/solicitud"            element={ <Solicitude/> } />
                     <Route path="/solicitudesEnProceso" element={ <SubscriptionInProcess/> } />
-                    <Route path="/evento"               element={ <Event/> }/>
-
-                    {/*---------------------------otros------------------------ */}
-                    <Route path="/referencias"          element={ <ComboboxReferences/> }/>
-                    <Route path="/msgIndividual"        element={ <ListCli/> } />
-
+                    <Route path="/tarifa"               element={ <Tarifa/> } />
+                    <Route path="/MensajeGlobal"        element={ <Mensaje/> } />
+                    <Route path="/Reclamos"             element={ <ReclamoConsulta/> } />
                 </Routes>
         </Router>
     )

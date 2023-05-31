@@ -3,22 +3,32 @@ import { useFetch } from "../../hooks/HookFetchListData";
 import React, { useState } from "react";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 export default function ResRec() {
+  const { data:listap, loading, error:errorp }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson")
   const [reclamoset, setreclamoset] = useState([]);
   const {data,fetchData,error} = useFetchSendData(
     );
   const [solucion, setsolucion] = useState(null);
   const [show, setShow] = useState(false);
-  const { data:datosr, loading:loadingr,  } = useFetch(
+
+  const { data:datosr, loading:loadingr,} = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/listComplaint"
   );
   const handleClose = () => setShow(false);
   
   function Cambiosol() {
-    
-    const myData = { "idComplaint" : reclamoset.reclamo_id,
+    const [mipersona] = listap.filter((per)=> per.persona_id===reclamoset.persona_id)
+    let myData = { "idComplaint" : reclamoset.reclamo_id,
     "complaintSolution" : solucion}; // datos a enviar en la primera llamada
     fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeSolutionComplaint',myData);
-    
+    myData = {
+      "idComplaint" : reclamoset.reclamo_id,
+      "complaintStatus" :  21
+}
+    fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeStateComplaint",myData)
+    window.open("https://api.whatsapp.com/send?phone=591"+mipersona.persona_telefono +"&text=<" + "AVISO"+">%0ALa respuesta de el Reclamo:"+reclamoset.reclamo_asunto+" %0A%0Aes:"+solucion)
+   alert(`Se actualizo los la acción tomada`);
+
+            window.location.reload()
     setShow(false);
     
   }
@@ -31,13 +41,36 @@ export default function ResRec() {
 
 
   }
-
-  if (!loadingr ) {
+  const [datoFiltro, setdatoFiltro] = useState([])
+    const [selectedOption, setSelectedOption] = useState('');
+    const handleSelectChange = (event) => {
+      setSelectedOption(event.target.value);
+      console.log(event.target.value);
+      if (event.target.value!=="") {
+        setdatoFiltro(datosr.filter((fil)=> fil.reclamoestado===event.target.value))
+      } else {
+        setdatoFiltro(datosr)
+      }
+      console.log(datoFiltro);
+      }
+  if (!loadingr&&!loading ) {
+   
+    if (datoFiltro.length===0) {
+      setdatoFiltro(datosr)
+    }
     return(
       <div className="content-wrapper contenteSites-body" >
         <div style={{ color: "red" }}>
                                     {error!=="" ? <span>{error}</span> : <span></span> }
                                     </div>
+            {datosr.desError ? <span>{datosr.desError}</span>:
+            <>
+            <select style={{ borderRadius: '5px' }} value={selectedOption} onChange={handleSelectChange} type="text">
+         <option value="">Todo</option>
+          <option value="no atendido">no atendido</option>
+        
+         <option value="atendido">atendido</option>
+        </select>
             <Table striped bordered hover className="table">
                 <thead>
                     <tr>
@@ -50,7 +83,9 @@ export default function ResRec() {
                     </tr>
                 </thead>
                 <tbody>
-                    {datosr.map((reclamoPersona) => (
+                  
+                  
+                    {datoFiltro.map((reclamoPersona) => (
                         <tr key={reclamoPersona.reclamo_id}>
                             <td>{reclamoPersona.reclamo_persona}</td>
                             <td>{reclamoPersona.reclamo_asunto}</td>
@@ -70,10 +105,14 @@ export default function ResRec() {
                                                 </svg>
                                             </Button></td>
                         </tr>
-                    ) )}   
+                    ) )}
+                      
                 </tbody>
+                
             </Table>
-
+           
+           
+            </>} 
 
 
 

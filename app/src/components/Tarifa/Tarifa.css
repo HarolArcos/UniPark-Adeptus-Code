@@ -69,3 +69,14 @@
 .inputGroup{
     text-align: left;
 }
+
+
+ul{
+    text-decoration: none;
+}
+
+.custom-image {
+    width: 300px;
+    height: 300px;
+  }
+  

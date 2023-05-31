@@ -207,15 +207,15 @@ const FormularioPersona = ({
           );
           cancelar();
         } else {
-          console.log(values);
-          console.log("pereza");
+          
           fetchData(
             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
             values
           );
 
-          console.log(data);
-          window.location.reload();
+          alert(`Se guardo a la parsona`);
+            window.location.reload();
+          
           //cancelar();
         }
       }}
@@ -302,24 +302,6 @@ const FormularioPersona = ({
                 ></ErrorMessage>
               </Form.Group>
             </div>
-
-            {/* <Form.Group className="inputGroup" controlId="telegramPerson">
-                <Form.Label className="label">Telegram</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="telegramPerson"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.telegramPerson}
-                />
-                <ErrorMessage
-                  name="telegramPerson"
-                  component={() => (
-                    <div className="text-danger">{errors.telegramPerson}</div>
-                  )}
-                ></ErrorMessage>
-              </Form.Group> */}
-
             <div
               className="col-md-2 "
               style={{ width: "220.60000000000002px" }}

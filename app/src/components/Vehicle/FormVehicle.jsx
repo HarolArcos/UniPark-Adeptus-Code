@@ -19,17 +19,12 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
     vehiculo ? vehiculo.persona_id : null
   );
 
-  // const [selectedReferenciaId, setSelectedReferenciaId] = useState(
-  //   vehiculo ? vehiculo.vehiculo_estado : null
-  // );
 
   const handlePersonaIdChange = (personaId) => {
     setSelectedPersonaId(personaId);
   };
 
-  // const handleReferenciaIdChange = (referenciaId) => {
-  //   setSelectedReferenciaId(referenciaId);
-  // };
+  
   //------------
   
   useEffect(() => {
@@ -65,53 +60,54 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
 
       if(!values.plateVehicle){
         errors.plateVehicle ='El campo es requerido';
+      }else if(values.plateVehicle.startsWith(" ")){
+        errors.plateVehicle ='El campo no puede empezar con espacios';
+      }else if(!/^(\d{3,4}-[A-Z]{3})$/i.test(values.plateVehicle)){
+        errors.plateVehicle ='El formato debe ser XXX-AAA o XXXX-AAA ejemplo: 123-GHJ';
       }
-      else if(!/^(?! )(\d{3,4}-[A-Z]{3})$/i.test(values.plateVehicle)){
-        errors.plateVehicle ='El formato debe ser XXX-AAA ejemplo: 123-GHJ'
-      }
-
-
-      if(!selectedPersonaId){
-        errors.idPerson ='Seleccione un elemento porfavor';
-      }
-
-      // if(!selectedReferenciaId){
-      //   errors.statusVehicle ='Seleccione un estado porfavor';
-      // }
-
+      
       if(!values.modelVehicle){
         errors.modelVehicle ='El campo es requerido';
+      }else if(values.modelVehicle.startsWith(" ")){
+        errors.modelVehicle ='El campo no puede empezar con espacios'
       }
-      else if(!/^(?! )[A-Za-z]+( [A-Za-z]+)?$/i.test(values.modelVehicle)){
-        errors.modelVehicle ='Solo se admite un espacio entre dos palabras'
+      else if(!/^[a-zA-ZñÑ]+$/i.test(values.modelVehicle)){
+        errors.modelVehicle ='Solo se admite letras'
       }
 
       if(!values.colorVehicle){
         errors.colorVehicle ='El campo es requerido';
+      }else if(values.colorVehicle.startsWith(" ")){
+        errors.colorVehicle ='El campo no puede empezar con espacios'
       }
-      else if(!/^(?! )[A-Za-z]+( [A-Za-z]+)?$/i.test(values.colorVehicle)){
-        errors.colorVehicle ='Solo se admite un espacio entre dos palabras'
+      else if(!/^[a-zA-ZñÑ]+$/i.test(values.colorVehicle)){
+        errors.colorVehicle ='Solo se admite letras'
       }
 
+      if(!selectedPersonaId){
+        errors.idPerson ='Seleccione un elemento por favor';
+      }
       return errors;
     }}
     
 
     onSubmit={async (values) => {
+
+      console.log(values);
       if (vehiculo) {
         values.idPerson = selectedPersonaId;
-        // values.statusVehicle = selectedReferenciaId;
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         console.log(data);
+
       } else {
         values.idPerson = selectedPersonaId;
-        // values.statusVehicle = selectedReferenciaId;
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
         console.log(errorDuply);
+
       }
 
     }
