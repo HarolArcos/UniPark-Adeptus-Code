@@ -63,7 +63,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
       }else if(values.plateVehicle.startsWith(" ")){
         errors.plateVehicle ='El campo no puede empezar con espacios';
       }else if(!/^(\d{3,4}-[A-Z]{3})$/i.test(values.plateVehicle)){
-        errors.plateVehicle ='El formato debe ser XXXX-AAA ejemplo: 123-GHJ';
+        errors.plateVehicle ='El formato debe ser XXX-AAA o XXXX-AAA ejemplo: 123-GHJ';
       }
       
       if(!values.modelVehicle){

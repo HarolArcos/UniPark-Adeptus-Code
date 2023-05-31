@@ -34,7 +34,8 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
   const handleCargarImage = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-    setImageFile(file);
+      setImage(reader.result);
+      setImageFile(file);
     reader.onload = () => {
       setImage(reader.result);
     };

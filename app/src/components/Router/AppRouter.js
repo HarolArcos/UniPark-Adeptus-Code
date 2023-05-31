@@ -59,7 +59,7 @@ export const AppRouter = () => {
                     <Route path="/deletePersonas"       element={ <DeletePerson/> } />
                     <Route path="/listMensaje"             element={ <ListCli/> } />
                     <Route path="/listvehiculo"         element={ <ListVehicle/> } />
-                    <Route path="/listDeletevehiculo"   element={ <Vehicle/> } />
+                    <Route path="/listEditarVehiculo"   element={ <Vehicle/> } />
                     <Route path="/solicitud"            element={ <Solicitude/> } />
                     <Route path="/solicitudesEnProceso"       element={ <SubscriptionInProcess/> } />
                     <Route path="/tarifa"       element={ <Tarifa/> } />
