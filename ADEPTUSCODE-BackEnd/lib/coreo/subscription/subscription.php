@@ -99,9 +99,9 @@ class subscription {
         return $response;
     }
 
-    public function insertSubscriptionDb($idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription){
+    public function insertSubscriptionDb($idTarifa,$statusSubscription, $idPerson, $numParkSubscription){
         $response = false;
-        $sql =  "INSERT INTO suscripcion(tarifa_id, suscripcion_estado, persona_id, suscripcion_activacion, suscripcion_expiracion, suscripcion_numero_parqueo) VALUES ($idTarifa,$statusSubscription, $idPerson,'$activationSubscription','$expirationSubscription', '$numParkSubscription')";
+        //$sql =  "INSERT INTO suscripcion(tarifa_id, suscripcion_estado, persona_id, suscripcion_activacion, suscripcion_expiracion, suscripcion_numero_parqueo) VALUES ($idTarifa,$statusSubscription, $idPerson,'$activationSubscription','$expirationSubscription', '$numParkSubscription')";
         $sql2 = "INSERT INTO suscripcion (tarifa_id, suscripcion_estado, persona_id, suscripcion_activacion, suscripcion_expiracion, suscripcion_numero_parqueo)
         VALUES (
             $idTarifa,
@@ -109,24 +109,22 @@ class subscription {
             $idPerson,
             date_trunc('second', current_timestamp),
           CASE
-            WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'semestral' THEN date_trunc('second', current_timestamp + interval '1 months')
+            WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'semestral' THEN date_trunc('second', current_timestamp + interval '6 months')
             WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'anual' THEN date_trunc('second', current_timestamp + interval '1 year')
             WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'mensual' THEN date_trunc('second', current_timestamp + interval '1 months')
             ELSE date_trunc('second', current_timestamp)
           END,
           $numParkSubscription
         )";
-        $rs = $this->_db->query($sql);
+        $rs = $this->_db->query($sql2);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "idTarifa"=> $idTarifa,
                                             "statusSubscription"=> $statusSubscription,
-                                            "idPerson"=> $idPerson,
-                                            "activationSubscription"=> $activationSubscription,
-                                            "expirationSubscription"=> $expirationSubscription, 
+                                            "idPerson"=> $idPerson, 
                                             "numParkSubscription"=> $numParkSubscription
                                         ),
-                            "sql"=>$sql,
+                            "sql"=>$sql2,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "error");  
         } else {
@@ -134,12 +132,10 @@ class subscription {
             $arrLog = array("input"=>array( "idTarifa"=> $idTarifa,
                                             "statusSubscription"=> $statusSubscription,
                                             "idPerson"=> $idPerson,
-                                            "activationSubscription"=> $activationSubscription,
-                                            "expirationSubscription"=> $expirationSubscription, 
                                             "numParkSubscription"=> $numParkSubscription
                                         ),
                             "output"=>$response,
-                            "sql"=>$sql);
+                            "sql"=>$sql2);
 
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
@@ -214,7 +210,7 @@ class subscription {
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         r.referencia_valor,
-        t.tarifa_nombre, t.tarifa_valor
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
         FROM suscripcion s
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
@@ -240,7 +236,7 @@ class subscription {
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         r.referencia_valor,
-        t.tarifa_nombre, t.tarifa_valor
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
         FROM suscripcion s
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
@@ -267,7 +263,7 @@ class subscription {
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         r.referencia_valor,
-        t.tarifa_nombre, t.tarifa_valor
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
         FROM suscripcion s
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
@@ -294,7 +290,7 @@ class subscription {
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         r.referencia_valor,
-        t.tarifa_nombre, t.tarifa_valor
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
         FROM suscripcion s
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
@@ -321,7 +317,7 @@ class subscription {
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         r.referencia_valor,
-        t.tarifa_nombre, t.tarifa_valor
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
         FROM suscripcion s
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
@@ -348,7 +344,7 @@ class subscription {
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         r.referencia_valor,
-        t.tarifa_nombre, t.tarifa_valor
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
         FROM suscripcion s
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id

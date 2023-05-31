@@ -34,8 +34,6 @@
         $idTarifa = "";
         $idPerson = "";
         $statusSubscription = "";
-        $activationSubscription =  "";
-        $expirationSubscription =  "";
         $numParkSubscription =  "";
 
 
@@ -57,18 +55,6 @@
         else{
             array_push($errorlist,"Error: falta parametro statusSubscription");
         }
-        if(isset($arg->activationSubscription)){
-                $activationSubscription =  $arg->activationSubscription;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro activateSubscription");
-        }
-        if(isset($arg->expirationSubscription)){
-            $expirationSubscription =  $arg->expirationSubscription;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro expirationSubscription");
-        }
         if(isset($arg->numParkSubscription)){
             $numParkSubscription =  $arg->numParkSubscription;
         }
@@ -82,12 +68,10 @@
         $idPerson = $arg->idPerson;
         $idTarifa = $arg->idTarifa;
         $statusSubscription = $arg->statusSubscription;
-        $activationSubscription =  $arg->activationSubscription;
-        $expirationSubscription =  $arg->expirationSubscription;
         $numParkSubscription =  $arg->numParkSubscription;
 
         $_subscription = new subscription($_db);
-        $responseInsert = $_subscription->insertSubscriptionDb($idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription);
+        $responseInsert = $_subscription->insertSubscriptionDb($idTarifa,$statusSubscription, $idPerson, $numParkSubscription);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
