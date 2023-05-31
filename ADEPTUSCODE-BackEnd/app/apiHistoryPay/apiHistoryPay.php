@@ -4,11 +4,11 @@
     $HTTP_RAW_POST_DATA = (json_decode($HTTP_RAW_POST_DATA)) ? $HTTP_RAW_POST_DATA : '';
     $HTTP_RAW_POST_DATA = (empty($HTTP_RAW_POST_DATA)) ? json_encode(array_merge($_REQUEST, $_FILES)) : $HTTP_RAW_POST_DATA;
     $server = new apiJson($HTTP_RAW_POST_DATA);
-    $server->Register("insertPay");
-    $server->Register("listPay");
+    $server->Register("insertHistoryPay");
+    $server->Register("listHistoryPay");
     $server->start();
 
-    function insertPay($arg){
+    function insertHistoryPay($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
@@ -23,6 +23,10 @@
 
         $errorlist=array();
         $idSubscription = "";
+        //$dateHistoryPay = "";
+        $amountHistoryPay = "";
+        //$residueHistoryPay =  "";
+        $totalHistoryPay =  "";
 
 
         if(isset($arg->idSubscription)){
@@ -31,14 +35,42 @@
         else{
             array_push($errorlist,"Error: falta parametro idSubscription");
         }
+        /*if(isset($arg->dateHistoryPay)){
+            $dateHistoryPay =  $arg->dateHistoryPay;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro dateHistoryPay");
+        }*/
+        if(isset($arg->amountHistoryPay)){
+            $amountHistoryPay =  $arg->amountHistoryPay;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro amountHistoryPay");
+        }
+        /*if(isset($arg->residueHistoryPay)){
+                $residueHistoryPay =  $arg->residueHistoryPay;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro residueHistoryPay");
+        }*/
+        if(isset($arg->totalHistoryPay)){
+            $totalHistoryPay =  $arg->totalHistoryPay;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro totalHistoryPay");
+        }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
 
         $idSubscription = $arg->idSubscription;
+        //$dateHistoryPay = $arg->dateHistoryPay;
+        $amountHistoryPay = $arg->amountHistoryPay;
+        //$residueHistoryPay =  $arg->totalHistoryPay;
+        $totalHistoryPay =  $arg->totalHistoryPay;
 
-        $_pay = new pay($_db);
-        $responseInsert = $_pay->insertPayDb($idSubscription);
+        $_pay = new history_pay($_db);
+        $responseInsert = $_pay->insertHistoryPayDb($idSubscription, $amountHistoryPay, $totalHistoryPay);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
@@ -53,13 +85,13 @@
         return $response;
     }
 
-    function listPay(){
+    function listHistoryPay(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);
         $_log = new log($options);
        
-        $_pay = new pay($_db);
-        $responseList = $_pay->listPayDb();
+        $_pay = new history_pay($_db);
+        $responseList = $_pay->listHistoryPayDb();
 
         if ( $responseList) {
             $mensaje = "Se listo correctamente - Funcion: ".__FUNCTION__;

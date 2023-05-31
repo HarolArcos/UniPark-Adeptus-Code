@@ -6,6 +6,7 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertSubscription");
     $server->Register("listSubscription");
+    $server->Register("listSubscriptionPorId");
     $server->Register("listSubscriptionDenied");
     $server->Register("listSubscriptionInProgress");
     $server->Register("listSubscriptionActive");
@@ -266,6 +267,49 @@
         return $responseList;
     }
 
+    function listSubscriptionPorId($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $idSubscription =  "";
+
+        if(isset($arg->idSubscription)){
+            $idSubscription =  $arg->idSubscription;
+        }else{
+            array_push($errorlist,"Error: falta parametro idSubscription");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $idSubscription =  $arg->idSubscription;
+
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listSubscriptionPorIdDb($idSubscription);
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las suscripciones habilitadas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones habilitadas"));
+            $mensaje = "No se pudo listar las suscripciones habilitadas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
     function listSubscriptionActive(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);
@@ -350,45 +394,97 @@
         return $responseList;
     }
 
-    function listDisponibles(){
+    function listDisponibles($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
         $_log = new log($options);
-       
-        $_subscription = new subscription($_db);
-        $responseList = $_subscription->listDisponiblesDb();
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
 
-        if ( $responseList) {
-            $mensaje = "Se listo correctamente los sitios disponibles - Funcion: ".__FUNCTION__;
+        $errorlist=array();
+        $numberSities =  "";
+
+        
+        if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro numberSitieadsas");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $numberSities =  $arg->numberSities;
+
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listDisponiblesDb($numberSities);
+
+        if ( $responseList){
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado exitoso de sitios disponibles"));
+            $mensaje = "Listado exitoso de sitios disponibles - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones"));
-            $mensaje = "No se pudo listar los sitios disponibles - Funcion: ".__FUNCTION__;
-            $_log->error($mensaje);
-            return $response;
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido de sitios disponibles"));
         }
-        
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
         return $responseList;
     }
 
-    function listOcupados(){
+    function listOcupados($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
         $_log = new log($options);
-       
-        $_subscription = new subscription($_db);
-        $responseList = $_subscription->listOcupadosDb();
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
 
-        if ( $responseList) {
-            $mensaje = "Se listo correctamente los sitios ocupados - Funcion: ".__FUNCTION__;
+        $errorlist=array();
+        $numberSities =  "";
+
+        
+        if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $numberSities =  $arg->numberSities;
+
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listOcupadosDb($numberSities);
+
+        if ( $responseList){
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado exitoso de sitios ocupados"));
+            $mensaje = "Listado exitoso de sitios ocupados - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones"));
-            $mensaje = "No se pudo listar los sitios ocupados - Funcion: ".__FUNCTION__;
-            $_log->error($mensaje);
-            return $response;
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido de sitios ocupados"));
         }
-        
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
         return $responseList;
     }
     
@@ -403,11 +499,5 @@
         return $resp;
     }
     
-    function test($arg) {    
-        return array("codError" => 200, "data" => $arg);
-    }
 
-    function test2($arg) {    
-        return array("codError" => 200, "data" => "Hola estamos en linea");
-    }
     

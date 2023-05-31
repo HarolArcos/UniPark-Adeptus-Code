@@ -8,7 +8,7 @@ class subscription {
 
     private $optionsLog;
     private $_db;
-    private $idSubscription,$idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription;
+    private $idSubscription,$idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription, $numberSities;
 
     function __construct($_db,$idSubscription=0){
         
@@ -27,6 +27,7 @@ class subscription {
         unset($this->activationSubscription);
         unset($this->expirationSubscription);
         unset($this->numParkSubscription);
+        unset($this->numberSities);
     }
 
     private function createLog($fileName, $logMessage, $tipeError){
@@ -101,6 +102,20 @@ class subscription {
     public function insertSubscriptionDb($idTarifa,$statusSubscription, $idPerson,$activationSubscription,$expirationSubscription, $numParkSubscription){
         $response = false;
         $sql =  "INSERT INTO suscripcion(tarifa_id, suscripcion_estado, persona_id, suscripcion_activacion, suscripcion_expiracion, suscripcion_numero_parqueo) VALUES ($idTarifa,$statusSubscription, $idPerson,'$activationSubscription','$expirationSubscription', '$numParkSubscription')";
+        $sql2 = "INSERT INTO suscripcion (tarifa_id, suscripcion_estado, persona_id, suscripcion_activacion, suscripcion_expiracion, suscripcion_numero_parqueo)
+        VALUES (
+            $idTarifa,
+            $statusSubscription,
+            $idPerson,
+            date_trunc('second', current_timestamp),
+          CASE
+            WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'semestral' THEN date_trunc('second', current_timestamp + interval '1 months')
+            WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'anual' THEN date_trunc('second', current_timestamp + interval '1 year')
+            WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'mensual' THEN date_trunc('second', current_timestamp + interval '1 months')
+            ELSE date_trunc('second', current_timestamp)
+          END,
+          $numParkSubscription
+        )";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -204,6 +219,33 @@ class subscription {
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
         INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listSubscriptionPorIdDb($id){
+        $response = false;
+        $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        r.referencia_valor,
+        t.tarifa_nombre, t.tarifa_valor
+        FROM suscripcion s
+        INNER JOIN persona p ON s.persona_id = p.persona_id
+        INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id
+        WHERE s.suscripcion_id = $id";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
@@ -329,9 +371,9 @@ class subscription {
         return $response;
     }
 
-    public function listDisponiblesDb(){
+    public function listDisponiblesDb($numberSities){
         $response = false;
-        $sql = "SELECT numeros FROM generate_series(1, 120) numeros
+        $sql = "SELECT numeros FROM generate_series(1, $numberSities) numeros
         WHERE NOT EXISTS (
             SELECT 1 FROM suscripcion
             WHERE suscripcion_numero_parqueo = numeros
@@ -354,11 +396,11 @@ class subscription {
         return $response;
     }
 
-    public function listOcupadosDb(){
+    public function listOcupadosDb($numberSities){
         $response = false;
         $sql = "SELECT DISTINCT suscripcion_numero_parqueo AS sitios_ocupados
         FROM suscripcion
-        WHERE suscripcion_numero_parqueo BETWEEN 1 AND 200
+        WHERE suscripcion_numero_parqueo BETWEEN 1 AND $numberSities
         ORDER BY suscripcion_numero_parqueo";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
