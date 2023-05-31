@@ -336,6 +336,27 @@
         return $responseList;
     }
 
+    function listSubscriptionActiveExpired(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listSubscriptionActiveExpiredDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las suscripciones habilitadas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones vencidas con estado habilitado"));
+            $mensaje = "No se pudo listar las suscripciones vencidas con estado habilitado - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
     function listSubscriptionInProgress(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);

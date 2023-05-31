@@ -6,6 +6,8 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertHistoryPay");
     $server->Register("listHistoryPay");
+    $server->Register("listHistoryPayWeek");
+    $server->Register("listHistoryPayMonth");
     $server->start();
 
     function insertHistoryPay($arg){
@@ -98,6 +100,48 @@
             $_log->info($mensaje);
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan pagos"));
+            $mensaje = "No se pudo listar los pagos - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listHistoryPayWeek(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_pay = new history_pay($_db);
+        $responseList = $_pay->listHistoryPayWeekDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan pagos de hace una semana atras"));
+            $mensaje = "No se pudo listar los pagos - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listHistoryPayMonth(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_pay = new history_pay($_db);
+        $responseList = $_pay->listHistoryPayMonthDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan pagos de hace un mes atras"));
             $mensaje = "No se pudo listar los pagos - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;

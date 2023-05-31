@@ -182,6 +182,68 @@ class history_pay {
         return $response;
     }
 
+    public function listHistoryPayWeekDb(){
+        $response = false;
+        $sql3 = "SELECT CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        t.tarifa_nombre,
+        t.tarifa_valor,
+        s.suscripcion_numero_parqueo,
+        hp.*
+        FROM persona p
+        JOIN suscripcion s ON p.persona_id = s.persona_id
+        JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        LEFT JOIN historial_pago hp ON s.suscripcion_id = hp.suscripcion_id
+        WHERE hp.historial_pago_fecha < current_timestamp
+        AND hp.historial_pago_fecha >= current_timestamp - interval '1 week'";
+        
+        $rs = $this->_db->select($sql3);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql3,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql3);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listHistoryPayMonthDb(){
+        $response = false;
+        $sql3 = "SELECT CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        t.tarifa_nombre,
+        t.tarifa_valor,
+        s.suscripcion_numero_parqueo,
+        hp.*
+        FROM persona p
+        JOIN suscripcion s ON p.persona_id = s.persona_id
+        JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        LEFT JOIN historial_pago hp ON s.suscripcion_id = hp.suscripcion_id
+        WHERE hp.historial_pago_fecha < current_timestamp
+        AND hp.historial_pago_fecha >= current_timestamp - interval '1 month'";
+        
+        $rs = $this->_db->select($sql3);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql3,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql3);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
 	
     private function mapHistoryPay($rs){
         $this->idHistoryPay = $rs['historial_pago_id'];
