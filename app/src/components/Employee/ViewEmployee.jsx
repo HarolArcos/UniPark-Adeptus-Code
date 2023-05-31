@@ -5,38 +5,42 @@ import Footer from "../Footer/Footer";
 import Modal from "../Modal/Modal";
 import { Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import FormularioEmpleado from "./FormEmployee";
 import { useFetch } from "../../hooks/HookFetchListData";
+import FormularioEditarPersona from "../Persons/FormEditPerson";
 
-export default function EditEmpleado(){
+export default function ViewEmployee(){
     const [searchTerm, setSearchTerm] = useState('');
 
-    const [personas,setPersonas] =  useState([]);
+    //const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
         'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee'
     )
 
     //----------------------ShowModal-------------------------------
     
-    const [showEdit, setShowEdit] = useState(false);
-     
-    //const [showCreate, setShowCreate] = useState(false);
+    const [showView, setShowView] = useState(false);
+    
      
     //----------------------Cliente para:-------------------------------
     //------Editar :
     const [personaSeleccionado, setPersonaSeleccionado] = useState(null);
         
     useEffect(() => {
-        setPersonas(data);
+        //setPersonas(data);
         console.log(data);
     }, [data]);
     
+    //-----View Modal
+    const handleView = (cliente) => {
+        setShowView(true);
+        setPersonaSeleccionado(cliente);
+    };
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
-    const handleEditar = (persona) => {
-        setShowEdit(true);
-        setPersonaSeleccionado(persona);
-    };
+    // const handleEditar = (persona) => {
+    //     //setShowEdit(true);
+    //     setPersonaSeleccionado(persona);
+    // };
     
     //-----Create Modal
     // const handleCreate = () => {
@@ -45,21 +49,20 @@ export default function EditEmpleado(){
     
     //---Desactive Any Modal
     const handleCancelar = () => {
-        setShowEdit(false);
-        // setShowCreate(false);
+        //setShowEdit(false);
+        setShowView(false);
         console.log(data);
     };
-    
     //-----------------------Crud-------------------------------------------
-    //------Edit
-    const handleGuardarEditado = (personaEditado) => {
-        const nuevasPersonas = personas.map((persona) =>
-        persona.id === personaEditado.id ? personaEditado : persona
-        );
-        setPersonas(nuevasPersonas);
-        //setShowCreate(false);
-        setPersonaSeleccionado(null);
-    };
+    // //------Edit
+    // const handleGuardarEditado = (personaEditado) => {
+    //     const nuevasPersonas = personas.map((persona) =>
+    //     persona.id === personaEditado.id ? personaEditado : persona
+    //     );
+    //     setPersonas(nuevasPersonas);
+    //     //setShowCreate(false);
+    //     setPersonaSeleccionado(null);
+    // };
 
     //-------Delete
     // const handleEliminar = (id) => {
@@ -114,10 +117,10 @@ export default function EditEmpleado(){
                                         <td>{persona.personatipo}</td>
                                         <td>{persona.personaestado}</td>
                                         <td>
-                                            <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(persona)}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                            <button className='btn btn-success btn-md mr-1 ' onClick={() => handleView(persona)}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
                                                 </svg>
                                             </button>
                                         </td>
@@ -128,18 +131,18 @@ export default function EditEmpleado(){
                 </Table>
 
                 <Modal
-                mostrarModal={showEdit}
-                title = 'Editar Persona'
-                contend = {
-                <FormularioEmpleado
-                asunto ='Guardar Cambios'
-                persona= {personaSeleccionado}
-                cancelar={handleCancelar}
-                actualizarPersona = {handleGuardarEditado}
-                ></FormularioEmpleado>}
-                hide = {handleCancelar}
-                >
-                </Modal>
+                    mostrarModal={showView}
+                    title = 'Detalle Cliente '
+                    contend = {
+                    <FormularioEditarPersona
+                    asunto ='Guardar Cambios'
+                    persona= {personaSeleccionado}
+                    cancelar={handleCancelar}
+                    soloLectura = {true}
+                    ></FormularioEditarPersona>}
+                    hide = {handleCancelar}
+                    >
+                    </Modal>
             </div>
             </div>
 
