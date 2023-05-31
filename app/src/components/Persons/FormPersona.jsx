@@ -12,6 +12,7 @@ const FormularioPersona = ({
   persona,
   actualizarVehiculo,
   añadirNuevo,
+  soloLectura = false
 }) => {
   const [selectedValue, setSelectedValue] = useState(null);
   //setSelectedReferenciaId(referenciaId);

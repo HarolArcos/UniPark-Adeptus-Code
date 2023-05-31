@@ -5,8 +5,9 @@ import Footer from "../Footer/Footer";
 import Modal from "../Modal/Modal";
 import { Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import FormularioPersona from "./FormPersona";
+//import FormularioPersona from "./FormPersona";
 import { useFetch } from "../../hooks/HookFetchListData";
+import FormularioEditarPersona from "./FormEditPerson";
 
 export default function EditPerson(){
     const [busqueda, setBusqueda] = useState("");
@@ -15,10 +16,10 @@ export default function EditPerson(){
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
+        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient'
     )
     const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
+        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
             .then(response => response.json())
             .then( response => {
                 setClientes(response);
@@ -107,7 +108,7 @@ export default function EditPerson(){
             <div className="bodyItems">
                 <div className="buttonSection">
                     <Form.Control 
-                        className="searchBar"
+                        className="searchBar2"
                         type="text"
                         placeholder="Buscar..."
                         value={busqueda}
@@ -118,11 +119,12 @@ export default function EditPerson(){
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
-                            <th>Nombre</th>
+                            <th>Nombre Completo</th>
                             <th>Telefono</th>
                             <th> CI </th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -157,12 +159,12 @@ export default function EditPerson(){
                 mostrarModal={showEdit}
                 title = 'Editar Persona'
                 contend = {
-                <FormularioPersona
+                <FormularioEditarPersona
                 asunto ='Guardar Cambios'
                 persona= {personaSeleccionado}
                 cancelar={handleCancelar}
                 actualizarPersona = {handleGuardarEditado}
-                ></FormularioPersona>}
+                ></FormularioEditarPersona>}
                 hide = {handleCancelar}
                 >
                 </Modal>

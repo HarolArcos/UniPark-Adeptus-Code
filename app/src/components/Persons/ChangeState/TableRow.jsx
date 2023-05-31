@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFetchSendData } from "../../../hooks/HookFetchSendData.js";
 import { Table } from 'react-bootstrap';
+import "../Persons.css";
+
 
 function PersonTable({ data }) {
     const { fetchData } = useFetchSendData();
@@ -11,25 +13,30 @@ function PersonTable({ data }) {
             idPerson: personId,
             statusPerson: newStatus
         });
+        window.location.reload();
     };
 
     return (
         <Table striped bordered hover className="table">
             <thead>
-                <tr>
+                <tr className='columnTittle'>
                     <th>Id</th>
-                    <th>Nombre</th>
+                    <th>Nombre Completo</th>
+                    <th>Telefono</th>
                     <th>CI</th>
+                    <th>Tipo Persona</th>
                     <th>Estado</th>
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
                 {data.map((person) => (
-                <tr key={person.persona_id}>
+                <tr className='columnContent' key={person.persona_id}>
                     <td>{person.persona_id}</td>
                     <td>{person.persona_nombre}{person.persona_apellido}</td>
+                    <td>{person.persona_telefono}</td>
                     <td>{person.persona_ci}</td>
+                    <td>{person.personatipo}</td>
                     <td>{person.personaestado}</td>
                     <td>
                         <button className='btn btn-success btn-md mr-1' onClick={() => handleStateChange(person.persona_id, person.persona_estado)} >

@@ -11,7 +11,7 @@ import ContentSitesAvalible from "../ContentAvaliableSites/ContentSitesAvaliable
 //import AssignSite from "../AssignSite/AssignSite";
 //import ReassignSite from "../ReassignSite/ReassignSite";
 //import { Client } from "../Client/Client";
-//import { Guard } from "../Guard/Guard";
+import { Guard } from "../Guard/Guard";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 import Persons from "../Persons/Persons";
 import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclamo";
@@ -26,6 +26,8 @@ import { SubscriptionInProcess } from "../Subscription/SuscripcionInProcess";
 import Employee from "../Employee/Employee";
 import EditEmpleado from "../Employee/EditEmpleado";
 import Event from "../Event/Event";
+import ViewEmployee from "../Employee/ViewEmployee";
+import ViewPerson from "../Persons/ViewPerson";
 
 export const AppRouter = () => {
 
@@ -40,12 +42,14 @@ export const AppRouter = () => {
                     {/* <Route path="/asignarSitio"         element={ <AssignSite/> } /> */}
                     {/* <Route path="/reasignarSitio"       element={ <ReassignSite /> } /> */}
                     {/* <Route path="/clientes"             element={ <Client/> } /> */}
-                    {/* <Route path='/guard'                element={ <Guard/>} /> */}
+                    <Route path='/guard'                element={ <Guard/>} />
                     <Route path="/listClientes"         element={ <Persons/> } />
                     <Route path="/editClientes"         element={ <EditPerson/> }/>
                     <Route path="/statusClientes"       element={ <DeletePerson/> } />
+                    <Route path="/viewClientes"         element={ <ViewPerson/> } />
                     <Route path="/listEmpleados"        element={ <Employee/> }/>
                     <Route path="/editEmpleados"        element={ <EditEmpleado/> }/>
+                    <Route path="/viewEmpleados"        element={ <ViewEmployee/> }/>
 
 
                     <Route path='/ReclamosResp'         element={ <SolucionAccionReclamo/>} />

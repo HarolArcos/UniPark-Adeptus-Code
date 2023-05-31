@@ -18,7 +18,7 @@ export default function DeletePerson(){
     // )
 
     const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
+        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
             .then(response => response.json())
             .then( response => {
                 setClientes(response);
@@ -64,7 +64,7 @@ export default function DeletePerson(){
             <div className="bodyItems">
                 <div className="buttonSection">
                     <Form.Control 
-                        className="searchBar"
+                        className="searchBar2"
                         type="text"
                         placeholder="Buscar..."
                         value={busqueda}
