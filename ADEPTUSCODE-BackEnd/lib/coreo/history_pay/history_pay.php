@@ -158,8 +158,6 @@ class history_pay {
         $sql3 = "SELECT CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         t.tarifa_nombre,
         t.tarifa_valor,
-        s.suscripcion_activacion,
-        s.suscripcion_expiracion,
         s.suscripcion_numero_parqueo,
         hp.*
         FROM persona p
