@@ -7,6 +7,11 @@
     $server->Register("insertConfiguration");
     $server->Register("listConfiguration");
     $server->Register("editConfiguration");
+    $server->Register("changeNumberPhone");
+    $server->Register("changeNumberSities");
+    $server->Register("changeGroupTelegram");
+    $server->Register("changeTokenBot");
+    $server->Register("changeHorarioAtencion");
     $server->start();
 
     function insertConfiguration($arg){
@@ -127,7 +132,7 @@
         return $response;
     }
 
-    /*function changeStateRol($arg){
+    function changeNumberSities($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
@@ -141,34 +146,26 @@
         }
 
         $errorlist=array();
-        $idRol =  "";
-        $statusRol = "";
+        $numberSities =  "";
 
-        if(isset($arg->idRol)){
-            $idRol =  $arg->idRol;
+        if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
         }else{
-            array_push($errorlist,"Error: falta parametro idRol");
-        }
-        if(isset($arg->statusRol)){
-            $statusRol =  $arg->statusRol;
-        }
-        else{
-            array_push($errorlist,"Error: falta parametro statusRol");
+            array_push($errorlist,"Error: falta parametro numberSities");
         }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist));
         }
 
-        $idRol =  $arg->idRol;
-        $statusRol = $arg->statusRol;
+        $numberSities =  $arg->numberSities;
 
-        $_rol = new rol($_db);
-        $responseDelete = $_rol->changeStateRolDb($idRol, $statusRol);
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeNumberSitiesDb($numberSities);
 
         if ( $responseDelete){
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado exitosa"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
         }
 
         $timeProcess = microtime(true)-$startTime;
@@ -176,7 +173,201 @@
         $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
         $_log->notice($mensaje);
         return $response;
-    }*/
+    }
+
+    function changeNumberPhone($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $numberPhone =  "";
+
+        if(isset($arg->numberPhone)){
+            $numberPhone =  $arg->numberPhone;
+        }else{
+            array_push($errorlist,"Error: falta parametro numberPhone");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $numberPhone =  $arg->numberPhone;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeNumberPhoneDb($numberPhone);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function changeGroupTelegram($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $groupTelegram =  "";
+
+        if(isset($arg->groupTelegram)){
+            $groupTelegram =  $arg->groupTelegram;
+        }else{
+            array_push($errorlist,"Error: falta parametro groupTelegram");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $groupTelegram =  $arg->groupTelegram;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeGroupTelegramDb($groupTelegram);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function changeTokenBot($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $tokenBot =  "";
+
+        if(isset($arg->tokenBot)){
+            $tokenBot =  $arg->tokenBot;
+        }else{
+            array_push($errorlist,"Error: falta parametro tokenBot");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $tokenBot =  $arg->tokenBot;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeTokenBotDb($tokenBot);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function changeHorarioAtencion($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $monO =  "";
+        $monC =  "";
+        $tueO =  "";
+        $tueC =  "";
+        $thurO =  "";
+        $thurC =  "";
+        $wedO =  "";
+        $wedC =  "";
+        $friO =  "";
+        $friC =  "";
+        $satO = "";
+        $satC = "";
+
+        /*if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }*/
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $monO =  $arg->monO;
+        $monC =  $arg->monC;
+        $tueC =  $arg->tueC;
+        $tueO =  $arg->thurO;
+        $thurC =  $arg->thurC;
+        $thurO =  $arg->thurO;
+        $wedC =  $arg->wedC;
+        $wedO =  $arg->wedO;
+        $friC =  $arg->friC;
+        $friO =  $arg->friO;
+        $satC =  $arg->satC;
+        $satO =  $arg->satO;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeHorarioAtencionDb($monO, $tueO, $wedO, $thurO, $friO, $satO, $monC, $tueC, $wedC, $thurC, $friC, $satC);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
 
     function listConfiguration(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);

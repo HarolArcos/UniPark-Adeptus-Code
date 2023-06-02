@@ -10,6 +10,9 @@ class configuration {
     private $_db;
     private $idConfiguration,$nameConfiguration,$value1Configuration,$value2Configuration;
 
+    private $monO, $monC, $tueO, $tueC, $wedO, $wedC, $satO, $satC, $friO, $friC, $thurO, $thurC;
+    private $numberSities, $numberPhone, $tokenTelegram, $groupTelegram; 
+
     function __construct($_db,$idConfiguration=0){
         
         $this->_db=$_db;
@@ -24,6 +27,21 @@ class configuration {
         unset($this->nameConfiguration);
         unset($this->value1Configuration);
         unset($this->value2Configuration);
+
+        unset($this->monC);
+        unset($this->monO);
+        unset($this->tueO);
+        unset($this->tueC);
+        unset($this->thurC);
+        unset($this->thurO);
+        unset($this->wedC);
+        unset($this->wedO);
+        unset($this->friC);
+        unset($this->friO);
+        unset($this->numberPhone);
+        unset($this->numberSities);
+        unset($this->groupTelegram);
+        unset($this->tokenTelegram);
     }
 
     private function createLog($fileName, $logMessage, $tipeError){
@@ -154,6 +172,120 @@ class configuration {
         }
         return $response;
     }
+
+    public function changeNumberSitiesDb($numberSities){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$numberSities' WHERE configuracion_id = 1";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( "numberSities" => $numberSities),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "numberSities" => $numberSities),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeNumberPhoneDb($numberPhone){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$numberPhone' WHERE configuracion_id = 2";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( "numberSities" => $numberPhone),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "numberPhone" => $numberPhone),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeGroupTelegramDb($groupTelegram){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$groupTelegram' WHERE configuracion_id = 3";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( "groupTelegram" => $groupTelegram),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "groupTelegram" => $groupTelegram),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeTokenBotDb($tokenBot){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$tokenBot' WHERE configuracion_id = 4";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( "tokenBot" => $tokenBot),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "tokenBot" => $tokenBot),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeHorarioAtencionDb($monO, $tueO, $wedO, $thurO, $friO, $satO, $monC, $tueC, $wedC, $thurC, $friC, $satC){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$monO', configuracion_valor2 = '$monC' WHERE configuracion_id = 5;
+        UPDATE configuracion SET configuracion_valor1 = '$tueO', configuracion_valor2 = '$tueC' WHERE configuracion_id = 6;
+        UPDATE configuracion SET configuracion_valor1 = '$wedO', configuracion_valor2 = '$wedC' WHERE configuracion_id = 7;
+        UPDATE configuracion SET configuracion_valor1 = '$thurO', configuracion_valor2 = '$thurC' WHERE configuracion_id = 8;
+        UPDATE configuracion SET configuracion_valor1 = '$friO', configuracion_valor2 = '$friC' WHERE configuracion_id = 9;
+        UPDATE configuracion SET configuracion_valor1 = '$satO', configuracion_valor2 = '$satC' WHERE configuracion_id = 10;
+        
+        ";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( "monO" => $monO, "monC" => $monC,
+                                            "tueO" => $tueO, "tueC" => $tueC,
+                                            "thurO" => $thurO, "thurC" => $thurC,
+                                            "wedO" => $wedO, "wedC" => $wedC,
+                                            "friO" => $friO, "friC" => $friC,
+                                            "satO" => $satO, "satC" => $satC
+        ),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "monO" => $monO, "monC" => $monC,
+                                            "tueO" => $tueO, "tueC" => $tueC,
+                                            "thurO" => $thurO, "thurC" => $thurC,
+                                            "wedO" => $wedO, "wedC" => $wedC,
+                                            "friO" => $friO, "friC" => $friC,
+                                            "satO" => $satO, "satC" => $satC),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     /*public function changeStateRolDb($idRol, $statusRol){
         $response = false;
         $sql =  "UPDATE rol SET rol_estado = $statusRol WHERE rol_id = $idRol";
