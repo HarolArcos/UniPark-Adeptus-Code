@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
-//import "./FormPersona.css";
+import "./FormPersona.css";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferencia2";
-import { useFetch } from "../../hooks/HookFetchListData";
-//import DateTime from "react-datetime";
+//import { useFetch } from "../../hooks/HookFetchListData";
 
-const FormularioEmpleado = ({
+const FormularioEditarPersona = ({
   asunto,
   cancelar,
   persona,
@@ -23,25 +22,21 @@ const FormularioEmpleado = ({
   };
   const { data, fetchData } = useFetchSendData();
 
-  const { data: lista, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
-  );
-
-  //const {numPersonas: listaPesonas} = useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson");
-
-  const cantidadEmp = lista.length + 1;
+//   const { data: lista, loading } = useFetch(
+//     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+//   );
   useEffect(() => {
-    console.log('esto es data:',data);
-    console.log(cantidadEmp);
+    console.log(data);
     if (data.desError) {
 
       localStorage.setItem("Error", data.desError);
     }
-  }, [data, cantidadEmp]);
+  }, [data]);
+
+  console.log(persona);
 
   return (
-    <>
-      <Formik
+    <Formik
       initialValues={
         persona
           ? {
@@ -55,10 +50,6 @@ const FormularioEmpleado = ({
               statusPerson: persona.persona_estado,
               nicknamePerson: persona.persona_nickname,
               passwordPerson: persona.persona_contraseña,
-              idSchedule: persona.horario_id,
-              daySchedule :  persona.horario_dia,
-              entrySchedule:  persona.horario_entrada,
-              departureSchedule:  persona.horario_salida
             }
           : {
               typePerson: "",
@@ -70,9 +61,6 @@ const FormularioEmpleado = ({
               statusPerson: "1",
               nicknamePerson: "",
               passwordPerson: "",
-              daySchedule :  "Lunes",
-              entrySchedule:  "",
-              departureSchedule:  ""
             }
       }
       validate={(values) => {
@@ -126,16 +114,17 @@ const FormularioEmpleado = ({
         } else {
           if (/[^0-9]/i.test(values.ciPerson)) {
             errors.ciPerson = "Se ingreso un caracter invalido ";
-          } else {
-            if (!loading) {
-              if (
-                lista.filter((CI) => CI.persona_ci === values.ciPerson).length >
-                0
-              ) {
-                errors.ciPerson = "CI ya registrado a otro usuario";
-              }
-            }
-          }
+           } 
+        //else {
+        //     if (!loading) {
+        //       if (
+        //         lista.filter((CI) => CI.persona_ci === values.ciPerson).length >
+        //         0
+        //       ) {
+        //         errors.ciPerson = "CI ya registrado a otro usuario";
+        //       }
+        //     }
+        //   }
         }
 
         if (!values.phonePerson) {
@@ -152,17 +141,18 @@ const FormularioEmpleado = ({
             ) {
               errors.phonePerson = "Un número de teléfono debe iniciar con 6 o 7";
         
-            } else {
-              if (!loading) {
-                if (
-                  lista.filter(
-                    (CI) => CI.persona_telefono === values.phonePerson
-                  ).length > 0
-                ) {
-                  errors.phonePerson = "Teléfono ya registrado a otro usuario";
-                }
-              }
-            }
+            } 
+            // else {
+            //   if (!loading) {
+            //     if (
+            //       lista.filter(
+            //         (CI) => CI.persona_telefono === values.phonePerson
+            //       ).length > 0
+            //     ) {
+            //       errors.phonePerson = "Teléfono ya registrado a otro usuario";
+            //     }
+            //   }
+            // }
           }
         }
 
@@ -180,18 +170,18 @@ const FormularioEmpleado = ({
           if(/[^A-Za-z-0-9\u00f1\u00d1\u00E0\u00FC\u00DC]/i.test(
             values.nicknamePerson
           )){errors.nicknamePerson = "Se ingreso un caracter invalido" }
-          else{
-          if (!loading) {
-            if (
-              lista.filter(
-                (CI) =>
-                  CI.persona_nickname.toLowerCase() ===
-                  values.nicknamePerson.toLowerCase()
-              ).length > 0
-            ) {
-              errors.nicknamePerson = "Nickname ya registrado a otro usuario";
-            }
-          }}
+        //   else{
+        //   if (!loading) {
+        //     if (
+        //       lista.filter(
+        //         (CI) =>
+        //           CI.persona_nickname.toLowerCase() ===
+        //           values.nicknamePerson.toLowerCase()
+        //       ).length > 0
+        //     ) {
+        //       errors.nicknamePerson = "Nickname ya registrado a otro usuario";
+        //     }
+        //   }}
         }
 
         if (!values.passwordPerson) {
@@ -210,30 +200,7 @@ const FormularioEmpleado = ({
       onSubmit={async (values) => {
         console.log(values);
         values.telegramPerson = values.phonePerson;
-        const horariosChange = {
-          idSchedule : values.idSchedule,
-          daySchedule :  values.daySchedule,
-          entrySchedule : values.entrySchedule,
-          departureSchedule :  values.departureSchedule
-        }
-        // const horarioInsert = {
-        //   idPerson : values.idPerson,
-        //   daySchedule :  values.daySchedule,
-        //   entrySchedule : values.entrySchedule,
-        //   departureSchedule :  values.departureSchedule
-        // }
-        const datosEmpleado = {
-          typePerson : values.typePerson,
-          namePerson : values.namePerson,
-          lastNamePerson : values.lastNamePerson,
-          ciPerson :  values.ciPerson,
-          phonePerson: values.phonePerson,
-          telegramPerson : values.phonePerson,
-          statusPerson: values.statusPerson,
-          nicknamePerson: values.nicknamePerson,
-          passwordPerson: values.passwordPerson
-        }
-        //console.log('horarios',horarios);
+        console.log("sadw");
         if (persona) {
           console.log(values, "editar personas");
 
@@ -242,20 +209,19 @@ const FormularioEmpleado = ({
             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
             values
           );
-          fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",
-            horariosChange
-          );
           cancelar();
+          window.location.reload();
         } else {
-          console.log('Insercion datos persona --------------->', datosEmpleado);
-          //console.log("pereza");
+          console.log(values);
+          console.log("pereza");
           fetchData(
             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
-            datosEmpleado
+            values
           );
-          //window.location.reload();
-          cancelar();
+
+          console.log(data);
+          window.location.reload();
+          //cancelar();
         }
       }}
     >
@@ -345,6 +311,24 @@ const FormularioEmpleado = ({
                 ></ErrorMessage>
               </Form.Group>
             </div>
+
+            {/* <Form.Group className="inputGroup" controlId="telegramPerson">
+                <Form.Label className="label">Telegram</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="telegramPerson"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.telegramPerson}
+                />
+                <ErrorMessage
+                  name="telegramPerson"
+                  component={() => (
+                    <div className="text-danger">{errors.telegramPerson}</div>
+                  )}
+                ></ErrorMessage>
+              </Form.Group> */}
+
             <div
               className="col-md-2 "
               style={{ width: "220.60000000000002px" }}
@@ -397,8 +381,8 @@ const FormularioEmpleado = ({
                 <Form.Label className="label">Tipo de Persona</Form.Label>
 
                 <ComboboxReferences 
-                onChange={handleValueChange} 
-                readOnly = {soloLectura}/>
+                onChange={handleValueChange}
+                readOnly = {soloLectura} />
                 
                 <ErrorMessage
                   name="typePerson"
@@ -409,20 +393,20 @@ const FormularioEmpleado = ({
               </Form.Group>
             </div>
           </div>
+
           <br />
           <Modal.Footer>
             <Button variant="secondary" onClick={cancelar}>
               Cancelar
             </Button>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
+            <Button variant="primary" type="submit" onClick={handleSubmit} disabled = {soloLectura}>
               {asunto}
             </Button>
           </Modal.Footer>
         </Form>
       )}
     </Formik>
-    </>
   );
 };
 
-export default FormularioEmpleado;
+export default FormularioEditarPersona;

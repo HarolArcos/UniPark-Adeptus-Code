@@ -8,7 +8,7 @@ import { useFetch } from "../../hooks/HookFetchListData";
 import Modal from "../Modal/Modal";
 import FormularioEmpleado from "./FormEmployee";
 //import FormularioEmpleado from "./FormEmployee";
-//import "./Persons.css";
+import "./Employee.css";
 
 export default function Employee(){   
    
@@ -16,7 +16,7 @@ export default function Employee(){
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
+        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee'
     )
     
         setTimeout(() => {
@@ -66,11 +66,6 @@ export default function Employee(){
         <Aside></Aside>
 
         <div className="content-wrapper contenteSites-body">
-        
-                {localStorage.getItem("Error") ?
-                <div className="text-danger">{localStorage.getItem("Error")}</div>
-                
-                :<span></span>}
             <div className="bodyItems">
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
@@ -106,7 +101,7 @@ export default function Employee(){
                             </tr>
                         ): (
                             data.map((persona) => (
-                                    <tr key={persona.persona_id}>
+                                    <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
                                         <td>{persona.persona_telefono}</td>

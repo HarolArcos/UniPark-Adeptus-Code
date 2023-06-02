@@ -1,26 +1,23 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
-import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
-//import { CSVLink } from "react-csv";
-import { useFetch } from "../../hooks/HookFetchListData";
 import Modal from "../Modal/Modal";
-import FormularioPersona from './FormPersona';
-import "./Persons.css";
-//import axios from "axios";
+import { Form, Table } from "react-bootstrap";
+import { useState, useEffect } from "react";
+//import FormularioPersona from "./FormPersona";
+import { useFetch } from "../../hooks/HookFetchListData";
+import FormularioEditarPersona from "./FormEditPerson";
 
-export default function Persons(){   
-   
+export default function ViewPerson(){
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
-    
+
     const [personas,setPersonas] =  useState([]);
-    const {data} = useFetch(
+    const {data, loading} = useFetch(
         'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient'
     )
-
     const getClients = async () => {
         await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
             .then(response => response.json())
@@ -36,43 +33,59 @@ export default function Persons(){
     useEffect(() => {
         getClients();
     }, []);
-    
-        setTimeout(() => {
-            localStorage.removeItem("Error")
-           }, 3000)
-       
     //----------------------ShowModal-------------------------------
     
-    const [showCreate, setShowCreate] = useState(false);
+    const [showView, setShowView] = useState(false);
     
+    //const [showEdit, setShowEdit] = useState(false);
+     
+    //const [showCreate, setShowCreate] = useState(false);
+     
     //----------------------Cliente para:-------------------------------
     //------Editar :
+    const [personaSeleccionado, setPersonaSeleccionado] = useState(null);
+        
     useEffect(() => {
         setPersonas(data);
+        console.log(data);
     }, [data]);
     
     //-----------------------Activate-------------------------------------------
+    //------Edit Modal
+    // const handleEditar = (persona) => {
+    //     //setShowEdit(true);
+    //     setPersonaSeleccionado(persona);
+    // };
     
-    //-----Create Modal
-    const handleCreate = () => {
-        setShowCreate(true);
+    //-----View Modal
+    const handleView = (cliente) => {
+        setShowView(true);
+        setPersonaSeleccionado(cliente);
     };
+
+    //-----Create Modal
+    // const handleCreate = () => {
+    //     setShowCreate(true);
+    // };
     
     //---Desactive Any Modal
     const handleCancelar = () => {
-        setShowCreate(false);
+        //setShowEdit(false);
+        setShowView(false);
+        // setShowCreate(false);
         console.log(data);
     };
     
     //-----------------------Crud-------------------------------------------
-    //-------Crear
-    const handleGuardarNuevo = (personaNueva) => {
-        personaNueva.id = personas.lengthb;
-            personas.push(personaNueva);
-            const nuevasPersonas = personas;
-        setPersonas(nuevasPersonas);
-    };
-
+    //------Edit
+    // const handleGuardarEditado = (personaEditado) => {
+    //     const nuevasPersonas = personas.map((persona) =>
+    //     persona.id === personaEditado.id ? personaEditado : persona
+    //     );
+    //     setPersonas(nuevasPersonas);
+    //     //setShowCreate(false);
+    //     setPersonaSeleccionado(null);
+    // };
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
         setBusqueda(e.target.value);
@@ -97,32 +110,20 @@ export default function Persons(){
 
     return(
         <>
-        <Header></Header>
-        <Aside></Aside>
+            <Header></Header>
+            <Aside></Aside>
 
-        <div className="content-wrapper contenteSites-body">
-        
-                {/* {localStorage.getItem("Error") ?
-                <div className="text-danger">{localStorage.getItem("Error")}</div>
-                
-                :<span></span>} */}
+            <div className="content-wrapper">
             <div className="bodyItems">
                 <div className="buttonSection">
-                    <ButtonGroup className="buttonGroup">
-                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                        {/* <Button variant="success" className="button"> 
-                            <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
-                        </Button> */}
-                    </ButtonGroup>
                     <Form.Control 
-                        className="searchBar"
+                        className="searchBar2"
                         type="text"
                         placeholder="Buscar..."
                         value={busqueda}
                         onChange={handleChangeSerch}
                     />
                 </div>
-                
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
@@ -132,16 +133,16 @@ export default function Persons(){
                             <th> CI </th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {loading ? (
+                        {loading ? (
                             <tr>
                                 <td colSpan={"3"} >Cargando...</td>
                             </tr>
-                        ): ( */}
-                            {
-                                clientes.map((persona) => (
+                        ): (
+                            clientes.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
@@ -149,31 +150,51 @@ export default function Persons(){
                                         <td>{persona.persona_ci}</td>
                                         <td>{persona.personatipo}</td>
                                         <td>{persona.personaestado}</td>
+                                        <td>
+                                            <button className='btn btn-success btn-md mr-1 ' onClick={() => handleView(persona)}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                                </svg>
+                                            </button>
+                                        </td>
                                     </tr>
-                                ))
-                            }
-                        {/* )} */}
+                            ))
+                        )}
                     </tbody>
                 </Table>
-                
 
-                <Modal
-                mostrarModal={showCreate}
-                title = 'Crear Nueva Persona'
+                {/* <Modal
+                mostrarModal={showEdit}
+                title = 'Editar Persona'
                 contend = {
-                <FormularioPersona
-                asunto = "Guardar Persona"
+                <FormularioEditarPersona
+                asunto ='Guardar Cambios'
+                persona= {personaSeleccionado}
                 cancelar={handleCancelar}
-                añadirNuevo = {handleGuardarNuevo}
-                ></FormularioPersona>}
+                actualizarPersona = {handleGuardarEditado}
+                ></FormularioEditarPersona>}
                 hide = {handleCancelar}
                 >
                 </Modal>
+                 */}
+                 <Modal
+                    mostrarModal={showView}
+                    title = 'Detalle Cliente '
+                    contend = {
+                    <FormularioEditarPersona
+                    asunto ='Guardar Cambios'
+                    persona= {personaSeleccionado}
+                    cancelar={handleCancelar}
+                    soloLectura = {true}
+                    ></FormularioEditarPersona>}
+                    hide = {handleCancelar}
+                    >
+                    </Modal>
             </div>
-        </div>
-        <br></br>
-        
-        <Footer></Footer>
+            </div>
+
+            <Footer></Footer>
         </>
     )
 }
