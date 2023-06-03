@@ -12,6 +12,7 @@
     $server->Register("listSubscriptionActive");
     $server->Register("listSubscriptionInactive");
     $server->Register("editSubscription");
+    $server->Register("listSubscriptionActiveExpired");
     $server->Register("changeStateSubscription");
     $server->Register("listDisponibles");
     $server->Register("listOcupados");
