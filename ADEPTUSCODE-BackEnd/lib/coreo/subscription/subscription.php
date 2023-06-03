@@ -185,22 +185,44 @@ class subscription {
     }
     public function changeStateSubscriptionDb($idSubscription, $statusSubscription){
         $response = false;
-        //$sql =  "UPDATE suscripcion SET suscripcion_estado = $statusSubscription WHERE suscripcion_id = $idSubscription";
         $sql2= "UPDATE suscripcion
                 SET suscripcion_estado = $statusSubscription,
-                suscripcion_numero_parqueo = CASE WHEN $statusSubscription IN (9,11) THEN 0 ELSE suscripcion_numero_parqueo END
+                suscripcion_activacion = (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription),
+                suscripcion_numero_parqueo = CASE WHEN $statusSubscription IN (9,11) THEN 0 ELSE suscripcion_numero_parqueo END,
+
+                CASE
+               suscripcion_expiracion = WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'semestral' THEN (date_trunc('second', current_timestamp + interval '6 months')) - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription))
+               suscripcion_expiracion = WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'mensual' THEN date_trunc('second', current_timestamp + interval '1 months') - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription))
+               suscripcion_expiracion = WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'anual' THEN date_trunc('second', current_timestamp + interval '1 year')  - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription))
+                ELSE date_trunc('second', current_timestamp)
+                END
+
                 WHERE suscripcion_id = $idSubscription";
-        $rs = $this->_db->query($sql2);
+
+        $sql = "UPDATE suscripcion
+        SET suscripcion_estado = $statusSubscription,
+        suscripcion_activacion = (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription),
+        suscripcion_numero_parqueo = CASE WHEN $statusSubscription IN (9,11) THEN 0 ELSE suscripcion_numero_parqueo END,
+        suscripcion_expiracion = 
+            CASE
+                WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'semestral' THEN (date_trunc('second', current_timestamp + interval '6 months')) - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
+                WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'mensual' THEN date_trunc('second', current_timestamp + interval '1 month') - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
+                WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'anual' THEN date_trunc('second', current_timestamp + interval '1 year') - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
+                ELSE date_trunc('second', current_timestamp)
+            END
+        WHERE suscripcion_id = $idSubscription";
+
+        $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idSubscription" => $idSubscription,"statusSuscription" => $statusSubscription),
-                            "sql"=>$sql2,
+                            "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
             $arrLog = array("input"=>array( "idSubscription" => $idSubscription,"statusSuscription" => $statusSubscription),
                             "output"=>$response,
-                            "sql"=>$sql2);
+                            "sql"=>$sql);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;

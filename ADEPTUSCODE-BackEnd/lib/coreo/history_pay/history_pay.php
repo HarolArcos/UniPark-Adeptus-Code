@@ -163,7 +163,8 @@ class history_pay {
         FROM persona p
         JOIN suscripcion s ON p.persona_id = s.persona_id
         JOIN tarifa t ON s.tarifa_id = t.tarifa_id
-        LEFT JOIN historial_pago hp ON s.suscripcion_id = hp.suscripcion_id";
+        LEFT JOIN historial_pago hp ON s.suscripcion_id = hp.suscripcion_id
+        WHERE s.suscripcion_numero_parqueo <> 0";
                 $sql = "SELECT * FROM historial_pago";
         $rs = $this->_db->select($sql3);
         if($this->_db->getLastError()) {
