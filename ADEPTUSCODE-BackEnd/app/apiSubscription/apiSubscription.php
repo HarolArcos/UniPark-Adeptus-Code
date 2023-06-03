@@ -11,6 +11,7 @@
     $server->Register("listSubscriptionInProgress");
     $server->Register("listSubscriptionActive");
     $server->Register("listSubscriptionInactive");
+    $server->Register("listSubscriptionMora");
     $server->Register("editSubscription");
     $server->Register("listSubscriptionActiveExpired");
     $server->Register("changeStateSubscription");
@@ -330,6 +331,27 @@
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones inhabilitadas"));
             $mensaje = "No se pudo listar las suscripciones inhabilitadas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listSubscriptionMora(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->listSubscriptionMoraDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las suscripciones inabilitadas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones en mora"));
+            $mensaje = "No se pudo listar las suscripciones en mora - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }

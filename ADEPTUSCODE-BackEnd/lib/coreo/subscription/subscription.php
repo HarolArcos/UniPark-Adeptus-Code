@@ -188,7 +188,7 @@ class subscription {
         //$sql =  "UPDATE suscripcion SET suscripcion_estado = $statusSubscription WHERE suscripcion_id = $idSubscription";
         $sql2= "UPDATE suscripcion
                 SET suscripcion_estado = $statusSubscription,
-                suscripcion_numero_parqueo = CASE WHEN $statusSubscription = 11 THEN 0 ELSE suscripcion_numero_parqueo END
+                suscripcion_numero_parqueo = CASE WHEN $statusSubscription IN (9,11) THEN 0 ELSE suscripcion_numero_parqueo END
                 WHERE suscripcion_id = $idSubscription";
         $rs = $this->_db->query($sql2);
         if($this->_db->getLastError()) {
@@ -350,6 +350,33 @@ class subscription {
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
         INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id
 		WHERE r.referencia_valor = 'inhabilitada'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listSubscriptionMoraDb(){
+        $response = false;
+        $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        r.referencia_valor,
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
+        FROM suscripcion s
+        INNER JOIN persona p ON s.persona_id = p.persona_id
+        INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id
+		WHERE r.referencia_valor = 'mora'";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
