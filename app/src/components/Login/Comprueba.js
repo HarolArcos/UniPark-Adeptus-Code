@@ -1,4 +1,5 @@
 
+
 export default function Comprueba (navigate, datos,setUserglobal) {
     
     if (datos.desError) {

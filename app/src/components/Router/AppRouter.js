@@ -32,6 +32,7 @@ import { Tarifa } from "../Tarifa/Tarifa";
 import Mensaje from "../MensajesGlobales/GroupTelegram";
 import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
 import ListaPag from "../Listar Pagos/ListaPago";
+import Configurations from "../Configuraciones/Configurations";
 
 
 export const AppRouter = () => {
@@ -71,6 +72,7 @@ export const AppRouter = () => {
                     <Route path="/MensajeGlobal"        element={ <Mensaje/> } />
                     <Route path="/Reclamos"             element={ <ReclamoConsulta/> } />
                     <Route path="/ListaPagos"             element={ <ListaPag/> } />
+                    <Route path="/Configurar"             element={ <Configurations/> } />
                 </Routes>
         </Router>
     )
