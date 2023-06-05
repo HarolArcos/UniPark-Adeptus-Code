@@ -5,7 +5,6 @@ import {Table,Form} from 'react-bootstrap';// aqui se estaba importando esto: Bu
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-// import { useFetch } from '../../hooks/HookFetchListData';
 import { useSend } from '../../hooks/HookList';
 
 import "./Vehicle.css"

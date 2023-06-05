@@ -10,6 +10,8 @@ import { useSend } from '../../hooks/HookList';
 import "./Solicitude.css"
 import { useContext } from "react"
 import { DataUser } from '../context/UserContext.jsx';
+import PDFDocument from './PrintPdfQr';
+import { PDFViewer } from '@react-pdf/renderer';
 
 export const Solicitude = () => {
    
@@ -24,6 +26,7 @@ export const Solicitude = () => {
     //----------------------ShowModal-------------------------------
     
     const [showMod, setShowMod] = useState(false);
+    const [showModPDF, setShowModPDF] = useState(false);
      
     //----------------------Cliente para:-------------------------------
     //------Editar :
@@ -46,12 +49,25 @@ export const Solicitude = () => {
         console.log(data,suscripcion);
     }, [data]);
 
+
+
+    // const handleGeneratePDF = () => {
+    //     toBlob(<PDFDocument />)
+    //       .then((blob) => {
+    //         // Aquí puedes guardar el archivo PDF en el sistema local o enviarlo a un servidor
+    //       })
+    //       .catch((error) => {
+    //         console.error('Error al generar el PDF:', error);
+    //       });
+    //   };
+
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
     const handleMod= () => {
         setShowMod(true);
     };
     
+
     
     //---Desactive Any Modal
     const handleCancelar = async () => {
@@ -154,6 +170,23 @@ export const Solicitude = () => {
                 <Formulario
                 cancelar={handleCancelar}
                 ></Formulario>}
+                hide = {handleCancelar}
+                >
+                </Modal>
+
+                <Modal
+	            tamaño ="md"
+                mostrarModal={showMod}
+                title = 'Solicitud'
+                contend = {
+                    <>
+                    <h1>Generador de PDF</h1>
+                    <button >Generar PDF</button>
+                    <PDFViewer>
+                      <PDFDocument />
+                    </PDFViewer>
+                    </>
+                }
                 hide = {handleCancelar}
                 >
                 </Modal>
