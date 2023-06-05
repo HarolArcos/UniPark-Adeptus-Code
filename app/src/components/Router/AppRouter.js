@@ -32,6 +32,8 @@ import { Tarifa } from "../Tarifa/Tarifa";
 import Mensaje from "../MensajesGlobales/GroupTelegram";
 import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
 import { SubscriptionInMoraToChangeStatus } from "../Subscription/SuscriptionInMoraToChangeStatus";
+import ListaPag from "../Listar Pagos/ListaPago";
+import Configurations from "../Configuraciones/Configurations";
 
 
 export const AppRouter = () => {
@@ -73,6 +75,8 @@ export const AppRouter = () => {
                     <Route path="/listaEnMoraEstado"    element={ <SubscriptionInMoraToChangeStatus /> } />
                     <Route path="/listaEnProcesoEstado" element={ <SubscriptionInMoraToChangeStatus tipo={1}/> } />
                     
+                    <Route path="/ListaPagos"             element={ <ListaPag/> } />
+                    <Route path="/Configurar"             element={ <Configurations/> } />
                 </Routes>
         </Router>
     )

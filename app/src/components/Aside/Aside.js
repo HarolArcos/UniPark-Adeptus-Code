@@ -15,7 +15,9 @@ export default function Aside() {
     
   
   return (
-    <aside className="main-sidebar sidebar-dark-primary elevation-4 content " style={{ position: "fixed"}} >
+    <aside className="main-sidebar sidebar-dark-primary elevation-4 content " style={{ position: "fixed",
+    overflowY: "auto",
+    maxHeight: "100vh",}} >
       {/* Brand Logo */}
 
       <Link to="#" className="brand-link">
@@ -23,8 +25,7 @@ export default function Aside() {
           src="dist/img/uni-park.png"
           alt="AdminLTE Logo"
           className="brand-image img-circle elevation-3"
-          style={{
-           
+          style={{           
             opacity: ".8",
             marginLeft: "-1px",
             marginTop: "-15px",
@@ -69,12 +70,29 @@ export default function Aside() {
             data-accordion="false"
           >
             <Opcions />
-            <br/><br/><br/>
+            
           </ul>
         </nav>
         {/* /.sidebar-menu */}
       </div>
       {/* /.sidebar */}
+      <style>
+          {`
+            ::-webkit-scrollbar {
+              width: 8px;
+              background-color: #f5f5f5;
+            }
+
+            ::-webkit-scrollbar-thumb {
+              background-color: #888;
+              border-radius: 4px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+              background-color: #555;
+            }
+          `}
+        </style>
     </aside>
   );
 }

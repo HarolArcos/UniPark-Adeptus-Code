@@ -1,22 +1,45 @@
-import React from 'react'
-import Aside from '../Aside/Aside'
-// import Content from '../Content/Content'
-import Footer from '../Footer/Footer'
-import Header from '../Header/Header'
-import { Outlet } from 'react-router-dom'
-import DatosUser from '../DatosUser/DatosUser'
+import React, { useState } from 'react';
+import Aside from '../Aside/Aside';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import { Outlet } from 'react-router-dom';
+import DatosUser from '../DatosUser/DatosUser';
+import { useFetch } from '../../hooks/HookFetchListData';
+import { useFetchSendData } from '../../hooks/HookFetchSendData';
 
 export const Main = () => {
-    return (
-        <div>
-            <Header></Header>
-            <Aside></Aside>
-            <DatosUser/>
-            {/* <Content></Content> */}
-            <Outlet/>
-            <Footer></Footer>
-        </div>
-    )
-}
+  const [isFetched, setIsFetched] = useState(false); // Nuevo estado para controlar si la llamada ya se ha realizado
 
+  const { data: datos, fetchData } = useFetchSendData();
+  const { data, loading, error } = useFetch(
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActiveExpired"
+  );
 
+  if (!loading && !isFetched) {
+    if (data.length !== 0 && !data.desError) {
+      console.log(data);
+      data.map((person) =>
+        fetchData(
+          "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/changeStateSubscription",
+          {
+            idSubscription: person.suscripcion_id,
+            statusSubscription: 27,
+          }
+        )
+      );
+      setIsFetched(true); // Actualiza el estado para evitar futuras llamadas
+    } else {
+      console.log("terminado");
+    }
+  }
+
+  return (
+    <div>
+      <Header></Header>
+      <Aside></Aside>
+      <DatosUser />
+      <Outlet />
+      <Footer></Footer>
+    </div>
+  );
+};
