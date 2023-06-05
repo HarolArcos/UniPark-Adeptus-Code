@@ -10,8 +10,6 @@ import { useSend } from '../../hooks/HookList';
 import "./Solicitude.css"
 import { useContext } from "react"
 import { DataUser } from '../context/UserContext.jsx';
-import PDFDocument from './PrintPdfQr';
-import { PDFViewer } from '@react-pdf/renderer';
 
 export const Solicitude = () => {
    
@@ -174,22 +172,7 @@ export const Solicitude = () => {
                 >
                 </Modal>
 
-                <Modal
-	            tamaño ="md"
-                mostrarModal={showMod}
-                title = 'Solicitud'
-                contend = {
-                    <>
-                    <h1>Generador de PDF</h1>
-                    <button >Generar PDF</button>
-                    <PDFViewer>
-                      <PDFDocument />
-                    </PDFViewer>
-                    </>
-                }
-                hide = {handleCancelar}
-                >
-                </Modal>
+               
             </div>
         </div>
 
