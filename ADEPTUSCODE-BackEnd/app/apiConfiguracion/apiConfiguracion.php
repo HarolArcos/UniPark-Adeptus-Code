@@ -6,12 +6,16 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertConfiguration");
     $server->Register("listConfiguration");
+    $server->Register("listConfigurationNumSitios");
+    $server->Register("listConfigurationHorario");
+    $server->Register("listConfigurationContacto");
     $server->Register("editConfiguration");
     $server->Register("changeNumberPhone");
     $server->Register("changeNumberSities");
     $server->Register("changeGroupTelegram");
     $server->Register("changeTokenBot");
     $server->Register("changeHorarioAtencion");
+    $server->Register("changeHorarioAtencionSaturday");
     $server->start();
 
     function insertConfiguration($arg){
@@ -343,7 +347,7 @@
         $monO =  $arg->monO;
         $monC =  $arg->monC;
         $tueC =  $arg->tueC;
-        $tueO =  $arg->thurO;
+        $tueO =  $arg->tueO;
         $thurC =  $arg->thurC;
         $thurO =  $arg->thurO;
         $wedC =  $arg->wedC;
@@ -369,6 +373,283 @@
         return $response;
     }
 
+    function changeHorarioAtencionMonday($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $monO =  "";
+        $monC =  "";
+
+        /*if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }*/
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $monO =  $arg->monO;
+        $monC =  $arg->monC;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeHorarioAtencionLunesDb($monO, $monC);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function changeHorarioAtencionTuesday($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $tueO =  "";
+        $tueC =  "";
+
+        /*if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }*/
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        
+        $tueC =  $arg->tueC;
+        $tueO =  $arg->tueO;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeHorarioAtencionMartesDb( $tueO,  $tueC);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function changeHorarioAtencionWednesday($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        
+        $wedO =  "";
+        $wedC =  "";
+
+        /*if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }*/
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+       
+        $wedC =  $arg->wedC;
+        $wedO =  $arg->wedO;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeHorarioAtencionMiercolesDb($wedO, $wedC);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function changeHorarioAtencionThursday($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+       
+        $thurO =  "";
+        $thurC =  "";
+
+        /*if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }*/
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+        $thurC =  $arg->thurC;
+        $thurO =  $arg->thurO;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeHorarioAtencionJuevesDb($thurO, $thurC);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function changeHorarioAtencionFriday($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        
+        $friO =  "";
+        $friC =  "";
+
+        /*if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }*/
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        
+        $friC =  $arg->friC;
+        $friO =  $arg->friO;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeHorarioAtencionViernesDb($friO, $friC);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function changeHorarioAtencionSaturday($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+       
+        $satO = "";
+        $satC = "";
+
+        /*if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }*/
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+       
+        $satC =  $arg->satC;
+        $satO =  $arg->satO;
+
+        $_conf = new configuration($_db);
+        $responseDelete = $_conf->changeHorarioAtencionSabadoDb($satO,$satC);
+
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio fallido"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $responseDelete;
+    }
+
     function listConfiguration(){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $_db=new dataBasePG(CONNECTION);
@@ -383,6 +664,69 @@
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan configuraciones"));
             $mensaje = "No se pudo listara a los vehiculos - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listConfigurationContacto(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_configuration = new configuration($_db);
+        $responseList = $_configuration->listConfigurationContactoDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente los roles - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan configuraciones"));
+            $mensaje = "No se pudo listara los contactos - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listConfigurationHorario(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_configuration = new configuration($_db);
+        $responseList = $_configuration->listConfigurationHorarioDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente los roles - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan configuraciones"));
+            $mensaje = "No se pudo listara a los horarios - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listConfigurationNumSitios(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_configuration = new configuration($_db);
+        $responseList = $_configuration->listConfigurationNumSitiosDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente los roles - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan configuraciones"));
+            $mensaje = "No se pudo listar el numero de sitios - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }

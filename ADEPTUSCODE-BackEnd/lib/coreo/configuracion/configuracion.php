@@ -286,6 +286,137 @@ class configuration {
         return $response;
     }
 
+    public function changeHorarioAtencionLunesDb($monO, $monC){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$monO', configuracion_valor2 = '$monC' WHERE configuracion_id = 5";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( "monO" => $monO, "monC" => $monC
+        ),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "monO" => $monO, "monC" => $monC),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeHorarioAtencionMartesDb($tueO, $tueC){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$tueO', configuracion_valor2 = '$tueC' WHERE configuracion_id = 6";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( 
+                                            "tueO" => $tueO, "tueC" => $tueC
+        ),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( 
+                                            "tueO" => $tueO, "tueC" => $tueC),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeHorarioAtencionMiercolesDb($wedO, $wedC){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$wedO', configuracion_valor2 = '$wedC' WHERE configuracion_id = 7";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( 
+                                            "wedO" => $wedO, "wedC" => $wedC
+        ),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( 
+                                            "wedO" => $wedO, "wedC" => $wedC),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeHorarioAtencionJuevesDb($thurO, $thurC){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$thurO', configuracion_valor2 = '$thurC' WHERE configuracion_id = 8";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( 
+                                            "thurO" => $thurO, "thurC" => $thurC
+        ),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( 
+                                            "thurO" => $thurO, "thurC" => $thurC),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeHorarioAtencionViernesDb($friO, $friC){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$friO', configuracion_valor2 = '$friC' WHERE configuracion_id = 9";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( 
+                                            "friO" => $friO, "friC" => $friC
+        ),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( 
+                                            "friO" => $friO, "friC" => $friC),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function changeHorarioAtencionSabadoDb($satO, $satC){
+        $response = false;
+        $sql =  "UPDATE configuracion SET configuracion_valor1 = '$satO', configuracion_valor2 = '$satC' WHERE configuracion_id = 10 returning configuracion_valor1, configuracion_valor2";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( 
+                                            "satO" => $satO, "satC" => $satC
+        ),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $response2 = array($response);
+            $arrLog = array("input"=>array( 
+                                            "satO" => $satO, "satC" => $satC),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response2;
+    }
+
     /*public function changeStateRolDb($idRol, $statusRol){
         $response = false;
         $sql =  "UPDATE rol SET rol_estado = $statusRol WHERE rol_id = $idRol";
@@ -308,6 +439,78 @@ class configuration {
     public function listConfigurationDb(){
         $response = false;
         $sql =  "SELECT * FROM configuracion";
+        /*$sql = "SELECT r.*, ref.referencia_valor as estadoRol
+        FROM rol r
+        JOIN referencia ref
+        ON r.rol_estado = ref.referencia_id";*/
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listConfigurationHorarioDb(){
+        $response = false;
+        $sql =  "SELECT * FROM configuracion WHERE configuracion_id NOT IN (1,2,3,4)";
+        /*$sql = "SELECT r.*, ref.referencia_valor as estadoRol
+        FROM rol r
+        JOIN referencia ref
+        ON r.rol_estado = ref.referencia_id";*/
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listConfigurationContactoDb(){
+        $response = false;
+        $sql =  "SELECT * FROM configuracion WHERE configuracion_id NOT IN (1,5,6,7,8,9,10)";
+        /*$sql = "SELECT r.*, ref.referencia_valor as estadoRol
+        FROM rol r
+        JOIN referencia ref
+        ON r.rol_estado = ref.referencia_id";*/
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listConfigurationNumSitiosDb(){
+        $response = false;
+        $sql =  "SELECT * FROM configuracion WHERE configuracion_id = 1";
         /*$sql = "SELECT r.*, ref.referencia_valor as estadoRol
         FROM rol r
         JOIN referencia ref
