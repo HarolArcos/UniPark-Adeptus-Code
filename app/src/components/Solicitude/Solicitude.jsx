@@ -24,6 +24,7 @@ export const Solicitude = () => {
     //----------------------ShowModal-------------------------------
     
     const [showMod, setShowMod] = useState(false);
+    const [showModPDF, setShowModPDF] = useState(false);
      
     //----------------------Cliente para:-------------------------------
     //------Editar :
@@ -46,12 +47,25 @@ export const Solicitude = () => {
         console.log(data,suscripcion);
     }, [data]);
 
+
+
+    // const handleGeneratePDF = () => {
+    //     toBlob(<PDFDocument />)
+    //       .then((blob) => {
+    //         // Aquí puedes guardar el archivo PDF en el sistema local o enviarlo a un servidor
+    //       })
+    //       .catch((error) => {
+    //         console.error('Error al generar el PDF:', error);
+    //       });
+    //   };
+
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
     const handleMod= () => {
         setShowMod(true);
     };
     
+
     
     //---Desactive Any Modal
     const handleCancelar = async () => {
@@ -157,6 +171,8 @@ export const Solicitude = () => {
                 hide = {handleCancelar}
                 >
                 </Modal>
+
+               
             </div>
         </div>
 

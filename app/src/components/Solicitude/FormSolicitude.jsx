@@ -27,17 +27,11 @@ const Formulario = ({cancelar}) => {
 
     const [selectedSiteId, setSelectedSiteId] = useState(null);
     
-    // const [selectedReferenciaId, setSelectedReferenciaId] = useState(null);
     //------------HandlePersona
     const handleTarifaChange = (tarifa) => {
         setSelectedTarifa(tarifa);
     };
-
-    // const handleReferenciaIdChange = (referenciaId) => {
-    //     setSelectedReferenciaId(referenciaId);
-    //   };
-    
-    
+        
     //------------HandleSitio
 
     const handleSiteIdChange = (siteId) => {
@@ -51,7 +45,7 @@ const Formulario = ({cancelar}) => {
         initialValues={{
         idTarifa: '',
         idPerson: userglobal.persona_id,
-        statusSubscription: '10',
+        statusSubscription: '12',
         activationSubscription:'2023-05-04 21:32:05',
         expirationSubscription:'2023-05-04 21:32:05',
         numParkSubscription:''

@@ -96,17 +96,19 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
       console.log(values);
       if (vehiculo) {
         values.idPerson = selectedPersonaId;
+        values.plateVehicle = values.plateVehicle.toUpperCase();
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
-        console.log(data);
+        console.log(values);
 
       } else {
         values.idPerson = selectedPersonaId;
+        values.plateVehicle = values.plateVehicle.toUpperCase();
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
-        console.log(errorDuply);
+        console.log(errorDuply,values);
 
       }
 
@@ -125,7 +127,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
                 name="plateVehicle"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.plateVehicle}
+                value={values.plateVehicle.toUpperCase()}
                 />
               </Form.Group>
               <ErrorMessage name="plateVehicle" component={()=>(<div className="text-danger">{errors.plateVehicle}</div>)}></ErrorMessage>
@@ -136,7 +138,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
                 name="modelVehicle"
                 onChange={handleChange}
                 onBlur={handleBlur} 
-                value={values.modelVehicle} 
+                value={values.modelVehicle.charAt(0).toUpperCase()+values.modelVehicle.slice(1)} 
                 />
               </Form.Group>
               <ErrorMessage name="modelVehicle" component={()=>(<div className="text-danger">{errors.modelVehicle}</div>)}></ErrorMessage>
@@ -147,7 +149,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
                 name="colorVehicle"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.colorVehicle}
+                value={values.colorVehicle.charAt(0).toUpperCase()+values.colorVehicle.slice(1)}
                 />
               </Form.Group>
               <ErrorMessage name="colorVehicle" component={()=>(<div className="text-danger">{errors.colorVehicle}</div>)}></ErrorMessage>
