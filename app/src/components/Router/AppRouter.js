@@ -29,7 +29,7 @@ import Event from "../Event/Event";
 import ViewEmployee from "../Employee/ViewEmployee";
 import ViewPerson from "../Persons/ViewPerson";
 import { Tarifa } from "../Tarifa/Tarifa";
-import Mensaje from "../MensajesGlobales/GroupTelegram.jsx";
+import Mensaje from "../MensajesGlobales/GroupTelegram";
 import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
 import { SubscriptionInMoraToChangeStatus } from "../Subscription/SuscriptionInMoraToChangeStatus";
 import ListaPag from "../Listar Pagos/ListaPago";
