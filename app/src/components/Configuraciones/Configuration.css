@@ -24,11 +24,12 @@
   .active-tab {
     background-color: #4caf50;
     color: #fff;
+    
   }
   
   .tab-content {
     margin-top: 16px;
-    
+    display: block;
     background-color: #f1f1f1;
     border-radius: 8px;
     padding: 16px;
