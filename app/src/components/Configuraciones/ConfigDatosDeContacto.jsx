@@ -66,7 +66,7 @@ export default function ConfiguracionesContac({ fetchData }) {
       <thead>
         <tr>
           <th>Configuración</th>
-          <th>Valor 1</th>
+          <th>Valor </th>
           <th>Acciones</th>
         </tr>
       </thead>
