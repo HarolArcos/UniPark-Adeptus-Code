@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
@@ -47,26 +47,10 @@ if (!loading) {
             </div>
 
             <div className="tab-content">
-              {activeTab === 0 && <ConfiguracionesContac configuraciones={data.filter(
-    (configuracion) =>
-      configuracion.configuracion_nombre === 'telefono' ||
-      configuracion.configuracion_nombre === 'grupo_telegram' ||
-      configuracion.configuracion_nombre === 'token_bot'
-  )} fetchData={fetchData} />}
+              {activeTab === 0 && <ConfiguracionesContac  fetchData={fetchData} />}
               {activeTab === 1 && (
                 <Dias
-                  dia={data.filter((obj) => {
-                    const diaSemana = obj.configuracion_nombre.toLowerCase();
-                    return (
-                      diaSemana === 'lunes' ||
-                      diaSemana === 'martes' ||
-                      diaSemana === 'miercoles' ||
-                      diaSemana === 'jueves' ||
-                      diaSemana === 'viernes' ||
-                      diaSemana === 'sabado' ||
-                      diaSemana === 'domingo'
-                    );
-                  })}
+                  
                   fetchData={ fetchData } // Extrae la función fetchData del hook useFetchSendData
                 />
               )}
@@ -74,7 +58,7 @@ if (!loading) {
             </div>
           </div>
         </div>
-        <Outlet />
+        
           <Footer></Footer>
         </div>
       );

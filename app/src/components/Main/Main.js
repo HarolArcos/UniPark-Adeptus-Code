@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import { Outlet } from 'react-router-dom';
+
 import DatosUser from '../DatosUser/DatosUser';
 import { useFetch } from '../../hooks/HookFetchListData';
 import { useFetchSendData } from '../../hooks/HookFetchSendData';
@@ -38,7 +38,7 @@ export const Main = () => {
       <Header></Header>
       <Aside></Aside>
       <DatosUser />
-      <Outlet />
+      
       <Footer></Footer>
     </div>
   );

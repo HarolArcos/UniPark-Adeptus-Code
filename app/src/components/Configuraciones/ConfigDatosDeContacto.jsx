@@ -1,21 +1,36 @@
-import React, { useState } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import React, { useState, useEffect  } from 'react';
+import { Table, Button, Modal, ModalBody, Form } from "react-bootstrap";
 
-export default function ConfiguracionesContac({ configuraciones, fetchData }) {
+export default function ConfiguracionesContac({ fetchData }) {
   
+  const [show, setShow] = useState(false);
+  const [ediddato, setEdiddato] = useState("");
+  const [configuraciones, setconfiguraciones] = useState([])
+  useEffect(() => {
+    fetchConfiguraciones();
+  }, []);
+
+  const fetchConfiguraciones = async () => {
+    try {
+      const response = await fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto");
+      const data = await response.json();
+      setconfiguraciones(data);
+      
+    } catch (error) {
+      console.log(error);
+    } 
     
-
-  configuraciones.sort(
-    (a, b) => parseInt(a.configuracion_id) - parseInt(b.configuracion_id)
-  );
-
+  };
+  const handleClose = () => setShow(false);
   const [editingId, setEditingId] = useState(null);
   const [editedValor1, setEditedValor1] = useState('');
 
   // Función para manejar el evento de clic en el botón de editar
-  const handleEdit = (configuracionId, valor1) => {
+  const handleEdit = (configuracionId, valor1, nombre) => {
     setEditingId(configuracionId);
     setEditedValor1(valor1);
+    setEdiddato(nombre)
+    setShow(true)
   };
 
   // Función para manejar el evento de cambio en el campo de valor1 editado
@@ -24,26 +39,29 @@ export default function ConfiguracionesContac({ configuraciones, fetchData }) {
   };
 
   // Función para guardar los cambios editados
-  function saveChanges(configuracion) {
+  function saveChanges() {
     fetchData(
       'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration',
       {
-        idConfiguration: configuracion.configuracion_id,
-        nameConfiguration: configuracion.configuracion_nombre,
+        idConfiguration: editingId,
+        nameConfiguration: ediddato,
         value1Configuration: editedValor1,
+        value2Configuration: "",
       }
     );
     setEditingId(null);
     setEditedValor1('');
-    alert(
-      'Los cambios han sido guardados. Por favor, recargue la página para ver los cambios.'
-    );
+    setShow(false)
+    fetchConfiguraciones();
     // Aquí puedes realizar una llamada a tu backend para guardar los cambios
     // por ejemplo, utilizando una función `saveChangesToBackend(updatedConfiguracion)`
     // saveChangesToBackend(updatedConfiguracion);
   }
-
+  configuraciones.sort(
+    (a, b) => parseInt(a.configuracion_id) - parseInt(b.configuracion_id)
+  );
   return (
+    <div>
     <Table striped bordered hover className="table">
       <thead>
         <tr>
@@ -57,39 +75,67 @@ export default function ConfiguracionesContac({ configuraciones, fetchData }) {
           <tr key={configuracion.configuracion_id}>
             <td>{configuracion.configuracion_nombre}</td>
             <td>
-              {editingId === configuracion.configuracion_id ? (
-                <input
-                  type="text"
-                  value={editedValor1}
-                  onChange={handleValor1Change}
-                  style={{ width: '80px' }} // Establecer un ancho fijo
-                />
-              ) : (
-                configuracion.configuracion_valor1
-              )}
+              
+                {configuracion.configuracion_valor1}
+              
             </td>
             <td>
-              {editingId === configuracion.configuracion_id ? (
-                <Button variant="success" onClick={() => saveChanges(configuracion)}>
-                  Guardar
-                </Button>
-              ) : (
+              
                 <Button
-                  variant="primary"
+                  variant="success"
                   onClick={() =>
                     handleEdit(
                       configuracion.configuracion_id,
-                      configuracion.configuracion_valor1
+                      configuracion.configuracion_valor1,
+                      configuracion.configuracion_nombre
                     )
                   }
                 >
                   Editar
                 </Button>
-              )}
+              
             </td>
           </tr>
         ))}
       </tbody>
     </Table>
-  );
+  
+  
+  
+  
+  <Modal show={show} onHide={handleClose} centered>
+        <ModalBody className="modal-body">
+          <h1 className="forgot-password-modal">Editar Accion</h1>
+          <Form className="container">
+            <Form.Group>
+              <Form.Label className="text-left">
+                Nombre: {ediddato}
+              </Form.Label>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label className="text-left">Valor:   </Form.Label>
+              <br/>
+              <input
+                  type="text"
+                  value={editedValor1}
+                  onChange={handleValor1Change}
+                  
+                />
+            </Form.Group>
+            
+            
+          </Form>
+<br/>
+          <div>
+            <Button variant="success" onClick={saveChanges}>
+              Guardar
+            </Button>
+          </div>
+        </ModalBody>
+      </Modal>
+  
+  
+  
+  
+  </div>)
 }
