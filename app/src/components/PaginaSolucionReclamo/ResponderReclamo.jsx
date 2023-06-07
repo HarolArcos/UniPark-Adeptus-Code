@@ -67,9 +67,9 @@ export default function ResRec() {
             <>
             <select style={{ borderRadius: '5px' }} value={selectedOption} onChange={handleSelectChange} type="text">
          <option value="">Todo</option>
-          <option value="no atendido">no atendido</option>
+          <option value="inactivo">no atendido</option>
         
-         <option value="atendido">atendido</option>
+         <option value="activo">atendido</option>
         </select>
             <Table striped bordered hover className="table">
                 <thead>
