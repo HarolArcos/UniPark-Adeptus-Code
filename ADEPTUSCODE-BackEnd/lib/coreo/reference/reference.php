@@ -202,7 +202,7 @@ class reference {
 
     public function listReferencesSolicitudDb($tableNameReference, $nameSpaceReference){
         $response = false;
-        $sql =  "SELECT * FROM referencia WHERE referencia_nombre_tabla = '$tableNameReference' AND referencia_nombre_campo = '$nameSpaceReference' AND referencia_valor <> 'inhabilitada'";
+        $sql =  "SELECT * FROM referencia WHERE referencia_nombre_tabla = '$tableNameReference' AND referencia_nombre_campo = '$nameSpaceReference' AND referencia_valor <> 'inhabilitada' AND referencia_valor <> 'mora'";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             $arrLog = array(
