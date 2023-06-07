@@ -244,7 +244,7 @@
             $mensaje = "Se listo correctamente las suscripciones - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones"));
             $mensaje = "No se pudo listara a los vehiculos - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
@@ -287,7 +287,7 @@
             $mensaje = "Se listo correctamente las suscripciones habilitadas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones habilitadas"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones habilitadas"));
             $mensaje = "No se pudo listar las suscripciones habilitadas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
@@ -308,7 +308,7 @@
             $mensaje = "Se listo correctamente las suscripciones habilitadas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones habilitadas"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones habilitadas"));
             $mensaje = "No se pudo listar las suscripciones habilitadas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
@@ -329,7 +329,7 @@
             $mensaje = "Se listo correctamente las suscripciones inabilitadas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones inhabilitadas"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones inhabilitadas"));
             $mensaje = "No se pudo listar las suscripciones inhabilitadas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
@@ -350,7 +350,7 @@
             $mensaje = "Se listo correctamente las suscripciones inabilitadas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones en mora"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones en mora"));
             $mensaje = "No se pudo listar las suscripciones en mora - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
@@ -371,7 +371,7 @@
             $mensaje = "Se listo correctamente las suscripciones habilitadas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones vencidas con estado habilitado"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones vencidas con estado habilitado"));
             $mensaje = "No se pudo listar las suscripciones vencidas con estado habilitado - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
@@ -392,7 +392,7 @@
             $mensaje = "Se listo correctamente las suscripciones aceptadas y denegadas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones aceptadas y denegadas"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones aceptadas y denegadas"));
             $mensaje = "No se pudo listar las suscripciones aceptadas y denegadas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
@@ -413,7 +413,7 @@
             $mensaje = "Se listo correctamente las suscripciones rechazadas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan suscripciones rechazadas"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones rechazadas"));
             $mensaje = "No se pudo listar las suscripciones rechazadas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;

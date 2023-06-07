@@ -232,7 +232,8 @@ class subscription {
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         r.referencia_valor,
-        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta,
+        p.persona_telefono
         FROM suscripcion s
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
@@ -393,7 +394,8 @@ class subscription {
         $response = false;
         $sql = "SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
         r.referencia_valor,
-        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta,
+        p.persona_telefono
         FROM suscripcion s
         INNER JOIN persona p ON s.persona_id = p.persona_id
         INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
