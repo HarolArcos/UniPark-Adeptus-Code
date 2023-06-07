@@ -79,12 +79,49 @@ function ListaPa() {
       setDatosLeidos(data);
     }
 
+    const styles = StyleSheet.create({
+      page: {
+        fontFamily: "Helvetica",
+        fontSize: 12,
+        padding: "1cm",
+      },
+      title: {
+        fontSize: 18,
+        marginBottom: 10,
+        textAlign: "center",
+      },
+      subtitle: {
+        fontSize: 14,
+        marginBottom: 10,
+      },
+      table: {
+        display: "table",
+        width: "auto",
+        marginTop: 10,
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderColor: "#000",
+      },
+      tableRow: {
+        flexDirection: "row",
+      },
+      tableCell: {
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderColor: "#000",
+        padding: 5,
+      },
+      totalRow: {
+        fontWeight: "bold",
+      },
+    });
+
     const PDFDocument = () => (
       <Document>
         <Page size="A4" style={styles.page}>
           <View>
             <Text style={styles.title}>Lista de Pagos</Text>
-            <Text>Seleccionado: {Selec}</Text>
+            <Text style={styles.subtitle}>Seleccionado: {Selec}</Text>
           </View>
           <View style={styles.table}>
             <View style={styles.tableRow}>
@@ -101,9 +138,10 @@ function ListaPa() {
                 <Text style={styles.tableCell}>{reclamoPersona.suscripcion_numero_parqueo}</Text>
               </View>
             ))}
-          </View>
-          <View>
-            <Text>El Monto Pagado {Selec} es: {montopagado} Bs.</Text>
+            <View style={[styles.tableRow, styles.totalRow]}>
+              <Text style={[styles.tableCell, { colspan: 3 }]}>El Monto Pagado {Selec} es:</Text>
+              <Text style={styles.tableCell}>{montopagado} Bs.</Text>
+            </View>
           </View>
         </Page>
       </Document>
@@ -115,7 +153,7 @@ function ListaPa() {
         <div className="buttonSection">
           <PDFDownloadLink document={<PDFDocument />} fileName={fileName}>
             {({ blob, url, loading, error }) =>
-              loading ? "Preparando Pdf" : <Button variant="success">Descargar PDF</Button>
+              loading ? "Preparando PDF" : <Button variant="success">Descargar PDF</Button>
             }
           </PDFDownloadLink>
           <select
@@ -147,41 +185,15 @@ function ListaPa() {
                 <td>{reclamoPersona.suscripcion_numero_parqueo}</td>
               </tr>
             ))}
+            <tr className="totalRow">
+              <td colSpan="3">El Monto Pagado {Selec} es:</td>
+              <td>{montopagado} Bs.</td>
+            </tr>
           </tbody>
         </Table>
-        <label>
-          El Monto Pagado {Selec} es: {montopagado} Bs.
-        </label>
-        <br />
-        <br />
       </div>
     );
   } else {
     return null; // Mostrar un componente de carga o mensaje de error mientras se obtienen los datos
   }
 }
-
-const styles = StyleSheet.create({
-  page: {
-    fontFamily: "Helvetica",
-    fontSize: 12,
-    padding: "1cm",
-  },
-  title: {
-    fontSize: 18,
-    marginBottom: 10,
-  },
-  table: {
-    display: "table",
-    width: "auto",
-    marginTop: 10,
-  },
-  tableRow: {
-    flexDirection: "row",
-  },
-  tableCell: {
-    borderWidth: 1,
-    borderColor: "#000",
-    padding: 5,
-  },
-});
