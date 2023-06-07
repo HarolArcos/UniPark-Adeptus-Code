@@ -61,7 +61,7 @@ export default function Persons(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowCreate(false);
-        console.log(data);
+        //console.log(data);
     };
     
     //-----------------------Crud-------------------------------------------
@@ -159,10 +159,10 @@ export default function Persons(){
 
                 <Modal
                 mostrarModal={showCreate}
-                title = 'Crear Nueva Persona'
+                title = 'Crear Nuevo Cliente'
                 contend = {
                 <FormularioPersona
-                asunto = "Guardar Persona"
+                asunto = "Guardar Cliente"
                 cancelar={handleCancelar}
                 añadirNuevo = {handleGuardarNuevo}
                 ></FormularioPersona>}

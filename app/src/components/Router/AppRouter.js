@@ -33,6 +33,7 @@ import Mensaje from "../MensajesGlobales/GroupTelegram";
 import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
 import ListaPag from "../Listar Pagos/ListaPago";
 import Configurations from "../Configuraciones/Configurations";
+import Options from "../Options/Options";
 
 
 export const AppRouter = () => {
@@ -57,10 +58,11 @@ export const AppRouter = () => {
                     <Route path="/editEmpleados"        element={ <EditEmpleado/> }/>
                     <Route path="/viewEmpleados"        element={ <ViewEmployee/> }/>
 
+                    <Route path="/opciones"             element={ <Options/> }/>
 
                     <Route path='/ReclamosResp'         element={ <SolucionAccionReclamo/>} />
                     <Route path="/comboboxPerson"       element={ <ComboboxPerson/> } />
-                    <Route path="/evento"               element={ <Event/> }/>
+                    <Route path="/eventos"               element={ <Event/> }/>
                     <Route path="/editPersonas"         element={ <EditPerson/> }/>
                     <Route path="/deletePersonas"       element={ <DeletePerson/> } />
                     <Route path="/listMensaje"          element={ <ListCli/> } />
