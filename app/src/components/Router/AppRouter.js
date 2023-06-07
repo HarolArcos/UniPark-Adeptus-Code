@@ -22,7 +22,7 @@ import EditPerson from "../Persons/EditPerson";
 import DeletePerson from "../Persons/ChangeState/ChangeStatePerson";
 import { ListVehicle } from "../Vehicle/ListVehicle";
 import { Solicitude } from "../Solicitude/Solicitude";
-import { SubscriptionInProcess } from "../Subscription/SuscripcionInProcess";
+import { SubscriptionInProcess } from "../Subscription/SuscriptionInProcess";
 import Employee from "../Employee/Employee";
 import EditEmpleado from "../Employee/EditEmpleado";
 import Event from "../Event/Event";
@@ -31,6 +31,7 @@ import ViewPerson from "../Persons/ViewPerson";
 import { Tarifa } from "../Tarifa/Tarifa";
 import Mensaje from "../MensajesGlobales/GroupTelegram";
 import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
+import { SubscriptionInMoraToChangeStatus } from "../Subscription/SuscriptionInMoraToChangeStatus";
 import ListaPag from "../Listar Pagos/ListaPago";
 import Configurations from "../Configuraciones/Configurations";
 import Options from "../Options/Options";
@@ -73,6 +74,9 @@ export const AppRouter = () => {
                     <Route path="/tarifa"               element={ <Tarifa/> } />
                     <Route path="/MensajeGlobal"        element={ <Mensaje/> } />
                     <Route path="/Reclamos"             element={ <ReclamoConsulta/> } />
+                    <Route path="/listaEnMoraEstado"    element={ <SubscriptionInMoraToChangeStatus /> } />
+                    <Route path="/listaEnProcesoEstado" element={ <SubscriptionInMoraToChangeStatus tipo={1}/> } />
+                    
                     <Route path="/ListaPagos"             element={ <ListaPag/> } />
                     <Route path="/Configurar"             element={ <Configurations/> } />
                 </Routes>
