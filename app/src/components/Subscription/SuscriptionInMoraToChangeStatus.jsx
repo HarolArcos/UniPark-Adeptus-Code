@@ -180,6 +180,7 @@ export const SubscriptionInMoraToChangeStatus = ({ tipo = 0 }) => {
                           />
                         </svg>
                       </button>
+                      <br/><br/>
                       <Button
                         variant="success"
                         onClick={() =>  {setwats(true)
