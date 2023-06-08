@@ -33,12 +33,12 @@ import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
 import { SubscriptionToChangeStatus } from "../Subscription/SuscriptionToChangeStatus";
 import ListaPag from "../Listar Pagos/ListaPago";
 import Configurations from "../Configuraciones/Configurations";
+import Options from "../Options/Options";
 import { SolicitudeList } from "../Subscription/SolicitudeList";
 import { SubscriptionEdit } from "../Subscription/SubscriptionEdit";
 import { SolicitudeToChangeStatus } from "../Subscription/SolicitudeToChangeStatus";
 import { TarifaListCreate } from "../Tarifa/TarifaListAndCreate";
 import { VehicleListCreate } from "../Vehicle/VehicleListAndCreate";
-
 
 export const AppRouter = () => {
 
@@ -63,7 +63,8 @@ export const AppRouter = () => {
                     <Route path="/editEmpleados"            element={ <EditEmpleado/> }/>
                     <Route path="/viewEmpleados"            element={ <ViewEmployee/> }/>
 
-
+                    <Route path="/opciones"             element={ <Options/> }/>
+                      
                     <Route path='/ReclamosResp'             element={ <SolucionAccionReclamo/>} />
                     <Route path="/comboboxPerson"           element={ <ComboboxPerson/> } />
                     <Route path="/evento"                   element={ <Event/> }/>

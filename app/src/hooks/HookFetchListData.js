@@ -16,7 +16,6 @@ export function useFetch(url) {
         setData(data);
         setLoading(false);  
         
-        
        } catch (error) {
         setError(error);
         setLoading(false);
