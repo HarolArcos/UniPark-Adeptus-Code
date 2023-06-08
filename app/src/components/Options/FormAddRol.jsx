@@ -1,12 +1,11 @@
 import React from "react";
-import {Form, Button} from "react-bootstrap";
+import {Form, Button, Modal} from "react-bootstrap";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import { useState } from "react";
 import "./Options.css";
 
-export default function FormAddRol(){
+export default function FormAddRol({cancelar, asunto}){
 
-    
     const { fetchData } = useFetchSendData();
 
     //const [statusRol, setStatusRol] = useState(11);
@@ -26,8 +25,8 @@ export default function FormAddRol(){
     };
 
     return(
-        <Form className="FormAddRol" onSubmit={handleSubmit}>
-
+        <Form className="FormAddRol" > 
+            {/*Se borro onSubmit={handleSubmit} */}
                 <Form.Group controlId="nameRol">
                     <Form.Label className="label">Nombre del Rol</Form.Label>
                     <Form.Control
@@ -36,7 +35,6 @@ export default function FormAddRol(){
                     onChange={(event) => setNameRol(event.target.value)}
                     />
                 </Form.Group>
-
                 <Form.Group controlId="descriptionRol">
                     <Form.Label className="label">Description Rol</Form.Label>
                     <Form.Control
@@ -46,9 +44,17 @@ export default function FormAddRol(){
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                {/* <Button variant="primary" type="submit">
                     Añadir Rol
-                </Button>
-                </Form>
+                </Button> */}
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={cancelar}>
+                    Cancelar
+                    </Button>
+                    <Button variant="primary" type="submit" onClick={handleSubmit}>
+                    {asunto}
+                    </Button>
+                </Modal.Footer>
+        </Form>
     )
 }

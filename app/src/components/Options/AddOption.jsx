@@ -1,15 +1,23 @@
 import React from "react";
-import { Form, Button, ListGroup, Row, Col } from 'react-bootstrap';
+import { Form, Button, ListGroup, Row, Col, Alert } from 'react-bootstrap';
 import { useState, useEffect } from "react";
 import ComboboxRoles from "./ComboboxRol";
+import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
 export default function AddOptions(){
 
     //const [rols, setRols]= useState([]);
+    const [showAlert, setShowAlert] = useState(false);
 
+    const [selectedRolId, setSelectedRolId] = useState(null);
+    const { fetchData } = useFetchSendData();
+    
+    const handleRolIdChange = (personaId) => {
+        setSelectedRolId(personaId);
+    };
+    
     const [options, setOptions] = useState([]);
     const [selectedOptions, setSelectedOptions] = useState([]);
-    const [selectedRoleId, setSelectedRoleId] = useState(1); // Valor inicial del combobox de Roles
 
     useEffect(() => {
         // Cargar las opciones desde la API al montar el componente
@@ -17,11 +25,6 @@ export default function AddOptions(){
         .then(response => response.json())
         .then(data => setOptions(data))
         .catch(error => console.log(error));
-
-        // fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol')
-        // .then(response => response.json())
-        // .then(data => setRols(data))
-        // .catch(error => console.log(error));
     }, []);
 
     const handleOptionChange = (optionId) => {
@@ -35,45 +38,34 @@ export default function AddOptions(){
     };
 
     const handleSaveOptions = () => {
-        // Asociar las opciones seleccionadas al rol mediante la API
+        console.log("Opcionees seleccionadas",selectedOptions);
         selectedOptions.forEach(optionId => {
         const data = {
-            idRol: selectedRoleId,
+            idRol: selectedRolId,
             idOption: optionId
         };
-
-        fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
-        //useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption', data);
+        console.log(data);
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption', data);
         });
+        setShowAlert(true);
     };
 
 
     return(
         <div>
+            {showAlert && (
+            <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+            Opciones asignadas con éxito
+            </Alert>
+        )}
         <Row>
             <Col>
                 <Form.Group className="comboboxRol">
                 <Form.Label>Roles</Form.Label>
-                {/* <Form.Control
-                className="comboboxRol"
-                as="select"
-                value={selectedRoleId}
-                onChange={(e) => setSelectedRoleId(e.target.value)}
-                >
-                <option value={1}>Cliente</option>
-                <option value={2}>Admin</option>
-                <option value={3}>Guardia</option>
-                </Form.Control> */}
-                <ComboboxRoles />
+                <ComboboxRoles 
+                    id={"roles"}
+                    onRolIdChange={handleRolIdChange}
+                />
             </Form.Group>
             <h3 className="titleOptions">Opciones</h3>
             <Form>

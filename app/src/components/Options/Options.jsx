@@ -3,8 +3,9 @@ import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import {Tabs, Tab} from "react-bootstrap";
-import FormAddRol from "./AddRol";
 import AddOptions from "./AddOption";
+import AddRolSection from "./AddRolSection";
+import "./Options.css";
 
 export default function Options(){
     return(
@@ -19,13 +20,10 @@ export default function Options(){
             justify
             >
                 <Tab eventKey="Anadir Rol" title="Añadir Rol">
-                    <FormAddRol/>
+                    <AddRolSection/>
                 </Tab>
                 <Tab eventKey="Añadir opciones" title="Añadir Opciones">
                     <AddOptions/>
-                </Tab>
-                <Tab eventKey="longer-tab" title="Lista de Roles">
-                    Tab content for Loooonger Tab
                 </Tab>
             </Tabs>
         </div>

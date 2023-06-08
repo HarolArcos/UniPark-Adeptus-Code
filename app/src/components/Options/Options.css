@@ -3,7 +3,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     /* min-width: 600px; */
-    margin: 0px 200px;
+    /* margin: 0px 200px; */
 }
 
 .FormAddRol>Button{
@@ -17,4 +17,8 @@
 
 .comboboxRol{
     max-width: 340px;
+}
+
+.tab-content{
+    background-color: #fff;
 }
