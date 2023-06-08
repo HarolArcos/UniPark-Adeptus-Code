@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+
 import { Button, Table, Modal, ModalBody, Form } from "react-bootstrap";
 import { useFetch } from "../../hooks/HookFetchListData";
 import Aside from "../Aside/Aside";
@@ -14,7 +14,7 @@ export default function ListCli() {
       <Aside></Aside>
 
       <ListaC></ListaC>
-      <Outlet />
+    
       <Footer></Footer>
     </div>
   );

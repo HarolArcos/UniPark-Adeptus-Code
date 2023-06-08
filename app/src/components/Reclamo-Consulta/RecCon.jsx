@@ -6,21 +6,23 @@ import { useContext, useState } from "react";
 
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import { DataUser } from "../context/UserContext";
+import { useFetch } from "../../hooks/HookFetchListData";
 
 
 export default function ReclamoConsulta () {
-
-
+const { data, loading, error } = useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto")
+  if(!loading){
     return(
        <div>
         <Header></Header>
         <Aside/>
-        <Claimquery></Claimquery>
+        <Claimquery datos={data.find(config => config.configuracion_nombre === "telefono").configuracion_valor1}></Claimquery>
         <Footer></Footer>
        </div>
-    )
+    )}
 }
-function Claimquery() {
+function Claimquery({datos}) {
+  
     const {userglobal} = useContext(DataUser)
     
     const { data, fetchData} = useFetchSendData()
@@ -55,8 +57,8 @@ function Claimquery() {
             console.log(datosparaf);
     console.log(data);
         }
-        window.open("https://api.whatsapp.com/send?phone="+59167418809 +"&text=<" + selectedOption.toUpperCase()+">%0A"+deReclamo.toUpperCase()+"%0A%0A"+message)
-        alert(`titulo: <${selectedOption}> 
+        window.open("https://api.whatsapp.com/send?phone="+591+datos+"&text=<" + selectedOption.toUpperCase()+">%0A"+deReclamo.toUpperCase()+"%0A%0A"+message)
+        alert(`titulo: <${deReclamo}> 
             Mensaje enviado: ${message}`);
             window.location.href = '/main'
  

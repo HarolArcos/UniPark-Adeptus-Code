@@ -10,7 +10,7 @@ import FormularioStatus from './FormChangeStatus';
 import { useSend } from '../../hooks/HookList';
 
 
-export const SolicitudeToChangeStatus = () => {
+export const SubscriptionToChangeStatus = () => {
     
     const [busqueda, setBusqueda] = useState("");
     const [suscripciones,setSuscripciones] = useState([]);
@@ -34,7 +34,6 @@ export const SolicitudeToChangeStatus = () => {
         if (tipo==1) {
              fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
          }else if(tipo==2){
-            
              fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
          }
         console.log(data);
@@ -117,7 +116,8 @@ export const SolicitudeToChangeStatus = () => {
                         onChange={handleChangeSerch}
                     />
                     <Form.Select style={{ width: '200px' }} placeholder='Seleccione..' onChange={handleOption}>
-                        <option value="1">En Proceso</option>
+                        {/* <option>Lista por:</option> */}
+                        <option value="1">En proceso</option>
                         <option value="2">Rechazados</option>
                     </Form.Select>
                 </div>

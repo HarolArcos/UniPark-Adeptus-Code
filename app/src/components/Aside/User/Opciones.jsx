@@ -4,7 +4,7 @@ const parse = require("html-react-parser");
 
 
 export default function Opcions() {
-
+  
   const options =(JSON.parse(localStorage.getItem("options")))
   
   
@@ -23,7 +23,7 @@ export default function Opcions() {
       
       
     string = register.opcion_componente.replace("&lt;/ul&gt;", string + "&lt;/ul&gt;");
-      
+    
     return parse(parse(string)); //trasfoma string a html
   });
 }
