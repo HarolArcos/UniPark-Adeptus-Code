@@ -9,11 +9,9 @@ import { useSend } from '../../hooks/HookList';
 
 import "./Tarifa.css"
 
-export const Tarifa = () => {
+export const TarifaList = () => {
     
-  const [tarifas,setTarifas] = useState([
-    {tarifa_id:1,tarifa_estado:2,tarifa_nombre:2,tarifa_valor:'',tarifa_ruta:'Andrea'}
-  ]);
+  const [tarifas,setTarifas] = useState([]);
 
     const [error,setError] =  useState(null);
     const{data,fetchData} = useSend();
@@ -49,7 +47,10 @@ export const Tarifa = () => {
         setTarifaSeleccionado(tarifa);
     };
     
-    
+    //-----Create Modal
+    const handleCreate = () => {
+        setShowCreate(true);
+    };
     
     //---Desactive Any Modal
     const handleCancelar = async () => {
@@ -70,7 +71,6 @@ export const Tarifa = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
-                   
                     <Form.Control 
                         className="searchBar"
                         type="text"
@@ -83,7 +83,6 @@ export const Tarifa = () => {
                             <th>Id</th>
                             <th>Detalle</th>
                             <th>QR</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,47 +102,14 @@ export const Tarifa = () => {
                                             </ul>
                                             </td>
                                         <td><Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image></td>
-                                        <td className="actionsButtons">
-                                            <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(tarifa)}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                </svg>
-                                            </button>
-                                        </td>
                                     </tr>
                             ))
                         )}
                     </tbody>
                 </Table>
 
-                <Modal
-	            tamaño ="md"
-                mostrarModal={showEdit}
-                title = 'Editar Tarifa'
-                contend = {
-                <Formulario
-                asunto ='Guardar Cambios'
-                tarifa= {tarifaSeleccionado}
-                cancelar={handleCancelar}
-                ></Formulario>}
-                hide = {handleCancelar}
-                >
-                </Modal>
-                
-
-                <Modal
-	            tamaño ="md"
-                mostrarModal={showCreate}
-                title = 'Crear Nueva Tarifa'
-                contend = {
-                <Formulario
-                asunto = "Guardar Tarifa"
-                cancelar={handleCancelar}
-                ></Formulario>}
-                hide = {handleCancelar}
-                >
-                </Modal>
+              
+            
             </div>
         </div>
 

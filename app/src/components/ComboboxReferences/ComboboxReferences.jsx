@@ -3,11 +3,19 @@ import Select from "react-select";
 import "./ComboboxReferences.css";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
-export default function ComboboxReferences({onReferenciaIdChange,defaultValor,referenciaObjeto}){ 
+export default function ComboboxReferences({onReferenciaIdChange,defaultValor,referenciaObjeto,tipo=0}){ 
     const {data, fetchData} = useFetchSendData();
     const [ref,setRef]=useState([]);
     useEffect(() => {
-        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",referenciaObjeto);
+        if (tipo==1) {
+            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferencesRequest",referenciaObjeto);
+
+        }else if(tipo==2){
+            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferencesSubscription",referenciaObjeto);
+
+        }else{
+            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",referenciaObjeto);
+        }
     }, []);
     
     useEffect(()=>{
