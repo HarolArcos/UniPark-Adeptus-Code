@@ -9,12 +9,11 @@ import { useSend } from '../../hooks/HookList';
 
 import "./Tarifa.css"
 
-export const Tarifa = () => {
-    
-  const [tarifas,setTarifas] = useState([
-    {tarifa_id:1,tarifa_estado:2,tarifa_nombre:2,tarifa_valor:'',tarifa_ruta:'Andrea'}
-  ]);
+export const TarifaEdit = () => {
 
+    const [busqueda, setBusqueda] = useState("");
+    const [tarifas,setTarifas] = useState([]);
+    const [tablaTarifas, setTablaTarifas] = useState([]);
     const [error,setError] =  useState(null);
     const{data,fetchData} = useSend();
     
@@ -22,9 +21,6 @@ export const Tarifa = () => {
     
     const [showEdit, setShowEdit] = useState(false);
      
-    const [showCreate, setShowCreate] = useState(false);
-    
-    //----------------------Cliente para:-------------------------------
     //------Editar :
     const [tarifaSeleccionado, setTarifaSeleccionado] = useState(null);
 
@@ -38,30 +34,55 @@ export const Tarifa = () => {
             setError("No existe ningúna tarifa registrada");
         }else{
             setTarifas(data);
+            setTablaTarifas(data);
         }
         console.log(data);
     }, [data]);
+    
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async()=>{
+       await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+    }
+
 
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
     const handleEditar = (tarifa) => {
         setShowEdit(true);
         setTarifaSeleccionado(tarifa);
+
     };
-    
-    
     
     //---Desactive Any Modal
     const handleCancelar = async () => {
         setShowEdit(false);
-        setShowCreate(false);
-        console.log(data);
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        
+        cargarDatos();
     };
+
+    /*--------------------- Barra Busqueda------------------------- */
+    const handleChangeSerch = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+
+    }
+
+    const filtrar = (termBusqueda) => {
+        var resultadosBusqueda = tablaTarifas.filter((elemento) => {
+            if(
+                    elemento.tarifa_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.tarifa_valor.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.tarifa_estado.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+            ){
+                return elemento;
+            }else{
+                return null;
+            }
+        });
+        setTarifas(resultadosBusqueda);
+    }
  
     return (
         <>
@@ -70,11 +91,12 @@ export const Tarifa = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
-                   
-                    <Form.Control 
+                <Form.Control 
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
+                        value={busqueda}
+                        onChange={handleChangeSerch}
                     />
                 </div>
                 <Table striped bordered hover className="table">
@@ -132,18 +154,6 @@ export const Tarifa = () => {
                 </Modal>
                 
 
-                <Modal
-	            tamaño ="md"
-                mostrarModal={showCreate}
-                title = 'Crear Nueva Tarifa'
-                contend = {
-                <Formulario
-                asunto = "Guardar Tarifa"
-                cancelar={handleCancelar}
-                ></Formulario>}
-                hide = {handleCancelar}
-                >
-                </Modal>
             </div>
         </div>
 
