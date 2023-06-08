@@ -35,41 +35,12 @@ export default function ViewEmployee(){
         setShowView(true);
         setPersonaSeleccionado(cliente);
     };
-    //-----------------------Activate-------------------------------------------
-    //------Edit Modal
-    // const handleEditar = (persona) => {
-    //     //setShowEdit(true);
-    //     setPersonaSeleccionado(persona);
-    // };
-    
-    //-----Create Modal
-    // const handleCreate = () => {
-    //     setShowCreate(true);
-    // };
-    
     //---Desactive Any Modal
     const handleCancelar = () => {
         //setShowEdit(false);
         setShowView(false);
         console.log(data);
     };
-    //-----------------------Crud-------------------------------------------
-    // //------Edit
-    // const handleGuardarEditado = (personaEditado) => {
-    //     const nuevasPersonas = personas.map((persona) =>
-    //     persona.id === personaEditado.id ? personaEditado : persona
-    //     );
-    //     setPersonas(nuevasPersonas);
-    //     //setShowCreate(false);
-    //     setPersonaSeleccionado(null);
-    // };
-
-    //-------Delete
-    // const handleEliminar = (id) => {
-    //   const nuevasPersonas = personas.filter((persona) => persona.id !== id);
-    //   setPersonas(nuevasPersonas);
-    // };
-
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
     };
