@@ -1,22 +1,24 @@
 import React ,{useState, useEffect}from 'react';
 import Modal from '../Modal/Modal';
-import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
+import {Table,Form} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-import { useFetch } from '../../hooks/HookFetchListData';
+// import { useFetch } from '../../hooks/HookFetchListData';
 import "./Subscription.css";
 import FormularioStatus from './FormChangeStatus';
+import { useSend } from '../../hooks/HookList';
 
 
-export const SubscriptionInProcessToChangeStatus = () => {
+export const SubscriptionToChangeStatus = () => {
     
     const [busqueda, setBusqueda] = useState("");
     const [suscripciones,setSuscripciones] = useState([]);
     const [tablaSuscripciones, setTablaSuscripciones] = useState([]);
     const [error,setError] =  useState(null);
-    
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
+    const [tipo,setTipo] =  useState(1);
+    //------FetchData
+    const{data,fetchData} = useSend();
     //listSuscriptionInProcess
     
     //----------------------ShowModal-------------------------------
@@ -28,16 +30,30 @@ export const SubscriptionInProcessToChangeStatus = () => {
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
  
     useEffect(() => {
+        console.log(tipo);
+        if (tipo==1) {
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
+         }else if(tipo==2){
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
+         }else if(tipo==3){
+            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+         }
+        console.log(data);
+    }, [tipo]);
+    
+    useEffect(() => {
+        console.log(data);
         if (data.desError) {
-            console.log(data);
             setError(data.desError);
-        }else{
+        }
+        else{
+            setError(null);
             setSuscripciones(data);
             setTablaSuscripciones(data);
+        
         }
-        console.log(data,suscripciones);
+        console.log(suscripciones);
     }, [data]);
-
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
     const handleEditar = (suscripcion) => {
@@ -48,17 +64,21 @@ export const SubscriptionInProcessToChangeStatus = () => {
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
-        setShowCreate(false);
+        window.location.reload();
     };
  
 
     const  obtenerFecha = (stringFechaHora) =>{
-        console.log(stringFechaHora);
         const fechaHora = new Date(stringFechaHora);
         const fecha = fechaHora.toISOString().split('T')[0];
-        console.log(fecha);
         return fecha;
       }
+
+    const handleOption = e => {
+        console.log(e.target.value);
+        setTipo(e.target.value);
+        console.log(tipo);
+    }
     
     
       /*--------------------- Barra Busqueda------------------------- */
@@ -97,6 +117,12 @@ export const SubscriptionInProcessToChangeStatus = () => {
                         value={busqueda}
                         onChange={handleChangeSerch}
                     />
+                    <Form.Select style={{ width: '200px' }} placeholder='Seleccione..' onChange={handleOption}>
+                        {/* <option>Lista por:</option> */}
+                        <option value="1">Habilitadas</option>
+                        <option value="2">Inhabilitadas</option>
+                        <option value="3">En Mora</option>
+                    </Form.Select>
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>
@@ -108,7 +134,7 @@ export const SubscriptionInProcessToChangeStatus = () => {
                             <th>Fecha Expiración</th>
                             <th>Estado</th>
                             <th>Tarifa</th>
-                            {/* <th>Acciones</th> */}
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -150,13 +176,31 @@ export const SubscriptionInProcessToChangeStatus = () => {
                 title = 'Cambiar Estado'
                 contend = {
                 <>
-                <h3>Datos:</h3>
-                <h3>Datos:</h3>
-                <h3>Datos:</h3>
+                <div>
+                    {suscripcionSeleccionado?(<div className='text-left'>
+                
+                <h5>
+                    <strong>Nro de Parqueo:</strong>{suscripcionSeleccionado?.suscripcion_numero_parqueo}
+                </h5>
+                <h5>
+                    <strong>Cliente:</strong>{suscripcionSeleccionado?.cliente}
+                </h5>
+                <h5>
+                    <strong>Fecha de Activación:</strong>{obtenerFecha(suscripcionSeleccionado?.suscripcion_activacion)}
+                </h5>
+                <h5>
+                    <strong>Fecha de Expiración:</strong>{obtenerFecha(suscripcionSeleccionado?.suscripcion_expiracion)}
+                </h5>
+                <h5>
+                    <strong>Bs:</strong>{suscripcionSeleccionado?.tarifa_valor}
+                </h5>
+                </div>):("")}
+                </div>
                 <FormularioStatus
                 asunto ='Guardar Cambios'
                 suscripcion= {suscripcionSeleccionado}
                 cancelar={handleCancelar}
+                reftipo={2}
                 ></FormularioStatus>
                 </>    
                 }
@@ -170,3 +214,4 @@ export const SubscriptionInProcessToChangeStatus = () => {
 
     )
 }
+

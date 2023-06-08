@@ -3,30 +3,43 @@ import {Table,Form} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-import { useFetch } from '../../hooks/HookFetchListData';
+import { useSend } from '../../hooks/HookList';
 import "./Subscription.css";
 
 
-export const SubscriptionInProcess = () => {
+export const SolicitudeList = () => {
     
     const [busqueda, setBusqueda] = useState("");
     const [suscripciones,setSuscripciones] = useState([]);
     const [tablaSuscripciones, setTablaSuscripciones] = useState([]);
     const [error,setError] =  useState(null);
-    
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
-    //listSuscriptionInProcess
-    
+    const [tipo,setTipo] =  useState(1);
+    //------FetchData
+    const{data,fetchData} = useSend();
     
     useEffect(() => {
+        console.log(tipo);
+        if (tipo==1) {
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
+         }else if(tipo==2){
+            
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
+         }
+        console.log(data);
+    }, [tipo]);
+    
+    useEffect(() => {
+        console.log(data);
         if (data.desError) {
-            console.log(data);
             setError(data.desError);
-        }else{
+        }
+        else{
+            setError(null);
             setSuscripciones(data);
             setTablaSuscripciones(data);
+        
         }
-        console.log(data,suscripciones);
+        console.log(suscripciones);
     }, [data]);
  
 
@@ -37,6 +50,12 @@ export const SubscriptionInProcess = () => {
         console.log(fecha);
         return fecha;
       }
+
+      const handleOption = e => {
+        console.log(e.target.value);
+        setTipo(e.target.value);
+        console.log(tipo);
+    }
     
       /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -74,6 +93,10 @@ export const SubscriptionInProcess = () => {
                         value={busqueda}
                         onChange={handleChangeSerch}
                     />
+                    <Form.Select style={{ width: '200px' }} placeholder='Seleccione..' onChange={handleOption}>
+                        <option value="1">En Proceso</option>
+                        <option value="2">Rechazadas</option>
+                    </Form.Select>
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>

@@ -9,9 +9,11 @@ import { useSend } from '../../hooks/HookList';
 
 import "./Vehicle.css"
 
-export const ListVehicle = () => {
+export const VehicleListCreate = ({crear=false}) => {
     
+    const [busqueda, setBusqueda] = useState("");
     const [vehiculos,setVehiculos] =  useState([]);
+    const [tablaVehiculos, setTablaVehiculos] = useState([]);
     const [error,setError] =  useState(null);
     const{data,fetchData} = useSend();
     
@@ -38,17 +40,21 @@ export const ListVehicle = () => {
         }
         else{
             setVehiculos(data);
+            setTablaVehiculos(data);
             console.log(data);
         
         }
     }, [data]);
 
-    //-----------------------Activate-------------------------------------------
-    //------Edit Modal
-    const handleEditar = (vehiculo) => {
-        setShowEdit(true);
-        setVehiculoSeleccionado(vehiculo);
-    };
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        
+    }
+   
     
     //-----Create Modal
     const handleCreate = () => {
@@ -60,13 +66,30 @@ export const ListVehicle = () => {
         setShowEdit(false);
         setShowCreate(false);
         console.log(data);
-             
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        
+        cargarDatos();
+          
     };
+
+    const handleChangeSerch = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+
+    }
+
+    const filtrar = (termBusqueda) => {
+        var resultadosBusqueda = tablaVehiculos.filter((elemento) => {
+            if(
+                    elemento.suscripcion_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.cliente.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.suscripcion_numero_parqueo.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+            ){
+                return elemento;
+            }else{
+                return null;
+            }
+        });
+        setTablaVehiculos(resultadosBusqueda);
+    }
 
  
     return (
@@ -76,10 +99,19 @@ export const ListVehicle = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
+                    {crear?(
                     <ButtonGroup className="buttonGroup">
                         <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                    </ButtonGroup>
-                    
+                    </ButtonGroup>):(
+                        <div></div>
+                    )}
+                    <Form.Control 
+                        className="searchBar"
+                        type="text"
+                        placeholder="Buscar..."
+                        value={busqueda}
+                        onChange={handleChangeSerch}
+                    />
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>
