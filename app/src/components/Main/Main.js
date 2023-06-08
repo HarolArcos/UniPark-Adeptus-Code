@@ -39,6 +39,9 @@ export const Main = () => {
       <Aside></Aside>
       <DatosUser />
       
+      
+
+      
       <Footer></Footer>
     </div>
   );
