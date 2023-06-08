@@ -1,0 +1,24 @@
+.FormAddRol{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* min-width: 600px; */
+    /* margin: 0px 200px; */
+}
+
+.FormAddRol>Button{
+    margin-top: 24px;
+    max-width: 200px;
+}
+
+.titleOptions{
+    margin-top: 24px;
+}
+
+.comboboxRol{
+    max-width: 340px;
+}
+
+.tab-content{
+    background-color: #fff;
+}

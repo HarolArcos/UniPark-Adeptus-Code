@@ -13,8 +13,10 @@ export function useFetch(url) {
         const data = await response.json();
 
         setData(data);
+
         setLoading(false);
       } catch (error) {
+
         setError(error);
         setLoading(false);
         console.log(error);

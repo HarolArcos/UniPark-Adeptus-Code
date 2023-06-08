@@ -107,18 +107,6 @@ export const Solicitude = () => {
                                 </tr>
                             </tbody>
                             <tbody>
-                            {/* <tr key="3">
-                                <th>Fecha de Activación: </th>
-                                <th>{obtenerFecha(suscripcion.suscripcion_activacion)}</th>
-                                    
-                                </tr>
-                            </tbody>
-                            <tbody>
-                            <tr key="4">
-                                <th>Fecha de Expiración: </th>
-                                <th>{obtenerFecha(suscripcion.suscripcion_expiracion)}</th>
-                                    
-                                </tr> */}
                             </tbody>
                             <tbody>
                             <tr key="5">

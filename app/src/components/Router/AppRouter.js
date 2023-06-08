@@ -16,11 +16,10 @@ import { Guard } from "../Guard/Guard";
 import Persons from "../Persons/Persons";
 import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclamo";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
-import { Vehicle } from "../Vehicle/Vehicle";
+import {VehicleEdit } from "../Vehicle/VehicleEdit";
 import ListCli from "../ListasDeUsuario/ListaCliente";
 import EditPerson from "../Persons/EditPerson";
 import DeletePerson from "../Persons/ChangeState/ChangeStatePerson";
-import { ListVehicle } from "../Vehicle/ListVehicle";
 import { Solicitude } from "../Solicitude/Solicitude";
 import { SubscriptionList } from "../Subscription/SuscriptionToList";
 import Employee from "../Employee/Employee";
@@ -28,20 +27,18 @@ import EditEmpleado from "../Employee/EditEmpleado";
 import Event from "../Event/Event";
 import ViewEmployee from "../Employee/ViewEmployee";
 import ViewPerson from "../Persons/ViewPerson";
-import { Tarifa } from "../Tarifa/Tarifa";
+import { TarifaEdit } from "../Tarifa/TarifaEdit";
 import Mensaje from "../MensajesGlobales/GroupTelegram";
 import ReclamoConsulta from "../Reclamo-Consulta/RecCon";
 import { SubscriptionToChangeStatus } from "../Subscription/SuscriptionToChangeStatus";
 import ListaPag from "../Listar Pagos/ListaPago";
 import Configurations from "../Configuraciones/Configurations";
+import Options from "../Options/Options";
 import { SolicitudeList } from "../Subscription/SolicitudeList";
 import { SubscriptionEdit } from "../Subscription/SubscriptionEdit";
 import { SolicitudeToChangeStatus } from "../Subscription/SolicitudeToChangeStatus";
-import { TarifaCreate } from "../Tarifa/TarifaCreate";
-import { TarifaList } from "../Tarifa/TarifaList";
-import { VehicleCreate } from "../Vehicle/VehicleCreate";
-import { SubscriptionInMora } from "../Subscription/SuscriptionInMora";
-
+import { TarifaListCreate } from "../Tarifa/TarifaListAndCreate";
+import { VehicleListCreate } from "../Vehicle/VehicleListAndCreate";
 
 export const AppRouter = () => {
 
@@ -51,6 +48,7 @@ export const AppRouter = () => {
                     {/*---------------------------Rutas------------------------ */}
                     <Route exact path="/"                   element={ <Login/> }/>
                     <Route path="/main"                     element={ <Main/> } />
+                    {/* Sitios */}
                     <Route path="/sitiosDisponibles"        element={ <ContentSitesAvalible/> }  />
                     <Route path="/sitiosOcupados"           element={ <ContentUnavalible/> } />
                     {/* <Route path="/asignarSitio"             element={ <AssignSite/> } />
@@ -65,33 +63,37 @@ export const AppRouter = () => {
                     <Route path="/editEmpleados"            element={ <EditEmpleado/> }/>
                     <Route path="/viewEmpleados"            element={ <ViewEmployee/> }/>
 
-
+                    <Route path="/opciones"             element={ <Options/> }/>
+                      
                     <Route path='/ReclamosResp'             element={ <SolucionAccionReclamo/>} />
                     <Route path="/comboboxPerson"           element={ <ComboboxPerson/> } />
                     <Route path="/evento"                   element={ <Event/> }/>
                     <Route path="/editPersonas"             element={ <EditPerson/> }/>
                     <Route path="/deletePersonas"           element={ <DeletePerson/> } />
                     <Route path="/listMensaje"              element={ <ListCli/> } />
-                    <Route path="/listvehiculo"             element={ <ListVehicle/> } />
-                    <Route path="/listEditarVehiculo"       element={ <Vehicle/> } />
-                    <Route path="/solicitud"                element={ <Solicitude/> } />
-                    <Route path="/listaSolicitudes"         element={ <SolicitudeList/> } />
-                    <Route path="/listaEstadoSolicitudes"   element={ <SolicitudeToChangeStatus/> } />
+                    {/* Vehiculo */}
+                    <Route path="/registrarVehiculo"             element={ <VehicleListCreate crear={true}/> } /> {/* Registrar datos de Vehiculo */} 
+                    <Route path="/listvehiculo"             element={ <VehicleListCreate/> } /> {/* Ver Lista de Vehiculos */} 
+                    <Route path="/listEditarVehiculo"       element={ <VehicleEdit/> } />{/* Modificar datos de Vehiculo */}
+                    {/* Solicitud */}
+                    <Route path="/listaSolicitudes"         element={ <SolicitudeList/> } />            {/* Ver Lista de Solicitudes */}
+                    <Route path="/listaEstadoSolicitudes"   element={ <SolicitudeToChangeStatus/> } />  {/* Modificar Estado de Solicitud */}
+                    <Route path="/solicitud"                element={ <Solicitude/> } />                {/* Realizar Solicitud*/}
+                    
                     <Route path="/MensajeGlobal"            element={ <Mensaje/> } />
                     <Route path="/Reclamos"                 element={ <ReclamoConsulta/> } />
-                    <Route path="/listaEnMora"      element={ <SubscriptionInMora /> } />
-                    <Route path="/listaEstadoSuscripciones" element={ <SubscriptionToChangeStatus /> } />
-                    <Route path="/listaSuscipciones"        element={ <SubscriptionList /> } />
-                    <Route path="/listaEditarSuscipciones"        element={ <SubscriptionEdit /> } />
+                    <Route path="/listaEnMora"      element={ <SubscriptionToChangeStatus /> } />
+                    {/* Suscipcion */}
+                    <Route path="/listaEstadoSuscripciones" element={ <SubscriptionToChangeStatus /> } /> {/* Modificar Estado de Suscripcion*/}
+                    <Route path="/listaSuscipciones"        element={ <SubscriptionList /> } />           {/* Ver lista de Suscripciones */}
+                    <Route path="/listaEditarSuscipciones"        element={ <SubscriptionEdit /> } />     {/* Modificar Datos deSuscripciones*/}
                     
                     <Route path="/ListaPagos"               element={ <ListaPag/> } />
                     <Route path="/Configurar"               element={ <Configurations/> } />
-                    
-                    <Route path="/registrarTarifa"               element={ <TarifaCreate show={true}/> } />
-                    <Route path="/listaTarifa"                   element={ <TarifaList/> } />
-                    <Route path="/editartarifa"                   element={ <Tarifa/> } />
-                    
-                    <Route path="/registrarVehiculo"                   element={ <VehicleCreate show={true}/> } />
+                    {/* Tarifa */}
+                    <Route path="/registrarTarifa"               element={ <TarifaListCreate crear={true}/> } /> {/* Registrar datos de Tarifa */}
+                    <Route path="/listaTarifa"                   element={ <TarifaListCreate /> } />             {/* Ver Lista de Tarifas */}
+                    <Route path="/editartarifa"                   element={ <TarifaEdit/> } />                   {/* Modificar datos de Tarifa */}
                     
                 </Routes>
         </Router>

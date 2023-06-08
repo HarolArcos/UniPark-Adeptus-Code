@@ -6,8 +6,18 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import ComboboxPersonaEvento from "./ComboboxPersonaEvento";
 import ComboboxPlacas from "./ComboboxPlacas";
 import ComboboxTipoEvento from "./ComboboxTipoEvento";
+import "./Event.css";
 
 const FormEvent = ({asunto,cancelar, evento}) => {
+
+  const [textareaEnabled, setTextareaEnabled] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const handleCheckboxChange = () => {
+    setTextareaEnabled(!textareaEnabled);
+    setChecked(!checked);
+    console.log("habilidado el textarea",textareaEnabled);
+    console.log("checked",checked);
+  };
 
   const {data,fetchData} = useFetchSendData();
   
@@ -65,7 +75,7 @@ const FormEvent = ({asunto,cancelar, evento}) => {
         idPerson : '',
         idVehicle :  '',
         typeEvent :  '',
-        alarmEvent : 'false',
+        alarmEvent : `${checked}`,
         descriptionEvent : '',
         registerUser : 'harex'
       }}
@@ -74,7 +84,7 @@ const FormEvent = ({asunto,cancelar, evento}) => {
       const errors = {};
 
         if(!selectedPersonaId){
-            errors.idPerson ='Seleccione un elemento porfavor';
+            errors.idPerson ='Seleccione un propietario porfavor';
         }
 
         if(!selectedVehicleId){
@@ -85,8 +95,10 @@ const FormEvent = ({asunto,cancelar, evento}) => {
             errors.typeEvent ='Seleccione el tipo de evento porfavor';
         }
 
-        if(!values.descriptionEvent){
-            errors.descriptionEvent ='El campo es requerido';
+        if(textareaEnabled){
+            if(!values.descriptionEvent){
+              errors.descriptionEvent ='El campo es requerido';
+            }
         }
     //   else if(!/^(?! )[A-Za-z]+( [A-Za-z]+)?$/i.test(values.descriptionEvent)){
     //     errors.descriptionEvent ='Solo se admite un espacio entre dos palabras'
@@ -108,6 +120,7 @@ const FormEvent = ({asunto,cancelar, evento}) => {
         values.idVehicle = selectedVehicleId;
         values.typeEvent = selectedRefTypeEventId;
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+        console.table("los valores que se envian",values);
         console.log('no hubo duplicidad',errorDuply);
         window.location.reload();
       }
@@ -140,7 +153,7 @@ const FormEvent = ({asunto,cancelar, evento}) => {
             </Form.Group>
             <ErrorMessage name="idVehicle" component={()=>(<div className="text-danger">{errors.idVehicle}</div>)}></ErrorMessage>
             
-            <Form.Group className="inputGroup" controlId="idPerson">
+            <Form.Group className="inputGroup" controlId="typeEvent">
                 <Form.Label className="text-left">Tipo de evento</Form.Label>
                 <ComboboxTipoEvento
                     referenciaObjeto = {{tableNameReference:"evento",nameSpaceReference:"evento_tipo"}}
@@ -148,32 +161,43 @@ const FormEvent = ({asunto,cancelar, evento}) => {
                     onReferenciaIdChange={handleTypeEventIdChange}
                 />
             </Form.Group>
-            <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
+            <ErrorMessage name="typeEvent" component={()=>(<div className="text-danger">{errors.typeEvent}</div>)}></ErrorMessage>
               
+            <Form.Check
+                    className="text-left checkAlert"
+                    inline
+                    type="checkbox"
+                    label="Alerta"
+                    checked={textareaEnabled}
+                    onChange={handleCheckboxChange}
+                    id={"inline-checkbox"}
+                />
 
             <Form.Group className="inputGroup" controlId="descriptionEvent">
                 <Form.Label className="text-left">Descripcion del Evento</Form.Label>
                 <Form.Control type="descriptionEvent"
+                    rows={3}
                     as="textarea"
                     name="descriptionEvent"
                     onChange={handleChange}
                     onBlur={handleBlur} 
                     value={values.descriptionEvent} 
+                    disabled={!textareaEnabled}
                 />
             </Form.Group>
             <ErrorMessage name="descriptionEvent" component={()=>(<div className="text-danger">{errors.descriptionEvent}</div>)}></ErrorMessage>
             
             <br/>
-      <div className="text-danger">{errorDuply? errorDuply :''}</div>
-        <Modal.Footer >
-          <Button variant="secondary" onClick={cancelar}>
-            Cancelar
-          </Button>
-          <Button variant="success" className="button" onClick={handleSubmit}  >
-            {asunto}
-          </Button>
-        </Modal.Footer>
-    </Form>
+            <div className="text-danger">{errorDuply? errorDuply :''}</div>
+              <Modal.Footer >
+                <Button variant="secondary" onClick={cancelar}>
+                  Cancelar
+                </Button>
+                <Button variant="success" className="button" onClick={handleSubmit}  >
+                  {asunto}
+                </Button>
+              </Modal.Footer>
+          </Form>
       )}
     </Formik>
   );

@@ -9,43 +9,45 @@ import { useSend } from '../../hooks/HookList';
 
 import "./Tarifa.css"
 
-export const TarifaList = () => {
+export const TarifaListCreate = ({crear=false}) => {
     
-  const [tarifas,setTarifas] = useState([]);
-
+    
+    const [busqueda, setBusqueda] = useState("");
+    const [tarifas,setTarifas] = useState([]);
+    const [tablaTarifas, setTablaTarifas] = useState([]);
     const [error,setError] =  useState(null);
+    
     const{data,fetchData} = useSend();
     
     //----------------------ShowModal-------------------------------
-    
-    const [showEdit, setShowEdit] = useState(false);
-     
     const [showCreate, setShowCreate] = useState(false);
     
-    //----------------------Cliente para:-------------------------------
-    //------Editar :
-    const [tarifaSeleccionado, setTarifaSeleccionado] = useState(null);
-
+    
     useEffect(() => {
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
         console.log(data);
     }, []);
     
+    
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async ()=>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+    }
+
     useEffect(() => {
         if (data.desError) {
             setError("No existe ningúna tarifa registrada");
         }else{
             setTarifas(data);
+            setTablaTarifas(data);
         }
         console.log(data);
     }, [data]);
 
-    //-----------------------Activate-------------------------------------------
-    //------Edit Modal
-    const handleEditar = (tarifa) => {
-        setShowEdit(true);
-        setTarifaSeleccionado(tarifa);
-    };
+    
     
     //-----Create Modal
     const handleCreate = () => {
@@ -54,15 +56,32 @@ export const TarifaList = () => {
     
     //---Desactive Any Modal
     const handleCancelar = async () => {
-        setShowEdit(false);
         setShowCreate(false);
         console.log(data);
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        
+        cargarDatos();
     };
+
+     /*--------------------- Barra Busqueda------------------------- */
+     const handleChangeSerch = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+
+    }
+
+    const filtrar = (termBusqueda) => {
+        var resultadosBusqueda = tablaTarifas.filter((elemento) => {
+            if(
+                elemento.tarifa_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.tarifa_valor.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.tarifa_estado.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+            ){
+                return elemento;
+            }else{
+                return null;
+            }
+        });
+        setTarifas(resultadosBusqueda);
+    }
  
     return (
         <>
@@ -71,10 +90,18 @@ export const TarifaList = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
+                    {crear?(
+                    <ButtonGroup className="buttonGroup">
+                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
+                    </ButtonGroup>):(
+                        <div></div>
+                    )}
                     <Form.Control 
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
+                        value={busqueda}
+                        onChange={handleChangeSerch}
                     />
                 </div>
                 <Table striped bordered hover className="table">
@@ -107,7 +134,18 @@ export const TarifaList = () => {
                         )}
                     </tbody>
                 </Table>
-
+                <Modal
+	            tamaño ="md"
+                mostrarModal={showCreate}
+                title = 'Crear Tarifa'
+                contend = {
+                <Formulario
+                asunto = "Guardar Tarifa"
+                cancelar={handleCancelar}
+                ></Formulario>}
+                hide = {handleCancelar}
+                >
+                </Modal>
               
             
             </div>

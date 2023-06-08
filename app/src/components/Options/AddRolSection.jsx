@@ -1,32 +1,27 @@
-import React, {useEffect, useState} from "react";
-import Header from "../Header/Header";
-import Aside from "../Aside/Aside";
-import Footer from "../Footer/Footer";
-import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
-//import { CSVLink } from "react-csv";
-import { useFetch } from "../../hooks/HookFetchListData";
+import React from "react";
+import { useState, useEffect } from "react";
+//import { useFetch } from "../../hooks/HookFetchListData";
+import FormAddRol from "./FormAddRol";
 import Modal from "../Modal/Modal";
-import FormularioPersona from './FormPersona';
-import "./Persons.css";
-//import axios from "axios";
+import { Form, Button, ButtonGroup, Table } from "react-bootstrap";
 
-export default function Persons(){   
-   
+export default function AddRolSection(){
+
     const [busqueda, setBusqueda] = useState("");
-    const [clientes, setClientes] = useState([]);
-    const [tablaClientes, setTablaClientes] = useState([])
+    const [roles, setroles] = useState([]);
+    const [tablaroles, setTablaroles] = useState([])
     
-    const [personas,setPersonas] =  useState([]);
-    const {data} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient'
-    )
+    // const [personas,setPersonas] =  useState([]);
+    // const {data} = useFetch(
+    //     'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol'
+    // )
 
     const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol')
             .then(response => response.json())
             .then( response => {
-                setClientes(response);
-                setTablaClientes(response);
+                setroles(response);
+                setTablaroles(response);
             })
             .catch( error => {
                 console.log(error);
@@ -47,9 +42,9 @@ export default function Persons(){
     
     //----------------------Cliente para:-------------------------------
     //------Editar :
-    useEffect(() => {
-        setPersonas(data);
-    }, [data]);
+    // useEffect(() => {
+    //     setPersonas(data);
+    // }, [data]);
     
     //-----------------------Activate-------------------------------------------
     
@@ -66,12 +61,12 @@ export default function Persons(){
     
     //-----------------------Crud-------------------------------------------
     //-------Crear
-    const handleGuardarNuevo = (personaNueva) => {
-        personaNueva.id = personas.lengthb;
-            personas.push(personaNueva);
-            const nuevasPersonas = personas;
-        setPersonas(nuevasPersonas);
-    };
+    // const handleGuardarNuevo = (personaNueva) => {
+    //     personaNueva.id = personas.lengthb;
+    //         personas.push(personaNueva);
+    //         const nuevasPersonas = personas;
+    //     setPersonas(nuevasPersonas);
+    // };
 
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -80,27 +75,21 @@ export default function Persons(){
     }
 
     const filtrar = (termBusqueda) => {
-        var resultadosBusqueda = tablaClientes.filter((elemento) => {
+        var resultadosBusqueda = tablaroles.filter((elemento) => {
             if(
-                    elemento.persona_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_apellido.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.persona_ci.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                    elemento.rol_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.estadorol.toString().toLowerCase().includes(termBusqueda.toLowerCase())
             ){
                 return elemento;
             }else{
                 return null;
             }
         });
-        setClientes(resultadosBusqueda);
+        setroles(resultadosBusqueda);
     }
 
     return(
-        <>
-        <Header></Header>
-        <Aside></Aside>
-
-        <div className="content-wrapper contenteSites-body">
+        <div>
         
                 {/* {localStorage.getItem("Error") ?
                 <div className="text-danger">{localStorage.getItem("Error")}</div>
@@ -127,28 +116,19 @@ export default function Persons(){
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
-                            <th>Nombre Completo</th>
-                            <th>Telefono</th>
-                            <th> CI </th>
-                            <th>Tipo Persona</th>
+                            <th>Nombre del Rol</th>
+                            <th>Descripción</th>
                             <th>Estado</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {loading ? (
-                            <tr>
-                                <td colSpan={"3"} >Cargando...</td>
-                            </tr>
-                        ): ( */}
                             {
-                                clientes.map((persona) => (
-                                    <tr className="columnContent" key={persona.persona_id}>
-                                        <td>{persona.persona_id}</td>
-                                        <td>{persona.persona_nombre} {persona.persona_apellido}</td>
-                                        <td>{persona.persona_telefono}</td>
-                                        <td>{persona.persona_ci}</td>
-                                        <td>{persona.personatipo}</td>
-                                        <td>{persona.personaestado}</td>
+                                roles.map((rol) => (
+                                    <tr className="columnContent" key={rol.rol_id}>
+                                        <td>{rol.rol_id}</td>
+                                        <td>{rol.rol_nombre}</td>
+                                        <td>{rol.rol_descripcion}</td>
+                                        <td>{rol.estadorol}</td>
                                     </tr>
                                 ))
                             }
@@ -158,22 +138,28 @@ export default function Persons(){
                 
 
                 <Modal
+                tamaño={"md"}
                 mostrarModal={showCreate}
-                title = 'Crear Nuevo Cliente'
-                contend = {
-                <FormularioPersona
-                asunto = "Guardar Cliente"
-                cancelar={handleCancelar}
-                añadirNuevo = {handleGuardarNuevo}
-                ></FormularioPersona>}
+                title = 'Crear Nuevo Rol'
+                contend = 
+                // {
+                // <FormularioPersona
+                // asunto = "Guardar Cliente"
+                // cancelar={handleCancelar}
+                // añadirNuevo = {handleGuardarNuevo}
+                // ></FormularioPersona>}
+                {
+                    <FormAddRol 
+                    cancelar={handleCancelar}
+                    asunto = "Guardar Rol"
+                    >
+                        
+                    </FormAddRol>
+                }
                 hide = {handleCancelar}
                 >
                 </Modal>
             </div>
         </div>
-        <br></br>
-        
-        <Footer></Footer>
-        </>
     )
 }

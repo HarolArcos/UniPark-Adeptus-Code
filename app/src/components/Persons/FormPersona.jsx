@@ -189,11 +189,13 @@ const FormularioPersona = ({
         ) {
           errors.passwordPerson = "datos invalidos";
         }
-        console.log(values);
-        console.log(errors);
+        //console.log(values);
+        //console.log(errors);
         return errors;
       }}
+      
       onSubmit={async (values) => {
+        //const ciPersonSelected = values.ciPerson;
         console.log(values);
         values.telegramPerson = values.phonePerson;
         console.log("sadw");
@@ -207,14 +209,30 @@ const FormularioPersona = ({
           );
           cancelar();
         } else {
-          
-          fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
-            values
-          );
+            const insertResponse = await fetchData(
+              "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
+              values
+            );
 
+            console.log("Esto es insert Response",insertResponse);
+            // console.log(lista.persona_ci, ciPersonSelected, "Ci seleccionados");
+            // if(lista.persona_ci === ciPersonSelected){
+            //   const personHasRol = {
+            //       idPerson :  lista.persona_ci,
+            //       idRol :  1
+            //   }
+              // fetchData(
+              //   "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol",
+              //   personHasRol
+              // );
+              //console.log("Esto es person Has Rol",personHasRol);
+            //}
+            // const personData = await insertResponse.json();
+            // console.log("Esto es personData",personData);
+            // const personId = personData.idPerson;
+            // console.log("Esto es personID",personId);
           alert(`Se guardo a la parsona`);
-            window.location.reload();
+            //window.location.reload();
           
           //cancelar();
         }

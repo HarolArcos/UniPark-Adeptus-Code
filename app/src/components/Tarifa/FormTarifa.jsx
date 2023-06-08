@@ -127,7 +127,6 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
         });
 
         const file =await res.json();
-
         values.statusRate = selectedReferenciaId;
         values.routeRate = file.secure_url;
         console.log(values);
