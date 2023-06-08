@@ -10,7 +10,7 @@ import { useSend } from '../../hooks/HookList';
 import "./Vehicle.css"
 import SearchBar from '../SearchBar/SearchBar';
 
-export const Vehicle = () => {
+export const VehicleEdit = () => {
     
     const [busqueda, setBusqueda] = useState("");
     const [vehiculos,setVehiculos] =  useState([]);
@@ -50,6 +50,16 @@ export const Vehicle = () => {
         }
     }, [data]);
 
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        
+    }
+   
+
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
     const handleEditar = (vehiculo) => {
@@ -64,12 +74,7 @@ export const Vehicle = () => {
         setShowEdit(false);
         setShowCreate(false);
         console.log(data);
-             
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        
+        cargarDatos();
     };
 
     /*--------------------- Barra Busqueda------------------------- */
