@@ -213,6 +213,33 @@ class news {
         return $response;
     }
 
+    public function listNewsActiveDb(){
+        $response = false;
+        $sql = "SELECT n.*, r.referencia_valor AS estadoNoticia,
+        CONCAT(p1.persona_nombre, ' ', p1.persona_apellido) AS autor,
+        CONCAT(p2.persona_nombre, ' ', p2.persona_apellido) AS autorModificacion
+      FROM noticia n
+      JOIN referencia r ON n.noticia_estado = r.referencia_id
+      JOIN persona p1 ON n.persona_id = p1.persona_id
+      JOIN persona p2 ON n.ultima_persona_id = p2.persona_id
+      WHERE r.referencia_valor = 'activo'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
 	
     private function mapNews($rs){
         $this->idNews = $rs['noticia_id'];

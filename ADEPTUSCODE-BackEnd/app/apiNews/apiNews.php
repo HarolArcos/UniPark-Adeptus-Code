@@ -6,6 +6,7 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertNews");
     $server->Register("listNews");
+    $server->Register("listNewsActive");
     $server->Register("editNews");
     $server->Register("changeStateNews");
     $server->start();
@@ -233,6 +234,27 @@
             $_log->info($mensaje);
         }else{
             $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan noticias"));
+            $mensaje = "No se pudo listar las noticias - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listNewsActive(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_news = new news($_db);
+        $responseList = $_news->listNewsActiveDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las noticias - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan noticias"));
             $mensaje = "No se pudo listar las noticias - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
