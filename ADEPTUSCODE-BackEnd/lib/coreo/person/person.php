@@ -466,7 +466,19 @@ class person {
         INNER JOIN referencia ON opcion.opcion_estado = referencia.referencia_id
         WHERE persona.persona_nickname = '$nicknamePerson'
         AND persona.persona_contraseña = '$passwordPerson'
-        AND referencia.referencia_valor = 'activo'";
+        AND referencia.referencia_valor = 'activo'
+        AND opcion_padre = 0";
+
+        $sql3 = "SELECT opcion.*
+        FROM persona
+        INNER JOIN persona_has_rol ON persona.persona_id = persona_has_rol.persona_id
+        INNER JOIN rol_has_opcion ON persona_has_rol.rol_id = rol_has_opcion.rol_id
+        INNER JOIN opcion ON rol_has_opcion.opcion_id = opcion.opcion_id
+        INNER JOIN referencia ON opcion.opcion_estado = referencia.referencia_id
+        WHERE persona.persona_nickname = '$nicknamePerson'
+        AND persona.persona_contraseña = '$passwordPerson'
+        AND referencia.referencia_valor = 'activo'
+        AND opcion_padre <> 0";
         
 
         $sql = "SELECT persona.*, tipoPersona.referencia_valor, rol.rol_nombre
@@ -480,7 +492,8 @@ class person {
           AND estadoPersona.referencia_valor = 'activo'";
         $rs = $this->_db->select($sql);
         $rs2 = $this->_db->select($sql2);
-        if($this->_db->getLastError() == false && $rs==false && $rs2==false) {
+        $rs3 = $this->_db->select($sql3);
+        if($this->_db->getLastError() == false && $rs==false && $rs2==false && $rs3==false) {
             
             $arrLog = array(
                             "sql"=>$sql,
@@ -488,7 +501,7 @@ class person {
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             //$response = $rs;
-            $response = array('persona'=>$rs, 'opciones'=>$rs2);
+            $response = array('persona'=>$rs, 'opciones padre 0'=>$rs2, 'opciones padre disferente de 0'=>$rs3);
             $arrLog = array(
                             "output"=>$response,
                             "sql"=>$sql);
