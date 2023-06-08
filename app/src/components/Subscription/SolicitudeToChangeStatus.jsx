@@ -10,7 +10,7 @@ import FormularioStatus from './FormChangeStatus';
 import { useSend } from '../../hooks/HookList';
 
 
-export const SubscriptionToChangeStatus = () => {
+export const SolicitudeToChangeStatus = () => {
     
     const [busqueda, setBusqueda] = useState("");
     const [suscripciones,setSuscripciones] = useState([]);
