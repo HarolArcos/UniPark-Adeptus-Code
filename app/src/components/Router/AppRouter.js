@@ -74,10 +74,10 @@ export const AppRouter = () => {
                     <Route path="/registrarVehiculo"             element={ <VehicleListCreate crear={true}/> } /> {/* Registrar datos de Vehiculo */} 
                     <Route path="/listvehiculo"             element={ <VehicleListCreate/> } /> {/* Ver Lista de Vehiculos */} 
                     <Route path="/listEditarVehiculo"       element={ <VehicleEdit/> } />{/* Modificar datos de Vehiculo */}
-                    <Route path="/solicitud"                element={ <Solicitude/> } />
                     {/* Solicitud */}
                     <Route path="/listaSolicitudes"         element={ <SolicitudeList/> } />            {/* Ver Lista de Solicitudes */}
                     <Route path="/listaEstadoSolicitudes"   element={ <SolicitudeToChangeStatus/> } />  {/* Modificar Estado de Solicitud */}
+                    <Route path="/solicitud"                element={ <Solicitude/> } />                {/* Realizar Solicitud*/}
                     
                     <Route path="/MensajeGlobal"            element={ <Mensaje/> } />
                     <Route path="/Reclamos"                 element={ <ReclamoConsulta/> } />
