@@ -71,7 +71,7 @@ export const AppRouter = () => {
                     <Route path="/deletePersonas"           element={ <DeletePerson/> } />
                     <Route path="/listMensaje"              element={ <ListCli/> } />
                     {/* Vehiculo */}
-                    <Route path="/listvehiculo"             element={ <VehicleListCreate crear={true}/> } /> {/* Registrar datos de Vehiculo */} 
+                    <Route path="/registrarVehiculo"             element={ <VehicleListCreate crear={true}/> } /> {/* Registrar datos de Vehiculo */} 
                     <Route path="/listvehiculo"             element={ <VehicleListCreate/> } /> {/* Ver Lista de Vehiculos */} 
                     <Route path="/listEditarVehiculo"       element={ <VehicleEdit/> } />{/* Modificar datos de Vehiculo */}
                     <Route path="/solicitud"                element={ <Solicitude/> } />
