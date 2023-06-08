@@ -40,6 +40,7 @@ import { SolicitudeToChangeStatus } from "../Subscription/SolicitudeToChangeStat
 import { TarifaCreate } from "../Tarifa/TarifaCreate";
 import { TarifaList } from "../Tarifa/TarifaList";
 import { VehicleCreate } from "../Vehicle/VehicleCreate";
+import { SubscriptionInMora } from "../Subscription/SuscriptionInMora";
 
 
 export const AppRouter = () => {
@@ -78,7 +79,7 @@ export const AppRouter = () => {
                     <Route path="/listaEstadoSolicitudes"   element={ <SolicitudeToChangeStatus/> } />
                     <Route path="/MensajeGlobal"            element={ <Mensaje/> } />
                     <Route path="/Reclamos"                 element={ <ReclamoConsulta/> } />
-                    <Route path="/listaEnMora"      element={ <SubscriptionToChangeStatus /> } />
+                    <Route path="/listaEnMora"      element={ <SubscriptionInMora /> } />
                     <Route path="/listaEstadoSuscripciones" element={ <SubscriptionToChangeStatus /> } />
                     <Route path="/listaSuscipciones"        element={ <SubscriptionList /> } />
                     <Route path="/listaEditarSuscipciones"        element={ <SubscriptionEdit /> } />
