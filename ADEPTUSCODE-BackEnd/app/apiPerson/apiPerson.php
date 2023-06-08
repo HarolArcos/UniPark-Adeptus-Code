@@ -110,7 +110,8 @@
                     $responseInsert = $_person->insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, $statusPerson,$nicknamePerson,$passwordPerson);
 
                     if ( $responseInsert) {
-                        $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+                        //$response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
+                        $response = $responseInsert;
                     }else{
                         $response = array("codError" => 200, "data" => array("desError"=>"Inserción fallida"));
                     }

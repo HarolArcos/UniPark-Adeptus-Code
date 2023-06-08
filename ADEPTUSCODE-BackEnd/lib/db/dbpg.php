@@ -122,28 +122,31 @@ class dataBasePG{
     }
 
     public function query($sql)
-{
-    $result = false;
-    $res = $this->setQueryParameters($sql);
-    if (!is_bool($res)) {
-        $result = array();
-        while ($row = pg_fetch_assoc($res)) {
-            $result[] = $row; // Agrega cada fila a $result
+    {
+        $result = false;
+        $res = $this->setQueryParameters($sql);
+
+        if (!is_bool($res)) {
+            if ($this->lastError === NULL) {
+                if($this->numRows == 0 && $this->affectedRows > 0 ){
+                    $result = true;
+                }
+                else{
+                    $table = array();
+                    while ($row = pg_fetch_assoc($res)) {
+                        $table[] = $row; // Agrega cada fila a $result
+                    }
+                    $this->nameCols = $this->field_name($res);
+                    $result = $table;
+                }
+            }
+            pg_free_result($res); // Libera los recursos de la consulta
+        } else {
+            $result = $res; // Si $res es un booleano (indicando un error), simplemente lo devuelve
         }
-        $error = pg_result_error($res); // Obtiene cualquier mensaje de error de la consulta
-        if (!empty($error)) {
-            // Si hubo un error, devuelve el mensaje de error
-            $result = $error;
-        }else{
-            $result = true;
-        }
-        pg_free_result($res); // Libera los recursos de la consulta
-    } else {
-        $result = $res; // Si $res es un booleano (indicando un error), simplemente lo devuelve
+        #var_dump($result);
+        return $result;
     }
-    #var_dump($result);
-    return $result;
-}
 
     /*
     * Permite ejecutar sentencias SQL SELECT y obtiene los registros en un array asociativo
