@@ -47,7 +47,6 @@ export const VehicleListCreate = ({crear=false}) => {
     }, [data]);
 
     useEffect(()=>{
-        console.log('paso  por acaaaaa');
         cargarDatos();
     },[]);
 
