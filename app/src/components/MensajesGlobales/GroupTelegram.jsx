@@ -33,6 +33,7 @@ export default function Mensaje() {
       const data = await response.json();
       setnoticias(data);
       setBusqueda(data);
+      setser(data)
     } catch (error) {
       console.log(error);
     }
