@@ -5,7 +5,6 @@ import {Table, Button,ButtonGroup,Image} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-import { useFetch } from '../../hooks/HookFetchListData';
 import { useSend } from '../../hooks/HookList';
 import "./Solicitude.css"
 import { useContext } from "react"

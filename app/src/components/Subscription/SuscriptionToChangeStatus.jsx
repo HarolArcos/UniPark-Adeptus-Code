@@ -1,42 +1,59 @@
 import React ,{useState, useEffect}from 'react';
 import Modal from '../Modal/Modal';
-import Formulario from './FormSubscription';
-import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
+import {Table,Form} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-import { useFetch } from '../../hooks/HookFetchListData';
+// import { useFetch } from '../../hooks/HookFetchListData';
 import "./Subscription.css";
+import FormularioStatus from './FormChangeStatus';
+import { useSend } from '../../hooks/HookList';
 
 
-export const Subscription = () => {
+export const SubscriptionToChangeStatus = () => {
     
+    const [busqueda, setBusqueda] = useState("");
     const [suscripciones,setSuscripciones] = useState([]);
+    const [tablaSuscripciones, setTablaSuscripciones] = useState([]);
     const [error,setError] =  useState(null);
-    
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+    const [tipo,setTipo] =  useState(1);
+    //------FetchData
+    const{data,fetchData} = useSend();
+    //listSuscriptionInProcess
     
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
-     
-    const [showCreate, setShowCreate] = useState(false);
     
     //----------------------Cliente para:-------------------------------
     //------Editar :
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
-    
-    
+ 
+    useEffect(() => {
+        console.log(tipo);
+        if (tipo==1) {
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
+         }else if(tipo==2){
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
+         }else if(tipo==3){
+            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+         }
+        console.log(data);
+    }, [tipo]);
     
     useEffect(() => {
-        if (data.desError) {
-            setError("No existe ningún vehiculo registrado");
-        }else{
-            setSuscripciones(data);
-        }
         console.log(data);
+        if (data.desError) {
+            setError(data.desError);
+        }
+        else{
+            setError(null);
+            setSuscripciones(data);
+            setTablaSuscripciones(data);
+        
+        }
+        console.log(suscripciones);
     }, [data]);
-
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
     const handleEditar = (suscripcion) => {
@@ -44,25 +61,48 @@ export const Subscription = () => {
         setSuscripcionSeleccionado(suscripcion);
     };
     
-    //-----Create Modal
-    const handleCreate = () => {
-        setShowCreate(true);
-    };
-    
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
-        setShowCreate(false);
+        window.location.reload();
     };
+ 
 
     const  obtenerFecha = (stringFechaHora) =>{
-        console.log(stringFechaHora);
         const fechaHora = new Date(stringFechaHora);
         const fecha = fechaHora.toISOString().split('T')[0];
-        console.log(fecha);
         return fecha;
       }
- 
+
+    const handleOption = e => {
+        console.log(e.target.value);
+        setTipo(e.target.value);
+        console.log(tipo);
+    }
+    
+    
+      /*--------------------- Barra Busqueda------------------------- */
+    const handleChangeSerch = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+
+    }
+
+    const filtrar = (termBusqueda) => {
+        var resultadosBusqueda = tablaSuscripciones.filter((elemento) => {
+            if(
+                    elemento.suscripcion_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.cliente.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.suscripcion_numero_parqueo.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+            ){
+                return elemento;
+            }else{
+                return null;
+            }
+        });
+        setSuscripciones(resultadosBusqueda);
+    }
+
     return (
         <>
         <Header></Header>
@@ -70,21 +110,25 @@ export const Subscription = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
-                    <ButtonGroup className="buttonGroup">
-                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                        <Button variant="success" className="button"> PDF </Button>
-                    </ButtonGroup>
                     <Form.Control 
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
+                        value={busqueda}
+                        onChange={handleChangeSerch}
                     />
+                    <Form.Select style={{ width: '200px' }} placeholder='Seleccione..' onChange={handleOption}>
+                        {/* <option>Lista por:</option> */}
+                        <option value="1">Habilitadas</option>
+                        <option value="2">Inhabilitadas</option>
+                        <option value="3">En Mora</option>
+                    </Form.Select>
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
-                            <th>Número de Parqueo</th>
+                            <th>Nro de Parqueo</th>
                             <th>Cliente</th>
                             <th>Fecha Activación</th>
                             <th>Fecha Expiración</th>
@@ -96,7 +140,7 @@ export const Subscription = () => {
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"4"} >No existe suscripciones</td>
+                                <td colSpan={"7"} >{error}</td>
                             </tr>
                         ): (
                             suscripciones.map((suscripcion) => (
@@ -106,11 +150,11 @@ export const Subscription = () => {
                                         <td>{suscripcion.cliente}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_activacion)}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
-                                        <td>{suscripcion.referencia_valor}</td>
+                                        <td>{suscripcion.referencia_valor.charAt(0).toUpperCase()+suscripcion.referencia_valor.slice(1)}</td>
                                         <td>
                                             <ul>
-                                                <li>Tiempo: {suscripcion.tarifa_nombre}</li>
-                                                <li>Bs :    {suscripcion.tarifa_valor}</li>
+                                                <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
+                                                <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>
                                         <td className="actionsButtons">
@@ -126,39 +170,48 @@ export const Subscription = () => {
                         )}
                     </tbody>
                 </Table>
-
                 <Modal
 	            tamaño ="md"
                 mostrarModal={showEdit}
-                title = 'Editar Suscripción'
+                title = 'Cambiar Estado'
                 contend = {
-                <Formulario
+                <>
+                <div>
+                    {suscripcionSeleccionado?(<div className='text-left'>
+                
+                <h5>
+                    <strong>Nro de Parqueo:</strong>{suscripcionSeleccionado?.suscripcion_numero_parqueo}
+                </h5>
+                <h5>
+                    <strong>Cliente:</strong>{suscripcionSeleccionado?.cliente}
+                </h5>
+                <h5>
+                    <strong>Fecha de Activación:</strong>{obtenerFecha(suscripcionSeleccionado?.suscripcion_activacion)}
+                </h5>
+                <h5>
+                    <strong>Fecha de Expiración:</strong>{obtenerFecha(suscripcionSeleccionado?.suscripcion_expiracion)}
+                </h5>
+                <h5>
+                    <strong>Bs:</strong>{suscripcionSeleccionado?.tarifa_valor}
+                </h5>
+                </div>):("")}
+                </div>
+                <FormularioStatus
                 asunto ='Guardar Cambios'
                 suscripcion= {suscripcionSeleccionado}
                 cancelar={handleCancelar}
-                ></Formulario>}
-                hide = {handleCancelar}
-                >
-                </Modal>
-                
-
-                <Modal
-	            tamaño ="md"
-                mostrarModal={showCreate}
-                title = 'Crear Nueva Suscripción'
-                contend = {
-                <Formulario
-                asunto = "Guardar Suscripción"
-                cancelar={handleCancelar}
-                ></Formulario>}
+                reftipo={2}
+                ></FormularioStatus>
+                </>    
+                }
                 hide = {handleCancelar}
                 >
                 </Modal>
             </div>
         </div>
-
         <Footer></Footer>
         </>
 
     )
 }
+

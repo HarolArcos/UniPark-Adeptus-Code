@@ -1,41 +1,61 @@
 import React ,{useState, useEffect}from 'react';
 import Modal from '../Modal/Modal';
+import Formulario from './FormSubscription';
 import {Table, Button,ButtonGroup,Form} from 'react-bootstrap';
 import Header from '../Header/Header';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
-import { useFetch } from '../../hooks/HookFetchListData';
+import { useSend } from '../../hooks/HookList';
 import "./Subscription.css";
-import FormularioStatus from './FormChangeStatus';
 
 
-export const SubscriptionInProcessToChangeStatus = () => {
+export const SubscriptionEdit = () => {
     
     const [busqueda, setBusqueda] = useState("");
     const [suscripciones,setSuscripciones] = useState([]);
     const [tablaSuscripciones, setTablaSuscripciones] = useState([]);
     const [error,setError] =  useState(null);
+    const [tipo,setTipo] =  useState(1);
     
-    const{data} = useFetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
-    //listSuscriptionInProcess
-    
+    //------FetchData
+    const{data,fetchData} = useSend();
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
+     
+    const [showCreate, setShowCreate] = useState(false);
     
     //----------------------Cliente para:-------------------------------
     //------Editar :
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
- 
+    
+    
+    
     useEffect(() => {
+        console.log(tipo);
+        if (tipo==1) {
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
+         }else if(tipo==2){
+            
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
+         }else if(tipo==3){
+            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+         }
+        console.log(data);
+    }, [tipo]);
+    
+    useEffect(() => {
+        console.log(data);
         if (data.desError) {
-            console.log(data);
             setError(data.desError);
-        }else{
+        }
+        else{
+            setError(null);
             setSuscripciones(data);
             setTablaSuscripciones(data);
+        
         }
-        console.log(data,suscripciones);
+        console.log(suscripciones);
     }, [data]);
 
     //-----------------------Activate-------------------------------------------
@@ -45,12 +65,16 @@ export const SubscriptionInProcessToChangeStatus = () => {
         setSuscripcionSeleccionado(suscripcion);
     };
     
+    //-----Create Modal
+    const handleCreate = () => {
+        setShowCreate(true);
+    };
+    
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
         setShowCreate(false);
     };
- 
 
     const  obtenerFecha = (stringFechaHora) =>{
         console.log(stringFechaHora);
@@ -59,6 +83,13 @@ export const SubscriptionInProcessToChangeStatus = () => {
         console.log(fecha);
         return fecha;
       }
+ 
+
+      const handleOption = e => {
+        console.log(e.target.value);
+        setTipo(e.target.value);
+        console.log(tipo);
+    }
     
     
       /*--------------------- Barra Busqueda------------------------- */
@@ -82,7 +113,6 @@ export const SubscriptionInProcessToChangeStatus = () => {
         });
         setSuscripciones(resultadosBusqueda);
     }
-
     return (
         <>
         <Header></Header>
@@ -90,6 +120,10 @@ export const SubscriptionInProcessToChangeStatus = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
+                    {/* <ButtonGroup className="buttonGroup">
+                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
+                        <Button variant="success" className="button"> PDF </Button>
+                    </ButtonGroup> */}
                     <Form.Control 
                         className="searchBar"
                         type="text"
@@ -97,24 +131,29 @@ export const SubscriptionInProcessToChangeStatus = () => {
                         value={busqueda}
                         onChange={handleChangeSerch}
                     />
+                    <Form.Select style={{ width: '200px' }} placeholder='Seleccione..' onChange={handleOption}>
+                        <option value="1">Habilitadas</option>
+                        <option value="2">Inhabilitadas</option>
+                        <option value="3">En Mora</option>
+                    </Form.Select>
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
-                            <th>Nro de Parqueo</th>
+                            <th>Número de Parqueo</th>
                             <th>Cliente</th>
                             <th>Fecha Activación</th>
                             <th>Fecha Expiración</th>
                             <th>Estado</th>
                             <th>Tarifa</th>
-                            {/* <th>Acciones</th> */}
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"7"} >{error}</td>
+                                <td colSpan={"8"} >{error}</td>
                             </tr>
                         ): (
                             suscripciones.map((suscripcion) => (
@@ -124,11 +163,11 @@ export const SubscriptionInProcessToChangeStatus = () => {
                                         <td>{suscripcion.cliente}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_activacion)}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
-                                        <td>{suscripcion.referencia_valor.charAt(0).toUpperCase()+suscripcion.referencia_valor.slice(1)}</td>
+                                        <td>{suscripcion.referencia_valor}</td>
                                         <td>
                                             <ul>
-                                                <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
-                                                <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
+                                                <li>Tiempo: {suscripcion.tarifa_nombre}</li>
+                                                <li>Bs :    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>
                                         <td className="actionsButtons">
@@ -144,27 +183,37 @@ export const SubscriptionInProcessToChangeStatus = () => {
                         )}
                     </tbody>
                 </Table>
+
                 <Modal
 	            tamaño ="md"
                 mostrarModal={showEdit}
-                title = 'Cambiar Estado'
+                title = 'Editar Suscripción'
                 contend = {
-                <>
-                <h3>Datos:</h3>
-                <h3>Datos:</h3>
-                <h3>Datos:</h3>
-                <FormularioStatus
+                <Formulario
                 asunto ='Guardar Cambios'
                 suscripcion= {suscripcionSeleccionado}
                 cancelar={handleCancelar}
-                ></FormularioStatus>
-                </>    
-                }
+                ></Formulario>}
+                hide = {handleCancelar}
+                >
+                </Modal>
+                
+
+                <Modal
+	            tamaño ="md"
+                mostrarModal={showCreate}
+                title = 'Crear Nueva Suscripción'
+                contend = {
+                <Formulario
+                asunto = "Guardar Suscripción"
+                cancelar={handleCancelar}
+                ></Formulario>}
                 hide = {handleCancelar}
                 >
                 </Modal>
             </div>
         </div>
+
         <Footer></Footer>
         </>
 

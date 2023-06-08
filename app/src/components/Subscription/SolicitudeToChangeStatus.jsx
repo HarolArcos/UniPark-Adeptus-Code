@@ -10,13 +10,13 @@ import FormularioStatus from './FormChangeStatus';
 import { useSend } from '../../hooks/HookList';
 
 
-export const SubscriptionInMoraToChangeStatus = ({tipo=0}) => {
+export const SolicitudeToChangeStatus = () => {
     
     const [busqueda, setBusqueda] = useState("");
     const [suscripciones,setSuscripciones] = useState([]);
     const [tablaSuscripciones, setTablaSuscripciones] = useState([]);
     const [error,setError] =  useState(null);
-
+    const [tipo,setTipo] =  useState(1);
     //------FetchData
     const{data,fetchData} = useSend();
     //listSuscriptionInProcess
@@ -30,25 +30,28 @@ export const SubscriptionInMoraToChangeStatus = ({tipo=0}) => {
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
  
     useEffect(() => {
+        console.log(tipo);
         if (tipo==1) {
              fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
-         }else{
-
-            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+         }else if(tipo==2){
+            
+             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
          }
         console.log(data);
-    }, []);
+    }, [tipo]);
     
     useEffect(() => {
+        console.log(data);
         if (data.desError) {
             setError(data.desError);
         }
         else{
+            setError(null);
             setSuscripciones(data);
             setTablaSuscripciones(data);
-            console.log(data);
         
         }
+        console.log(suscripciones);
     }, [data]);
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
@@ -60,6 +63,7 @@ export const SubscriptionInMoraToChangeStatus = ({tipo=0}) => {
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
+        window.location.reload();
     };
  
 
@@ -68,6 +72,12 @@ export const SubscriptionInMoraToChangeStatus = ({tipo=0}) => {
         const fecha = fechaHora.toISOString().split('T')[0];
         return fecha;
       }
+
+    const handleOption = e => {
+        console.log(e.target.value);
+        setTipo(e.target.value);
+        console.log(tipo);
+    }
     
     
       /*--------------------- Barra Busqueda------------------------- */
@@ -106,6 +116,10 @@ export const SubscriptionInMoraToChangeStatus = ({tipo=0}) => {
                         value={busqueda}
                         onChange={handleChangeSerch}
                     />
+                    <Form.Select style={{ width: '200px' }} placeholder='Seleccione..' onChange={handleOption}>
+                        <option value="1">En Proceso</option>
+                        <option value="2">Rechazados</option>
+                    </Form.Select>
                 </div>
                 <Table striped bordered hover className="table">
                     <thead>
@@ -117,7 +131,7 @@ export const SubscriptionInMoraToChangeStatus = ({tipo=0}) => {
                             <th>Fecha Expiración</th>
                             <th>Estado</th>
                             <th>Tarifa</th>
-                            {/* <th>Acciones</th> */}
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -183,6 +197,7 @@ export const SubscriptionInMoraToChangeStatus = ({tipo=0}) => {
                 asunto ='Guardar Cambios'
                 suscripcion= {suscripcionSeleccionado}
                 cancelar={handleCancelar}
+                reftipo={1}
                 ></FormularioStatus>
                 </>    
                 }
@@ -196,3 +211,4 @@ export const SubscriptionInMoraToChangeStatus = ({tipo=0}) => {
 
     )
 }
+

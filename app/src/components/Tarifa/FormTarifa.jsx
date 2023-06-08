@@ -114,6 +114,7 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
         values.statusRate = selectedReferenciaId;
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/editRate',values);
         cancelar();
+        console.log(values,selectedReferenciaId);
         
       } else {
         const dataImage = new FormData();
@@ -174,7 +175,7 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
             {/* <div className="col-sm-8"> */}
             <ComboboxReferences 
               referenciaObjeto = {{tableNameReference:"tarifa",nameSpaceReference:"tarifa_estado"}}
-              defaultValor={tarifa? {value:tarifa.tarifa_estado,label:tarifa.referencia_valor}:null}
+              defaultValor={tarifa? {value:tarifa.tarifa_estado,label:tarifa.estadotarifa}:null}
               onReferenciaIdChange={handleReferenciaIdChange}
             />
             <ErrorMessage name="statusRate" component={()=>(<div className="text-danger">{errors.statusRate}</div>)}></ErrorMessage>

@@ -8,7 +8,7 @@ import "./Subscription.css"
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 import ComboboxAvaliableSites from "../ComboboxAvaliableSites/ComboboxAvaliableSites";
 import ComboboxTarifa from "../ComboboxTarifa/ComboboxTarifa";
-const FormularioStatus = ({asunto,cancelar, suscripcion}) => {
+const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
 
   const {data,fetchData} = useFetchSendData();
 
@@ -91,6 +91,8 @@ const FormularioStatus = ({asunto,cancelar, suscripcion}) => {
               referenciaObjeto = {{tableNameReference:"suscripcion",nameSpaceReference:"suscripcion_estado"}}
               defaultValor={suscripcion? {value:suscripcion.suscripcion_estado,label:suscripcion.referencia_valor}:null}
               onReferenciaIdChange={handleReferenciaIdChange}
+              tipo={reftipo}
+
             />
             <ErrorMessage name="statusSubscription" component={()=>(<div className="text-danger">{errors.statusSubscription}</div>)}></ErrorMessage>
             </div>
