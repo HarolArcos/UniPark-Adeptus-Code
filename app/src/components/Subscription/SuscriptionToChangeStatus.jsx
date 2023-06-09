@@ -54,6 +54,20 @@ export const SubscriptionToChangeStatus = () => {
         }
         console.log(suscripciones);
     }, [data]);
+
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async () =>{
+        if (tipo==1) {
+            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
+        }else if(tipo==2){
+            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
+        }else if(tipo==3){
+           await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+        }
+    }
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
     const handleEditar = (suscripcion) => {
@@ -64,7 +78,7 @@ export const SubscriptionToChangeStatus = () => {
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
-        window.location.reload();
+        cargarDatos();
     };
  
 
@@ -140,7 +154,7 @@ export const SubscriptionToChangeStatus = () => {
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"7"} >{error}</td>
+                                <td colSpan={"8"} >{error}</td>
                             </tr>
                         ): (
                             suscripciones.map((suscripcion) => (
@@ -178,22 +192,46 @@ export const SubscriptionToChangeStatus = () => {
                 <>
                 <div>
                     {suscripcionSeleccionado?(<div className='text-left'>
-                
-                <h5>
-                    <strong>Nro de Parqueo:</strong>{suscripcionSeleccionado?.suscripcion_numero_parqueo}
-                </h5>
-                <h5>
-                    <strong>Cliente:</strong>{suscripcionSeleccionado?.cliente}
-                </h5>
-                <h5>
-                    <strong>Fecha de Activación:</strong>{obtenerFecha(suscripcionSeleccionado?.suscripcion_activacion)}
-                </h5>
-                <h5>
-                    <strong>Fecha de Expiración:</strong>{obtenerFecha(suscripcionSeleccionado?.suscripcion_expiracion)}
-                </h5>
-                <h5>
-                    <strong>Bs:</strong>{suscripcionSeleccionado?.tarifa_valor}
-                </h5>
+                    <Form.Group className="inputGroup" controlId="activationSubscription text-left">
+                        <div className="row align-items-center">
+                        <Form.Label className="text-left col-sm-4">Nro de Parqueo:</Form.Label>
+                        <div className="col-sm-8">
+                            {suscripcionSeleccionado?.suscripcion_numero_parqueo}
+                        </div>
+                        </div>
+                    </Form.Group>
+                    <Form.Group className="inputGroup" controlId="activationSubscription text-left">
+                        <div className="row align-items-center">
+                        <Form.Label className="text-left col-sm-4">Cliente:</Form.Label>
+                        <div className="col-sm-8">
+                            {suscripcionSeleccionado?.cliente}
+                        </div>
+                        </div>
+                    </Form.Group>
+                    <Form.Group className="inputGroup" controlId="activationSubscription text-left">
+                        <div className="row align-items-center">
+                        <Form.Label className="text-left col-sm-4">Fecha de Activación:</Form.Label>
+                        <div className="col-sm-8">
+                            {obtenerFecha(suscripcionSeleccionado?.suscripcion_activacion)}
+                        </div>
+                        </div>
+                    </Form.Group>
+                    <Form.Group className="inputGroup" controlId="activationSubscription text-left">
+                        <div className="row align-items-center">
+                        <Form.Label className="text-left col-sm-4">Fecha de Expiración:</Form.Label>
+                        <div className="col-sm-8">
+                            {obtenerFecha(suscripcionSeleccionado?.suscripcion_expiracion)}
+                        </div>
+                        </div>
+                    </Form.Group>
+                    <Form.Group className="inputGroup" controlId="activationSubscription text-left">
+                        <div className="row align-items-center">
+                        <Form.Label className="text-left col-sm-4">Bs:</Form.Label>
+                        <div className="col-sm-8">
+                            {suscripcionSeleccionado?.tarifa_valor}
+                        </div>
+                        </div>
+                    </Form.Group>
                 </div>):("")}
                 </div>
                 <FormularioStatus
