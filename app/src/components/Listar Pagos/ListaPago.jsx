@@ -191,6 +191,7 @@ function ListaPa() {
             </tr>
           </tbody>
         </Table>
+        <br/><br/>
       </div>
     );
   } else {

@@ -69,7 +69,7 @@ export default function Aside() {
             role="menu"
             data-accordion="false"
           >
-            <Opcions />
+            {<Opcions />}
             
           </ul>
         </nav>

@@ -2,25 +2,14 @@ import React, {useEffect, useState} from "react";
 import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
-import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
-//import { CSVLink } from "react-csv";
-import { useFetch } from "../../hooks/HookFetchListData";
-import Modal from "../Modal/Modal";
-import FormularioPersona from './FormPersona';
+import { Form, Table } from "react-bootstrap";
 import "./Persons.css";
-//import axios from "axios";
 
-export default function Persons(){   
+export default function ListPersons(){   
    
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
-    
-    const [personas,setPersonas] =  useState([]);
-    const {data} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient'
-    )
-
     const getClients = async () => {
         await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
             .then(response => response.json())
@@ -41,37 +30,6 @@ export default function Persons(){
             localStorage.removeItem("Error")
            }, 3000)
        
-    //----------------------ShowModal-------------------------------
-    
-    const [showCreate, setShowCreate] = useState(false);
-    
-    //----------------------Cliente para:-------------------------------
-    //------Editar :
-    useEffect(() => {
-        setPersonas(data);
-    }, [data]);
-    
-    //-----------------------Activate-------------------------------------------
-    
-    //-----Create Modal
-    const handleCreate = () => {
-        setShowCreate(true);
-    };
-    
-    //---Desactive Any Modal
-    const handleCancelar = () => {
-        setShowCreate(false);
-        //console.log(data);
-    };
-    
-    //-----------------------Crud-------------------------------------------
-    //-------Crear
-    const handleGuardarNuevo = (personaNueva) => {
-        personaNueva.id = personas.lengthb;
-            personas.push(personaNueva);
-            const nuevasPersonas = personas;
-        setPersonas(nuevasPersonas);
-    };
 
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -108,12 +66,6 @@ export default function Persons(){
                 :<span></span>} */}
             <div className="bodyItems">
                 <div className="buttonSection">
-                    <ButtonGroup className="buttonGroup">
-                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                        {/* <Button variant="success" className="button"> 
-                            <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
-                        </Button> */}
-                    </ButtonGroup>
                     <Form.Control 
                         className="searchBar"
                         type="text"
@@ -155,20 +107,6 @@ export default function Persons(){
                         {/* )} */}
                     </tbody>
                 </Table>
-                
-
-                <Modal
-                mostrarModal={showCreate}
-                title = 'Crear Nuevo Cliente'
-                contend = {
-                <FormularioPersona
-                asunto = "Guardar Cliente"
-                cancelar={handleCancelar}
-                añadirNuevo = {handleGuardarNuevo}
-                ></FormularioPersona>}
-                hide = {handleCancelar}
-                >
-                </Modal>
             </div>
         </div>
         <br></br>

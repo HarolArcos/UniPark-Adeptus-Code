@@ -1,28 +1,24 @@
 import { Button } from "react-bootstrap";
 import Modal from "../Modal/Modal";
-import { useFetch } from "../../hooks/HookFetchListData";
+
 import { useState } from "react";
 export default function Whats({ subs, cerrar, show }) {
   const titulo = "AVISO DE MORA";
   const [mensa, setmensa] = useState("");
-  const { data, loading, error } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
-  );
+  
 
   console.log(subs);
-  if (!loading) {
+  
     
-    const peronaMora = data.find(
-      (per) => per.persona_id === subs.suscripcion_id
-    );
+    
     function MenWat (){
         let ultimo =""
         let mensaa = mensajePri.replace(/\n/g,"%0A")
         if (mensa!=="") {
              ultimo  = "Ultima Nota:%0A"+mensa
         }
-        console.log("https://api.whatsapp.com/send?phone="+591+peronaMora.persona_telefono+"&text=<" + titulo.toUpperCase()+">%0A"+mensaa+"%0A%0A"+ultimo);
-        window.open("https://api.whatsapp.com/send?phone="+591+peronaMora.persona_telefono+"&text=<" + titulo.toUpperCase()+">%0A"+mensaa+"%0A%0A"+ultimo)
+        console.log("https://api.whatsapp.com/send?phone="+591+subs.persona_telefono+"&text=<" + titulo.toUpperCase()+">%0A"+mensaa+"%0A%0A"+ultimo);
+        window.open("https://api.whatsapp.com/send?phone="+591+subs.persona_telefono+"&text=<" + titulo.toUpperCase()+">%0A"+mensaa+"%0A%0A"+ultimo)
         cerrar()
         alert(`Se esta enviando el mensaje`);
 
@@ -31,9 +27,8 @@ export default function Whats({ subs, cerrar, show }) {
     }
     const mensajePri =
       "Señor:    " +
-      peronaMora.persona_nombre +
-      "\n con Apellido:  " +
-      peronaMora.persona_apellido +
+      subs.cliente +
+      
       ".\nSe le avisa que su Suscripcion Termino la fecha de "+
       subs.suscripcion_expiracion.slice(0, 10)+
       ". ";
@@ -84,5 +79,5 @@ export default function Whats({ subs, cerrar, show }) {
         ></Modal>
       </>
     );
-  }
+  
 }

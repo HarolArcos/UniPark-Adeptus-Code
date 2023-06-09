@@ -4,7 +4,7 @@ import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import { Table, Form, ButtonGroup, Button } from "react-bootstrap";
 import { useState,  useEffect } from "react";
-import { CSVLink } from "react-csv";
+//import { CSVLink } from "react-csv";
 import Modal from "../Modal/Modal";
 import FormEvent from "./FormEvent";
 
@@ -92,9 +92,9 @@ export default function Event(){
                     <div className="buttonSection">
                         <ButtonGroup className="buttonGroup">
                             <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                            <Button variant="success" className="button"> 
+                            {/* <Button variant="success" className="button"> 
                                 <CSVLink data={eventos} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
-                            </Button>
+                            </Button> */}
                         </ButtonGroup>
                         <Form.Control 
                             className="searchBar"
