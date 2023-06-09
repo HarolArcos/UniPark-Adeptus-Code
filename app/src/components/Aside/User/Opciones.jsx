@@ -1,29 +1,44 @@
-const parse = require("html-react-parser");
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 
 export default function Opcions() {
-  
-  const options =(JSON.parse(localStorage.getItem("options")))
-  
-  
-  let primarylist = options.filter((padres) => padres.opcion_padre==="0");
-  
-  
+  const optionsPadre = JSON.parse(localStorage.getItem("optionsPadre"));
+  const optionsHijo = JSON.parse(localStorage.getItem("optionsHijo"));
+  console.log(optionsPadre);
+  console.log(optionsHijo);
 
-  return primarylist.map((register) => {
-    let string = "";
 
-    let secontlist1 = options.filter(
-      (secontlist) => secontlist.opcion_padre === register.opcion_orden 
-    );
-    
-    secontlist1.map((secont) => (string = string + secont.opcion_componente));
+  return (
+    optionsPadre.map((padre)=>
       
+    <li className={`nav-item menu-close`} key={padre.opcion_id}>
+      <a  className="nav-link active">
+        <p>
+          {padre.opcion_nombre}<i className="right fas fa-angle-left"></i>
+        </p>
+      </a><ul className="nav nav-treeview" >
+      {optionsHijo.map((hijo)=>
       
-    string = register.opcion_componente.replace("&lt;/ul&gt;", string + "&lt;/ul&gt;");
+      {if (hijo.opcion_padre===padre.opcion_orden) {
+        return(
+        <li className="nav-item" key={hijo.opcion_id}>
+          <Link  to={hijo.opcion_componente} className="nav-link">
+            <i className="far fa-circle nav-icon"></i>
+            <p>{hijo.opcion_nombre}</p>
+          </Link >
+        </li>)}
+      }
+      )}
+      
+        
+      </ul>
+    </li>     
+      
+      ) 
+
     
-    return parse(parse(string)); //trasfoma string a html
-  });
+    //trasfoma string a html
+  );
 }
