@@ -13,11 +13,11 @@ export default function Opcions() {
     optionsPadre.map((padre)=>
       
     <li className={`nav-item menu-close`} key={padre.opcion_id}>
-      <Link  className="nav-link active">
+      <a  className="nav-link active">
         <p>
           {padre.opcion_nombre}<i className="right fas fa-angle-left"></i>
         </p>
-      </Link><ul className="nav nav-treeview" >
+      </a><ul className="nav nav-treeview" >
       {optionsHijo.map((hijo)=>
       
       {if (hijo.opcion_padre===padre.opcion_orden) {
@@ -29,9 +29,7 @@ export default function Opcions() {
           </Link >
         </li>)}
       }
-      )}
-      
-        
+      )}  
       </ul>
     </li>     
       
