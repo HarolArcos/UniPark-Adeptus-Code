@@ -1,6 +1,6 @@
 import { Button, Table,Modal, ModalBody,Form } from "react-bootstrap";
 import { useFetch } from "../../hooks/HookFetchListData";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 export default function ResRec() {
   const { data:listap, loading, error:errorp }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson")
@@ -9,10 +9,77 @@ export default function ResRec() {
     );
   const [solucion, setsolucion] = useState(null);
   const [show, setShow] = useState(false);
+  const [noticias, setnoticias] = useState([]);
+  const [busqueda, setBusqueda] = useState("");
+  const [ser, setser] = useState([])
+  const [filtroEstado, setFiltroEstado] = useState("todos");
+  
 
-  const { data:datosr, loading:loadingr,} = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/listComplaint"
-  );
+  useEffect(() => {
+    fetchConfiguraciones();
+  }, []);
+
+  const fetchConfiguraciones = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/listComplaint"
+      );
+      const data = await response.json();
+      setnoticias(data);
+      setBusqueda(data);
+      setser(data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleSearch = (valor) => {
+    // Filtrar las noticias en función de los términos de búsqueda
+    
+    if (valor === "") {
+      
+      setser(busqueda)
+    } else {
+      const noticiasFiltradas = busqueda.filter(
+        (noticia) =>
+          noticia.reclamo_persona.toLowerCase().includes(valor.toLowerCase()) ||
+          noticia.reclamo_texto.toLowerCase().includes(valor.toLowerCase()) ||
+          noticia.reclamo_asunto.toLowerCase().includes(valor.toLowerCase()) 
+      );
+      setser(noticiasFiltradas)
+      
+      
+      
+    }
+    
+    console.log(filtroEstado);
+    
+    
+      
+    
+  };
+  useEffect(() => {
+    handleEstadoFilter(filtroEstado)
+  }, [ser, filtroEstado])
+  const handleEstadoFilter = (estado) => {
+    setFiltroEstado(estado);
+    if (estado === "todos") {
+      setnoticias(ser);
+      
+    } else {
+      const noticiasFiltradas = ser.filter(
+        (noticia) => noticia.reclamoestado.toLowerCase() === estado.toLowerCase()
+      );
+      setnoticias(noticiasFiltradas);
+    }
+    
+  };
+
+
+
+
+
+
+
   const handleClose = () => setShow(false);
   
   function Cambiosol() {
@@ -41,36 +108,44 @@ export default function ResRec() {
 
 
   }
+  console.log(noticias);
   const [datoFiltro, setdatoFiltro] = useState([])
-    const [selectedOption, setSelectedOption] = useState('');
-    const handleSelectChange = (event) => {
-      setSelectedOption(event.target.value);
-      console.log(event.target.value);
-      if (event.target.value!=="") {
-        setdatoFiltro(datosr.filter((fil)=> fil.reclamoestado===event.target.value))
-      } else {
-        setdatoFiltro(datosr)
-      }
-      console.log(datoFiltro);
-      }
-  if (!loadingr&&!loading ) {
+    
+    
+  if (!loading ) {
    
     if (datoFiltro.length===0) {
-      setdatoFiltro(datosr)
+      setdatoFiltro(noticias)
     }
     return(
       <div className="content-wrapper contenteSites-body" >
         <div style={{ color: "red" }}>
                                     {error!=="" ? <span>{error}</span> : <span></span> }
                                     </div>
-            {datosr.desError ? <span>{datosr.desError}</span>:
+            {noticias.desError ? <span>{noticias.desError}</span>:
             <>
-            <select style={{ borderRadius: '5px' }} value={selectedOption} onChange={handleSelectChange} type="text">
-         <option value="">Todo</option>
-          <option value="inactivo">no atendido</option>
-        
-         <option value="activo">atendido</option>
-        </select>
+            <div className="buttonSection">
+          
+          <Form.Group>
+            <Form.Control
+              type="text"
+              
+              placeholder="Buscar por título o texto de la noticia"
+              onChange={(e) => handleSearch(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              as="select"
+              value={filtroEstado}
+              onChange={(e) => handleEstadoFilter(e.target.value)}
+            >
+              <option value="todos">Todos</option>
+              <option value="activo">Atendido</option>
+              <option value="inactivo">No Atentido</option>
+            </Form.Control>
+          </Form.Group>
+        </div>
             <Table striped bordered hover className="table">
                 <thead>
                     <tr>
@@ -85,7 +160,7 @@ export default function ResRec() {
                 <tbody>
                   
                   
-                    {datoFiltro.map((reclamoPersona) => (
+                    {noticias.map((reclamoPersona) => (
                         <tr key={reclamoPersona.reclamo_id}>
                             <td>{reclamoPersona.reclamo_persona}</td>
                             <td>{reclamoPersona.reclamo_asunto}</td>
