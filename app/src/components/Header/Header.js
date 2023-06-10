@@ -22,9 +22,9 @@ export default function Header() {
         </li>
 
         <li className="nav-item d-none d-sm-inline-block">
-          <a href="/contact" className="nav-link">
+          {/* <a href="/contact" className="nav-link">
             Contact
-          </a>
+          </a> */}
         </li>
         </ul>
         <ul className="navbar-nav ml-auto" >
