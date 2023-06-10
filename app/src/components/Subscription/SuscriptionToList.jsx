@@ -111,6 +111,7 @@ export const SubscriptionList = () => {
                             <th>Fecha Expiración</th>
                             <th>Tarifa</th>
                             <th>Estado</th>
+                            {/* <th>Acciones</th> */}
                         </tr>
                     </thead>
                     <tbody>
