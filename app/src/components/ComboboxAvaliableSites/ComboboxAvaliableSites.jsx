@@ -1,32 +1,46 @@
 import Select from 'react-select'; 
 import { useFetch } from '../../hooks/HookFetchListData';
 import { useSend } from '../../hooks/HookList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 
 export default function ComboboxAvaliableSites({ onSiteIdChange ,nro}) { 
 
-  const { data, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios"
-  )
+
   const [selectedSiteId, setSelectedSiteId] = useState(null); 
-    
+  const [sitos, setSitos] = useState([]); 
+  
   const handleSiteChange = (selectedOption) => {
     setSelectedSiteId(selectedOption.value);
     onSiteIdChange(selectedOption.value);
     
   };
 
+  const { data, loading, error }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios")
+
+    useEffect(() => {
+        if (!loading && data && data.length > 0) {
+          sendAndReceiveJson(
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listDisponibles",
+            {
+              numberSities: data[0].configuracion_valor1,
+            }
+          ).then((responseData) => {
+            setSitos(responseData);
+          });
+        }
+      }, [loading, data]);
+
 
   if (!loading && data) {
-    if (data.desError) {
+    if (sitos.length==0) {
         return(
           <h7>No existen sitios Disponibles,mil disculpas</h7>
         );
     }else{
 
       console.log(data);
-      // const defaultValue = data.find(site => site.numeros == nro);
-      const options = data.map((site) => ({ value: site.numeros, label: site.numeros }));
+      const options = sitos.map((site) => ({ value: site.numeros, label: site.numeros }));
   
       return (
         <Select
