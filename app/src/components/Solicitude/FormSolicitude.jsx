@@ -45,7 +45,7 @@ const Formulario = ({cancelar}) => {
         initialValues={{
         idTarifa: '',
         idPerson: userglobal.persona_id,
-        statusSubscription: '12',
+        statusSubscription: '10',
         activationSubscription:'2023-05-04 21:32:05',
         expirationSubscription:'2023-05-04 21:32:05',
         numParkSubscription:''
