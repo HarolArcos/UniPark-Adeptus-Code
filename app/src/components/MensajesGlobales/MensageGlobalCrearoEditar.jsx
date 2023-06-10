@@ -35,7 +35,7 @@ export default function Modalmensaje({
       setUrl("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/editNews");
       setJson({
         "idNews": id,
-        "statusNews": estado,
+        "statusNews": 26,
         "lastPerson": userglobal.persona_id,
         "titleNews": titulo,
         "textNews": mensaje,
