@@ -5,19 +5,38 @@ import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
+import { useFetch } from "../../hooks/HookFetchListData";
+import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 
 export default function ContentSitesAvalible(){
-
+   
     const [datos, setData] = useState([]);
+    const { data, loading, error }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios")
 
-    useEffect(() => {
-        fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listDisponibles')
-            .then(response => response.json())
-            .then(data => setData(data))
-            .catch(error => console.error(error));
-    }, []);
+
     
 
+    
+    
+    useEffect(() => {
+        if (!loading && data && data.length > 0) {
+          sendAndReceiveJson(
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listDisponibles",
+            {
+              numberSities: data[0].configuracion_valor1,
+            }
+          ).then((responseData) => {
+            setData(responseData);
+            // Trabaja con la respuesta JSON recibida
+          });
+        }
+      }, [loading, data]);
+    
+      if (!loading) {
+        console.log(data);
+    
+    
+    
     return(
         <>
             <Header></Header>
@@ -43,4 +62,5 @@ export default function ContentSitesAvalible(){
         <Footer></Footer>
         </>
     )
+}
 }
