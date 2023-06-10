@@ -74,6 +74,7 @@ export const SubscriptionEdit = () => {
     const handleCancelar = () => {
         setShowEdit(false);
         setShowCreate(false);
+        cargarDatos();
     };
 
     const  obtenerFecha = (stringFechaHora) =>{
@@ -91,6 +92,21 @@ export const SubscriptionEdit = () => {
         console.log(tipo);
     }
     
+
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async ()=>{
+        if (tipo==1) {
+           await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
+        }else if(tipo==2){
+           
+            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
+        }else if(tipo==3){
+            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+        }
+    }
     
       /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -120,10 +136,6 @@ export const SubscriptionEdit = () => {
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
-                    {/* <ButtonGroup className="buttonGroup">
-                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                        <Button variant="success" className="button"> PDF </Button>
-                    </ButtonGroup> */}
                     <Form.Control 
                         className="searchBar"
                         type="text"
@@ -145,8 +157,8 @@ export const SubscriptionEdit = () => {
                             <th>Cliente</th>
                             <th>Fecha Activación</th>
                             <th>Fecha Expiración</th>
-                            <th>Estado</th>
                             <th>Tarifa</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -163,13 +175,13 @@ export const SubscriptionEdit = () => {
                                         <td>{suscripcion.cliente}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_activacion)}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
-                                        <td>{suscripcion.referencia_valor}</td>
                                         <td>
                                             <ul>
-                                                <li>Tiempo: {suscripcion.tarifa_nombre}</li>
-                                                <li>Bs :    {suscripcion.tarifa_valor}</li>
+                                                <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
+                                                <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>
+                                        <td>{suscripcion.referencia_valor}</td>
                                         <td className="actionsButtons">
                                             <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(suscripcion)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">

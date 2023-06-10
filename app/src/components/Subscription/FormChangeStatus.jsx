@@ -64,15 +64,15 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
 
     onSubmit={async (values) => {
       if (suscripcion) {
-        values.statusSubscription = selectedReferenciaId;
-        console.log(values.statusSubscription);
-        if (values.statusSubscription==8) {
-            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/insertHistoryPay',
-            {idSubscription :  values.idSubscription,
-             amountHistoryPay : suscripcion.tarifa_valor,
-             totalHistoryPay : suscripcion.tarifa_valor});
-             console.log("envio a bitacora");
-        }
+        console.log(values.statusSubscription,selectedReferenciaId);
+        if (values.statusSubscription!=8 && selectedReferenciaId==8) {
+          await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/insertHistoryPay',
+          {idSubscription :  values.idSubscription,
+            amountHistoryPay : suscripcion.tarifa_valor,
+            totalHistoryPay : suscripcion.tarifa_valor});
+            console.log("envio a bitacora");
+          }
+          values.statusSubscription = selectedReferenciaId;
        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
         cancelar();
         console.log("a activo");

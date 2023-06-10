@@ -31,7 +31,6 @@ export const Solicitude = () => {
     
     useEffect(() => {
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
-        console.log(data);
     }, []);
 
     useEffect(() => {
@@ -41,22 +40,8 @@ export const Solicitude = () => {
              let mysus = data.filter(suscripcion => suscripcion.persona_id == userglobal.persona_id);
             ;
             setSuscripcion(mysus[0])
-            console.log(mysus);
         }
-        console.log(data,suscripcion);
     }, [data]);
-
-
-
-    // const handleGeneratePDF = () => {
-    //     toBlob(<PDFDocument />)
-    //       .then((blob) => {
-    //         // Aquí puedes guardar el archivo PDF en el sistema local o enviarlo a un servidor
-    //       })
-    //       .catch((error) => {
-    //         console.error('Error al generar el PDF:', error);
-    //       });
-    //   };
 
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
@@ -69,20 +54,31 @@ export const Solicitude = () => {
     //---Desactive Any Modal
     const handleCancelar = async () => {
         setShowMod(false);
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        cargarDatos();
     };
 
 
     const  obtenerFecha = (stringFechaHora) =>{
-        console.log(stringFechaHora);
         const fechaHora = new Date(stringFechaHora);
         const fecha = fechaHora.toISOString().split('T')[0];
-        console.log(fecha);
         return fecha;
-      }
+    }
+
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        if (data.desError) {
+            setError("No existe una solicitud");
+        }else{
+             let mysus = data.filter(suscripcion => suscripcion.persona_id == userglobal.persona_id);
+            ;
+            setSuscripcion(mysus[0])
+        }
+
+    }
  
     return (
         <>
@@ -102,7 +98,7 @@ export const Solicitude = () => {
                                 
                                 <tr key="2">
                                 <th>Estado: </th>
-                                <th>{suscripcion.referencia_valor ==="en proceso"? "Su solicitud se esta procesando":suscripcion.referencia_valor ==="habilitada"? "Se encuentra Habilitada":suscripcion.referencia_valor ==="inhabilitada"?"Se encuentra Inhabilitada, consulte con el Administrador":"Su Solicitud fue rechazada, consulte con el Administrador"}</th>
+                                <th>{suscripcion.referencia_valor ==="en proceso"? "Su solicitud se esta procesando":suscripcion.referencia_valor ==="habilitada"? "Se encuentra Habilitada":suscripcion.referencia_valor ==="inhabilitada"?"Se encuentra Inabilitada, consulte con el Administrador":suscripcion.referencia_valor ==="mora"?"Su suscripcion se en encuentra en un estado de Mora":"Su Solicitud fue rechazada, consulte con el Administrador"}</th>
                                     
                                 </tr>
                             </tbody>
@@ -115,10 +111,27 @@ export const Solicitude = () => {
                                     
                                 </tr>
                             </tbody>
+
                             <tbody>
                             <tr key="6">
                                 <th>Tiempo: </th>
                                 <th>{suscripcion.tarifa_nombre}</th>
+                                    
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                            <tr key="6">
+                                <th>Fecha de activación: </th>
+                                <th>{obtenerFecha(suscripcion.suscripcion_activacion)}</th>
+                                    
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                            <tr key="6">
+                                <th>Fecha de expiración: </th>
+                                <th>{obtenerFecha(suscripcion.suscripcion_expiracion)}</th>
                                     
                                 </tr>
                             </tbody>

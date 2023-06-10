@@ -24,6 +24,8 @@ function TableEmployee({ data }) {
                     <th>Nombre Completo</th>
                     <th>Telefono</th>
                     <th>CI</th>
+                    <th>Hora Ingreso</th>
+                    <th>Hora Salida</th>
                     <th>Tipo Persona</th>
                     <th>Estado</th>
                     <th>Acción</th>
@@ -36,6 +38,8 @@ function TableEmployee({ data }) {
                     <td>{person.persona_nombre}{person.persona_apellido}</td>
                     <td>{person.persona_telefono}</td>
                     <td>{person.persona_ci}</td>
+                    <td>{person.horario_entrada}</td>
+                    <td>{person.horario_salida}</td>
                     <td>{person.personatipo}</td>
                     <td>{person.personaestado}</td>
                     <td>

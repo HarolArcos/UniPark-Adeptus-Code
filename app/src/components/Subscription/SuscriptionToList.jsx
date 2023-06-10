@@ -109,8 +109,8 @@ export const SubscriptionList = () => {
                             <th>Cliente</th>
                             <th>Fecha Activación</th>
                             <th>Fecha Expiración</th>
-                            <th>Estado</th>
                             <th>Tarifa</th>
+                            <th>Estado</th>
                             {/* <th>Acciones</th> */}
                         </tr>
                     </thead>
@@ -127,13 +127,13 @@ export const SubscriptionList = () => {
                                         <td>{suscripcion.cliente}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_activacion)}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
-                                        <td>{suscripcion.referencia_valor.charAt(0).toUpperCase()+suscripcion.referencia_valor.slice(1)}</td>
                                         <td>
                                             <ul>
                                                 <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
                                                 <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>
+                                        <td>{suscripcion.referencia_valor.charAt(0).toUpperCase()+suscripcion.referencia_valor.slice(1)}</td>
                                     </tr>
                             ))
                         )}

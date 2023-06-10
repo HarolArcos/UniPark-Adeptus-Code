@@ -381,6 +381,7 @@ const FormularioEditarPersona = ({
                 <Form.Label className="label">Tipo de Persona</Form.Label>
 
                 <ComboboxReferences 
+                id={persona? persona.typePerson:null}
                 onChange={handleValueChange}
                 readOnly = {soloLectura} />
                 

@@ -146,8 +146,8 @@ export const SubscriptionToChangeStatus = () => {
                             <th>Cliente</th>
                             <th>Fecha Activación</th>
                             <th>Fecha Expiración</th>
-                            <th>Estado</th>
                             <th>Tarifa</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -164,13 +164,13 @@ export const SubscriptionToChangeStatus = () => {
                                         <td>{suscripcion.cliente}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_activacion)}</td>
                                         <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
-                                        <td>{suscripcion.referencia_valor.charAt(0).toUpperCase()+suscripcion.referencia_valor.slice(1)}</td>
                                         <td>
                                             <ul>
                                                 <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
                                                 <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>
+                                        <td>{suscripcion.referencia_valor.charAt(0).toUpperCase()+suscripcion.referencia_valor.slice(1)}</td>
                                         <td className="actionsButtons">
                                             <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(suscripcion)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -194,17 +194,18 @@ export const SubscriptionToChangeStatus = () => {
                     {suscripcionSeleccionado?(<div className='text-left'>
                     <Form.Group className="inputGroup" controlId="activationSubscription text-left">
                         <div className="row align-items-center">
-                        <Form.Label className="text-left col-sm-4">Nro de Parqueo:</Form.Label>
-                        <div className="col-sm-8">
-                            {suscripcionSeleccionado?.suscripcion_numero_parqueo}
-                        </div>
-                        </div>
-                    </Form.Group>
-                    <Form.Group className="inputGroup" controlId="activationSubscription text-left">
-                        <div className="row align-items-center">
                         <Form.Label className="text-left col-sm-4">Cliente:</Form.Label>
                         <div className="col-sm-8">
                             {suscripcionSeleccionado?.cliente}
+                        </div>
+                        </div>
+                    </Form.Group>
+                    <hr />
+                    <Form.Group className="inputGroup" controlId="activationSubscription text-left">
+                        <div className="row align-items-center">
+                        <Form.Label className="text-left col-sm-4">Nro de Parqueo:</Form.Label>
+                        <div className="col-sm-8">
+                            {suscripcionSeleccionado?.suscripcion_numero_parqueo}
                         </div>
                         </div>
                     </Form.Group>
@@ -232,6 +233,7 @@ export const SubscriptionToChangeStatus = () => {
                         </div>
                         </div>
                     </Form.Group>
+                    <hr />
                 </div>):("")}
                 </div>
                 <FormularioStatus

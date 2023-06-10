@@ -6,7 +6,8 @@
 }
 
 .table{
-    max-width: 60vw;
+    /* max-width: 60vw; */
+    width: 630px;
     margin: 1px;
 }
 

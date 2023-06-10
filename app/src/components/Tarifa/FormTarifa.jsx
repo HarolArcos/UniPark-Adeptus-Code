@@ -14,21 +14,12 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
     console.log('Data actualizada o creada :', data);
   }, [data]);
 
-  const [selectedReferenciaId, setSelectedReferenciaId] = useState(
-    tarifa ? tarifa.tarifa_estado : null
-  );
   
   const [image, setImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [loadingImage, setloadingImage] = useState(false);
 
 
-  const handleReferenciaIdChange = (referenciaId) => {
-    setSelectedReferenciaId(referenciaId);
-  };
-
-
-  
   //-------------------------imagenes------------------
   
   const handleCargarImage = (event) => {
@@ -55,7 +46,7 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
       valueRate:   tarifa.tarifa_valor ,
       routeRate:   tarifa.tarifa_ruta ,
       }:{
-        statusRate:'' ,
+        statusRate:19 ,
         nameRate:  '' ,
         valueRate: '' ,
         routeRate: '' ,
@@ -67,25 +58,25 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
 
       if(!values.nameRate){
         errors.nameRate ='El campo es requerido';
-      }else if(!/^[A-Za-z]+$/i.test(values.tarifa_nombre)){
-        errors.nameRate ='solo se admite una palabra';
+      }else if(values.nameRate.startsWith(" ")){
+        errors.nameRate ='El campo no puede empezar con espacios';
+      }else if(!/^[A-Za-z]+$/i.test(values.nameRate)){
+        errors.nameRate ='Solo se admite una palabra';
       }
-
 
       if(!values.valueRate){
         errors.valueRate ='El campo es requerido';
-      }else if(!/^\d+$/i.test(values.valueRate)){
-
+      }else if(values.valueRate.startsWith(" ")){
+        errors.valueRate ='El campo no puede empezar con espacios';
+      }else if(!/^[0-9]+$/i.test(values.valueRate)){
+        errors.valueRate ='El campo solo admite números';
       }
 
       if(tarifa==null && !image){
         errors.routeRate ='El campo es requerido';
       }
 
-      if(!selectedReferenciaId){
-        errors.statusRate ='El campo es requerido';
-      }
-
+      
       
       console.log(errors);
       return errors;
@@ -111,10 +102,8 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
         }else{
           console.log(values,"la imagen es la misma");
         }
-        values.statusRate = selectedReferenciaId;
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/editRate',values);
         cancelar();
-        console.log(values,selectedReferenciaId);
         
       } else {
         const dataImage = new FormData();
@@ -127,7 +116,6 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
         });
 
         const file =await res.json();
-        values.statusRate = selectedReferenciaId;
         values.routeRate = file.secure_url;
         console.log(values);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
@@ -165,22 +153,6 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
             />
           </Form.Group>
           <ErrorMessage name="valueRate" component={()=>(<div className="text-danger">{errors.valueRate}</div>)}></ErrorMessage>
-          
-
-
-          <Form.Group className="inputGroup" controlId="statusRate">
-          {/* <div className="row align-items-center"> */}
-          <Form.Label className="text-left">Estado</Form.Label>
-            {/* <div className="col-sm-8"> */}
-            <ComboboxReferences 
-              referenciaObjeto = {{tableNameReference:"tarifa",nameSpaceReference:"tarifa_estado"}}
-              defaultValor={tarifa? {value:tarifa.tarifa_estado,label:tarifa.estadotarifa}:null}
-              onReferenciaIdChange={handleReferenciaIdChange}
-            />
-            <ErrorMessage name="statusRate" component={()=>(<div className="text-danger">{errors.statusRate}</div>)}></ErrorMessage>
-            {/* </div> */}
-          {/* </div> */}
-          </Form.Group>
 
           <Form.Group className="inputGroup" controlId="routeRate">
             <Form.Label className="text-left">Imágen QR</Form.Label>
@@ -195,8 +167,8 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
             <div className="text-center">
             {image && <Image src={image} alt="imagen qr" fluid className="custom-image"/> || tarifa && <Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image"/> }
             </div>
-          <ErrorMessage name="routeRate" component={()=>(<div className="text-danger">{errors.routeRate}</div>)}></ErrorMessage>
           </Form.Group>
+          <ErrorMessage name="routeRate" component={()=>(<div className="text-danger">{errors.routeRate}</div>)}></ErrorMessage>
           
           <br/>
           
