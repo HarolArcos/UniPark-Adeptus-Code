@@ -137,6 +137,7 @@ export const AppRouter = () => {
         <Route path="/comboboxPerson" element={<ComboboxPerson />} />
         <Route path="/evento" element={<Event />} />
         <Route path="/listaEnMora" element={<SubscriptionToChangeStatus />} />
+        <Route path="*" element={<Login />} />
       </Routes>
     </Router>
   );
