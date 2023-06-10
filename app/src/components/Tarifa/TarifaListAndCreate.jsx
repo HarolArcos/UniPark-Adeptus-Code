@@ -87,7 +87,7 @@ export const TarifaListCreate = ({crear=false}) => {
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="h-100 w-100 content-wrapper contenteSites-body">
             <div className="bodyItems">
                 <div className="buttonSection">
                     {crear?(
