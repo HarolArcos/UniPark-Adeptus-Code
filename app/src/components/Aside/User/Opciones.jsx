@@ -12,7 +12,7 @@ export default function Opcions() {
   return (
     optionsPadre.map((padre)=>
       
-    <li className={`nav-item menu-close`} key={padre.opcion_id}>
+    <li className={`nav-item menu-apen`} key={padre.opcion_id}>
       <a  className="nav-link active">
         <p>
           {padre.opcion_nombre}<i className="right fas fa-angle-left"></i>

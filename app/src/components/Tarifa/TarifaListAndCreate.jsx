@@ -39,7 +39,7 @@ export const TarifaListCreate = ({crear=false}) => {
 
     useEffect(() => {
         if (data.desError) {
-            setError("No existe ningúna tarifa registrada");
+            setError(data.desError);
         }else{
             setTarifas(data);
             setTablaTarifas(data);
@@ -104,31 +104,35 @@ export const TarifaListCreate = ({crear=false}) => {
                         onChange={handleChangeSerch}
                     />
                 </div>
-                <Table striped bordered hover className="table">
+                <Table striped bordered   size="sm" >
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Detalle</th>
-                            <th>QR</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"4"} >No existe Tarifas</td>
+                                <td colSpan={"6"} >{error}</td>
                             </tr>
                         ): (
                             tarifas.map((tarifa) => (
                                     <tr className="columnContent" key={tarifa.tarifa_id}>
                                         <td>{tarifa.tarifa_id}</td>
-                                        <td>
+                                        <td >
+                                            <div className="col d-flex justify-content-center align-items-center">
                                             <ul>
+
                                                 <li><strong>Plazo:</strong>{tarifa.tarifa_nombre}</li>
                                                 <li><strong>Bs:</strong>{tarifa.tarifa_valor}</li>
-                                                <li><strong>Estado:</strong>{tarifa.tarifa_estado}</li>
+                                                <li><strong>QR:</strong></li>
+                                                <Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image>
                                             </ul>
-                                            </td>
-                                        <td><Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image></td>
+                                            </div>
+                                        </td>
+                                        
                                     </tr>
                             ))
                         )}

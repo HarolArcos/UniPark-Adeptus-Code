@@ -20,24 +20,21 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
     suscripcion ? suscripcion.persona_id : null
   );
 
-  const [selectedReferenciaId, setSelectedReferenciaId] = useState(
-    suscripcion ? suscripcion.suscripcion_estado : null
-  );
+
 
   const [selectedSiteId, setSelectedSiteId] = useState(
     suscripcion ? suscripcion.suscripcion_numero_parqueo : null
   );
 
-  const [selectedTarifa, setSelectedTarifa] = useState(null);
+  const [selectedTarifa, setSelectedTarifa] = useState(
+    suscripcion ? suscripcion.tarifa_id: null);
 
   //------------HandlePersona
   const handlePersonaIdChange = (personaId) => {
     setSelectedPersonaId(personaId);
   };
 
-  const handleReferenciaIdChange = (referenciaId) => {
-    setSelectedReferenciaId(referenciaId);
-  };
+ 
   
   //------------HandleSitio
 
@@ -46,7 +43,8 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
   };
 
   const handleTarifaChange = (tarifa) => {
-    setSelectedTarifa(tarifa);
+    console.log(tarifa);
+    setSelectedTarifa(tarifa.tarifa_id);
   };
 
   console.log(suscripcion,selectedTarifa);
@@ -63,7 +61,7 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
       expirationSubscription: suscripcion.suscripcion_expiracion ,
       numParkSubscription:    suscripcion.suscripcion_numero_parqueo ,
       }:{
-      idTarifa: '1',
+      idTarifa: '',
       idPerson: '',
       statusSubscription: '',
       activationSubscription: '',
@@ -78,22 +76,14 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
         errors.idPerson ='Seleccione un elemento porfavor';
       }
 
-      if(!values.activationSubscription){
-        errors.activationSubscription ='El campo es requerido';
-      }
-
-
-      if(!values.expirationSubscription){
-        errors.expirationSubscription ='El campo es requerido';
-      }
-
       if(!selectedSiteId){
         errors.numParkSubscription ='Seleccione un elemento porfavor';
       }
 
-      if(!selectedReferenciaId){
-        errors.statusSubscription ='Seleccione un elemento porfavor';
+      if (!selectedTarifa) {
+        errors.idTarifa = "Seleccione un elemento porfavor"
       }
+
       
       console.log(errors);
       return errors;
@@ -101,18 +91,17 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
     
 
     onSubmit={async (values) => {
+      console.log(selectedTarifa);
       if (suscripcion) {
         values.idPerson = selectedPersonaId;
-        values.statusSubscription = selectedReferenciaId;
         values.numParkSubscription = selectedSiteId;
         values.idTarifa = selectedTarifa;
-        console.log(values,selectedPersonaId);
+        console.log(values,selectedTarifa);
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
         cancelar();
         
       } else {
         values.idPerson = selectedPersonaId;
-        values.statusSubscription= selectedReferenciaId;
         values.numParkSubscription = selectedSiteId;
         values.idTarifa = selectedTarifa;
         console.log(values,selectedPersonaId);
@@ -127,41 +116,6 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
 
       {({values,errors,handleBlur,handleChange,handleSubmit})=>(
         <Form  className="container">
-
-          <Form.Group className="inputGroup" controlId="activationSubscription text-left">
-            <div className="row align-items-center">
-            <Form.Label className="text-left col-sm-4">Fecha de Activación</Form.Label>
-              <div className="col-sm-8">
-                <Form.Control 
-                  type="datetime-local" 
-                  name="activationSubscription"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.activationSubscription}
-                />
-                <ErrorMessage name="activationSubscription" component={()=>(<div className="text-danger">{errors.activationSubscription}</div>)}></ErrorMessage>
-              </div>
-            </div>
-          </Form.Group>
-          
-          <Form.Group className="inputGroup" controlId="expirationSubscription">
-          <div className="row align-items-center">
-          <Form.Label className="text-left col-sm-4">Fecha de Expiración</Form.Label>
-            <div className="col-sm-8">
-              <Form.Control 
-                type="datetime-local"
-                name="expirationSubscription"
-                onChange={handleChange}
-                onBlur={handleBlur} 
-                value={values.expirationSubscription } 
-              />
-              <ErrorMessage name="expirationSubscription" component={()=>(<div className="text-danger">{errors.expirationSubscription}</div>)}></ErrorMessage>
-            </div>
-          </div>
-          </Form.Group>
-          
-          
-          
           <br/>
           <Form.Group className="inputGroup" controlId="idPerson">
           <div className="row align-items-center">
@@ -175,24 +129,7 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
             </div>
           </div>
           </Form.Group>
-          
           <br/>
-          <Form.Group className="inputGroup" controlId="statusSubscription">
-          <div className="row align-items-center">
-          <Form.Label className="text-left col-sm-4">Estado</Form.Label>
-            <div className="col-sm-8">
-            <ComboboxReferences 
-              referenciaObjeto = {{tableNameReference:"suscripcion",nameSpaceReference:"suscripcion_estado"}}
-              defaultValor={suscripcion? {value:suscripcion.suscripcion_estado,label:suscripcion.referencia_valor}:null}
-              onReferenciaIdChange={handleReferenciaIdChange}
-            />
-            <ErrorMessage name="statusSubscription" component={()=>(<div className="text-danger">{errors.statusSubscription}</div>)}></ErrorMessage>
-            </div>
-          </div>
-          </Form.Group>
-          
-          <br/>
-          
           <Form.Group className="inputGroup" controlId="numParkSubscription">
           <div className="row align-items-center">
           <Form.Label className="text-left col-sm-4">Número de Parqueo</Form.Label>

@@ -46,8 +46,6 @@ const Formulario = ({cancelar}) => {
         idTarifa: '',
         idPerson: userglobal.persona_id,
         statusSubscription: '10',
-        activationSubscription:'2023-05-04 21:32:05',
-        expirationSubscription:'2023-05-04 21:32:05',
         numParkSubscription:''
         }}
         
@@ -75,7 +73,7 @@ const Formulario = ({cancelar}) => {
         }}
         >
 
-        {({values,errors,handleBlur,handleChange,handleSubmit})=>(
+        {({values,errors,handleSubmit})=>(
             <Form  className="container">
 
             
@@ -97,7 +95,6 @@ const Formulario = ({cancelar}) => {
             <Form.Label className="text-left col-sm-4">Tarifa</Form.Label>
                 <div className="col-sm-8">
                 <ComboboxTarifa 
-                    // id={suscripcion ? suscripcion.tarifa_id : null}
                     onTarifaIdChange={handleTarifaChange}
                 />
                 </div>
@@ -108,8 +105,8 @@ const Formulario = ({cancelar}) => {
                 {selectedTarifa == null ?(<br/>):(
                     <>
                     <br />
-                    <h3 className="align-text-left"><strong>Plazo:</strong>{selectedTarifa.tarifa_nombre}</h3>
-                    <h3 className="align-text-left"><strong>Bs:</strong>{selectedTarifa.tarifa_valor}</h3>
+                    <h5 className="align-text-left"><strong>Plazo:</strong>{selectedTarifa.tarifa_nombre}</h5>
+                    <h5 className="align-text-left"><strong>Bs:</strong>{selectedTarifa.tarifa_valor}</h5>
                     <Image src={selectedTarifa.tarifa_ruta} alt="imagen qr" fluid />
                     </>
                 )}
