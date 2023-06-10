@@ -5,6 +5,7 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import "./FormPersona.css";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferencia2";
 import { useFetch } from "../../hooks/HookFetchListData";
+import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 
 const FormularioPersona = ({
   asunto,
@@ -22,15 +23,36 @@ const FormularioPersona = ({
   };
   const { data, fetchData } = useFetchSendData();
 
+  //const [typeId, setTypeID] = useState([]);
+
   const { data: lista, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
   useEffect(() => {
-    console.log(data);
-    if (data.desError) {
-
-      localStorage.setItem("Error", data.desError);
+    console.log("esto es data:", data);
+    
+    
+    if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
+      const personaId = data[0].persona_id;
+      fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+      {
+        idPerson: personaId,
+        idRol: 2 
+      });
+      console.log("esto es personaID",personaId);
     }
+    
+    // console.log(personaId);
+    // const RolhasOption = {
+    //   idPerson: personaId,
+    //   idRol: 2
+    // };
+    //console.log("Rol has option es: ",RolhasOption); 
+    //fetchData("",RolhasOption);
+    // if (data.desError) {
+
+    //   localStorage.setItem("Error", data.desError);
+    // }
   }, [data]);
 
   return (
@@ -198,7 +220,8 @@ const FormularioPersona = ({
         //const ciPersonSelected = values.ciPerson;
         console.log(values);
         values.telegramPerson = values.phonePerson;
-        console.log("sadw");
+        //console.log("sadw");
+
         if (persona) {
           console.log(values, "editar personas");
 
@@ -209,32 +232,39 @@ const FormularioPersona = ({
           );
           cancelar();
         } else {
-            const insertResponse = await fetchData(
-              "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
-              values
-            );
-
-            console.log("Esto es insert Response",insertResponse);
-            // console.log(lista.persona_ci, ciPersonSelected, "Ci seleccionados");
-            // if(lista.persona_ci === ciPersonSelected){
-            //   const personHasRol = {
-            //       idPerson :  lista.persona_ci,
-            //       idRol :  1
-            //   }
-              // fetchData(
-              //   "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol",
-              //   personHasRol
-              // );
-              //console.log("Esto es person Has Rol",personHasRol);
-            //}
-            // const personData = await insertResponse.json();
-            // console.log("Esto es personData",personData);
-            // const personId = personData.idPerson;
-            // console.log("Esto es personID",personId);
-          alert(`Se guardo a la parsona`);
-            //window.location.reload();
+            // fetchData(
+            //   "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
+            //   values
+            // );
+            // console.log("esto es values",values);
+            // fetchData("");
+          //alert(`Se guardo a la parsona`);
+            //
           
           //cancelar();
+          const response = await fetchData(
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
+            values
+          );
+          window.location.reload();
+          //setTypeID(values.typePerson);
+          
+          // Verificar si se recibió el campo "persona_id" en la respuesta
+          console.log(response);
+          if (response && response.data && response.data.persona_id) {
+            const personaId = response.data.persona_id;
+            
+            // Realizar la segunda inserción a la API de asignación de roles
+            const roleData = {
+              idPerson: personaId,
+              idRol: 2
+            };
+            console.log( personaId,roleData);
+            // await fetchData(
+            //   "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol",
+            //   roleData
+            // );
+          }
         }
       }}
     >
