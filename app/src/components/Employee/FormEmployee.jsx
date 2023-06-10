@@ -274,9 +274,9 @@ const FormularioEmpleado = ({
               departureSchedule :  values.departureSchedule
             }
             console.log(horariosChange);
-            //fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule", horariosChange);
+            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule", horariosChange);
           })
-          //window.location.reload();
+          window.location.reload();
           //cancelar();
         }
       }}
