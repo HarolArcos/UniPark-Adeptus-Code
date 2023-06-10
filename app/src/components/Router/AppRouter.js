@@ -34,6 +34,7 @@ import ListPersons from "../Persons/ListPersons";
 import ListEmployee from "../Employee/ListEmpleados";
 import DeleteEmployee from "../Employee/ChangeStateEmployee/ChangeStateEmployee";
 import { SubscriptionInMora } from "../Subscription/SuscriptionInMora";
+import Noticias from "../Noticias/Noticias";
 
 export const AppRouter = () => {
   return (
@@ -137,6 +138,7 @@ export const AppRouter = () => {
         <Route path="/comboboxPerson" element={<ComboboxPerson />} />
         <Route path="/evento" element={<Event />} />
         <Route path="/listaEnMora" element={<SubscriptionToChangeStatus />} />
+        <Route path="/Noticias" element={<Noticias />} />
         <Route path="*" element={<Login />} />
       </Routes>
     </Router>

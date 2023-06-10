@@ -24,9 +24,9 @@ export default function Header() {
         
 
         <li className="nav-item d-none d-sm-inline-block">
-          {/* <a href="/contact" className="nav-link">
-            Contact
-          </a> */}
+           <a href="/Noticias" className="nav-link">
+            Noticias
+          </a> 
         </li>
         <li className="nav-item dropdown">
   <a className="nav-link" data-toggle="dropdown" href="/#">
