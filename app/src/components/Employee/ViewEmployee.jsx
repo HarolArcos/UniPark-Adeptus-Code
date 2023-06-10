@@ -69,6 +69,8 @@ export default function ViewEmployee(){
                             <th>Nombre</th>
                             <th>Telefono</th>
                             <th> CI </th>
+                            <th>Hora Ingreso</th>
+                            <th>Hora Salida</th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>
                         </tr>
@@ -85,6 +87,8 @@ export default function ViewEmployee(){
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
                                         <td>{persona.persona_telefono}</td>
                                         <td>{persona.persona_ci}</td>
+                                        <td>{persona.horario_entrada}</td>
+                                        <td>{persona.horario_salida}</td>
                                         <td>{persona.personatipo}</td>
                                         <td>{persona.personaestado}</td>
                                         <td>

@@ -6,7 +6,7 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
 import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 
-export default function ComboboxReferences({ onChange }) {
+export default function ComboboxReferences({ onChange, id}) {
   
   const [tar, settar] = useState([])
   const [loading, setloading] = useState(true)
@@ -55,12 +55,14 @@ export default function ComboboxReferences({ onChange }) {
   }, [data]);
 
   if (!loading) {
+    const defaultValue = ref.find(person => person.value === id);
     return (
       <div className="comboBoxGroup">
         <Select
           className="selectRef"
-          placeholder="Seleccionar tipo persona" 
+          placeholder="Seleccionar el Tipo Persona" 
           options={ref}
+          defaultValue={defaultValue && { value: defaultValue.referencia_id, label: defaultValue.referencia_valor}}
           value={selectedOption}
           onChange={handleOptionChange}
         />

@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
-import { CSVLink } from "react-csv";
+//import { CSVLink } from "react-csv";
 import { useFetch } from "../../hooks/HookFetchListData";
 import Modal from "../Modal/Modal";
 import FormularioEmpleado from "./FormEmployee";
@@ -12,7 +12,9 @@ import "./Employee.css";
 
 export default function Employee(){   
    
-    //const [searchTerm, setSearchTerm] = useState('');
+    const [busqueda, setBusqueda] = useState("");
+    const [clientes, setClientes] = useState([]);
+    const [tablaClientes, setTablaClientes] = useState([])
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
@@ -22,7 +24,23 @@ export default function Employee(){
         setTimeout(() => {
             localStorage.removeItem("Error")
            }, 3000)
-       
+    
+    const getClients = async () => {
+        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee')
+            .then(response => response.json())
+            .then( response => {
+                setClientes(response);
+                setTablaClientes(response);
+            })
+            .catch( error => {
+                console.log(error);
+            })
+    }
+
+    useEffect(() => {
+        getClients();
+    }, []);
+    
     //----------------------ShowModal-------------------------------
     
     const [showCreate, setShowCreate] = useState(false);
@@ -56,9 +74,27 @@ export default function Employee(){
         setPersonas(nuevasPersonas);
     };
 
-    // const handleSearch = (event) => {
-    //     setSearchTerm(event.target.value);
-    // };
+    /*--------------------- Barra Busqueda------------------------- */
+    const handleChangeSerch = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+    }
+
+    const filtrar = (termBusqueda) => {
+        var resultadosBusqueda = tablaClientes.filter((elemento) => {
+            if(
+                    elemento.persona_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_apellido.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_ci.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+            ){
+                return elemento;
+            }else{
+                return null;
+            }
+        });
+        setClientes(resultadosBusqueda);
+    }
 
     return(
         <>
@@ -70,16 +106,16 @@ export default function Employee(){
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
                         <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
-                        <Button variant="success" className="button"> 
+                        {/* <Button variant="success" className="button"> 
                             <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
-                        </Button>
+                        </Button> */}
                     </ButtonGroup>
                     <Form.Control 
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
-                        // value={searchTerm}
-                        // onChange={handleSearch}
+                        value={busqueda}
+                        onChange={handleChangeSerch}
                     />
                 </div>
                 
@@ -90,6 +126,8 @@ export default function Employee(){
                             <th>Nombre</th>
                             <th>Telefono</th>
                             <th> CI </th>
+                            <th>Hora Ingreso</th>
+                            <th>Hora Salida</th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>
                         </tr>
@@ -100,12 +138,14 @@ export default function Employee(){
                                 <td colSpan={"3"} >Cargando...</td>
                             </tr>
                         ): (
-                            data.map((persona) => (
+                            clientes.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
                                         <td>{persona.persona_telefono}</td>
                                         <td>{persona.persona_ci}</td>
+                                        <td>{persona.horario_entrada}</td>
+                                        <td>{persona.horario_salida}</td>
                                         <td>{persona.personatipo}</td>
                                         <td>{persona.personaestado}</td>
                                     </tr>

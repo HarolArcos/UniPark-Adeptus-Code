@@ -9,12 +9,30 @@ import FormularioEmpleado from "./FormEmployee";
 import { useFetch } from "../../hooks/HookFetchListData";
 
 export default function EditEmpleado(){
-    const [searchTerm, setSearchTerm] = useState('');
+    const [busqueda, setBusqueda] = useState("");
+    const [clientes, setClientes] = useState([]);
+    const [tablaClientes, setTablaClientes] = useState([])
 
     const [personas,setPersonas] =  useState([]);
     const {data, loading} = useFetch(
         'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee'
     )
+
+    const getClients = async () => {
+        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee')
+            .then(response => response.json())
+            .then( response => {
+                setClientes(response);
+                setTablaClientes(response);
+            })
+            .catch( error => {
+                console.log(error);
+            })
+    }
+
+    useEffect(() => {
+        getClients();
+    }, []);
 
     //----------------------ShowModal-------------------------------
     
@@ -61,15 +79,27 @@ export default function EditEmpleado(){
         setPersonaSeleccionado(null);
     };
 
-    //-------Delete
-    // const handleEliminar = (id) => {
-    //   const nuevasPersonas = personas.filter((persona) => persona.id !== id);
-    //   setPersonas(nuevasPersonas);
-    // };
+    /*--------------------- Barra Busqueda------------------------- */
+    const handleChangeSerch = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+    }
 
-    const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
-    };
+    const filtrar = (termBusqueda) => {
+        var resultadosBusqueda = tablaClientes.filter((elemento) => {
+            if(
+                    elemento.persona_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_apellido.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_ci.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+            ){
+                return elemento;
+            }else{
+                return null;
+            }
+        });
+        setClientes(resultadosBusqueda);
+    }
 
 
     return(
@@ -84,8 +114,8 @@ export default function EditEmpleado(){
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
-                        value={searchTerm}
-                        onChange={handleSearch}
+                        value={busqueda}
+                        onChange={handleChangeSerch}
                     />
                 </div>
                 <Table striped bordered hover className="table">
@@ -95,6 +125,8 @@ export default function EditEmpleado(){
                             <th>Nombre</th>
                             <th>Telefono</th>
                             <th> CI </th>
+                            <th>Hora Ingreso</th>
+                            <th>Hora Salida</th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>
                         </tr>
@@ -105,12 +137,14 @@ export default function EditEmpleado(){
                                 <td colSpan={"3"} >Cargando...</td>
                             </tr>
                         ): (
-                            data.map((persona) => (
+                            clientes.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
                                         <td>{persona.persona_telefono}</td>
                                         <td>{persona.persona_ci}</td>
+                                        <td>{persona.horario_entrada}</td>
+                                        <td>{persona.horario_salida}</td>
                                         <td>{persona.personatipo}</td>
                                         <td>{persona.personaestado}</td>
                                         <td>
