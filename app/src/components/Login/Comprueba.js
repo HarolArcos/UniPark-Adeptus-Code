@@ -32,6 +32,9 @@ export default function Comprueba (navigate, datos,setUserglobal) {
             localStorage.setItem("user",JSON.stringify(datos.persona[0])),
             localStorage.setItem("optionsPadre",JSON.stringify(datos["opciones padre 0"])),
             localStorage.setItem("optionsHijo",JSON.stringify(datos["opciones padre disferente de 0"])),
+            
+            localStorage.setItem("recar",true),
+            window.location.href = '/main',
             navigate("/main"))
             
     }
