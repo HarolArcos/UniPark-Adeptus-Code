@@ -112,6 +112,9 @@ class subscription {
             WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'semestral' THEN date_trunc('second', current_timestamp + interval '6 months')
             WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'anual' THEN date_trunc('second', current_timestamp + interval '1 year')
             WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'mensual' THEN date_trunc('second', current_timestamp + interval '1 months')
+            WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'bimestral' THEN date_trunc('second', current_timestamp + interval '2 months')
+            WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'trimestral' THEN date_trunc('second', current_timestamp + interval '3 months')
+            WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = $idTarifa) = 'semanal' THEN date_trunc('second', current_timestamp + interval '1 week')
             ELSE date_trunc('second', current_timestamp)
           END,
           $numParkSubscription
@@ -208,6 +211,9 @@ class subscription {
                 WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'semestral' THEN (date_trunc('second', current_timestamp + interval '6 months')) - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
                 WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'mensual' THEN date_trunc('second', current_timestamp + interval '1 month') - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
                 WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'anual' THEN date_trunc('second', current_timestamp + interval '1 year') - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
+                WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'bimestral' THEN (date_trunc('second', current_timestamp + interval '2 months')) - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
+                WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'trimestral' THEN date_trunc('second', current_timestamp + interval '3 months') - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
+                WHEN (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'semanal' THEN date_trunc('second', current_timestamp + interval '1 week') - (date_trunc('second', current_timestamp - (SELECT suscripcion_expiracion FROM suscripcion WHERE suscripcion_id = $idSubscription)))
                 ELSE date_trunc('second', current_timestamp)
             END
         WHERE suscripcion_id = $idSubscription";

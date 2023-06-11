@@ -394,6 +394,35 @@ class person {
         return $response;
     }
 
+    public function listPersonClientActiveDb(){
+        $response = false;
+        //$sql =  "SELECT * FROM persona";
+        $sql = "SELECT 
+        persona.*, 
+        referencia_personaTipo.referencia_valor AS personaTipo, 
+        referencia_personaEstado.referencia_valor AS personaEstado 
+        FROM persona 
+        INNER JOIN referencia AS referencia_personaTipo ON persona.persona_tipo = referencia_personaTipo.referencia_id 
+        INNER JOIN referencia AS referencia_personaEstado ON persona.persona_estado = referencia_personaEstado.referencia_id
+        WHERE referencia_personaTipo.referencia_valor = 'cliente'
+        AND referencia_personaEstado.referencia_valor = 'activo'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     public function listPersonAdminDb(){
         $response = false;
         //$sql =  "SELECT * FROM persona";
@@ -404,7 +433,8 @@ class person {
         FROM persona 
         INNER JOIN referencia AS referencia_personaTipo ON persona.persona_tipo = referencia_personaTipo.referencia_id 
         INNER JOIN referencia AS referencia_personaEstado ON persona.persona_estado = referencia_personaEstado.referencia_id
-        WHERE referencia_personaTipo.referencia_valor = 'admin'";
+        WHERE referencia_personaTipo.referencia_valor = 'admin'
+        AND referencia_personaEstado.referencia_valor = 'activo'";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
@@ -439,6 +469,40 @@ class person {
         FROM referencia 
         WHERE referencia_valor IN ('cliente', 'admin')
     )";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listPersonEmployeeActiveDb(){
+        $response = false;
+        //$sql =  "SELECT * FROM persona";
+        $sql = "SELECT 
+        persona.*, 
+        referencia_personaTipo.referencia_valor AS personaTipo, 
+        referencia_personaEstado.referencia_valor AS personaEstado,
+        horario.*
+    FROM persona 
+    INNER JOIN referencia AS referencia_personaTipo ON persona.persona_tipo = referencia_personaTipo.referencia_id 
+    INNER JOIN referencia AS referencia_personaEstado ON persona.persona_estado = referencia_personaEstado.referencia_id
+    LEFT JOIN horario ON persona.persona_id = horario.persona_id
+    WHERE persona.persona_tipo NOT IN (
+        SELECT referencia_id 
+        FROM referencia 
+        WHERE referencia_valor IN ('cliente', 'admin')
+    ) AND referencia_personaEstado.referencia_valor = 'activo'";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             

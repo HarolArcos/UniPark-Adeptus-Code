@@ -7,8 +7,10 @@
     $server->Register("insertPerson");
     $server->Register("listPerson");
     $server->Register("listPersonClient");
+    $server->Register("listPersonClientActive");
     $server->Register("listPersonAdmin");
     $server->Register("listPersonEmployee");
+    $server->Register("listPersonEmployeeActive");
     $server->Register("test");
     $server->Register("test2");
     $server->Register("editPerson");
@@ -352,7 +354,28 @@
             $mensaje = "Se listo correctamente a los clientes - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan clientes"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan clientes"));
+            $mensaje = "No se pudo listara a los clientes - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listPersonClientActive(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_person = new person($_db);
+        $responseList = $_person->listPersonClientActiveDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente a los clientes - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan clientes activos"));
             $mensaje = "No se pudo listara a los clientes - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
@@ -394,8 +417,29 @@
             $mensaje = "Se listo correctamente a los empleados - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan empleados"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan empleados"));
             $mensaje = "No se pudo listara a los empleados - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listPersonEmployeeActive(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_person = new person($_db);
+        $responseList = $_person->listPersonEmployeeActiveDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente a los empleados - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan empleados activos"));
+            $mensaje = "No se pudo listara a los empleados activos - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;
         }
