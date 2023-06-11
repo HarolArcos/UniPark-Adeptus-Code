@@ -124,7 +124,7 @@ export const TarifaEdit = () => {
                                                 <Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image>
                                             </ul>
                                             </td>
-                                        <td></td>
+                                        
                                         <td className="actionsButtons">
                                             <button className='btn btn-success btn-md mr-1 ' onClick={() => handleEditar(tarifa)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
