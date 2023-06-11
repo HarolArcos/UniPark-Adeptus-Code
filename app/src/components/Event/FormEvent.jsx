@@ -75,7 +75,7 @@ const FormEvent = ({asunto,cancelar, evento}) => {
         idPerson : '',
         idVehicle :  '',
         typeEvent :  '',
-        alarmEvent : `${checked}`,
+        alarmEvent : `${!checked}`,
         descriptionEvent : '',
         registerUser : 'harex'
       }}
@@ -109,21 +109,21 @@ const FormEvent = ({asunto,cancelar, evento}) => {
     
 
     onSubmit={async (values) => {
-      if (evento) {
+      // if (evento) {
+      //   values.idPerson = selectedPersonaId;
+      //   values.idVehicle = selectedVehicleId;
+      //   values.typeEvent = selectedRefTypeEventId;
+      //   await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
+      //   console.log('editar:',values);
+      // } else {
         values.idPerson = selectedPersonaId;
         values.idVehicle = selectedVehicleId;
         values.typeEvent = selectedRefTypeEventId;
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
-        console.log('editar:',values);
-      } else {
-        values.idPerson = selectedPersonaId;
-        values.idVehicle = selectedVehicleId;
-        values.typeEvent = selectedRefTypeEventId;
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
         console.table("los valores que se envian",values);
         console.log('no hubo duplicidad',errorDuply);
-        window.location.reload();
-      }
+        //window.location.reload();
+      //}
 
     }
     }

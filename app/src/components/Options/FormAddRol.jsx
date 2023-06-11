@@ -11,17 +11,33 @@ export default function FormAddRol({cancelar, asunto}){
     //const [statusRol, setStatusRol] = useState(11);
     const [nameRol, setNameRol] = useState('');
     const [descriptionRol, setDescriptionRol] = useState('');
+    const [nameRolError, setNameRolError] = useState(""); // Estado para el mensaje de error
 
     const handleSubmit = async (event) => {
         event.preventDefault();
     
+        // Validar que solo se permitan caracteres en minúscula
+        if (!/^[a-z]+$/.test(nameRol)) {
+            setNameRolError("Solo se permiten caracteres en minúscula");
+            return; // Salir de la función si no cumple la validación
+        }
+
         const formData = {
-            statusRol: 15,
+            statusRol: 17,
             nameRol: nameRol,
             descriptionRol: descriptionRol
         };
 
+        const reference = {
+            tableNameReference : "persona",
+            nameSpaceReference :  "persona_tipo",
+            descriptionReference :  descriptionRol,
+            valueReference :  nameRol,
+            statusReference: 1
+        }
         fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/insertRol", formData);
+        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/insertReference", reference);
+        window.location.reload();
     };
 
     return(
@@ -32,8 +48,12 @@ export default function FormAddRol({cancelar, asunto}){
                     <Form.Control
                     type="text"
                     value={nameRol}
-                    onChange={(event) => setNameRol(event.target.value)}
+                    onChange={(event) => {
+                        setNameRol(event.target.value);
+                        setNameRolError(""); // Limpiar el mensaje de error al modificar el campo
+                    }}
                     />
+                    {nameRolError && <div className="error-message">{nameRolError}</div>} {/* Mostrar el mensaje de error si existe */}
                 </Form.Group>
                 <Form.Group controlId="descriptionRol">
                     <Form.Label className="label">Description Rol</Form.Label>
