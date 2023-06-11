@@ -5,7 +5,7 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import "./FormPersona.css";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferencia2";
 import { useFetch } from "../../hooks/HookFetchListData";
-import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
+//import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 
 const FormularioPersona = ({
   asunto,
@@ -53,7 +53,7 @@ const FormularioPersona = ({
 
     //   localStorage.setItem("Error", data.desError);
     // }
-  }, [data]);
+  }, [data, fetchData]);
 
   return (
     <Formik

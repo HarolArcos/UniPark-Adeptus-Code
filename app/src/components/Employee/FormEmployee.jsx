@@ -441,7 +441,7 @@ const FormularioEmpleado = ({
               style={{ width: "220.60000000000002px" }}
             >
               <Form.Group className="inputGroup" controlId="departureSchedule">
-                <Form.Label className="label">Contraseña</Form.Label>
+                <Form.Label className="label">Hora Salida</Form.Label>
                 <Form.Control
                   step={1}
                   type="time"

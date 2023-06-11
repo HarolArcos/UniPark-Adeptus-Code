@@ -6,7 +6,7 @@ import Modal from "../Modal/Modal";
 import { Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useFetch } from "../../hooks/HookFetchListData";
-import FormularioEditarPersona from "../Persons/FormEditPerson";
+import FormularioEditarEmpleado from "./FormEditEmployee";
 
 export default function ViewEmployee(){
     const [searchTerm, setSearchTerm] = useState('');
@@ -107,14 +107,14 @@ export default function ViewEmployee(){
 
                 <Modal
                     mostrarModal={showView}
-                    title = 'Detalle Cliente '
+                    title = 'Detalle Empleado'
                     contend = {
-                    <FormularioEditarPersona
+                    <FormularioEditarEmpleado
                     asunto ='Guardar Cambios'
                     persona= {personaSeleccionado}
                     cancelar={handleCancelar}
                     soloLectura = {true}
-                    ></FormularioEditarPersona>}
+                    ></FormularioEditarEmpleado>}
                     hide = {handleCancelar}
                     >
                     </Modal>
