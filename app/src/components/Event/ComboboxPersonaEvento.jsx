@@ -12,7 +12,7 @@ export default function ComboboxPersonaEvento({ onPersonaIdChange ,id}) { // act
   const handlePersonaChange = (selectedOption) => {
     setSelectedPersonaId(selectedOption.value);
     onPersonaIdChange(selectedOption.value);
-    console.log(selectedOption);
+    console.log(selectedOption.value);
   };
 
   if (!loading) {

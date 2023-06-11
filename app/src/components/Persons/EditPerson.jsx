@@ -157,7 +157,7 @@ export default function EditPerson(){
 
                 <Modal
                 mostrarModal={showEdit}
-                title = 'Editar Persona'
+                title = 'Editar Datos del Cliente'
                 contend = {
                 <FormularioEditarPersona
                 asunto ='Guardar Cambios'

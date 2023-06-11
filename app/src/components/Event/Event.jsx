@@ -7,6 +7,7 @@ import { useState,  useEffect } from "react";
 //import { CSVLink } from "react-csv";
 import Modal from "../Modal/Modal";
 import FormEvent from "./FormEvent";
+import { useSend } from "../../hooks/HookList";
 
 export default function Event(){
 
@@ -16,7 +17,15 @@ export default function Event(){
     const [eventos, setEventos] = useState([]);
     const [tablaEventos, setTablaEventos] = useState([]);
 
+    const{data,fetchData} = useSend();
+    const [error,setError] =  useState(null);
+
     const [newEvent,setEvent] =  useState([]);
+
+    useEffect(() => {
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
+        console.log(data);
+    }, []);
 
     const getClients = async () => {
         await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent')
@@ -31,8 +40,20 @@ export default function Event(){
     }
 
     useEffect(() => {
+        if(data.desError){
+            setError(data.desError);
+        }
         getClients();
+    }, [data.desError]);
+
+    useEffect(() => {
+        cargarDatos();
     }, []);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        
+    }
 
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -117,17 +138,21 @@ export default function Event(){
                             </tr>
                         </thead>
                         <tbody>
-                            { eventos.map((evento) => (
-                                        <tr className="columnContent" key={evento.evento_id}>
-                                            <td>{ evento.vehiculo_persona_id }</td>
-                                            <td>{ evento.propietario }</td>
-                                            <td>{ evento.vehiculo_placa}</td>
-                                            <td>{ evento.evento_fecha }</td>
-                                            <td>{ evento.evento_descripcion }</td>
-                                            <td>{ evento.referencia_valor }</td>
-                                        </tr>
+                            { error!=null ? (
+                                <tr>
+                                <td colSpan={"6"} >{error}</td>
+                                </tr>
+                            ):(eventos.map((evento) => (
+                                <tr className="columnContent" key={evento.evento_id}>
+                                    <td>{ evento.vehiculo_persona_id }</td>
+                                    <td>{ evento.propietario }</td>
+                                    <td>{ evento.vehiculo_placa}</td>
+                                    <td>{ evento.evento_fecha }</td>
+                                    <td>{ evento.evento_descripcion }</td>
+                                    <td>{ evento.referencia_valor }</td>
+                                </tr>
                                 )
-                            )}
+                            ))}
                         </tbody>
                     </Table>
 

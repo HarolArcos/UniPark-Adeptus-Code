@@ -5,8 +5,8 @@ import Footer from "../Footer/Footer";
 import Modal from "../Modal/Modal";
 import { Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import FormularioEmpleado from "./FormEmployee";
 import { useFetch } from "../../hooks/HookFetchListData";
+import FormularioEditarEmpleado from "./FormEditEmployee";
 
 export default function EditEmpleado(){
     const [busqueda, setBusqueda] = useState("");
@@ -163,14 +163,14 @@ export default function EditEmpleado(){
 
                 <Modal
                 mostrarModal={showEdit}
-                title = 'Editar Persona'
+                title = 'Editar Datos del Empleado'
                 contend = {
-                <FormularioEmpleado
+                <FormularioEditarEmpleado
                 asunto ='Guardar Cambios'
                 persona= {personaSeleccionado}
                 cancelar={handleCancelar}
                 actualizarPersona = {handleGuardarEditado}
-                ></FormularioEmpleado>}
+                ></FormularioEditarEmpleado>}
                 hide = {handleCancelar}
                 >
                 </Modal>

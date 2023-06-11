@@ -10,13 +10,8 @@ export default function AddRolSection(){
     const [busqueda, setBusqueda] = useState("");
     const [roles, setroles] = useState([]);
     const [tablaroles, setTablaroles] = useState([])
-    
-    // const [personas,setPersonas] =  useState([]);
-    // const {data} = useFetch(
-    //     'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol'
-    // )
 
-    const getClients = async () => {
+    const getRoles = async () => {
         await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol')
             .then(response => response.json())
             .then( response => {
@@ -29,9 +24,10 @@ export default function AddRolSection(){
     }
 
     useEffect(() => {
-        getClients();
+        getRoles();
     }, []);
     
+
         setTimeout(() => {
             localStorage.removeItem("Error")
            }, 3000)
@@ -39,12 +35,6 @@ export default function AddRolSection(){
     //----------------------ShowModal-------------------------------
     
     const [showCreate, setShowCreate] = useState(false);
-    
-    //----------------------Cliente para:-------------------------------
-    //------Editar :
-    // useEffect(() => {
-    //     setPersonas(data);
-    // }, [data]);
     
     //-----------------------Activate-------------------------------------------
     
@@ -58,15 +48,6 @@ export default function AddRolSection(){
         setShowCreate(false);
         //console.log(data);
     };
-    
-    //-----------------------Crud-------------------------------------------
-    //-------Crear
-    // const handleGuardarNuevo = (personaNueva) => {
-    //     personaNueva.id = personas.lengthb;
-    //         personas.push(personaNueva);
-    //         const nuevasPersonas = personas;
-    //     setPersonas(nuevasPersonas);
-    // };
 
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
