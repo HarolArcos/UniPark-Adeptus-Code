@@ -234,8 +234,8 @@ const FormularioPersona = ({
             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
             values
           );
+          
           window.location.reload();
-          //setTypeID(values.typePerson);
           
           // Verificar si se recibió el campo "persona_id" en la respuesta
           console.log(response);
