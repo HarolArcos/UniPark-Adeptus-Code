@@ -109,7 +109,7 @@ export default function Persons(){
             <div className="bodyItems">
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
-                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
+                        <Button variant="success" className="button" onClick={() => handleCreate()} >Añadir +</Button>
                         {/* <Button variant="success" className="button"> 
                             <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
                         </Button> */}

@@ -89,7 +89,7 @@ function ListaC() {
         <div>
           <SearchBar onSearch={handleSearch} />
         </div>
-        Lista de Clientes
+        Lista de usuarios
         <Table striped bordered hover className="table">
           <thead>
             <tr>
@@ -97,7 +97,7 @@ function ListaC() {
               <th>Nombre </th>
               <th>Apellido</th>
               <th>Télefono</th>
-              <th> Estado </th>
+              <th> Tipo </th>
               <th> Whatapp </th>
             </tr>
           </thead>
@@ -108,7 +108,7 @@ function ListaC() {
                 <td>{cliente.persona_nombre}</td>
                 <td>{cliente.persona_apellido}</td>
                 <td>{cliente.persona_telefono}</td>
-                <td>{cliente.personaestado}</td>
+                <td>{cliente.personatipo}</td>
 
                 <td>
                   <Button

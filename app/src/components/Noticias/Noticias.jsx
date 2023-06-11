@@ -10,7 +10,7 @@ export default function Noticias() {
         "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNewsActive"
       );
 
-
+console.log(data);
 return(
     <div>
       <Header></Header>
@@ -49,7 +49,8 @@ return(
                   </div>
                   <div className="card-body">{noti.noticia_texto}</div>
                   <div className="card-footer">
-                    Autor: {noti.autormodificacion}
+                    Autor: {noti.autormodificacion}<br></br>
+                    Fecha: {noti.noticia_ultima_modificacion.slice(0, 10)}
                   </div>
                 </div>
               </Col>

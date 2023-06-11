@@ -8,7 +8,7 @@ import Persons from "../Persons/Persons";
 import SolucionAccionReclamo from "../PaginaSolucionReclamo/SolucionAccionReclamo";
 import ComboboxPerson from "../ComboboxPerson/ComboboxPerson";
 import { VehicleEdit } from "../Vehicle/VehicleEdit";
-import ListCli from "../ListasDeUsuario/ListaCliente";
+import ListCli from "../ListasDeUsuario/Lista usuarios";
 import EditPerson from "../Persons/EditPerson";
 import DeletePerson from "../Persons/ChangeState/ChangeStatePerson";
 import { Solicitude } from "../Solicitude/Solicitude";
@@ -125,7 +125,7 @@ export const AppRouter = () => {
         <Route path="/MensajeGlobal" element={<Mensaje />} />{" "}
         {/* Avisos Generales  */}
         {/* Administracion de Reclamos */}
-        <Route path="/ReclamosResp" element={<SolucionAccionReclamo />} />{" "}
+        
         {/* Responder Reclamos */}
         <Route path="/Reclamos" element={<ReclamoConsulta />} />{" "}
         {/* Hacer un Reclamo o Consulta */}
@@ -134,10 +134,10 @@ export const AppRouter = () => {
         <Route path="/Configurar" element={<Configurations />} />{" "}
         {/* Configuraciones Generales de Parqueo */}
         {/*------------------ Sin Clasificar aun ------------------------*/}
-        <Route path="/opciones" element={<Options />} />
-        <Route path="/comboboxPerson" element={<ComboboxPerson />} />
-        <Route path="/evento" element={<Event />} />
-        <Route path="/listaEnMora" element={<SubscriptionToChangeStatus />} />
+        <Route path="/opciones" element={<Options />} /> {/* Gestion de roles  */} {/* Configuracion */}
+        
+        <Route path="/evento" element={<Event />} /> {/* Registrar evento */} {/* Vehiculo */}
+        
         <Route path="/Noticias" element={<Noticias />} />
         <Route path="*" element={<Login />} />
       </Routes>

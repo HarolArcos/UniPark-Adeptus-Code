@@ -25,7 +25,7 @@ export default function ContentUnavalible(){
         <Aside></Aside>
         <div className="content-wrapper contenteSites-body" >
             <div className="buttonsGroup">
-                <Button variant="success" className="button"> +</Button>
+                <Button variant="success" className="button">Añadir+</Button>
                 <Button variant="success" className="button"> 
                     <CSVLink data={datos} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
                 </Button>

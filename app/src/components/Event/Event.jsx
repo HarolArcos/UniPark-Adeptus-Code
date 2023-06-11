@@ -91,7 +91,7 @@ export default function Event(){
                 <div className="bodyItems">
                     <div className="buttonSection">
                         <ButtonGroup className="buttonGroup">
-                            <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
+                            <Button variant="success" className="button" onClick={() => handleCreate()} >Añadir +</Button>
                             {/* <Button variant="success" className="button"> 
                                 <CSVLink data={eventos} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
                             </Button> */}

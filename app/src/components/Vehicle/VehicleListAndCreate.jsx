@@ -101,7 +101,7 @@ export const VehicleListCreate = ({crear=false}) => {
                 <div className="buttonSection">
                     {crear?(
                     <ButtonGroup className="buttonGroup">
-                        <Button variant="success" className="button" onClick={() => handleCreate()} >+</Button>
+                        <Button variant="success" className="button" onClick={() => handleCreate()} >Añadir +</Button>
                     </ButtonGroup>):(
                         <div></div>
                     )}

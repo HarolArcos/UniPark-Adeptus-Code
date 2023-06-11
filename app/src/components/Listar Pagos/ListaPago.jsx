@@ -42,7 +42,7 @@ function ListaPa() {
 
   useEffect(() => {
     let totalMonto = 0;
-    if (DatosLeidos.length > 0) {
+    if (DatosLeidos.length > 0&&!DatosLeidos.desError) {
       totalMonto = DatosLeidos.reduce(
         (total, reclamoPersona) =>
           total + parseInt(reclamoPersona.historial_pago_monto),
@@ -115,47 +115,52 @@ function ListaPa() {
         fontWeight: "bold",
       },
     });
-
-    const PDFDocument = () => (
-      <Document>
-        <Page size="A4" style={styles.page}>
-          <View>
-            <Text style={styles.title}>Lista de Pagos</Text>
-            <Text style={styles.subtitle}>Seleccionado: {Selec}</Text>
-          </View>
-          <View style={styles.table}>
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell}>Cliente</Text>
-              <Text style={styles.tableCell}>Fecha</Text>
-              <Text style={styles.tableCell}>Monto</Text>
-              <Text style={styles.tableCell}>Parqueo</Text>
+   
+      const PDFDocument = () => (
+        <Document>
+          <Page size="A4" style={styles.page}>
+            <View>
+              <Text style={styles.title}>Lista de Pagos</Text>
+              <Text style={styles.subtitle}>Seleccionado: {Selec}</Text>
             </View>
-            {DatosLeidos.map((reclamoPersona) => (
-              <View style={styles.tableRow} key={reclamoPersona.historial_pago_id}>
-                <Text style={styles.tableCell}>{reclamoPersona.cliente}</Text>
-                <Text style={styles.tableCell}>{reclamoPersona.historial_pago_fecha}</Text>
-                <Text style={styles.tableCell}>{reclamoPersona.historial_pago_monto} Bs.</Text>
-                <Text style={styles.tableCell}>{reclamoPersona.suscripcion_numero_parqueo}</Text>
+            <View style={styles.table}>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Cliente</Text>
+                <Text style={styles.tableCell}>Fecha</Text>
+                <Text style={styles.tableCell}>Monto</Text>
+                <Text style={styles.tableCell}>Parqueo</Text>
               </View>
-            ))}
-            <View style={[styles.tableRow, styles.totalRow]}>
-              <Text style={[styles.tableCell, { colspan: 3 }]}>El Monto Pagado {Selec} es:</Text>
-              <Text style={styles.tableCell}>{montopagado} Bs.</Text>
+              {DatosLeidos.map((reclamoPersona) => (
+                <View style={styles.tableRow} key={reclamoPersona.historial_pago_id}>
+                  <Text style={styles.tableCell}>{reclamoPersona.cliente}</Text>
+                  <Text style={styles.tableCell}>{reclamoPersona.historial_pago_fecha}</Text>
+                  <Text style={styles.tableCell}>{reclamoPersona.historial_pago_monto} Bs.</Text>
+                  <Text style={styles.tableCell}>{reclamoPersona.suscripcion_numero_parqueo}</Text>
+                </View>
+              ))}
+              <View style={[styles.tableRow, styles.totalRow]}>
+                <Text style={[styles.tableCell, { colspan: 3 }]}>El Monto Pagado {Selec} es:</Text>
+                <Text style={styles.tableCell}>{montopagado} Bs.</Text>
+              </View>
             </View>
-          </View>
-        </Page>
-      </Document>
-    );
-
+          </Page>
+        </Document>
+      );
+    
+    
+              console.log(DatosLeidos);
+              console.log(!DatosLeidos.desError);
     return (
       <div className="content-wrapper contenteSites-body">
         <label>Lista de Pagos</label>
+       
         <div className="buttonSection">
-          <PDFDownloadLink document={<PDFDocument />} fileName={fileName}>
+        {!DatosLeidos.desError?(<PDFDownloadLink document={<PDFDocument />} fileName={fileName}>
             {({ blob, url, loading, error }) =>
               loading ? "Preparando PDF" : <Button variant="success">Descargar PDF</Button>
             }
-          </PDFDownloadLink>
+          </PDFDownloadLink>):null}
+          
           <select
             style={{ borderRadius: "5px" }}
             value={Selec}
@@ -176,7 +181,8 @@ function ListaPa() {
               <th>Parqueo</th>
             </tr>
           </thead>
-          <tbody>
+          
+            {!DatosLeidos.desError?(<tbody>
             {DatosLeidos.map((reclamoPersona) => (
               <tr key={reclamoPersona.historial_pago_id}>
                 <td>{reclamoPersona.cliente}</td>
@@ -185,11 +191,14 @@ function ListaPa() {
                 <td>{reclamoPersona.suscripcion_numero_parqueo}</td>
               </tr>
             ))}
+        
+            
             <tr className="totalRow">
               <td colSpan="3">El Monto Pagado {Selec} es:</td>
               <td>{montopagado} Bs.</td>
-            </tr>
-          </tbody>
+            </tr></tbody>):(<tbody><tr className="totalRow">
+            <td colSpan="4">No eiste pagos en {Selec}</td>              
+          </tr></tbody>)}
         </Table>
         <br/><br/>
       </div>
