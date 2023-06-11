@@ -36,13 +36,13 @@ if (!loading) {
                 className={`tab-button ${activeTab === 1 ? 'active-tab' : ''}`}
                 onClick={() => handleTabClick(1)}
               >
-                Horario de Dias
+                Horario de Días
               </button>
               <button
                 className={`tab-button ${activeTab === 2 ? 'active-tab' : ''}`}
                 onClick={() => handleTabClick(2)}
               >
-                Numero de Sitios
+                Número de Sitios
               </button>
             </div>
 

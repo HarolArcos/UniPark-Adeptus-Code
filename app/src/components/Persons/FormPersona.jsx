@@ -334,7 +334,7 @@ const FormularioPersona = ({
               style={{ width: "220.60000000000002px" }}
             >
               <Form.Group className="inputGroup" controlId="phonePerson">
-                <Form.Label className="label">Telefono</Form.Label>
+                <Form.Label className="label">Teléfono</Form.Label>
                 <Form.Control
                   type="text"
                   name="phonePerson"

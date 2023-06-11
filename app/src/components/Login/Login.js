@@ -50,7 +50,7 @@ export default function Login() {
           <div className="card card-outline card-primary">
             <div className="card-header text-center">
               <a href="/" className="h1">
-                <b>Inicio de Sesion </b>
+                <b>Inicio de Sesión </b>
                 <br />
                 UniPark
               </a>
@@ -58,7 +58,7 @@ export default function Login() {
 
             <div className="card-body">
               <p className="login-box-msg">
-                Ingrese sus credenciales para iniciar sesion
+              Ingrese sus credenciales para iniciar sesión
               </p>
               {/* <form action="/main"> */}
               <div className="input-group mb-3">

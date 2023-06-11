@@ -80,7 +80,7 @@ export default function ListPersons(){
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre Completo</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th> CI </th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>

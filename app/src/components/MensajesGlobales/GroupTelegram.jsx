@@ -95,7 +95,7 @@ export default function Mensaje() {
 
       <div className="content-wrapper contenteSites-body">
         <label style={{ fontSize: "30px" }}>
-          Administracion de Mensajes Globales
+        Administración de Mensajes Globales
         </label>
         <div className="buttonSection">
           <Button
@@ -132,13 +132,13 @@ export default function Mensaje() {
         <Table striped bordered hover className="table">
           <thead>
             <tr>
-              <th>Titulo</th>
+              <th>Título</th>
               <th>Noticia</th>
               <th>Noticia fecha</th>
-              <th>Ultima modificacion</th>
+              <th>Última modificación</th>
               <th>Estado</th>
               <th>Autor</th>
-              <th>Autor modificacion</th>
+              <th>Autor modificación</th>
               <th>Acciones</th>
             </tr>
           </thead>

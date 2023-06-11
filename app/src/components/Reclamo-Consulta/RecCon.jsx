@@ -74,7 +74,7 @@ function Claimquery({datos}) {
         <Table striped bordered hover className="table">
         <thead>
             <tr>
-            <th>Nombre Campo </th>              
+            <th>Nombre del Campo </th>              
               <th> Datos </th>
             </tr>
           </thead>
@@ -93,7 +93,7 @@ function Claimquery({datos}) {
 {selectedOption==="Reclamo"?
             <tbody>
                 <tr>
-            <th>Ingrese el Detalle del Reclamo</th> 
+            <th>Ingrese título de reclamo</th> 
             <td><textarea id="Text"  onChange={(e)=>setdeReclamo(e.target.value)} /></td>
             </tr>
             

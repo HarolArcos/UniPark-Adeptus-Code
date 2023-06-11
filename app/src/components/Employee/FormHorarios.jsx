@@ -104,7 +104,7 @@ const FormHorarioEmp = ({asunto,cancelar, evento}) => {
               
 
             <Form.Group className="inputGroup" controlId="descriptionEvent">
-                <Form.Label className="text-left">Descripcion del Evento</Form.Label>
+                <Form.Label className="text-left">Descripcioón del Evento</Form.Label>
                 <Form.Control type="descriptionEvent"
                     as="textarea"
                     name="descriptionEvent"

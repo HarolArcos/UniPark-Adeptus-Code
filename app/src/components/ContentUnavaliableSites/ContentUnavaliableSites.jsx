@@ -39,7 +39,7 @@ export default function ContentUnavalible(){
                         <th>Tarifa</th>
                         <th>Costo</th>
                         <th>Fecha Activación</th>
-                        <th>Fecha Expiracion</th>
+                        <th>Fecha Expiración</th>
                         <th>Sitio</th>
                     </tr>
                 </thead>

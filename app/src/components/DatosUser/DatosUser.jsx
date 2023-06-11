@@ -13,7 +13,7 @@ export default function DatosUser() {
         <thead>
           <tr key="1">
             <th>Datos</th>
-            <th>Informacion</th>
+            <th>Información</th>
           </tr>
         </thead>
         <tbody>
@@ -26,11 +26,11 @@ export default function DatosUser() {
           <tr key="3">
             <th>Apellido:</th>
             <th>{userglobal.persona_apellido}</th>
-          </tr>
+          </tr>Teléfono
         </tbody>
         <tbody>
           <tr key="4">
-            <th>Telefono:</th>
+            <th>Teléfono:</th>
             <th>{userglobal.persona_telefono}</th>
           </tr>
         </tbody>
