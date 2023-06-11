@@ -8,22 +8,8 @@ import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 import { useEffect } from "react";
 
 export default function ComboboxReferences({ onChange, id}) {
-  
-  console.log("esto es el id que pasamos por parametro",id);
   const [tar, setTar] = useState([])
   const [loading, setLoading] = useState(true)
-
-//   if (loading) {sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",
-//   {
-//     tableNameReference : "persona",
-//     nameSpaceReference :  "persona_tipo"
-// }).then((responseData) => {
-  
-//   setTar(responseData)
-//   setLoading(false)
-//   console.log("esto es se ingresara en tar",responseData);
-//   console.log("tar:", tar);
-// });}
   
 useEffect(() => {
   sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences", {
@@ -40,7 +26,6 @@ useEffect(() => {
   const handleOptionChange = (option) => {
     setSelectedOption(option);
     onChange(option);
-    console.log("Esto es option.value",option.value);
   };
 
 
@@ -51,9 +36,7 @@ useEffect(() => {
       value: opcion.referencia_id,
       label: opcion.referencia_valor,
     }));
-    console.log("esto es ref", ref);
     const defaultValue = ref.find((def) => def.value === id )
-    console.log("default value aqui", defaultValue);
 
     return (
       <div className="comboBoxGroup">
