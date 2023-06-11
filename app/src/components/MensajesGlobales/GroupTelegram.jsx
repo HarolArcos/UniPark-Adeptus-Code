@@ -95,7 +95,7 @@ export default function Mensaje() {
 
       <div className="content-wrapper contenteSites-body">
         <label style={{ fontSize: "30px" }}>
-          Mensajes Globales a Grupo Telegram
+          Administracion de Mensajes Globales
         </label>
         <div className="buttonSection">
           <Button
