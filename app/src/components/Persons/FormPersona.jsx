@@ -41,18 +41,6 @@ const FormularioPersona = ({
       });
       console.log("esto es personaID",personaId);
     }
-    
-    // console.log(personaId);
-    // const RolhasOption = {
-    //   idPerson: personaId,
-    //   idRol: 2
-    // };
-    //console.log("Rol has option es: ",RolhasOption); 
-    //fetchData("",RolhasOption);
-    // if (data.desError) {
-
-    //   localStorage.setItem("Error", data.desError);
-    // }
   }, [data, fetchData]);
 
   return (
@@ -399,7 +387,12 @@ const FormularioPersona = ({
               <Form.Group controlId="referencias">
                 <Form.Label className="label">Tipo de Persona</Form.Label>
 
-                <ComboboxReferences onChange={handleValueChange} />
+                <ComboboxReferences 
+                  name="refPerson"
+                  id={persona? persona.typePerson: null}
+                  onChange={handleValueChange} 
+                  onBlur={handleBlur}
+                />
                 
                 <ErrorMessage
                   name="typePerson"

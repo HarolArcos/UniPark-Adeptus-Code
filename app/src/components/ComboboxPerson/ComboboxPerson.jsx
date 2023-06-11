@@ -3,7 +3,8 @@ import { useFetch } from '../../hooks/HookFetchListData';
 import { useState } from 'react';
 
 export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
-
+  console.log("Esto es id de vehiculo",id);
+  
   const { data, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
   )
@@ -17,6 +18,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
 
   if (!loading) {
     const defaultValue = data.find(person => person.persona_id === id);
+    console.log("esto es defValue",defaultValue);
     const options = data.map((person) => ({ value: person.persona_id, label: `${person.persona_ci}-${person.persona_nombre} ${person.persona_apellido}` }));
 
     return (
