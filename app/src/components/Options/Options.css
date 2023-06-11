@@ -29,4 +29,18 @@
 
 .opcionPadre{
     background-color: #198754;
+    /* padding: 4px; */
+    padding-left: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 4px;
+    max-width: 380px;
+}
+
+.opcionHija{
+    left: 32px;
+}
+
+.aviso{
+    color: #ff0000;
 }

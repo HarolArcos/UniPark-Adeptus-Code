@@ -201,7 +201,7 @@ export default function AddOptions() {
     const [selectedOptions, setSelectedOptions] = useState([]);
 
     const handleRolIdChange = (personaId) => {
-        setSelectedRolId(personaId.value);
+        setSelectedRolId(personaId);
     };
 
     useEffect(() => {
@@ -245,6 +245,7 @@ export default function AddOptions() {
 
     const handleSaveOptions = () => {
         console.log("Opciones seleccionadas", selectedOptions);
+        console.log(selectedRolId);
         selectedOptions.forEach((optionId) => {
         const data = {
             idRol: selectedRolId,
@@ -297,12 +298,13 @@ export default function AddOptions() {
                  />
             </Form.Group>
             <h3 className="titleOptions">Opciones</h3>
+            <span className="aviso"> Por favor seleccione la opción padre respectiva de la opcion que desea seleccionar </span>
             <Form>
                 <Form.Group>
                 {getOrderedOptions().map((option) => (
                     option.opcion_padre === "0"? (
-                        <Form.Check
-                            className="opcionPadre"
+                        <div className="opcionPadre">
+                            <Form.Check
                             key={option.opcion_id}
                             type="checkbox"
                             id={option.opcion_id}
@@ -310,6 +312,7 @@ export default function AddOptions() {
                             checked={selectedOptions.includes(option.opcion_id)}
                             onChange={() => handleOptionChange(option.opcion_id)}
                         />
+                        </div>
                     ):(
                         <Form.Check
                             className="opcionHija"
@@ -322,6 +325,8 @@ export default function AddOptions() {
                         />
                     )
                 ))}
+                <br/>
+                <br/>
                 </Form.Group>
             </Form>
             </Col>
@@ -329,9 +334,9 @@ export default function AddOptions() {
             <h3>Opciones seleccionadas:</h3>
             <ListGroup>
                 {selectedOptions.map((optionId) => (
-                <ListGroup.Item key={optionId}>
-                    {options.find((option) => option.opcion_id === optionId)?.opcion_nombre}
-                </ListGroup.Item>
+                    <ListGroup.Item key={optionId}>
+                        {options.find((option) => option.opcion_id === optionId)?.opcion_nombre}
+                    </ListGroup.Item>
                 ))}
             </ListGroup>
             <Button onClick={handleSaveOptions}>Guardar opciones</Button>
