@@ -361,22 +361,24 @@ const FormularioEditarPersona = ({
               style={{ width: "220.60000000000002px" }}
             >
               <Form.Group controlId="referencias">
-                <Form.Label className="label">Tipo de Persona</Form.Label>
+                  <Form.Label className="label">Tipo de Persona</Form.Label>
 
-                <ComboboxReferences 
-                id={persona? persona.typePerson:null}
-                onChange={handleValueChange}
-                readOnly = {soloLectura} />
-                
-                <ErrorMessage
-                  name="typePerson"
-                  component={() => (
-                    <div className="text-danger">{errors.typePerson}</div>
-                  )}
-                ></ErrorMessage>
-              </Form.Group>
-            </div>
+                  <ComboboxReferences 
+                    name="typePerson"
+                    id={persona? persona.persona_tipo: null}
+                    onChange={handleValueChange} 
+                    onBlur={handleBlur}
+                  />
+                  <ErrorMessage
+                    name="typePerson"
+                    component={() => (
+                      <div className="text-danger">{errors.typePerson}</div>
+                    )}
+                  ></ErrorMessage>
+                </Form.Group>
+              </div>        
             )}
+            
           </div>
 
           <br />
