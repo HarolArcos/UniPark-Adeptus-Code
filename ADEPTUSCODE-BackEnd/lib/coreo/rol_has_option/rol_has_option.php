@@ -163,6 +163,25 @@ class rol_has_option {
         return $response;
     }
 
+    public function deleteRolHasOptionWhitRolIdDb($idRol){
+        $response = false;
+        $sql = "DELETE FROM rol_has_opcion WHERE rol_has_opcion_id = $idRol";
+        $rs = $this->_db->query($sql);
+        if($this->_db->getLastError()) {
+            $arrLog = array("input"=>array( "idRol" => $idRol),
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array("input"=>array( "idRol" => $idRol),
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     public function listRolHasOptionDb(){
         $response = false;
         $sql =  "SELECT * FROM rol_has_opcion";

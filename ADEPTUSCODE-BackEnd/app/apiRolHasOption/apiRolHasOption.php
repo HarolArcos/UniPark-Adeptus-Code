@@ -8,6 +8,7 @@
     $server->Register("listRolHasOption");
     $server->Register("editRolHasOption");
     $server->Register("deleteRolHasOption");
+    $server->Register("resetRolHasOptionWhitRolId");
     $server->start();
 
     function insertRolHasOption($arg){
@@ -146,6 +147,45 @@
         $idRolHasOption =  $arg->idRolHasOption;
         $_RolHasOption = new rol_has_option($_db);
         $responseDelete = $_RolHasOption->deleteRolHasOptionDb($idRolHasOption);
+        if ( $responseDelete){
+            $response = array("codError" => 200, "data" => array("desError"=>"eliminacion exitosa"));
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"eliminacion fallida"));
+        }
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $response;
+    }
+
+    function resetRolHasOptionWhitRolId($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $idRol =  "";
+        if(isset($arg->idRol)){
+            $idRol =  $arg->idRol;
+        }else{
+            array_push($errorlist,"Error: falta parametro idRol");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $idRol =  $arg->idRol;
+        $_RolHasOption = new rol_has_option($_db);
+        $responseDelete = $_RolHasOption->deleteRolHasOptionWhitRolIdDb($idRol);
         if ( $responseDelete){
             $response = array("codError" => 200, "data" => array("desError"=>"eliminacion exitosa"));
         }else{
