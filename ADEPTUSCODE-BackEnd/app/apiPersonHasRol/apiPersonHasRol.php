@@ -6,6 +6,7 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertPersonHasRol");
     $server->Register("listPersonHasRol");
+    $server->Register("listDataRolWhitTypePerson");
     $server->Register("editPersonHasRol");
     $server->Register("deletePersonHasRol");
     $server->start();
@@ -185,6 +186,53 @@
             return $response;
         }
         
+        return $responseList;
+    }
+
+    function listDataRolWhitTypePerson($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $typePerson =  "";
+
+        
+        if(isset($arg->typePerson)){
+            $typePerson =  $arg->typePerson;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro typePerson");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $typePerson =  $arg->typePerson;
+
+        $_subscription = new person_has_rol($_db);
+        $responseList = $_subscription->listDataRolWhitTypePersonDb($typePerson);
+
+        if ( $responseList){
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado exitoso de datos de rol"));
+            $mensaje = "Listado exitoso de sitios ocupados - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido de rol segun el tipo de persona"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
         return $responseList;
     }
     
