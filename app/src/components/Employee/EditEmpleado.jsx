@@ -68,16 +68,7 @@ export default function EditEmpleado(){
         console.log(data);
     };
     
-    //-----------------------Crud-------------------------------------------
-    //------Edit
-    const handleGuardarEditado = (personaEditado) => {
-        const nuevasPersonas = personas.map((persona) =>
-        persona.id === personaEditado.id ? personaEditado : persona
-        );
-        setPersonas(nuevasPersonas);
-        //setShowCreate(false);
-        setPersonaSeleccionado(null);
-    };
+    
 
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -169,7 +160,6 @@ export default function EditEmpleado(){
                 asunto ='Guardar Cambios'
                 persona= {personaSeleccionado}
                 cancelar={handleCancelar}
-                actualizarPersona = {handleGuardarEditado}
                 ></FormularioEditarEmpleado>}
                 hide = {handleCancelar}
                 >

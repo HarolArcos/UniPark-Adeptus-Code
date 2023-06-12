@@ -43,7 +43,7 @@ const FormularioPersona = ({
           idRol: 3 
         });
         setIdPer(personaId);
-      }else{
+      }else if (selectedValue.value==3){
         
         senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
         {
@@ -51,7 +51,16 @@ const FormularioPersona = ({
           idRol: 2 
         });
         cancelar();
+      }else {
+        
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+        {
+          idPerson: personaId,
+          idRol: 1 
+        });
+        cancelar();
       }
+
     }
     
   }, [data]);

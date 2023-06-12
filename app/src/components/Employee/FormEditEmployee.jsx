@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
-//import "./FormPersona.css";
+import "./Employee";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferencia2";
 import { useFetch } from "../../hooks/HookFetchListData";
-import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
-//import DateTime from "react-datetime";
+//import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 
 const FormularioEditarEmpleado = ({
   asunto,
@@ -16,46 +15,83 @@ const FormularioEditarEmpleado = ({
   añadirNuevo,
   soloLectura = false
 }) => {
-  const [selectedValue, setSelectedValue] = useState(null);
-  //setSelectedReferenciaId(referenciaId);
+  const [selectedValue, setSelectedValue] = useState({});
+  const [idPer, setIdPer] = useState(null);
+  const [horarioG, sethorarioG] = useState({});
+
+
   const handleValueChange = (option) => {
     console.log(option);
     setSelectedValue(option);
   };
   const { data, fetchData } = useFetchSendData();
+  const { data: hasRol, fetchData: senRol } = useFetchSendData();
+  const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
 
   const { data: lista, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
-
-  //const {numPersonas: listaPesonas} = useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson");
-
-  const cantidadEmp = lista.length + 1;
   useEffect(() => {
-    console.log('esto es data:',data);
-
+    console.log("esto es data:", data,selectedValue);
+  
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       const personaId = data[0].persona_id;
-      fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
-      {
-        idPerson: personaId,
-        idRol: 3 
-      });
-      console.log("esto es personaID",personaId);
+      if (selectedValue.value==5) {
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+        {
+          idPersonHasRol:persona.persona_rol_has_opcion,
+          idPerson: personaId,
+          idRol: 3 
+        });
+        setIdPer(personaId);
+      }else if (selectedValue.value==3){
+        
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+        {
+          idPersonHasRol:persona.persona_rol_has_opcion,
+          idPerson: personaId,
+          idRol: 2 
+        });
+        cancelar();
+      }else {
+        
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+        {
+          idPersonHasRol:persona.persona_rol_has_opcion,
+          idPerson: personaId,
+          idRol: 1 
+        });
+        cancelar();
+      }
+
     }
+    
+  }, [data]);
 
-    if (data.desError) {
-
-      localStorage.setItem("Error", data.desError);
+  const enviarHorario= async(horario = null) => {
+    if (horario!=null) {
+      console.log(idPer,horario);
+      sethorarioG(horario);
+      cancelar();
     }
-  }, [data, cantidadEmp, fetchData]);
+  }
 
+  useEffect(() => {
+    console.log('entraa a horario',hasHorario);
+  }, [hasHorario])
+
+  useEffect(() => {
+    console.log(hasRol);
+    if (idPer!=null) {
+      senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",horarioG);
+    }
+  }, [hasRol,sethorarioG]);
+  
+  
   return (
-    <>
-      <Formik
+    <Formik
       initialValues={
-        persona
-          ? {
+  {
               idPerson: persona.persona_id,
               typePerson: persona.persona_tipo,
               namePerson: persona.persona_nombre,
@@ -66,27 +102,15 @@ const FormularioEditarEmpleado = ({
               statusPerson: persona.persona_estado,
               nicknamePerson: persona.persona_nickname,
               passwordPerson: persona.persona_contraseña,
+
               idSchedule: persona.horario_id,
               daySchedule :  persona.horario_dia,
               entrySchedule:  persona.horario_entrada,
               departureSchedule:  persona.horario_salida
             }
-          : {
-              typePerson: "",
-              namePerson: "",
-              lastNamePerson: "",
-              ciPerson: "",
-              phonePerson: "",
-              telegramPerson: "",
-              statusPerson: "1",
-              nicknamePerson: "",
-              passwordPerson: "",
-              daySchedule :  "Lunes a Viernes",
-              entrySchedule:  "",
-              departureSchedule:  ""
-            }
       }
       validate={(values) => {
+        console.log(selectedValue);
         const errors = {};
 
         if (!values.namePerson) {
@@ -215,25 +239,17 @@ const FormularioEditarEmpleado = ({
           errors.passwordPerson = "datos invalidos";
         }
         //console.log(values);
-        //console.log(errors);
+        console.log(errors);
         return errors;
       }}
+      
       onSubmit={async (values) => {
-        //console.log(values);
+        //const ciPersonSelected = values.ciPerson;
+        console.log(values);
         values.telegramPerson = values.phonePerson;
-        const horariosChange = {
-          idSchedule : values.idSchedule,
-          daySchedule :  values.daySchedule,
-          entrySchedule : values.entrySchedule,
-          departureSchedule :  values.departureSchedule
-        }
-        // const horarioInsert = {
-        //   idPerson : values.idPerson,
-        //   daySchedule :  values.daySchedule,
-        //   entrySchedule : values.entrySchedule,
-        //   departureSchedule :  values.departureSchedule
-        // }
-        const datosEmpleado = {
+        //console.log("sadw");
+        const datosUser = {
+          idPerson: persona.idPerson,
           typePerson : values.typePerson,
           namePerson : values.namePerson,
           lastNamePerson : values.lastNamePerson,
@@ -244,41 +260,22 @@ const FormularioEditarEmpleado = ({
           nicknamePerson: values.nicknamePerson,
           passwordPerson: values.passwordPerson
         }
-        //console.log('horarios',horarios);
-        if (persona) {
-          //console.log(values, "editar personas");
+          console.log(selectedValue); 
+          console.log(values, "editar personas");
 
-          // actualizarVehiculo(values);
-          fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
-            values
-          );
-          fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",
-            horariosChange
-          );
+          await fetchData(
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
           cancelar();
-        } else {
-          console.log('Insercion datos persona --------------->', datosEmpleado);
-          //console.log("pereza");
-          // fetchData(
-          //   "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
-          //   datosEmpleado
-          // );
-          sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosEmpleado)
-          .then((resp) => {
+
+          if (selectedValue.value==5) {
             const horariosChange = {
-              idSchedule : resp[0].persona_id,
-              daySchedule :  values.daySchedule,
+              idSchedule :  values.idSchedule,
               entrySchedule : values.entrySchedule,
               departureSchedule :  values.departureSchedule
             }
-            console.log(horariosChange);
-            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule", horariosChange);
-          })
-          window.location.reload();
-          //cancelar();
-        }
+           enviarHorario(horariosChange);
+          }
+        
       }}
     >
       {({ values, errors, handleBlur, handleChange, handleSubmit }) => (
@@ -294,7 +291,6 @@ const FormularioEditarEmpleado = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.namePerson}
-                  readOnly = {soloLectura}
                 />
                 <ErrorMessage
                   name="namePerson"
@@ -313,7 +309,6 @@ const FormularioEditarEmpleado = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.lastNamePerson}
-                  readOnly = {soloLectura}
                 />
                 <ErrorMessage
                   name="lastNamePerson"
@@ -335,7 +330,6 @@ const FormularioEditarEmpleado = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.ciPerson}
-                  readOnly = {soloLectura}
                 />
                 <ErrorMessage
                   name="ciPerson"
@@ -357,7 +351,6 @@ const FormularioEditarEmpleado = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.phonePerson}
-                  readOnly = {soloLectura}
                 />
                 <ErrorMessage
                   name="phonePerson"
@@ -379,7 +372,6 @@ const FormularioEditarEmpleado = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.nicknamePerson}
-                  readOnly = {soloLectura}
                 />
                 <ErrorMessage
                   name="nicknamePerson"
@@ -401,7 +393,6 @@ const FormularioEditarEmpleado = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.passwordPerson}
-                  readOnly = {soloLectura}
                 />
                 <ErrorMessage
                   name="passwordPerson"
@@ -412,7 +403,9 @@ const FormularioEditarEmpleado = ({
               </Form.Group>
             </div>
 
-            <div
+              {selectedValue.value==5?(
+                <>
+              <div
               className="col-md-2 "
               style={{ width: "220.60000000000002px" }}
             >
@@ -436,7 +429,7 @@ const FormularioEditarEmpleado = ({
               </Form.Group>
             </div>
 
-            <div
+              <div
               className="col-md-2 "
               style={{ width: "220.60000000000002px" }}
             >
@@ -459,46 +452,44 @@ const FormularioEditarEmpleado = ({
                 ></ErrorMessage>
               </Form.Group>
             </div>
+            </>
+            ):(<></>)}      
+            <div
+              className="contentModalPerson"
+              style={{ width: "220.60000000000002px" }}
+            >
+              <Form.Group controlId="referencias">
+                <Form.Label className="label">Tipo de Persona</Form.Label>
 
-            {!soloLectura && (
-                <div
-                className="contentModalPerson"
-                style={{ width: "220.60000000000002px" }}
-              >
-                <Form.Group controlId="referencias">
-                  <Form.Label className="label">Tipo de Persona</Form.Label>
-  
-                  <ComboboxReferences 
-                  id={persona? persona.persona_tipo:null}
+                <ComboboxReferences 
+                  name="refPerson"
+                  id={persona? persona.typePerson: null}
                   onChange={handleValueChange} 
-                  readOnly = {soloLectura}/>
-                  
-                  <ErrorMessage
-                    name="typePerson"
-                    component={() => (
-                      <div className="text-danger">{errors.typePerson}</div>
-                    )}
-                  ></ErrorMessage>
-                </Form.Group>
+                  onBlur={handleBlur}
+                />
                 
-              </div>
-            )}
+                <ErrorMessage
+                  name="typePerson"
+                  component={() => (
+                    <div className="text-danger">{errors.typePerson}</div>
+                  )}
+                ></ErrorMessage>
+              </Form.Group>
+            </div>
           </div>
+
           <br />
           <Modal.Footer>
             <Button variant="secondary" onClick={cancelar}>
               Cancelar
             </Button>
-            {!soloLectura && (
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
-                    {asunto}
-                </Button>
-            )}
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
+              {asunto}
+            </Button>
           </Modal.Footer>
         </Form>
       )}
     </Formik>
-    </>
   );
 };
 
