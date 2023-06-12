@@ -17,8 +17,8 @@ export default function ContentUnavalible(){
             .then(data => setData(data))
             .catch(error => console.error(error));
     }, []);
-    
-
+    console.log(datos);
+console.log(datos.desError);
     return(
         <>
             <Header></Header>
@@ -26,11 +26,13 @@ export default function ContentUnavalible(){
         <div className="content-wrapper contenteSites-body" >
             <div className="buttonsGroup">
                 <Button variant="success" className="button">Añadir+</Button>
-                <Button variant="success" className="button"> 
+                {!datos.desError && <> <Button variant="success" className="button"> 
                     <CSVLink data={datos} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
                 </Button>
-                <Button variant="success" className="button"> PDF </Button>
+                <Button variant="success" className="button"> PDF </Button> </>}
+                
             </div>
+            {datos.desError ? <label>No Existen Sitios Ocupados</label>:(
             <Table striped bordered hover className="table">
                 <thead>
                     <tr>
@@ -56,7 +58,7 @@ export default function ContentUnavalible(){
                         </tr>
                     ) )}   
                 </tbody>
-            </Table>
+            </Table>)}
         </div>
         <Footer></Footer>
         </>

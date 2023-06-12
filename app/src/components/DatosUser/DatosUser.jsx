@@ -26,7 +26,7 @@ export default function DatosUser() {
           <tr key="3">
             <th>Apellido:</th>
             <th>{userglobal.persona_apellido}</th>
-          </tr>Teléfono
+          </tr>
         </tbody>
         <tbody>
           <tr key="4">
