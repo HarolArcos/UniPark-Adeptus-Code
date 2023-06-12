@@ -372,10 +372,12 @@ class person {
         $sql = "SELECT 
         persona.*, 
         referencia_personaTipo.referencia_valor AS personaTipo, 
-        referencia_personaEstado.referencia_valor AS personaEstado 
+        referencia_personaEstado.referencia_valor AS personaEstado, 
+        persona_has_rol.*
         FROM persona 
         INNER JOIN referencia AS referencia_personaTipo ON persona.persona_tipo = referencia_personaTipo.referencia_id 
         INNER JOIN referencia AS referencia_personaEstado ON persona.persona_estado = referencia_personaEstado.referencia_id
+        INNER JOIN persona_has_rol ON persona.persona_id = persona_has_rol.persona_id
         WHERE referencia_personaTipo.referencia_valor = 'cliente'";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
@@ -459,10 +461,12 @@ class person {
         persona.*, 
         referencia_personaTipo.referencia_valor AS personaTipo, 
         referencia_personaEstado.referencia_valor AS personaEstado,
-        horario.*
+        horario.*,
+        persona_has_rol.*
     FROM persona 
     INNER JOIN referencia AS referencia_personaTipo ON persona.persona_tipo = referencia_personaTipo.referencia_id 
     INNER JOIN referencia AS referencia_personaEstado ON persona.persona_estado = referencia_personaEstado.referencia_id
+    INNER JOIN persona_has_rol ON persona.persona_id = persona_has_rol.persona_id
     LEFT JOIN horario ON persona.persona_id = horario.persona_id
     WHERE persona.persona_tipo NOT IN (
         SELECT referencia_id 
