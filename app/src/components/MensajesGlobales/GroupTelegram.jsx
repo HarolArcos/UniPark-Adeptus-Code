@@ -137,7 +137,7 @@ export default function Mensaje() {
           </Form.Group>
           </>}
         </div>
-        {noticias.desError ? <label>No existen Noticias</label>:(<>
+        {noticias.desError ? <label>No existen Mensajes Globales</label>:(<>
         <label>Numero de Reclamos {noticias.length}</label>
         <Table striped bordered hover className="table">
           <thead>
