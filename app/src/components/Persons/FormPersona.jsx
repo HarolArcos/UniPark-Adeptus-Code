@@ -13,7 +13,8 @@ const FormularioPersona = ({
   persona,
   actualizarVehiculo,
   añadirNuevo,
-  soloLectura = false
+  soloLectura = false,
+  actual
 }) => {
   const [selectedValue, setSelectedValue] = useState({});
   const [idPer, setIdPer] = useState(null);
@@ -296,6 +297,7 @@ const FormularioPersona = ({
             }
           
         }
+        actual()
       }}
     >
       {({ values, errors, handleBlur, handleChange, handleSubmit }) => (

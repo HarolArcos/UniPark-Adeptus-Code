@@ -8,7 +8,7 @@ import ComboboxPlacas from "./ComboboxPlacas";
 import ComboboxTipoEvento from "./ComboboxTipoEvento";
 import "./Event.css";
 
-const FormEvent = ({asunto,cancelar, evento}) => {
+const FormEvent = ({asunto,cancelar, evento,cliente}) => {
 
   const [textareaEnabled, setTextareaEnabled] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -122,6 +122,8 @@ const FormEvent = ({asunto,cancelar, evento}) => {
         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
         console.table("los valores que se envian",values);
         console.log('no hubo duplicidad',errorDuply);
+        cliente()
+        cancelar()
         //window.location.reload();
       //}
 
