@@ -17,26 +17,30 @@ const FormularioEmpleado = ({
   soloLectura = false
 }) => {
   const [selectedValue, setSelectedValue] = useState(null);
+  const [idPer, setIdPer] = useState(null);
+  const [horarioG, sethorarioG] = useState({});
   //setSelectedReferenciaId(referenciaId);
+
   const handleValueChange = (option) => {
     console.log(option);
     setSelectedValue(option);
   };
   const { data, fetchData } = useFetchSendData();
+  const { data: hasRol, fetchData: senRol } = useFetchSendData();
+  const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
 
   const { data: lista, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
 
-  //const {numPersonas: listaPesonas} = useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson");
 
-  const cantidadEmp = lista.length + 1;
   useEffect(() => {
     console.log('esto es data:',data);
 
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       const personaId = data[0].persona_id;
-      fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+      setIdPer(personaId);
+      senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
       {
         idPerson: personaId,
         idRol: 3 
@@ -44,12 +48,34 @@ const FormularioEmpleado = ({
       console.log("esto es personaID",personaId);
     }
 
+    
+
     if (data.desError) {
 
       localStorage.setItem("Error", data.desError);
     }
-  }, [data, cantidadEmp]);
+  }, [data]);
 
+  const enviarHorario= async(horario = null) => {
+    if (horario!=null) {
+      console.log(idPer,horario);
+      sethorarioG(horario);
+      cancelar();
+    }
+  }
+  
+  useEffect(() => {
+    console.log('entraa a horario',hasHorario);
+  }, [hasHorario])
+  
+  
+  useEffect(() => {
+    
+    console.log('entraaa a rol',hasRol,idPer,horarioG);
+    horarioG.idPerson = idPer;
+    senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+  }, [hasRol,sethorarioG]);
+  
   return (
     <>
       <Formik
@@ -219,7 +245,7 @@ const FormularioEmpleado = ({
         return errors;
       }}
       onSubmit={async (values) => {
-        //console.log(values);
+
         values.telegramPerson = values.phonePerson;
         const horariosChange = {
           idSchedule : values.idSchedule,
@@ -227,12 +253,7 @@ const FormularioEmpleado = ({
           entrySchedule : values.entrySchedule,
           departureSchedule :  values.departureSchedule
         }
-        // const horarioInsert = {
-        //   idPerson : values.idPerson,
-        //   daySchedule :  values.daySchedule,
-        //   entrySchedule : values.entrySchedule,
-        //   departureSchedule :  values.departureSchedule
-        // }
+        
         const datosEmpleado = {
           typePerson : values.typePerson,
           namePerson : values.namePerson,
@@ -244,40 +265,26 @@ const FormularioEmpleado = ({
           nicknamePerson: values.nicknamePerson,
           passwordPerson: values.passwordPerson
         }
-        //console.log('horarios',horarios);
+        console.log('horarios',horariosChange);
         if (persona) {
-          //console.log(values, "editar personas");
 
-          // actualizarVehiculo(values);
-          fetchData(
+          await fetchData(
             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
-            values
+            datosEmpleado
           );
-          fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",
-            horariosChange
-          );
-          cancelar();
+          enviarHorario(horariosChange);
+          sethorarioG(horariosChange);
         } else {
-          console.log('Insercion datos persona --------------->', datosEmpleado);
-          //console.log("pereza");
-          // fetchData(
-          //   "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
-          //   datosEmpleado
-          // );
-          sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosEmpleado)
-          .then((resp) => {
-            const horariosChange = {
-              idSchedule : resp[0].persona_id,
-              daySchedule :  values.daySchedule,
-              entrySchedule : values.entrySchedule,
-              departureSchedule :  values.departureSchedule
-            }
-            console.log(horariosChange);
-            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule", horariosChange);
-          })
-          window.location.reload();
-          //cancelar();
+          const horariosChange = {
+            idPerson : 0,
+            daySchedule :  values.daySchedule,
+            entrySchedule : values.entrySchedule,
+            departureSchedule :  values.departureSchedule
+          }
+          await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosEmpleado);
+
+          enviarHorario(horariosChange);
+
         }
       }}
     >
