@@ -1,17 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
-//import { CSVLink } from "react-csv";
 import Modal from "../Modal/Modal";
 import FormularioPersona from './FormPersona';
 import { useSend } from '../../hooks/HookList';
 import "./Persons.css";
-//import axios from "axios";
+import { DataUser } from '../context/UserContext.jsx';
+
+
 
 export default function Persons(){   
-   
+    
+    const {userglobal} = useContext(DataUser);
+    console.log(userglobal);
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
@@ -23,7 +26,7 @@ export default function Persons(){
 
    
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
     }, []);
 
 
@@ -32,10 +35,17 @@ export default function Persons(){
             setError(data.desError);
         }
         else{
+
+            let resultadosBusqueda = data.filter((elemento) => {
+                if(elemento.persona_id!=userglobal.persona_id ){
+                    return elemento;
+                }
+            });
+            console.log(resultadosBusqueda);
             setError(null);
-            setClientes(data);
-            setTablaClientes(data);
-            setPersonas(data);
+            setClientes(resultadosBusqueda);
+            setTablaClientes(resultadosBusqueda);
+            setPersonas(resultadosBusqueda);
 
         }
     }, [data]);
@@ -47,7 +57,7 @@ export default function Persons(){
     },[]);
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
         
     }
 
