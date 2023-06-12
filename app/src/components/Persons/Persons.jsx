@@ -4,9 +4,9 @@ import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
 //import { CSVLink } from "react-csv";
-import { useFetch } from "../../hooks/HookFetchListData";
 import Modal from "../Modal/Modal";
 import FormularioPersona from './FormPersona';
+import { useSend } from '../../hooks/HookList';
 import "./Persons.css";
 //import axios from "axios";
 
@@ -15,43 +15,45 @@ export default function Persons(){
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
-    
     const [personas,setPersonas] =  useState([]);
-    const {data} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient'
-    )
+    const [error,setError] =  useState(null);
 
-    const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
-            .then(response => response.json())
-            .then( response => {
-                setClientes(response);
-                setTablaClientes(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
+
+    const{data,fetchData} = useSend();
+
+   
+    useEffect(() => {
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+    }, []);
+
 
     useEffect(() => {
-        getClients();
-    }, []);
+        if (data.desError) {
+            setError(data.desError);
+        }
+        else{
+            setError(null);
+            setClientes(data);
+            setTablaClientes(data);
+            setPersonas(data);
+
+        }
+    }, [data]);
     
-        setTimeout(() => {
-            localStorage.removeItem("Error")
-           }, 3000)
        
+
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+        
+    }
+
     //----------------------ShowModal-------------------------------
     
     const [showCreate, setShowCreate] = useState(false);
-    
-    //----------------------Cliente para:-------------------------------
-    //------Editar :
-    useEffect(() => {
-        setPersonas(data);
-    }, [data]);
-    
-    //-----------------------Activate-------------------------------------------
     
     //-----Create Modal
     const handleCreate = () => {
@@ -61,17 +63,11 @@ export default function Persons(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowCreate(false);
-        //console.log(data);
+        setError(null);
+        cargarDatos();
     };
     
-    //-----------------------Crud-------------------------------------------
-    //-------Crear
-    const handleGuardarNuevo = (personaNueva) => {
-        personaNueva.id = personas.lengthb;
-            personas.push(personaNueva);
-            const nuevasPersonas = personas;
-        setPersonas(nuevasPersonas);
-    };
+   
 
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -102,19 +98,13 @@ export default function Persons(){
 
         <div className="content-wrapper contenteSites-body">
         
-                {/* {localStorage.getItem("Error") ?
-                <div className="text-danger">{localStorage.getItem("Error")}</div>
-                
-                :<span></span>} */}
+              
             <div className="bodyItems">
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
                         <Button variant="success" className="button" onClick={() => handleCreate()} >Añadir +</Button>
-                        {/* <Button variant="success" className="button"> 
-                            <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
-                        </Button> */}
+                        
                     </ButtonGroup>
-                    {!clientes.desError && 
                     <Form.Control 
                         className="searchBar"
                         type="text"
@@ -122,10 +112,8 @@ export default function Persons(){
                         value={busqueda}
                         onChange={handleChangeSerch}
                     />
-                }
                 </div>
-                {clientes.desError ? <label>No existen Clientes</label>
-                :(
+                
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
@@ -138,12 +126,12 @@ export default function Persons(){
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {loading ? (
+                         {error!=null ? (
                             <tr>
-                                <td colSpan={"3"} >Cargando...</td>
+                                <td colSpan={"6"} >{error}</td>
                             </tr>
-                        ): ( */}
-                            {
+                        ): 
+                            (
                                 clientes.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
@@ -154,11 +142,10 @@ export default function Persons(){
                                         <td>{persona.personaestado}</td>
                                     </tr>
                                 ))
-                            }
-                        {/* )} */}
+                            )
+                        }
                     </tbody>
                 </Table>
-                )}
 
                 <Modal
                 mostrarModal={showCreate}
@@ -167,7 +154,6 @@ export default function Persons(){
                 <FormularioPersona
                 asunto = "Guardar Usuario"
                 cancelar={handleCancelar}
-                añadirNuevo = {handleGuardarNuevo}
                 ></FormularioPersona>}
                 hide = {handleCancelar}
                 >

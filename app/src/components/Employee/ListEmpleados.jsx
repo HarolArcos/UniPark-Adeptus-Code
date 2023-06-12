@@ -6,36 +6,40 @@ import { Form, Table } from "react-bootstrap";
 //import { useFetch } from "../../hooks/HookFetchListData";
 import { useState,useEffect } from "react";
 import "./Employee.css";
+import { useSend } from '../../hooks/HookList';
+
 
 export default function ListEmployee(){   
 
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
+    const [error,setError] =  useState(null);
 
-    // const {data, loading} = useFetch(
-    //     'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee'
-    // )
+    const{data,fetchData} = useSend();
     
-    const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee')
-            .then(response => response.json())
-            .then( response => {
-                setClientes(response);
-                setTablaClientes(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
+    useEffect(() => {
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+    }, []);
 
     useEffect(() => {
-        getClients();
-    }, []);
-        setTimeout(() => {
-            localStorage.removeItem("Error")
-           }, 3000)
-    
+        if (data.desError) {
+            setError(data.desError);
+        }
+        else{
+            setError(null);
+            setClientes(data);
+            setTablaClientes(data);
+        }
+    }, [data]);
+
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+    }
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
         setBusqueda(e.target.value);
@@ -64,8 +68,7 @@ export default function ListEmployee(){
 
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
-            {clientes.desError ? <label>No existen Empleados</label>
-                :(<>
+            
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar"
@@ -90,7 +93,11 @@ export default function ListEmployee(){
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                    {error!=null ? (
+                            <tr>
+                                <td colSpan={"8"} >{error}</td>
+                            </tr>
+                        ): (
                             clientes.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
@@ -103,10 +110,9 @@ export default function ListEmployee(){
                                         <td>{persona.personaestado}</td>
                                     </tr>
                             ))
-                        }
+                        )}
                     </tbody>
                 </Table>
-                </>)}
             </div>
         </div>    
         <Footer></Footer>

@@ -7,16 +7,42 @@ import { Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useFetch } from "../../hooks/HookFetchListData";
 import FormularioEditarEmpleado from "./FormEditEmployee";
+import { useSend } from '../../hooks/HookList';
+
 
 export default function ViewEmployee(){
-    const [searchTerm, setSearchTerm] = useState('');
+    const [busqueda, setBusqueda] = useState("");
+    const [clientes, setClientes] = useState([]);
+    const [tablaClientes, setTablaClientes] = useState([])
+    const [error,setError] =  useState(null);
 
-    //const [personas,setPersonas] =  useState([]);
-    const {data, loading} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee'
-    )
+    const{data,fetchData} = useSend();
 
-    //----------------------ShowModal-------------------------------
+   
+    
+    
+    useEffect(() => {
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+    }, []);
+
+    useEffect(() => {
+        if (data.desError) {
+            setError(data.desError);
+        }
+        else{
+            setError(null);
+            setClientes(data);
+            setTablaClientes(data);
+        }
+    }, [data]);
+
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+    }
     
     const [showView, setShowView] = useState(false);
     
@@ -24,11 +50,7 @@ export default function ViewEmployee(){
     //----------------------Cliente para:-------------------------------
     //------Editar :
     const [personaSeleccionado, setPersonaSeleccionado] = useState(null);
-        
-    useEffect(() => {
-        //setPersonas(data);
-        console.log(data);
-    }, [data]);
+   
     
     //-----View Modal
     const handleView = (cliente) => {
@@ -39,12 +61,31 @@ export default function ViewEmployee(){
     const handleCancelar = () => {
         //setShowEdit(false);
         setShowView(false);
+        setError(null);
+        cargarDatos();
         console.log(data);
     };
-    const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
-    };
+    
+    const handleChangeSerch = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+    }
 
+    const filtrar = (termBusqueda) => {
+        var resultadosBusqueda = tablaClientes.filter((elemento) => {
+            if(
+                    elemento.persona_id.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_apellido.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+                ||  elemento.persona_ci.toString().toLowerCase().includes(termBusqueda.toLowerCase())
+            ){
+                return elemento;
+            }else{
+                return null;
+            }
+        });
+        setClientes(resultadosBusqueda);
+    }
 
     return(
         <>
@@ -53,15 +94,14 @@ export default function ViewEmployee(){
 
             <div className="content-wrapper">
             <div className="bodyItems">
-            {data.desError ? <label>No existen Empleados</label>
-                :(<>
+           
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
-                        value={searchTerm}
-                        onChange={handleSearch}
+                        value={busqueda}
+                        onChange={handleChangeSerch}
                     />
                 </div>
                 <Table striped bordered hover className="table">
@@ -78,12 +118,12 @@ export default function ViewEmployee(){
                         </tr>
                     </thead>
                     <tbody>
-                        {loading ? (
+                        {error!=null ? (
                             <tr>
-                                <td colSpan={"3"} >Cargando...</td>
+                                <td colSpan={"8"} >{error}</td>
                             </tr>
                         ): (
-                            data.map((persona) => (
+                            clientes.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
                                         <td>{persona.persona_nombre} {persona.persona_apellido}</td>
@@ -106,7 +146,6 @@ export default function ViewEmployee(){
                         )}
                     </tbody>
                 </Table>
-                </>)}
                 <Modal
                     mostrarModal={showView}
                     title = 'Detalle Empleado'

@@ -54,6 +54,7 @@ export const Solicitude = () => {
     //---Desactive Any Modal
     const handleCancelar = async () => {
         setShowMod(false);
+        setError(null);
         cargarDatos();
     };
 

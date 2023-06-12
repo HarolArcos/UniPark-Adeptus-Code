@@ -4,33 +4,40 @@ import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import { Form, Table } from "react-bootstrap";
 import "./Persons.css";
+import { useSend } from '../../hooks/HookList';
+
 
 export default function ListPersons(){   
    
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
-    const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
-            .then(response => response.json())
-            .then( response => {
-                setClientes(response);
-                setTablaClientes(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
+    const [error,setError] =  useState(null);
+
+    const{data,fetchData} = useSend();
 
     useEffect(() => {
-        getClients();
-    }, []);
-    
-        setTimeout(() => {
-            localStorage.removeItem("Error")
-           }, 3000)
-       
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+   }, []);
 
+   useEffect(() => {
+       if (data.desError) {
+           setError(data.desError);
+       }
+       else{
+           setError(null);
+           setClientes(data);
+           setTablaClientes(data);
+       }
+  }, [data]);
+
+  useEffect(() => {
+   cargarDatos();
+   }, []);
+
+   const cargarDatos = async () =>{
+       await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+   }
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
         setBusqueda(e.target.value);
@@ -60,14 +67,9 @@ export default function ListPersons(){
 
         <div className="content-wrapper contenteSites-body">
         
-                {/* {localStorage.getItem("Error") ?
-                <div className="text-danger">{localStorage.getItem("Error")}</div>
-                
-                :<span></span>} */}
                 
             <div className="bodyItems">
-            {clientes.desError ? <label>No existen Clientes</label>
-                :(<>
+            
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar"
@@ -90,12 +92,12 @@ export default function ListPersons(){
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {loading ? (
+                        {error!=null ? (
                             <tr>
-                                <td colSpan={"3"} >Cargando...</td>
+                                <td colSpan={"6"} >{error}</td>
                             </tr>
-                        ): ( */}
-                            {
+                        ): (
+                            
                                 clientes.map((persona) => (
                                     <tr className="columnContent" key={persona.persona_id}>
                                         <td>{persona.persona_id}</td>
@@ -106,11 +108,10 @@ export default function ListPersons(){
                                         <td>{persona.personaestado}</td>
                                     </tr>
                                 ))
-                            }
-                        {/* )} */}
+                            
+                        )} 
                     </tbody>
                 </Table>
-                </>)}
             </div>
         </div>
         <br></br>

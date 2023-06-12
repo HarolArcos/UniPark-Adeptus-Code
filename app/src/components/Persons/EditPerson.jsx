@@ -5,34 +5,43 @@ import Footer from "../Footer/Footer";
 import Modal from "../Modal/Modal";
 import { Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
-//import FormularioPersona from "./FormPersona";
-import { useFetch } from "../../hooks/HookFetchListData";
 import FormularioEditarPersona from "./FormEditPerson";
+import { useSend } from '../../hooks/HookList';
 
 export default function EditPerson(){
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
-
+    const [error,setError] =  useState(null);
     const [personas,setPersonas] =  useState([]);
-    const {data, loading} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient'
-    )
-    const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
-            .then(response => response.json())
-            .then( response => {
-                setClientes(response);
-                setTablaClientes(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
+
+    const{data,fetchData} = useSend();
+
+   
 
     useEffect(() => {
-        getClients();
+         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
     }, []);
+
+    useEffect(() => {
+        if (data.desError) {
+            setError(data.desError);
+        }
+        else{
+            setError(null);
+            setClientes(data);
+            setTablaClientes(data);
+            setPersonas(data);
+        }
+   }, [data]);
+
+   useEffect(() => {
+    cargarDatos();
+    }, []);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+    }
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
@@ -42,11 +51,7 @@ export default function EditPerson(){
     //----------------------Cliente para:-------------------------------
     //------Editar :
     const [personaSeleccionado, setPersonaSeleccionado] = useState(null);
-        
-    useEffect(() => {
-        setPersonas(data);
-        console.log(data);
-    }, [data]);
+   
     
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
@@ -63,20 +68,11 @@ export default function EditPerson(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
-        // setShowCreate(false);
-        console.log(data);
+        setError(null);
+        cargarDatos();
     };
     
-    //-----------------------Crud-------------------------------------------
-    //------Edit
-    const handleGuardarEditado = (personaEditado) => {
-        const nuevasPersonas = personas.map((persona) =>
-        persona.id === personaEditado.id ? personaEditado : persona
-        );
-        setPersonas(nuevasPersonas);
-        //setShowCreate(false);
-        setPersonaSeleccionado(null);
-    };
+    
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
         setBusqueda(e.target.value);
@@ -106,8 +102,7 @@ export default function EditPerson(){
 
             <div className="content-wrapper">
             <div className="bodyItems">
-            {clientes.desError ? <label>No existen Clientes</label>
-                :(<>
+           
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar2"
@@ -130,9 +125,9 @@ export default function EditPerson(){
                         </tr>
                     </thead>
                     <tbody>
-                        {loading ? (
+                        {error!=null ? (
                             <tr>
-                                <td colSpan={"3"} >Cargando...</td>
+                                <td colSpan={"7"} >{error}</td>
                             </tr>
                         ): (
                             clientes.map((persona) => (
@@ -156,7 +151,6 @@ export default function EditPerson(){
                         )}
                     </tbody>
                 </Table>
-                </>)}
                 <Modal
                 mostrarModal={showEdit}
                 title = 'Editar Datos del Cliente'
@@ -165,7 +159,6 @@ export default function EditPerson(){
                 asunto ='Guardar Cambios'
                 persona= {personaSeleccionado}
                 cancelar={handleCancelar}
-                actualizarPersona = {handleGuardarEditado}
                 ></FormularioEditarPersona>}
                 hide = {handleCancelar}
                 >

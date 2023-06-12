@@ -59,6 +59,7 @@ export const TarifaEdit = () => {
     //---Desactive Any Modal
     const handleCancelar = async () => {
         setShowEdit(false);
+        setError(null);
         cargarDatos();
     };
 

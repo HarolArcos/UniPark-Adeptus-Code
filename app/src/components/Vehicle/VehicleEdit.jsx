@@ -73,7 +73,7 @@ export const VehicleEdit = () => {
     const handleCancelar = async () => {
         setShowEdit(false);
         setShowCreate(false);
-        console.log(data);
+        setError(null);
         cargarDatos();
     };
 

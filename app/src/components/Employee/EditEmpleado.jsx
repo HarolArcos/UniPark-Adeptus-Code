@@ -7,32 +7,46 @@ import { Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useFetch } from "../../hooks/HookFetchListData";
 import FormularioEditarEmpleado from "./FormEditEmployee";
+import { useSend } from '../../hooks/HookList';
 
 export default function EditEmpleado(){
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
-
+    const [error,setError] =  useState(null);
     const [personas,setPersonas] =  useState([]);
-    const {data, loading} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee'
-    )
-
-    const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee')
-            .then(response => response.json())
-            .then( response => {
-                setClientes(response);
-                setTablaClientes(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
+    
+    const{data,fetchData} = useSend();
+   
 
     useEffect(() => {
-        getClients();
+        fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee')
     }, []);
+
+    useEffect(() => {
+        if (data.desError) {
+            setError(data.desError);
+        }
+        else{
+            setError(null);
+            setClientes(data);
+            setTablaClientes(data);
+            setPersonas(data);
+
+        }
+    }, [data]);
+    
+
+       
+
+    useEffect(()=>{
+        cargarDatos();
+    },[]);
+
+    const cargarDatos = async () =>{
+        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee')
+        
+    }
 
     //----------------------ShowModal-------------------------------
     
@@ -43,11 +57,7 @@ export default function EditEmpleado(){
     //----------------------Cliente para:-------------------------------
     //------Editar :
     const [personaSeleccionado, setPersonaSeleccionado] = useState(null);
-        
-    useEffect(() => {
-        setPersonas(data);
-        console.log(data);
-    }, [data]);
+     
     
     //-----------------------Activate-------------------------------------------
     //------Edit Modal
@@ -64,8 +74,8 @@ export default function EditEmpleado(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
-        // setShowCreate(false);
-        console.log(data);
+        setError(null);
+        cargarDatos();
     };
     
     
@@ -100,8 +110,6 @@ export default function EditEmpleado(){
 
             <div className="content-wrapper">
             <div className="bodyItems">
-            {clientes.desError ? <label>No existen Empleados</label>
-                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar"
@@ -125,9 +133,9 @@ export default function EditEmpleado(){
                         </tr>
                     </thead>
                     <tbody>
-                        {loading ? (
+                        {error!=null ? (
                             <tr>
-                                <td colSpan={"3"} >Cargando...</td>
+                                <td colSpan={"8"} >{error}</td>
                             </tr>
                         ): (
                             clientes.map((persona) => (
@@ -153,7 +161,7 @@ export default function EditEmpleado(){
                         )}
                     </tbody>
                 </Table>
-                </>)}
+                
                 <Modal
                 mostrarModal={showEdit}
                 title = 'Editar Datos del Empleado'
