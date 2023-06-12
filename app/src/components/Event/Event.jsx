@@ -164,6 +164,7 @@ export default function Event(){
                         asunto = "Guardar Evento"
                         cancelar={handleCancelar}
                         añadirNuevo = {handleGuardarNuevo}
+                        cliente = {getClients}
                         ></FormEvent>}
                         hide = {handleCancelar}
                         >
