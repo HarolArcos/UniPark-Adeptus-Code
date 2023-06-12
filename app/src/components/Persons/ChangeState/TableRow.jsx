@@ -33,7 +33,7 @@ function PersonTable({ data }) {
                 {data.map((person) => (
                 <tr className='columnContent' key={person.persona_id}>
                     <td>{person.persona_id}</td>
-                    <td>{person.persona_nombre}{person.persona_apellido}</td>
+                    <td>{person.persona_nombre} {person.persona_apellido}</td>
                     <td>{person.persona_telefono}</td>
                     <td>{person.persona_ci}</td>
                     <td>{person.personatipo}</td>
