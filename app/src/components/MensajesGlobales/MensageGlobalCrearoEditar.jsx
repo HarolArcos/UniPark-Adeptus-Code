@@ -25,9 +25,11 @@ export default function Modalmensaje({
       fetchData(url, json);
 
       setError(null);
-      fetchConfiguraciones()
+      
       handleClose();
     }
+    fetchConfiguraciones()
+
   }, [url, json]);
 
   function guardar() {
