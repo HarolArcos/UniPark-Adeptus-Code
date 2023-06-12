@@ -18,11 +18,11 @@ export default function Persons(){
     
     const [personas,setPersonas] =  useState([]);
     const {data} = useFetch(
-        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient'
+        'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
     )
 
     const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
             .then(response => response.json())
             .then( response => {
                 setClientes(response);
@@ -168,6 +168,7 @@ export default function Persons(){
                 asunto = "Guardar Usuario"
                 cancelar={handleCancelar}
                 añadirNuevo = {handleGuardarNuevo}
+                actual={getClients}
                 ></FormularioPersona>}
                 hide = {handleCancelar}
                 >
