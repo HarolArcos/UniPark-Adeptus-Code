@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 
 export default function Opcions() {
-  const optionsPadre = JSON.parse(localStorage.getItem("optionsPadre"));
+  let optionsPadre = JSON.parse(localStorage.getItem("optionsPadre"));
   const optionsHijo = JSON.parse(localStorage.getItem("optionsHijo"));
   
-
-
+console.log(optionsPadre);
+  optionsPadre.sort(function (a, b) {
+    return a.opcion_orden - b.opcion_orden;})
+  
   return (
     optionsPadre.map((padre)=>
       
