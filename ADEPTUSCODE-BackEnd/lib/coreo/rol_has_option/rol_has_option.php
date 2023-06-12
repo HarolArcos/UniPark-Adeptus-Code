@@ -165,7 +165,8 @@ class rol_has_option {
 
     public function deleteRolHasOptionWhitRolIdDb($idRol){
         $response = false;
-        $sql = "DELETE FROM rol_has_opcion WHERE rol_has_opcion_id = $idRol";
+        $sql = "DELETE FROM rol_has_opcion WHERE rol_id = $idRol;
+        SELECT setval('rol_has_opcion_rol_has_opcion_id_seq', (SELECT MAX(rol_has_opcion_id) FROM rol_has_opcion));";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idRol" => $idRol),
