@@ -310,6 +310,7 @@
                    onChange={handleChange}
                    onBlur={handleBlur}
                    value={values.namePerson}
+                   readOnly={soloLectura}
                  />
                  <ErrorMessage
                    name="namePerson"
@@ -328,6 +329,7 @@
                    onChange={handleChange}
                    onBlur={handleBlur}
                    value={values.lastNamePerson}
+                   readOnly={soloLectura}
                  />
                  <ErrorMessage
                    name="lastNamePerson"
@@ -349,6 +351,7 @@
                    onChange={handleChange}
                    onBlur={handleBlur}
                    value={values.ciPerson}
+                   readOnly={soloLectura}
                  />
                  <ErrorMessage
                    name="ciPerson"
@@ -370,6 +373,7 @@
                    onChange={handleChange}
                    onBlur={handleBlur}
                    value={values.phonePerson}
+                   readOnly={soloLectura}
                  />
                  <ErrorMessage
                    name="phonePerson"
@@ -391,6 +395,7 @@
                    onChange={handleChange}
                    onBlur={handleBlur}
                    value={values.nicknamePerson}
+                   readOnly={soloLectura}
                  />
                  <ErrorMessage
                    name="nicknamePerson"
@@ -412,6 +417,7 @@
                    onChange={handleChange}
                    onBlur={handleBlur}
                    value={values.passwordPerson}
+                   readOnly={soloLectura}
                  />
                  <ErrorMessage
                    name="passwordPerson"
@@ -477,34 +483,42 @@
                className="contentModalPerson"
                style={{ width: "220.60000000000002px" }}
              >
-               <Form.Group controlId="referencias">
-                 <Form.Label className="label">Tipo de Persona</Form.Label>
- 
-                 <ComboboxReferences 
-                   referenciaObjeto = {{tableNameReference:"persona",nameSpaceReference:"persona_tipo"}}
-                   defaultValor={persona? { value: persona.persona_tipo, label: persona.personatipo}:null}
-                   onReferenciaIdChange={handleReferenciaIdChange}
- 
-                 />
-                 
-                 <ErrorMessage
-                   name="typePerson"
-                   component={() => (
-                     <div className="text-danger">{errors.typePerson}</div>
-                   )}
-                 ></ErrorMessage>
-               </Form.Group>
+                <Form.Group controlId="referencias">
+                <Form.Label className="label">Tipo de Persona</Form.Label>
+
+                <ComboboxReferences 
+                  referenciaObjeto = {{tableNameReference:"persona",nameSpaceReference:"persona_tipo"}}
+                  defaultValor={persona? { value: persona.persona_tipo, label: persona.personatipo}:null}
+                  onReferenciaIdChange={handleReferenciaIdChange}
+                  isReadOnly={soloLectura}
+                />
+                
+                <ErrorMessage
+                  name="typePerson"
+                  component={() => (
+                    <div className="text-danger">{errors.typePerson}</div>
+                  )}
+                ></ErrorMessage>
+              </Form.Group>
              </div>
            </div>
  
            <br />
            <Modal.Footer>
-             <Button variant="secondary" onClick={cancelar}>
-               Cancelar
-             </Button>
-             <Button variant="primary" type="submit" onClick={handleSubmit}>
-               {asunto}
-             </Button>
+            {soloLectura? (
+                <Button variant="secondary" onClick={cancelar}>
+                  Cerrar
+                </Button>
+              ):(
+                <Button variant="secondary" onClick={cancelar}>
+                Cancelar
+              </Button>
+              )}
+             {soloLectura? (<></>): (
+              <Button variant="primary" type="submit" onClick={handleSubmit}>
+                {asunto}
+              </Button>
+             )}
            </Modal.Footer>
          </Form>
        )}

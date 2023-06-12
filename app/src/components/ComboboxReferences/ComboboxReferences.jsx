@@ -3,7 +3,7 @@ import Select from "react-select";
 import "./ComboboxReferences.css";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 
-export default function ComboboxReferences({onReferenciaIdChange,defaultValor,referenciaObjeto,tipo=0}){ 
+export default function ComboboxReferences({onReferenciaIdChange,defaultValor,referenciaObjeto,tipo=0, isReadOnly }){ 
     const {data, fetchData} = useFetchSendData();
     const [ref,setRef]=useState([]);
     useEffect(() => {
@@ -39,6 +39,7 @@ export default function ComboboxReferences({onReferenciaIdChange,defaultValor,re
                 defaultValue={defaultValor}
                 value={ref && Array.isArray(ref)?ref.find(option => option.value === selectedReferenciaId):''}
                 onChange={handleReferenciaChange}
+                isDisabled={isReadOnly }
             />
             
           
