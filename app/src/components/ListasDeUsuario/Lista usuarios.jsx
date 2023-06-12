@@ -135,7 +135,7 @@ function ListaC() {
         </Table>
         <Modal show={show} onHide={handleClose} centered>
           <ModalBody className="modal-body">
-            <h1 className="forgot-password-modal"> Editar Accion</h1>
+            <h1 className="forgot-password-modal"> Editar Acción</h1>
             <Form className="container">
               <Form.Label
                 className="text-left"
@@ -153,7 +153,7 @@ function ListaC() {
                 className="text-left"
                 style={{ display: "flex", justifyContent: "flex-start" }}
               >
-                Télefono: {usuario.persona_telefono}
+                Teléfono: {usuario.persona_telefono}
               </Form.Label>
 
               <div></div>

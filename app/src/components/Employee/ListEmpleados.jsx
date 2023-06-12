@@ -64,6 +64,8 @@ export default function ListEmployee(){
 
         <div className="content-wrapper contenteSites-body">
             <div className="bodyItems">
+            {clientes.desError ? <label>No existen Empleados</label>
+                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar"
@@ -79,7 +81,7 @@ export default function ListEmployee(){
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th> CI </th>
                             <th>Hora Ingreso</th>
                             <th>Hora Salida</th>
@@ -104,6 +106,7 @@ export default function ListEmployee(){
                         }
                     </tbody>
                 </Table>
+                </>)}
             </div>
         </div>    
         <Footer></Footer>

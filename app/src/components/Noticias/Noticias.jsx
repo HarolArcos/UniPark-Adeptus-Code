@@ -21,7 +21,7 @@ return(
         <div className="d-flex justify-content-center align-items-center">
           <h5>Noticias</h5>
           </div>
-          
+          {data.desError? <label> No hay noticias </label>:(
           
           
           <Row >
@@ -55,7 +55,7 @@ return(
                 </div>
               </Col>
             ))}
-          </Row>
+          </Row>)}
           
         </div>
       )}

@@ -100,6 +100,8 @@ export default function EditEmpleado(){
 
             <div className="content-wrapper">
             <div className="bodyItems">
+            {clientes.desError ? <label>No existen Empleados</label>
+                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar"
@@ -151,7 +153,7 @@ export default function EditEmpleado(){
                         )}
                     </tbody>
                 </Table>
-
+                </>)}
                 <Modal
                 mostrarModal={showEdit}
                 title = 'Editar Datos del Empleado'

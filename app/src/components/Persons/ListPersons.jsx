@@ -64,7 +64,10 @@ export default function ListPersons(){
                 <div className="text-danger">{localStorage.getItem("Error")}</div>
                 
                 :<span></span>} */}
+                
             <div className="bodyItems">
+            {clientes.desError ? <label>No existen Clientes</label>
+                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar"
@@ -80,7 +83,7 @@ export default function ListPersons(){
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre Completo</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th> CI </th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>
@@ -107,6 +110,7 @@ export default function ListPersons(){
                         {/* )} */}
                     </tbody>
                 </Table>
+                </>)}
             </div>
         </div>
         <br></br>

@@ -53,6 +53,8 @@ export default function ViewEmployee(){
 
             <div className="content-wrapper">
             <div className="bodyItems">
+            {data.desError ? <label>No existen Empleados</label>
+                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar"
@@ -67,7 +69,7 @@ export default function ViewEmployee(){
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Telefono</th>
+                            <th>Télefono</th>
                             <th> CI </th>
                             <th>Hora Ingreso</th>
                             <th>Hora Salida</th>
@@ -104,7 +106,7 @@ export default function ViewEmployee(){
                         )}
                     </tbody>
                 </Table>
-
+                </>)}
                 <Modal
                     mostrarModal={showView}
                     title = 'Detalle Empleado'

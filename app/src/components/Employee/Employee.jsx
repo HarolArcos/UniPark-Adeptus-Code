@@ -110,21 +110,23 @@ export default function Employee(){
                             <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
                         </Button> */}
                     </ButtonGroup>
+                    {!clientes.desError &&
                     <Form.Control 
                         className="searchBar"
                         type="text"
                         placeholder="Buscar..."
                         value={busqueda}
                         onChange={handleChangeSerch}
-                    />
+                    />}
                 </div>
-                
+                {clientes.desError ? <label>No existen Empleados</label>
+                :(<>
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th> CI </th>
                             <th>Hora Ingreso</th>
                             <th>Hora Salida</th>
@@ -153,7 +155,7 @@ export default function Employee(){
                         )}
                     </tbody>
                 </Table>
-                
+                </>)}
 
                 <Modal
                 mostrarModal={showCreate}

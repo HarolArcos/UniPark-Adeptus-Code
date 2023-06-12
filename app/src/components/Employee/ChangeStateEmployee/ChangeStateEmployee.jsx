@@ -57,6 +57,8 @@ export default function DeleteEmployee(){
 
             <div className="content-wrapper">
             <div className="bodyItems">
+            {clientes.desError ? <label>No existen Empleados</label>
+                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar2"
@@ -67,6 +69,7 @@ export default function DeleteEmployee(){
                     />
                 </div>
                     <TableEmployee data={clientes} ></TableEmployee>
+                    </>)}
                 </div>
             </div>
 

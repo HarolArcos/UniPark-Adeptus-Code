@@ -106,6 +106,8 @@ export default function EditPerson(){
 
             <div className="content-wrapper">
             <div className="bodyItems">
+            {clientes.desError ? <label>No existen Clientes</label>
+                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar2"
@@ -120,7 +122,7 @@ export default function EditPerson(){
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre Completo</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th> CI </th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>
@@ -154,7 +156,7 @@ export default function EditPerson(){
                         )}
                     </tbody>
                 </Table>
-
+                </>)}
                 <Modal
                 mostrarModal={showEdit}
                 title = 'Editar Datos del Cliente'

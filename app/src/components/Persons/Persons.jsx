@@ -94,7 +94,7 @@ export default function Persons(){
         });
         setClientes(resultadosBusqueda);
     }
-
+    
     return(
         <>
         <Header></Header>
@@ -114,6 +114,7 @@ export default function Persons(){
                             <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
                         </Button> */}
                     </ButtonGroup>
+                    {!clientes.desError && 
                     <Form.Control 
                         className="searchBar"
                         type="text"
@@ -121,14 +122,16 @@ export default function Persons(){
                         value={busqueda}
                         onChange={handleChangeSerch}
                     />
+                }
                 </div>
-                
+                {clientes.desError ? <label>No existen Clientes</label>
+                :(
                 <Table striped bordered hover className="table">
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre Completo</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th> CI </th>
                             <th>Tipo Persona</th>
                             <th>Estado</th>
@@ -155,7 +158,7 @@ export default function Persons(){
                         {/* )} */}
                     </tbody>
                 </Table>
-                
+                )}
 
                 <Modal
                 mostrarModal={showCreate}
