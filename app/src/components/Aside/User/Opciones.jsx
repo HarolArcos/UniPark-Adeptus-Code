@@ -7,7 +7,7 @@ export default function Opcions() {
   let optionsPadre = JSON.parse(localStorage.getItem("optionsPadre"));
   const optionsHijo = JSON.parse(localStorage.getItem("optionsHijo"));
   
-console.log(optionsPadre);
+
   optionsPadre.sort(function (a, b) {
     return a.opcion_orden - b.opcion_orden;})
   
