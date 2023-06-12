@@ -2,9 +2,9 @@ import React from "react";
 import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
-import {Tabs, Tab} from "react-bootstrap";
+//import {Tabs, Tab} from "react-bootstrap";
 import AddOptions from "./AddOption";
-import AddRolSection from "./AddRolSection";
+//import AddRolSection from "./AddRolSection";
 import "./Options.css";
 
 export default function Options(){
@@ -13,7 +13,7 @@ export default function Options(){
         <Header></Header>
         <Aside></Aside>
         <div className="content-wrapper">
-        <Tabs
+        {/* <Tabs
             defaultActiveKey="profile"
             id="justify-tab-example"
             className="mb-3"
@@ -23,9 +23,12 @@ export default function Options(){
                     <AddRolSection/>
                 </Tab>
                 <Tab eventKey="Añadir opciones" title="Añadir Opciones">
-                    <AddOptions/>
+                    
                 </Tab>
-            </Tabs>
+            </Tabs> */}
+            <div className="addOpciones">
+                <AddOptions/>
+            </div>
         </div>
         <Footer></Footer>
         </>

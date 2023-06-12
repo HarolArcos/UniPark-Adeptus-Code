@@ -52,7 +52,9 @@ export const AppRouter = () => {
         {/* Ver Lista de Sitios No Disponibles */}
         <Route path="/main" element={<Main />} /> {/* Mis datos */}
         {/* Clientes */}
-        <Route path="/addClientes" element={<Persons />} />{" "}
+
+        {/* <Route path="/addClientes" element={<Persons />} />{" "} */}
+        
         {/* Registrar Datos de Clientes */}
         <Route path="/listClientes" element={<ListPersons />} />{" "}
         {/* Ver Lista de Clientes */}
@@ -63,7 +65,9 @@ export const AppRouter = () => {
         <Route path="/viewClientes" element={<ViewPerson />} />{" "}
         {/* Ver Datos de Clientes */}
         {/* Empleados */}
-        <Route path="/addEmpleados" element={<Employee />} />{" "}
+
+        {/* <Route path="/addEmpleados" element={<Employee />} />{" "} */}
+        
         {/* Registrar Datos de Empleados */}
         <Route path="/listEmpleados" element={<ListEmployee />} />{" "}
         {/* Ver Lista de Empleados */}
@@ -133,6 +137,9 @@ export const AppRouter = () => {
         <Route path="/ListaPagos" element={<ListaPag />} /> {/* Listar Pagos */}
         <Route path="/Configurar" element={<Configurations />} />{" "}
         {/* Configuraciones Generales de Parqueo */}
+
+        {/* Asignar */}
+        <Route path="/addUser"    element={<Persons />}/>
         {/*------------------ Sin Clasificar aun ------------------------*/}
         <Route path="/opciones" element={<Options />} /> {/* Gestion de roles  */} {/* Configuracion */}
         
