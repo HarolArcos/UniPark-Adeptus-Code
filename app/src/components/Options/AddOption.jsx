@@ -57,6 +57,10 @@ export default function AddOptions() {
         console.log("Opciones seleccionadas", selectedOptions);
         console.log("Esto es el rol id:",selectedRolId);
 
+        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/resetRolHasOptionWhitRolId", {
+            idRol: selectedRolId
+        });
+
         selectedOptions.forEach((optionId) => {
         const data = {
             idRol: selectedRolId,
