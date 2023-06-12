@@ -110,7 +110,7 @@ export const TarifaEdit = () => {
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"4"} >No existe Tarifas</td>
+                                <td colSpan={"4"} >{error}</td>
                             </tr>
                         ): (
                             tarifas.map((tarifa) => (

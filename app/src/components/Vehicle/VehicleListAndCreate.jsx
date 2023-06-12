@@ -52,7 +52,6 @@ export const VehicleListCreate = ({crear=false}) => {
 
     const cargarDatos = async () =>{
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        
     }
    
     
@@ -65,7 +64,7 @@ export const VehicleListCreate = ({crear=false}) => {
     const handleCancelar = async () => {
         setShowEdit(false);
         setShowCreate(false);
-        console.log(data);
+        setError(null);
         cargarDatos();
           
     };

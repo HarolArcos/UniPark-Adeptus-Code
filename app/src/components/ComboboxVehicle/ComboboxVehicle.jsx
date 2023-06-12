@@ -1,22 +1,3 @@
-
-// import Select from 'react-select';
-
-// import { useFetch } from '../../hooks/HookFetchListData';
-
-// let url = "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle"
-
-
-// export default function Vehiculos(){
-//     let { data, loading,  } = useFetch(
-//         url
-//               )
-//       if(!loading) 
-//       {
-//         const opciones = data.map((auto)=> ({value: auto.vehiculo_id , label: auto.vehiculo_placa +" - "+  auto.vehiculo_modelo}))
-//       return      <Select placeholder="Seleccione automovil" options={opciones}  ></Select>
-//     }
-// }
-
 import Select from 'react-select'; 
 import { useFetch } from '../../hooks/HookFetchListData';
 import { useState } from 'react';
@@ -34,7 +15,11 @@ export default function ComboboxVehicle({ onPersonaIdChange ,id}) { // actualiza
     console.log(selectedOption);
   };
 
-  if (!loading) {
+  if (!loading && data.desError) {
+    return(
+      <p>{data.desError}</p>
+      )
+  }else{
     const defaultValue = data.find(person => person.persona_id === id);
     const options = data.map((person) => ({ value: person.persona_id, label: `${person.persona_ci}-${person.persona_nombre} ${person.persona_apellido}` }));
 

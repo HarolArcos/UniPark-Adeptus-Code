@@ -78,6 +78,7 @@ export const SubscriptionToChangeStatus = () => {
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
+        setError(null);
         cargarDatos();
     };
  

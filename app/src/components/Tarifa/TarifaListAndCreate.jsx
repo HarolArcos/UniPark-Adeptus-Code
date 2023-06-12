@@ -58,6 +58,7 @@ export const TarifaListCreate = ({crear=false}) => {
     const handleCancelar = async () => {
         setShowCreate(false);
         console.log(data);
+        setError(null);
         cargarDatos();
     };
 

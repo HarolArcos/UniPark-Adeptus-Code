@@ -74,6 +74,7 @@ export const SubscriptionEdit = () => {
     const handleCancelar = () => {
         setShowEdit(false);
         setShowCreate(false);
+        setError(null);
         cargarDatos();
     };
 

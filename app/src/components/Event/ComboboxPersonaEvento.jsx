@@ -15,7 +15,9 @@ export default function ComboboxPersonaEvento({ onPersonaIdChange ,id}) { // act
     console.log(selectedOption.value);
   };
 
-  if (!loading) {
+  if (!loading && data.desError ){
+   return( <p>{data.desError}</p>);
+  }else {
     const defaultValue = data.find(person => person.persona_id === id);
     const options = data.map((person) => ({ value: person.persona_id, label: person.propietario }));
     return (

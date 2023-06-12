@@ -15,7 +15,9 @@ export default function ComboboxPlacas({ onVehicleIdChange ,id}) { // actualiza 
         console.log(vehSelectedOption);
     };
 
-  if (!loading) {
+  if (!loading && data.desError) {
+    return(<p>{data.desError}</p>);
+  }else{
     const defaultValue = data.find(veh => veh.vehiculo_id === id);
     const optionsVehicle = data.map((veh) => ({value: veh.vehiculo_id, label: `${veh.vehiculo_placa} - ${veh.propietario}`}));
     return (

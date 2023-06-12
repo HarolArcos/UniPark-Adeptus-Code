@@ -35,7 +35,7 @@ export default function ComboboxAvaliableSites({ onSiteIdChange ,nro}) {
   if (!loading && data) {
     if (sitos.length==0) {
         return(
-          <h7>No existen sitios Disponibles,mil disculpas</h7>
+          <p>No existen sitios Disponibles,mil disculpas</p>
         );
     }else{
 

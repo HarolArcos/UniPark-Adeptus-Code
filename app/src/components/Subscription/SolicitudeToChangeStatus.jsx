@@ -74,6 +74,7 @@ export const SolicitudeToChangeStatus = () => {
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowEdit(false);
+        setError(null);
         cargarDatos();
     };
  

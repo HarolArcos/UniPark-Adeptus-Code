@@ -19,12 +19,12 @@ export default function ComboboxTarifa({ onTarifaIdChange,id}) {
     
   };
 
-  if (!loading) {
-    console.log(data);
-    // let defaultValue = null;
-      
-const      defaultValue = data.find(tarifa => tarifa.tarifa_id === id);
-    
+  if (!loading && data.desError) {
+      return(
+        <p>{data.desError}</p>
+        )
+  }else{
+    const      defaultValue = data.find(tarifa => tarifa.tarifa_id === id);
     const options = data.map((tarifa) => ({ value: tarifa, label: `${tarifa.tarifa_nombre}` }));
 
     return (
@@ -36,5 +36,6 @@ const      defaultValue = data.find(tarifa => tarifa.tarifa_id === id);
         onChange={handleTarifaChange}
       />
     );
+
   }
 }

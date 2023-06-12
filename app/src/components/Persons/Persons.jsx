@@ -162,10 +162,10 @@ export default function Persons(){
 
                 <Modal
                 mostrarModal={showCreate}
-                title = 'Crear Nuevo Cliente'
+                title = 'Crear Nuevo Usuario'
                 contend = {
                 <FormularioPersona
-                asunto = "Guardar Cliente"
+                asunto = "Guardar Usuario"
                 cancelar={handleCancelar}
                 añadirNuevo = {handleGuardarNuevo}
                 ></FormularioPersona>}
