@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Form, Button,Modal,Image } from "react-bootstrap";
+import { Form, Button,Modal,Image ,Spinner} from "react-bootstrap";
 import {Formik, ErrorMessage } from 'formik';
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import "./Tarifa.css"
-import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
+
 const Formulario = ({asunto,cancelar, tarifa = null}) => {
   console.log(tarifa );
 
@@ -17,6 +17,7 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
   
   const [image, setImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
+  const [loadin, setLoadin] = useState(false);
   const [loadingImage, setloadingImage] = useState(false);
 
 
@@ -33,7 +34,6 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
 
     reader.readAsDataURL(file);
 
-    console.log(image,file);
   };
 
   return (
@@ -87,39 +87,43 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
       
       if (tarifa) {
         if (imageFile!=null) {
-          const dataImage = new FormData();
+            const dataImage = new FormData();
+            dataImage.append("file", imageFile);
+            dataImage.append("upload_preset", "images");
+            setLoadin(true);
+            const res = await fetch("https://api.cloudinary.com/v1_1/dxqlkqb68/image/upload",{
+              method: 'POST',
+              body: dataImage,
+            });
+            const file =await res.json();
+            console.log(file.secure_url);
+            values.routeRate = file.secure_url;
+
+          }
+            setLoadin(true);
+            await  fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/editRate',values);
+            setLoadin(false);
+            cancelar();
+        
+      } else {
+        const dataImage = new FormData();
           dataImage.append("file", imageFile);
           dataImage.append("upload_preset", "images");
-          const res = await fetch("https://api.cloudinary.com/v1_1/ds2dbiuwp/image/upload",{
+
+          setLoadin(true);
+          const res = await fetch("https://api.cloudinary.com/v1_1/dxqlkqb68/image/upload",{
             method: 'POST',
             body: dataImage,
           });
           const file =await res.json();
-  
+          console.log(file.secure_url);
           values.routeRate = file.secure_url;
-
-          console.log(values,"si se cambio la imagen");
-        }else{
-          console.log(values,"la imagen es la misma");
-        }
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/editRate',values);
-        cancelar();
+          
+          console.log(values,data);
+          await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
+          setLoadin(false);
+          cancelar();
         
-      } else {
-        const dataImage = new FormData();
-        dataImage.append("file", imageFile);
-        dataImage.append("upload_preset", "images");
-
-        const res = await fetch("https://api.cloudinary.com/v1_1/ds2dbiuwp/image/upload",{
-          method: 'POST',
-          body: dataImage,
-        });
-
-        const file =await res.json();
-        values.routeRate = file.secure_url;
-        console.log(values);
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
-        cancelar();
       }
 
     }
@@ -170,8 +174,8 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
           </Form.Group>
           <ErrorMessage name="routeRate" component={()=>(<div className="text-danger">{errors.routeRate}</div>)}></ErrorMessage>
           
-          <br/>
-          
+          <br />
+          {loadin?<Spinner animation="border" />:
           <Modal.Footer >
             <Button variant="secondary" onClick={cancelar}>
               Cancelar
@@ -180,6 +184,9 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
               {asunto}
             </Button>
           </Modal.Footer>
+          
+          }
+          
         </Form>
       )}
     </Formik>

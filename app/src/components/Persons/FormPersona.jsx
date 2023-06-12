@@ -15,46 +15,68 @@ const FormularioPersona = ({
   añadirNuevo,
   soloLectura = false
 }) => {
-  const [selectedValue, setSelectedValue] = useState(null);
-  //setSelectedReferenciaId(referenciaId);
+  const [selectedValue, setSelectedValue] = useState({});
+  const [idPer, setIdPer] = useState(null);
+  const [horarioG, sethorarioG] = useState({});
+
+
   const handleValueChange = (option) => {
     console.log(option);
     setSelectedValue(option);
   };
   const { data, fetchData } = useFetchSendData();
-
-  //const [typeId, setTypeID] = useState([]);
+  const { data: hasRol, fetchData: senRol } = useFetchSendData();
+  const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
 
   const { data: lista, loading } = useFetch(
     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
   useEffect(() => {
-    console.log("esto es data:", data);
-    
-    
+    console.log("esto es data:", data,selectedValue);
+  
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       const personaId = data[0].persona_id;
-      fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
-      {
-        idPerson: personaId,
-        idRol: 2 
-      });
-      console.log("esto es personaID",personaId);
+      if (selectedValue.value==5) {
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+        {
+          idPerson: personaId,
+          idRol: 3 
+        });
+        setIdPer(personaId);
+      }else{
+        
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+        {
+          idPerson: personaId,
+          idRol: 2 
+        });
+        cancelar();
+      }
     }
     
-    // console.log(personaId);
-    // const RolhasOption = {
-    //   idPerson: personaId,
-    //   idRol: 2
-    // };
-    //console.log("Rol has option es: ",RolhasOption); 
-    //fetchData("",RolhasOption);
-    // if (data.desError) {
+  }, [data]);
 
-    //   localStorage.setItem("Error", data.desError);
-    // }
-  }, [data, fetchData]);
+  const enviarHorario= async(horario = null) => {
+    if (horario!=null) {
+      console.log(idPer,horario);
+      sethorarioG(horario);
+      cancelar();
+    }
+  }
 
+  useEffect(() => {
+    console.log('entraa a horario',hasHorario);
+  }, [hasHorario])
+
+  useEffect(() => {
+    console.log(hasRol);
+    if (idPer!=null) {
+      horarioG.idPerson = idPer;
+      senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+    }
+  }, [hasRol,sethorarioG]);
+  
+  
   return (
     <Formik
       initialValues={
@@ -70,6 +92,11 @@ const FormularioPersona = ({
               statusPerson: persona.persona_estado,
               nicknamePerson: persona.persona_nickname,
               passwordPerson: persona.persona_contraseña,
+
+              idSchedule: persona.horario_id,
+              daySchedule :  persona.horario_dia,
+              entrySchedule:  persona.horario_entrada,
+              departureSchedule:  persona.horario_salida
             }
           : {
               typePerson: "",
@@ -81,9 +108,14 @@ const FormularioPersona = ({
               statusPerson: "1",
               nicknamePerson: "",
               passwordPerson: "",
+
+              daySchedule :  "Lunes a Viernes",
+              entrySchedule:  "",
+              departureSchedule:  ""
             }
       }
       validate={(values) => {
+        console.log(selectedValue);
         const errors = {};
 
         if (!values.namePerson) {
@@ -212,7 +244,7 @@ const FormularioPersona = ({
           errors.passwordPerson = "datos invalidos";
         }
         //console.log(values);
-        //console.log(errors);
+        console.log(errors);
         return errors;
       }}
       
@@ -221,50 +253,39 @@ const FormularioPersona = ({
         console.log(values);
         values.telegramPerson = values.phonePerson;
         //console.log("sadw");
-
+        const datosUser = {
+          typePerson : values.typePerson,
+          namePerson : values.namePerson,
+          lastNamePerson : values.lastNamePerson,
+          ciPerson :  values.ciPerson,
+          phonePerson: values.phonePerson,
+          telegramPerson : values.phonePerson,
+          statusPerson: values.statusPerson,
+          nicknamePerson: values.nicknamePerson,
+          passwordPerson: values.passwordPerson
+        }
         if (persona) {
           console.log(values, "editar personas");
 
-          // actualizarVehiculo(values);
-          fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
-            values
-          );
+          await fetchData(
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
           cancelar();
+
         } else {
-            // fetchData(
-            //   "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
-            //   values
-            // );
-            // console.log("esto es values",values);
-            // fetchData("");
-          //alert(`Se guardo a la parsona`);
-            //
+            console.log(selectedValue); 
+            console.log("esto es values",values,);
+            await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
+            // cancelar();
+            if (selectedValue.value==5) {
+              const horariosChange = {
+                idPerson : 0,
+                daySchedule :  values.daySchedule,
+                entrySchedule : values.entrySchedule,
+                departureSchedule :  values.departureSchedule
+              }
+             enviarHorario(horariosChange);
+            }
           
-          //cancelar();
-          const response = await fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",
-            values
-          );
-          window.location.reload();
-          //setTypeID(values.typePerson);
-          
-          // Verificar si se recibió el campo "persona_id" en la respuesta
-          console.log(response);
-          if (response && response.data && response.data.persona_id) {
-            const personaId = response.data.persona_id;
-            
-            // Realizar la segunda inserción a la API de asignación de roles
-            const roleData = {
-              idPerson: personaId,
-              idRol: 2
-            };
-            console.log( personaId,roleData);
-            // await fetchData(
-            //   "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol",
-            //   roleData
-            // );
-          }
         }
       }}
     >
@@ -392,6 +413,58 @@ const FormularioPersona = ({
                 ></ErrorMessage>
               </Form.Group>
             </div>
+
+              {selectedValue.value==5?(
+                <>
+              <div
+              className="col-md-2 "
+              style={{ width: "220.60000000000002px" }}
+            >
+              <Form.Group className="inputGroup" controlId="entrySchedule">
+                <Form.Label className="label">Hora Ingreso</Form.Label>
+                <Form.Control
+                  step={1}
+                  type="time"
+                  name="entrySchedule"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.entrySchedule}
+                  readOnly = {soloLectura}
+                />
+                <ErrorMessage
+                  name="entrySchedule"
+                  component={() => (
+                    <div className="text-danger">{errors.entrySchedule}</div>
+                  )}
+                ></ErrorMessage>
+              </Form.Group>
+            </div>
+
+              <div
+              className="col-md-2 "
+              style={{ width: "220.60000000000002px" }}
+            >
+              <Form.Group className="inputGroup" controlId="departureSchedule">
+                <Form.Label className="label">Hora Salida</Form.Label>
+                <Form.Control
+                  step={1}
+                  type="time"
+                  name="departureSchedule"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.departureSchedule}
+                  readOnly = {soloLectura}
+                />
+                <ErrorMessage
+                  name="departureSchedule"
+                  component={() => (
+                    <div className="text-danger">{errors.departureSchedule}</div>
+                  )}
+                ></ErrorMessage>
+              </Form.Group>
+            </div>
+            </>
+            ):(<></>)}      
             <div
               className="contentModalPerson"
               style={{ width: "220.60000000000002px" }}
@@ -399,7 +472,12 @@ const FormularioPersona = ({
               <Form.Group controlId="referencias">
                 <Form.Label className="label">Tipo de Persona</Form.Label>
 
-                <ComboboxReferences onChange={handleValueChange} />
+                <ComboboxReferences 
+                  name="refPerson"
+                  id={persona? persona.typePerson: null}
+                  onChange={handleValueChange} 
+                  onBlur={handleBlur}
+                />
                 
                 <ErrorMessage
                   name="typePerson"

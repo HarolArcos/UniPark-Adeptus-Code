@@ -63,10 +63,6 @@ export default function FormAddRol({cancelar, asunto}){
                     onChange={(event) => setDescriptionRol(event.target.value)}
                     />
                 </Form.Group>
-
-                {/* <Button variant="primary" type="submit">
-                    Añadir Rol
-                </Button> */}
                 <Modal.Footer>
                     <Button variant="secondary" onClick={cancelar}>
                     Cancelar

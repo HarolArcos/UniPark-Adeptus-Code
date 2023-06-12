@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-//import { useFetch } from "../../hooks/HookFetchListData";
 import FormAddRol from "./FormAddRol";
 import Modal from "../Modal/Modal";
 import { Form, Button, ButtonGroup, Table } from "react-bootstrap";
@@ -80,9 +79,6 @@ export default function AddRolSection(){
                 <div className="buttonSection">
                     <ButtonGroup className="buttonGroup">
                         <Button variant="success" className="button" onClick={() => handleCreate()} >Añadir +</Button>
-                        {/* <Button variant="success" className="button"> 
-                            <CSVLink data={data} filename="Usuarios Unipark" className="csv"> Excel </CSVLink>
-                        </Button> */}
                     </ButtonGroup>
                     <Form.Control 
                         className="searchBar"
@@ -123,12 +119,6 @@ export default function AddRolSection(){
                 mostrarModal={showCreate}
                 title = 'Crear Nuevo Rol'
                 contend = 
-                // {
-                // <FormularioPersona
-                // asunto = "Guardar Cliente"
-                // cancelar={handleCancelar}
-                // añadirNuevo = {handleGuardarNuevo}
-                // ></FormularioPersona>}
                 {
                     <FormAddRol 
                     cancelar={handleCancelar}
