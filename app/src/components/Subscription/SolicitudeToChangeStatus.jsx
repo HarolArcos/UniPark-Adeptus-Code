@@ -150,7 +150,7 @@ export const SolicitudeToChangeStatus = () => {
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"7"} >{error}</td>
+                                <td colSpan={"8"} >{error}</td>
                             </tr>
                         ): (
                             suscripciones.map((suscripcion) => (
