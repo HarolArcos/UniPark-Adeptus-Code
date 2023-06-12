@@ -61,7 +61,10 @@ export default function DeletePerson(){
             <Aside></Aside>
 
             <div className="content-wrapper">
+
             <div className="bodyItems">
+            {clientes.desError ? <label>No existen Clientes</label>
+                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar2"
@@ -72,7 +75,9 @@ export default function DeletePerson(){
                     />
                 </div>
                     <PersonTable data={clientes} ></PersonTable>
+                    </>)}
                 </div>
+                
             </div>
 
             <Footer></Footer>

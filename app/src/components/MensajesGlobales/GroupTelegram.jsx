@@ -71,8 +71,12 @@ export default function Mensaje() {
     
   };
   useEffect(() => {
+    
+      
+    
     handleEstadoFilter(filtroEstado)
   }, [ser, filtroEstado])
+ 
   const handleEstadoFilter = (estado) => {
     setFiltroEstado(estado);
     if (estado === "todos") {
@@ -86,8 +90,10 @@ export default function Mensaje() {
     }
     
   };
-
-  noticias.sort((a, b) => parseInt(a.noticia_id) - parseInt(b.noticia_id));
+  if (!noticias.desError) {
+    noticias.sort((a, b) => parseInt(a.noticia_id) - parseInt(b.noticia_id));
+  }
+ 
   return (
     <div>
       <Header />
@@ -108,6 +114,7 @@ export default function Mensaje() {
           >
             Crear Noticia +
           </Button>
+          {!noticias.desError && <>
           <Form.Group>
             <Form.Control
               type="text"
@@ -115,6 +122,7 @@ export default function Mensaje() {
               placeholder="Buscar por título o texto de la noticia"
               onChange={(e) => handleSearch(e.target.value)}
             />
+            
           </Form.Group>
           <Form.Group>
             <Form.Control
@@ -127,7 +135,9 @@ export default function Mensaje() {
               <option value="inactivo">Inactivo</option>
             </Form.Control>
           </Form.Group>
+          </>}
         </div>
+        {noticias.desError ? <label>No existen Mensajes Globales</label>:(<>
         <label>Numero de Reclamos {noticias.length}</label>
         <Table striped bordered hover className="table">
           <thead>
@@ -186,7 +196,7 @@ export default function Mensaje() {
             ))}
           </tbody>
         </Table>
-
+        </>)}
       </div>
       
       <Footer />

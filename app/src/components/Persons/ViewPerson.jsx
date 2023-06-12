@@ -115,6 +115,8 @@ export default function ViewPerson(){
 
             <div className="content-wrapper">
             <div className="bodyItems">
+            {clientes.desError ? <label>No existen Clientes</label>
+                :(<>
                 <div className="buttonSection">
                     <Form.Control 
                         className="searchBar2"
@@ -163,7 +165,7 @@ export default function ViewPerson(){
                         )}
                     </tbody>
                 </Table>
-
+                </>)}
                 {/* <Modal
                 mostrarModal={showEdit}
                 title = 'Editar Persona'
