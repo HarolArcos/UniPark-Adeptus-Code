@@ -64,14 +64,14 @@ export default function Modalmensaje({
     <div>
       <Form className="container">
         <Form.Group>
-          <Form.Label className="text-left">Titulo</Form.Label>
+          <Form.Label className="text-left">Título</Form.Label>
         </Form.Group>
         <Form.Group>
           <textarea
             rows="3"
             cols="20"
             value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
+            onChange={(e) => setTitulo(e.target.value)}Título
           ></textarea>
         </Form.Group>
         <Form.Group>

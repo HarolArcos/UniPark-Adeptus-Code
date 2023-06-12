@@ -42,7 +42,7 @@ export default function Whats({ subs, cerrar, show }) {
             <>
               <div className="text-left">
                 <h5>
-                  <strong>Titulo:</strong>
+                  <strong>Título:</strong>
                   
                 </h5>
                 {titulo}
@@ -52,7 +52,7 @@ export default function Whats({ subs, cerrar, show }) {
                 </h5>
                 {mensajePri}
                 <h5>
-                  <strong>Nota para envio</strong>
+                  <strong>Nota para envió</strong>
                   <textarea
                 rows="3"
                 cols="30"

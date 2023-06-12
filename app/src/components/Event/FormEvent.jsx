@@ -174,7 +174,7 @@ const FormEvent = ({asunto,cancelar, evento}) => {
                 />
 
             <Form.Group className="inputGroup" controlId="descriptionEvent">
-                <Form.Label className="text-left">Descripcion del Evento</Form.Label>
+                <Form.Label className="text-left">Descripción del Evento</Form.Label>
                 <Form.Control type="descriptionEvent"
                     rows={3}
                     as="textarea"

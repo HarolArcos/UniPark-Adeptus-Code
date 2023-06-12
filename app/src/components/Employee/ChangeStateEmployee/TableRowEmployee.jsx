@@ -22,7 +22,7 @@ function TableEmployee({ data }) {
                 <tr className='columnTittle'>
                     <th>Id</th>
                     <th>Nombre Completo</th>
-                    <th>Telefono</th>
+                    <th>Teléfono</th>
                     <th>CI</th>
                     <th>Hora Ingreso</th>
                     <th>Hora Salida</th>

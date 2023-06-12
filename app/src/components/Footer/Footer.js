@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="footer main-footer">
       <strong>Copyright © 2023 UniPark - Adeptus Code SRL. </strong>
       All rights reserved.
-            <b>Version</b> 3.2.0
+            <b>Versión</b> 3.2.0
       
     </footer>
 

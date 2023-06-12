@@ -91,7 +91,7 @@ export default function Dias({ fetchData }) {
       <Table striped bordered hover className="table">
         <thead>
           <tr>
-            <th>Dia</th>
+            <th>Día</th>
             <th>Hora Entrada</th>
             <th>Hora Salida</th>
             <th>Acciones</th>
@@ -125,13 +125,13 @@ export default function Dias({ fetchData }) {
 
       <Modal show={show} onHide={handleClose} centered>
         <ModalBody className="modal-body">
-          <h1 className="forgot-password-modal">Editar Accion</h1>
+          <h1 className="forgot-password-modal">Editar Acción</h1>
           <Form className="container">
             <Form.Group>
               <Form.Label className="text-left">Nombre: {editedNombre}</Form.Label>
             </Form.Group>
             <Form.Group>
-              <Form.Label className="text-left">Entrando:</Form.Label>
+              <Form.Label className="text-left">Entranda:</Form.Label>
               <br />
               <TimePicker
                 className="custom-time-picker"

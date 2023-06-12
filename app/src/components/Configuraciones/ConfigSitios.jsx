@@ -77,7 +77,7 @@ export default function NumeroSitios({ fetchData }) {
       <tbody>
         {sitios.map((sitio) => (
           <tr key={sitio.configuracion_id}>
-            <td>Limite Numero de Sitios </td>
+            <td>Límite Número de Sitios </td>
             <td>
               
                 
@@ -108,7 +108,7 @@ export default function NumeroSitios({ fetchData }) {
 
     <Modal show={show} onHide={handleClose} centered>
         <ModalBody className="modal-body">
-          <h1 className="forgot-password-modal">Editar Accion</h1>
+          <h1 className="forgot-password-modal">Editar Acción</h1>
           <Form className="container">
             <Form.Group>
               <Form.Label className="text-left">Nombre: {editedNombre}</Form.Label>

@@ -124,7 +124,7 @@ export default function Employee(){
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th> CI </th>
                             <th>Hora Ingreso</th>
                             <th>Hora Salida</th>

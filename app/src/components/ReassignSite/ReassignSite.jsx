@@ -53,7 +53,7 @@ export default function ReassignSite() {
             </Table>
             <Modal show={show} onHide={handleClose} centered >
                     <ModalBody className='modal-body' >
-                        <h1 className='forgot-password-modal'> El sitio a sido reasignado exitosamente </h1>
+                        <h1 className='forgot-password-modal'> El sitio ha sido reasignado exitosamente </h1>
                         <Button className='modal-button' onClick={handleClose} >
                             Aceptar
                         </Button>

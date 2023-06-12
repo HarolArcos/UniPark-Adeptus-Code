@@ -182,7 +182,7 @@ const Formulario = ({asunto,cancelar, cliente,actualizarCliente, añadirNuevo,so
           <ErrorMessage name="ci" component={()=>(<div className="error">{errors.ci}</div>)}></ErrorMessage>
 
           <Form.Group controlId="telefono">
-            <Form.Label>Telefono</Form.Label>
+            <Form.Label>Teléfono</Form.Label>
             <Form.Control type="telefono"
             name="telefono"
             onChange={handleChange}
