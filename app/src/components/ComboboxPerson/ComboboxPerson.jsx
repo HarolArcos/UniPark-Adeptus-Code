@@ -30,7 +30,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
       )
   }else {
     const defaultValue = data.find(person => person.persona_id === id);
-    console.log("esto es defValue",defaultValue);
+    console.log("esto es defValue",data,defaultValue,selectedPersonaId);
     const options = data.map((person) => ({ value: person.persona_id, label: `${person.persona_ci}-${person.persona_nombre} ${person.persona_apellido}` }));
 
     return (
