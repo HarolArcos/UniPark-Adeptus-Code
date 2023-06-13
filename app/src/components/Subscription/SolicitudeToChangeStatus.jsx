@@ -32,9 +32,9 @@ export const SolicitudeToChangeStatus = () => {
     useEffect(() => {
         console.log(tipo);
         if (tipo==1) {
-             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
+             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
          }else if(tipo==2){
-             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
+             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
          }
         console.log(data);
     }, [tipo]);
@@ -59,9 +59,9 @@ export const SolicitudeToChangeStatus = () => {
 
     const cargarDatos = async ()=>{
         if (tipo==1) {
-            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
+            await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
         }else if(tipo==2){
-            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
+            await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
         } 
     }
     //-----------------------Activate-------------------------------------------
@@ -162,7 +162,7 @@ export const SolicitudeToChangeStatus = () => {
                                         <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
                                         <td>
                                             <ul>
-                                                <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
+                                                <li><strong>Tiempo de suscripción:</strong> {suscripcion.tarifa_nombre}</li>
                                                 <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>

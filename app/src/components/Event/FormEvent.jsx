@@ -113,13 +113,13 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
       //   values.idPerson = selectedPersonaId;
       //   values.idVehicle = selectedVehicleId;
       //   values.typeEvent = selectedRefTypeEventId;
-      //   await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
+      //   await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
       //   console.log('editar:',values);
       // } else {
         values.idPerson = selectedPersonaId;
         values.idVehicle = selectedVehicleId;
         values.typeEvent = selectedRefTypeEventId;
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
         console.table("los valores que se envian",values);
         console.log('no hubo duplicidad',errorDuply);
         cliente()

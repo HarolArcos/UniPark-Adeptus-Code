@@ -21,7 +21,7 @@ export default function AddOptions() {
     const fetchOptions = async () => {
         try {
         const response = await fetch(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiOption/apiOption.php/listOption"
+            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiOption/apiOption.php/listOption"
         );
         const data = await response.json();
         setOptions(data);
@@ -57,7 +57,7 @@ export default function AddOptions() {
         console.log("Opciones seleccionadas", selectedOptions);
         console.log("Esto es el rol id:",selectedRolId);
 
-        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/resetRolHasOptionWhitRolId", {
+        fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/resetRolHasOptionWhitRolId", {
             idRol: selectedRolId
         });
 
@@ -68,7 +68,7 @@ export default function AddOptions() {
         };
         console.log("el fetch se hara con esta data",data);
         fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption",
+            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption",
             data
         );
         });

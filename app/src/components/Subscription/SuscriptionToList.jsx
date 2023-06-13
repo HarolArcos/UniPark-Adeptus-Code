@@ -20,12 +20,12 @@ export const SubscriptionList = () => {
     useEffect(() => {
         console.log(tipo);
         if (tipo==1) {
-             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
+             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
          }else if(tipo==2){
             
-             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
+             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
          }else if(tipo==3){
-            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+            fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
          }
         console.log(data);
     }, [tipo]);
@@ -129,7 +129,7 @@ export const SubscriptionList = () => {
                                         <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
                                         <td>
                                             <ul>
-                                                <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
+                                                <li><strong>Tiempo de suscripción:</strong> {suscripcion.tarifa_nombre}</li>
                                                 <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>

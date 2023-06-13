@@ -1,14 +1,11 @@
-.login{
-    background: 
-        linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)),
-        url('./Background\ Unipark\ Login.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 138px 0px;   
-    
+.login {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('./Background\ Unipark\ Login.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 138px 0;
+  height: 100vh;
 }
-
 .card-body{
     display: flex;
     flex-wrap: wrap;

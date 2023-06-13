@@ -1,8 +1,9 @@
 import React from "react";
 import { useFetch } from "../../hooks/HookFetchListData";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-   const { data, loading, error }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationHorario")
+   const { data, loading, error }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationHorario")
   const localStorageValue = localStorage.getItem("mora") || localStorage.getItem("sus");
   
   return (
@@ -24,9 +25,9 @@ export default function Header() {
         
 
         <li className="nav-item d-none d-sm-inline-block">
-           <a href="/Noticias" className="nav-link">
+           <Link to="/Noticias" className="nav-link">
             Noticias
-          </a> 
+          </Link> 
         </li>
         <li className="nav-item dropdown">
   <a className="nav-link" data-toggle="dropdown" href="/#">

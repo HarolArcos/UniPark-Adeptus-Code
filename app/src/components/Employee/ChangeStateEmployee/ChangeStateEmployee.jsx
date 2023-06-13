@@ -13,7 +13,7 @@ export default function DeleteEmployee(){
     const [tablaClientes, setTablaClientes] = useState([])
 
     const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployeeActive')
+        await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployeeActive')
             .then(response => response.json())
             .then( response => {
                 setClientes(response);

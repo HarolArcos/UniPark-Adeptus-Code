@@ -8,13 +8,13 @@ export default function ComboboxReferences({onReferenciaIdChange,defaultValor,re
     const [ref,setRef]=useState([]);
     useEffect(() => {
         if (tipo==1) {
-            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferencesRequest",referenciaObjeto);
+            fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferencesRequest",referenciaObjeto);
 
         }else if(tipo==2){
-            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferencesSubscription",referenciaObjeto);
+            fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferencesSubscription",referenciaObjeto);
 
         }else{
-            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",referenciaObjeto);
+            fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",referenciaObjeto);
         }
     }, []);
     

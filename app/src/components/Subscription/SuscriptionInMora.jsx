@@ -35,7 +35,7 @@ export const SubscriptionInMora = () => {
   useEffect(() => {
    
       fetchData(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora"
+        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora"
       );
     
     
@@ -147,7 +147,7 @@ export const SubscriptionInMora = () => {
                     <td>
                       <ul>
                         <li>
-                          <strong>Tiempo:</strong> {suscripcion.tarifa_nombre}
+                          <strong>Tiempo de suscripción:</strong> {suscripcion.tarifa_nombre}
                         </li>
                         <li>
                           <strong>Bs:</strong> {suscripcion.tarifa_valor}

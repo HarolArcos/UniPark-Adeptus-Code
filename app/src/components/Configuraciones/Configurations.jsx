@@ -15,7 +15,7 @@ export default function Configura () {
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
-const { data, loading, error }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfiguration")
+const { data, loading, error }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfiguration")
     const{ fetchData }= useFetchSendData()
 if (!loading) {
     console.log(data);

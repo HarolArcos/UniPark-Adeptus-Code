@@ -30,7 +30,7 @@ export const Solicitude = () => {
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
     
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
     }, []);
 
     useEffect(() => {
@@ -70,15 +70,7 @@ export const Solicitude = () => {
     },[]);
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
-        if (data.desError) {
-            setError("No existe una solicitud");
-        }else{
-             let mysus = data.filter(suscripcion => suscripcion.persona_id == userglobal.persona_id);
-            ;
-            setSuscripcion(mysus[0])
-        }
-
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
     }
  
     return (

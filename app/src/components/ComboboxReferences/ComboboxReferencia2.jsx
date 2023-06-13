@@ -7,13 +7,13 @@ import "./ComboboxReferences.css";
 import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 import { useEffect } from "react";
 
-export default function ComboboxReferences({ onChange, id}) {
+export default function ComboboxReferences({ defaultValue,onChange, id}) {
   
   const [tar, setTar] = useState([])
   const [loading, setLoading] = useState(true)
   
 useEffect(() => {
-  sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences", {
+  sendAndReceiveJson("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences", {
     tableNameReference: "persona",
     nameSpaceReference: "persona_tipo"
   }).then((responseData) => {

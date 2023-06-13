@@ -9,7 +9,7 @@ function TableEmployee({ data }) {
 
     const handleStateChange = async (personId, currentState) => {
         const newStatus = currentState === "1" ? "2" : "1";
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/changeStatePerson', {
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/changeStatePerson', {
             idPerson: personId,
             statusPerson: newStatus
         });
@@ -35,7 +35,7 @@ function TableEmployee({ data }) {
                 {data.map((person) => (
                 <tr className='columnContent' key={person.persona_id}>
                     <td>{person.persona_id}</td>
-                    <td>{person.persona_nombre}{person.persona_apellido}</td>
+                    <td>{person.persona_nombre} {person.persona_apellido}</td>
                     <td>{person.persona_telefono}</td>
                     <td>{person.persona_ci}</td>
                     <td>{person.horario_entrada}</td>

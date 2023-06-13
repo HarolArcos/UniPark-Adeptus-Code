@@ -8,7 +8,7 @@ export default function ComboboxTipoEvento({onReferenciaIdChange,defaultValor,re
     const {data, fetchData} = useFetchSendData();
     const [ref,setRef]=useState([]);
     useEffect(() => {
-        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",referenciaObjeto);
+        fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences",referenciaObjeto);
     }, [fetchData, referenciaObjeto]);
     
     useEffect(()=>{

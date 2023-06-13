@@ -7,7 +7,7 @@ export function Enviar(titulo,mensaje,id,fetchData,fetchConfiguraciones,handleCl
         ">%0A%0A%0A" +
         mensaje
     );
-    fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/changeStateNews",
+    fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/changeStateNews",
     {
       "idNews" : id,
       "statusNews" :  25

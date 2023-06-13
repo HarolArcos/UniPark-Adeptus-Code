@@ -32,14 +32,14 @@ const FormularioEditarEmpleado = ({
    const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
  
    const { data: lista, loading } = useFetch(
-     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+     "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
    );
    useEffect(() => {
      console.log("esto es data:", data,selectedValue);
    
      if(data  && typeof data[0] === 'object'){
        if (selectedValue==5) {
-         senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
          {
            idPersonHasRol:persona.persona_has_rol_id,
            idPerson: persona.persona_id,
@@ -47,7 +47,7 @@ const FormularioEditarEmpleado = ({
          });
        }else if (selectedValue==3){
          
-         senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
          {
            idPersonHasRol:persona.persona_has_rol_id,
            idPerson: persona.persona_id,
@@ -56,7 +56,7 @@ const FormularioEditarEmpleado = ({
          cancelar();
        }else {
          
-         senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
          {
            idPersonHasRol: persona.persona_has_rol_id,
            idPerson: persona.persona_id,
@@ -85,7 +85,7 @@ const FormularioEditarEmpleado = ({
      console.log(idPer,hasRol,'holaaaa');
      if (idPer!=null) {
       horarioG.idPerson = idPer;
-       senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+       senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
      }
      console.log(hasRol,'holaaaa');
  
@@ -269,7 +269,7 @@ const FormularioEditarEmpleado = ({
            console.log(values, "editar personas");
  
            await fetchData(
-             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
+             "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
  
            if (selectedValue==5) {
             if (values.idSchedule) {
@@ -279,7 +279,7 @@ const FormularioEditarEmpleado = ({
                 entrySchedule : values.entrySchedule,
                 departureSchedule :  values.departureSchedule
               }
-             await senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",horariosChange);
+             await senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",horariosChange);
             }else{
               console.log('new');
               const horariosChange = {
@@ -288,7 +288,7 @@ const FormularioEditarEmpleado = ({
                 entrySchedule : values.entrySchedule,
                 departureSchedule :  values.departureSchedule
               }
-             await senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horariosChange);
+             await senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horariosChange);
 
             }
            }

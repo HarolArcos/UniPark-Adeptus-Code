@@ -14,17 +14,17 @@ export default function Opcions() {
   return (
     optionsPadre.map((padre)=>
       
-    <li className={`nav-item menu-close`} key={padre.opcion_id}>
+    <li className={`nav-item menu-open`} key={padre.opcion_id}>
       <a  className="nav-link active">
         <p>
           {padre.opcion_nombre}<i className="right fas fa-angle-left"></i>
         </p>
-      </a><ul className="nav nav-treeview" >
+      </a><ul className="nav nav-treeview " >
       {optionsHijo.map((hijo)=>
       
       {if (hijo.opcion_padre===padre.opcion_orden) {
         return(
-        <li className="nav-item" key={hijo.opcion_id}>
+        <li className="nav-item block" key={hijo.opcion_id}>
           <Link  to={hijo.opcion_componente} className="nav-link">
             <i className="far fa-circle nav-icon"></i>
             <p>{hijo.opcion_nombre}</p>
