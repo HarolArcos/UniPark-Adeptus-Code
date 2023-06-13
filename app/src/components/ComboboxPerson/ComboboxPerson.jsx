@@ -38,7 +38,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
         placeholder="Seleccione un usuario"
         options={options}
         defaultValue={defaultValue && { value: defaultValue.persona_id, label: `${defaultValue.persona_ci}-${defaultValue.persona_nombre} ${defaultValue.persona_apellido}` }}
-        value={options.find(option => option.value === defaultValue.persona_id)}         
+        value={options.find( option => defaultValue && option.value === defaultValue.persona_id)}         
         onChange={handlePersonaChange}
       />
     );
