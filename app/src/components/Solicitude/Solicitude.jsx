@@ -71,14 +71,6 @@ export const Solicitude = () => {
 
     const cargarDatos = async () =>{
         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
-        if (data.desError) {
-            setError("No existe una solicitud");
-        }else{
-             let mysus = data.filter(suscripcion => suscripcion.persona_id == userglobal.persona_id);
-            ;
-            setSuscripcion(mysus[0])
-        }
-
     }
  
     return (

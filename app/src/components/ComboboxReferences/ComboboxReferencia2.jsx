@@ -7,7 +7,7 @@ import "./ComboboxReferences.css";
 import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 import { useEffect } from "react";
 
-export default function ComboboxReferences({ onChange, id}) {
+export default function ComboboxReferences({ defaultValue,onChange, id}) {
   
   const [tar, setTar] = useState([])
   const [loading, setLoading] = useState(true)

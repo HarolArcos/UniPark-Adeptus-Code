@@ -1,14 +1,22 @@
 import Select from 'react-select'; 
 import { useFetch } from '../../hooks/HookFetchListData';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
-  console.log("Esto es id de vehiculo",id);
+  console.log("Esto es id de person",id);
   
   const { data, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClientActive"
   )
   const [selectedPersonaId, setSelectedPersonaId] = useState(null); 
+  
+  useEffect(() => {
+    if (data.desError) {
+      
+    }else{
+      setSelectedPersonaId(id? data.find(person => person.persona_id === id):null);
+    }
+  }, [data]);
     
   const handlePersonaChange = (selectedOption) => {
     setSelectedPersonaId(selectedOption.value);
@@ -30,7 +38,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
         placeholder="Seleccione un usuario"
         options={options}
         defaultValue={defaultValue && { value: defaultValue.persona_id, label: `${defaultValue.persona_ci}-${defaultValue.persona_nombre} ${defaultValue.persona_apellido}` }}
-        value={options.find(option => option.value === selectedPersonaId)}         
+        value={options.find(option => option.value === defaultValue.persona_id)}         
         onChange={handlePersonaChange}
       />
     );

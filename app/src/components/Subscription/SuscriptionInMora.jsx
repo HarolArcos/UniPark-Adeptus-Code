@@ -147,7 +147,7 @@ export const SubscriptionInMora = () => {
                     <td>
                       <ul>
                         <li>
-                          <strong>Tiempo:</strong> {suscripcion.tarifa_nombre}
+                          <strong>Tiempo de suscripción:</strong> {suscripcion.tarifa_nombre}
                         </li>
                         <li>
                           <strong>Bs:</strong> {suscripcion.tarifa_valor}

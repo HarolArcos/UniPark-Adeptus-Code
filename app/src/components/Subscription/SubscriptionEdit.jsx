@@ -178,7 +178,7 @@ export const SubscriptionEdit = () => {
                                         <td>{obtenerFecha(suscripcion.suscripcion_expiracion)}</td>
                                         <td>
                                             <ul>
-                                                <li><strong>Tiempo:</strong> {suscripcion.tarifa_nombre}</li>
+                                                <li><strong>Tiempo de suscripción:</strong> {suscripcion.tarifa_nombre}</li>
                                                 <li><strong>Bs:</strong>    {suscripcion.tarifa_valor}</li>
                                             </ul>
                                         </td>
