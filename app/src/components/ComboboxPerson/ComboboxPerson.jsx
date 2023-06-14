@@ -6,7 +6,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
   console.log("Esto es id de person",id);
   
   const { data, loading } = useFetch(
-    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClientActive"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
   )
   const [selectedPersonaId, setSelectedPersonaId] = useState(null); 
   
@@ -28,7 +28,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
     return(
       <p>{data.desError}</p>
       )
-  }else {
+  }else if(id){
     const defaultValue = data.find(person => person.persona_id === id);
     console.log("esto es defValue",data,defaultValue,selectedPersonaId);
     const options = data.map((person) => ({ value: person.persona_id, label: `${person.persona_ci}-${person.persona_nombre} ${person.persona_apellido}` }));
@@ -39,6 +39,16 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
         options={options}
         defaultValue={defaultValue && { value: defaultValue.persona_id, label: `${defaultValue.persona_ci}-${defaultValue.persona_nombre} ${defaultValue.persona_apellido}` }}
         value={options.find(option => option.value === defaultValue.persona_id)}         
+        onChange={handlePersonaChange}
+      />
+    );
+  }else{
+    const options = data.map((person) => ({ value: person.persona_id, label: `${person.persona_ci}-${person.persona_nombre} ${person.persona_apellido}` }));
+
+    return (
+      <Select
+        placeholder="Seleccione un usuario"
+        options={options}
         onChange={handlePersonaChange}
       />
     );
