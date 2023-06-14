@@ -7,6 +7,7 @@ export default function NumeroSitios({ fetchData }) {
   const [editedNombre, setEditedNombre] = useState("");
   const [show, setShow] = useState(false);
   const [sitios, setsitios] = useState([])
+    const [bandera, setbandera] = useState("")
 
   // Función para manejar el evento de clic en el botón de editar
   const handleEdit = (configuracionId, valor1,nombre) => {
@@ -17,7 +18,8 @@ export default function NumeroSitios({ fetchData }) {
   };
   useEffect(() => {
     fetchConfiguraciones();
-  }, []);
+    setbandera("")
+  }, [bandera]);
 
   const fetchConfiguraciones = async () => {
     try {
@@ -57,6 +59,7 @@ export default function NumeroSitios({ fetchData }) {
     })
     handleClose()
     fetchConfiguraciones();
+     setbandera("actualiza")
     
     // Aquí puedes realizar una llamada a tu backend para guardar los cambios
     // por ejemplo, utilizando una función `saveChangesToBackend(updatedSitio)`

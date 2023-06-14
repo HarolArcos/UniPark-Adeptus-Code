@@ -6,9 +6,11 @@ export default function ConfiguracionesContac({ fetchData }) {
   const [show, setShow] = useState(false);
   const [ediddato, setEdiddato] = useState("");
   const [configuraciones, setconfiguraciones] = useState([])
+  const [bandera, setbandera] = useState("")
   useEffect(() => {
     fetchConfiguraciones();
-  }, []);
+    setbandera("")
+  }, [bandera]);
 
   const fetchConfiguraciones = async () => {
     try {
@@ -53,6 +55,7 @@ export default function ConfiguracionesContac({ fetchData }) {
     setEditedValor1('');
     setShow(false)
     fetchConfiguraciones();
+    setbandera("actualiza")
     // Aquí puedes realizar una llamada a tu backend para guardar los cambios
     // por ejemplo, utilizando una función `saveChangesToBackend(updatedConfiguracion)`
     // saveChangesToBackend(updatedConfiguracion);
