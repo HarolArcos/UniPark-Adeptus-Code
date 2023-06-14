@@ -24,34 +24,29 @@ export default function Event(){
 
     useEffect(() => {
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
-        console.log(data);
+        console.log(data,"hola como estas");
     }, []);
 
-    const getClients = async () => {
-        await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent')
-            .then(response => response.json())
-            .then( response => {
-                setEventos(response);
-                setTablaEventos(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
-
     useEffect(() => {
-        if(data.desError){
-            setError(data.desError);
+        
+        if (data.desError) {
+            setError(data.desError)
+        } else {
+            
+            setEventos(data)
+            setTablaEventos(data)
         }
-        getClients();
-    }, [data.desError]);
+        
+    }, [data]);
+
 
     useEffect(() => {
         cargarDatos();
-    }, []);
+    }, [])
+    
 
     const cargarDatos = async () =>{
-        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
         
     }
 
@@ -75,7 +70,8 @@ export default function Event(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowCreate(false);
-        //console.log(data);
+        setError(null);
+        cargarDatos();
     };
 
     //-----------------------Crud-------------------------------------------
@@ -108,7 +104,7 @@ export default function Event(){
             <Header></Header>
             <Aside></Aside>
 
-            <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
+            <div className="content-wrapper">
                 <div className="bodyItems">
                     <div className="buttonSection">
                         <ButtonGroup className="buttonGroup">
@@ -164,7 +160,7 @@ export default function Event(){
                         asunto = "Guardar Evento"
                         cancelar={handleCancelar}
                         añadirNuevo = {handleGuardarNuevo}
-                        cliente = {getClients}
+                        /* cliente = {getClients} */
                         ></FormEvent>}
                         hide = {handleCancelar}
                         >
