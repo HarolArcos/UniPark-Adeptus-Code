@@ -28,7 +28,7 @@ export default function ResRec() {
     window.open("https://api.whatsapp.com/send?phone=591"+mipersona.persona_telefono +"&text=<" + "AVISO"+">%0ALa respuesta de el Reclamo:"+reclamoset.reclamo_asunto+" %0A%0Aes:"+solucion)
    alert(`Se actualizo los la acción tomada`);
 
-            window.location.reload()
+            
     setShow(false);
     
   }

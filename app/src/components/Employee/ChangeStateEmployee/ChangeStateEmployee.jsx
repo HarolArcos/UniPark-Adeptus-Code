@@ -11,6 +11,7 @@ export default function DeleteEmployee(){
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
+    const [bandera, setbandera] = useState("")
 
     const getClients = async () => {
         await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployeeActive')
@@ -26,7 +27,8 @@ export default function DeleteEmployee(){
 
     useEffect(() => {
         getClients();
-    }, []);
+        setbandera("")
+    }, [bandera]);
 
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -68,7 +70,7 @@ export default function DeleteEmployee(){
                         onChange={handleChangeSerch}
                     />
                 </div>
-                    <TableEmployee data={clientes} ></TableEmployee>
+                    <TableEmployee data={clientes} getClients={getClients} bandera={setbandera} ></TableEmployee>
                     </>)}
                 </div>
             </div>

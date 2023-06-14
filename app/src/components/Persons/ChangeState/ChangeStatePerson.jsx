@@ -74,7 +74,7 @@ export default function DeletePerson(){
                         onChange={handleChangeSerch}
                     />
                 </div>
-                    <PersonTable data={clientes} ></PersonTable>
+                    <PersonTable data={clientes} getclient={getClients} ></PersonTable>
                     </>)}
                 </div>
                 
