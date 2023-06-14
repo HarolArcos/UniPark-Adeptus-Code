@@ -12,7 +12,7 @@ export default function ComboboxVehicle({ onPersonaIdChange ,id}) { // actualiza
   const handlePersonaChange = (selectedOption) => {
     setSelectedPersonaId(selectedOption.value);
     onPersonaIdChange(selectedOption.value);
-    console.log(selectedOption);
+    
   };
 
   if (!loading && data.desError) {

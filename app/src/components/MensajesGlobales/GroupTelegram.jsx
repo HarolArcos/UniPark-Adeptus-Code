@@ -35,7 +35,7 @@ export default function Mensaje() {
       setBusqueda(data);
       setser(data)
     } catch (error) {
-      console.log(error);
+      
     }
   };
 
@@ -64,7 +64,7 @@ export default function Mensaje() {
       
     }
     
-    console.log(filtroEstado);
+  
     
     
       

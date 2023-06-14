@@ -47,7 +47,7 @@ export const SubscriptionInMora = () => {
     } else {
       setSuscripciones(data);
       setTablaSuscripciones(data);
-      console.log(data);
+
     }
   }, [data]);
   //-----------------------Activate-------------------------------------------

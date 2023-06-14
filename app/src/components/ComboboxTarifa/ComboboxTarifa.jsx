@@ -10,7 +10,7 @@ export default function ComboboxTarifa({ onTarifaIdChange,id}) {
   const [selectedTarifa, setSelectedTarifa] = useState(null); 
 
   useEffect(() => {
-    console.log(data.desError);
+    
     if (data.desError) {
       
     }else{
@@ -29,7 +29,7 @@ export default function ComboboxTarifa({ onTarifaIdChange,id}) {
         <p>{data.desError}</p>
         )
   }else{
-    console.log(selectedTarifa,id);
+    
 
     const      defaultValue = data.find(tarifa => tarifa.tarifa_id === id);
     const options = data.map((tarifa) => ({ value: tarifa, label: `${tarifa.tarifa_nombre}` }));

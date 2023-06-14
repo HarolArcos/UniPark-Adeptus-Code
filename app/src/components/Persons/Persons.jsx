@@ -14,7 +14,7 @@ import { DataUser } from '../context/UserContext.jsx';
 export default function Persons(){   
     
     const {userglobal} = useContext(DataUser);
-    console.log(userglobal);
+
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
@@ -41,7 +41,7 @@ export default function Persons(){
                     return elemento;
                 }
             });
-            console.log(resultadosBusqueda);
+          
             setError(null);
             setClientes(resultadosBusqueda);
             setTablaClientes(resultadosBusqueda);

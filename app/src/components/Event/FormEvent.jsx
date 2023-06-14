@@ -15,8 +15,7 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
   const handleCheckboxChange = () => {
     setTextareaEnabled(!textareaEnabled);
     setChecked(!checked);
-    console.log("habilidado el textarea",textareaEnabled);
-    console.log("checked",checked);
+    
   };
 
   const {data,fetchData} = useFetchSendData();
@@ -47,12 +46,12 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
 
   const handleTypeEventIdChange = (referenciaId) => {
     setSelectedTypeEventId(referenciaId);
-    console.log(referenciaId);
+  
   };
   //------------
   
   useEffect(() => {
-    console.log(data,"muestra1");
+  
     
 
   }, [data]);
@@ -105,23 +104,16 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
     
 
     onSubmit={async (values) => {
-      // if (evento) {
-      //   values.idPerson = selectedPersonaId;
-      //   values.idVehicle = selectedVehicleId;
-      //   values.typeEvent = selectedRefTypeEventId;
-      //   await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
-      //   console.log('editar:',values);
-      // } else {
+      
         values.idPerson = selectedPersonaId;
         values.idVehicle = selectedVehicleId;
         values.typeEvent = selectedRefTypeEventId;
          fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
-        console.table("los valores que se envian",values);
-        console.log('no hubo duplicidad',errorDuply);
+        
+      
         cargar()
         cancelar()
-        //window.location.reload();
-      //}
+        
 
     }
     }

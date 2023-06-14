@@ -63,7 +63,7 @@ export default function ViewEmployee(){
         setShowView(false);
         setError(null);
         cargarDatos();
-        console.log(data);
+
     };
     
     const handleChangeSerch = e => {

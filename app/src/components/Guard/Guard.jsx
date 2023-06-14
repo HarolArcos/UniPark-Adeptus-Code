@@ -84,8 +84,6 @@ export const Guard = () => {
     
 
 
-    console.log(guardias);
-
     return (
         <>
         <Header></Header>

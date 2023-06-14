@@ -10,7 +10,7 @@ export default function Noticias() {
         "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNewsActive"
       );
 
-console.log(data);
+
 return(
     <div>
       <Header></Header>

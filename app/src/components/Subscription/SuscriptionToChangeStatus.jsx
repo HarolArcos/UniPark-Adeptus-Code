@@ -30,7 +30,7 @@ export const SubscriptionToChangeStatus = () => {
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
  
     useEffect(() => {
-        console.log(tipo);
+        
         if (tipo==1) {
              fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
          }else if(tipo==2){
@@ -38,11 +38,11 @@ export const SubscriptionToChangeStatus = () => {
          }else if(tipo==3){
             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
          }
-        console.log(data);
+        
     }, [tipo]);
     
     useEffect(() => {
-        console.log(data);
+       
         if (data.desError) {
             setError(data.desError);
         }
@@ -52,7 +52,7 @@ export const SubscriptionToChangeStatus = () => {
             setTablaSuscripciones(data);
         
         }
-        console.log(suscripciones);
+       
     }, [data]);
 
     useEffect(()=>{
@@ -90,9 +90,9 @@ export const SubscriptionToChangeStatus = () => {
       }
 
     const handleOption = e => {
-        console.log(e.target.value);
+     
         setTipo(e.target.value);
-        console.log(tipo);
+  
     }
     
     

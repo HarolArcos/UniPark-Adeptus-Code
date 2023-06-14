@@ -31,7 +31,7 @@ export const VehicleListCreate = ({crear=false}) => {
     
     useEffect(() => {
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        console.log(data);
+
     }, []);
     
     useEffect(() => {
@@ -41,7 +41,7 @@ export const VehicleListCreate = ({crear=false}) => {
         else{
             setVehiculos(data);
             setTablaVehiculos(data);
-            console.log(data);
+  
         
         }
     }, [data]);

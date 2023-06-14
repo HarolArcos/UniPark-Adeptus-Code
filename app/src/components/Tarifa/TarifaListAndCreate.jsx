@@ -25,7 +25,7 @@ export const TarifaListCreate = ({crear=false}) => {
     
     useEffect(() => {
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        console.log(data);
+       
     }, []);
     
     
@@ -44,7 +44,7 @@ export const TarifaListCreate = ({crear=false}) => {
             setTarifas(data);
             setTablaTarifas(data);
         }
-        console.log(data);
+
     }, [data]);
 
     
@@ -57,7 +57,7 @@ export const TarifaListCreate = ({crear=false}) => {
     //---Desactive Any Modal
     const handleCancelar = async () => {
         setShowCreate(false);
-        console.log(data);
+    
         setError(null);
         cargarDatos();
     };

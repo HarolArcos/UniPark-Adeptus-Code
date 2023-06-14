@@ -20,8 +20,7 @@ export default function Modalmensaje({
 
   useEffect(() => {
     if (url !== "" && Object.keys(json).length !== 0&&mensaje && titulo) {
-      console.log(url);
-      console.log(json);
+      
       fetchData(url, json);
 
       setError(null);

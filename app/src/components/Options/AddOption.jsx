@@ -26,7 +26,7 @@ export default function AddOptions() {
         const data = await response.json();
         setOptions(data);
         } catch (error) {
-        console.log(error);
+        
         }
     };
 
@@ -54,8 +54,7 @@ export default function AddOptions() {
     };
 
     const handleSaveOptions = () => {
-        console.log("Opciones seleccionadas", selectedOptions);
-        console.log("Esto es el rol id:",selectedRolId);
+        
 
         fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/resetRolHasOptionWhitRolId", {
             idRol: selectedRolId
@@ -66,7 +65,7 @@ export default function AddOptions() {
             idRol: selectedRolId,
             idOption: optionId,
         };
-        console.log("el fetch se hara con esta data",data);
+        
         fetchData(
             "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption",
             data

@@ -19,7 +19,7 @@ export function useFetch(url) {
 
         setError(error);
         setLoading(false);
-        console.log(error);
+        
       }
     }
     fetchData();

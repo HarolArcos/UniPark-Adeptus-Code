@@ -17,7 +17,7 @@ export default function ConfiguracionesContac({ fetchData }) {
       setconfiguraciones(data);
       
     } catch (error) {
-      console.log(error);
+      
     } 
     
   };

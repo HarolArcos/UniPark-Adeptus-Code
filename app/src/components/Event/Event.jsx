@@ -24,7 +24,7 @@ export default function Event(){
 
     useEffect(() => {
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
-        console.log(data,"hola como estas");
+
     }, []);
 
     useEffect(() => {
@@ -46,16 +46,16 @@ export default function Event(){
     
 
     const cargarDatos = async () =>{
-        console.log("awfawdwASDW");
+
         try {
             const response = await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
             const data = await response.json();
-            console.log(data);
+    
             setEventos(data)
             setTablaEventos(data)
             
           } catch (error) {
-            console.log(error);
+    
           } 
     }
 

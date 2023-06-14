@@ -35,14 +35,14 @@ function ListaC() {
   function Whats(cliente) {
     setusuario(cliente);
     setShow(true);
-    console.log(cliente);
-    // mensaje(cliente)
+ 
+    
   }
   const mensaje = () => {
     let men = mensa.replace(/ /g, "%20");
-    console.log(men);
+  
     let link = "https://api.whatsapp.com/send?phone=591" + usuario.persona_telefono + "&text=" + men;
-    console.log(link);
+  
     window.open(link, '_blank')
     handleClose()
   };
@@ -58,8 +58,7 @@ function ListaC() {
 
     const handleSearch = (searchTerm) => {
        
-      //console.log(searchTerm.toLowerCase());
-      // Aquí puedes realizar las acciones de búsqueda
+     
           
       if (searchTerm.length===0) {
         if (data!==datitos) {
