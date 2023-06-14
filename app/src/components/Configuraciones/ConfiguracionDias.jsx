@@ -24,7 +24,7 @@ export default function Dias({ fetchData }) {
       setDia(data);
       
     } catch (error) {
-      console.log(error);
+      
     } 
     
   };

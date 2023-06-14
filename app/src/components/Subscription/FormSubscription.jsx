@@ -12,7 +12,7 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
 
   const {data,fetchData} = useFetchSendData();
   useEffect(() => {
-    // console.log('Data actualizada o creada :', data);
+   
   }, [data]);
 
 
@@ -43,11 +43,10 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
   };
 
   const handleTarifaChange = (tarifa) => {
-    console.log(tarifa);
+  
     setSelectedTarifa(tarifa.tarifa_id);
   };
 
-  console.log(suscripcion,selectedTarifa);
 
   return (
     <Formik
@@ -85,18 +84,18 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
       }
 
       
-      console.log(errors);
+    
       return errors;
     }}
     
 
     onSubmit={async (values) => {
-      console.log(selectedTarifa);
+  
       if (suscripcion) {
         values.idPerson = selectedPersonaId;
         values.numParkSubscription = selectedSiteId;
         values.idTarifa = selectedTarifa;
-        console.log(values,selectedTarifa);
+      
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
         cancelar();
         
@@ -104,7 +103,7 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
         values.idPerson = selectedPersonaId;
         values.numParkSubscription = selectedSiteId;
         values.idTarifa = selectedTarifa;
-        console.log(values,selectedPersonaId);
+       
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
         cancelar();
       }

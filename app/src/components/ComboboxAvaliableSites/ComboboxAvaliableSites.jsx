@@ -39,7 +39,7 @@ export default function ComboboxAvaliableSites({ onSiteIdChange ,nro}) {
         );
     }else{
 
-      console.log(data);
+      
       const options = sitos.map((site) => ({ value: site.numeros, label: site.numeros }));
   
       return (

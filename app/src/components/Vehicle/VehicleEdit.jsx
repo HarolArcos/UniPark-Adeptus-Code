@@ -19,9 +19,7 @@ export const VehicleEdit = () => {
     const{data,fetchData} = useSend();
     
     
-    // useEffect(() => {
-        //     console.log(data);
-        // }, [data]);
+    
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
@@ -35,7 +33,7 @@ export const VehicleEdit = () => {
     
     useEffect(() => {
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        console.log(data);
+
     }, []);
     
     useEffect(() => {
@@ -45,7 +43,7 @@ export const VehicleEdit = () => {
         else{
             setVehiculos(data);
             setTablaVehiculos(data);
-            console.log(data);
+        
         
         }
     }, [data]);

@@ -12,9 +12,7 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
 
   const {data,fetchData} = useFetchSendData();
 
-  useEffect(() => {
-    // console.log('Data actualizada o creada :', data);
-  }, [data]);
+  
 
 
   
@@ -57,25 +55,25 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
         errors.statusSubscription ='Seleccione un elemento porfavor';
       }
       
-      console.log(errors);
+   
       return errors;
     }}
     
 
     onSubmit={async (values) => {
       if (suscripcion) {
-        console.log(values.statusSubscription,selectedReferenciaId);
+       
         if (values.statusSubscription!=8 && selectedReferenciaId==8) {
           await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/insertHistoryPay',
           {idSubscription :  values.idSubscription,
             amountHistoryPay : suscripcion.tarifa_valor,
             totalHistoryPay : suscripcion.tarifa_valor});
-            console.log("envio a bitacora");
+         
           }
           values.statusSubscription = selectedReferenciaId;
        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
         cancelar();
-        console.log("a activo");
+    
       } 
     }}
     >

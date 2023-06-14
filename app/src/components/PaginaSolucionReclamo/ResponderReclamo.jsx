@@ -45,13 +45,13 @@ export default function ResRec() {
     const [selectedOption, setSelectedOption] = useState('');
     const handleSelectChange = (event) => {
       setSelectedOption(event.target.value);
-      console.log(event.target.value);
+     
       if (event.target.value!=="") {
         setdatoFiltro(datosr.filter((fil)=> fil.reclamoestado===event.target.value))
       } else {
         setdatoFiltro(datosr)
       }
-      console.log(datoFiltro);
+     
       }
   if (!loadingr&&!loading ) {
    

@@ -18,7 +18,7 @@ export default function AddRolSection(){
                 setTablaroles(response);
             })
             .catch( error => {
-                console.log(error);
+            
             })
     }
 
@@ -45,7 +45,7 @@ export default function AddRolSection(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowCreate(false);
-        //console.log(data);
+       
     };
 
     /*--------------------- Barra Busqueda------------------------- */

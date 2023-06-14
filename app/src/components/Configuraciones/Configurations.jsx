@@ -18,7 +18,7 @@ export default function Configura () {
 const { data, loading, error }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfiguration")
     const{ fetchData }= useFetchSendData()
 if (!loading) {
-    console.log(data);
+    
     return (
         <div>
           <Header></Header>

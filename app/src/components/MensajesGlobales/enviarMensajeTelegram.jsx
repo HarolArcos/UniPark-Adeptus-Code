@@ -1,5 +1,5 @@
 export function Enviar(titulo,mensaje,id,fetchData,fetchConfiguraciones,handleClose) {
-  console.log(titulo);
+
     
     fetch(
       "https://api.telegram.org/bot5920320499:AAFavxSuyHr4gDi1IY4SEhAkWt0Er7kcQlM/sendMessage?chat_id=-848439578&text=<" +

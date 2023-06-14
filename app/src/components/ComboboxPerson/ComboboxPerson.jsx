@@ -3,7 +3,7 @@ import { useFetch } from '../../hooks/HookFetchListData';
 import { useEffect, useState } from 'react';
 
 export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
-  console.log("Esto es id de person",id);
+  
   
   const { data, loading } = useFetch(
     "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
@@ -21,7 +21,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
   const handlePersonaChange = (selectedOption) => {
     setSelectedPersonaId(selectedOption.value);
     onPersonaIdChange(selectedOption.value);
-    console.log(selectedOption);
+    
   };
 
   if (!loading && data.desError){
@@ -30,7 +30,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
       )
   }else if(id){
     const defaultValue = data.find(person => person.persona_id === id);
-    console.log("esto es defValue",data,defaultValue,selectedPersonaId);
+   
     const options = data.map((person) => ({ value: person.persona_id, label: `${person.persona_ci}-${person.persona_nombre} ${person.persona_apellido}` }));
 
     return (

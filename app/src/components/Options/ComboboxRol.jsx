@@ -12,7 +12,7 @@ export default function ComboboxRoles({ onRolIdChange ,id}) { // actualiza la fi
     const handleRolChange = (rolSelected) => {
         setselectedRolId(rolSelected.value);
         onRolIdChange(rolSelected.value);
-        console.log(rolSelected);
+      
     };
 
   if (!loading) {

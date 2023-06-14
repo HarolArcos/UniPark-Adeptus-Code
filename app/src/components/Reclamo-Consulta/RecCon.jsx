@@ -34,7 +34,7 @@ function Claimquery({datos}) {
     setSelectedOption(event.target.value);
     
     }
-    console.log(data);
+   
     
     const handleFormSubmit = () => {
         let fecha = new Date
@@ -54,8 +54,7 @@ function Claimquery({datos}) {
     
         if (selectedOption==="Reclamo") {
             fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/insertComplaint",datosparaf)
-            console.log(datosparaf);
-    console.log(data);
+           
         }
         window.open("https://api.whatsapp.com/send?phone="+591+datos+"&text=<" + selectedOption.toUpperCase()+">%0A"+deReclamo.toUpperCase()+"%0A%0A"+message)
         alert(`titulo: <${deReclamo}> 

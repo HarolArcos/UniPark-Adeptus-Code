@@ -26,7 +26,7 @@ export default function NumeroSitios({ fetchData }) {
       setsitios(data);
       
     } catch (error) {
-      console.log(error);
+      
     } 
     
   };

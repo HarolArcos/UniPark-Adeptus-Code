@@ -26,7 +26,7 @@ export const TarifaEdit = () => {
 
     useEffect(() => {
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        console.log(data);
+       
     }, []);
     
     useEffect(() => {
@@ -36,7 +36,7 @@ export const TarifaEdit = () => {
             setTarifas(data);
             setTablaTarifas(data);
         }
-        console.log(data);
+       
     }, [data]);
     
     useEffect(()=>{

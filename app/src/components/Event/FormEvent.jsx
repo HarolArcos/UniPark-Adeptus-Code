@@ -8,15 +8,14 @@ import ComboboxPlacas from "./ComboboxPlacas";
 import ComboboxTipoEvento from "./ComboboxTipoEvento";
 import "./Event.css";
 
-const FormEvent = ({asunto,cancelar, evento,cliente}) => {
+const FormEvent = ({asunto,cancelar, evento,cargar}) => {
 
   const [textareaEnabled, setTextareaEnabled] = useState(false);
   const [checked, setChecked] = useState(false);
   const handleCheckboxChange = () => {
     setTextareaEnabled(!textareaEnabled);
     setChecked(!checked);
-    console.log("habilidado el textarea",textareaEnabled);
-    console.log("checked",checked);
+    
   };
 
   const {data,fetchData} = useFetchSendData();
@@ -47,19 +46,15 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
 
   const handleTypeEventIdChange = (referenciaId) => {
     setSelectedTypeEventId(referenciaId);
-    console.log(referenciaId);
+  
   };
   //------------
   
   useEffect(() => {
-    console.log(data);
-    if (data.desError === "Inserción fallida, ya existe la placa") {
-      console.log(data.desError);
-      seterrorDuply(data.desError);
-    }else if (data.desError === "Cambios realizados con exito" || data.desError === "Inserción exitosa"){
-      cancelar();
-    }
-  }, [data, cancelar]);
+  
+    
+
+  }, [data]);
 
   return (
     <Formik
@@ -109,23 +104,16 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
     
 
     onSubmit={async (values) => {
-      // if (evento) {
-      //   values.idPerson = selectedPersonaId;
-      //   values.idVehicle = selectedVehicleId;
-      //   values.typeEvent = selectedRefTypeEventId;
-      //   await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
-      //   console.log('editar:',values);
-      // } else {
+      
         values.idPerson = selectedPersonaId;
         values.idVehicle = selectedVehicleId;
         values.typeEvent = selectedRefTypeEventId;
-        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
-        console.table("los valores que se envian",values);
-        console.log('no hubo duplicidad',errorDuply);
-        cliente()
+         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+        
+      
+        cargar()
         cancelar()
-        //window.location.reload();
-      //}
+        
 
     }
     }

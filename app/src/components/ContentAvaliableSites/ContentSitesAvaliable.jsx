@@ -33,7 +33,7 @@ export default function ContentSitesAvalible(){
       }, [loading, data]);
     
       if (!loading) {
-        console.log(data);
+        
     
     
     

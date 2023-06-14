@@ -28,9 +28,9 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
   //------------
   
   useEffect(() => {
-    console.log(data);
+  
     if (data.desError === "Inserción fallida, ya existe la placa") {
-      console.log(data.desError);
+     
       seterrorDuply(data.desError);
     }else if (data.desError === "Cambios realizados con exito" || data.desError === "Inserción exitosa"){
       cancelar();
@@ -93,7 +93,7 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
 
     onSubmit={async (values) => {
 
-      console.log(values);
+  
       if (vehiculo) {
         values.idPerson = selectedPersonaId;
         values.plateVehicle = values.plateVehicle.toUpperCase();
@@ -101,14 +101,14 @@ const Formulario = ({asunto,cancelar, vehiculo}) => {
         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/editVehicle',values);
-        console.log(values);
+        
 
       } else {
         values.idPerson = selectedPersonaId;
         values.plateVehicle = values.plateVehicle.toUpperCase();
         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/insertVehicle',values);
-        console.log(errorDuply,values);
+        
 
       }
 

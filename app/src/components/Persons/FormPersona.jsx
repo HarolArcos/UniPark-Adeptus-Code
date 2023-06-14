@@ -22,7 +22,7 @@ const FormularioPersona = ({
 
 
   const handleValueChange = (option) => {
-    console.log(option);
+   
     setSelectedValue(option);
   };
   const { data, fetchData } = useFetchSendData();
@@ -33,7 +33,7 @@ const FormularioPersona = ({
     "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
   useEffect(() => {
-    console.log("esto es data:", data,selectedValue);
+    
   
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       const personaId = data[0].persona_id;
@@ -68,18 +68,18 @@ const FormularioPersona = ({
 
   const enviarHorario= async(horario = null) => {
     if (horario!=null) {
-      console.log(idPer,horario);
+      
       sethorarioG(horario);
       cancelar();
     }
   }
 
   useEffect(() => {
-    console.log('entraa a horario',hasHorario);
+   
   }, [hasHorario])
 
   useEffect(() => {
-    console.log(hasRol);
+  
     if (idPer!=null) {
       horarioG.idPerson = idPer;
       senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
@@ -125,7 +125,7 @@ const FormularioPersona = ({
             }
       }
       validate={(values) => {
-        console.log(selectedValue);
+     
         const errors = {};
 
         if (!values.namePerson) {
@@ -253,16 +253,15 @@ const FormularioPersona = ({
         ) {
           errors.passwordPerson = "datos invalidos";
         }
-        //console.log(values);
-        console.log(errors);
+        
         return errors;
       }}
       
       onSubmit={async (values) => {
         //const ciPersonSelected = values.ciPerson;
-        console.log(values);
+        
         values.telegramPerson = values.phonePerson;
-        //console.log("sadw");
+      
         const datosUser = {
           typePerson : values.typePerson,
           namePerson : values.namePerson,
@@ -275,15 +274,15 @@ const FormularioPersona = ({
           passwordPerson: values.passwordPerson
         }
         if (persona) {
-          console.log(values, "editar personas");
+       
 
           await fetchData(
             "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
           cancelar();
 
         } else {
-            console.log(selectedValue); 
-            console.log("esto es values",values,);
+            
+         
             await fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
             // cancelar();
             if (selectedValue.value==5) {

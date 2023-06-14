@@ -25,7 +25,7 @@ export default function DeletePerson(){
                 setTablaClientes(response);
             })
             .catch( error => {
-                console.log(error);
+                
             })
     }
 

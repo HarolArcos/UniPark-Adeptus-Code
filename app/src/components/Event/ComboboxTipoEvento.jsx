@@ -21,7 +21,7 @@ export default function ComboboxTipoEvento({onReferenciaIdChange,defaultValor,re
     const handleReferenciaChange = (selectedOption) => {
         setSelectedReferenciaId(selectedOption.value);
         onReferenciaIdChange(selectedOption.value);
-        console.log('algo aqui', selectedOption);
+      
     };
     
     const [selectedReferenciaId, setSelectedReferenciaId] = useState(null); 

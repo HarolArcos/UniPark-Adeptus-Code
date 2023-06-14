@@ -24,7 +24,7 @@ export default function Event(){
 
     useEffect(() => {
         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
-        console.log(data,"hola como estas");
+
     }, []);
 
     useEffect(() => {
@@ -46,8 +46,17 @@ export default function Event(){
     
 
     const cargarDatos = async () =>{
-        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
-        
+
+        try {
+            const response = await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
+            const data = await response.json();
+    
+            setEventos(data)
+            setTablaEventos(data)
+            
+          } catch (error) {
+    
+          } 
     }
 
     /*--------------------- Barra Busqueda------------------------- */
@@ -160,6 +169,7 @@ export default function Event(){
                         asunto = "Guardar Evento"
                         cancelar={handleCancelar}
                         añadirNuevo = {handleGuardarNuevo}
+                        cargar={cargarDatos}
                         /* cliente = {getClients} */
                         ></FormEvent>}
                         hide = {handleCancelar}

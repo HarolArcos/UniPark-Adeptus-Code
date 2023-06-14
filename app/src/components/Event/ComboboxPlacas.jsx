@@ -12,7 +12,7 @@ export default function ComboboxPlacas({ onVehicleIdChange ,id}) { // actualiza 
     const handleVehicleChange = (vehSelectedOption) => {
         setSelectedVehicleId(vehSelectedOption.value);
         onVehicleIdChange(vehSelectedOption.value);
-        console.log(vehSelectedOption);
+
     };
 
   if (!loading && data.desError) {
