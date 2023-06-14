@@ -8,7 +8,7 @@ import ComboboxPlacas from "./ComboboxPlacas";
 import ComboboxTipoEvento from "./ComboboxTipoEvento";
 import "./Event.css";
 
-const FormEvent = ({asunto,cancelar, evento}) => {
+const FormEvent = ({asunto,cancelar, evento,cargar}) => {
 
   const [textareaEnabled, setTextareaEnabled] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -52,14 +52,10 @@ const FormEvent = ({asunto,cancelar, evento}) => {
   //------------
   
   useEffect(() => {
-    console.log(data);
-    if (data.desError === "Inserción fallida, ya existe la placa") {
-      console.log(data.desError);
-      seterrorDuply(data.desError);
-    }else if (data.desError === "Cambios realizados con exito" || data.desError === "Inserción exitosa"){
-      cancelar();
-    }
-  }, [data, cancelar]);
+    console.log(data,"muestra1");
+    
+
+  }, [data]);
 
   return (
     <Formik
@@ -119,10 +115,10 @@ const FormEvent = ({asunto,cancelar, evento}) => {
         values.idPerson = selectedPersonaId;
         values.idVehicle = selectedVehicleId;
         values.typeEvent = selectedRefTypeEventId;
-        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
         console.table("los valores que se envian",values);
         console.log('no hubo duplicidad',errorDuply);
-        
+        cargar()
         cancelar()
         //window.location.reload();
       //}
