@@ -8,6 +8,7 @@
     $server->Register("listHistoryPay");
     $server->Register("listHistoryPayWeek");
     $server->Register("listHistoryPayMonth");
+    $server->Register("listHistoryPayClient");
     $server->start();
 
     function insertHistoryPay($arg){
@@ -85,6 +86,53 @@
         $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
         $_log->notice($mensaje);
         return $response;
+    }
+
+    function listHistoryPayClient($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $idPerson = "";
+
+
+        
+        if(isset($arg->idPerson)){
+            $idPerson =  $arg->idPerson;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro idPerson");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
+        }
+
+       
+        $idPerson =  $arg->idPerson;
+
+        $_pay = new history_pay($_db);
+        $responseList = $_pay->listHistoryPayIDClientDb($idPerson);
+
+        if ($responseList) {
+            $mensaje = "Se listo correctamente - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no tengas pagos realizados"));
+            $mensaje = "No se pudo listar los pagos del cliente - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
     }
 
     function listHistoryPay(){
