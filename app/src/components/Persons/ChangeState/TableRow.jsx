@@ -4,7 +4,7 @@ import { Table } from 'react-bootstrap';
 import "../Persons.css";
 
 
-function PersonTable({ data }) {
+function PersonTable({ data,getclient }) {
     const { fetchData } = useFetchSendData();
 
     const handleStateChange = async (personId, currentState) => {
@@ -13,7 +13,7 @@ function PersonTable({ data }) {
             idPerson: personId,
             statusPerson: newStatus
         });
-        window.location.reload();
+       getclient()
     };
 
     return (

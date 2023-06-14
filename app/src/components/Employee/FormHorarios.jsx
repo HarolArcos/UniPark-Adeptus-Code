@@ -75,7 +75,7 @@ const FormHorarioEmp = ({asunto,cancelar, evento}) => {
       } else {
         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
     
-        window.location.reload();
+       
       }
 
     }
