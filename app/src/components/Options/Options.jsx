@@ -12,7 +12,7 @@ export default function Options(){
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         {/* <Tabs
             defaultActiveKey="profile"
             id="justify-tab-example"

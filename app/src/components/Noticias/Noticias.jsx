@@ -15,7 +15,7 @@ return(
     <div>
       <Header></Header>
       <Aside></Aside>
-<div className="content-wrapper contenteSites-body">
+<div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}}>
 {!loading && (
         <div>
         <div className="d-flex justify-content-center align-items-center">

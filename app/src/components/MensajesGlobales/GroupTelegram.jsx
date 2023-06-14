@@ -99,7 +99,7 @@ export default function Mensaje() {
       <Header />
       <Aside />
 
-      <div className="content-wrapper contenteSites-body">
+      <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         <label style={{ fontSize: "30px" }}>
         Administración de Mensajes Globales
         </label>

@@ -108,7 +108,7 @@ export default function EditEmpleado(){
             <Header></Header>
             <Aside></Aside>
 
-            <div className="content-wrapper">
+            <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
                     <Form.Control 

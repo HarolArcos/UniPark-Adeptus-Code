@@ -103,7 +103,7 @@ export const VehicleEdit = () => {
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
                 <Form.Control 

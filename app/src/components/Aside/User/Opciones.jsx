@@ -17,7 +17,7 @@ export default function Opcions() {
     <li className={`nav-item menu-open`} key={padre.opcion_id}>
       <a  className="nav-link active">
         <p>
-          {padre.opcion_nombre}<i className="right fas fa-angle-left"></i>
+          {padre.opcion_nombre}
         </p>
       </a><ul className="nav nav-treeview " >
       {optionsHijo.map((hijo)=>

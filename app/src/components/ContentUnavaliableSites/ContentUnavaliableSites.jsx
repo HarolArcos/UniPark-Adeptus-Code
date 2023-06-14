@@ -23,7 +23,7 @@ console.log(datos.desError);
         <>
             <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body" >
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="buttonsGroup">
                 <Button variant="success" className="button">Añadir+</Button>
                 {!datos.desError && <> <Button variant="success" className="button"> 

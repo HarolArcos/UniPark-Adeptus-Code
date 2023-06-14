@@ -59,7 +59,7 @@ export default function ResRec() {
       setdatoFiltro(datosr)
     }
     return(
-      <div className="content-wrapper contenteSites-body" >
+      <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         <div style={{ color: "red" }}>
                                     {error!=="" ? <span>{error}</span> : <span></span> }
                                     </div>

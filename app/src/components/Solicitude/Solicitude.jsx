@@ -77,7 +77,7 @@ export const Solicitude = () => {
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 { suscripcion!=null?(
                     <div className=" content-wrapper contenteSites-body ">

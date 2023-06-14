@@ -60,7 +60,7 @@ export default function DeletePerson(){
             <Header></Header>
             <Aside></Aside>
 
-            <div className="content-wrapper">
+            <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
 
             <div className="bodyItems">
             {clientes.desError ? <label>No existen Clientes</label>

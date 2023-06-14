@@ -151,7 +151,7 @@ function ListaPa() {
               console.log(DatosLeidos);
               console.log(!DatosLeidos.desError);
     return (
-      <div className="content-wrapper contenteSites-body">
+      <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         <label>Lista de Pagos</label>
        
         <div className="buttonSection">
