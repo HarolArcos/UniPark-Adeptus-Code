@@ -22,11 +22,6 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
   
   //añadidas new
 
-  const [errorDuply, seterrorDuply] = useState(null);
-
-  const [selectedPersonaId, setSelectedPersonaId] = useState(
-    evento ? evento.vehiculo_persona_id : null
-  );
 
   const [selectedVehicleId, setSelectedVehicleId] = useState(
     evento ? evento.vehiculo_id : null
@@ -36,9 +31,6 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
     evento ? evento.evento.referencia_valor : null
   );
 
-  const handlePersonaIdChange = (personaId) => {
-    setSelectedPersonaId(personaId);
-  };
 
   const handleVehicleIdChange = (vehicleId) => {
     setSelectedVehicleId(vehicleId);
@@ -52,7 +44,6 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
   
   useEffect(() => {
   
-    
 
   }, [data]);
 
@@ -78,10 +69,6 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
     validate={values => {
       const errors = {};
 
-        if(!selectedPersonaId){
-            errors.idPerson ='Seleccione un propietario porfavor';
-        }
-
         if(!selectedVehicleId){
             errors.idVehicle ='Seleccione una placa porfavor';
         }
@@ -95,20 +82,15 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
               errors.descriptionEvent ='El campo es requerido';
             }
         }
-    //   else if(!/^(?! )[A-Za-z]+( [A-Za-z]+)?$/i.test(values.descriptionEvent)){
-    //     errors.descriptionEvent ='Solo se admite un espacio entre dos palabras'
-    //   }
-
       return errors;
     }}
     
 
     onSubmit={async (values) => {
-      
-        values.idPerson = selectedPersonaId;
-        values.idVehicle = selectedVehicleId;
+        values.idPerson = selectedVehicleId.vhP;
+        values.idVehicle = selectedVehicleId.vhV;
         values.typeEvent = selectedRefTypeEventId;
-         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
         
       
         cargar()
@@ -122,21 +104,11 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
 
       {({values,errors,handleBlur,handleChange,handleSubmit})=>(
         <Form  className="container">
-            <Form.Group className="inputGroup" controlId="idPerson">
-                <Form.Label className="text-left">Propietario</Form.Label>
-                <ComboboxPersonaEvento 
-                name="idPerson"
-                id={evento? evento.vehiculo_persona_id:null}
-                onPersonaIdChange={handlePersonaIdChange}
-                onBlur={handleBlur}
-                />
-            </Form.Group>
-            <ErrorMessage name="idVehicle" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
+            
             <Form.Group className="inputGroup" controlId="idVehicle">
                 <Form.Label className="text-left">Placas Asociadas</Form.Label>
                 <ComboboxPlacas
                     name="idVehicle"
-                    id={evento? evento.vehiculo_id:null}
                     onVehicleIdChange={handleVehicleIdChange}
                     onBlur={handleBlur}
                 />
@@ -178,7 +150,6 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
             <ErrorMessage name="descriptionEvent" component={()=>(<div className="text-danger">{errors.descriptionEvent}</div>)}></ErrorMessage>
             
             <br/>
-            <div className="text-danger">{errorDuply? errorDuply :''}</div>
               <Modal.Footer >
                 <Button variant="secondary" onClick={cancelar}>
                   Cancelar
