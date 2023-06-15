@@ -6,6 +6,8 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertRate");
     $server->Register("listRate");
+    $server->Register("listRateInactive");
+    $server->Register("listRateActive");
     $server->Register("editRate");
     $server->Register("changeStateRate");
     $server->start();
@@ -217,7 +219,49 @@
             $mensaje = "Se listo correctamente las tarifas - Funcion: ".__FUNCTION__;
             $_log->info($mensaje);
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido, es posible que no existan tarifas"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan tarifas"));
+            $mensaje = "No se pudo listara a las tarifas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listRateActive(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_rate = new rate($_db);
+        $responseList = $_rate->listRateActiveDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las tarifas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan tarifas activas"));
+            $mensaje = "No se pudo listara a las tarifas - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function listRateInactive(){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+       
+        $_rate = new rate($_db);
+        $responseList = $_rate->listRateInactiveDb();
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente las tarifas - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan tarifas inactivas"));
             $mensaje = "No se pudo listara a las tarifas - Funcion: ".__FUNCTION__;
             $_log->error($mensaje);
             return $response;

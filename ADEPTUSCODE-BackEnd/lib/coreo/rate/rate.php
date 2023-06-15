@@ -206,6 +206,52 @@ class rate {
         return $response;
     }
 
+    public function listRateActiveDb(){
+        $response = false;
+        $sql =  "SELECT t.*, r.referencia_valor AS estadotarifa
+        FROM tarifa t
+        JOIN referencia r ON t.tarifa_estado = r.referencia_id
+        WHERE r.referencia_valor = 'activo'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function listRateInactiveDb(){
+        $response = false;
+        $sql =  "SELECT t.*, r.referencia_valor AS estadotarifa
+        FROM tarifa t
+        JOIN referencia r ON t.tarifa_estado = r.referencia_id
+        WHERE r.referencia_valor = 'inactivo'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
 	
     private function mapRate($rs){
         $this->idRate = $rs['tarifa_id'];
