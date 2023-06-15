@@ -8,7 +8,7 @@ class rate {
 
     private $optionsLog;
     private $_db;
-    private $idRate,$statusRate,$nameRate,$valueRate, $routeRate;
+    private $idRate,$statusRate,$nameRate,$valueRate, $routeRate, $dateActivationRate, $dateExpirationRate;
 
     function __construct($_db,$idRate=0){
         
@@ -25,6 +25,8 @@ class rate {
         unset($this->nameRate);
         unset($this->valueRate);
         unset($this->routeRate);
+        unset($this->dateActivationRate);
+        unset($this->dateExpirationRate);
     }
 
     private function createLog($fileName, $logMessage, $tipeError){
@@ -96,17 +98,18 @@ class rate {
         return $response;
     }
 
-    public function insertRateDb($statusRate,$nameRate,$valueRate, $routeRate){
+    public function insertRateDb($statusRate,$nameRate,$valueRate, $routeRate, $dateExpirationRate){
         $response = false;
-        $sql =  "INSERT INTO tarifa(tarifa_estado, tarifa_nombre, tarifa_valor, tarifa_ruta)
-         VALUES ($statusRate,'$nameRate',$valueRate, '$routeRate')";
+        $sql =  "INSERT INTO tarifa(tarifa_estado, tarifa_nombre, tarifa_valor, tarifa_ruta, tarifa_activacion, tarifa_expiracion)
+         VALUES ($statusRate,'$nameRate',$valueRate, '$routeRate', date_trunc('day', timezone('America/La_Paz', current_timestamp)), '$dateExpirationRate')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "statusRate"=> $statusRate,
                                             "nameRate"=> $nameRate,
                                             "valueRate"=> $valueRate,
-                                            "routeRate"=> $routeRate
+                                            "routeRate"=> $routeRate,
+                                            "dateExpirationRate"=> $dateExpirationRate
                                         ),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
@@ -116,7 +119,8 @@ class rate {
             $arrLog = array("input"=>array( "statusRate"=> $statusRate,
                                             "nameRate"=> $nameRate,
                                             "valueRate"=> $valueRate,
-                                            "routeRate"=> $routeRate
+                                            "routeRate"=> $routeRate,
+                                            "dateExpirationRate"=> $dateExpirationRate
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
@@ -209,6 +213,7 @@ class rate {
         $this->nameRate = $rs['tarifa_nombre'];
         $this->valueRate = $rs['tarifa_valor'];
         $this->routeRate = $rs['tarifa_ruta'];
+        $this->routeRate = $rs['tarifa_expiracion'];
     }
 
 
@@ -230,6 +235,10 @@ class rate {
 
     public function getRouteRate(){
         return $this->routeRate;
+    }
+
+    public function getExpirationRate(){
+        return $this->dateExpirationRate;
     }
 
 }

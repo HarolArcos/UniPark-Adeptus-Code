@@ -103,7 +103,7 @@ class news {
 
     public function insertNewsDb($idPerson,$statusNews,$lastPerson,$titleNews,$textNews){
         $response = false;
-        $sql =  "INSERT INTO noticia(noticia_estado, persona_id, ultima_persona_id, noticia_titulo, noticia_texto, noticia_fecha, noticia_ultima_modificacion) VALUES ($statusNews, $idPerson, $lastPerson, '$titleNews' , '$textNews' , timezone('America/La_Paz', now()), timezone('America/La_Paz', now()))";
+        $sql =  "INSERT INTO noticia(noticia_estado, persona_id, ultima_persona_id, noticia_titulo, noticia_texto, noticia_fecha, noticia_ultima_modificacion) VALUES ($statusNews, $idPerson, $lastPerson, '$titleNews' , '$textNews' , date_trunc('second', timezone('America/La_Paz', current_timestamp)), date_trunc('second', timezone('America/La_Paz', current_timestamp)))";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
@@ -139,7 +139,7 @@ class news {
         ultima_persona_id = $lastPerson, 
         noticia_titulo = '$titleNews', 
         noticia_texto = '$textNews',
-        noticia_ultima_modificacion =  timezone('America/La_Paz', now())
+        noticia_ultima_modificacion =  date_trunc('second', timezone('America/La_Paz', current_timestamp))
         WHERE noticia_id = $idNews";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {

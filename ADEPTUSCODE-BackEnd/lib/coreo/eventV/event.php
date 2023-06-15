@@ -101,7 +101,7 @@ class event {
 
     public function insertEventDb($idPerson, $idVehicle,$typeEvent,$alarmEvent,$descriptionEvent, $registerUser){
         $response = false;
-        $sql =  "INSERT INTO evento(vehiculo_persona_id, vehiculo_id, evento_tipo, evento_fecha, evento_alarma, evento_descripcion, registro_usuario) VALUES ('$idPerson', '$idVehicle','$typeEvent',timezone('America/La_Paz', now()),$alarmEvent,'$descriptionEvent', '$registerUser')";
+        $sql =  "INSERT INTO evento(vehiculo_persona_id, vehiculo_id, evento_tipo, evento_fecha, evento_alarma, evento_descripcion, registro_usuario) VALUES ('$idPerson', '$idVehicle','$typeEvent',date_trunc('second', timezone('America/La_Paz', current_timestamp)),$alarmEvent,'$descriptionEvent', '$registerUser')";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             

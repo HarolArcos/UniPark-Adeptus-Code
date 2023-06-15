@@ -28,6 +28,7 @@
         $nameRate =  "";
         $valueRate =  "";
         $routeRate = "";
+        $dateExpirationRate = "";
 
 
         if(isset($arg->statusRate)){
@@ -50,6 +51,11 @@
         }else{
             array_push($errorlist,"Error: falta parametro routeRate");
         }
+        if(isset($arg->dateExpirationRate)){
+            $dateExpirationRate =  $arg->dateExpirationRate;
+        }else{
+            array_push($errorlist,"Error: falta parametro dateExpirationRate");
+        }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
@@ -58,9 +64,10 @@
         $nameRate =  $arg->nameRate;
         $valueRate =  $arg->valueRate;
         $routeRate =  $arg->routeRate;
+        $dateExpirationRate = $arg->dateExpirationRate;
 
         $_rate = new rate($_db);
-        $responseInsert = $_rate->insertRateDb($statusRate,$nameRate,$valueRate, $routeRate);
+        $responseInsert = $_rate->insertRateDb($statusRate,$nameRate,$valueRate, $routeRate, $dateExpirationRate);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
