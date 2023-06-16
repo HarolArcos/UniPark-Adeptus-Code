@@ -499,6 +499,28 @@ class subscription {
         return $response;
     }
 
+    public function countOcupadosDb($numberSities){
+        $response = false;
+        $sql = "SELECT COUNT(*)
+        FROM suscripcion
+        WHERE suscripcion_numero_parqueo <> 0";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
 	
     private function mapSubscription($rs){
         $this->idSubscription = $rs['suscripcion_id'];

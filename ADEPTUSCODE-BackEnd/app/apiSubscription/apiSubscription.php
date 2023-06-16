@@ -17,6 +17,7 @@
     $server->Register("changeStateSubscription");
     $server->Register("listDisponibles");
     $server->Register("listOcupados");
+    $server->Register("countOcupados");
     $server->start();
 
     function insertSubscription($arg){
@@ -500,6 +501,54 @@
 
         $_subscription = new subscription($_db);
         $responseList = $_subscription->listOcupadosDb($numberSities);
+
+        if ( $responseList){
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado exitoso de sitios ocupados"));
+            $mensaje = "Listado exitoso de sitios ocupados - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Listado fallido de sitios ocupados"));
+        }
+
+        $timeProcess = microtime(true)-$startTime;
+        $arrLog = array("time"=>$timeProcess, "input"=>json_encode($arg),"output"=>$response);
+        $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+        $_log->notice($mensaje);
+        return $responseList;
+    }
+
+
+    function countOcupados($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $numberSities =  "";
+
+        
+        if(isset($arg->numberSities)){
+            $numberSities =  $arg->numberSities;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro numberSities");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $numberSities =  $arg->numberSities;
+
+        $_subscription = new subscription($_db);
+        $responseList = $_subscription->countOcupadosDb($numberSities);
 
         if ( $responseList){
             $response = array("codError" => 200, "data" => array("desError"=>"Listado exitoso de sitios ocupados"));
