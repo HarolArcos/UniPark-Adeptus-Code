@@ -179,6 +179,7 @@ export const TarifaListCreate = ({crear=false}) => {
                 <Formulario
                 asunto = "Guardar Tarifa"
                 cancelar={handleCancelar}
+                listaT={tablaTarifas}
                 ></Formulario>}
                 hide = {handleCancelar}
                 >
