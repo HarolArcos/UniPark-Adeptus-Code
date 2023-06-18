@@ -12,7 +12,7 @@ export const Main = () => {
 
   const { data: datos, fetchData } = useFetchSendData();
   const { data, loading, error } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActiveExpired"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActiveExpired"
   );
 
   if (!loading && !isFetched) {
@@ -20,7 +20,7 @@ export const Main = () => {
       console.log(data);
       data.map((person) =>
         fetchData(
-          "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/changeStateSubscription",
+          "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/changeStateSubscription",
           {
             idSubscription: person.suscripcion_id,
             statusSubscription: 27,

@@ -8,26 +8,20 @@ import ComboboxPlacas from "./ComboboxPlacas";
 import ComboboxTipoEvento from "./ComboboxTipoEvento";
 import "./Event.css";
 
-const FormEvent = ({asunto,cancelar, evento,cliente}) => {
+const FormEvent = ({asunto,cancelar, evento,cargar}) => {
 
   const [textareaEnabled, setTextareaEnabled] = useState(false);
   const [checked, setChecked] = useState(false);
   const handleCheckboxChange = () => {
     setTextareaEnabled(!textareaEnabled);
     setChecked(!checked);
-    console.log("habilidado el textarea",textareaEnabled);
-    console.log("checked",checked);
+    
   };
 
   const {data,fetchData} = useFetchSendData();
   
   //añadidas new
 
-  const [errorDuply, seterrorDuply] = useState(null);
-
-  const [selectedPersonaId, setSelectedPersonaId] = useState(
-    evento ? evento.vehiculo_persona_id : null
-  );
 
   const [selectedVehicleId, setSelectedVehicleId] = useState(
     evento ? evento.vehiculo_id : null
@@ -37,9 +31,6 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
     evento ? evento.evento.referencia_valor : null
   );
 
-  const handlePersonaIdChange = (personaId) => {
-    setSelectedPersonaId(personaId);
-  };
 
   const handleVehicleIdChange = (vehicleId) => {
     setSelectedVehicleId(vehicleId);
@@ -47,19 +38,14 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
 
   const handleTypeEventIdChange = (referenciaId) => {
     setSelectedTypeEventId(referenciaId);
-    console.log(referenciaId);
+  
   };
   //------------
   
   useEffect(() => {
-    console.log(data);
-    if (data.desError === "Inserción fallida, ya existe la placa") {
-      console.log(data.desError);
-      seterrorDuply(data.desError);
-    }else if (data.desError === "Cambios realizados con exito" || data.desError === "Inserción exitosa"){
-      cancelar();
-    }
-  }, [data, cancelar]);
+  
+
+  }, [data]);
 
   return (
     <Formik
@@ -83,10 +69,6 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
     validate={values => {
       const errors = {};
 
-        if(!selectedPersonaId){
-            errors.idPerson ='Seleccione un propietario porfavor';
-        }
-
         if(!selectedVehicleId){
             errors.idVehicle ='Seleccione una placa porfavor';
         }
@@ -100,32 +82,20 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
               errors.descriptionEvent ='El campo es requerido';
             }
         }
-    //   else if(!/^(?! )[A-Za-z]+( [A-Za-z]+)?$/i.test(values.descriptionEvent)){
-    //     errors.descriptionEvent ='Solo se admite un espacio entre dos palabras'
-    //   }
-
       return errors;
     }}
     
 
     onSubmit={async (values) => {
-      // if (evento) {
-      //   values.idPerson = selectedPersonaId;
-      //   values.idVehicle = selectedVehicleId;
-      //   values.typeEvent = selectedRefTypeEventId;
-      //   await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
-      //   console.log('editar:',values);
-      // } else {
-        values.idPerson = selectedPersonaId;
-        values.idVehicle = selectedVehicleId;
+        values.idPerson = selectedVehicleId.vhP;
+        values.idVehicle = selectedVehicleId.vhV;
         values.typeEvent = selectedRefTypeEventId;
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
-        console.table("los valores que se envian",values);
-        console.log('no hubo duplicidad',errorDuply);
-        cliente()
+         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+        
+      
+        cargar()
         cancelar()
-        //window.location.reload();
-      //}
+        
 
     }
     }
@@ -134,21 +104,11 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
 
       {({values,errors,handleBlur,handleChange,handleSubmit})=>(
         <Form  className="container">
-            <Form.Group className="inputGroup" controlId="idPerson">
-                <Form.Label className="text-left">Propietario</Form.Label>
-                <ComboboxPersonaEvento 
-                name="idPerson"
-                id={evento? evento.vehiculo_persona_id:null}
-                onPersonaIdChange={handlePersonaIdChange}
-                onBlur={handleBlur}
-                />
-            </Form.Group>
-            <ErrorMessage name="idVehicle" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
+            
             <Form.Group className="inputGroup" controlId="idVehicle">
                 <Form.Label className="text-left">Placas Asociadas</Form.Label>
                 <ComboboxPlacas
                     name="idVehicle"
-                    id={evento? evento.vehiculo_id:null}
                     onVehicleIdChange={handleVehicleIdChange}
                     onBlur={handleBlur}
                 />
@@ -190,7 +150,6 @@ const FormEvent = ({asunto,cancelar, evento,cliente}) => {
             <ErrorMessage name="descriptionEvent" component={()=>(<div className="text-danger">{errors.descriptionEvent}</div>)}></ErrorMessage>
             
             <br/>
-            <div className="text-danger">{errorDuply? errorDuply :''}</div>
               <Modal.Footer >
                 <Button variant="secondary" onClick={cancelar}>
                   Cancelar

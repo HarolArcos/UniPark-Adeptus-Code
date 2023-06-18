@@ -4,16 +4,16 @@ import { Table } from 'react-bootstrap';
 import "../Persons.css";
 
 
-function PersonTable({ data }) {
+function PersonTable({ data,getclient }) {
     const { fetchData } = useFetchSendData();
 
     const handleStateChange = async (personId, currentState) => {
         const newStatus = currentState === "1" ? "2" : "1";
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/changeStatePerson', {
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/changeStatePerson', {
             idPerson: personId,
             statusPerson: newStatus
         });
-        window.location.reload();
+       getclient()
     };
 
     return (

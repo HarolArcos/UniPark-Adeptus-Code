@@ -71,7 +71,6 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
         errors.email ='datos invalidos'
       }
 
-      console.log(errors);
       return errors;
     }}
     
@@ -82,7 +81,7 @@ const Formulario = ({asunto,cancelar, guardia,actualizarGuardia, añadirNuevo,so
            } else {
              añadirNuevo(values);
            }
-      console.log(values);
+      
            cancelar();
       }}
 

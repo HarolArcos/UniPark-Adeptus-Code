@@ -24,8 +24,8 @@ export const TarifaListCreate = ({crear=false}) => {
     
     
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        console.log(data);
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+       
     }, []);
     
     
@@ -34,7 +34,7 @@ export const TarifaListCreate = ({crear=false}) => {
     },[]);
 
     const cargarDatos = async ()=>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
     }
 
     useEffect(() => {
@@ -44,7 +44,7 @@ export const TarifaListCreate = ({crear=false}) => {
             setTarifas(data);
             setTablaTarifas(data);
         }
-        console.log(data);
+
     }, [data]);
 
     
@@ -57,7 +57,7 @@ export const TarifaListCreate = ({crear=false}) => {
     //---Desactive Any Modal
     const handleCancelar = async () => {
         setShowCreate(false);
-        console.log(data);
+    
         setError(null);
         cargarDatos();
     };

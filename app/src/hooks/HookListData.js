@@ -24,7 +24,7 @@ export function useFetch(url1=null) {
     } catch (error) {
         setError(error);
         setLoading(false);
-        console.log(error)
+        
     } 
 }
 

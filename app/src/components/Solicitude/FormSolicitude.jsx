@@ -67,8 +67,8 @@ const Formulario = ({cancelar}) => {
         onSubmit={async (values) => {
             values.idTarifa =selectedTarifa.tarifa_id;
             values.numParkSubscription = selectedSiteId;
-            console.log(values);
-            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
+         
+            await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
             cancelar();
         }}
         >

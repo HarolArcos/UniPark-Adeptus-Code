@@ -5,14 +5,14 @@ import { useState } from 'react';
 export default function ComboboxPersonaEvento({ onPersonaIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
 
   const { data, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle"
   )
     const [selectedPersonaId, setSelectedPersonaId] = useState(null); 
     
   const handlePersonaChange = (selectedOption) => {
     setSelectedPersonaId(selectedOption.value);
     onPersonaIdChange(selectedOption.value);
-    console.log(selectedOption.value);
+
   };
 
   if (!loading && data.desError ){

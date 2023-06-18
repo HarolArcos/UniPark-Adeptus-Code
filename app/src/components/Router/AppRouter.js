@@ -35,6 +35,7 @@ import ListEmployee from "../Employee/ListEmpleados";
 import DeleteEmployee from "../Employee/ChangeStateEmployee/ChangeStateEmployee";
 import { SubscriptionInMora } from "../Subscription/SuscriptionInMora";
 import Noticias from "../Noticias/Noticias";
+import Listapagoclien from "../Listar Pagos/ListaPagoClien";
 
 export const AppRouter = () => {
   return (
@@ -140,6 +141,7 @@ export const AppRouter = () => {
 
         {/* Asignar */}
         <Route path="/addUser"    element={<Persons />}/>
+        <Route path="/PagoUser"    element={<Listapagoclien />}/>
         {/*------------------ Sin Clasificar aun ------------------------*/}
         <Route path="/opciones" element={<Options />} /> {/* Gestion de roles  */} {/* Configuracion */}
         

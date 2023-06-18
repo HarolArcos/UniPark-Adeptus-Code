@@ -11,7 +11,7 @@ import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 export default function ContentSitesAvalible(){
    
     const [datos, setData] = useState([]);
-    const { data, loading, error }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios")
+    const { data, loading, error }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios")
 
 
     
@@ -21,7 +21,7 @@ export default function ContentSitesAvalible(){
     useEffect(() => {
         if (!loading && data && data.length > 0) {
           sendAndReceiveJson(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listDisponibles",
+            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listDisponibles",
             {
               numberSities: data[0].configuracion_valor1,
             }
@@ -33,7 +33,7 @@ export default function ContentSitesAvalible(){
       }, [loading, data]);
     
       if (!loading) {
-        console.log(data);
+        
     
     
     
@@ -41,7 +41,7 @@ export default function ContentSitesAvalible(){
         <>
             <Header></Header>
             <Aside></Aside>
-            <div className="content-wrapper contenteSites-body" >
+            <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <Table striped bordered hover className="table">
                 <thead>
                     <tr>
@@ -58,6 +58,7 @@ export default function ContentSitesAvalible(){
                         ) )}
                 </tbody>
             </Table>
+            <br/><br/>
         </div>
         <Footer></Footer>
         </>

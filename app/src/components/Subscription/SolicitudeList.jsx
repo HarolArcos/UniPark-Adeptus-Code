@@ -18,18 +18,18 @@ export const SolicitudeList = () => {
     const{data,fetchData} = useSend();
     
     useEffect(() => {
-        console.log(tipo);
+        
         if (tipo==1) {
-             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
+             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInProgress');
          }else if(tipo==2){
             
-             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
+             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionDenied');
          }
-        console.log(data);
+      
     }, [tipo]);
     
     useEffect(() => {
-        console.log(data);
+     
         if (data.desError) {
             setError(data.desError);
         }
@@ -39,22 +39,22 @@ export const SolicitudeList = () => {
             setTablaSuscripciones(data);
         
         }
-        console.log(suscripciones);
+      
     }, [data]);
  
 
     const  obtenerFecha = (stringFechaHora) =>{
-        console.log(stringFechaHora);
+   
         const fechaHora = new Date(stringFechaHora);
         const fecha = fechaHora.toISOString().split('T')[0];
-        console.log(fecha);
+       
         return fecha;
       }
 
       const handleOption = e => {
-        console.log(e.target.value);
+     
         setTipo(e.target.value);
-        console.log(tipo);
+     
     }
     
       /*--------------------- Barra Busqueda------------------------- */
@@ -83,7 +83,7 @@ export const SolicitudeList = () => {
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
                     <Form.Control 

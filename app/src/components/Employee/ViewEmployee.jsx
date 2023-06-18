@@ -22,7 +22,7 @@ export default function ViewEmployee(){
     
     
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
     }, []);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ export default function ViewEmployee(){
     },[]);
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
     }
     
     const [showView, setShowView] = useState(false);
@@ -63,7 +63,7 @@ export default function ViewEmployee(){
         setShowView(false);
         setError(null);
         cargarDatos();
-        console.log(data);
+
     };
     
     const handleChangeSerch = e => {
@@ -92,7 +92,7 @@ export default function ViewEmployee(){
             <Header></Header>
             <Aside></Aside>
 
-            <div className="content-wrapper">
+            <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
            
                 <div className="buttonSection">

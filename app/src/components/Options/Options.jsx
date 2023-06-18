@@ -3,16 +3,16 @@ import Header from "../Header/Header";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 //import {Tabs, Tab} from "react-bootstrap";
-import AddOptions from "./AddOption";
 //import AddRolSection from "./AddRolSection";
 import "./Options.css";
+import AddOptions from "./AddOption";
 
 export default function Options(){
     return(
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper">
+        <div className="content-wrapper" style={{minHeight: '100vh'}} >
         {/* <Tabs
             defaultActiveKey="profile"
             id="justify-tab-example"
@@ -27,7 +27,7 @@ export default function Options(){
                 </Tab>
             </Tabs> */}
             <div className="addOpciones">
-                <AddOptions/>
+                <AddOptions></AddOptions>
             </div>
         </div>
         <Footer></Footer>

@@ -7,15 +7,15 @@ import Aside from "../Aside/Aside.js";
 
 export default function Noticias() {
     const { data, loading, error } = useFetch(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNewsActive"
+        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNewsActive"
       );
 
-console.log(data);
+
 return(
     <div>
       <Header></Header>
       <Aside></Aside>
-<div className="content-wrapper contenteSites-body">
+<div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}}>
 {!loading && (
         <div>
         <div className="d-flex justify-content-center align-items-center">

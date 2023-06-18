@@ -17,39 +17,37 @@ export default function Mensaje() {
   const [titulo, setTitulo] = useState("");
   const [noticias, setnoticias] = useState([]);
   const [busqueda, setBusqueda] = useState("");
-  const [ser, setser] = useState([])
+  const [ser, setser] = useState([]);
   const [filtroEstado, setFiltroEstado] = useState("todos");
-
 
   useEffect(() => {
     fetchConfiguraciones();
   }, []);
 
   const fetchConfiguraciones = async () => {
+    
     try {
       const response = await fetch(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNews"
+        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNews"
       );
       const data = await response.json();
       setnoticias(data);
       setBusqueda(data);
-      setser(data)
-    } catch (error) {
-      console.log(error);
-    }
+      setser(data);
+    } catch (error) {}
   };
 
   const { fetchData } = useFetchSendData();
   const handleClose = () => {
     setShow(false);
+    fetchConfiguraciones();
   };
 
   const handleSearch = (valor) => {
     // Filtrar las noticias en función de los términos de búsqueda
-    
+
     if (valor === "") {
-      
-      setser(busqueda)
+      setser(busqueda);
     } else {
       const noticiasFiltradas = busqueda.filter(
         (noticia) =>
@@ -58,55 +56,44 @@ export default function Mensaje() {
           noticia.autor.toLowerCase().includes(valor.toLowerCase()) ||
           noticia.autormodificacion.toLowerCase().includes(valor.toLowerCase())
       );
-      setser(noticiasFiltradas)
-      
-      
-      
+      setser(noticiasFiltradas);
     }
-    
-    console.log(filtroEstado);
-    
-    
-      
-    
   };
   useEffect(() => {
-    
-      
-    
-    handleEstadoFilter(filtroEstado)
-  }, [ser, filtroEstado])
- 
+    handleEstadoFilter(filtroEstado);
+  }, [ser, filtroEstado]);
+
   const handleEstadoFilter = (estado) => {
     setFiltroEstado(estado);
     if (estado === "todos") {
       setnoticias(ser);
-      
     } else {
       const noticiasFiltradas = ser.filter(
-        (noticia) => noticia.estadonoticia.toLowerCase() === estado.toLowerCase()
+        (noticia) =>
+          noticia.estadonoticia.toLowerCase() === estado.toLowerCase()
       );
       setnoticias(noticiasFiltradas);
     }
-    
   };
   if (!noticias.desError) {
     noticias.sort((a, b) => parseInt(a.noticia_id) - parseInt(b.noticia_id));
   }
- 
+
   return (
     <div>
       <Header />
       <Aside />
 
-      <div className="content-wrapper contenteSites-body">
+      <div
+        className="content-wrapper contenteSites-body"
+        style={{ minHeight: "100vh" }}
+      >
         <label style={{ fontSize: "30px" }}>
-        Administración de Mensajes Globales
+          Administración de Mensajes Globales
         </label>
         <div className="buttonSection">
           <Button
             variant="success"
-            
             onClick={() => {
               setShow(true);
               setaccion("Crear");
@@ -114,91 +101,96 @@ export default function Mensaje() {
           >
             Crear Noticia +
           </Button>
-          {!noticias.desError && <>
-          <Form.Group>
-            <Form.Control
-              type="text"
-              
-              placeholder="Buscar por título o texto de la noticia"
-              onChange={(e) => handleSearch(e.target.value)}
-            />
-            
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              as="select"
-              value={filtroEstado}
-              onChange={(e) => handleEstadoFilter(e.target.value)}
-            >
-              <option value="todos">Todos</option>
-              <option value="activo">Activo</option>
-              <option value="inactivo">Inactivo</option>
-            </Form.Control>
-          </Form.Group>
-          </>}
+          {!noticias.desError && (
+            <>
+              <Form.Group>
+                <Form.Control
+                  type="text"
+                  placeholder="Buscar por título o texto de la noticia"
+                  onChange={(e) => handleSearch(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  as="select"
+                  value={filtroEstado}
+                  onChange={(e) => handleEstadoFilter(e.target.value)}
+                >
+                  <option value="todos">Todos</option>
+                  <option value="activo">Activo</option>
+                  <option value="inactivo">Inactivo</option>
+                </Form.Control>
+              </Form.Group>
+            </>
+          )}
         </div>
-        {noticias.desError ? <label>No existen Mensajes Globales</label>:(<>
-        <label>Numero de Reclamos {noticias.length}</label>
-        <Table striped bordered hover className="table">
-          <thead>
-            <tr>
-              <th>Título</th>
-              <th>Noticia</th>
-              <th>Noticia fecha</th>
-              <th>Última modificación</th>
-              <th>Estado</th>
-              <th>Autor</th>
-              <th>Autor modificación</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {noticias.map((noticia) => (
-              <tr key={noticia.noticia_id}>
-                <td>{noticia.noticia_titulo}</td>
-                <td>{noticia.noticia_texto}</td>
-                <td>{noticia.noticia_fecha}</td>
-                <td>{noticia.noticia_ultima_modificacion}</td>
-                <td>{noticia.estadonoticia}</td>
-                <td>{noticia.autor}</td>
-                <td>{noticia.autormodificacion}</td>
-                <td>
-                  <Button
-                    variant="success"
-                    onClick={() => {
-                      setShow(true);
-                      setaccion("Editar");
-                      setid(noticia.noticia_id);
-                      setstado(noticia.noticia_estado);
-                      setTitulo(noticia.noticia_titulo);
-                      setmensaje(noticia.noticia_texto);
-                    }}
-                  >
-                    Editar
-                  </Button>
-<br/><br/>
+        {noticias.desError ? (
+          <label>No existen Mensajes Globales</label>
+        ) : (
+          <>
+            <label>Numero de Reclamos {noticias.length}</label>
+            <Table striped bordered hover className="table">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Noticia</th>
+                  <th>Noticia fecha</th>
+                  <th>Última modificación</th>
+                  <th>Estado</th>
+                  <th>Autor</th>
+                  <th>Autor modificación</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {noticias.map((noticia) => (
+                  <tr key={noticia.noticia_id}>
+                    <td>{noticia.noticia_titulo}</td>
+                    <td>{noticia.noticia_texto}</td>
+                    <td>{noticia.noticia_fecha}</td>
+                    <td>{noticia.noticia_ultima_modificacion}</td>
+                    <td>{noticia.estadonoticia}</td>
+                    <td>{noticia.autor}</td>
+                    <td>{noticia.autormodificacion}</td>
+                    <td>
+                      <Button
+                        variant="success"
+                        onClick={() => {
+                          setShow(true);
+                          setaccion("Editar");
+                          setid(noticia.noticia_id);
+                          setstado(noticia.noticia_estado);
+                          setTitulo(noticia.noticia_titulo);
+                          setmensaje(noticia.noticia_texto);
+                        }}
+                      >
+                        Editar
+                      </Button>
+                      <br />
+                      <br />
 
-                  <Button
-                    variant="success"
-                    onClick={() => {
-                      setShow(true);
-                      setaccion("Enviar");
-                      setid(noticia.noticia_id);
+                      <Button
+                        variant="success"
+                        onClick={() => {
+                          setShow(true);
+                          setaccion("Enviar");
+                          setid(noticia.noticia_id);
 
-                      setTitulo(noticia.noticia_titulo);
-                      setmensaje(noticia.noticia_texto);
-                    }}
-                  >
-                    Enviar
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-        </>)}
+                          setTitulo(noticia.noticia_titulo);
+                          setmensaje(noticia.noticia_texto);
+                        }}
+                      >
+                        Enviar
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </>
+        )}
       </div>
-      
+
       <Footer />
 
       <Modal show={show} onHide={handleClose} centered>
@@ -284,8 +276,8 @@ export default function Mensaje() {
           })()}
         </ModalBody>
       </Modal>
-      <br/><br/>
-
+      <br />
+      <br />
     </div>
   );
 }

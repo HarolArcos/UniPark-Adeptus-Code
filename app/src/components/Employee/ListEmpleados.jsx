@@ -19,7 +19,7 @@ export default function ListEmployee(){
     const{data,fetchData} = useSend();
     
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
     }, []);
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function ListEmployee(){
     },[]);
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
     }
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -66,7 +66,7 @@ export default function ListEmployee(){
         <Header></Header>
         <Aside></Aside>
 
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
             
                 <div className="buttonSection">

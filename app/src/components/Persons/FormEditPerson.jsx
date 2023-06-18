@@ -16,7 +16,7 @@
    soloLectura = false
  }) => {
  
-   console.log(persona);
+
    const [selectedValue, setSelectedValue] = useState(
      persona ? persona.persona_tipo:null
    );
@@ -32,14 +32,14 @@
    const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
  
    const { data: lista, loading } = useFetch(
-     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+     "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
    );
    useEffect(() => {
-     console.log("esto es data:", data,selectedValue);
+     
    
      if(data  && typeof data[0] === 'object'){
        if (selectedValue==5) {
-         senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
          {
            idPersonHasRol:persona.persona_has_rol_id,
            idPerson: persona.persona_id,
@@ -47,7 +47,7 @@
          });
        }else if (selectedValue==3){
          
-         senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
          {
            idPersonHasRol:persona.persona_has_rol_id,
            idPerson: persona.persona_id,
@@ -56,7 +56,7 @@
          cancelar();
        }else {
          
-         senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
          {
            idPersonHasRol: persona.persona_has_rol_id,
            idPerson: persona.persona_id,
@@ -71,23 +71,23 @@
  
    const enviarHorario= async(horario = null) => {
      if (horario!=null) {
-       console.log(idPer,horario);
+       
        sethorarioG(horario);
        //cancelar();
      }
    }
  
    useEffect(() => {
-     console.log('entraa a horario',hasHorario);
+    
    }, [hasHorario])
  
    useEffect(() => {
-     console.log(idPer,hasRol,'holaaaa');
+     
      if (idPer!=null) {
       horarioG.idPerson = idPer;
-       senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+       senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
      }
-     console.log(hasRol,'holaaaa');
+     
  
    }, [hasRol,sethorarioG]);
    
@@ -114,7 +114,7 @@
              }
        }
        validate={(values) => {
-         console.log(selectedValue);
+         
          const errors = {};
  
          if (!values.namePerson) {
@@ -243,16 +243,14 @@
          ) {
            errors.passwordPerson = "datos invalidos";
          }
-         //console.log(values);
-         console.log(errors);
+         
          return errors;
        }}
        
        onSubmit={async (values) => {
-         //const ciPersonSelected = values.ciPerson;
-         console.log(values);
+       
          values.telegramPerson = values.phonePerson;
-         //console.log("sadw");
+         
          const datosUser = {
            idPerson: values.idPerson,
            typePerson : values.typePerson,
@@ -265,30 +263,29 @@
            nicknamePerson: values.nicknamePerson,
            passwordPerson: values.passwordPerson
          }
-           console.log(selectedValue); 
-           console.log(values, "editar personas");
+           
  
            await fetchData(
-             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
+             "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
  
            if (selectedValue==5) {
             if (values.idSchedule) {
-              console.log('old');
+            
               const horariosChange = {
                 idSchedule :  values.idSchedule,
                 entrySchedule : values.entrySchedule,
                 departureSchedule :  values.departureSchedule
               }
-             await senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",horariosChange);
+             await senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",horariosChange);
             }else{
-              console.log('new');
+              
               const horariosChange = {
                 idPerson : values.idPerson,
                 daySchedule :  'Lunes a Viernes',
                 entrySchedule : values.entrySchedule,
                 departureSchedule :  values.departureSchedule
               }
-             await senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horariosChange);
+             await senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horariosChange);
 
             }
            }

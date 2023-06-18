@@ -25,8 +25,8 @@ export const TarifaEdit = () => {
     const [tarifaSeleccionado, setTarifaSeleccionado] = useState(null);
 
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
-        console.log(data);
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+       
     }, []);
     
     useEffect(() => {
@@ -36,7 +36,7 @@ export const TarifaEdit = () => {
             setTarifas(data);
             setTablaTarifas(data);
         }
-        console.log(data);
+       
     }, [data]);
     
     useEffect(()=>{
@@ -44,7 +44,7 @@ export const TarifaEdit = () => {
     },[]);
 
     const cargarDatos = async()=>{
-       await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+       await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
     }
 
 
@@ -89,7 +89,7 @@ export const TarifaEdit = () => {
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
                 <Form.Control 

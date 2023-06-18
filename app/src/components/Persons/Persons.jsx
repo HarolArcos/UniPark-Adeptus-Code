@@ -14,7 +14,7 @@ import { DataUser } from '../context/UserContext.jsx';
 export default function Persons(){   
     
     const {userglobal} = useContext(DataUser);
-    console.log(userglobal);
+
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
@@ -26,7 +26,7 @@ export default function Persons(){
 
    
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
     }, []);
 
 
@@ -41,7 +41,7 @@ export default function Persons(){
                     return elemento;
                 }
             });
-            console.log(resultadosBusqueda);
+          
             setError(null);
             setClientes(resultadosBusqueda);
             setTablaClientes(resultadosBusqueda);
@@ -57,7 +57,7 @@ export default function Persons(){
     },[]);
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson')
         
     }
 
@@ -106,7 +106,7 @@ export default function Persons(){
         <Header></Header>
         <Aside></Aside>
 
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         
               
             <div className="bodyItems">

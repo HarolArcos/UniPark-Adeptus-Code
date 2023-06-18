@@ -19,9 +19,7 @@ export const VehicleEdit = () => {
     const{data,fetchData} = useSend();
     
     
-    // useEffect(() => {
-        //     console.log(data);
-        // }, [data]);
+    
     //----------------------ShowModal-------------------------------
     
     const [showEdit, setShowEdit] = useState(false);
@@ -34,8 +32,8 @@ export const VehicleEdit = () => {
 
     
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        console.log(data);
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+
     }, []);
     
     useEffect(() => {
@@ -45,7 +43,7 @@ export const VehicleEdit = () => {
         else{
             setVehiculos(data);
             setTablaVehiculos(data);
-            console.log(data);
+        
         
         }
     }, [data]);
@@ -55,7 +53,7 @@ export const VehicleEdit = () => {
     },[]);
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
         
     }
    
@@ -103,7 +101,7 @@ export const VehicleEdit = () => {
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
                 <Form.Control 

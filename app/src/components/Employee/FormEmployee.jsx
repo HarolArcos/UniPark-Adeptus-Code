@@ -22,7 +22,7 @@ const FormularioEmpleado = ({
   //setSelectedReferenciaId(referenciaId);
 
   const handleValueChange = (option) => {
-    console.log(option);
+
     setSelectedValue(option);
   };
   const { data, fetchData } = useFetchSendData();
@@ -30,22 +30,22 @@ const FormularioEmpleado = ({
   const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
 
   const { data: lista, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
 
 
   useEffect(() => {
-    console.log('esto es data:',data);
+
 
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       const personaId = data[0].persona_id;
       setIdPer(personaId);
-      senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+      senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
       {
         idPerson: personaId,
         idRol: 3 
       });
-      console.log("esto es personaID",personaId);
+
     }
 
     
@@ -58,22 +58,22 @@ const FormularioEmpleado = ({
 
   const enviarHorario= async(horario = null) => {
     if (horario!=null) {
-      console.log(idPer,horario);
+
       sethorarioG(horario);
       cancelar();
     }
   }
   
   useEffect(() => {
-    console.log('entraa a horario',hasHorario);
+
   }, [hasHorario])
   
   
   useEffect(() => {
     
-    console.log('entraaa a rol',hasRol,idPer,horarioG);
+
     horarioG.idPerson = idPer;
-    senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+    senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
   }, [hasRol,sethorarioG]);
   
   return (
@@ -240,8 +240,7 @@ const FormularioEmpleado = ({
         ) {
           errors.passwordPerson = "datos invalidos";
         }
-        //console.log(values);
-        //console.log(errors);
+        
         return errors;
       }}
       onSubmit={async (values) => {
@@ -265,11 +264,11 @@ const FormularioEmpleado = ({
           nicknamePerson: values.nicknamePerson,
           passwordPerson: values.passwordPerson
         }
-        console.log('horarios',horariosChange);
+    
         if (persona) {
 
           await fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
+            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
             datosEmpleado
           );
           enviarHorario(horariosChange);
@@ -281,7 +280,7 @@ const FormularioEmpleado = ({
             entrySchedule : values.entrySchedule,
             departureSchedule :  values.departureSchedule
           }
-          await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosEmpleado);
+          await fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosEmpleado);
 
           enviarHorario(horariosChange);
 
