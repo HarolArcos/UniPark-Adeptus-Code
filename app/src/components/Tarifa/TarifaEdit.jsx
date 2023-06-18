@@ -77,7 +77,9 @@ export const TarifaEdit = () => {
       }
 
     const handleOption = e => {
+        console.log(e.target.value);
         setTipo(e.target.value);
+        console.log(tipo);
     }
     
     //---Desactive Any Modal
@@ -234,7 +236,6 @@ export const TarifaEdit = () => {
                 asunto ='Guardar Cambios'
                 tarifa= {tarifaSeleccionado}
                 cancelar={handleCancelar}
-                lista={listSus}
                 ></Formulario>
                 </>
                 }
