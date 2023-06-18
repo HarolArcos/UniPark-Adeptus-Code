@@ -284,6 +284,8 @@ const FormularioPersona = ({
             
          
             await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
+            console.log("esto se envia al fetch",datosUser.typePerson);
+            
             // cancelar();
             if (selectedValue.value==5) {
               const horariosChange = {

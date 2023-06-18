@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Col, Form, ListGroup, Button, Row, Alert } from 'react-bootstrap';
 import ComboboxRoles from './ComboboxRol';
 import { useFetchSendData } from '../../hooks/HookFetchSendData';
+import Header from '../Header/Header';
+import Aside from '../Aside/Aside';
+import Footer from '../Footer/Footer';
+import "./Options.css"
 
 export default function AddOptions () {
   
@@ -134,69 +138,74 @@ export default function AddOptions () {
   
 
   return (
-    <div>
-        {showAlert && (
-              <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
-              Opciones asignadas con éxito
-              </Alert>
-        )}
-        <Row>
-          <Col>
-            <Form.Group className="comboboxRol">
-                    <Form.Label><h3>Roles</h3> </Form.Label>
-                    <ComboboxRoles 
-                        id={"roles"}
-                        onRolIdChange={handleRolIdChange}
-                    />
-            </Form.Group>
-            <h3 className="titleOptions">Opciones</h3>
-            <Form>
-              {opPadre.map(option => (
-                <React.Fragment key={option.opcion_id}>
-                  <div className="opcionPadre">
-                    <Form.Check
-                        key={option.opcion_id}
-                        type="checkbox"
-                        id={option.opcion_id}
-                        label={option.opcion_nombre}
-                        inline 
-                        checked={selectedOptions.includes(option.opcion_id)}
-                        onChange={() => handleOptionChange(option.opcion_id)}
-                    />
-                  </div>
-                  {opHijo.map(op => {
-                    if (op.opcion_padre === option.opcion_orden) {
-                      return (
-                        <Form.Check
-                            className="opcionHija"
-                            key={op.opcion_id}
-                            type="checkbox"
-                            id={op.opcion_id}
-                            label={op.opcion_nombre}
-                            checked={selectedOptions.includes(op.opcion_id)}
-                            onChange={() => handleOptionChange(op.opcion_id)}
-                        />
-                      );
-                    }
-                    return null;
-                  })}
-                </React.Fragment>
-              ))}
-            </Form>
-          </Col>
-          <Col>
-          <h3>Opciones seleccionadas:</h3>
-              <ListGroup>
-                  {selectedOptions.map((optionId) => (
-                      <ListGroup.Item key={optionId}>
-                          {options.find((option) => option.opcion_id === optionId)?.opcion_nombre}
-                      </ListGroup.Item>
-                  ))}
-              </ListGroup>
-              <Button onClick={handleSaveOptions}>Guardar opciones</Button>
-          </Col>
-        </Row>
-      </div>
-    
+    <>
+      <Header></Header>
+      <Aside></Aside>
+      <div className='content-wrapper addoptionssection'>
+          {showAlert && (
+                <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+                Opciones asignadas con éxito
+                </Alert>
+          )}
+          <Row>
+            <Col>
+              <Form.Group className="comboboxRol">
+                      <Form.Label><h3>Roles</h3> </Form.Label>
+                      <ComboboxRoles 
+                          id={"roles"}
+                          onRolIdChange={handleRolIdChange}
+                      />
+              </Form.Group>
+              <h3 className="titleOptions">Opciones</h3>
+              <Form>
+                {opPadre.map(option => (
+                  <React.Fragment key={option.opcion_id}>
+                    <div className="opcionPadre">
+                      <Form.Check
+                          key={option.opcion_id}
+                          type="checkbox"
+                          id={option.opcion_id}
+                          label={option.opcion_nombre}
+                          inline 
+                          checked={selectedOptions.includes(option.opcion_id)}
+                          onChange={() => handleOptionChange(option.opcion_id)}
+                      />
+                    </div>
+                    {opHijo.map(op => {
+                      if (op.opcion_padre === option.opcion_orden) {
+                        return (
+                          <Form.Check
+                              className="opcionHija"
+                              key={op.opcion_id}
+                              type="checkbox"
+                              id={op.opcion_id}
+                              label={op.opcion_nombre}
+                              checked={selectedOptions.includes(op.opcion_id)}
+                              onChange={() => handleOptionChange(op.opcion_id)}
+                          />
+                        );
+                      }
+                      return null;
+                    })}
+                  </React.Fragment>
+                ))}
+              </Form>
+            </Col>
+            <Col>
+            <h3>Opciones seleccionadas:</h3>
+                <ListGroup>
+                    {selectedOptions.map((optionId) => (
+                        <ListGroup.Item key={optionId}>
+                            {options.find((option) => option.opcion_id === optionId)?.opcion_nombre}
+                        </ListGroup.Item>
+                    ))}
+                </ListGroup>
+                <Button onClick={handleSaveOptions}>Guardar opciones</Button>
+            </Col>
+          </Row>
+        </div>
+      <Footer></Footer>
+    </>
+
     );
 };

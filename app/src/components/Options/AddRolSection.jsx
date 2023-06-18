@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 import FormAddRol from "./FormAddRol";
 import Modal from "../Modal/Modal";
 import { Form, Button, ButtonGroup, Table } from "react-bootstrap";
+import { useSend } from "../../hooks/HookList";
+import Header from "../Header/Header";
+import Aside from "../Aside/Aside";
+import Footer from "../Footer/Footer";
+import "./Options.css"
+
 
 export default function AddRolSection(){
 
@@ -10,27 +16,32 @@ export default function AddRolSection(){
     const [roles, setroles] = useState([]);
     const [tablaroles, setTablaroles] = useState([])
 
-    const getRoles = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol')
-            .then(response => response.json())
-            .then( response => {
-                setroles(response);
-                setTablaroles(response);
-            })
-            .catch( error => {
-            
-            })
-    }
+    const{data,fetchData} = useSend();
+    const [error,setError] =  useState(null);
 
     useEffect(() => {
-        getRoles();
+        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol");
     }, []);
-    
 
+    useEffect(() => {
+        if(data.desError){
+            setError(data.desError);
+        }else{
+            setroles(data);
+            setTablaroles(data);
+        }
+    }, [data]);
+
+    useEffect(() => {
+        cargarDatos();
+    }, []);
+
+    const cargarDatos = async () => {
+        await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol");
+    }
         setTimeout(() => {
             localStorage.removeItem("Error")
            }, 3000)
-       
     //----------------------ShowModal-------------------------------
     
     const [showCreate, setShowCreate] = useState(false);
@@ -45,7 +56,8 @@ export default function AddRolSection(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowCreate(false);
-       
+        setError(null);
+        cargarDatos();
     };
 
     /*--------------------- Barra Busqueda------------------------- */
@@ -69,7 +81,10 @@ export default function AddRolSection(){
     }
 
     return(
-        <div>
+        <>
+            <Header></Header>
+            <Aside></Aside>
+            <div className="content-wrapper addrolsection">
         
                 {/* {localStorage.getItem("Error") ?
                 <div className="text-danger">{localStorage.getItem("Error")}</div>
@@ -99,7 +114,11 @@ export default function AddRolSection(){
                         </tr>
                     </thead>
                     <tbody>
-                            {
+                            {error != null ? (
+                                <tr>
+                                    <td colSpan={"6"} >{error}</td>
+                                </tr>
+                            ): (
                                 roles.map((rol) => (
                                     <tr className="columnContent" key={rol.rol_id}>
                                         <td>{rol.rol_id}</td>
@@ -108,8 +127,10 @@ export default function AddRolSection(){
                                         <td>{rol.estadorol}</td>
                                     </tr>
                                 ))
+                            )
+                                
                             }
-                        {/* )} */}
+
                     </tbody>
                 </Table>
                 
@@ -132,5 +153,7 @@ export default function AddRolSection(){
                 </Modal>
             </div>
         </div>
+        <Footer></Footer>
+        </>
     )
 }
