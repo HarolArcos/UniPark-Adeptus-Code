@@ -47,7 +47,6 @@ console.log(tarifa,listaT,listaT.length);
            setCaso(1);
           }
       }else if(tarifa.tarifa_estado == 19 && estadoRef == 19){
-        console.log('ni modin');
         setCaso(null);
         setMensaje(null);
         setShow(false);
@@ -56,9 +55,11 @@ console.log(tarifa,listaT,listaT.length);
   }, [estadoRef])
 
 
+
   const handleReferenciaIdChange =(estado)=>{
     setestadoRef(estado);
   }
+
 
   const  obtenerFecha = (stringFechaHora) =>{
     const fechaHora = new Date(stringFechaHora);
@@ -135,7 +136,6 @@ console.log(tarifa,listaT,listaT.length);
         if(tarifa==null && !image){
           errors.routeRate ='El campo es requerido';
         }
-
         if(listaT!==null || listaT.length!==0){
           let elementos = listaT.filter((e)=>e.tarifa_nombre==values.nameRate);
           if (elementos.length!=0) {
