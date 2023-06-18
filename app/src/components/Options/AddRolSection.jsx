@@ -11,14 +11,14 @@ export default function AddRolSection(){
     const [tablaroles, setTablaroles] = useState([])
 
     const getRoles = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol')
+        await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol')
             .then(response => response.json())
             .then( response => {
                 setroles(response);
                 setTablaroles(response);
             })
             .catch( error => {
-                console.log(error);
+            
             })
     }
 
@@ -45,7 +45,7 @@ export default function AddRolSection(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowCreate(false);
-        //console.log(data);
+       
     };
 
     /*--------------------- Barra Busqueda------------------------- */

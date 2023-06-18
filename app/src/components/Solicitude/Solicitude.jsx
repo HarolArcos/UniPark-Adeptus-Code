@@ -30,7 +30,7 @@ export const Solicitude = () => {
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
     
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
     }, []);
 
     useEffect(() => {
@@ -70,14 +70,14 @@ export const Solicitude = () => {
     },[]);
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription');
     }
  
     return (
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 { suscripcion!=null?(
                     <div className=" content-wrapper contenteSites-body ">

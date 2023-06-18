@@ -11,9 +11,10 @@ export default function DeleteEmployee(){
     const [busqueda, setBusqueda] = useState("");
     const [clientes, setClientes] = useState([]);
     const [tablaClientes, setTablaClientes] = useState([])
+    const [bandera, setbandera] = useState("")
 
     const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployeeActive')
+        await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployeeActive')
             .then(response => response.json())
             .then( response => {
                 setClientes(response);
@@ -26,7 +27,8 @@ export default function DeleteEmployee(){
 
     useEffect(() => {
         getClients();
-    }, []);
+        setbandera("")
+    }, [bandera]);
 
     /*--------------------- Barra Busqueda------------------------- */
     const handleChangeSerch = e => {
@@ -55,7 +57,7 @@ export default function DeleteEmployee(){
             <Header></Header>
             <Aside></Aside>
 
-            <div className="content-wrapper">
+            <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
             {clientes.desError ? <label>No existen Empleados</label>
                 :(<>
@@ -68,7 +70,7 @@ export default function DeleteEmployee(){
                         onChange={handleChangeSerch}
                     />
                 </div>
-                    <TableEmployee data={clientes} ></TableEmployee>
+                    <TableEmployee data={clientes} getClients={getClients} bandera={setbandera} ></TableEmployee>
                     </>)}
                 </div>
             </div>

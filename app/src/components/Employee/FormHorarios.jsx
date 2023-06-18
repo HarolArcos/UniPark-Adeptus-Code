@@ -14,9 +14,9 @@ const FormHorarioEmp = ({asunto,cancelar, evento}) => {
   //------------
   
   useEffect(() => {
-    console.log(data);
+
     if (data.desError === "Inserción fallida, ya existe la placa") {
-      console.log(data.desError);
+   
       seterrorDuply(data.desError);
     }else if (data.desError === "Cambios realizados con exito" || data.desError === "Inserción exitosa"){
       cancelar();
@@ -70,12 +70,12 @@ const FormHorarioEmp = ({asunto,cancelar, evento}) => {
 
     onSubmit={async (values) => {
       if (evento) {
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
-        console.log('editar:',values);
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/editEvent',values);
+   
       } else {
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
-        console.log('no hubo duplicidad',errorDuply);
-        window.location.reload();
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+    
+       
       }
 
     }

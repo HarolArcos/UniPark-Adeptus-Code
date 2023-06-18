@@ -28,7 +28,7 @@ export default function Login() {
       seterrorlog("Los campos Usuario y Contraseña deben ser llenados")
     } else {
       sendAndReceiveJson(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/validatePerson",
+        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/validatePerson",
         validatePerson
       ).then((responseData) => {
         // Trabaja con la respuesta JSON recibida

@@ -10,7 +10,7 @@ import { useFetch } from "../../hooks/HookFetchListData";
 
 
 export default function ReclamoConsulta () {
-const { data, loading, error } = useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto")
+const { data, loading, error } = useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto")
   if(!loading){
     return(
        <div>
@@ -34,7 +34,7 @@ function Claimquery({datos}) {
     setSelectedOption(event.target.value);
     
     }
-    console.log(data);
+   
     
     const handleFormSubmit = () => {
         let fecha = new Date
@@ -53,9 +53,8 @@ function Claimquery({datos}) {
     }
     
         if (selectedOption==="Reclamo") {
-            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/insertComplaint",datosparaf)
-            console.log(datosparaf);
-    console.log(data);
+            fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/insertComplaint",datosparaf)
+           
         }
         window.open("https://api.whatsapp.com/send?phone="+591+datos+"&text=<" + selectedOption.toUpperCase()+">%0A"+deReclamo.toUpperCase()+"%0A%0A"+message)
         alert(`titulo: <${deReclamo}> 
@@ -68,7 +67,7 @@ function Claimquery({datos}) {
       };
       
     return(
-    <div className="content-wrapper contenteSites-body">
+    <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         
         <label style={{ fontSize: '30px' }}>Consulta o Reclamo</label>
         <Table striped bordered hover className="table">

@@ -19,12 +19,12 @@ export default function Dias({ fetchData }) {
 
   const fetchConfiguraciones = async () => {
     try {
-      const response = await fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationHorario");
+      const response = await fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationHorario");
       const data = await response.json();
       setDia(data);
       
     } catch (error) {
-      console.log(error);
+      
     } 
     
   };
@@ -52,7 +52,7 @@ export default function Dias({ fetchData }) {
         return;
       }else{
       await fetchData(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration",
+        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration",
         {
           idConfiguration: editingId,
           nameConfiguration: editedNombre,

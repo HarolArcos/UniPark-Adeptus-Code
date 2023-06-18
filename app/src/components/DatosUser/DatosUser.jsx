@@ -8,7 +8,7 @@ export default function DatosUser() {
   const { userglobal } = useContext(DataUser);
 
   return (
-    <div className="content-wrapper contenteSites-body">
+    <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}}>
       <Table striped bordered hover className="table">
         <thead>
           <tr key="1">

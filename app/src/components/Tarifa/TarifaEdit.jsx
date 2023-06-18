@@ -45,7 +45,7 @@ export const TarifaEdit = () => {
             setTarifas(data);
             setTablaTarifas(data);
         }
-        console.log(data);
+       
     }, [data]);
 
  
@@ -115,7 +115,7 @@ export const TarifaEdit = () => {
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
                     <Form.Control 

@@ -29,20 +29,20 @@ function ListaC() {
   const handleClose = () => setShow(false);
 
   const { data, loading, error } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
 
   function Whats(cliente) {
     setusuario(cliente);
     setShow(true);
-    console.log(cliente);
-    // mensaje(cliente)
+ 
+    
   }
   const mensaje = () => {
     let men = mensa.replace(/ /g, "%20");
-    console.log(men);
+  
     let link = "https://api.whatsapp.com/send?phone=591" + usuario.persona_telefono + "&text=" + men;
-    console.log(link);
+  
     window.open(link, '_blank')
     handleClose()
   };
@@ -58,8 +58,7 @@ function ListaC() {
 
     const handleSearch = (searchTerm) => {
        
-      //console.log(searchTerm.toLowerCase());
-      // Aquí puedes realizar las acciones de búsqueda
+     
           
       if (searchTerm.length===0) {
         if (data!==datitos) {
@@ -82,7 +81,7 @@ function ListaC() {
     };
 
     return (
-      <div className="content-wrapper contenteSites-body">
+      <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         <div style={{ color: "red" }}>
           {error !== "" ? <span>{error}</span> : <span></span>}
         </div>

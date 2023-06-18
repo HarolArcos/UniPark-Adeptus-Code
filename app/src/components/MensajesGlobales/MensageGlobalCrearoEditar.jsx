@@ -20,8 +20,7 @@ export default function Modalmensaje({
 
   useEffect(() => {
     if (url !== "" && Object.keys(json).length !== 0&&mensaje && titulo) {
-      console.log(url);
-      console.log(json);
+      
       fetchData(url, json);
 
       setError(null);
@@ -34,7 +33,7 @@ export default function Modalmensaje({
 
   function guardar() {
     if (id !== "" && estado !== "") {
-      setUrl("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/editNews");
+      setUrl("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/editNews");
       setJson({
         "idNews": id,
         "statusNews": 26,
@@ -44,7 +43,7 @@ export default function Modalmensaje({
       });
       
     }else{
-        setUrl("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/insertNews");
+        setUrl("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/insertNews");
         setJson({
             "idPerson" : userglobal.persona_id,
             "statusNews" :  26,

@@ -23,36 +23,40 @@ export default function Event(){
     const [newEvent,setEvent] =  useState([]);
 
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
-        console.log(data);
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
+
     }, []);
 
-    const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent')
-            .then(response => response.json())
-            .then( response => {
-                setEventos(response);
-                setTablaEventos(response);
-            })
-            .catch( error => {
-                console.log(error);
-            })
-    }
-
     useEffect(() => {
-        if(data.desError){
-            setError(data.desError);
+        
+        if (data.desError) {
+            setError(data.desError)
+        } else {
+            
+            setEventos(data)
+            setTablaEventos(data)
         }
-        getClients();
-    }, [data.desError]);
+        
+    }, [data]);
+
 
     useEffect(() => {
         cargarDatos();
-    }, []);
+    }, [])
+    
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle');
-        
+
+        try {
+            const response = await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
+            const data = await response.json();
+    
+            setEventos(data)
+            setTablaEventos(data)
+            
+          } catch (error) {
+    
+          } 
     }
 
     /*--------------------- Barra Busqueda------------------------- */
@@ -75,7 +79,8 @@ export default function Event(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowCreate(false);
-        //console.log(data);
+        setError(null);
+        cargarDatos();
     };
 
     //-----------------------Crud-------------------------------------------
@@ -164,7 +169,8 @@ export default function Event(){
                         asunto = "Guardar Evento"
                         cancelar={handleCancelar}
                         añadirNuevo = {handleGuardarNuevo}
-                        cliente = {getClients}
+                        cargar={cargarDatos}
+                        /* cliente = {getClients} */
                         ></FormEvent>}
                         hide = {handleCancelar}
                         >

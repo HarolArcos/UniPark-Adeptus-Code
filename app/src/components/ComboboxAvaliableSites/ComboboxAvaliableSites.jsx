@@ -16,12 +16,12 @@ export default function ComboboxAvaliableSites({ onSiteIdChange ,nro}) {
     
   };
 
-  const { data, loading, error }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios")
+  const { data, loading, error }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios")
 
     useEffect(() => {
         if (!loading && data && data.length > 0) {
           sendAndReceiveJson(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listDisponibles",
+            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listDisponibles",
             {
               numberSities: data[0].configuracion_valor1,
             }
@@ -39,7 +39,7 @@ export default function ComboboxAvaliableSites({ onSiteIdChange ,nro}) {
         );
     }else{
 
-      console.log(data);
+      
       const options = sitos.map((site) => ({ value: site.numeros, label: site.numeros }));
   
       return (

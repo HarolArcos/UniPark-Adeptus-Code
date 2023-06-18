@@ -35,7 +35,7 @@ export const SubscriptionInMora = () => {
   useEffect(() => {
    
       fetchData(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora"
+        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora"
       );
     
     
@@ -47,7 +47,7 @@ export const SubscriptionInMora = () => {
     } else {
       setSuscripciones(data);
       setTablaSuscripciones(data);
-      console.log(data);
+
     }
   }, [data]);
   //-----------------------Activate-------------------------------------------
@@ -99,7 +99,7 @@ export const SubscriptionInMora = () => {
     <>
       <Header></Header>
       <Aside></Aside>
-      <div className="content-wrapper contenteSites-body">
+      <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         <div className="bodyItems">
           <div className="buttonSection">
             <Form.Control

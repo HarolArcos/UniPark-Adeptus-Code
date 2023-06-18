@@ -14,18 +14,18 @@ export default function DeletePerson(){
     const [tablaClientes, setTablaClientes] = useState([])
 
     // const {data} = useFetch(
-    //     'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
+    //     'http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson'
     // )
 
     const getClients = async () => {
-        await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClientActive')
+        await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClientActive')
             .then(response => response.json())
             .then( response => {
                 setClientes(response);
                 setTablaClientes(response);
             })
             .catch( error => {
-                console.log(error);
+                
             })
     }
 
@@ -60,7 +60,7 @@ export default function DeletePerson(){
             <Header></Header>
             <Aside></Aside>
 
-            <div className="content-wrapper">
+            <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
 
             <div className="bodyItems">
             {clientes.desError ? <label>No existen Clientes</label>
@@ -74,7 +74,7 @@ export default function DeletePerson(){
                         onChange={handleChangeSerch}
                     />
                 </div>
-                    <PersonTable data={clientes} ></PersonTable>
+                    <PersonTable data={clientes} getclient={getClients} ></PersonTable>
                     </>)}
                 </div>
                 

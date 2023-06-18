@@ -3,7 +3,7 @@ import { useFetch } from "../../hooks/HookFetchListData";
 import React, { useState } from "react";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 export default function ResRec() {
-  const { data:listap, loading, error:errorp }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson")
+  const { data:listap, loading, error:errorp }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson")
   const [reclamoset, setreclamoset] = useState([]);
   const {data,fetchData,error} = useFetchSendData(
     );
@@ -11,7 +11,7 @@ export default function ResRec() {
   const [show, setShow] = useState(false);
 
   const { data:datosr, loading:loadingr,} = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/listComplaint"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/listComplaint"
   );
   const handleClose = () => setShow(false);
   
@@ -19,16 +19,16 @@ export default function ResRec() {
     const [mipersona] = listap.filter((per)=> per.persona_id===reclamoset.persona_id)
     let myData = { "idComplaint" : reclamoset.reclamo_id,
     "complaintSolution" : solucion}; // datos a enviar en la primera llamada
-    fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeSolutionComplaint',myData);
+    fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeSolutionComplaint',myData);
     myData = {
       "idComplaint" : reclamoset.reclamo_id,
       "complaintStatus" :  21
 }
-    fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeStateComplaint",myData)
+    fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/changeStateComplaint",myData)
     window.open("https://api.whatsapp.com/send?phone=591"+mipersona.persona_telefono +"&text=<" + "AVISO"+">%0ALa respuesta de el Reclamo:"+reclamoset.reclamo_asunto+" %0A%0Aes:"+solucion)
    alert(`Se actualizo los la acción tomada`);
 
-            window.location.reload()
+            
     setShow(false);
     
   }
@@ -45,13 +45,13 @@ export default function ResRec() {
     const [selectedOption, setSelectedOption] = useState('');
     const handleSelectChange = (event) => {
       setSelectedOption(event.target.value);
-      console.log(event.target.value);
+     
       if (event.target.value!=="") {
         setdatoFiltro(datosr.filter((fil)=> fil.reclamoestado===event.target.value))
       } else {
         setdatoFiltro(datosr)
       }
-      console.log(datoFiltro);
+     
       }
   if (!loadingr&&!loading ) {
    
@@ -59,7 +59,7 @@ export default function ResRec() {
       setdatoFiltro(datosr)
     }
     return(
-      <div className="content-wrapper contenteSites-body" >
+      <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         <div style={{ color: "red" }}>
                                     {error!=="" ? <span>{error}</span> : <span></span> }
                                     </div>

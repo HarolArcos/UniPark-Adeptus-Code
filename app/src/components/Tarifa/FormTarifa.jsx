@@ -5,15 +5,16 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import "./Tarifa.css"
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 
-const Formulario = ({asunto,cancelar, tarifa = null,lista=null}) => {
-  console.log(tarifa,lista );
+const Formulario = ({asunto,cancelar, tarifa = null}) => {
+
+
 
   const {data,fetchData} = useFetchSendData();
 
 
 
   useEffect(() => {
-    console.log('Data actualizada o creada :', data);
+   
   }, [data]);
 
   
@@ -136,7 +137,7 @@ const Formulario = ({asunto,cancelar, tarifa = null,lista=null}) => {
         }
       }
       
-      console.log(errors);
+   
       return errors;
     }}
     
@@ -183,11 +184,11 @@ const Formulario = ({asunto,cancelar, tarifa = null,lista=null}) => {
             body: dataImage,
           });
           const file =await res.json();
-          console.log(file.secure_url);
+
           values.routeRate = file.secure_url;
           
-          console.log(values,data);
-          await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
+       
+          await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
           setLoadin(false);
           cancelar();
         

@@ -8,7 +8,7 @@ export default function Comprueba (navigate, datos,setUserglobal) {
         
         
         
-        fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
+        fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
         
         .then((response) => response.json())
         .then((per)=>{let [p] = per.filter((p)=>p.persona_id===datos.persona[0].persona_id)
@@ -34,7 +34,7 @@ export default function Comprueba (navigate, datos,setUserglobal) {
             localStorage.setItem("optionsHijo",JSON.stringify(datos["opciones padre disferente de 0"])),
             
             localStorage.setItem("recar",true),
-            window.location.href = '/main',
+            
             navigate("/main"))
             
     }

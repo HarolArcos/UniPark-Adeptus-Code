@@ -4,16 +4,17 @@ import { Table } from 'react-bootstrap';
 import "../Employee.css";
 
 
-function TableEmployee({ data }) {
+function TableEmployee({ data ,getClients,bandera}) {
     const { fetchData } = useFetchSendData();
 
     const handleStateChange = async (personId, currentState) => {
         const newStatus = currentState === "1" ? "2" : "1";
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/changeStatePerson', {
+         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/changeStatePerson', {
             idPerson: personId,
             statusPerson: newStatus
         });
-        window.location.reload();
+        getClients();
+        bandera("actualiza")
     };
 
     return (

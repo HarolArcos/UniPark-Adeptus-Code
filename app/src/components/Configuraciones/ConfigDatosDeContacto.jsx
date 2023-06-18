@@ -6,18 +6,20 @@ export default function ConfiguracionesContac({ fetchData }) {
   const [show, setShow] = useState(false);
   const [ediddato, setEdiddato] = useState("");
   const [configuraciones, setconfiguraciones] = useState([])
+  const [bandera, setbandera] = useState("")
   useEffect(() => {
     fetchConfiguraciones();
-  }, []);
+    setbandera("")
+  }, [bandera]);
 
   const fetchConfiguraciones = async () => {
     try {
-      const response = await fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto");
+      const response = await fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto");
       const data = await response.json();
       setconfiguraciones(data);
       
     } catch (error) {
-      console.log(error);
+      
     } 
     
   };
@@ -41,7 +43,7 @@ export default function ConfiguracionesContac({ fetchData }) {
   // Función para guardar los cambios editados
   function saveChanges() {
     fetchData(
-      'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration',
+      'http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration',
       {
         idConfiguration: editingId,
         nameConfiguration: ediddato,
@@ -53,6 +55,7 @@ export default function ConfiguracionesContac({ fetchData }) {
     setEditedValor1('');
     setShow(false)
     fetchConfiguraciones();
+    setbandera("actualiza")
     // Aquí puedes realizar una llamada a tu backend para guardar los cambios
     // por ejemplo, utilizando una función `saveChangesToBackend(updatedConfiguracion)`
     // saveChangesToBackend(updatedConfiguracion);

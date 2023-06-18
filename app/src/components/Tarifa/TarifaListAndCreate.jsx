@@ -54,7 +54,7 @@ export const TarifaListCreate = ({crear=false}) => {
             setTarifas(data);
             setTablaTarifas(data);
         }
-        console.log(data);
+
     }, [data]);
 
     
@@ -67,7 +67,7 @@ export const TarifaListCreate = ({crear=false}) => {
     //---Desactive Any Modal
     const handleCancelar = async () => {
         setShowCreate(false);
-        console.log(data);
+    
         setError(null);
         cargarDatos();
     };

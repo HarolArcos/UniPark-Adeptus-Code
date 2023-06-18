@@ -15,15 +15,15 @@ export default function Configura () {
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
-const { data, loading, error }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfiguration")
+const { data, loading, error }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfiguration")
     const{ fetchData }= useFetchSendData()
 if (!loading) {
-    console.log(data);
+    
     return (
         <div>
           <Header></Header>
           <Aside></Aside>
-          <div className="content-wrapper contenteSites-body">
+          <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
           <div className="tab-container">
             <div className="tab-buttons">
               <button

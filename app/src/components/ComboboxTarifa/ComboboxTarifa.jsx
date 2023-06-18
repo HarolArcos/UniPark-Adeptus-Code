@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 export default function ComboboxTarifa({ onTarifaIdChange,id}) {
 
   const { data, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate"
   )
   const [selectedTarifa, setSelectedTarifa] = useState(null); 
 
   useEffect(() => {
-    console.log(data.desError);
+    
     if (data.desError) {
       
     }else{
@@ -29,7 +29,7 @@ export default function ComboboxTarifa({ onTarifaIdChange,id}) {
         <p>{data.desError}</p>
         )
   }else{
-    console.log(selectedTarifa,id);
+    
 
     const      defaultValue = data.find(tarifa => tarifa.tarifa_id === id);
     const options = data.map((tarifa) => ({ value: tarifa, label: `${tarifa.tarifa_nombre}` }));

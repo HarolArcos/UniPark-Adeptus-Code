@@ -30,19 +30,19 @@ export const SubscriptionToChangeStatus = () => {
     const [suscripcionSeleccionado, setSuscripcionSeleccionado] = useState(null);
  
     useEffect(() => {
-        console.log(tipo);
+        
         if (tipo==1) {
-             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
+             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
          }else if(tipo==2){
-             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
+             fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
          }else if(tipo==3){
-            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+            fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
          }
-        console.log(data);
+        
     }, [tipo]);
     
     useEffect(() => {
-        console.log(data);
+       
         if (data.desError) {
             setError(data.desError);
         }
@@ -52,7 +52,7 @@ export const SubscriptionToChangeStatus = () => {
             setTablaSuscripciones(data);
         
         }
-        console.log(suscripciones);
+       
     }, [data]);
 
     useEffect(()=>{
@@ -61,11 +61,11 @@ export const SubscriptionToChangeStatus = () => {
 
     const cargarDatos = async () =>{
         if (tipo==1) {
-            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
+            await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActive');
         }else if(tipo==2){
-            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
+            await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionInactive');
         }else if(tipo==3){
-           await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
+           await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora');
         }
     }
     //-----------------------Activate-------------------------------------------
@@ -90,9 +90,9 @@ export const SubscriptionToChangeStatus = () => {
       }
 
     const handleOption = e => {
-        console.log(e.target.value);
+     
         setTipo(e.target.value);
-        console.log(tipo);
+  
     }
     
     
@@ -122,7 +122,7 @@ export const SubscriptionToChangeStatus = () => {
         <>
         <Header></Header>
         <Aside></Aside>
-        <div className="content-wrapper contenteSites-body">
+        <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
                     <Form.Control 

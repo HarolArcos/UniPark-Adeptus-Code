@@ -7,7 +7,6 @@ export default function Whats({ subs, cerrar, show }) {
   const [mensa, setmensa] = useState("");
   
 
-  console.log(subs);
   
     
     
@@ -17,7 +16,7 @@ export default function Whats({ subs, cerrar, show }) {
         if (mensa!=="") {
              ultimo  = "Ultima Nota:%0A"+mensa
         }
-        console.log("https://api.whatsapp.com/send?phone="+591+subs.persona_telefono+"&text=<" + titulo.toUpperCase()+">%0A"+mensaa+"%0A%0A"+ultimo);
+     
         window.open("https://api.whatsapp.com/send?phone="+591+subs.persona_telefono+"&text=<" + titulo.toUpperCase()+">%0A"+mensaa+"%0A%0A"+ultimo)
         cerrar()
         alert(`Se esta enviando el mensaje`);
