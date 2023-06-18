@@ -16,6 +16,7 @@ export const TarifaListCreate = ({crear=false}) => {
     const [tarifas,setTarifas] = useState([]);
     const [tablaTarifas, setTablaTarifas] = useState([]);
     const [error,setError] =  useState(null);
+    const [tipo,setTipo] =  useState(1);
     
     const{data,fetchData} = useSend();
     
@@ -24,9 +25,13 @@ export const TarifaListCreate = ({crear=false}) => {
     
     
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        if (tipo==1) {
+            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRateActive');
+        }else{
+            fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRateInactive');
+        }
         console.log(data);
-    }, []);
+    }, [tipo]);
     
     
     useEffect(()=>{
@@ -34,13 +39,18 @@ export const TarifaListCreate = ({crear=false}) => {
     },[]);
 
     const cargarDatos = async ()=>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        if (tipo==1) {
+            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRateActive');
+        }else{
+            await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRateInactive');
+        }
     }
 
     useEffect(() => {
         if (data.desError) {
             setError(data.desError);
         }else{
+            setError(null);
             setTarifas(data);
             setTablaTarifas(data);
         }
@@ -61,6 +71,18 @@ export const TarifaListCreate = ({crear=false}) => {
         setError(null);
         cargarDatos();
     };
+
+    const  obtenerFecha = (stringFechaHora) =>{
+        const fechaHora = new Date(stringFechaHora);
+        const fecha = fechaHora.toISOString().split('T')[0];
+        return fecha;
+      }
+
+    const handleOption = e => {
+        console.log(e.target.value);
+        setTipo(e.target.value);
+        console.log(tipo);
+    }
 
      /*--------------------- Barra Busqueda------------------------- */
      const handleChangeSerch = e => {
@@ -104,19 +126,24 @@ export const TarifaListCreate = ({crear=false}) => {
                         value={busqueda}
                         onChange={handleChangeSerch}
                     />
+                    <Form.Select style={{ width: '200px' }} placeholder='Seleccione..' onChange={handleOption}>
+                        {/* <option>Lista por:</option> */}
+                        <option value="1">Habilitadas</option>
+                        <option value="2">Inhabilitadas</option>
+                    </Form.Select>
                 </div>
                 <Table striped bordered   size="sm" >
                     <thead>
                         <tr className="columnTittle">
                             <th>Id</th>
                             <th>Detalle</th>
-                           
+                            <th>Qr</th>
                         </tr>
                     </thead>
                     <tbody>
                         {error!=null ? (
                             <tr>
-                                <td colSpan={"6"} >{error}</td>
+                                <td colSpan={"3"} >{error}</td>
                             </tr>
                         ): (
                             tarifas.map((tarifa) => (
@@ -127,11 +154,16 @@ export const TarifaListCreate = ({crear=false}) => {
                                             <ul>
 
                                                 <li><strong>Plazo:</strong>{tarifa.tarifa_nombre}</li>
+                                                <li><strong>Fecha de activación de tarifa:</strong>{obtenerFecha(tarifa.tarifa_activacion)}</li>
+                                                <li><strong>Fecha de expiración de tarifa:</strong>{obtenerFecha(tarifa.tarifa_expiracion)}</li>
+                                                <li><strong>Estado:{tarifa.estadotarifa}</strong></li>
                                                 <li><strong>Bs:</strong>{tarifa.tarifa_valor}</li>
-                                                <li><strong>QR:</strong></li>
-                                                <Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image>
                                             </ul>
                                             </div>
+                                        </td>
+                                        <td>
+                                                <Image src={tarifa.tarifa_ruta} alt="imagen qr" fluid className="custom-image" ></Image>
+
                                         </td>
                                         
                                     </tr>
