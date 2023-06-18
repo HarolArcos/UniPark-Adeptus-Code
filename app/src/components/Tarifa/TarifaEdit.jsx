@@ -234,7 +234,6 @@ export const TarifaEdit = () => {
                 asunto ='Guardar Cambios'
                 tarifa= {tarifaSeleccionado}
                 cancelar={handleCancelar}
-                lista={listSus}
                 ></Formulario>
                 </>
                 }

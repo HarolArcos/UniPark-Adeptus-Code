@@ -5,9 +5,9 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import "./Tarifa.css"
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 
-const Formulario = ({asunto,cancelar, tarifa = null}) => {
+const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
 
-
+console.log(tarifa,listaT,listaT.length);
 
   const {data,fetchData} = useFetchSendData();
 
@@ -32,8 +32,10 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
     const [show, setShow] = useState(false);
     
   useEffect(() => {
+    console.log('paso estado');
     if (tarifa) {
       if (tarifa.tarifa_estado == 19 && estadoRef == 20) {
+        console.log(obtenerFecha(tarifa.tarifa_expiracion) < obtenerFechaFormateada());
         if (obtenerFecha(tarifa.tarifa_expiracion) < obtenerFechaFormateada()) {
           
            setMensaje('La tarifa actualmente se encuentra expirada,puede proceder sin problema');
@@ -45,6 +47,7 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
            setCaso(1);
           }
       }else if(tarifa.tarifa_estado == 19 && estadoRef == 19){
+        console.log('ni modin');
         setCaso(null);
         setMensaje(null);
         setShow(false);
@@ -132,8 +135,21 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
         if(tarifa==null && !image){
           errors.routeRate ='El campo es requerido';
         }
+
+        if(listaT!==null || listaT.length!==0){
+          let elementos = listaT.filter((e)=>e.tarifa_nombre==values.nameRate);
+          if (elementos.length!=0) {
+            let resp = elementos.find((e)=>obtenerFecha(e.tarifa_expiracion)===values.dateExpirationRate);
+            console.log(elementos,values.dateExpirationRate,resp);
+            if (resp) {
+              errors.dateExpirationRate = `Ya existe plazo: ${values.nameRate} con la misma fecha de expiración`;
+            }
+          }
+        }
       }
-      
+
+
+      console.log(errors,values);
    
       return errors;
     }}
@@ -153,10 +169,12 @@ const Formulario = ({asunto,cancelar, tarifa = null}) => {
         //     });
 
         //     const file =await res.json();
+        //     console.log(file.secure_url);
         //     values.routeRate = file.secure_url;
 
         //   }
         if (caso!=null) {
+          console.log('entrooo',caso);
           values.statusRate = estadoRef;
           const changeStatus = {
             idRate:     values.idRate,

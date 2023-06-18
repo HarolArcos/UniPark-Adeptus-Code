@@ -30,6 +30,7 @@ export const TarifaListCreate = ({crear=false}) => {
         }else{
             fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRateInactive');
         }
+        console.log(data);
     }, [tipo]);
     
     
@@ -78,7 +79,9 @@ export const TarifaListCreate = ({crear=false}) => {
       }
 
     const handleOption = e => {
+        console.log(e.target.value);
         setTipo(e.target.value);
+        console.log(tipo);
     }
 
      /*--------------------- Barra Busqueda------------------------- */
@@ -176,6 +179,7 @@ export const TarifaListCreate = ({crear=false}) => {
                 <Formulario
                 asunto = "Guardar Tarifa"
                 cancelar={handleCancelar}
+                listaT={tablaTarifas}
                 ></Formulario>}
                 hide = {handleCancelar}
                 >
