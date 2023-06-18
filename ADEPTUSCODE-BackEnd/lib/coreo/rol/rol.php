@@ -173,6 +173,46 @@ class rol {
         return $response;
     }
 
+    public function idRolForTypePersonDb($typePerson){
+        $response = false;
+        $sql = "SELECT rol_id FROM rol WHERE rol_nombre = '$typePerson'";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
+    public function idRolForIdTypePersonDb($idTypePerson){
+        $response = false;
+        $sql = "SELECT rol_id FROM rol WHERE rol_nombre = (SELECT referencia_valor FROM referencia WHERE referencia_id = $idTypePerson)";
+        $rs = $this->_db->select($sql);
+        if($this->_db->getLastError()) {
+            
+            $arrLog = array(
+                            "sql"=>$sql,
+                            "error"=>$this->_db->getLastError());
+            $this->createLog('dbLog', print_r($arrLog, true), "error");  
+        } else {
+            $response = $rs;
+            $arrLog = array(
+                            "output"=>$response,
+                            "sql"=>$sql);
+            $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
+        }
+        return $response;
+    }
+
     public function listRolDb(){
         $response = false;
         //$sql =  "SELECT * FROM rol";

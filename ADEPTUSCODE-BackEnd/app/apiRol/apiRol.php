@@ -6,6 +6,8 @@
     $server = new apiJson($HTTP_RAW_POST_DATA);
     $server->Register("insertRol");
     $server->Register("listRol");
+    $server->Register("idRolForTypePerson");
+    $server->Register("idRolForIdTypePerson");
     $server->Register("editRol");
     $server->Register("changeStateRol");
     $server->start();
@@ -189,6 +191,92 @@
         $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
         $_log->notice($mensaje);
         return $response;
+    }
+
+    function idRolForTypePerson($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $typePerson =  "";
+
+        if(isset($arg->typePerson)){
+            $typePerson =  $arg->typePerson;
+        }else{
+            array_push($errorlist,"Error: falta parametro typePerson");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $typePerson =  $arg->typePerson;
+
+        $_rol = new rol($_db);
+        $responseList = $_rol->idRolForTypePersonDb($typePerson);
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente el id del rol segun el tipo de persona - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones habilitadas"));
+            $mensaje = "No se pudo listar el id del rol segun el tipo de persona - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
+    }
+
+    function idRolForIdTypePerson($arg){
+        $options = array('path' => LOGPATH,'filename' => FILENAME);
+        $startTime = microtime(true);
+        $_db=new dataBasePG(CONNECTION);
+        $_log = new log($options);
+        $respValidate = validateArg($arg);  
+        if($respValidate){
+            $arrLog = array("input"=>$arg,"output"=>$arg);
+            $mensaje = print_r($arrLog, true)." Funcion: ".__FUNCTION__;
+            $_log->notice($mensaje);
+            return $respValidate;
+        }
+
+        $errorlist=array();
+        $idTypePerson =  "";
+
+        if(isset($arg->idTypePerson)){
+            $idTypePerson =  $arg->idTypePerson;
+        }else{
+            array_push($errorlist,"Error: falta parametro idTypePerson");
+        }
+        if(count($errorlist)!==0){
+            return array("codError" => 200, "data" => array("desError"=>$errorlist));
+        }
+
+        $idTypePerson =  $arg->idTypePerson;
+
+        $_rol = new rol($_db);
+        $responseList = $_rol->idRolForIdTypePersonDb($idTypePerson);
+
+        if ( $responseList) {
+            $mensaje = "Se listo correctamente el id del rol segun el id tipo de persona - Funcion: ".__FUNCTION__;
+            $_log->info($mensaje);
+        }else{
+            $response = array("codError" => 200, "data" => array("desError"=>"Es posible que no existan suscripciones habilitadas"));
+            $mensaje = "No se pudo listar el id del rol segun el id tipo de persona - Funcion: ".__FUNCTION__;
+            $_log->error($mensaje);
+            return $response;
+        }
+        
+        return $responseList;
     }
 
     function listRol(){
