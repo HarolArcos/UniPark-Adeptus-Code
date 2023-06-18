@@ -30,7 +30,7 @@ const FormularioPersona = ({
   const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
 
   const { data: lista, loading } = useFetch(
-    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
   useEffect(() => {
     
@@ -38,7 +38,7 @@ const FormularioPersona = ({
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       const personaId = data[0].persona_id;
       if (selectedValue.value==5) {
-        senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
         {
           idPerson: personaId,
           idRol: 3 
@@ -46,7 +46,7 @@ const FormularioPersona = ({
         setIdPer(personaId);
       }else if (selectedValue.value==3){
         
-        senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
         {
           idPerson: personaId,
           idRol: 2 
@@ -54,7 +54,7 @@ const FormularioPersona = ({
         cancelar();
       }else {
         
-        senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
         {
           idPerson: personaId,
           idRol: 1 
@@ -82,7 +82,7 @@ const FormularioPersona = ({
   
     if (idPer!=null) {
       horarioG.idPerson = idPer;
-      senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+      senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
     }
   }, [hasRol,sethorarioG]);
   
@@ -277,13 +277,15 @@ const FormularioPersona = ({
        
 
           await fetchData(
-            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
           cancelar();
 
         } else {
             
          
-            await fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
+            await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
+            console.log("esto se envia al fetch",datosUser.typePerson);
+            
             // cancelar();
             if (selectedValue.value==5) {
               const horariosChange = {
