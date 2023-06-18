@@ -28,7 +28,7 @@ export default function Mensaje() {
     
     try {
       const response = await fetch(
-        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNews"
+        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNews"
       );
       const data = await response.json();
       setnoticias(data);

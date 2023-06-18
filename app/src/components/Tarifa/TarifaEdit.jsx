@@ -25,7 +25,7 @@ export const TarifaEdit = () => {
     const [tarifaSeleccionado, setTarifaSeleccionado] = useState(null);
 
     useEffect(() => {
-        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
        
     }, []);
     
@@ -44,7 +44,7 @@ export const TarifaEdit = () => {
     },[]);
 
     const cargarDatos = async()=>{
-       await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
+       await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRate');
     }
 
 

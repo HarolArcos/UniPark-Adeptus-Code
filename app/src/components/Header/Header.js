@@ -3,7 +3,7 @@ import { useFetch } from "../../hooks/HookFetchListData";
 import { Link } from "react-router-dom";
 
 export default function Header() {
-   const { data, loading, error }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationHorario")
+   const { data, loading, error }= useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationHorario")
   const localStorageValue = localStorage.getItem("mora") || localStorage.getItem("sus");
   
   return (

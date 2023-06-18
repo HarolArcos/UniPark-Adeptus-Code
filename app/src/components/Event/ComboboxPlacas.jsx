@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function ComboboxPlacas({ onVehicleIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
 
   const { data, loading } = useFetch(
-    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle"
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiVehicle/apiVehicle.php/listVehicle"
   )
     const [selectedVehicleId, setSelectedVehicleId] = useState(null);
 

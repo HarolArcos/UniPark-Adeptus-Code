@@ -21,7 +21,7 @@ export default function AddOptions() {
     const fetchOptions = async () => {
         try {
         const response = await fetch(
-            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiOption/apiOption.php/listOption"
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiOption/apiOption.php/listOption"
         );
         const data = await response.json();
         setOptions(data);
@@ -56,7 +56,7 @@ export default function AddOptions() {
     const handleSaveOptions = () => {
         
 
-        fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/resetRolHasOptionWhitRolId", {
+        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/resetRolHasOptionWhitRolId", {
             idRol: selectedRolId
         });
 
@@ -67,7 +67,7 @@ export default function AddOptions() {
         };
         
         fetchData(
-            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption",
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption",
             data
         );
         });

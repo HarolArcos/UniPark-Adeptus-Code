@@ -14,7 +14,7 @@ export default function ConfiguracionesContac({ fetchData }) {
 
   const fetchConfiguraciones = async () => {
     try {
-      const response = await fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto");
+      const response = await fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto");
       const data = await response.json();
       setconfiguraciones(data);
       
@@ -43,7 +43,7 @@ export default function ConfiguracionesContac({ fetchData }) {
   // Función para guardar los cambios editados
   function saveChanges() {
     fetchData(
-      'http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration',
+      'http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration',
       {
         idConfiguration: editingId,
         nameConfiguration: ediddato,

@@ -90,7 +90,7 @@ const FormEvent = ({asunto,cancelar, evento,cargar}) => {
         values.idPerson = selectedVehicleId.vhP;
         values.idVehicle = selectedVehicleId.vhV;
         values.typeEvent = selectedRefTypeEventId;
-         await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
+         await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/insertEvent',values);
         
       
         cargar()
