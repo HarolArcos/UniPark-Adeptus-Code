@@ -504,18 +504,25 @@ class subscription {
         $sql = "SELECT COUNT(*)
         FROM suscripcion
         WHERE suscripcion_numero_parqueo <> 0";
-        $rs = $this->_db->select($sql);
+        $sql2 = "SELECT COUNT(*)
+        FROM suscripcion
+        WHERE suscripcion_numero_parqueo <> 0
+          AND suscripcion_estado IN (
+            SELECT referencia_id
+            FROM referencia
+            WHERE referencia_valor = 'habilitada' OR referencia_valor = 'mora')";
+        $rs = $this->_db->select($sql2);
         if($this->_db->getLastError()) {
             
             $arrLog = array(
-                            "sql"=>$sql,
+                            "sql"=>$sql2,
                             "error"=>$this->_db->getLastError());
             $this->createLog('dbLog', print_r($arrLog, true), "error");  
         } else {
             $response = $rs;
             $arrLog = array(
                             "output"=>$response,
-                            "sql"=>$sql);
+                            "sql"=>$sql2);
             $this->createLog('apiLog', print_r($arrLog, true)." Function error: ".__FUNCTION__, "debug");
         }
         return $response;
