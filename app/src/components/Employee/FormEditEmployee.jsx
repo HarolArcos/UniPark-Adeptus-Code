@@ -264,7 +264,7 @@ const FormularioEditarEmpleado = ({
            await fetchData(
              "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
  
-           if (selectedValue==5) {
+           if (parseInt(selectedValue)!==4&&parseInt(selectedValue)!==3&&selectedValue) {
             if (values.idSchedule) {
              
               const horariosChange = {
@@ -421,7 +421,7 @@ const FormularioEditarEmpleado = ({
                </Form.Group>
              </div>
  
-               {selectedValue==5?(
+               {parseInt(selectedValue)!==4&&parseInt(selectedValue)!==3&&selectedValue?(
                  <>
                <div
                className="col-md-2 "
