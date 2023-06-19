@@ -97,7 +97,7 @@ function ListaC() {
               <th>Apellido</th>
               <th>Télefono</th>
               <th> Tipo </th>
-              <th> Whatapp </th>
+              <th> Whatsapp </th>
             </tr>
           </thead>
           <tbody>
