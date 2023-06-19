@@ -414,7 +414,7 @@ const FormularioPersona = ({
               </Form.Group>
             </div>
 
-              {selectedValue.value!=4 && selectedValue.value!=3?(
+              {parseInt(selectedValue.value)!==4 &&parseInt( selectedValue.value)!==3&&Object.keys(selectedValue).length !== 0?(
                 <>
               <div
               className="col-md-2 "
