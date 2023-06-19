@@ -71,7 +71,11 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
          
           }
           values.statusSubscription = selectedReferenciaId;
-       await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
+       //await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
+       await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/changeStateSubscription',{
+        "idSubscription" : values.idSubscription,
+        "statusSubscription" :  values.statusSubscription
+});
         cancelar();
     
       } 
