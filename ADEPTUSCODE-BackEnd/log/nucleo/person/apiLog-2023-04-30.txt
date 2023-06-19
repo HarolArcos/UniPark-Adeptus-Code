@@ -15,7 +15,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
@@ -36,7 +36,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
@@ -57,7 +57,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
@@ -78,7 +78,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG

@@ -15,7 +15,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
@@ -36,7 +36,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
@@ -57,7 +57,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
@@ -78,7 +78,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
@@ -99,7 +99,7 @@
 
     [output] => 
     [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
+        persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 
                 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
@@ -119,7 +119,7 @@
         )
 
     [output] => 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 00:54:13	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -138,7 +138,7 @@
         )
 
     [output] => 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 00:55:56	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -160,7 +160,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 00:58:46	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -182,7 +182,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:00:17	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -204,7 +204,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:00:55	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -226,7 +226,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:13:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -248,7 +248,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:16:32	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -267,7 +267,7 @@
         )
 
     [output] => 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:16:52	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -286,7 +286,7 @@
         )
 
     [output] => 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:28:31	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -305,7 +305,7 @@
         )
 
     [output] => 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:29:40	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -327,7 +327,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:30:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -349,7 +349,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:35:13	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -371,7 +371,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:35:57	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -393,7 +393,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:41:12	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -415,7 +415,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:53:35	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -437,7 +437,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:54:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -459,7 +459,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 01:55:11	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -481,7 +481,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 02:02:24	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -503,7 +503,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 02:03:14	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -525,7 +525,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 02:05:54	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -547,7 +547,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 02:06:39	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -569,7 +569,7 @@
         (
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 02:13:31	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -588,7 +588,7 @@
         )
 
     [output] => 1
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 16:02:43	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -624,7 +624,7 @@
         persona_telegram = '',
         persona_estado = 1,
         persona_nickname = 'gonzazm',
-        persona_contraseña = '123456'
+        persona_contrasena = '123456'
       WHERE persona_id = 1
       
 )
@@ -645,7 +645,7 @@
         )
 
     [output] => 1
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 1 , 'gonzazm' , '123456')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 1 , 'gonzazm' , '123456')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 16:07:06	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -662,7 +662,7 @@
             [idPerson] => 1
             [typePerson] => 3
             [namePerson] => Gonza
-            [lastNamePerson] => Zeballos Montaño
+            [lastNamePerson] => Zeballos Montano
             [ciPerson] => 1234567
             [phonePerson] => 67123456
             [telegramPerson] => 
@@ -675,13 +675,13 @@
     [sql] => UPDATE persona SET 
         persona_tipo = '3',
         persona_nombre = 'Gonza',
-        persona_apellido = 'Zeballos Montaño',
+        persona_apellido = 'Zeballos Montano',
         persona_ci = '1234567',
         persona_telefono = '67123456',
         persona_telegram = '',
         persona_estado = 1,
         persona_nickname = 'gonzazm',
-        persona_contraseña = '123456'
+        persona_contrasena = '123456'
       WHERE persona_id = 1
       
 )
@@ -693,7 +693,7 @@
             [idPerson] => 1
             [typePerson] => 3
             [namePerson] => Gonza
-            [lastNamePerson] => Zeballos Montaño
+            [lastNamePerson] => Zeballos Montano
             [ciPerson] => 1234567
             [phonePerson] => 67123456
             [telegramPerson] => 
@@ -706,13 +706,13 @@
     [sql] => UPDATE persona SET 
         persona_tipo = '3',
         persona_nombre = 'Gonza',
-        persona_apellido = 'Zeballos Montaño',
+        persona_apellido = 'Zeballos Montano',
         persona_ci = '1234567',
         persona_telefono = '67123456',
         persona_telegram = '',
         persona_estado = 1,
         persona_nickname = 'gonzazm',
-        persona_contraseña = '123456'
+        persona_contrasena = '123456'
       WHERE persona_id = 1
       
 )
@@ -724,7 +724,7 @@
             [idPerson] => 1
             [typePerson] => 3
             [namePerson] => Gonzalo
-            [lastNamePerson] => Zeballos Montaño
+            [lastNamePerson] => Zeballos Montano
             [ciPerson] => 7654321
             [phonePerson] => 67123456
             [telegramPerson] => tu minita
@@ -737,13 +737,13 @@
     [sql] => UPDATE persona SET 
         persona_tipo = '3',
         persona_nombre = 'Gonzalo',
-        persona_apellido = 'Zeballos Montaño',
+        persona_apellido = 'Zeballos Montano',
         persona_ci = '7654321',
         persona_telefono = '67123456',
         persona_telegram = 'tu minita',
         persona_estado = 1,
         persona_nickname = 'gonzazm',
-        persona_contraseña = '123456'
+        persona_contrasena = '123456'
       WHERE persona_id = 1
       
 )
@@ -764,7 +764,7 @@
         )
 
     [output] => 1
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 1 , 'ksantillan' , 'ksantillan')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 19:14:03	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -800,7 +800,7 @@
         )
 
     [output] => 1
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('3','Harol' , 'Arcos' , '5295189' , '59167418809' , '' , 1 , 'Harex' , 'abc123')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('3','Harol' , 'Arcos' , '5295189' , '59167418809' , '' , 1 , 'Harex' , 'abc123')
 )
  Function error: insertPersonDb	100 DEBUG
 2023-05-01 20:35:07	C:\xampp\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
@@ -829,7 +829,7 @@
         persona_telegram = '757575',
         persona_estado = 1,
         persona_nickname = 'Harexx',
-        persona_contraseña = 'abc1234'
+        persona_contrasena = 'abc1234'
       WHERE persona_id = 2
       
 )
@@ -873,7 +873,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Yesquir
-                    [persona_contraseña] => wah6Eaba3i
+                    [persona_contrasena] => wah6Eaba3i
                 )
 
             [1] => Array
@@ -887,7 +887,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Whislove
-                    [persona_contraseña] => baghah2iK
+                    [persona_contrasena] => baghah2iK
                 )
 
             [2] => Array
@@ -901,7 +901,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Mamed1970
-                    [persona_contraseña] => ii8ba8Kai
+                    [persona_contrasena] => ii8ba8Kai
                 )
 
             [3] => Array
@@ -915,7 +915,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Hatumer
-                    [persona_contraseña] => xazi7xiGumah
+                    [persona_contrasena] => xazi7xiGumah
                 )
 
             [4] => Array
@@ -929,7 +929,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Pheine
-                    [persona_contraseña] => OhijiePha5
+                    [persona_contrasena] => OhijiePha5
                 )
 
         )
@@ -952,7 +952,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Yesquir
-                    [persona_contraseña] => wah6Eaba3i
+                    [persona_contrasena] => wah6Eaba3i
                 )
 
             [1] => Array
@@ -966,7 +966,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Whislove
-                    [persona_contraseña] => baghah2iK
+                    [persona_contrasena] => baghah2iK
                 )
 
             [2] => Array
@@ -980,7 +980,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Mamed1970
-                    [persona_contraseña] => ii8ba8Kai
+                    [persona_contrasena] => ii8ba8Kai
                 )
 
             [3] => Array
@@ -994,7 +994,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Hatumer
-                    [persona_contraseña] => xazi7xiGumah
+                    [persona_contrasena] => xazi7xiGumah
                 )
 
             [4] => Array
@@ -1008,7 +1008,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Pheine
-                    [persona_contraseña] => OhijiePha5
+                    [persona_contrasena] => OhijiePha5
                 )
 
         )
@@ -1031,7 +1031,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Yesquir
-                    [persona_contraseña] => wah6Eaba3i
+                    [persona_contrasena] => wah6Eaba3i
                 )
 
             [1] => Array
@@ -1045,7 +1045,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Whislove
-                    [persona_contraseña] => baghah2iK
+                    [persona_contrasena] => baghah2iK
                 )
 
             [2] => Array
@@ -1059,7 +1059,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Mamed1970
-                    [persona_contraseña] => ii8ba8Kai
+                    [persona_contrasena] => ii8ba8Kai
                 )
 
             [3] => Array
@@ -1073,7 +1073,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Hatumer
-                    [persona_contraseña] => xazi7xiGumah
+                    [persona_contrasena] => xazi7xiGumah
                 )
 
             [4] => Array
@@ -1087,7 +1087,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Pheine
-                    [persona_contraseña] => OhijiePha5
+                    [persona_contrasena] => OhijiePha5
                 )
 
         )
@@ -1110,7 +1110,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Yesquir
-                    [persona_contraseña] => wah6Eaba3i
+                    [persona_contrasena] => wah6Eaba3i
                 )
 
             [1] => Array
@@ -1124,7 +1124,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Whislove
-                    [persona_contraseña] => baghah2iK
+                    [persona_contrasena] => baghah2iK
                 )
 
             [2] => Array
@@ -1138,7 +1138,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Mamed1970
-                    [persona_contraseña] => ii8ba8Kai
+                    [persona_contrasena] => ii8ba8Kai
                 )
 
             [3] => Array
@@ -1152,7 +1152,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Hatumer
-                    [persona_contraseña] => xazi7xiGumah
+                    [persona_contrasena] => xazi7xiGumah
                 )
 
             [4] => Array
@@ -1166,7 +1166,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Pheine
-                    [persona_contraseña] => OhijiePha5
+                    [persona_contrasena] => OhijiePha5
                 )
 
         )
