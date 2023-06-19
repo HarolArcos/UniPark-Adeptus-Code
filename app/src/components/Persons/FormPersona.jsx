@@ -34,6 +34,7 @@ const FormularioPersona = ({
     
   
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
+      
       const personaId = data[0].persona_id;
       if (selectedValue.value!==3 && selectedValue.value!==4 ) {
         
