@@ -153,51 +153,54 @@ export default function Mensaje() {
                     <td>{noticia.autor}</td>
                     <td>{noticia.autormodificacion}</td>
                     <td>
-                      <Button
-                        variant="success"
-                        onClick={() => {
-                          setShow(true);
-                          setaccion("Editar");
-                          setid(noticia.noticia_id);
-                          setstado(noticia.noticia_estado);
-                          setTitulo(noticia.noticia_titulo);
-                          setmensaje(noticia.noticia_texto);
-                        }}
-                      >
-                        Editar Noticia
-                      </Button>
-                      <br />
-                      
+                    <div style={{ marginBottom: '10px' }}>
+  <Button
+    variant="success"
+    style={{ width: '200px' }}
+    onClick={() => {
+      setShow(true);
+      setaccion("Editar");
+      setid(noticia.noticia_id);
+      setstado(noticia.noticia_estado);
+      setTitulo(noticia.noticia_titulo);
+      setmensaje(noticia.noticia_texto);
+    }}
+  >
+    Editar Noticia
+  </Button>
+</div>
 
-                      <Button
-                        variant="success"
-                        onClick={() => {
-                          setShow(true);
-                          setaccion("Enviar");
-                          setid(noticia.noticia_id);
+<div style={{ marginBottom: '10px' }}>
+  <Button
+    variant="success"
+    style={{ width: '200px' }}
+    onClick={() => {
+      setShow(true);
+      setaccion("Enviar");
+      setid(noticia.noticia_id);
+      setTitulo(noticia.noticia_titulo);
+      setmensaje(noticia.noticia_texto);
+    }}
+  >
+    Enviar a Telegram
+  </Button>
+</div>
 
-                          setTitulo(noticia.noticia_titulo);
-                          setmensaje(noticia.noticia_texto);
-                        }}
-                      >
-                        Enviar a Telegram
-                      </Button>
-                      <br />
-                      
-
-                      <Button
-                        variant="success"
-                        onClick={() => {
-                          setShow(true);
-                          setaccion("Publicar");
-                          setid(noticia.noticia_id);
-
-                          setTitulo(noticia.noticia_titulo);
-                          setmensaje(noticia.noticia_texto);
-                        }}
-                      >
-                        Publicar Noticia
-                      </Button>
+<div style={{ marginBottom: '10px' }}>
+  <Button
+    variant="success"
+    style={{ width: '200px' }}
+    onClick={() => {
+      setShow(true);
+      setaccion("Publicar");
+      setid(noticia.noticia_id);
+      setTitulo(noticia.noticia_titulo);
+      setmensaje(noticia.noticia_texto);
+    }}
+  >
+    Publicar Noticia
+  </Button>
+</div>
                     </td>
                   </tr>
                 ))}
