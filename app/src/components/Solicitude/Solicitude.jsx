@@ -38,6 +38,10 @@ export const Solicitude = () => {
             setError("No existe una solicitud");
         }else{
              let mysus = data.filter(suscripcion => suscripcion.persona_id == userglobal.persona_id);
+             let rech = mysus.filter(sus => sus.referencia_valor!=="rechazada")
+             if (rech.length!==0) {
+                mysus = rech
+             }
             ;
             setSuscripcion(mysus[0])
         }
@@ -87,6 +91,14 @@ export const Solicitude = () => {
                                 <th>Solicitud </th>
                                 </tr>
                             </thead>
+                            {suscripcion.referencia_valor==="rechazada"? <tbody>
+                                
+                                <tr key="2">
+                                <th>Estado: </th>
+                                <th>Su Anterior Solicitud fue rechazada, Realice una nueva solicitud</th>
+                                    
+                                </tr>
+                            </tbody>:<>
                             <tbody>
                                 
                                 <tr key="2">
@@ -142,7 +154,16 @@ export const Solicitude = () => {
                                     
                                 </tr>
                             </tbody>
+                            </>
+                            }
+                           
                         </Table>
+                        {suscripcion.referencia_valor==="rechazada" && <div className="buttonSection">
+                    <ButtonGroup className="buttonGroup">
+                        <Button variant="success" className="button" onClick={() => handleMod()} >Enviar una solicitud de parqueo</Button>
+                    </ButtonGroup>
+                    
+                    </div>}
                     </div>
                 ):(
                     <div className="buttonSection">
@@ -152,7 +173,7 @@ export const Solicitude = () => {
                     
                     </div>
                 )}
-
+                
                 <Modal
 	            tamaño ="md"
                 mostrarModal={showMod}
