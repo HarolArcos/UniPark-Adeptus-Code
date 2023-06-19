@@ -37,7 +37,12 @@ const FormularioPersona = ({
     
   
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
+      
       const personaId = data[0].persona_id;
+      if (selectedValue.values!==3 && selectedValue.values!==4 ) {
+        
+        setIdPer(personaId);
+      }
       sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/idRolForTypePerson",{
         "typePerson" : rol
     }).then(res => {senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
@@ -45,7 +50,7 @@ const FormularioPersona = ({
       idPerson: personaId,
       idRol: res[0].rol_id 
     })
-    cancelar();
+    //cancelar();
   
   })
       
@@ -276,7 +281,7 @@ const FormularioPersona = ({
             console.log("esto se envia al fetch",datosUser.typePerson);
             
             // cancelar();
-            if (selectedValue.value==5) {
+            if (parseInt(selectedValue.value)!==4&&parseInt(selectedValue.value)!==3&&selectedValue.value) {
               const horariosChange = {
                 idPerson : 0,
                 daySchedule :  values.daySchedule,
@@ -415,7 +420,7 @@ const FormularioPersona = ({
               </Form.Group>
             </div>
 
-              {selectedValue.value==5?(
+              {parseInt(selectedValue.value)!==4&&parseInt(selectedValue.value)!==3&&selectedValue.value?(
                 <>
               <div
               className="col-md-2 "
