@@ -12,10 +12,7 @@ const FormularioPersona = ({
   asunto,
   cancelar,
   persona,
-  actualizarVehiculo,
-  añadirNuevo,
-  soloLectura = false,
-  actual
+  soloLectura = false
 }) => {
   const [selectedValue, setSelectedValue] = useState({});
   const [idPer, setIdPer] = useState(null);
@@ -38,6 +35,10 @@ const FormularioPersona = ({
   
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       const personaId = data[0].persona_id;
+      if (selectedValue.value!==3 && selectedValue.value!==4 ) {
+        
+        setIdPer(personaId);
+      }
       sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/idRolForTypePerson",{
         "typePerson" : rol
     }).then(res => {senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
@@ -45,10 +46,10 @@ const FormularioPersona = ({
       idPerson: personaId,
       idRol: res[0].rol_id 
     })
-    cancelar();
-  
-  })
-      
+    })
+    if (selectedValue.value ==3 || selectedValue.value==4 ) {
+      cancelar();        
+    }
 
     }
     
@@ -63,7 +64,6 @@ const FormularioPersona = ({
   }
 
   useEffect(() => {
-   
   }, [hasHorario])
 
   useEffect(() => {
@@ -273,10 +273,9 @@ const FormularioPersona = ({
             
          
             await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
-            console.log("esto se envia al fetch",datosUser.typePerson);
             
             // cancelar();
-            if (selectedValue.value==5) {
+            if (selectedValue.value!==3 && selectedValue.value!==4) {
               const horariosChange = {
                 idPerson : 0,
                 daySchedule :  values.daySchedule,
@@ -287,7 +286,6 @@ const FormularioPersona = ({
             }
           
         }
-        actual()
       }}
     >
       {({ values, errors, handleBlur, handleChange, handleSubmit }) => (
@@ -415,7 +413,7 @@ const FormularioPersona = ({
               </Form.Group>
             </div>
 
-              {selectedValue.value==5?(
+              {selectedValue.value!=4 && selectedValue.value!=3?(
                 <>
               <div
               className="col-md-2 "
