@@ -68,12 +68,13 @@ const FormularioPersona = ({
   }, [hasHorario])
 
   useEffect(() => {
-  
+    console.log("homa muchacho soy una bandera");
+    console.log(idPer!=null);
     if (idPer!=null) {
       horarioG.idPerson = idPer;
       senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
     }
-  }, [hasRol,sethorarioG]);
+  }, [hasRol,sethorarioG,idPer]);
   
   
   return (
@@ -414,7 +415,7 @@ const FormularioPersona = ({
               </Form.Group>
             </div>
 
-              {selectedValue.value!=4 && selectedValue.value!=3?(
+              {parseInt(selectedValue.value)!==4 &&parseInt( selectedValue.value)!==3&&Object.keys(selectedValue).length !== 0?(
                 <>
               <div
               className="col-md-2 "
