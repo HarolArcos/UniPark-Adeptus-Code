@@ -61,6 +61,7 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
     
 
     onSubmit={async (values) => {
+      console.log(values);
       if (suscripcion) {
        
         if (values.statusSubscription!=8 && selectedReferenciaId==8) {
@@ -74,7 +75,7 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
        //await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/changeStateSubscription',{
         "idSubscription" : values.idSubscription,
-        "statusSubscription" :  values.statusSubscription
+        "statusSubscription" :  values.statusSubscription.value
 });
         cancelar();
     
