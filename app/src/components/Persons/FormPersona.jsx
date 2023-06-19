@@ -39,7 +39,7 @@ const FormularioPersona = ({
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       
       const personaId = data[0].persona_id;
-      if (selectedValue.values!==3 && selectedValue.values!==4 ) {
+      if (parseInt(selectedValue.value)!==4&&parseInt(selectedValue.value)!==3 ) {
         
         setIdPer(personaId);
       }
@@ -292,7 +292,7 @@ const FormularioPersona = ({
             }
           
         }
-        actual()
+        
       }}
     >
       {({ values, errors, handleBlur, handleChange, handleSubmit }) => (
