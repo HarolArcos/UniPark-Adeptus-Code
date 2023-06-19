@@ -6,7 +6,7 @@ import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Modalmensaje from "./MensageGlobalCrearoEditar";
-import { Enviar } from "./enviarMensajeTelegram";
+import { Enviar, PlublicarNoti } from "./enviarMensajeTelegram";
 
 export default function Mensaje() {
   const [show, setShow] = useState(false);
@@ -128,7 +128,7 @@ export default function Mensaje() {
           <label>No existen Mensajes Globales</label>
         ) : (
           <>
-            <label>Numero de Reclamos {noticias.length}</label>
+           
             <Table striped bordered hover className="table">
               <thead>
                 <tr>
@@ -164,10 +164,10 @@ export default function Mensaje() {
                           setmensaje(noticia.noticia_texto);
                         }}
                       >
-                        Editar
+                        Editar Noticia
                       </Button>
                       <br />
-                      <br />
+                      
 
                       <Button
                         variant="success"
@@ -180,7 +180,23 @@ export default function Mensaje() {
                           setmensaje(noticia.noticia_texto);
                         }}
                       >
-                        Enviar
+                        Enviar a Telegram
+                      </Button>
+                      <br />
+                      
+
+                      <Button
+                        variant="success"
+                        onClick={() => {
+                          setShow(true);
+                          setaccion("Publicar");
+                          setid(noticia.noticia_id);
+
+                          setTitulo(noticia.noticia_titulo);
+                          setmensaje(noticia.noticia_texto);
+                        }}
+                      >
+                        Publicar Noticia
                       </Button>
                     </td>
                   </tr>
@@ -245,9 +261,7 @@ export default function Mensaje() {
                       onClick={() =>
                         Enviar(
                           titulo,
-                          mensaje,
-                          id,
-                          fetchData,
+                          mensaje,                          
                           fetchConfiguraciones,
                           handleClose
                         )
@@ -270,6 +284,35 @@ export default function Mensaje() {
                     </Button>
                   </div>
                 );
+                case "Publicar":
+                  return(<div>
+                    <Form className="container">
+                      <Form.Group>
+                        <Form.Label className="text-left">Titulo</Form.Label>
+                      </Form.Group>
+                      <Form.Group>{titulo}</Form.Group>
+                      <Form.Group>
+                        <Form.Label className="text-left">Mensaje</Form.Label>
+                      </Form.Group>
+                      <Form.Group>{mensaje}</Form.Group>
+                    </Form>
+                    <Button
+                      variant="success"
+                      onClick={() =>
+                        PlublicarNoti(                          
+                          id,
+                          fetchData,
+                          fetchConfiguraciones,
+                          handleClose
+                        )
+                      }
+                      type="submit"
+                      className="btn btn-primary"
+                    >
+                      Confirmar Publicacion en Página
+                      
+                    </Button>
+                  </div>)
               default:
                 return null;
             }
