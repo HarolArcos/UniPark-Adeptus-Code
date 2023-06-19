@@ -35,9 +35,12 @@ export default function FormAddRol({cancelar, asunto}){
             valueReference :  nameRol,
             statusReference: 1
         }
+        //console.log("lo que se envia a insert Rol", formData);
+        //console.log("lo que se envia a insert referencia", reference);
+        
         fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/insertRol", formData);
         fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/insertReference", reference);
-        
+        cancelar();
     };
 
     return(

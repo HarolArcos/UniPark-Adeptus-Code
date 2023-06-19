@@ -5,6 +5,7 @@
  import "./Persons";
  import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
  import { useFetch } from "../../hooks/HookFetchListData";
+import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
  //import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
  
  const FormularioEditarPersona = ({
@@ -25,45 +26,37 @@
  
  
    const handleReferenciaIdChange = (referenciaId) => {
-     setSelectedValue(referenciaId);
+    setrol(referenciaId.label)
+     setSelectedValue(referenciaId.value);
    };
    const { data, fetchData } = useFetchSendData();
    const { data: hasRol, fetchData: senRol } = useFetchSendData();
    const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
- 
+   const [rol, setrol] = useState("")
    const { data: lista, loading } = useFetch(
      "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
    );
    useEffect(() => {
      
    
-     if(data  && typeof data[0] === 'object'){
-       if (selectedValue==5) {
-         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
-         {
-           idPersonHasRol:persona.persona_has_rol_id,
-           idPerson: persona.persona_id,
-           idRol: 3 
-         });
-       }else if (selectedValue==3){
-         
-         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
-         {
-           idPersonHasRol:persona.persona_has_rol_id,
-           idPerson: persona.persona_id,
-           idRol: 2 
-         });
-         cancelar();
-       }else {
-         
-         senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
-         {
-           idPersonHasRol: persona.persona_has_rol_id,
-           idPerson: persona.persona_id,
-           idRol: 1 
-         });
-         cancelar();
-       }
+     
+      if(data  &&  data.desError === "Cambios realizados con exito"&&rol!==""){
+        let ro=rol.replace(/\s/g, "")
+        console.log(ro);
+        sendAndReceiveJson("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/idRolForTypePerson",{
+          "typePerson" : ro
+      }).then(res => {console.log(res);
+        
+        
+        senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+      {
+        idPersonHasRol:persona.persona_has_rol_id,
+      idPerson: persona.persona_id,
+        idRol: res[0].rol_id 
+      })
+      cancelar();
+    
+    })
  
      }
      
@@ -268,7 +261,7 @@
            await fetchData(
              "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
  
-           if (selectedValue==5) {
+           if (parseInt(selectedValue)!==4&&parseInt(selectedValue)!==3&&selectedValue) {
             if (values.idSchedule) {
             
               const horariosChange = {
@@ -425,7 +418,7 @@
                </Form.Group>
              </div>
  
-               {selectedValue==5?(
+               {parseInt(selectedValue)!==4&&parseInt(selectedValue)!==3&&selectedValue?(
                  <>
                <div
                className="col-md-2 "

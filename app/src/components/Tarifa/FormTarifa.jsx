@@ -7,7 +7,6 @@ import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 
 const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
 
-console.log(tarifa,listaT,listaT.length);
 
   const {data,fetchData} = useFetchSendData();
 
@@ -32,10 +31,8 @@ console.log(tarifa,listaT,listaT.length);
     const [show, setShow] = useState(false);
     
   useEffect(() => {
-    console.log('paso estado');
     if (tarifa) {
-      if (tarifa.tarifa_estado == 19 && estadoRef == 20) {
-        console.log(obtenerFecha(tarifa.tarifa_expiracion) < obtenerFechaFormateada());
+      if (tarifa.tarifa_estado == 19 && estadoRef.value == 20) {
         if (obtenerFecha(tarifa.tarifa_expiracion) < obtenerFechaFormateada()) {
           
            setMensaje('La tarifa actualmente se encuentra expirada,puede proceder sin problema');
@@ -46,8 +43,7 @@ console.log(tarifa,listaT,listaT.length);
            setMensaje('La tarifa actualmente se encuantra vigente, esta seguro de deshabilitarla');
            setCaso(1);
           }
-      }else if(tarifa.tarifa_estado == 19 && estadoRef == 19){
-        console.log('ni modin');
+      }else if(tarifa.tarifa_estado == 19 && estadoRef.value == 19){
         setCaso(null);
         setMensaje(null);
         setShow(false);
@@ -56,9 +52,11 @@ console.log(tarifa,listaT,listaT.length);
   }, [estadoRef])
 
 
+
   const handleReferenciaIdChange =(estado)=>{
     setestadoRef(estado);
   }
+
 
   const  obtenerFecha = (stringFechaHora) =>{
     const fechaHora = new Date(stringFechaHora);
@@ -135,12 +133,10 @@ console.log(tarifa,listaT,listaT.length);
         if(tarifa==null && !image){
           errors.routeRate ='El campo es requerido';
         }
-
         if(listaT!==null || listaT.length!==0){
           let elementos = listaT.filter((e)=>e.tarifa_nombre==values.nameRate);
           if (elementos.length!=0) {
             let resp = elementos.find((e)=>obtenerFecha(e.tarifa_expiracion)===values.dateExpirationRate);
-            console.log(elementos,values.dateExpirationRate,resp);
             if (resp) {
               errors.dateExpirationRate = `Ya existe plazo: ${values.nameRate} con la misma fecha de expiración`;
             }
@@ -149,7 +145,6 @@ console.log(tarifa,listaT,listaT.length);
       }
 
 
-      console.log(errors,values);
    
       return errors;
     }}
@@ -169,19 +164,17 @@ console.log(tarifa,listaT,listaT.length);
         //     });
 
         //     const file =await res.json();
-        //     console.log(file.secure_url);
         //     values.routeRate = file.secure_url;
 
         //   }
         if (caso!=null) {
-          console.log('entrooo',caso);
-          values.statusRate = estadoRef;
+          values.statusRate = estadoRef.value;
           const changeStatus = {
             idRate:     values.idRate,
             statusRate: values.statusRate
           }
           setLoadin(true);
-          await  fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/changeStateRate',changeStatus);
+          await  fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/changeStateRate',changeStatus);
           setLoadin(false);
           cancelar();
         }

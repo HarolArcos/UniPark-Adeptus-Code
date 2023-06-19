@@ -10,14 +10,14 @@ import { useFetchSendData } from '../../hooks/HookFetchSendData';
 export const Main = () => {
   const [isFetched, setIsFetched] = useState(false); // Nuevo estado para controlar si la llamada ya se ha realizado
 
-  const { data: datos, fetchData } = useFetchSendData();
+  const { fetchData } = useFetchSendData();
   const { data, loading, error } = useFetch(
     "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionActiveExpired"
   );
 
   if (!loading && !isFetched) {
     if (data.length !== 0 && !data.desError) {
-      console.log(data);
+     
       data.map((person) =>
         fetchData(
           "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/changeStateSubscription",
@@ -28,9 +28,7 @@ export const Main = () => {
         )
       );
       setIsFetched(true); // Actualiza el estado para evitar futuras llamadas
-    } else {
-      console.log("terminado");
-    }
+    } 
   }
 
   return (

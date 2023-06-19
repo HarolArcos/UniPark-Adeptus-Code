@@ -24,7 +24,7 @@ function ListaC() {
   const [datitos, setdatitos] = useState([]);
   const [show, setShow] = useState(false);
   const [usuario, setusuario] = useState([]);
-  const [mensa, setmensa] = useState(null);
+  const [mensa, setmensa] = useState("");
 
   const handleClose = () => setShow(false);
 

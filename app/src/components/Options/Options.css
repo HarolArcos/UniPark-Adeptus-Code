@@ -44,6 +44,10 @@
     color: #ff0000;
 }
 
-.addOpciones{
+.addoptionssection{
     padding: 32px;
+}
+
+.addrolsection{
+    padding-top: 32px;
 }
