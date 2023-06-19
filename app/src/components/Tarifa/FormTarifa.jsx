@@ -7,7 +7,7 @@ import ComboboxReferences from "../ComboboxReferences/ComboboxReferences";
 
 const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
 
-console.log(tarifa,listaT,listaT.length);
+
 
   const {data,fetchData} = useFetchSendData();
 
