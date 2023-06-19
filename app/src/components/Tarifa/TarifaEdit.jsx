@@ -16,9 +16,7 @@ export const TarifaEdit = () => {
     const [tablaTarifas, setTablaTarifas] = useState([]);
     const [error,setError] =  useState(null);
     const [tipo,setTipo] =  useState(1);
-    const [listaSus,setListaSus] =  useState(1);
     
-  const {data:listSus,fetchData:fetchList} =useSend();
     const{data,fetchData} = useSend();
     
     //----------------------ShowModal-------------------------------
@@ -77,9 +75,7 @@ export const TarifaEdit = () => {
       }
 
     const handleOption = e => {
-        console.log(e.target.value);
         setTipo(e.target.value);
-        console.log(tipo);
     }
     
     //---Desactive Any Modal
