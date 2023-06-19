@@ -1,4 +1,4 @@
-export function Enviar(titulo,mensaje,id,fetchData,fetchConfiguraciones,handleClose) {
+export function Enviar(titulo,mensaje,fetchConfiguraciones,handleClose) {
 
     
     fetch(
@@ -7,12 +7,23 @@ export function Enviar(titulo,mensaje,id,fetchData,fetchConfiguraciones,handleCl
         ">%0A%0A%0A" +
         mensaje
     );
-    fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/changeStateNews",
-    {
-      "idNews" : id,
-      "statusNews" :  25
-}
-)
+    
+
 fetchConfiguraciones()
 handleClose()
+}
+export function PlublicarNoti(id,fetchData,fetchConfiguraciones,handleClose){
+
+
+
+  fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/changeStateNews",
+  {
+    "idNews" : id,
+    "statusNews" :  25
+})
+
+fetchConfiguraciones()
+handleClose()
+
+
 }
