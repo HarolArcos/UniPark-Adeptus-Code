@@ -51,32 +51,45 @@ function ListaPa() {
     }
     setmontopagado(totalMonto);
   }, [DatosLeidos]);
-
+  function filtrar(dato) {
+    if (dato.desError) {
+      return(dato)
+    } else {
+      return dato.filter(obj => obj.historial_pago_id !== null)
+    }
+      
+  }
   const handleSelectChange = (event) => {
     setSelec(event.target.value);
     setmontopagado(0);
     switch (event.target.value) {
       case "Total":
-        setDatosLeidos(data);
+        setDatosLeidos(filtrar(data));
         setFileName("lista_pagos_total.pdf"); // Cambiar el nombre del archivo
         break;
       case "Mes":
-        setDatosLeidos(MesD);
+        setDatosLeidos(filtrar (MesD));
         setFileName("lista_pagos_mes.pdf"); // Cambiar el nombre del archivo
         break;
       case "Semana":
-        setDatosLeidos(SemD);
+        setDatosLeidos(filtrar(SemD));
         setFileName("lista_pagos_semana.pdf"); // Cambiar el nombre del archivo
         break;
       default:
-        setDatosLeidos(data);
+        setDatosLeidos(filtrar(data));
         setFileName("lista_pagos.pdf"); // Cambiar el nombre del archivo
     }
   };
 
   if (!loading && !MesL && !SemL) {
     if (DatosLeidos.length === 0) {
-      setDatosLeidos(data);
+      if (filtrar(data).length===0) {
+        
+        setDatosLeidos({"desError":"Listado fallido, es posible que no existan pagos"})
+      } else {
+        setDatosLeidos(filtrar(data));
+      }
+      
     }
 
     const styles = StyleSheet.create({
