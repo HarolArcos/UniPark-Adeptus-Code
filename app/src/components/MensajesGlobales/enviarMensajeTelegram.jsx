@@ -16,7 +16,7 @@ export function PlublicarNoti(id,fetchData,fetchConfiguraciones,handleClose){
 
 
 
-  fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/changeStateNews",
+  fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/changeStateNews",
   {
     "idNews" : id,
     "statusNews" :  25

@@ -21,7 +21,7 @@ export default function Employee(){
     
     
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
     }, []);
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export default function Employee(){
     },[]);
 
     const cargarDatos = async () =>{
-        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
+        await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonEmployee');
     }
     
     //----------------------ShowModal-------------------------------

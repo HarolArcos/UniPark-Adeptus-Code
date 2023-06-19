@@ -10,7 +10,7 @@ import { useFetch } from "../../hooks/HookFetchListData";
 
 
 export default function ReclamoConsulta () {
-const { data, loading, error } = useFetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto")
+const { data, loading, error } = useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationContacto")
   if(!loading){
     return(
        <div>
@@ -53,7 +53,7 @@ function Claimquery({datos}) {
     }
     
         if (selectedOption==="Reclamo") {
-            fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/insertComplaint",datosparaf)
+            fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiComplaint/apiComplaint.php/insertComplaint",datosparaf)
            
         }
         window.open("https://api.whatsapp.com/send?phone="+591+datos+"&text=<" + selectedOption.toUpperCase()+">%0A"+deReclamo.toUpperCase()+"%0A%0A"+message)

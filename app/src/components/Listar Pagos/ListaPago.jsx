@@ -20,7 +20,7 @@ export default function ListaPag() {
 function ListaPa() {
   const [fileName, setFileName] = useState("lista_pagos_total.pdf");
   const { data, loading, error } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/listHistoryPay"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/listHistoryPay"
   );
   const [Selec, setSelec] = useState("Total");
   const {
@@ -28,14 +28,14 @@ function ListaPa() {
     loading: MesL,
     error: MesE,
   } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/listHistoryPayMonth"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/listHistoryPayMonth"
   );
   const {
     data: SemD,
     loading: SemL,
     error: SemE,
   } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/listHistoryPayWeek"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/listHistoryPayWeek"
   );
   const [DatosLeidos, setDatosLeidos] = useState([]);
   const [montopagado, setmontopagado] = useState(0);

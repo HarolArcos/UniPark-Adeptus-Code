@@ -174,7 +174,7 @@ const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
             statusRate: values.statusRate
           }
           setLoadin(true);
-          await  fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/changeStateRate',changeStatus);
+          await  fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/changeStateRate',changeStatus);
           setLoadin(false);
           cancelar();
         }
@@ -194,7 +194,7 @@ const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
           values.routeRate = file.secure_url;
           
        
-          await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
+          await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
           setLoadin(false);
           cancelar();
         

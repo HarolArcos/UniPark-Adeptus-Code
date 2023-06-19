@@ -23,7 +23,7 @@ export default function NumeroSitios({ fetchData }) {
 
   const fetchConfiguraciones = async () => {
     try {
-      const response = await fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios");
+      const response = await fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfigurationNumSitios");
       const data = await response.json();
       setsitios(data);
       
@@ -52,7 +52,7 @@ export default function NumeroSitios({ fetchData }) {
   // Función para guardar los cambios editados
   function saveChanges() {
 
-    fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
+    fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
     .then(datos => datos.json())
     .then(datos => {let datas = datos.filter((dat)=>parseInt(dat.suscripcion_numero_parqueo)>editedValor1&&
       dat.suscripcion_estado!=="11")
@@ -63,7 +63,7 @@ export default function NumeroSitios({ fetchData }) {
        
       
       } else {
-        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration",
+        fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration",
     {
         "idConfiguration" : editingId,
         "nameConfiguration" : editedNombre,

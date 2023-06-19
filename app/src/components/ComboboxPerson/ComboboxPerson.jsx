@@ -6,7 +6,7 @@ export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza 
   
   
   const { data, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient"
   )
   const [selectedPersonaId, setSelectedPersonaId] = useState(null); 
   

@@ -7,7 +7,7 @@ import Aside from "../Aside/Aside.js";
 
 export default function Noticias() {
     const { data, loading, error } = useFetch(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNewsActive"
+        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/listNewsActive"
       );
 
 

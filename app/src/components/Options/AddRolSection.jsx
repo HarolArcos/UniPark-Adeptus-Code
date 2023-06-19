@@ -20,7 +20,7 @@ export default function AddRolSection(){
     const [error,setError] =  useState(null);
 
     useEffect(() => {
-        fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol");
+        fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol");
     }, []);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ export default function AddRolSection(){
     }, []);
 
     const cargarDatos = async () => {
-        await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol");
+        await fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol");
     }
         setTimeout(() => {
             localStorage.removeItem("Error")

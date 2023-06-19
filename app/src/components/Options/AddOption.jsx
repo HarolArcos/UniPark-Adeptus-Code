@@ -19,7 +19,7 @@ export default function AddOptions () {
   
 
   useEffect(() => {
-    fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiOption/apiOption.php/listOption')
+    fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiOption/apiOption.php/listOption')
       .then(resp => resp.json())
       .then(data => {
         setOptions(data);
@@ -32,7 +32,7 @@ export default function AddOptions () {
     setSelectedRolId(personaId);
 
     if (personaId) {
-      fetch(`http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/listRolHasOption`)
+      fetch(`http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/listRolHasOption`)
         .then(resp => resp.json())
         .then(data => {
           const filteredOptions = data.filter(item => item.rol_id === personaId);
@@ -109,7 +109,7 @@ export default function AddOptions () {
     try {
       // Resetear las opciones existentes previamente para el rol seleccionado
       await fetchData(
-        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/resetRolHasOptionWhitRolId",
+        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/resetRolHasOptionWhitRolId",
         {
           idRol: selectedRolId,
         }
@@ -123,7 +123,7 @@ export default function AddOptions () {
         };
   
         await fetchData(
-          "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption",
+          "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRolHasOption/apiRolHasOption.php/insertRolHasOption",
           data
         );
       }

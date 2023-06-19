@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 export default function ComboboxTarifa({ onTarifaIdChange,id}) {
 
   const { data, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRateActive"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/listRateActive"
   )
   const [selectedTarifa, setSelectedTarifa] = useState(null); 
 
