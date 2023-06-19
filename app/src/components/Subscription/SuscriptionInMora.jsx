@@ -35,7 +35,7 @@ export const SubscriptionInMora = () => {
   useEffect(() => {
    
       fetchData(
-        "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora"
+        "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscriptionMora"
       );
     
     

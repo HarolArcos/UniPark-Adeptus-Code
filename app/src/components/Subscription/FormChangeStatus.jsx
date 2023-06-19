@@ -64,14 +64,18 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
       if (suscripcion) {
        
         if (values.statusSubscription!=8 && selectedReferenciaId==8) {
-          await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/insertHistoryPay',
+          await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/insertHistoryPay',
           {idSubscription :  values.idSubscription,
             amountHistoryPay : suscripcion.tarifa_valor,
             totalHistoryPay : suscripcion.tarifa_valor});
          
           }
           values.statusSubscription = selectedReferenciaId;
-       await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
+       //await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
+       await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/changeStateSubscription',{
+        "idSubscription" : values.idSubscription,
+        "statusSubscription" :  values.statusSubscription
+});
         cancelar();
     
       } 

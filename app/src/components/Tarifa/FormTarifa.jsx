@@ -201,7 +201,7 @@ console.log(tarifa,listaT,listaT.length);
           values.routeRate = file.secure_url;
           
        
-          await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
+          await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRate/apiRate.php/insertRate',values);
           setLoadin(false);
           cancelar();
         

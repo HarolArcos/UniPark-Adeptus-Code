@@ -24,12 +24,12 @@ function ListaC() {
   const [datitos, setdatitos] = useState([]);
   const [show, setShow] = useState(false);
   const [usuario, setusuario] = useState([]);
-  const [mensa, setmensa] = useState(null);
+  const [mensa, setmensa] = useState("");
 
   const handleClose = () => setShow(false);
 
   const { data, loading, error } = useFetch(
-    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
 
   function Whats(cliente) {

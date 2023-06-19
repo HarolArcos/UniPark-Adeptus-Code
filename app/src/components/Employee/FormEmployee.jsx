@@ -30,7 +30,7 @@ const FormularioEmpleado = ({
   const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
 
   const { data: lista, loading } = useFetch(
-    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
 
 
@@ -40,7 +40,7 @@ const FormularioEmpleado = ({
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
       const personaId = data[0].persona_id;
       setIdPer(personaId);
-      senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+      senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
       {
         idPerson: personaId,
         idRol: 3 
@@ -73,7 +73,7 @@ const FormularioEmpleado = ({
     
 
     horarioG.idPerson = idPer;
-    senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+    senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
   }, [hasRol,sethorarioG]);
   
   return (
@@ -268,7 +268,7 @@ const FormularioEmpleado = ({
         if (persona) {
 
           await fetchData(
-            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
+            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",
             datosEmpleado
           );
           enviarHorario(horariosChange);
@@ -280,7 +280,7 @@ const FormularioEmpleado = ({
             entrySchedule : values.entrySchedule,
             departureSchedule :  values.departureSchedule
           }
-          await fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosEmpleado);
+          await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosEmpleado);
 
           enviarHorario(horariosChange);
 
