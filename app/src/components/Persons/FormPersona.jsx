@@ -68,12 +68,13 @@ const FormularioPersona = ({
   }, [hasHorario])
 
   useEffect(() => {
-  
+    console.log("homa muchacho soy una bandera");
+    console.log(idPer!=null);
     if (idPer!=null) {
       horarioG.idPerson = idPer;
       senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
     }
-  }, [hasRol,sethorarioG]);
+  }, [hasRol,sethorarioG,idPer]);
   
   
   return (
