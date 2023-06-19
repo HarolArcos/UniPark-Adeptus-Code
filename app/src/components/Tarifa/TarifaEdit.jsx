@@ -180,7 +180,7 @@ export const TarifaEdit = () => {
                 <Modal
 	            tamaño ="lg"
                 mostrarModal={showEdit}
-                title = 'Editar Tarifa'
+                title = 'Modificar Estado de Tarifa'
                 contend = {
                     <>
                     {tarifaSeleccionado?(<div className='text-left'>
