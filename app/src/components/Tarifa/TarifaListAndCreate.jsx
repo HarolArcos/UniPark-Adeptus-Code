@@ -96,7 +96,6 @@ export const TarifaListCreate = ({crear=false}) => {
             if(
                 elemento.tarifa_nombre.toString().toLowerCase().includes(termBusqueda.toLowerCase())
                 ||  elemento.tarifa_valor.toString().toLowerCase().includes(termBusqueda.toLowerCase())
-                ||  elemento.tarifa_estado.toString().toLowerCase().includes(termBusqueda.toLowerCase())
             ){
                 return elemento;
             }else{
