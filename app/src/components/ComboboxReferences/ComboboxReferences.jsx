@@ -26,8 +26,8 @@ export default function ComboboxReferences({onReferenciaIdChange,defaultValor,re
     },[data]);
     
     const handleReferenciaChange = (selectedOption) => {
-        setSelectedReferenciaId(selectedOption.value);
-        onReferenciaIdChange(selectedOption.value);
+        setSelectedReferenciaId(selectedOption);
+        onReferenciaIdChange(selectedOption);
     };
     
     const [selectedReferenciaId, setSelectedReferenciaId] = useState(null); 
