@@ -156,7 +156,7 @@
         return $response;
     }
     
-    function changeStateRateDb($arg){
+    function changeStateRate($arg){
         $options = array('path' => LOGPATH,'filename' => FILENAME);
         $startTime = microtime(true);
         $_db=new dataBasePG(CONNECTION);
