@@ -86,7 +86,6 @@ const FormularioEditarEmpleado = ({
  
    }, [hasRol,sethorarioG]);
    
-   
    return (
      <Formik
        initialValues={
