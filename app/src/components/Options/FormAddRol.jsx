@@ -4,7 +4,7 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import { useState } from "react";
 import "./Options.css";
 
-export default function FormAddRol({cancelar, asunto}){
+export default function FormAddRol({cancelar, asunto, bandera}){
 
     const {data, fetchData } = useFetchSendData();
 
@@ -14,13 +14,14 @@ export default function FormAddRol({cancelar, asunto}){
 
     const[error,  setError] = useState(null);
 
-    useEffect(() => {
-        if(data.desError === "Inserción fallida"){
-            setError(data.desError);
-        }else if (data.desError === "Inserción exitosa") {
-            cancelar();
-        }
-    }, [data, cancelar]);
+    // useEffect(() => {
+    //     if(data.desError === "Inserción fallida"){
+    //         setError(data.desError);
+    //     }else if (data.desError === "Inserción exitosa") {
+    //         cancelar();
+    //     }
+    // }, [data, cancelar]);
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -49,7 +50,7 @@ export default function FormAddRol({cancelar, asunto}){
         
         fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/insertRol", formData);
         fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/insertReference", reference);
-        cancelar();
+        bandera("actualiza")
     };
 
     return(
