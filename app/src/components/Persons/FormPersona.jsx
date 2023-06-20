@@ -5,24 +5,22 @@ import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import "./FormPersona.css";
 import ComboboxReferences from "../ComboboxReferences/ComboboxReferencia2";
 import { useFetch } from "../../hooks/HookFetchListData";
+import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 //import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
 
 const FormularioPersona = ({
   asunto,
   cancelar,
   persona,
-  actualizarVehiculo,
-  añadirNuevo,
-  soloLectura = false,
-  actual
+  soloLectura = false
 }) => {
   const [selectedValue, setSelectedValue] = useState({});
   const [idPer, setIdPer] = useState(null);
   const [horarioG, sethorarioG] = useState({});
-
+  const [rol, setrol] = useState(null)
 
   const handleValueChange = (option) => {
-   
+    setrol(option.label);
     setSelectedValue(option);
   };
   const { data, fetchData } = useFetchSendData();
@@ -36,31 +34,23 @@ const FormularioPersona = ({
     
   
     if(data && Object.keys(data).length > 0 && typeof data[0] === 'object' && 'persona_id' in data[0]){
+      
       const personaId = data[0].persona_id;
-      if (selectedValue.value==5) {
-        senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
-        {
-          idPerson: personaId,
-          idRol: 3 
-        });
+      if (selectedValue.value!==3 && selectedValue.value!==4 ) {
+        
         setIdPer(personaId);
-      }else if (selectedValue.value==3){
-        
-        senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
-        {
-          idPerson: personaId,
-          idRol: 2 
-        });
-        cancelar();
-      }else {
-        
-        senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
-        {
-          idPerson: personaId,
-          idRol: 1 
-        });
-        cancelar();
       }
+      sendAndReceiveJson("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/idRolForTypePerson",{
+        "typePerson" : rol
+    }).then(res => {senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+    {
+      idPerson: personaId,
+      idRol: res[0].rol_id 
+    })
+    })
+    if (selectedValue.value ==3 || selectedValue.value==4 ) {
+      cancelar();        
+    }
 
     }
     
@@ -75,16 +65,16 @@ const FormularioPersona = ({
   }
 
   useEffect(() => {
-   
   }, [hasHorario])
 
   useEffect(() => {
-  
+    console.log("homa muchacho soy una bandera");
+    console.log(idPer!=null);
     if (idPer!=null) {
       horarioG.idPerson = idPer;
       senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
     }
-  }, [hasRol,sethorarioG]);
+  }, [hasRol,sethorarioG,idPer]);
   
   
   return (
@@ -101,7 +91,7 @@ const FormularioPersona = ({
               telegramPerson: persona.persona_telegram,
               statusPerson: persona.persona_estado,
               nicknamePerson: persona.persona_nickname,
-              passwordPerson: persona.persona_contraseña,
+              passwordPerson: persona.persona_contrasena,
 
               idSchedule: persona.horario_id,
               daySchedule :  persona.horario_dia,
@@ -278,14 +268,16 @@ const FormularioPersona = ({
 
           await fetchData(
             "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
+            
           cancelar();
 
         } else {
             
          
             await fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
+            
             // cancelar();
-            if (selectedValue.value==5) {
+            if (selectedValue.value!==3 && selectedValue.value!==4) {
               const horariosChange = {
                 idPerson : 0,
                 daySchedule :  values.daySchedule,
@@ -296,7 +288,6 @@ const FormularioPersona = ({
             }
           
         }
-        actual()
       }}
     >
       {({ values, errors, handleBlur, handleChange, handleSubmit }) => (
@@ -424,7 +415,7 @@ const FormularioPersona = ({
               </Form.Group>
             </div>
 
-              {selectedValue.value==5?(
+              {parseInt(selectedValue.value)!==4 &&parseInt( selectedValue.value)!==3&&Object.keys(selectedValue).length !== 0?(
                 <>
               <div
               className="col-md-2 "

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Form, Button, Modal} from "react-bootstrap";
 import { useFetchSendData } from "../../hooks/HookFetchSendData";
 import { useState } from "react";
@@ -6,18 +6,27 @@ import "./Options.css";
 
 export default function FormAddRol({cancelar, asunto}){
 
-    const { fetchData } = useFetchSendData();
+    const {data, fetchData } = useFetchSendData();
 
-    //const [statusRol, setStatusRol] = useState(11);
     const [nameRol, setNameRol] = useState('');
     const [descriptionRol, setDescriptionRol] = useState('');
     const [nameRolError, setNameRolError] = useState(""); // Estado para el mensaje de error
+
+    const[error,  setError] = useState(null);
+
+    useEffect(() => {
+        if(data.desError === "Inserción fallida"){
+            setError(data.desError);
+        }else if (data.desError === "Inserción exitosa") {
+            cancelar();
+        }
+    }, [data, cancelar]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
     
         // Validar que solo se permitan caracteres en minúscula
-        if (!/^[a-z]+$/.test(nameRol)) {
+        if (!/^[a-z\s]+$/.test(nameRol)) {
             setNameRolError("Solo se permiten caracteres en minúscula");
             return; // Salir de la función si no cumple la validación
         }
@@ -35,9 +44,12 @@ export default function FormAddRol({cancelar, asunto}){
             valueReference :  nameRol,
             statusReference: 1
         }
+        //console.log("lo que se envia a insert Rol", formData);
+        //console.log("lo que se envia a insert referencia", reference);
+        
         fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/insertRol", formData);
         fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/insertReference", reference);
-        
+        cancelar();
     };
 
     return(

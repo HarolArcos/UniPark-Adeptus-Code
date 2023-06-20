@@ -6,7 +6,7 @@ import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Modalmensaje from "./MensageGlobalCrearoEditar";
-import { Enviar } from "./enviarMensajeTelegram";
+import { Enviar, PlublicarNoti } from "./enviarMensajeTelegram";
 
 export default function Mensaje() {
   const [show, setShow] = useState(false);
@@ -128,7 +128,7 @@ export default function Mensaje() {
           <label>No existen Mensajes Globales</label>
         ) : (
           <>
-            <label>Numero de Reclamos {noticias.length}</label>
+           
             <Table striped bordered hover className="table">
               <thead>
                 <tr>
@@ -153,35 +153,54 @@ export default function Mensaje() {
                     <td>{noticia.autor}</td>
                     <td>{noticia.autormodificacion}</td>
                     <td>
-                      <Button
-                        variant="success"
-                        onClick={() => {
-                          setShow(true);
-                          setaccion("Editar");
-                          setid(noticia.noticia_id);
-                          setstado(noticia.noticia_estado);
-                          setTitulo(noticia.noticia_titulo);
-                          setmensaje(noticia.noticia_texto);
-                        }}
-                      >
-                        Editar
-                      </Button>
-                      <br />
-                      <br />
+                    <div style={{ marginBottom: '10px' }}>
+  <Button
+    variant="success"
+    style={{ width: '200px' }}
+    onClick={() => {
+      setShow(true);
+      setaccion("Editar");
+      setid(noticia.noticia_id);
+      setstado(noticia.noticia_estado);
+      setTitulo(noticia.noticia_titulo);
+      setmensaje(noticia.noticia_texto);
+    }}
+  >
+    Editar Noticia
+  </Button>
+</div>
 
-                      <Button
-                        variant="success"
-                        onClick={() => {
-                          setShow(true);
-                          setaccion("Enviar");
-                          setid(noticia.noticia_id);
+<div style={{ marginBottom: '10px' }}>
+  <Button
+    variant="success"
+    style={{ width: '200px' }}
+    onClick={() => {
+      setShow(true);
+      setaccion("Enviar");
+      setid(noticia.noticia_id);
+      setTitulo(noticia.noticia_titulo);
+      setmensaje(noticia.noticia_texto);
+    }}
+  >
+    Enviar a Telegram
+  </Button>
+</div>
 
-                          setTitulo(noticia.noticia_titulo);
-                          setmensaje(noticia.noticia_texto);
-                        }}
-                      >
-                        Enviar
-                      </Button>
+<div style={{ marginBottom: '10px' }}>
+  <Button
+    variant="success"
+    style={{ width: '200px' }}
+    onClick={() => {
+      setShow(true);
+      setaccion("Publicar");
+      setid(noticia.noticia_id);
+      setTitulo(noticia.noticia_titulo);
+      setmensaje(noticia.noticia_texto);
+    }}
+  >
+    Publicar Noticia
+  </Button>
+</div>
                     </td>
                   </tr>
                 ))}
@@ -245,9 +264,7 @@ export default function Mensaje() {
                       onClick={() =>
                         Enviar(
                           titulo,
-                          mensaje,
-                          id,
-                          fetchData,
+                          mensaje,                          
                           fetchConfiguraciones,
                           handleClose
                         )
@@ -270,6 +287,35 @@ export default function Mensaje() {
                     </Button>
                   </div>
                 );
+                case "Publicar":
+                  return(<div>
+                    <Form className="container">
+                      <Form.Group>
+                        <Form.Label className="text-left">Titulo</Form.Label>
+                      </Form.Group>
+                      <Form.Group>{titulo}</Form.Group>
+                      <Form.Group>
+                        <Form.Label className="text-left">Mensaje</Form.Label>
+                      </Form.Group>
+                      <Form.Group>{mensaje}</Form.Group>
+                    </Form>
+                    <Button
+                      variant="success"
+                      onClick={() =>
+                        PlublicarNoti(                          
+                          id,
+                          fetchData,
+                          fetchConfiguraciones,
+                          handleClose
+                        )
+                      }
+                      type="submit"
+                      className="btn btn-primary"
+                    >
+                      Confirmar Publicacion en Página
+                      
+                    </Button>
+                  </div>)
               default:
                 return null;
             }

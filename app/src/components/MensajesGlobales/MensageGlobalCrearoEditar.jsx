@@ -19,7 +19,7 @@ export default function Modalmensaje({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (url !== "" && Object.keys(json).length !== 0&&mensaje && titulo) {
+    if (url !== "" && Object.keys(json).length !== 0&&mensaje && titulo&&tieneCaracterAlfabeto(titulo)&&tieneCaracterAlfabeto(mensaje)) {
       
       fetchData(url, json);
 
@@ -30,8 +30,12 @@ export default function Modalmensaje({
     fetchConfiguraciones()
 
   }, [url, json]);
-
+  function tieneCaracterAlfabeto(str) {
+    const regex = /[a-zA-Z]/;
+    return regex.test(str);
+  }
   function guardar() {
+    
     if (id !== "" && estado !== "") {
       setUrl("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/editNews");
       setJson({
@@ -54,7 +58,7 @@ export default function Modalmensaje({
 
     }
 
-    if (mensaje && titulo) {
+    if (mensaje && titulo&&tieneCaracterAlfabeto(titulo)&&tieneCaracterAlfabeto(mensaje)) {
       setError(null);
     } else {
       setError("Debe llenar los campos de Título y Mensaje");

@@ -36,6 +36,8 @@ import DeleteEmployee from "../Employee/ChangeStateEmployee/ChangeStateEmployee"
 import { SubscriptionInMora } from "../Subscription/SuscriptionInMora";
 import Noticias from "../Noticias/Noticias";
 import Listapagoclien from "../Listar Pagos/ListaPagoClien";
+import AddRolSection from "../Options/AddRolSection";
+import AddOptions from "../Options/AddOption";
 
 export const AppRouter = () => {
   return (
@@ -147,6 +149,9 @@ export const AppRouter = () => {
         
         <Route path="/evento" element={<Event />} /> {/* Registrar evento */} {/* Vehiculo */}
         
+        <Route path="/addRol" element={<AddRolSection/>}/> {/* Agregar roles*/} {/* Configuraciones */}
+        <Route path="/addOptions" element={<AddOptions/>}/> {/* Agregar opciones a rol*/} {/* Configuraciones */}
+
         <Route path="/Noticias" element={<Noticias />} />
         <Route path="*" element={<Login />} />
       </Routes>

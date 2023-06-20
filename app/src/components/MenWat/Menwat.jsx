@@ -36,7 +36,7 @@ export default function Whats({ subs, cerrar, show }) {
         <Modal
           mostrarModal={show}
           tamaño="md"
-          title="Cambiar Estado"
+          title="Envio de Aviso Mora"
           contend={
             <>
               <div className="text-left">

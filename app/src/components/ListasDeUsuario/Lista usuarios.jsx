@@ -24,7 +24,7 @@ function ListaC() {
   const [datitos, setdatitos] = useState([]);
   const [show, setShow] = useState(false);
   const [usuario, setusuario] = useState([]);
-  const [mensa, setmensa] = useState(null);
+  const [mensa, setmensa] = useState("");
 
   const handleClose = () => setShow(false);
 
@@ -134,7 +134,7 @@ function ListaC() {
         </Table>
         <Modal show={show} onHide={handleClose} centered>
           <ModalBody className="modal-body">
-            <h1 className="forgot-password-modal"> Editar Acción</h1>
+            <h1 className="forgot-password-modal"> Enviar Mensaje</h1>
             <Form className="container">
               <Form.Label
                 className="text-left"
@@ -165,7 +165,7 @@ function ListaC() {
               <div></div>
               <textarea
                 rows="3"
-                cols="50"
+                cols="45"
                 placeholder="escriba el mensaje aqui"
                 onChange={(e) => setmensa(e.target.value)}
               ></textarea>

@@ -51,15 +51,35 @@ export default function NumeroSitios({ fetchData }) {
   };
   // Función para guardar los cambios editados
   function saveChanges() {
-    fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration",
+
+    fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
+    .then(datos => datos.json())
+    .then(datos => {let datas = datos.filter((dat)=>parseInt(dat.suscripcion_numero_parqueo)>editedValor1&&
+      dat.suscripcion_estado!=="11")
+      let tar =""
+      if (datas.length!==0) {
+         tar="No se actulizo por los siguientes campos estan o estaran ocupados\nNum.     Estado\n"
+        datas.map((cont) => tar = tar + cont.suscripcion_numero_parqueo + "       " + cont.referencia_valor+"\n")
+       
+      
+      } else {
+        fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/editConfiguration",
     {
         "idConfiguration" : editingId,
         "nameConfiguration" : editedNombre,
         "value1Configuration" : editedValor1
     })
-    handleClose()
+     tar = "se actualizo"
     fetchConfiguraciones();
      setbandera("actualiza")
+      }
+      alert(tar) 
+      handleClose()
+
+    });
+
+
+    
     
     // Aquí puedes realizar una llamada a tu backend para guardar los cambios
     // por ejemplo, utilizando una función `saveChangesToBackend(updatedSitio)`

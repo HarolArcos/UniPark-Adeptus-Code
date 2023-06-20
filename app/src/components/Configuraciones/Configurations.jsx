@@ -15,9 +15,9 @@ export default function Configura () {
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
-const { data, loading, error }= useFetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiConfiguracion/apiConfiguracion.php/listConfiguration")
+
     const{ fetchData }= useFetchSendData()
-if (!loading) {
+
     
     return (
         <div>
@@ -54,7 +54,7 @@ if (!loading) {
                   fetchData={ fetchData } // Extrae la función fetchData del hook useFetchSendData
                 />
               )}
-              {activeTab === 2 && <NumeroSitios sitios={data.filter((obj)=> obj.configuracion_nombre==="numero_sitios")} fetchData={ fetchData }/>}
+              {activeTab === 2 && <NumeroSitios fetchData={ fetchData }/>}
             </div>
           </div>
         </div>
@@ -62,6 +62,6 @@ if (!loading) {
           <Footer></Footer>
         </div>
       );
-}
+
   
   };
