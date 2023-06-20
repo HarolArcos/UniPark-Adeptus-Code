@@ -311,7 +311,7 @@
         if ( $responseDelete){
             $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado exitosa"));
         }else{
-            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado fallida"));
+            $response = array("codError" => 200, "data" => array("desError"=>"Cambio de estado, exitoso"));
         }
 
         $timeProcess = microtime(true)-$startTime;

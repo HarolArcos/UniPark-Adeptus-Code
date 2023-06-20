@@ -322,7 +322,38 @@ class person {
     }
     public function changeStatePersonDb($idPerson, $statusPerson){
         $response = false;
-        $sql =  "UPDATE persona SET persona_estado = $statusPerson WHERE persona_id = $idPerson";
+        $sql2 =  "UPDATE persona SET persona_estado = $statusPerson WHERE persona_id = $idPerson;";
+        $sql3 = "DO $$
+        BEGIN
+            UPDATE persona
+            SET persona_estado = $statusPerson
+            WHERE persona_id = $idPerson;
+        
+            IF (SELECT persona_estado FROM persona WHERE persona_id = $idPerson) = 2 THEN
+                UPDATE vehiculo
+                SET vehiculo_estado = 7
+                WHERE persona_id = $idPerson;
+            END IF;
+        END $$;";
+        $sql = "DO $$
+        BEGIN
+            UPDATE persona
+            SET persona_estado = $statusPerson
+            WHERE persona_id = $idPerson;
+        
+            IF (SELECT persona_estado FROM persona WHERE persona_id = $idPerson) = 2 THEN
+                UPDATE vehiculo
+                SET vehiculo_estado = 7
+                WHERE persona_id = $idPerson;
+                UPDATE suscripcion
+                SET suscripcion_estado = 9
+                WHERE persona_id = $idPerson;
+            ELSIF (SELECT persona_estado FROM persona WHERE persona_id = $idPerson) = 1 THEN
+                UPDATE vehiculo
+                SET vehiculo_estado = 6
+                WHERE persona_id = $idPerson;
+            END IF;
+        END $$;";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idPerson" => $idPerson,"persona_estado" => $statusPerson),

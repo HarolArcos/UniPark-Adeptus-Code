@@ -234,7 +234,8 @@ class vehicle {
         r.referencia_valor AS vehiculoEstado
         FROM vehiculo v
         JOIN persona p ON v.persona_id = p.persona_id
-        JOIN referencia r ON v.vehiculo_estado = r.referencia_id";
+        JOIN referencia r ON v.vehiculo_estado = r.referencia_id
+        WHERE r.referencia_valor = 'activo'";
         $rs = $this->_db->select($sql);
         if($this->_db->getLastError()) {
             
