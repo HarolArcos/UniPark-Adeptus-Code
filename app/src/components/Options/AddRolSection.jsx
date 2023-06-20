@@ -11,6 +11,7 @@ import "./Options.css"
 
 
 export default function AddRolSection(){
+    const [bandera, setBandera] = useState("");
 
     const [busqueda, setBusqueda] = useState("");
     const [roles, setroles] = useState([]);
@@ -33,8 +34,10 @@ export default function AddRolSection(){
     }, [data]);
 
     useEffect(() => {
+        setBandera("")
         cargarDatos();
-    }, []);
+        handleCancelar();
+    }, [bandera]);
 
     const cargarDatos = async () => {
         await fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/listRol");
@@ -144,9 +147,14 @@ export default function AddRolSection(){
                     <FormAddRol 
                     cancelar={handleCancelar}
                     asunto = "Guardar Rol"
+                    bandera = {setBandera}
                     >
                         
                     </FormAddRol>
+                    // <FormAddRolServer
+                    //     asunto="Guardar Rol"
+                    //     cancelar={handleCancelar}
+                    // ></FormAddRolServer>
                 }
                 hide = {handleCancelar}
                 >
