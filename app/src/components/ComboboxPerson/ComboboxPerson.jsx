@@ -2,10 +2,10 @@ import Select from 'react-select';
 import { useFetch } from '../../hooks/HookFetchListData';
 import { useEffect, useState } from 'react';
 
-export default function ComboboxPerson({ onPersonaIdChange ,id}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
+export default function ComboboxPerson({ onPersonaIdChange ,id,suscri=false}) { // actualiza la firma para recibir el id y la función onPersonaIdChange
   
   
-  const { data, loading } = useFetch(
+  const { data, loading } = useFetch( suscri? "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient":
     "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClientActive"
   )
   const [selectedPersonaId, setSelectedPersonaId] = useState(null); 

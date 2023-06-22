@@ -123,6 +123,7 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
               <ComboboxPerson 
                 id={suscripcion ? suscripcion.persona_id : null}
                 onPersonaIdChange={handlePersonaIdChange}
+                suscri={true}
               />
               <ErrorMessage name="idPerson" component={()=>(<div className="text-danger">{errors.idPerson}</div>)}></ErrorMessage>
             </div>
