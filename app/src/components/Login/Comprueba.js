@@ -17,10 +17,10 @@ export default function Comprueba (navigate, datos,setUserglobal) {
         const fsub= new Date(p.suscripcion_expiracion)
         const factu=new Date()
         if (fsub>=factu&&p) {
-           localStorage.setItem("sus","Su subcripcion termina en "+p.suscripcion_expiracion.slice(0, 10))
+           localStorage.setItem("sus","Su suscripción termina en "+p.suscripcion_expiracion.slice(0, 10))
            
         } else {
-            localStorage.setItem("mora","Usted esta en Mora, su subscripcion termino en "+p.suscripcion_expiracion.slice(0, 10))
+            localStorage.setItem("mora","Usted esta en Mora, su suscripción termino en "+p.suscripcion_expiracion.slice(0, 10))
         }
                 
             }
