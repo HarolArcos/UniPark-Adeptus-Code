@@ -55,10 +55,10 @@ export default function NumeroSitios({ fetchData }) {
     fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
     .then(datos => datos.json())
     .then(datos => {let datas = datos.filter((dat)=>parseInt(dat.suscripcion_numero_parqueo)>editedValor1&&
-      dat.suscripcion_estado!=="11")
+      dat.suscripcion_estado==="27"||dat.suscripcion_estado==="8")
       let tar =""
       if (datas.length!==0) {
-         tar="No se actulizo por los siguientes campos estan o estaran ocupados\nNum.     Estado\n"
+         tar="No se pudo actualizar debido a que los siguientes sitios son ocupados y están fuera del rango que desea establecer\nNum.     Estado\n"
         datas.map((cont) => tar = tar + cont.suscripcion_numero_parqueo + "       " + cont.referencia_valor+"\n")
        
       
@@ -131,14 +131,14 @@ export default function NumeroSitios({ fetchData }) {
 
     <Modal show={show} onHide={handleClose} centered>
         <ModalBody className="modal-body">
-          <h1 className="forgot-password-modal">Editar Acción</h1>
+          <h1 className="forgot-password-modal">Editar Máximo Número de Sitios</h1>
           <Form className="container">
             <Form.Group>
               <Form.Label className="text-left">Nombre: {editedNombre}</Form.Label>
             </Form.Group>
             <Form.Group>
               <Form.Label className="text-left">Valor:</Form.Label>
-              <br />
+              <span>  </span>
               <input
                   type="text"
                   value={editedValor1}
