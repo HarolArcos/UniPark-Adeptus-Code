@@ -348,6 +348,9 @@ class person {
                 UPDATE suscripcion
                 SET suscripcion_estado = 9
                 WHERE persona_id = $idPerson;
+                UPDATE suscripcion
+                SET suscripcion_numero_parqueo = 0
+                WHERE persona_id = $idPerson;
             ELSIF (SELECT persona_estado FROM persona WHERE persona_id = $idPerson) = 1 THEN
                 UPDATE vehiculo
                 SET vehiculo_estado = 6
