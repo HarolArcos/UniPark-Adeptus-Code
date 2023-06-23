@@ -55,7 +55,7 @@ function ListaPa() {
     if (dato.desError) {
       return(dato)
     } else {
-      return dato.filter(obj => obj.historial_pago_id !== null)
+      return dato.filter(obj => obj.historial_pago_monto !== null)
     }
       
   }
