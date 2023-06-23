@@ -37,7 +37,7 @@ export default function Modalmensaje({
   function guardar() {
     
     if (id !== "" && estado !== "") {
-      setUrl("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/editNews");
+      setUrl("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/editNews");
       setJson({
         "idNews": id,
         "statusNews": 26,
@@ -47,7 +47,7 @@ export default function Modalmensaje({
       });
       
     }else{
-        setUrl("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/insertNews");
+        setUrl("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiNews/apiNews.php/insertNews");
         setJson({
             "idPerson" : userglobal.persona_id,
             "statusNews" :  26,

@@ -8,7 +8,7 @@ export default function Comprueba (navigate, datos,setUserglobal) {
         
         
         
-        fetch("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
+        fetch("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription")
         
         .then((response) => response.json())
         .then((per)=>{let [p] = per.filter((p)=>p.persona_id===datos.persona[0].persona_id)

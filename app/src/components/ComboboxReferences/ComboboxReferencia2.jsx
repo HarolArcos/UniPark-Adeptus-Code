@@ -13,7 +13,7 @@ export default function ComboboxReferences({ defaultValue,onChange, id}) {
   const [loading, setLoading] = useState(true)
   
 useEffect(() => {
-  sendAndReceiveJson("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences", {
+  sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiReference/apiReference.php/listReferences", {
     tableNameReference: "persona",
     nameSpaceReference: "persona_tipo"
   }).then((responseData) => {

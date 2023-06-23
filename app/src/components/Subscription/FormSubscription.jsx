@@ -96,7 +96,7 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
         values.numParkSubscription = selectedSiteId;
         values.idTarifa = selectedTarifa;
       
-        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/editSubscription',values);
         cancelar();
         
       } else {
@@ -104,7 +104,7 @@ const Formulario = ({asunto,cancelar, suscripcion}) => {
         values.numParkSubscription = selectedSiteId;
         values.idTarifa = selectedTarifa;
        
-        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/insertSubscription',values);
         cancelar();
       }
 

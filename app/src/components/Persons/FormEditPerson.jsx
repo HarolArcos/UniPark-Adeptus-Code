@@ -34,7 +34,7 @@ import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
    const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
    const [rol, setrol] = useState("")
    const { data: lista, loading } = useFetch(
-     "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+     "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
    );
    useEffect(() => {
      
@@ -43,12 +43,12 @@ import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
       if(data  &&  data.desError === "Cambios realizados con exito"&&rol!==""){
         let ro=rol.replace(/\s/g, "")
         console.log(ro);
-        sendAndReceiveJson("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/idRolForTypePerson",{
+        sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/idRolForTypePerson",{
           "typePerson" : ro
       }).then(res => {console.log(res);
         
         
-        senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
+        senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/editPersonHasRol", 
       {
         idPersonHasRol:persona.persona_has_rol_id,
       idPerson: persona.persona_id,
@@ -78,7 +78,7 @@ import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
      
      if (idPer!=null) {
       horarioG.idPerson = idPer;
-       senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+       senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
      }
      
  
@@ -259,7 +259,7 @@ import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
            
  
            await fetchData(
-             "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
+             "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
  
            if (parseInt(selectedValue)!==4&&parseInt(selectedValue)!==3&&selectedValue) {
             if (values.idSchedule) {
@@ -269,7 +269,7 @@ import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
                 entrySchedule : values.entrySchedule,
                 departureSchedule :  values.departureSchedule
               }
-             await senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",horariosChange);
+             await senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/changeSchedule",horariosChange);
             }else{
               
               const horariosChange = {
@@ -278,7 +278,7 @@ import { sendAndReceiveJson } from "../../hooks/HookFetchSendAndGetData";
                 entrySchedule : values.entrySchedule,
                 departureSchedule :  values.departureSchedule
               }
-             await senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horariosChange);
+             await senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horariosChange);
 
             }
            }
