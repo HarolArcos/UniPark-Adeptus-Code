@@ -23,7 +23,7 @@ export default function Event(){
     const [newEvent,setEvent] =  useState([]);
 
     useEffect(() => {
-        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
+        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
 
     }, []);
 
@@ -48,14 +48,14 @@ export default function Event(){
     const cargarDatos = async () =>{
 
         try {
-            const response = await fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
+            const response = await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
             const data = await response.json();
     
             setEventos(data)
             setTablaEventos(data)
             
           } catch (error) {
-    
+            
           } 
     }
 
