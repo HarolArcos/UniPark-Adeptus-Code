@@ -29,6 +29,11 @@ const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
     const [mensaje, setMensaje] = useState(null);
     const [caso, setCaso] = useState(null);
     const [show, setShow] = useState(false);
+    const [showA, setShowA] = useState(false);
+
+  
+
+
     
   useEffect(() => {
     if (tarifa) {
@@ -88,6 +93,7 @@ const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
   };
 
   return (
+    <>
     <Formik
     initialValues={
       tarifa? {
@@ -135,11 +141,16 @@ const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
         }
         if(listaT!==null || listaT.length!==0){
           let elementos = listaT.filter((e)=>e.tarifa_nombre==values.nameRate);
+          console.log(elementos.length!=0,'pasa');
           if (elementos.length!=0) {
+            setShowA(true);
             let resp = elementos.find((e)=>obtenerFecha(e.tarifa_expiracion)===values.dateExpirationRate);
             if (resp) {
               errors.dateExpirationRate = `Ya existe plazo: ${values.nameRate} con la misma fecha de expiración`;
             }
+          }else{
+
+            setShowA(false);
           }
         }
       }
@@ -338,7 +349,27 @@ const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
             </Button>):(<></>)
             }
 
-            {tarifa==null?(
+            {tarifa==null && showA?(
+              <Alert variant="danger" >
+              <Alert.Heading>Alerta</Alert.Heading>
+              <p>
+                Ya existe una tarifa con el mismo plazo ¿desea continuar?
+              </p>
+              <hr />
+              <div className="d-flex justify-content-end">
+                <div className="mr-2">
+                  <Button variant="outline-secondary" onClick={cancelar}>
+                    Cancelar
+                  </Button>
+                </div>
+                <div>
+                  <Button onClick={() => setShowA(false)} variant="outline-success">
+                    Aceptar
+                  </Button>
+                </div>
+              </div>
+            </Alert>
+            ):(
             <>
             <Button variant="secondary" onClick={cancelar}>
                 Cancelar
@@ -346,18 +377,21 @@ const Formulario = ({asunto,cancelar, tarifa = null,listaT=null}) => {
               <Button variant="success"  className="button" onClick={handleSubmit}  >
               {asunto}
               </Button>
-            </>):(
-              <></>
-            )}
+            </>
+              )}
             
           </Modal.Footer>
           
           }
-          
+         
+
         </Form>
+
       )}
     </Formik>
+    </>
   );
+          
 };
 
 export default Formulario;
