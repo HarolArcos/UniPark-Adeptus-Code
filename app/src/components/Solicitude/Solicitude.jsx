@@ -95,7 +95,7 @@ export const Solicitude = () => {
                                 
                                 <tr key="2">
                                 <th>Estado: </th>
-                                <th>Su Anterior Solicitud fue rechazada, Realice una nueva solicitud</th>
+                                <th>Su anterior solicitud fue rechazada, realice una nueva solicitud o consulte con el administrador</th>
                                     
                                 </tr>
                             </tbody>:<>
