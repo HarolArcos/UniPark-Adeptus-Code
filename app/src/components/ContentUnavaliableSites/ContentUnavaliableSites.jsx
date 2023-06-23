@@ -12,7 +12,7 @@ export default function ContentUnavalible(){
     const [datos, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription')
+        fetch('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/listSubscription')
             .then(response => response.json())
             .then(data => setData(data))
             .catch(error => console.error(error));

@@ -28,7 +28,7 @@ const FormularioPersona = ({
   const { data: hasHorario, fetchData: senHorario } = useFetchSendData();
 
   const { data: lista, loading } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
   useEffect(() => {
     
@@ -40,9 +40,9 @@ const FormularioPersona = ({
         
         setIdPer(personaId);
       }
-      sendAndReceiveJson("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/idRolForTypePerson",{
+      sendAndReceiveJson("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiRol/apiRol.php/idRolForTypePerson",{
         "typePerson" : rol
-    }).then(res => {senRol("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
+    }).then(res => {senRol("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPersonHasRol/apiPersonHasRol.php/insertPersonHasRol", 
     {
       idPerson: personaId,
       idRol: res[0].rol_id 
@@ -72,7 +72,7 @@ const FormularioPersona = ({
     console.log(idPer!=null);
     if (idPer!=null) {
       horarioG.idPerson = idPer;
-      senHorario("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
+      senHorario("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSchedule/apiSchedule.php/insertSchedule",horarioG);
     }
   }, [hasRol,sethorarioG,idPer]);
   
@@ -267,14 +267,14 @@ const FormularioPersona = ({
        
 
           await fetchData(
-            "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
+            "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/editPerson",datosUser);
             
           cancelar();
 
         } else {
             
          
-            await fetchData("http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
+            await fetchData("http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/insertPerson",datosUser);
             
             // cancelar();
             if (selectedValue.value!==3 && selectedValue.value!==4) {

@@ -29,7 +29,7 @@ function ListaC() {
   const handleClose = () => setShow(false);
 
   const { data, loading, error } = useFetch(
-    "http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
+    "http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPerson"
   );
 
   function Whats(cliente) {

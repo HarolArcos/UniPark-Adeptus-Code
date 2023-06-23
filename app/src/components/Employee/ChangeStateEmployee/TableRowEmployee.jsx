@@ -9,7 +9,7 @@ function TableEmployee({ data ,getClients,bandera}) {
 
     const handleStateChange = async (personId, currentState) => {
         const newStatus = currentState === "1" ? "2" : "1";
-         fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/changeStatePerson', {
+         fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/changeStatePerson', {
             idPerson: personId,
             statusPerson: newStatus
         });

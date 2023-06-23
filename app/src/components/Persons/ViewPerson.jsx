@@ -19,7 +19,7 @@ export default function ViewPerson(){
     const{data,fetchData} = useSend();
 
     useEffect(() => {
-        fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+        fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
    }, []);
 
    useEffect(() => {
@@ -39,7 +39,7 @@ export default function ViewPerson(){
    }, []);
 
    const cargarDatos = async () =>{
-       await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
+       await fetchData('http://adeptuscode.tis.cs.umss.edu.bo//UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiPerson/apiPerson.php/listPersonClient')
    }
     //----------------------ShowModal-------------------------------
     
