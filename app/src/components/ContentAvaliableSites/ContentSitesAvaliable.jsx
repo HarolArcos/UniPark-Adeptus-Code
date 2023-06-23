@@ -39,8 +39,8 @@ export default function ContentSitesAvalible(){
     
     return(
         <>
-            <Header></Header>
-            <Aside></Aside>
+            {/* <Header></Header>
+            <Aside></Aside> */}
             <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <Table striped bordered hover className="table">
                 <thead>
@@ -60,7 +60,7 @@ export default function ContentSitesAvalible(){
             </Table>
             <br/><br/>
         </div>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </>
     )
 }

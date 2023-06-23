@@ -14,10 +14,10 @@ const { data, loading, error } = useFetch("http://localhost/UniPark-Adeptus-Code
   if(!loading){
     return(
        <div>
-        <Header></Header>
-        <Aside/>
+        {/* <Header></Header>
+        <Aside/> */}
         <Claimquery datos={data.find(config => config.configuracion_nombre === "telefono").configuracion_valor1}></Claimquery>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
        </div>
     )}
 }

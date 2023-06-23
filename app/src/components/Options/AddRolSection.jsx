@@ -85,8 +85,8 @@ export default function AddRolSection(){
 
     return(
         <>
-            <Header></Header>
-            <Aside></Aside>
+            {/* <Header></Header>
+            <Aside></Aside> */}
             <div className="content-wrapper addrolsection">
         
                 {/* {localStorage.getItem("Error") ?
@@ -161,7 +161,7 @@ export default function AddRolSection(){
                 </Modal>
             </div>
         </div>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </>
     )
 }
