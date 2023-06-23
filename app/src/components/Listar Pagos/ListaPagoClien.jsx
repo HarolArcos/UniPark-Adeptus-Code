@@ -28,9 +28,16 @@ function ListaPa() {
       {
         idPerson: userglobal.persona_id,
       }
-    ).then((dato) => setlistau(dato));
+    ).then((dato) => setlistau(filtrar(dato)));
   }, []); // Dependencia vacía para que se ejecute solo una vez al montar el componente
-
+  function filtrar(dato) {
+    if (dato.desError) {
+      return(dato)
+    } else {
+      return dato.filter(obj => obj.historial_pago_id !== null)
+    }
+      
+  }
   useEffect(() => {
     if (listau.length > 0) {
       let totalMonto = listau.reduce(
