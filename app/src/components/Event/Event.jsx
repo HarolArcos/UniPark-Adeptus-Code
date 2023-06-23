@@ -110,8 +110,8 @@ export default function Event(){
 
     return(
         <>
-            {/* <Header></Header>
-            <Aside></Aside> */}
+            <Header></Header>
+            <Aside></Aside>
 
             <div className="content-wrapper">
                 <div className="bodyItems">
@@ -178,7 +178,7 @@ export default function Event(){
                 </div>
             </div>
 
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </>
     )
 

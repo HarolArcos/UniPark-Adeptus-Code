@@ -139,8 +139,8 @@ export default function AddOptions () {
 
   return (
     <>
-      {/* <Header></Header>
-      <Aside></Aside> */}
+      <Header></Header>
+      <Aside></Aside>
       <div className='content-wrapper addoptionssection'>
           {showAlert && (
                 <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
@@ -204,7 +204,7 @@ export default function AddOptions () {
             </Col>
           </Row>
         </div>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </>
 
     );

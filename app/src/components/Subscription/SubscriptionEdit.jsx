@@ -131,8 +131,8 @@ export const SubscriptionEdit = () => {
     }
     return (
         <>
-        {/* <Header></Header>
-        <Aside></Aside> */}
+        <Header></Header>
+        <Aside></Aside>
         <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
@@ -226,7 +226,7 @@ export const SubscriptionEdit = () => {
             </div>
         </div>
 
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
         </>
 
     )

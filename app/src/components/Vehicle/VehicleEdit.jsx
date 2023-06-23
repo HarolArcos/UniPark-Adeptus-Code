@@ -99,8 +99,8 @@ export const VehicleEdit = () => {
  
     return (
         <>
-        {/* <Header></Header>H
-        <Aside></Aside> */}
+        <Header></Header>
+        <Aside></Aside>
         <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
@@ -182,7 +182,7 @@ export const VehicleEdit = () => {
             </div>
         </div>
 
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
         </>
 
     )

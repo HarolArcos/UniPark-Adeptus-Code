@@ -1,9 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from "react";
 import Login from "../Login/Login";
-import Aside from '../Aside/Aside';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import { Main } from "../Main/Main";
 import ContentUnavalible from "../ContentUnavaliableSites/ContentUnavaliableSites";
 import ContentSitesAvalible from "../ContentAvaliableSites/ContentSitesAvaliable";
@@ -45,8 +42,6 @@ import AddOptions from "../Options/AddOption";
 export const AppRouter = () => {
   return (
     <Router>
-      <Header></Header>
-      <Aside></Aside>
       <Routes>
         {/*---------------------------Rutas------------------------ */}
         <Route exact path="/" element={<Login />} />
@@ -160,7 +155,6 @@ export const AppRouter = () => {
         <Route path="/Noticias" element={<Noticias />} />
         <Route path="*" element={<Login />} />
       </Routes>
-      <Footer></Footer>
     </Router>
   );
 };

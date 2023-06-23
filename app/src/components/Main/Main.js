@@ -33,14 +33,14 @@ export const Main = () => {
 
   return (
     <div>
-      {/* <Header></Header>
-      <Aside></Aside> */}
+      <Header></Header>
+      <Aside></Aside>
       <DatosUser />
       
       
 
       
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </div>
   );
 };

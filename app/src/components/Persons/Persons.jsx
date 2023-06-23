@@ -103,8 +103,8 @@ export default function Persons(){
     
     return(
         <>
-        {/* <Header></Header>
-        <Aside></Aside> */}
+        <Header></Header>
+        <Aside></Aside>
 
         <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         
@@ -172,7 +172,7 @@ export default function Persons(){
         </div>
         <br></br>
         
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
         </>
     )
 }
