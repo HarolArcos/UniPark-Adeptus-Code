@@ -1,0 +1,16 @@
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (72)	Array
+(
+    [time] => 0.52315902709961
+    [input] => {"nicknamePerson":"gonzazm","passwordPerson":"gonza123"}
+    [output] => Array
+        (
+            [codError] => 200
+            [data] => Array
+                (
+                    [desError] => true
+                )
+
+        )
+
+)
+ Funcion: validatePerson	300 NOTICE

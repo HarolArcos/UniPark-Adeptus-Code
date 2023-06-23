@@ -1,0 +1,114 @@
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [configuracion_id] => 5
+                    [configuracion_nombre] => Lunes
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [1] => Array
+                (
+                    [configuracion_id] => 6
+                    [configuracion_nombre] => Martes
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [2] => Array
+                (
+                    [configuracion_id] => 7
+                    [configuracion_nombre] => Miercoles
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [3] => Array
+                (
+                    [configuracion_id] => 8
+                    [configuracion_nombre] => Jueves
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [4] => Array
+                (
+                    [configuracion_id] => 9
+                    [configuracion_nombre] => Viernes
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [5] => Array
+                (
+                    [configuracion_id] => 10
+                    [configuracion_nombre] => Sabado
+                    [configuracion_valor1] => 09:00
+                    [configuracion_valor2] => 13:00
+                )
+
+        )
+
+    [sql] => SELECT * FROM configuracion WHERE configuracion_id NOT IN (1,2,3,4)
+)
+ Function error: listConfigurationHorarioDb	100 DEBUG
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [configuracion_id] => 5
+                    [configuracion_nombre] => Lunes
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [1] => Array
+                (
+                    [configuracion_id] => 6
+                    [configuracion_nombre] => Martes
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [2] => Array
+                (
+                    [configuracion_id] => 7
+                    [configuracion_nombre] => Miercoles
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [3] => Array
+                (
+                    [configuracion_id] => 8
+                    [configuracion_nombre] => Jueves
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [4] => Array
+                (
+                    [configuracion_id] => 9
+                    [configuracion_nombre] => Viernes
+                    [configuracion_valor1] => 06:00
+                    [configuracion_valor2] => 19:00
+                )
+
+            [5] => Array
+                (
+                    [configuracion_id] => 10
+                    [configuracion_nombre] => Sabado
+                    [configuracion_valor1] => 09:00
+                    [configuracion_valor2] => 13:00
+                )
+
+        )
+
+    [sql] => SELECT * FROM configuracion WHERE configuracion_id NOT IN (1,2,3,4)
+)
+ Function error: listConfigurationHorarioDb	100 DEBUG

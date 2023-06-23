@@ -16,7 +16,7 @@
         )
 
     [sql] => INSERT INTO persona(persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram,
-        persona_estado, persona_nickname, persona_contrasena) VALUES ('Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 
+        persona_estado, persona_nickname, persona_contraseña) VALUES ('Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 
                 1 , 'gonzazm' , '123456')
     [error] => ERROR:  no existe la columna «persona_nombre» en la relación «persona»
 LINE 1: INSERT INTO persona(persona_nombre, persona_apellido, person...

@@ -1,0 +1,495 @@
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [persona] => Array
+                (
+                    [0] => Array
+                        (
+                            [persona_id] => 1
+                            [persona_tipo] => 4
+                            [persona_nombre] => Gonzalo
+                            [persona_apellido] => Zeballos
+                            [persona_ci] => 9456187
+                            [persona_telefono] => 71568478
+                            [persona_telegram] => 84123456
+                            [persona_estado] => 1
+                            [persona_nickname] => gonzazm
+                            [persona_contraseña] => gonza123
+                            [referencia_valor] => admin
+                            [rol_nombre] => admin
+                        )
+
+                )
+
+            [opciones padre 0] => Array
+                (
+                    [0] => Array
+                        (
+                            [opcion_id] => 42
+                            [opcion_padre] => 0
+                            [opcion_orden] => 12
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Agregar Usuario
+                        )
+
+                    [1] => Array
+                        (
+                            [opcion_id] => 26
+                            [opcion_padre] => 0
+                            [opcion_orden] => 7
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Tarifa
+                        )
+
+                    [2] => Array
+                        (
+                            [opcion_id] => 24
+                            [opcion_padre] => 0
+                            [opcion_orden] => 10
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Configuración
+                        )
+
+                    [3] => Array
+                        (
+                            [opcion_id] => 23
+                            [opcion_padre] => 0
+                            [opcion_orden] => 9
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Reclamos y consultas
+                        )
+
+                    [4] => Array
+                        (
+                            [opcion_id] => 20
+                            [opcion_padre] => 0
+                            [opcion_orden] => 6
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Suscripción
+                        )
+
+                    [5] => Array
+                        (
+                            [opcion_id] => 16
+                            [opcion_padre] => 0
+                            [opcion_orden] => 4
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Vehículo
+                        )
+
+                    [6] => Array
+                        (
+                            [opcion_id] => 14
+                            [opcion_padre] => 0
+                            [opcion_orden] => 11
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Pagos
+                        )
+
+                    [7] => Array
+                        (
+                            [opcion_id] => 8
+                            [opcion_padre] => 0
+                            [opcion_orden] => 3
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Empleados
+                        )
+
+                    [8] => Array
+                        (
+                            [opcion_id] => 7
+                            [opcion_padre] => 0
+                            [opcion_orden] => 2
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Clientes
+                        )
+
+                    [9] => Array
+                        (
+                            [opcion_id] => 5
+                            [opcion_padre] => 0
+                            [opcion_orden] => 5
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Solicitud
+                        )
+
+                    [10] => Array
+                        (
+                            [opcion_id] => 4
+                            [opcion_padre] => 0
+                            [opcion_orden] => 8
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Mensajes y avisos
+                        )
+
+                    [11] => Array
+                        (
+                            [opcion_id] => 2
+                            [opcion_padre] => 0
+                            [opcion_orden] => 1
+                            [opcion_componente] => #
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Sitios
+                        )
+
+                )
+
+            [opciones padre disferente de 0] => Array
+                (
+                    [0] => Array
+                        (
+                            [opcion_id] => 1
+                            [opcion_padre] => 7
+                            [opcion_orden] => 2
+                            [opcion_componente] => /listaTarifa
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver lista de tarifas
+                        )
+
+                    [1] => Array
+                        (
+                            [opcion_id] => 3
+                            [opcion_padre] => 7
+                            [opcion_orden] => 3
+                            [opcion_componente] => /editartarifa
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Modificar datos de tarifa
+                        )
+
+                    [2] => Array
+                        (
+                            [opcion_id] => 6
+                            [opcion_padre] => 8
+                            [opcion_orden] => 1
+                            [opcion_componente] => /MensajeMora
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Mensajes a usuarios en mora
+                        )
+
+                    [3] => Array
+                        (
+                            [opcion_id] => 9
+                            [opcion_padre] => 10
+                            [opcion_orden] => 1
+                            [opcion_componente] => /Configurar
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Configuraciones generales de parqueo
+                        )
+
+                    [4] => Array
+                        (
+                            [opcion_id] => 10
+                            [opcion_padre] => 8
+                            [opcion_orden] => 1
+                            [opcion_componente] => /listMensaje
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Mensajes individuales
+                        )
+
+                    [5] => Array
+                        (
+                            [opcion_id] => 11
+                            [opcion_padre] => 8
+                            [opcion_orden] => 2
+                            [opcion_componente] => /MensajeGlobal
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Gestor de avisos globales
+                        )
+
+                    [6] => Array
+                        (
+                            [opcion_id] => 12
+                            [opcion_padre] => 9
+                            [opcion_orden] => 2
+                            [opcion_componente] => /Reclamos
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Realizar reclamo/consulta
+                        )
+
+                    [7] => Array
+                        (
+                            [opcion_id] => 13
+                            [opcion_padre] => 11
+                            [opcion_orden] => 1
+                            [opcion_componente] => /ListaPagos
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Control de pagos
+                        )
+
+                    [8] => Array
+                        (
+                            [opcion_id] => 15
+                            [opcion_padre] => 4
+                            [opcion_orden] => 4
+                            [opcion_componente] => /evento
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Registrar evento
+                        )
+
+                    [9] => Array
+                        (
+                            [opcion_id] => 17
+                            [opcion_padre] => 4
+                            [opcion_orden] => 1
+                            [opcion_componente] => /registrarVehiculo
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Registrar datos de vehículo
+                        )
+
+                    [10] => Array
+                        (
+                            [opcion_id] => 18
+                            [opcion_padre] => 4
+                            [opcion_orden] => 2
+                            [opcion_componente] => /listvehiculo
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver lista de vehículos
+                        )
+
+                    [11] => Array
+                        (
+                            [opcion_id] => 19
+                            [opcion_padre] => 4
+                            [opcion_orden] => 3
+                            [opcion_componente] => /listEditarVehiculo
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Modificar datos de vehículo
+                        )
+
+                    [12] => Array
+                        (
+                            [opcion_id] => 21
+                            [opcion_padre] => 6
+                            [opcion_orden] => 1
+                            [opcion_componente] => /listaEstadoSuscripciones
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Modificar estado de suscripción
+                        )
+
+                    [13] => Array
+                        (
+                            [opcion_id] => 22
+                            [opcion_padre] => 7
+                            [opcion_orden] => 1
+                            [opcion_componente] => /registrarTarifa
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Registrar nueva tarifa
+                        )
+
+                    [14] => Array
+                        (
+                            [opcion_id] => 25
+                            [opcion_padre] => 10
+                            [opcion_orden] => 2
+                            [opcion_componente] => /addOptions
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Agregar opciones a rol
+                        )
+
+                    [15] => Array
+                        (
+                            [opcion_id] => 27
+                            [opcion_padre] => 1
+                            [opcion_orden] => 2
+                            [opcion_componente] => /sitiosOcupados
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver lista de sitios ocupados
+                        )
+
+                    [16] => Array
+                        (
+                            [opcion_id] => 28
+                            [opcion_padre] => 1
+                            [opcion_orden] => 5
+                            [opcion_componente] => /sitiosDisponibles
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver lista de sitios disponibles
+                        )
+
+                    [17] => Array
+                        (
+                            [opcion_id] => 29
+                            [opcion_padre] => 2
+                            [opcion_orden] => 2
+                            [opcion_componente] => /listClientes
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver lista de clientes
+                        )
+
+                    [18] => Array
+                        (
+                            [opcion_id] => 30
+                            [opcion_padre] => 2
+                            [opcion_orden] => 8
+                            [opcion_componente] => /editClientes
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Modificar datos de clientes
+                        )
+
+                    [19] => Array
+                        (
+                            [opcion_id] => 31
+                            [opcion_padre] => 2
+                            [opcion_orden] => 10
+                            [opcion_componente] => /statusClientes
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Eliminar clientes
+                        )
+
+                    [20] => Array
+                        (
+                            [opcion_id] => 32
+                            [opcion_padre] => 2
+                            [opcion_orden] => 1
+                            [opcion_componente] => /viewClientes
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver datos de clientes
+                        )
+
+                    [21] => Array
+                        (
+                            [opcion_id] => 33
+                            [opcion_padre] => 3
+                            [opcion_orden] => 5
+                            [opcion_componente] => /listEmpleados
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver lista de empleados
+                        )
+
+                    [22] => Array
+                        (
+                            [opcion_id] => 34
+                            [opcion_padre] => 3
+                            [opcion_orden] => 6
+                            [opcion_componente] => /editEmpleados
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Modificar datos de empleados
+                        )
+
+                    [23] => Array
+                        (
+                            [opcion_id] => 35
+                            [opcion_padre] => 3
+                            [opcion_orden] => 7
+                            [opcion_componente] => /statusEmpleados
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Eliminar empleados
+                        )
+
+                    [24] => Array
+                        (
+                            [opcion_id] => 36
+                            [opcion_padre] => 3
+                            [opcion_orden] => 8
+                            [opcion_componente] => /viewEmpleados
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver datos de empleados
+                        )
+
+                    [25] => Array
+                        (
+                            [opcion_id] => 37
+                            [opcion_padre] => 5
+                            [opcion_orden] => 1
+                            [opcion_componente] => /listaSolicitudes
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver lista de solicitudes
+                        )
+
+                    [26] => Array
+                        (
+                            [opcion_id] => 38
+                            [opcion_padre] => 5
+                            [opcion_orden] => 2
+                            [opcion_componente] => /listaEstadoSolicitudes
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Modificar estado de solicitud
+                        )
+
+                    [27] => Array
+                        (
+                            [opcion_id] => 39
+                            [opcion_padre] => 5
+                            [opcion_orden] => 3
+                            [opcion_componente] => /solicitud
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Realizar solicitud
+                        )
+
+                    [28] => Array
+                        (
+                            [opcion_id] => 40
+                            [opcion_padre] => 6
+                            [opcion_orden] => 2
+                            [opcion_componente] => /listaSuscipciones
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver lista de suscripciones
+                        )
+
+                    [29] => Array
+                        (
+                            [opcion_id] => 41
+                            [opcion_padre] => 6
+                            [opcion_orden] => 3
+                            [opcion_componente] => /listaEditarSuscipciones
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Modificar datos de suscripciones
+                        )
+
+                    [30] => Array
+                        (
+                            [opcion_id] => 43
+                            [opcion_padre] => 12
+                            [opcion_orden] => 1
+                            [opcion_componente] => /addUser
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Registrar datos de usuarios
+                        )
+
+                    [31] => Array
+                        (
+                            [opcion_id] => 44
+                            [opcion_padre] => 11
+                            [opcion_orden] => 2
+                            [opcion_componente] => /PagoUser
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Ver mi registro de pagos
+                        )
+
+                    [32] => Array
+                        (
+                            [opcion_id] => 45
+                            [opcion_padre] => 10
+                            [opcion_orden] => 4
+                            [opcion_componente] => /addRol
+                            [opcion_estado] => 21
+                            [opcion_nombre] => Agregar roles
+                        )
+
+                )
+
+        )
+
+    [sql] => SELECT persona.*, tipoPersona.referencia_valor, rol.rol_nombre
+        FROM persona
+        JOIN referencia AS tipoPersona ON persona.persona_tipo = tipoPersona.referencia_id
+        JOIN referencia AS estadoPersona ON persona.persona_estado = estadoPersona.referencia_id
+        JOIN persona_has_rol ON persona.persona_id = persona_has_rol.persona_id
+        JOIN rol ON persona_has_rol.rol_id = rol.rol_id
+        WHERE persona.persona_nickname = 'gonzazm' 
+          AND persona.persona_contraseña = 'gonza123' 
+          AND estadoPersona.referencia_valor = 'activo'
+)
+ Function error: validatePersonDb	100 DEBUG

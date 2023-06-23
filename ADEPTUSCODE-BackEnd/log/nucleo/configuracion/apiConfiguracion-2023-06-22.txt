@@ -1,0 +1,2 @@
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Se listo correctamente los roles - Funcion: listConfigurationHorario	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Se listo correctamente los roles - Funcion: listConfigurationHorario	200 INFO

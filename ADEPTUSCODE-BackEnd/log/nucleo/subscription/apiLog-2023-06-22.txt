@@ -1,0 +1,76 @@
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => Array
+        (
+            [0] => Array
+                (
+                    [suscripcion_id] => 2
+                    [tarifa_id] => 1
+                    [suscripcion_estado] => 8
+                    [persona_id] => 3
+                    [suscripcion_activacion] => 2023-05-10 00:00:00
+                    [suscripcion_expiracion] => 2023-08-12 00:00:00
+                    [suscripcion_numero_parqueo] => 100
+                    [cliente] => Alan Brito Delgado
+                    [referencia_valor] => habilitada
+                    [tarifa_nombre] => semestral
+                    [tarifa_valor] => 70
+                    [tarifa_ruta] => https://res.cloudinary.com/dxqlkqb68/image/upload/v1687186803/adeptus/x4phfiwphior6hrdktjz.png
+                    [persona_telefono] => 67111114
+                )
+
+            [1] => Array
+                (
+                    [suscripcion_id] => 1
+                    [tarifa_id] => 1
+                    [suscripcion_estado] => 9
+                    [persona_id] => 2
+                    [suscripcion_activacion] => 2023-06-19 11:20:49
+                    [suscripcion_expiracion] => 2023-12-19 11:20:49
+                    [suscripcion_numero_parqueo] => 6
+                    [cliente] => Harol Arcos
+                    [referencia_valor] => inhabilitada
+                    [tarifa_nombre] => semestral
+                    [tarifa_valor] => 70
+                    [tarifa_ruta] => https://res.cloudinary.com/dxqlkqb68/image/upload/v1687186803/adeptus/x4phfiwphior6hrdktjz.png
+                    [persona_telefono] => 77568478
+                )
+
+        )
+
+    [sql] => SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        r.referencia_valor,
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta,
+        p.persona_telefono
+        FROM suscripcion s
+        INNER JOIN persona p ON s.persona_id = p.persona_id
+        INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id
+)
+ Function error: listSubscriptionDb	100 DEBUG
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => 
+    [sql] => SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        r.referencia_valor,
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
+        FROM suscripcion s
+        INNER JOIN persona p ON s.persona_id = p.persona_id
+        INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id
+		WHERE r.referencia_valor = 'habilitada' AND suscripcion_expiracion < current_timestamp
+)
+ Function error: listSubscriptionActiveExpiredDb	100 DEBUG
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (66)	Array
+(
+    [output] => 
+    [sql] => SELECT s.*, CONCAT(p.persona_nombre, ' ', p.persona_apellido) AS cliente,
+        r.referencia_valor,
+        t.tarifa_nombre, t.tarifa_valor, t.tarifa_ruta
+        FROM suscripcion s
+        INNER JOIN persona p ON s.persona_id = p.persona_id
+        INNER JOIN tarifa t ON s.tarifa_id = t.tarifa_id
+        INNER JOIN referencia r ON s.suscripcion_estado = r.referencia_id
+		WHERE r.referencia_valor = 'habilitada' AND suscripcion_expiracion < current_timestamp
+)
+ Function error: listSubscriptionActiveExpiredDb	100 DEBUG

@@ -1,0 +1,14 @@
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-06-22 23:06:32	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Conexion buena:  - Function: connect	200 INFO
+2023-06-22 23:06:33	E:\xaampptis\htdocs\UniPark-Adeptus-Code\ADEPTUSCODE-BackEnd\lib\common\log.php (69)	Consulta ejecutada con exito - Function: setQueryParameters	200 INFO

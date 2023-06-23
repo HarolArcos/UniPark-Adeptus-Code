@@ -13,7 +13,7 @@
             [passwordPerson] => ksantillan
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
     [error] => ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
 DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».
 )
@@ -33,7 +33,7 @@ DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia�
             [passwordPerson] => ksantillan
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
     [error] => ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
 DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».
 )
@@ -53,7 +53,7 @@ DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia�
             [passwordPerson] => ksantillan
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('6','Kevin' , 'Santillan' , '1311751265' , '593096543743' , '' , 5 , 'ksantillan' , 'ksantillan')
     [error] => ERROR:  inserción o actualización en la tabla «persona» viola la llave foránea «persona_persona_tipo_fkey»
 DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia».
 )
@@ -74,9 +74,9 @@ DETAIL:  La llave (persona_tipo)=(6) no está presente en la tabla «referencia�
             [passwordPerson] => 123456
         )
 
-    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('cliente','Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 1 , 'gonzazm' , '123456')
+    [sql] => INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('cliente','Gonza' , 'Zeballos' , '1234567' , '67123456' , '' , 1 , 'gonzazm' , '123456')
     [error] => ERROR:  la sintaxis de entrada no es válida para tipo integer: «cliente»
-LINE 1: ...do, persona_nickname, persona_contrasena) VALUES ('cliente',...
+LINE 1: ...do, persona_nickname, persona_contraseña) VALUES ('cliente',...
                                                              ^
 )
 	500 ERROR

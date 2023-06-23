@@ -13,7 +13,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Yesquir
-                    [persona_contrasena] => wah6Eaba3i
+                    [persona_contraseña] => wah6Eaba3i
                 )
 
             [1] => Array
@@ -27,7 +27,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Whislove
-                    [persona_contrasena] => baghah2iK
+                    [persona_contraseña] => baghah2iK
                 )
 
             [2] => Array
@@ -41,7 +41,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Mamed1970
-                    [persona_contrasena] => ii8ba8Kai
+                    [persona_contraseña] => ii8ba8Kai
                 )
 
             [3] => Array
@@ -55,7 +55,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Hatumer
-                    [persona_contrasena] => xazi7xiGumah
+                    [persona_contraseña] => xazi7xiGumah
                 )
 
             [4] => Array
@@ -69,7 +69,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Pheine
-                    [persona_contrasena] => OhijiePha5
+                    [persona_contraseña] => OhijiePha5
                 )
 
         )
@@ -92,7 +92,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Yesquir
-                    [persona_contrasena] => wah6Eaba3i
+                    [persona_contraseña] => wah6Eaba3i
                 )
 
             [1] => Array
@@ -106,7 +106,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Whislove
-                    [persona_contrasena] => baghah2iK
+                    [persona_contraseña] => baghah2iK
                 )
 
             [2] => Array
@@ -120,7 +120,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Mamed1970
-                    [persona_contrasena] => ii8ba8Kai
+                    [persona_contraseña] => ii8ba8Kai
                 )
 
             [3] => Array
@@ -134,7 +134,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Hatumer
-                    [persona_contrasena] => xazi7xiGumah
+                    [persona_contraseña] => xazi7xiGumah
                 )
 
             [4] => Array
@@ -148,7 +148,7 @@
                     [persona_telegram] => ?
                     [persona_estado] => 1
                     [persona_nickname] => Pheine
-                    [persona_contrasena] => OhijiePha5
+                    [persona_contraseña] => OhijiePha5
                 )
 
         )

@@ -232,7 +232,7 @@ class person {
     public function insertPersonDb($typePerson,$namePerson,$lastNamePerson,$ciPerson,$phonePerson, $telegramPerson, 
     $statusPerson,$nicknamePerson,$passwordPerson){
         $response = false;
-        $sql =  "INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contrasena) VALUES ('$typePerson','$namePerson' , '$lastNamePerson' , '$ciPerson' , '$phonePerson' , '$telegramPerson' , $statusPerson , '$nicknamePerson' , '$passwordPerson') 
+        $sql =  "INSERT INTO persona(persona_tipo,persona_nombre, persona_apellido, persona_ci, persona_telefono, persona_telegram, persona_estado, persona_nickname, persona_contraseña) VALUES ('$typePerson','$namePerson' , '$lastNamePerson' , '$ciPerson' , '$phonePerson' , '$telegramPerson' , $statusPerson , '$nicknamePerson' , '$passwordPerson') 
         returning persona_id";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
@@ -282,7 +282,7 @@ class person {
         persona_telegram = '$telegramPerson',
         persona_estado = $statusPerson,
         persona_nickname = '$nicknamePerson',
-        persona_contrasena = '$passwordPerson'
+        persona_contraseña = '$passwordPerson'
       WHERE persona_id = $idPerson";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
@@ -567,7 +567,7 @@ class person {
         INNER JOIN opcion ON rol_has_opcion.opcion_id = opcion.opcion_id
         INNER JOIN referencia ON opcion.opcion_estado = referencia.referencia_id
         WHERE persona.persona_nickname = '$nicknamePerson'
-        AND persona.persona_contrasena = '$passwordPerson'
+        AND persona.persona_contraseña = '$passwordPerson'
         AND referencia.referencia_valor = 'activo'
         AND opcion_padre = 0";
 
@@ -578,7 +578,7 @@ class person {
         INNER JOIN opcion ON rol_has_opcion.opcion_id = opcion.opcion_id
         INNER JOIN referencia ON opcion.opcion_estado = referencia.referencia_id
         WHERE persona.persona_nickname = '$nicknamePerson'
-        AND persona.persona_contrasena = '$passwordPerson'
+        AND persona.persona_contraseña = '$passwordPerson'
         AND referencia.referencia_valor = 'activo'
         AND opcion_padre <> 0";
         
@@ -590,7 +590,7 @@ class person {
         JOIN persona_has_rol ON persona.persona_id = persona_has_rol.persona_id
         JOIN rol ON persona_has_rol.rol_id = rol.rol_id
         WHERE persona.persona_nickname = '$nicknamePerson' 
-          AND persona.persona_contrasena = '$passwordPerson' 
+          AND persona.persona_contraseña = '$passwordPerson' 
           AND estadoPersona.referencia_valor = 'activo'";
         $rs = $this->_db->select($sql);
         $rs2 = $this->_db->select($sql2);
@@ -623,7 +623,7 @@ class person {
         $this->telegramPerson = $rs['persona_telegram'];
         $this->statusPerson = $rs['persona_estado'];
         $this->nicknamePerson = $rs['persona_nickname'];
-        $this->passwordPerson = $rs['persona_contrasena'];
+        $this->passwordPerson = $rs['persona_contraseña'];
 
     }
 
@@ -663,7 +663,7 @@ class person {
         return $this->nicknamePerson;
     }
 
-    public function getPersonaContrasena(){
+    public function getPersonacontraseña(){
         return $this->passwordPerson;
     }
 }
