@@ -91,7 +91,7 @@ const FormularioEmpleado = ({
               telegramPerson: persona.persona_telegram,
               statusPerson: persona.persona_estado,
               nicknamePerson: persona.persona_nickname,
-              passwordPerson: persona.persona_contrasena,
+              passwordPerson: persona.persona_contraseña,
               idSchedule: persona.horario_id,
               daySchedule :  persona.horario_dia,
               entrySchedule:  persona.horario_entrada,
