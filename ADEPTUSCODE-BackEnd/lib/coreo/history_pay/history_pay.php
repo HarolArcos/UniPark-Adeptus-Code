@@ -8,7 +8,7 @@ class history_pay {
 
     private $optionsLog;
     private $_db;
-    private $idHistoryPay,$idSubscription,$dateHistoryPay, $amountHistoryPay, $residueHistoryPay, $totalHistoryPay;
+    private $idHistoryPay,$idSubscription,$dateHistoryPay, $amountHistoryPay, $residueHistoryPay, $totalHistoryPay, $siteHistoryPay;
 
     function __construct($_db,$idHistoryPay=0){
         
@@ -26,6 +26,7 @@ class history_pay {
         unset($this->amountHistoryPay);
         unset($this->residueHistoryPay);
         unset($this->totalHistoryPay);
+        unset($this->siteHistoryPay);
     }
 
     private function createLog($fileName, $logMessage, $tipeError){
@@ -97,15 +98,16 @@ class history_pay {
         return $response;
     }
 
-    public function insertHistoryPayDb($idSubscription, $amountHistoryPay, $totalHistoryPay){
+    public function insertHistoryPayDb($idSubscription, $amountHistoryPay, $totalHistoryPay, $siteHistoryPay){
         $response = false;
-        $sql =  "INSERT INTO historial_pago(suscripcion_id, historial_pago_fecha, historial_pago_monto, historial_pago_residuo, historial_pago_total) VALUES ($idSubscription,date_trunc('second', timezone('America/La_Paz', current_timestamp)), $amountHistoryPay, ($totalHistoryPay-$amountHistoryPay), $totalHistoryPay)";
+        $sql =  "INSERT INTO historial_pago(suscripcion_id, historial_pago_fecha, historial_pago_monto, historial_pago_residuo, historial_pago_total, historial_pago_sitio) VALUES ($idSubscription,date_trunc('second', timezone('America/La_Paz', current_timestamp)), $amountHistoryPay, ($totalHistoryPay-$amountHistoryPay), $totalHistoryPay, $siteHistoryPay)";
         $rs = $this->_db->query($sql);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "idSubscription"=> $idSubscription,
                                             "amountHistoryPay"=> $amountHistoryPay,
-                                            "totalHistoryPay"=> $totalHistoryPay
+                                            "totalHistoryPay"=> $totalHistoryPay,
+                                            "siteHistoryPay" => $siteHistoryPay
                                         ),
                             "sql"=>$sql,
                             "error"=>$this->_db->getLastError());
@@ -114,7 +116,8 @@ class history_pay {
             $response = $rs;
             $arrLog = array("input"=>array( "idSubscription"=> $idSubscription,
                                             "amountHistoryPay"=> $amountHistoryPay, 
-                                            "totalHistoryPay"=> $totalHistoryPay
+                                            "totalHistoryPay"=> $totalHistoryPay,
+                                            "siteHistoryPay" => $siteHistoryPay
                                         ),
                             "output"=>$response,
                             "sql"=>$sql);
@@ -281,6 +284,7 @@ class history_pay {
         $this->amountHistoryPay = $rs['historial_pago_monto'];
         $this->residueHistoryPay = $rs['historial_pago_residuo'];
         $this->totalHistoryPay = $rs['historial_pago_total'];
+        $this->siteHistoryPay = $rs['historial_pago_sitio'];
     }
 
 
@@ -306,6 +310,10 @@ class history_pay {
 
     public function getTotalHistoryPay(){
         return $this->totalHistoryPay;
+    }
+
+    public function getSiteHistoryPay(){
+        return $this->siteHistoryPay;
     }
 
 }

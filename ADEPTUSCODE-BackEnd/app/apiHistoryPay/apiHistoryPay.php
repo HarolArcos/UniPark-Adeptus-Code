@@ -30,6 +30,7 @@
         $amountHistoryPay = "";
         //$residueHistoryPay =  "";
         $totalHistoryPay =  "";
+        $siteHistoryPay = "";
 
 
         if(isset($arg->idSubscription)){
@@ -62,6 +63,12 @@
         else{
             array_push($errorlist,"Error: falta parametro totalHistoryPay");
         }
+        if(isset($arg->siteHistoryPay)){
+            $siteHistoryPay =  $arg->siteHistoryPay;
+        }
+        else{
+            array_push($errorlist,"Error: falta parametro siteHistoryPay");
+        }
         if(count($errorlist)!==0){
             return array("codError" => 200, "data" => array("desError"=>$errorlist)); 
         }
@@ -71,9 +78,10 @@
         $amountHistoryPay = $arg->amountHistoryPay;
         //$residueHistoryPay =  $arg->totalHistoryPay;
         $totalHistoryPay =  $arg->totalHistoryPay;
+        $siteHistoryPay = $arg->siteHistoryPay;
 
         $_pay = new history_pay($_db);
-        $responseInsert = $_pay->insertHistoryPayDb($idSubscription, $amountHistoryPay, $totalHistoryPay);
+        $responseInsert = $_pay->insertHistoryPayDb($idSubscription, $amountHistoryPay, $totalHistoryPay, $siteHistoryPay);
 
         if ( $responseInsert) {
             $response = array("codError" => 200, "data" => array("desError"=>"Inserción exitosa"));
