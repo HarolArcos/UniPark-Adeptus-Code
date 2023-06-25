@@ -70,9 +70,11 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
         if (values.statusSubscription!=8 && selectedReferenciaId==8) {
           console.log("hola");
           await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiHistoryPay/apiHistoryPay.php/insertHistoryPay',
-          {idSubscription :  values.idSubscription,
+          { idSubscription :  values.idSubscription,
             amountHistoryPay : suscripcion.tarifa_valor,
-            totalHistoryPay : suscripcion.tarifa_valor});
+            totalHistoryPay : suscripcion.tarifa_valor,
+            siteHistoryPay : values.numParkSubscription
+          });
          
           }
           values.statusSubscription = selectedReferenciaId;
