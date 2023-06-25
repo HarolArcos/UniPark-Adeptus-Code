@@ -100,8 +100,18 @@ class history_pay {
 
     public function insertHistoryPayDb($idSubscription, $amountHistoryPay, $totalHistoryPay, $siteHistoryPay){
         $response = false;
-        $sql =  "INSERT INTO historial_pago(suscripcion_id, historial_pago_fecha, historial_pago_monto, historial_pago_residuo, historial_pago_total, historial_pago_sitio) VALUES ($idSubscription,date_trunc('second', timezone('America/La_Paz', current_timestamp)), $amountHistoryPay, ($totalHistoryPay-$amountHistoryPay), $totalHistoryPay, $siteHistoryPay)";
+        $sql =  "INSERT INTO historial_pago(suscripcion_id, historial_pago_fecha, historial_pago_monto, historial_pago_total, historial_pago_sitio) VALUES ($idSubscription,date_trunc('second', timezone('America/La_Paz', current_timestamp)), $amountHistoryPay, $totalHistoryPay, $siteHistoryPay);";
+        $sql2 = "UPDATE historial_pago
+        SET historial_pago_residuo = 
+          CASE 
+            WHEN historial_pago_total > (SELECT SUM(historial_pago_monto) FROM historial_pago WHERE suscripcion_id = $idSubscription) 
+            THEN (historial_pago_total - (SELECT SUM(historial_pago_monto) FROM historial_pago WHERE suscripcion_id = $idSubscription))
+            ELSE 0
+          END
+        WHERE suscripcion_id = $idSubscription;";
+
         $rs = $this->_db->query($sql);
+        $rs = $this->_db->query($sql2);
         if($this->_db->getLastError()) {
             
             $arrLog = array("input"=>array( "idSubscription"=> $idSubscription,
