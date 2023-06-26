@@ -161,7 +161,7 @@ function ListaPa() {
       );
     
     
-              
+       
     return (
       <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         <label>Lista de Pagos</label>
@@ -200,7 +200,7 @@ function ListaPa() {
                 <td>{reclamoPersona.cliente}</td>
                 <td>{reclamoPersona.historial_pago_fecha}</td>
                 <td>{reclamoPersona.historial_pago_monto} Bs.</td>
-                <td>{reclamoPersona.suscripcion_numero_parqueo}</td>
+                <td>{reclamoPersona.historial_pago_sitio}</td>
               </tr>
             ))}
         

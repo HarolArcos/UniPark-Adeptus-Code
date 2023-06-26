@@ -50,7 +50,10 @@ export default function Event(){
         try {
             const response = await fetch('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiEvent/apiEvent.php/listEvent');
             const data = await response.json();
-    
+            if (!data.desError) {
+                setError(null);
+            }
+            
             setEventos(data)
             setTablaEventos(data)
             
@@ -79,7 +82,7 @@ export default function Event(){
     //---Desactive Any Modal
     const handleCancelar = () => {
         setShowCreate(false);
-        setError(null);
+       
         cargarDatos();
     };
 
@@ -113,7 +116,7 @@ export default function Event(){
             <Header></Header>
             <Aside></Aside>
 
-            <div className="content-wrapper">
+            <div className="content-wrapper" style={{minHeight: '100vh'}}>
                 <div className="bodyItems">
                     <div className="buttonSection">
                         <ButtonGroup className="buttonGroup">
