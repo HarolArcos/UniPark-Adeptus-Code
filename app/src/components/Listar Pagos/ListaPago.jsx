@@ -208,8 +208,9 @@ function ListaPa() {
                 </tr>
               ))}
               <tr className="totalRow">
-                <td colSpan="3">El Monto Pagado {Selec} es:</td>
-                <td>{montopagado} Bs.</td>
+                <td colSpan="2">El Monto Pagado {Selec} es:</td>
+                <td >{montopagado} Bs.</td>
+                <td ></td>
               </tr>
             </tbody>
           ) : (
