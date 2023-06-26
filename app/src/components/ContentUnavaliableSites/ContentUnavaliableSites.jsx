@@ -20,8 +20,8 @@ export default function ContentUnavalible(){
    
     return(
         <>
-            <Header></Header>
-        <Aside></Aside>
+            {/* <Header></Header>
+        <Aside></Aside> */}
         <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <br></br>
             {datos.desError ? <label>No Existen Sitios Ocupados</label>:(
@@ -52,7 +52,7 @@ export default function ContentUnavalible(){
                 </tbody>
             </Table>)}
         </div>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </>
     )
 }

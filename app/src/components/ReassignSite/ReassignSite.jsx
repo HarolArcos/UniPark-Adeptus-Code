@@ -24,8 +24,8 @@ export default function ReassignSite() {
 
     return(
         <>
-        <Header></Header>
-        <Aside></Aside>
+        {/* <Header></Header>
+        <Aside></Aside> */}
         <div className="content-wrapper reassignSite-Body">
         <Table striped bordered hover className="tableReassign">
                 <thead>
@@ -60,7 +60,7 @@ export default function ReassignSite() {
                     </ModalBody>
                 </Modal>
         </div>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </>
     )
 }

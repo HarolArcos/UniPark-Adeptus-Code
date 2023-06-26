@@ -10,8 +10,8 @@ import AddOptions from "./AddOption";
 export default function Options(){
     return(
         <>
-        <Header></Header>
-        <Aside></Aside>
+        {/* <Header></Header>
+        <Aside></Aside> */}
         <div className="content-wrapper" style={{minHeight: '100vh'}} >
         <Tabs
             defaultActiveKey="Añadir Rol"
@@ -30,7 +30,7 @@ export default function Options(){
                 
             </div> */}
         </div>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </>
     )
 }

@@ -9,10 +9,10 @@ import Footer from "../Footer/Footer";
 export default function ListaPag() {
   return (
     <div>
-      <Header />
-      <Aside />
+      {/* <Header />
+      <Aside /> */}
       <ListaPa />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

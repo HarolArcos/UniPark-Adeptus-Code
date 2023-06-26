@@ -10,12 +10,12 @@ let dat ;
 export default function ListCli() {
   return (
     <div>
-      <Header></Header>
-      <Aside></Aside>
+      {/* <Header></Header>
+      <Aside></Aside> */}
 
       <ListaC></ListaC>
     
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

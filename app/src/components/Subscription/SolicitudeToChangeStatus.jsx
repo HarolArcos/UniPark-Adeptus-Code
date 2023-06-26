@@ -116,8 +116,8 @@ export const SolicitudeToChangeStatus = () => {
 
     return (
         <>
-        <Header></Header>
-        <Aside></Aside>
+        {/* <Header></Header>
+        <Aside></Aside> */}
         <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
@@ -180,6 +180,8 @@ export const SolicitudeToChangeStatus = () => {
                         )}
                     </tbody>
                 </Table>
+                <br />
+                <br />
                 <Modal
 	            tamaño ="md"
                 mostrarModal={showEdit}
@@ -244,7 +246,7 @@ export const SolicitudeToChangeStatus = () => {
                 </Modal>
             </div>
         </div>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </>
 
     )

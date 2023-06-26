@@ -97,8 +97,8 @@ export const SubscriptionInMora = () => {
 
   return (
     <>
-      <Header></Header>
-      <Aside></Aside>
+      {/* <Header></Header>
+      <Aside></Aside> */}
       <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
         <div className="bodyItems">
           <div className="buttonSection">
@@ -181,6 +181,8 @@ export const SubscriptionInMora = () => {
               )}
             </tbody>
           </Table>
+          <br />
+          <br />
           <Modal
             tamaño="md"
             mostrarModal={showEdit}
@@ -231,7 +233,7 @@ export const SubscriptionInMora = () => {
           {wats? <Whats subs={subs} cerrar={cerrar} show={wats}/>:null}
         </div>
       </div>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </>
   );
 };

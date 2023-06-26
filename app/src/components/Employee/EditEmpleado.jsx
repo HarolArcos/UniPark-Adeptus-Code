@@ -105,8 +105,8 @@ export default function EditEmpleado(){
 
     return(
         <>
-            <Header></Header>
-            <Aside></Aside>
+            {/* <Header></Header>
+            <Aside></Aside> */}
 
             <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
@@ -177,7 +177,7 @@ export default function EditEmpleado(){
             </div>
             </div>
 
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </>
     )
 }

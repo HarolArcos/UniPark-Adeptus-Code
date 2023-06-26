@@ -99,8 +99,8 @@ export const VehicleEdit = () => {
  
     return (
         <>
-        <Header></Header>
-        <Aside></Aside>
+        {/* <Header></Header>
+        <Aside></Aside> */}
         <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
@@ -151,6 +151,7 @@ export const VehicleEdit = () => {
                         )}
                     </tbody>
                 </Table>
+                    
 
                 <Modal
 	            tamaño ="md"
@@ -181,8 +182,9 @@ export const VehicleEdit = () => {
                 </Modal>
             </div>
         </div>
-
-        <Footer></Footer>
+        <br />
+        <br />
+        {/* <Footer></Footer> */}
         </>
 
     )

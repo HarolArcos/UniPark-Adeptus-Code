@@ -38,13 +38,32 @@ import Noticias from "../Noticias/Noticias";
 import Listapagoclien from "../Listar Pagos/ListaPagoClien";
 import AddRolSection from "../Options/AddRolSection";
 import AddOptions from "../Options/AddOption";
+import Aside from "../Aside/Aside";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+
+import { useContext } from "react"
+import { DataUser } from '../context/UserContext.jsx';
 
 export const AppRouter = () => {
+
+  const {userglobal} = useContext(DataUser);
+  console.log(userglobal);
   return (
     <Router>
       <Routes>
-        {/*---------------------------Rutas------------------------ */}
         <Route exact path="/" element={<Login />} />
+      </Routes>
+      {userglobal?(
+        <>
+        <Aside></Aside>
+        <Header></Header>
+        </>
+      ):(
+        <></>
+      )}
+      <Routes>
+        {/*---------------------------Rutas------------------------ */}
         {/* Sitios */}
         <Route
           path="/sitiosDisponibles"
@@ -153,8 +172,15 @@ export const AppRouter = () => {
         <Route path="/addOptions" element={<AddOptions/>}/> {/* Agregar opciones a rol*/} {/* Configuraciones */}
 
         <Route path="/Noticias" element={<Noticias />} />
-        <Route path="*" element={<Login />} />
+        {/* <Route path="*" element={<Login />} /> */}
       </Routes>
+      {userglobal?(
+        <>
+        <Footer></Footer>
+        </>
+      ):(
+        <></>
+      )}
     </Router>
   );
 };

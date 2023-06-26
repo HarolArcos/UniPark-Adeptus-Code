@@ -54,8 +54,8 @@ export default function DeleteEmployee(){
 
     return(
         <>
-            <Header></Header>
-            <Aside></Aside>
+            {/* <Header></Header>
+            <Aside></Aside> */}
 
             <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
@@ -75,7 +75,7 @@ export default function DeleteEmployee(){
                 </div>
             </div>
 
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </>
     )
 }

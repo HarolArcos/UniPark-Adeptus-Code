@@ -89,8 +89,8 @@ export default function ViewEmployee(){
 
     return(
         <>
-            <Header></Header>
-            <Aside></Aside>
+            {/* <Header></Header>
+            <Aside></Aside> */}
 
             <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
@@ -162,7 +162,7 @@ export default function ViewEmployee(){
             </div>
             </div>
 
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </>
     )
 }

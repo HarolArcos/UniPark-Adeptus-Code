@@ -9,10 +9,10 @@ import { DataUser } from "../context/UserContext";
 export default function Listapagoclien() {
   return (
     <div>
-      <Header />
-      <Aside />
+      {/* <Header />
+      <Aside /> */}
       <ListaPa />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

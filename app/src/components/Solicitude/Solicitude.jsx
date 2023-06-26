@@ -79,8 +79,8 @@ export const Solicitude = () => {
  
     return (
         <>
-        <Header></Header>
-        <Aside></Aside>
+        {/* <Header></Header>
+        <Aside></Aside> */}
         <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 { suscripcion!=null?(
@@ -190,7 +190,7 @@ export const Solicitude = () => {
             </div>
         </div>
 
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </>
 
     )

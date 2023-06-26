@@ -110,10 +110,10 @@ export default function Event(){
 
     return(
         <>
-            <Header></Header>
-            <Aside></Aside>
-
-            <div className="content-wrapper">
+            {/* <Header></Header>
+            <Aside></Aside> */}
+            <div className="content-wrapper" style={{minHeight: '100vh'}}>
+            <br />
                 <div className="bodyItems">
                     <div className="buttonSection">
                         <ButtonGroup className="buttonGroup">
@@ -178,7 +178,7 @@ export default function Event(){
                 </div>
             </div>
 
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </>
     )
 

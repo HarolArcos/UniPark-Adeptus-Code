@@ -57,8 +57,8 @@ export default function DeletePerson(){
 
     return(
         <>
-            <Header></Header>
-            <Aside></Aside>
+            {/* <Header></Header>
+            <Aside></Aside> */}
 
             <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
 
@@ -80,7 +80,7 @@ export default function DeletePerson(){
                 
             </div>
 
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </>
     )
 }

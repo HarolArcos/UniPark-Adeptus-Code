@@ -107,9 +107,9 @@ export const TarifaListCreate = ({crear=false}) => {
  
     return (
         <>
-        <Header></Header>
-        <Aside></Aside>
-        <div className="h-100 w-100 content-wrapper contenteSites-body">
+        {/* <Header></Header>
+        <Aside></Aside> */}
+        <div className="h-100 w-100 content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
             <div className="bodyItems">
                 <div className="buttonSection">
                     {crear?(
@@ -187,8 +187,9 @@ export const TarifaListCreate = ({crear=false}) => {
             
             </div>
         </div>
-
-        <Footer></Footer>
+        <br />
+        <br />
+        {/* <Footer></Footer> */}
         </>
 
     )

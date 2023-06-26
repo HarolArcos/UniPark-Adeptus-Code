@@ -13,9 +13,6 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
   const {data,fetchData} = useFetchSendData();
 
   
-
-
-  
   const [selectedReferenciaId, setSelectedReferenciaId] = useState(
     suscripcion ? suscripcion.suscripcion_estado : null
   );
@@ -73,8 +70,7 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
           { idSubscription :  values.idSubscription,
             amountHistoryPay : suscripcion.tarifa_valor,
             totalHistoryPay : suscripcion.tarifa_valor,
-            siteHistoryPay : values.numParkSubscription
-          });
+            siteHistoryPay : suscripcion.suscripcion_numero_parqueo});
          
           }
           values.statusSubscription = selectedReferenciaId;
@@ -82,7 +78,7 @@ const FormularioStatus = ({asunto,cancelar, suscripcion,reftipo}) => {
        await fetchData('http://localhost/UniPark-Adeptus-Code/ADEPTUSCODE-BackEnd/app/apiSubscription/apiSubscription.php/changeStateSubscription',{
         "idSubscription" : values.idSubscription,
         "statusSubscription" :  values.statusSubscription
-});
+      });
         cancelar();
     
       } 

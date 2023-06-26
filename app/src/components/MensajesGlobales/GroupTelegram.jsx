@@ -81,8 +81,8 @@ export default function Mensaje() {
 
   return (
     <div>
-      <Header />
-      <Aside />
+      {/* <Header />
+      <Aside /> */}
 
       <div
         className="content-wrapper contenteSites-body"
@@ -210,7 +210,7 @@ export default function Mensaje() {
         )}
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
 
       <Modal show={show} onHide={handleClose} centered>
         <ModalBody className="modal-body">

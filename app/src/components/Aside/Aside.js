@@ -70,8 +70,9 @@ export default function Aside() {
             data-accordion="false"
           >
             {<Opcions />}
-            
+            <br/>
           </ul>
+          
         </nav>
         {/* /.sidebar-menu */}
       </div>
@@ -94,6 +95,7 @@ export default function Aside() {
           `}
         </style>
     </aside>
+    
   );
 }
 }

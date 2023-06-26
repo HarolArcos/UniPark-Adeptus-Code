@@ -21,8 +21,8 @@ export default function Configura () {
     
     return (
         <div>
-          <Header></Header>
-          <Aside></Aside>
+          {/* <Header></Header>
+          <Aside></Aside> */}
           <div className="content-wrapper contenteSites-body" style={{minHeight: '100vh'}} >
           <div className="tab-container">
             <div className="tab-buttons">
@@ -59,7 +59,7 @@ export default function Configura () {
           </div>
         </div>
         
-          <Footer></Footer>
+          {/* <Footer></Footer> */}
         </div>
       );
 
