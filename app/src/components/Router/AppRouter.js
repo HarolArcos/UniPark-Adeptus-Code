@@ -53,6 +53,7 @@ export const AppRouter = () => {
     <Router>
       <Routes>
         <Route exact path="/" element={<Login />} />
+        {/* <Route path="*" element={<Login />} /> */}
       </Routes>
       {userglobal?(
         <>
@@ -172,7 +173,6 @@ export const AppRouter = () => {
         <Route path="/addOptions" element={<AddOptions/>}/> {/* Agregar opciones a rol*/} {/* Configuraciones */}
 
         <Route path="/Noticias" element={<Noticias />} />
-        {/* <Route path="*" element={<Login />} /> */}
       </Routes>
       {userglobal?(
         <>
