@@ -20,7 +20,7 @@ export default function Aside() {
     maxHeight: "100vh",}} >
       {/* Brand Logo */}
 
-      <Link to="#" className="brand-link">
+      <Link to="#" data-widget="pushmenu" className="brand-link">
         <img
           src="dist/img/uni-park.png"
           alt="AdminLTE Logo"
@@ -33,8 +33,10 @@ export default function Aside() {
             border: "10px",
           }}
         />
-        <span className="brand-text font-weight-light">UNI-PARK</span>
+        <span  className="brand-text font-weight-light">UNI-PARK </span>
+        
       </Link>
+      
       {/* Sidebar */}
       <div className="sidebar">
         {/* Sidebar user panel (optional) */}
