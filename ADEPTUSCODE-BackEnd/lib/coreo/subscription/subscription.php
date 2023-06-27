@@ -218,7 +218,27 @@ class subscription {
             END
         WHERE suscripcion_id = $idSubscription";
 
-        $rs = $this->_db->query($sql);
+            $sql3 = "UPDATE suscripcion
+            SET suscripcion_estado = $statusSubscription,
+            suscripcion_activacion = 
+            CASE
+                    WHEN $statusSubscription = 8 THEN date_trunc('second', current_timestamp)
+                    ELSE suscripcion_activacion
+                END,
+            suscripcion_numero_parqueo = CASE WHEN $statusSubscription IN (9,11) THEN 0 ELSE suscripcion_numero_parqueo END,
+            suscripcion_expiracion = 
+                CASE
+                    WHEN $statusSubscription = 8 AND (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'semestral' THEN (date_trunc('second', current_timestamp + interval '6 months'))
+                    WHEN $statusSubscription = 8 AND (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'mensual' THEN date_trunc('second', current_timestamp + interval '1 month') 
+                    WHEN $statusSubscription = 8 AND (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'anual' THEN date_trunc('second', current_timestamp + interval '1 year')
+                    WHEN $statusSubscription = 8 AND (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'bimestral' THEN (date_trunc('second', current_timestamp + interval '2 months')) 
+                    WHEN $statusSubscription = 8 AND (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'trimestral' THEN date_trunc('second', current_timestamp + interval '3 months')
+                    WHEN $statusSubscription = 8 AND (SELECT tarifa_nombre FROM tarifa WHERE tarifa_id = (SELECT tarifa_id FROM suscripcion WHERE suscripcion_id = $idSubscription)) = 'semanal' THEN date_trunc('second', current_timestamp + interval '1 week')
+                    ELSE suscripcion_expiracion
+                END
+            WHERE suscripcion_id = $idSubscription";
+
+        $rs = $this->_db->query($sql3);
         if($this->_db->getLastError()) {
             $arrLog = array("input"=>array( "idSubscription" => $idSubscription,"statusSuscription" => $statusSubscription),
                             "sql"=>$sql,
