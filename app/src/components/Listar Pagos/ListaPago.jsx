@@ -152,7 +152,7 @@ function ListaPa() {
                 <Text style={styles.tableCell}>{reclamoPersona.cliente}</Text>
                 <Text style={styles.tableCell}>{reclamoPersona.historial_pago_fecha}</Text>
                 <Text style={styles.tableCell}>{reclamoPersona.historial_pago_monto} Bs.</Text>
-                <Text style={styles.tableCell}>{reclamoPersona.suscripcion_numero_parqueo}</Text>
+                <Text style={styles.tableCell}>{reclamoPersona.historial_pago_sitio}</Text>
               </View>
             ))}
             <View style={[styles.tableRow, styles.totalRow]}>
@@ -204,7 +204,7 @@ function ListaPa() {
                   <td>{reclamoPersona.cliente}</td>
                   <td>{reclamoPersona.historial_pago_fecha}</td>
                   <td>{reclamoPersona.historial_pago_monto} Bs.</td>
-                  <td>{reclamoPersona.suscripcion_numero_parqueo}</td>
+                  <td>{reclamoPersona.historial_pago_sitio}</td>
                 </tr>
               ))}
               <tr className="totalRow">
